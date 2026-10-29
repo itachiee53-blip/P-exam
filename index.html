@@ -1732,6 +1732,21 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .stat b{font-size:22px}
   .sring .txt b{font-size:40px}
 }
+@media(max-width:980px){
+  /* ปุ่มเพิ่มข้อ/บัตร ย้ายขึ้นไปเป็นปุ่มกลมบนแถบหัว ไม่บังเนื้อหา */
+  .fab{top:calc(12px + env(safe-area-inset-top));bottom:auto;right:113px;width:44px;height:44px;padding:0;
+    border-radius:50%;justify-content:center;font-size:0;gap:0;z-index:66}
+  .fab svg{width:20px;height:20px}
+  /* หน้าสอบ: ซ่อนแท็บล่างเพื่อโฟกัส ปุ่มก่อนหน้า/ถัดไปติดขอบล่าง */
+  body[data-page="run"] .bottomnav{display:none}
+  body[data-page="run"] .main{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  .rnav{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;padding:8px;margin:12px -8px 0;
+    border-radius:20px;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .rtop{gap:6px}
+  .rtop .ib{width:38px;height:38px;border-radius:12px}
+  .rtop .timer{padding:8px 12px}
+  .rtop .tag{display:none}
+}
 /* ข้อ 5: นับถอยหลังวันสอบบนการ์ดหน้าแรก */
 .neo-hero-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;order:1}
 .neo-hero-pills p{margin:0!important;order:0!important}
@@ -2539,28 +2554,48 @@ $('#rteSave').onclick = () => {
 // ==========================================
 // ระบบเล่นไฟล์เสียง Audio MP3 ลื่นไหล ไม่หน่วง Thread
 // ==========================================
-const sfxPick = new Audio("data:audio/mp3;base64,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");
-const sfxSubmit = new Audio("done.mp3");
-const sfxTap = new Audio("pop.mp3"); 
-const sfxOk = new Audio("correct.mp3");
-const sfxWrong = new Audio("wrong.mp3");
+// เสียงปุ่ม: โหลดไฟล์ใน sounds/ เข้า Web Audio (เล่นทันที ไม่หน่วง) ถ้าไม่ได้ใช้ <audio> แทน
+const SFX_FILES = {tap:'sounds/tap.mp3', pick:'sounds/pick.mp3', ok:'sounds/correct.mp3', wrong:'sounds/wrong.mp3', submit:'sounds/done.mp3'};
+const sfxEl = {}, sfxBuf = {};
+let audioCtx = null, lastTapAt = 0;
+Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; sfxEl[k] = a; });
+try{
+  const C = window.AudioContext || window.webkitAudioContext;
+  if(C){
+    audioCtx = new C();
+    Object.entries(SFX_FILES).forEach(([k, src]) => {
+      fetch(src).then(r => r.arrayBuffer())
+        .then(ab => audioCtx.decodeAudioData(ab, b => { sfxBuf[k] = b; }, () => {}))
+        .catch(() => {});
+    });
+  }
+}catch(e){ audioCtx = null; }
 
 function playTone(type='tap'){
   if(!S.settings.sound) return;
+  if(type === 'tap'){
+    // กันเสียงซ้อนเมื่อปุ่มเรียกเองซ้ำกับตัวดักกดปุ่มรวม
+    const now = performance.now(); if(now - lastTapAt < 120) return; lastTapAt = now;
+  }
   try{
-    let a = null;
-    if(type === 'pick') a = sfxPick;
-    else if(type === 'ok') a = sfxOk;
-    else if(type === 'wrong') a = sfxWrong;
-    else if(type === 'submit') a = sfxSubmit;
-    else a = sfxTap;
-
-    if(a){
-      a.currentTime = 0;
-      a.play().catch(()=>{});
+    if(audioCtx && sfxBuf[type]){
+      if(audioCtx.state === 'suspended') audioCtx.resume();
+      const src = audioCtx.createBufferSource();
+      src.buffer = sfxBuf[type];
+      src.connect(audioCtx.destination);
+      src.start(0);
+    } else if(sfxEl[type]){
+      const a = sfxEl[type]; a.currentTime = 0; a.play().catch(()=>{});
     }
   }catch(e){}
 }
+// เสียงกดปุ่มทุกปุ่ม (รวมปุ่มที่ไม่ได้เรียก playTone เอง) + ปลดล็อกเสียงบน iPhone ด้วยการแตะครั้งแรก
+document.addEventListener('pointerdown', e => {
+  if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  if(e.button > 0) return;
+  const b = e.target.closest && e.target.closest('button,.chip,.picker-item,.streak-day-item,.neo-cd,.neo-cm,[data-go],.sw');
+  if(b && !b.disabled && !b.classList.contains('opt')) playTone('tap');
+}, {passive:true});
 
 function speakWord(text) {
   if (!('speechSynthesis' in window)) return;
@@ -2788,6 +2823,7 @@ async function go(p){
   }
   playTone('tap');
   PAGE=p;
+  document.body.dataset.page=p;
   $$('[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===p));
   
   const topBlock = $('#topTitleBlock');
