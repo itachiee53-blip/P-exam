@@ -1311,7 +1311,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
 .stat span{font-size:12px;font-weight:500}
 .quick{font-weight:700}
 .quick .ic{transition:transform .4s var(--spring)}
-.quick:hover .ic{transform:rotate(-10deg) scale(1.12)}
+@media(hover:hover){.quick:hover .ic{transform:rotate(-10deg) scale(1.12)}}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -1325,7 +1325,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
   transform:skewX(-20deg);transition:left .6s var(--ease);
 }
-.btn:not(.ghost):hover::after{left:130%}
+@media(hover:hover){.btn:not(.ghost):hover::after{left:130%}}
 .btn.ghost{background:transparent;border:1.5px solid var(--line)}
 .btn.ghost:hover{border-color:var(--text)}
 .btn.lg{border-radius:18px}
@@ -1334,7 +1334,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
   box-shadow:0 18px 36px -14px var(--acc-glow),0 0 0 1px var(--line);
   transition:transform .3s var(--spring);
 }
-.fab:hover{transform:translateY(-3px) rotate(-2deg)}
+@media(hover:hover){.fab:hover{transform:translateY(-3px) rotate(-2deg)}}
 
 /* ripple */
 .neo-rip-wrap{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
@@ -1417,7 +1417,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
 
 /* ---------- streak ---------- */
 .streak-circle{border-radius:12px;transition:transform .3s var(--spring)}
-.streak-day-item:hover .streak-circle{transform:translateY(-3px) rotate(-6deg)}
+@media(hover:hover){.streak-day-item:hover .streak-circle{transform:translateY(-3px) rotate(-6deg)}}
 .streak-day-item.is-done .streak-circle{background:var(--surface);border-color:var(--text);color:var(--text)}
 .streak-day-item.is-today .streak-circle{background:var(--primary);border-color:var(--primary);color:var(--onp);box-shadow:0 8px 18px -8px var(--acc-glow)}
 .streak-day-item.is-today.is-done .streak-circle{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
@@ -1488,7 +1488,7 @@ html .back{
 html .back .tag{background:var(--acc)!important;color:var(--acc-ink)!important}
 html .card-def{color:#f5f5f6}
 .srs-btn{border-radius:16px;transition:transform .2s var(--spring)}
-.srs-btn:hover{transform:translateY(-3px)}
+@media(hover:hover){.srs-btn:hover{transform:translateY(-3px)}}
 
 /* ---------- modal / toast ---------- */
 .mask{background:rgba(5,5,7,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -1697,6 +1697,18 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 .mask,.rte-mask,.img-editor-mask{top:var(--neo-vvt,0px);bottom:auto;height:var(--neo-vvh,100%)}
 .mask .modal{max-height:calc(var(--neo-vvh,100dvh) - 24px)}
 .rte-mask .rte-modal{height:min(88dvh,calc(var(--neo-vvh,100dvh) - 24px))}
+button,.neo-deck,.bottomnav,.neo-cal-sheet{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+body.neo-cal-open{overflow:hidden}
+.neo-deck .hero .cta,.neo-cal-btn{display:none!important}
+.neo-deck .hero h2{font-size:clamp(28px,8vw,36px)}
+.neo-deck .hero .ringbox{height:min(170px,45%)!important}
+.neo-deck .hero .ringbox .txt b{font-size:32px}
+.neo-big{font-size:clamp(52px,16vw,72px)}
+.neo-time b{font-size:clamp(32px,10vw,44px)}
+.neo-greet{font-size:clamp(24px,7vw,32px);margin:0 0 40px}
+.neo-actions{display:flex;gap:10px;align-items:center;margin:4px 0 8px}
+.neo-actions .ib{width:52px;height:52px;border-radius:50%;flex:none}
+.neo-act-main{flex:1;height:52px;border-radius:999px;background:var(--cf-deep);color:#fff;font-size:15.5px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -3418,6 +3430,12 @@ function renderHome(){
   if ($('#btnCloudHub')) {
     $('#btnCloudHub').onclick = () => openCloudHubModal();
   }
+
+  $$('[data-q]').forEach(b => b.onclick = () => {
+    if(b.dataset.q === 'exam') return go('exam');
+    playTone('tap');
+    startExam({cats:[],count:S.settings.goal,minutes:0,mode:'practice',label:'ฝึกตามเป้าวันนี้'});
+  });
 
   initCarousel(slides.length);
   icons();
@@ -6464,14 +6482,7 @@ document.addEventListener('touchstart', (e) => {
   if (e.touches.length > 1) e.preventDefault();
 }, { passive: false });
 
-let lastTouchEnd = 0;
-document.addEventListener('touchend', (e) => {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    if (e.cancelable) e.preventDefault();
-  }
-  lastTouchEnd = now;
-}, { passive: false });
+
 
 const GDRIVE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqICoNiiit799JliNB4OugQQbTQhLhNggB0SmXWmCg-xs7Lzlc2VrEnoXm0yOk0Gg2/exec";
 let cloudCache = null;
@@ -6864,7 +6875,7 @@ window.triggerUploadPicker = function() {
     const d=document.createElement('span');
     d.className='neo-ripple';
     d.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;
-    w.appendChild(d);el.appendChild(w);
+    w.appendChild(d);requestAnimationFrame(()=>el.appendChild(w));
     setTimeout(()=>w.remove(),650);
   },{passive:true});
 
@@ -7033,9 +7044,9 @@ window.triggerUploadPicker = function() {
   };
   const openNeoCal=()=>{
     const n=new Date();Object.assign(cal,{y:n.getFullYear(),m:n.getMonth(),sel:dkey(n),mode:'month'});
-    renderCal();requestAnimationFrame(()=>calEl().classList.add('on'));
+    renderCal();document.body.classList.add('neo-cal-open');requestAnimationFrame(()=>calEl().classList.add('on'));
   };
-  const closeCal=()=>calEl().classList.remove('on');
+  const closeCal=()=>{calEl().classList.remove('on');document.body.classList.remove('neo-cal-open');};
 
   // กองการ์ดหน้าแรก: ปัดซ้าย/ขวาเพื่อสลับการ์ด
   const initDeck=()=>{
@@ -7046,10 +7057,26 @@ window.triggerUploadPicker = function() {
     const dotsEl=document.querySelector('.neo-deck-dots');
     const wk=view.querySelector('.week-card');
     for(let el=dotsEl.nextElementSibling;el;){const nx=el.nextElementSibling;el.remove();el=nx;}
+    dotsEl.insertAdjacentHTML('afterend',`<div class="neo-actions">
+      <button class="btn neo-act-main" data-act="start"><i data-lucide="play"></i>เริ่มทำ</button>
+      <button class="ib" data-act="cal" title="ปฏิทินย้อนหลัง"><i data-lucide="calendar-days"></i></button>
+      <button class="ib" data-act="exam" title="จำลองสอบ"><i data-lucide="timer"></i></button>
+      <button class="ib" data-act="cloud" title="แชร์ออนไลน์"><i data-lucide="cloud-download"></i></button>
+    </div>`);
+    dotsEl.nextElementSibling.addEventListener('click',e=>{
+      const a=e.target.closest('[data-act]');if(!a)return;
+      const k=a.dataset.act;
+      if(k==='start')deck.querySelector('.hero [data-q="practice"]').click();
+      else if(k==='cal'){if(typeof playTone==='function')playTone('tap');openNeoCal();}
+      else if(k==='exam')go('exam');
+      else openCloudHubModal();
+    });
+    if(typeof icons==='function')icons();
     if(wk){
       const w=document.createElement('div');w.className='neo-dcard neo-extra neo-week';
       w.appendChild(wk);w.insertAdjacentHTML('beforeend',weekExtra());deck.appendChild(w);
-      w.addEventListener('click',e=>{if(!e.target.closest('[data-dayclick]'))openNeoCal();});
+      w.addEventListener('click',e=>{if(!e.target.closest('[data-dayclick]')&&!calEl().classList.contains('on'))openNeoCal();});
+      deck.addEventListener('contextmenu',e=>e.preventDefault());
       if(typeof icons==='function')icons();
     }
     const cards=[...deck.children];
@@ -7062,7 +7089,10 @@ window.triggerUploadPicker = function() {
       const navH=nav&&getComputedStyle(nav).display!=='none'?nav.offsetHeight+16:0;
       // ใช้ตำแหน่งเทียบเอกสาร + 100svh (ไม่เปลี่ยนตามแถบเบราว์เซอร์/การเลื่อน) กันการ์ดกระตุก/ตกขอบ
       const top=deck.getBoundingClientRect().top+(document.scrollingElement.scrollTop||0)+(view.closest('.main').scrollTop||0);
-      deck.style.height=`max(480px,calc(100svh - ${Math.round(top+navH+40)}px))`;
+      // วัดความสูงจอครั้งเดียวตอนแถบเบราว์เซอร์ยังแสดง แล้วจำกัดไม่ให้การ์ดยาวเกินไป
+      const vh=Math.min(innerHeight,window.visualViewport?visualViewport.height:innerHeight);
+      const below=dotsEl.offsetHeight+dotsEl.nextElementSibling.offsetHeight+28;
+      deck.style.height=Math.round(clamp(vh-top-navH-below,280,560))+'px';
     };
     let fw=innerWidth;
     const onRs=()=>{if(innerWidth!==fw){fw=innerWidth;fit();}};
