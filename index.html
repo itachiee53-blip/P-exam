@@ -1713,7 +1713,31 @@ body.neo-cal-open{overflow:hidden}
 .neo-act-main{flex-direction:row;gap:8px;font-size:15.5px;font-weight:700;background:var(--primary);color:var(--onp)}
 .neo-act-main svg{width:18px;height:18px;color:var(--onp);fill:currentColor}
 /* ล็อกหน้าแรกไม่ให้เลื่อน (แถบเบราว์เซอร์จะไม่หด/ขยายจนหน้าขยับ) */
-html:has(body.neo-home),body.neo-home{overflow:hidden;overscroll-behavior:none;height:100%}
+/* ล็อกทุกหน้า: ตัวหน้าเว็บไม่เลื่อน ให้เลื่อนเฉพาะพื้นที่เนื้อหา (.main) */
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+.app{height:100%;min-height:0}
+.main{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(max-width:980px){
+  .main{padding-top:0}
+  .topbar{position:sticky;top:0;z-index:30;margin:0 -13px 14px;padding:12px 13px 10px;
+    background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  /* ข้อ 7: ตัวอักษรพอดีจอเล็ก */
+  .topbar h1{font-size:22px}
+  .hp-avatar-wrap{width:44px;height:44px}
+  .topbar .ib{width:44px!important;height:44px!important}
+  .rq{font-size:18px}
+  .opt{font-size:15px;padding:13px 44px 13px 14px}
+  .sec{margin:18px 0 10px}
+  .card{padding:16px}
+  .stat b{font-size:22px}
+  .sring .txt b{font-size:40px}
+}
+/* ข้อ 5: นับถอยหลังวันสอบบนการ์ดหน้าแรก */
+.neo-hero-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;order:1}
+.neo-hero-pills p{margin:0!important;order:0!important}
+.neo-hero-cd{background:#000;color:#e1e5ac;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px}
+.neo-hero-cd.soon{background:#ef3e4a;color:#fff}
+.neo-hero-hint{order:2;display:block;margin-top:-14px;font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -2797,7 +2821,7 @@ async function go(p){
   requestAnimationFrame(() => {
     RENDER[p]();
     syncChrome();
-    window.scrollTo({top: 0, behavior: 'instant'});
+    $('.main').scrollTo({top: 0, behavior: 'instant'});
   });
 }
 
@@ -3219,8 +3243,11 @@ function renderHome(){
   <div class="neo-deck">
   <div class="hero neo-dcard" ${heroStyle}>
     <div style="flex:1;position:relative;z-index:1">
-      <p>สาย${esc(trackInfo.name)}</p>
+      <div class="neo-hero-pills"><p>สาย${esc(trackInfo.name)}</p>${cd && !cd.isPassed ? `<span class="neo-hero-cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday?'สอบวันนี้!':`อีก ${cd.daysLeft} วันสอบ`}</span>` : ''}</div>
       <h2>เป้าหมายวันนี้<br>ทำ ${goal} ข้อ</h2>
+      ${(()=>{ if(!cd || cd.isPassed || cd.isToday) return '';
+        const left = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0)).length;
+        return left ? `<small class="neo-hero-hint">เหลือ ${left.toLocaleString()} ข้อที่ยังไม่ทำ · ควรทำวันละ ~${Math.ceil(left/cd.daysLeft)} ข้อ</small>` : ''; })()}
       <div class="cta">
         <button class="btn w" data-q="practice"><i data-lucide="play"></i>เริ่มทำ</button>
        <button class="btn" id="btnCloudHub"><i data-lucide="cloud-download"></i>แชร์ออนไลน์</button>
@@ -6180,6 +6207,9 @@ function renderSetting(){
 
   <div class="sec"><i data-lucide="database"></i>ฐานข้อมูล</div>
   <div class="card">
+    <div style="font-size:12.5px;color:${backupDaysAgo()>=BACKUP_REMIND_DAYS?'var(--red)':'var(--muted)'};margin-bottom:10px">
+      สำรองล่าสุด: ${st.lastBackup ? formatThaiDate(dkey(new Date(st.lastBackup))) + ` (${backupDaysAgo()} วันก่อน)` : 'ยังไม่เคยสำรอง'}
+    </div>
     <div class="grid g2">
       <button class="btn ghost" id="d_out"><i data-lucide="download"></i>ส่งออก</button>
       <button class="btn ghost" id="d_in"><i data-lucide="upload"></i>นำเข้า</button>
@@ -6323,13 +6353,7 @@ function renderSetting(){
     }
   });
 
-  $('#d_out').onclick=()=>{
-    playTone('tap');
-    const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(blob); a.download=`policeprep-backup-${dkey()}.json`; a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href),1500); toast('ส่งออกแล้ว','ok');
-  };
+  $('#d_out').onclick=()=>{ playTone('tap'); exportBackup(); renderSetting(); };
   
   $('#d_in').onclick=()=>{ playTone('tap'); $('#d_file').click(); };
   $('#d_file').onchange=e=>{
@@ -6370,6 +6394,32 @@ function renderSetting(){
     }
   };
   icons();
+}
+
+const BACKUP_REMIND_DAYS = 7;
+function backupDaysAgo(){
+  const t = S.settings.lastBackup;
+  return t ? Math.floor((Date.now() - t) / 864e5) : Infinity;
+}
+function exportBackup(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=`policeprep-backup-${dkey()}.json`; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+  S.settings.lastBackup = Date.now(); save();
+  toast('ส่งออกแล้ว','ok');
+}
+// เตือนวันละครั้งถ้าไม่ได้สำรองเกิน 7 วัน (ข้อมูลอยู่ในเบราว์เซอร์อย่างเดียว ล้างแล้วหาย)
+function remindBackup(){
+  if(!S.questions.length || backupDaysAgo() < BACKUP_REMIND_DAYS) return;
+  if(S.settings.backupNagDay === dkey()) return;
+  S.settings.backupNagDay = dkey(); save();
+  const ago = backupDaysAgo();
+  openModal('สำรองข้อมูลกันหาย', `<p style="color:var(--text2);line-height:1.6">
+    ${ago === Infinity ? 'ยังไม่เคยสำรองข้อมูลเลย' : `ไม่ได้สำรองข้อมูลมา ${ago} วัน`}<br>
+    ข้อสอบ ${S.questions.length.toLocaleString()} ข้อและสถิติทั้งหมดเก็บอยู่ในเบราว์เซอร์นี้เท่านั้น ถ้าล้างข้อมูลเบราว์เซอร์หรือเปลี่ยนเครื่องจะหายทั้งหมด</p>`,
+    `<button class="btn ghost" data-close>ภายหลัง</button><button class="btn" id="btnNagBackup"><i data-lucide="download"></i>สำรองเลย</button>`);
+  $('#btnNagBackup').onclick = () => { exportBackup(); closeModal(); };
 }
 
 function theme(){
@@ -6462,25 +6512,12 @@ document.addEventListener('visibilitychange', ()=>{ if(document.hidden) onAppHid
     resumeExam();
   }else{
     go('home');
+    setTimeout(remindBackup, 1200);
   }
   icons();
 })();
 
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.innerWidth <= 980) {
-    const mainEl = document.querySelector('.main');
-    const appEl = document.querySelector('.app');
-    if (mainEl) {
-      mainEl.style.height = 'auto';
-      mainEl.style.minHeight = '100vh';
-      mainEl.style.overflowY = 'visible';
-    }
-    if (appEl) {
-      appEl.style.height = 'auto';
-      appEl.style.minHeight = '100vh';
-    }
-  }
-});
+
 
 document.addEventListener('gesturestart', (e) => e.preventDefault());
 document.addEventListener('touchstart', (e) => {
@@ -6820,6 +6857,7 @@ window.triggerUploadPicker = function() {
           upBoxIcon.innerHTML = '<i data-lucide="check-circle-2" style="width:28px;height:28px"></i>';
           if (window.lucide) lucide.createIcons();
         }
+        S.settings.lastBackup = Date.now(); save();
         if (upTextInfo) upTextInfo.textContent = 'สำรองข้อมูลเรียบร้อยแล้ว!';
         if (upSubInfo) upSubInfo.textContent = 'ข้อมูลของคุณถูกบันทึกขึ้น Google Drive ครบ 100%';
 
