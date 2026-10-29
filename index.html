@@ -6388,7 +6388,7 @@ $('#btnSearch').onclick=()=>{
 setInterval(()=>{
   if(document.hidden)return;
   S.stats.minutes++; day().minutes++; save();
-  if(PAGE==='home'&&!EX.live)renderHome();
+
 },60000);
 
 function onAppHide(){
@@ -7057,12 +7057,16 @@ window.triggerUploadPicker = function() {
     const dots=[...dotsEl.children];
     // ขยายกองการ์ดให้พอดีพื้นที่ที่เหลือบนจอ (ไม่ต้องเลื่อนหน้า)
     const fit=()=>{
-      if(!deck.isConnected)return window.removeEventListener('resize',fit);
+      if(!deck.isConnected)return window.removeEventListener('resize',onRs);
       const nav=document.querySelector('.bottomnav');
       const navH=nav&&getComputedStyle(nav).display!=='none'?nav.offsetHeight+16:0;
-      deck.style.height=Math.max(340,innerHeight-deck.getBoundingClientRect().top-navH-40)+'px';
+      // ใช้ตำแหน่งเทียบเอกสาร + 100svh (ไม่เปลี่ยนตามแถบเบราว์เซอร์/การเลื่อน) กันการ์ดกระตุก/ตกขอบ
+      const top=deck.getBoundingClientRect().top+(document.scrollingElement.scrollTop||0)+(view.closest('.main').scrollTop||0);
+      deck.style.height=`max(480px,calc(100svh - ${Math.round(top+navH+40)}px))`;
     };
-    fit();setTimeout(fit,700);window.addEventListener('resize',fit);
+    let fw=innerWidth;
+    const onRs=()=>{if(innerWidth!==fw){fw=innerWidth;fit();}};
+    fit();if(document.fonts)document.fonts.ready.then(fit);window.addEventListener('resize',onRs);
     let order=cards.map((_,i)=>i), sx=0, sy=0, dx=0, drag=false, lock=null, swiped=false;
     const paint=()=>{
       order.forEach((ci,pos)=>{cards[ci].dataset.pos=pos;cards[ci].style.transform='';});
@@ -7097,7 +7101,7 @@ window.triggerUploadPicker = function() {
       if(!drag)return;
       dx=e.clientX-sx;
       const dy=e.clientY-sy;
-      if(lock===null&&Math.abs(dx)+Math.abs(dy)>8){
+      if(lock===null&&Math.abs(dx)+Math.abs(dy)>14){
         lock=Math.abs(dx)>Math.abs(dy)?'x':'y';
         if(lock==='x')deck.setPointerCapture(e.pointerId);
       }
