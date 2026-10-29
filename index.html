@@ -1697,6 +1697,8 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 .mask,.rte-mask,.img-editor-mask{top:var(--neo-vvt,0px);bottom:auto;height:var(--neo-vvh,100%)}
 .mask .modal{max-height:calc(var(--neo-vvh,100dvh) - 24px)}
 .rte-mask .rte-modal{height:min(88dvh,calc(var(--neo-vvh,100dvh) - 24px))}
+button,.neo-deck,.bottomnav,.neo-cal-sheet{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+body.neo-cal-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -3418,6 +3420,12 @@ function renderHome(){
   if ($('#btnCloudHub')) {
     $('#btnCloudHub').onclick = () => openCloudHubModal();
   }
+
+  $$('[data-q]').forEach(b => b.onclick = () => {
+    if(b.dataset.q === 'exam') return go('exam');
+    playTone('tap');
+    startExam({cats:[],count:S.settings.goal,minutes:0,mode:'practice',label:'ฝึกตามเป้าวันนี้'});
+  });
 
   initCarousel(slides.length);
   icons();
@@ -6464,14 +6472,7 @@ document.addEventListener('touchstart', (e) => {
   if (e.touches.length > 1) e.preventDefault();
 }, { passive: false });
 
-let lastTouchEnd = 0;
-document.addEventListener('touchend', (e) => {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    if (e.cancelable) e.preventDefault();
-  }
-  lastTouchEnd = now;
-}, { passive: false });
+
 
 const GDRIVE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyqICoNiiit799JliNB4OugQQbTQhLhNggB0SmXWmCg-xs7Lzlc2VrEnoXm0yOk0Gg2/exec";
 let cloudCache = null;
@@ -7033,9 +7034,9 @@ window.triggerUploadPicker = function() {
   };
   const openNeoCal=()=>{
     const n=new Date();Object.assign(cal,{y:n.getFullYear(),m:n.getMonth(),sel:dkey(n),mode:'month'});
-    renderCal();requestAnimationFrame(()=>calEl().classList.add('on'));
+    renderCal();document.body.classList.add('neo-cal-open');requestAnimationFrame(()=>calEl().classList.add('on'));
   };
-  const closeCal=()=>calEl().classList.remove('on');
+  const closeCal=()=>{calEl().classList.remove('on');document.body.classList.remove('neo-cal-open');};
 
   // กองการ์ดหน้าแรก: ปัดซ้าย/ขวาเพื่อสลับการ์ด
   const initDeck=()=>{
@@ -7049,7 +7050,8 @@ window.triggerUploadPicker = function() {
     if(wk){
       const w=document.createElement('div');w.className='neo-dcard neo-extra neo-week';
       w.appendChild(wk);w.insertAdjacentHTML('beforeend',weekExtra());deck.appendChild(w);
-      w.addEventListener('click',e=>{if(!e.target.closest('[data-dayclick]'))openNeoCal();});
+      w.addEventListener('click',e=>{if(!e.target.closest('[data-dayclick]')&&!calEl().classList.contains('on'))openNeoCal();});
+      deck.addEventListener('contextmenu',e=>e.preventDefault());
       if(typeof icons==='function')icons();
     }
     const cards=[...deck.children];
