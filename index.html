@@ -1699,6 +1699,16 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 .rte-mask .rte-modal{height:min(88dvh,calc(var(--neo-vvh,100dvh) - 24px))}
 button,.neo-deck,.bottomnav,.neo-cal-sheet{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 body.neo-cal-open{overflow:hidden}
+.neo-deck .hero .cta,.neo-cal-btn{display:none!important}
+.neo-deck .hero h2{font-size:clamp(28px,8vw,36px)}
+.neo-deck .hero .ringbox{height:min(170px,45%)!important}
+.neo-deck .hero .ringbox .txt b{font-size:32px}
+.neo-big{font-size:clamp(52px,16vw,72px)}
+.neo-time b{font-size:clamp(32px,10vw,44px)}
+.neo-greet{font-size:clamp(24px,7vw,32px);margin:0 0 40px}
+.neo-actions{display:flex;gap:10px;align-items:center;margin:4px 0 8px}
+.neo-actions .ib{width:52px;height:52px;border-radius:50%;flex:none}
+.neo-act-main{flex:1;height:52px;border-radius:999px;background:var(--cf-deep);color:#fff;font-size:15.5px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -7047,6 +7057,21 @@ window.triggerUploadPicker = function() {
     const dotsEl=document.querySelector('.neo-deck-dots');
     const wk=view.querySelector('.week-card');
     for(let el=dotsEl.nextElementSibling;el;){const nx=el.nextElementSibling;el.remove();el=nx;}
+    dotsEl.insertAdjacentHTML('afterend',`<div class="neo-actions">
+      <button class="btn neo-act-main" data-act="start"><i data-lucide="play"></i>เริ่มทำ</button>
+      <button class="ib" data-act="cal" title="ปฏิทินย้อนหลัง"><i data-lucide="calendar-days"></i></button>
+      <button class="ib" data-act="exam" title="จำลองสอบ"><i data-lucide="timer"></i></button>
+      <button class="ib" data-act="cloud" title="แชร์ออนไลน์"><i data-lucide="cloud-download"></i></button>
+    </div>`);
+    dotsEl.nextElementSibling.addEventListener('click',e=>{
+      const a=e.target.closest('[data-act]');if(!a)return;
+      const k=a.dataset.act;
+      if(k==='start')deck.querySelector('.hero [data-q="practice"]').click();
+      else if(k==='cal'){if(typeof playTone==='function')playTone('tap');openNeoCal();}
+      else if(k==='exam')go('exam');
+      else openCloudHubModal();
+    });
+    if(typeof icons==='function')icons();
     if(wk){
       const w=document.createElement('div');w.className='neo-dcard neo-extra neo-week';
       w.appendChild(wk);w.insertAdjacentHTML('beforeend',weekExtra());deck.appendChild(w);
@@ -7064,7 +7089,10 @@ window.triggerUploadPicker = function() {
       const navH=nav&&getComputedStyle(nav).display!=='none'?nav.offsetHeight+16:0;
       // ใช้ตำแหน่งเทียบเอกสาร + 100svh (ไม่เปลี่ยนตามแถบเบราว์เซอร์/การเลื่อน) กันการ์ดกระตุก/ตกขอบ
       const top=deck.getBoundingClientRect().top+(document.scrollingElement.scrollTop||0)+(view.closest('.main').scrollTop||0);
-      deck.style.height=`max(480px,calc(100svh - ${Math.round(top+navH+40)}px))`;
+      // วัดความสูงจอครั้งเดียวตอนแถบเบราว์เซอร์ยังแสดง แล้วจำกัดไม่ให้การ์ดยาวเกินไป
+      const vh=Math.min(innerHeight,window.visualViewport?visualViewport.height:innerHeight);
+      const below=dotsEl.offsetHeight+dotsEl.nextElementSibling.offsetHeight+28;
+      deck.style.height=Math.round(clamp(vh-top-navH-below,280,560))+'px';
     };
     let fw=innerWidth;
     const onRs=()=>{if(innerWidth!==fw){fw=innerWidth;fit();}};
