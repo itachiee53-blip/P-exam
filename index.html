@@ -1732,6 +1732,21 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .stat b{font-size:22px}
   .sring .txt b{font-size:40px}
 }
+@media(max-width:980px){
+  /* ปุ่มเพิ่มข้อ/บัตร ย้ายขึ้นไปเป็นปุ่มกลมบนแถบหัว ไม่บังเนื้อหา */
+  .fab{top:calc(12px + env(safe-area-inset-top));bottom:auto;right:113px;width:44px;height:44px;padding:0;
+    border-radius:50%;justify-content:center;font-size:0;gap:0;z-index:66}
+  .fab svg{width:20px;height:20px}
+  /* หน้าสอบ: ซ่อนแท็บล่างเพื่อโฟกัส ปุ่มก่อนหน้า/ถัดไปติดขอบล่าง */
+  body[data-page="run"] .bottomnav{display:none}
+  body[data-page="run"] .main{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  .rnav{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;padding:8px;margin:12px -8px 0;
+    border-radius:20px;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+  .rtop{gap:6px}
+  .rtop .ib{width:38px;height:38px;border-radius:12px}
+  .rtop .timer{padding:8px 12px}
+  .rtop .tag{display:none}
+}
 /* ข้อ 5: นับถอยหลังวันสอบบนการ์ดหน้าแรก */
 .neo-hero-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;order:1}
 .neo-hero-pills p{margin:0!important;order:0!important}
@@ -2788,6 +2803,7 @@ async function go(p){
   }
   playTone('tap');
   PAGE=p;
+  document.body.dataset.page=p;
   $$('[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===p));
   
   const topBlock = $('#topTitleBlock');
