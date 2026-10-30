@@ -1447,6 +1447,284 @@ hang in there | อดทนไว้/สู้ๆ | Hang in there. You can do i
 it's up to you | แล้วแต่คุณ | Coffee or tea? It's up to you. | กาแฟหรือชา แล้วแต่คุณ
 `);
 
+// ===== เพิ่มเติม (ชุดที่ 5): เติมทุกเลเวล =====
+U('basic', 0, 'ร่างกาย', `
+head | หัว | My head hurts. | ฉันปวดหัว
+eye | ตา | She has big eyes. | เธอตาโต
+ear | หู | Cover your ears. | ปิดหูไว้
+nose | จมูก | My nose is red. | จมูกฉันแดง
+mouth | ปาก | Open your mouth. | อ้าปาก
+hand | มือ | Wash your hands. | ล้างมือ
+---
+foot | เท้า | My foot hurts. | เท้าฉันเจ็บ
+face | ใบหน้า | Wash your face. | ล้างหน้า
+teeth | ฟัน | Brush your teeth. | แปรงฟัน
+back | หลัง | My back hurts. | ฉันปวดหลัง
+finger | นิ้วมือ | I cut my finger. | ฉันทำนิ้วมือบาด
+body | ร่างกาย | Exercise is good for your body. | การออกกำลังกายดีต่อร่างกาย
+`);
+U('basic', 0, 'สัตว์', `
+dog | สุนัข | The dog is barking. | สุนัขกำลังเห่า
+cat | แมว | The cat is sleeping. | แมวกำลังนอน
+bird | นก | I see a bird. | ฉันเห็นนก
+fish | ปลา | Fish live in water. | ปลาอาศัยอยู่ในน้ำ
+cow | วัว | The cow gives milk. | วัวให้นม
+chicken | ไก่ | We have five chickens. | เรามีไก่ห้าตัว
+---
+pig | หมู | The pig is fat. | หมูอ้วน
+horse | ม้า | He rides a horse. | เขาขี่ม้า
+elephant | ช้าง | The elephant is big. | ช้างตัวใหญ่
+snake | งู | Be careful! A snake! | ระวัง! งู!
+monkey | ลิง | The monkey likes bananas. | ลิงชอบกล้วย
+duck | เป็ด | The duck can swim. | เป็ดว่ายน้ำได้
+`);
+U('basic', 0, 'อาหารและเครื่องดื่ม', `
+rice | ข้าว | Thai people eat rice. | คนไทยกินข้าว
+egg | ไข่ | I eat an egg every morning. | ฉันกินไข่ทุกเช้า
+bread | ขนมปัง | I want some bread. | ฉันอยากได้ขนมปัง
+milk | นม | Drink your milk. | ดื่มนมซะ
+fruit | ผลไม้ | Fruit is good for you. | ผลไม้มีประโยชน์
+noodles | ก๋วยเตี๋ยว/บะหมี่ | I like noodles. | ฉันชอบก๋วยเตี๋ยว
+---
+coffee | กาแฟ | One coffee, please. | ขอกาแฟหนึ่งแก้ว
+tea | ชา | Do you want tea? | อยากดื่มชาไหม
+juice | น้ำผลไม้ | Orange juice, please. | ขอน้ำส้ม
+meat | เนื้อสัตว์ | I don't eat meat. | ฉันไม่กินเนื้อสัตว์
+vegetable | ผัก | Eat your vegetables. | กินผักด้วย
+food | อาหาร | Thai food is delicious. | อาหารไทยอร่อย
+`);
+G(0, 'คำถาม Yes/No', 'Is/Are + ประธาน ...? (กับ be) · Do/Does + ประธาน + V1 ...? (กับกริยาอื่น)', `
+___ you a student? | Are | Is, Do, Does | you ใช้ Are | คุณเป็นนักเรียนใช่ไหม
+___ she your sister? | Is | Are, Do, Does | she ใช้ Is | เธอเป็นพี่สาวของคุณใช่ไหม
+___ you like coffee? | Do | Does, Are, Is | กริยา like + you ใช้ Do | คุณชอบกาแฟไหม
+___ he work here? | Does | Do, Is, Are | กริยา work + he ใช้ Does | เขาทำงานที่นี่ไหม
+___ they at home? | Are | Is, Do, Does | they + be ใช้ Are | พวกเขาอยู่บ้านไหม
+___ it hot today? | Is | Are, Do, Does | it ใช้ Is | วันนี้ร้อนไหม
+`);
+D(0, 'คุยง่ายๆ 2', `
+A: Do you like cats? / B: ___ | Yes, I do. | Yes, I am.; No, I'm not.; Yes, it is. | A: คุณชอบแมวไหม / B: ชอบ
+A: Are you hungry? / B: ___ | Yes, I am. | Yes, I do.; No, I don't.; Yes, it does. | A: คุณหิวไหม / B: หิว
+A: What is this? / B: ___ | It's a pen. | I'm a pen.; Yes, it is.; It's ten. | A: นี่คืออะไร / B: มันคือปากกา
+A: Good night! / B: ___ | Good night! See you tomorrow. | Good morning!; Nice to meet you.; I'm fine. | A: ราตรีสวัสดิ์! / B: ราตรีสวัสดิ์ พรุ่งนี้เจอกัน
+A: Can I have water, please? / B: ___ | Sure. Here you are. | Yes, I am water.; No, I'm fine.; Water is blue. | A: ขอน้ำหน่อยได้ไหม / B: ได้ นี่ครับ
+`);
+R(0, 'อ่านเรื่องแรก', 'My Family', `I am Fah. I am a student. I have a father, a mother, and one brother. My father is a farmer. My mother is a cook. My brother is ten years old. We have two dogs. I love my family.`,
+`ฉันชื่อฟ้า ฉันเป็นนักเรียน ฉันมีพ่อ แม่ และพี่น้องผู้ชายหนึ่งคน พ่อเป็นเกษตรกร แม่เป็นแม่ครัว น้องชายอายุสิบขวบ เรามีสุนัขสองตัว ฉันรักครอบครัวของฉัน`, `
+What is Fah? | A student | A cook; A farmer; A teacher
+What is her father's job? | A farmer | A cook; A doctor; A driver
+How old is her brother? | Ten | Two; Twelve; Twenty
+How many dogs do they have? | Two | One; Three; Ten
+`);
+U('daily', 1, 'เสื้อผ้า', `
+shirt | เสื้อเชิ้ต | He wears a white shirt. | เขาสวมเสื้อเชิ้ตสีขาว
+pants | กางเกงขายาว | These pants are too long. | กางเกงตัวนี้ยาวเกินไป
+dress | ชุดกระโปรง | She has a red dress. | เธอมีชุดสีแดง
+jacket | เสื้อแจ็กเก็ต | Take a jacket. It's cold. | เอาแจ็กเก็ตไปด้วย อากาศหนาว
+hat | หมวก | I wear a hat in the sun. | ฉันสวมหมวกตอนแดดออก
+socks | ถุงเท้า | Where are my socks? | ถุงเท้าฉันอยู่ไหน
+---
+skirt | กระโปรง | Her skirt is blue. | กระโปรงของเธอสีน้ำเงิน
+T-shirt | เสื้อยืด | I like this T-shirt. | ฉันชอบเสื้อยืดตัวนี้
+belt | เข็มขัด | He needs a belt. | เขาต้องการเข็มขัด
+watch | นาฬิกาข้อมือ | My watch is new. | นาฬิกาของฉันใหม่
+pocket | กระเป๋าเสื้อ/กางเกง | The key is in my pocket. | กุญแจอยู่ในกระเป๋ากางเกง
+uniform | เครื่องแบบ | Students wear uniforms. | นักเรียนสวมเครื่องแบบ
+`);
+U('daily', 1, 'สถานที่และห้อง', `
+bathroom | ห้องน้ำ | The bathroom is upstairs. | ห้องน้ำอยู่ชั้นบน
+bedroom | ห้องนอน | My bedroom is small. | ห้องนอนของฉันเล็ก
+living room | ห้องนั่งเล่น | We watch TV in the living room. | เราดูทีวีในห้องนั่งเล่น
+office | สำนักงาน | He is at the office. | เขาอยู่ที่สำนักงาน
+shop | ร้านค้า | The shop is closed. | ร้านปิดแล้ว
+restaurant | ร้านอาหาร | Let's go to a restaurant. | ไปร้านอาหารกันเถอะ
+---
+post office | ที่ทำการไปรษณีย์ | Where is the post office? | ไปรษณีย์อยู่ที่ไหน
+pharmacy | ร้านขายยา | Buy medicine at the pharmacy. | ซื้อยาที่ร้านขายยา
+gas station | ปั๊มน้ำมัน | Stop at the gas station. | แวะปั๊มน้ำมัน
+supermarket | ซูเปอร์มาร์เก็ต | I shop at the supermarket. | ฉันซื้อของที่ซูเปอร์มาร์เก็ต
+park | สวนสาธารณะ | Let's walk in the park. | ไปเดินเล่นในสวนกัน
+village | หมู่บ้าน | I live in a small village. | ฉันอาศัยอยู่ในหมู่บ้านเล็กๆ
+`);
+G(1, 'Can / Can\'t', 'can + V1 = ทำได้ · can\'t + V1 = ทำไม่ได้ · ถาม: Can + ประธาน + V1?', `
+I ___ swim. | can | cans, can to, canning | can + V1 | ฉันว่ายน้ำได้
+She ___ drive. She is too young. | can't | can, cans, doesn't can | ทำไม่ได้ใช้ can't | เธอขับรถไม่ได้ เธอเด็กเกินไป
+___ you help me? | Can | Do, Are, Is | ถามใช้ Can | ช่วยฉันได้ไหม
+He can ___ English well. | speak | speaks, speaking, to speak | can + V1 | เขาพูดภาษาอังกฤษเก่ง
+Can you ___ me? | hear | hears, heard, hearing | can + V1 | คุณได้ยินฉันไหม
+Birds ___ fly. | can | can't, are, does | นกบินได้ | นกบินได้
+`);
+G(1, "Possessive 's", "ของ ...: คน + 's (Tom's car) · พหูพจน์ลงท้าย s + ' (the boys' room)", `
+This is ___ bag. | Nida's | Nida, Nidas, Nida is | ของนิดาใช้ 's | นี่คือกระเป๋าของนิดา
+My ___ name is Somchai. | father's | father, fathers, father is | ชื่อของพ่อ | พ่อของฉันชื่อสมชาย
+The ___ room is big. | children's | childrens, childs', children | children + 's | ห้องของเด็กๆ ใหญ่
+That is my ___ car. | brother's | brother, brothers, brother is | รถของพี่ชาย | นั่นคือรถของพี่ชายฉัน
+The ___ office is on the left. | manager's | manager, managers, manager is | สำนักงานของผู้จัดการ | สำนักงานผู้จัดการอยู่ทางซ้าย
+Is this ___ phone? | your | you, you's, yours | หน้าคำนามใช้ your | นี่โทรศัพท์ของคุณใช่ไหม
+`);
+D(1, 'ถามทาง', `
+A: Excuse me, where is the station? / B: ___ | Go straight and turn right. | It's five o'clock.; I'm a station.; Yes, it is big. | A: ขอโทษครับ สถานีอยู่ไหน / B: ตรงไปแล้วเลี้ยวขวา
+A: Is it far from here? / B: ___ | No, it's about five minutes on foot. | Yes, I'm far.; It's here today.; No, I'm not here. | A: ไกลจากที่นี่ไหม / B: ไม่ไกล เดินประมาณห้านาที
+A: Can I walk there? / B: ___ | Yes, it's not far. | Yes, I can swim.; No, I'm walking.; It's a nice walk shoe. | A: เดินไปได้ไหม / B: ได้ ไม่ไกล
+A: Where can I take a taxi? / B: ___ | There's a taxi stand over there. | Take it home.; I don't have a taxi.; Taxis are yellow and green. | A: เรียกแท็กซี่ได้ที่ไหน / B: มีจุดจอดแท็กซี่ทางโน้น
+A: Thank you very much! / B: ___ | No problem. Have a nice day! | Yes, you are.; I'm sorry.; Good night, bye bye bye. | A: ขอบคุณมาก! / B: ไม่เป็นไร ขอให้เป็นวันที่ดี
+`);
+R(1, 'เรื่องสั้นง่ายๆ', 'A Rainy Day', `Today it is raining. Mai cannot go to the park. She stays at home with her cat. She reads a book and drinks hot chocolate. In the afternoon, her friend Joy calls her. They talk for one hour. In the evening, the rain stops, and Mai goes out to buy food.`,
+`วันนี้ฝนตก ใหม่ไปสวนสาธารณะไม่ได้ เธออยู่บ้านกับแมว เธออ่านหนังสือและดื่มช็อกโกแลตร้อน ตอนบ่ายเพื่อนชื่อจอยโทรมา พวกเขาคุยกันหนึ่งชั่วโมง ตอนเย็นฝนหยุด ใหม่จึงออกไปซื้ออาหาร`, `
+Why can't Mai go to the park? | It is raining. | She is sick.; The park is closed.; She has work.
+What does Mai drink? | Hot chocolate | Coffee; Cold water; Tea
+Who calls Mai? | Joy | Her mother; Her cat; A police officer
+What does Mai do in the evening? | Buys food | Goes to the park; Sleeps; Reads a book
+`);
+U('daily', 2, 'กีฬาและงานอดิเรก', `
+football | ฟุตบอล | We play football on Sunday. | เราเล่นฟุตบอลวันอาทิตย์
+swim | ว่ายน้ำ | I swim every morning. | ฉันว่ายน้ำทุกเช้า
+run | วิ่ง | He runs five kilometers. | เขาวิ่งห้ากิโลเมตร
+music | ดนตรี/เพลง | I listen to music. | ฉันฟังเพลง
+movie | ภาพยนตร์ | Let's watch a movie. | ไปดูหนังกันเถอะ
+game | เกม | He plays games on his phone. | เขาเล่นเกมในโทรศัพท์
+---
+team | ทีม | Our team won. | ทีมของเราชนะ
+win | ชนะ | Thailand won the match. | ไทยชนะการแข่งขัน
+lose | แพ้ | We lost the game. | เราแพ้เกม
+practice | ฝึกซ้อม | Practice every day. | ฝึกซ้อมทุกวัน
+gym | ยิม/โรงยิม | I go to the gym after work. | ฉันไปยิมหลังเลิกงาน
+favorite | ชื่นชอบที่สุด | My favorite sport is boxing. | กีฬาที่ชอบที่สุดคือมวย
+`);
+U('police', 2, 'การรายงานเหตุการณ์', `
+happen | เกิดขึ้น | What happened here? | เกิดอะไรขึ้นที่นี่
+see | เห็น | I saw a man with a knife. | ฉันเห็นผู้ชายถือมีด
+hear | ได้ยิน | I heard a loud noise. | ฉันได้ยินเสียงดัง
+describe | บรรยาย | Can you describe him? | บรรยายลักษณะเขาได้ไหม
+location | สถานที่ | What is your location? | คุณอยู่ที่ไหน
+time | เวลา | What time did it happen? | เกิดเหตุกี่โมง
+---
+knife | มีด | He had a knife. | เขามีมีด
+noise | เสียงดัง | The noise woke me up. | เสียงดังปลุกฉันตื่น
+neighbor | เพื่อนบ้าน | My neighbor called the police. | เพื่อนบ้านโทรเรียกตำรวจ
+stranger | คนแปลกหน้า | A stranger was in my house. | มีคนแปลกหน้าอยู่ในบ้านฉัน
+quickly | อย่างรวดเร็ว | He left quickly. | เขาออกไปอย่างรวดเร็ว
+license plate | ป้ายทะเบียน | Did you see the license plate? | คุณเห็นป้ายทะเบียนไหม
+`);
+G(2, 'Should / Have to', 'should + V1 = ควร · have to / has to + V1 = ต้อง (จำเป็น) · don\'t have to = ไม่จำเป็นต้อง', `
+You ___ drink more water. | should | have, must to, shoulds | คำแนะนำใช้ should | คุณควรดื่มน้ำมากขึ้น
+I ___ work tomorrow. | have to | has to, should to, haves | I + have to | พรุ่งนี้ฉันต้องทำงาน
+She ___ wear a uniform at work. | has to | have to, haves to, should to | She + has to | เธอต้องสวมเครื่องแบบที่ทำงาน
+You don't ___ pay. It's free. | have to | has to, should, must | ไม่จำเป็นต้อง | ไม่ต้องจ่าย ฟรี
+You ___ smoke. It's bad for you. | shouldn't | should, have to, has to | ไม่ควร | คุณไม่ควรสูบบุหรี่ มันไม่ดีต่อสุขภาพ
+Does he ___ go now? | have to | has to, should to, haves to | Does + have to | เขาต้องไปตอนนี้ไหม
+`);
+D(2, 'ที่โรงพยาบาล', `
+A: What's the matter? / B: ___ | I have a terrible headache. | It's a matter.; I'm a doctor.; Nothing is matter. | A: เป็นอะไรมา / B: ปวดหัวมาก
+A: How long have you felt like this? / B: ___ | Since yesterday morning. | For a long hospital.; I feel good, bye.; Like this. | A: เป็นแบบนี้มานานแค่ไหน / B: ตั้งแต่เมื่อวานเช้า
+A: Are you allergic to any medicine? / B: ___ | No, I'm not. | Yes, I like medicine.; No, I'm a medicine.; Medicine is good. | A: แพ้ยาอะไรไหม / B: ไม่แพ้
+A: Take this twice a day after meals. / B: ___ | OK. Thank you, doctor. | I'm not hungry.; Twice is two.; No, I take it once. | A: กินยานี้วันละสองครั้งหลังอาหาร / B: ครับ ขอบคุณครับหมอ
+A: You should rest for two days. / B: ___ | Can I get a medical certificate? | I rest every week.; Two days ago.; I'm not tired, so no. | A: ควรพักสองวัน / B: ขอใบรับรองแพทย์ได้ไหม
+`);
+R(2, 'ข่าวและประกาศ', 'Water Festival Rules', `During the Songkran festival, the city will close Khao San Road to cars from April 13 to 15. Visitors can play with water from 10 a.m. to 9 p.m. Glass bottles and alcohol sales on the street are not allowed. Police and volunteers will be on duty to help tourists. Please respect the rules and enjoy the festival safely.`,
+`ช่วงเทศกาลสงกรานต์ เมืองจะปิดถนนข้าวสารไม่ให้รถผ่านตั้งแต่ 13 ถึง 15 เมษายน ผู้มาเที่ยวเล่นน้ำได้ตั้งแต่ 10 โมงเช้าถึง 3 ทุ่ม ห้ามนำขวดแก้วและห้ามขายแอลกอฮอล์บนถนน ตำรวจและอาสาสมัครจะประจำจุดช่วยเหลือนักท่องเที่ยว โปรดเคารพกฎและสนุกกับเทศกาลอย่างปลอดภัย`, `
+Which road will be closed? | Khao San Road | Silom Road; Rama IV Road; Sathorn Road
+What time can people play with water? | 10 a.m. to 9 p.m. | All day and night; 9 a.m. to 10 a.m.; Only in the evening
+What is NOT allowed? | Glass bottles | Water guns; Tourists; Music
+Who will help tourists? | Police and volunteers | Taxi drivers; Shop owners; Teachers
+`);
+U('talk', 3, 'การเจรจาและต่อรอง', `
+negotiate | ต่อรอง | Can we negotiate the price? | ต่อราคาได้ไหม
+offer | ข้อเสนอ/เสนอ | I can offer you a discount. | ฉันลดราคาให้ได้
+deal | ข้อตกลง | It's a deal! | ตกลงตามนั้น!
+compromise | ประนีประนอม | Let's find a compromise. | มาหาทางประนีประนอมกัน
+reasonable | สมเหตุสมผล | That price is reasonable. | ราคานั้นสมเหตุสมผล
+accept | ยอมรับ | I accept your offer. | ฉันรับข้อเสนอของคุณ
+---
+condition | เงื่อนไข | What are the conditions? | มีเงื่อนไขอะไรบ้าง
+agreement | ข้อตกลง | We signed an agreement. | เราเซ็นข้อตกลงแล้ว
+benefit | ผลประโยชน์ | It will benefit both of us. | มันเป็นประโยชน์กับทั้งสองฝ่าย
+contract | สัญญา | Read the contract carefully. | อ่านสัญญาอย่างละเอียด
+reject | ปฏิเสธ | They rejected our plan. | พวกเขาปฏิเสธแผนของเรา
+final | สุดท้าย | Is this your final price? | นี่ราคาสุดท้ายหรือยัง
+`);
+G(3, 'As ... as', 'as + adj + as = เท่ากับ · not as + adj + as = ไม่เท่า', `
+He is as tall ___ his father. | as | than, like, so | as ... as | เขาสูงเท่าพ่อ
+This phone is not as ___ as that one. | expensive | more expensive, most expensive, expensiver | not as + adj + as | โทรศัพท์เครื่องนี้ไม่แพงเท่าเครื่องนั้น
+She runs as ___ as a professional. | fast | faster, fastest, more fast | as + adj + as | เธอวิ่งเร็วเท่านักกีฬาอาชีพ
+Today is not ___ hot as yesterday. | as | so much, more, than | not as ... as | วันนี้ไม่ร้อนเท่าเมื่อวาน
+Come as soon ___ possible. | as | than, to, so | as soon as possible | มาให้เร็วที่สุดเท่าที่ทำได้
+My English is as ___ as yours. | good | better, best, well as | as + adj + as | ภาษาอังกฤษของฉันดีเท่าของคุณ
+`);
+D(3, 'โรงแรมและการเดินทาง', `
+A: I'd like to check in. / B: ___ | Sure. May I see your passport, please? | Check it out.; I'd like it too.; The hotel is big. | A: ขอเช็คอินครับ / B: ได้ค่ะ ขอดูหนังสือเดินทางด้วยค่ะ
+A: What time is breakfast? / B: ___ | From 6:30 to 10 a.m. | It's very delicious.; At the restaurant only.; Yes, it is breakfast. | A: อาหารเช้ากี่โมง / B: 6:30 ถึง 10 โมงเช้า
+A: The air conditioner in my room is broken. / B: ___ | I'm sorry. I'll send someone right away. | Open the window then.; It's not my room.; Air is free. | A: แอร์ห้องผมเสีย / B: ขอโทษค่ะ จะส่งคนไปเดี๋ยวนี้
+A: Could I have a late check-out? / B: ___ | Yes, you can stay until 2 p.m. | Check out now.; No, it's late.; It's a check. | A: ขอเช็คเอาท์ช้าได้ไหม / B: ได้ค่ะ อยู่ได้ถึงบ่ายสอง
+A: Can you call a taxi to the airport? / B: ___ | Of course. It'll be here in ten minutes. | The airport is far.; I'm not a taxi.; Yes, call it. | A: ช่วยเรียกแท็กซี่ไปสนามบินได้ไหม / B: ได้ค่ะ อีกสิบนาทีรถมา
+`);
+R(3, 'งานตำรวจ', 'Tourist Police', `The Tourist Police is a special unit that helps foreign visitors. Officers speak English and other languages, and they work in popular tourist areas such as Bangkok, Phuket, and Chiang Mai. Tourists can call 1155 for help 24 hours a day. The unit handles problems like lost passports, scams, and accidents. Many tourists say the officers are friendly and helpful.`,
+`ตำรวจท่องเที่ยวเป็นหน่วยพิเศษที่ช่วยเหลือนักท่องเที่ยวต่างชาติ เจ้าหน้าที่พูดภาษาอังกฤษและภาษาอื่นๆ และทำงานในแหล่งท่องเที่ยวยอดนิยม เช่น กรุงเทพฯ ภูเก็ต และเชียงใหม่ นักท่องเที่ยวโทร 1155 ขอความช่วยเหลือได้ตลอด 24 ชั่วโมง หน่วยนี้ดูแลปัญหาต่างๆ เช่น หนังสือเดินทางหาย การหลอกลวง และอุบัติเหตุ นักท่องเที่ยวหลายคนบอกว่าเจ้าหน้าที่เป็นมิตรและช่วยเหลือดี`, `
+Who does the Tourist Police help? | Foreign visitors | Thai students; Farmers; Bus drivers
+What number can tourists call? | 1155 | 191; 1669; 1197
+Which problem is NOT mentioned? | Hotel bookings | Lost passports; Scams; Accidents
+How do many tourists describe the officers? | Friendly and helpful | Strict and rude; Busy and slow; Quiet and shy
+`);
+U('police', 4, 'Collocations ออกสอบ', `
+make a decision | ตัดสินใจ | We need to make a decision now. | เราต้องตัดสินใจตอนนี้
+take a break | พักผ่อนสักครู่ | Let's take a break. | พักกันสักครู่
+pay attention | ตั้งใจ/ใส่ใจ | Pay attention to the road. | ตั้งใจดูถนน
+keep a promise | รักษาสัญญา | He always keeps his promises. | เขารักษาสัญญาเสมอ
+commit a crime | ก่ออาชญากรรม | He committed a crime. | เขาก่ออาชญากรรม
+take action | ลงมือดำเนินการ | The police took action quickly. | ตำรวจลงมือดำเนินการอย่างรวดเร็ว
+---
+make progress | มีความคืบหน้า | We made good progress. | เราคืบหน้าไปมาก
+do your best | ทำให้ดีที่สุด | Do your best in the exam. | ทำข้อสอบให้ดีที่สุด
+break the law | ทำผิดกฎหมาย | Don't break the law. | อย่าทำผิดกฎหมาย
+take responsibility | รับผิดชอบ | Take responsibility for your actions. | รับผิดชอบการกระทำของตัวเอง
+follow the rules | ทำตามกฎ | Everyone must follow the rules. | ทุกคนต้องทำตามกฎ
+gain experience | ได้รับประสบการณ์ | You will gain experience. | คุณจะได้ประสบการณ์
+`);
+U('daily', 4, 'คำศัพท์ระดับสูงทั่วไป', `
+analyze | วิเคราะห์ | Analyze the data carefully. | วิเคราะห์ข้อมูลอย่างละเอียด
+evaluate | ประเมิน | We will evaluate the results. | เราจะประเมินผล
+significant | สำคัญ/มีนัยสำคัญ | It was a significant change. | มันเป็นการเปลี่ยนแปลงที่สำคัญ
+efficient | มีประสิทธิภาพ | This method is more efficient. | วิธีนี้มีประสิทธิภาพกว่า
+consequence | ผลที่ตามมา | Think about the consequences. | คิดถึงผลที่ตามมา
+obvious | ชัดเจน | The answer is obvious. | คำตอบชัดเจน
+---
+maintain | รักษาไว้ | Maintain a safe distance. | รักษาระยะห่างที่ปลอดภัย
+estimate | ประมาณ | Can you estimate the cost? | ประมาณค่าใช้จ่ายได้ไหม
+contribute | มีส่วนร่วม | Everyone can contribute. | ทุกคนมีส่วนร่วมได้
+essential | จำเป็นมาก | Water is essential for life. | น้ำจำเป็นต่อชีวิต
+generate | สร้าง/ก่อให้เกิด | Solar panels generate power. | แผงโซลาร์สร้างพลังงาน
+previous | ก่อนหน้า | It was better than the previous one. | ดีกว่าครั้งก่อน
+`);
+G(4, 'Causative: have / get', 'have + คน + V1 · have + ของ + V3 (ให้คนอื่นทำให้) · get + ของ + V3', `
+I had my car ___ yesterday. | repaired | repair, repairing, to repair | have + ของ + V3 | เมื่อวานฉันเอารถไปซ่อม
+She gets her hair ___ every month. | cut | cutting, to cut, cuts | get + ของ + V3 | เธอไปตัดผมทุกเดือน
+The officer had the man ___ the form. | fill in | filled in, to fill in, filling in | have + คน + V1 | เจ้าหน้าที่ให้ชายคนนั้นกรอกแบบฟอร์ม
+We need to get the documents ___. | checked | check, checking, to check | get + ของ + V3 | เราต้องให้คนตรวจเอกสาร
+I'll have my assistant ___ you. | call | called, calling, to calling | have + คน + V1 | ฉันจะให้ผู้ช่วยโทรหาคุณ
+He had his phone ___. | stolen | stole, steal, stealing | have + ของ + V3 (ถูกกระทำ) | เขาถูกขโมยโทรศัพท์
+`);
+G(4, 'Not only ... but also', 'not only A but also B = ไม่เพียงแต่ A แต่ยัง B · both A and B · either A or B · neither A nor B', `
+He is not only smart ___ hardworking. | but also | and also, but too, or also | not only ... but also | เขาไม่เพียงฉลาดแต่ยังขยัน
+___ Tom and Ann passed the exam. | Both | Either, Neither, Not only | both ... and | ทั้งทอมและแอนสอบผ่าน
+You can ___ call or email me. | either | both, neither, not | either ... or | คุณจะโทรหรืออีเมลมาก็ได้
+___ he nor his wife was at home. | Neither | Either, Both, Not | neither ... nor | ทั้งเขาและภรรยาไม่อยู่บ้าน
+She speaks both English ___ Chinese. | and | or, nor, but | both ... and | เธอพูดได้ทั้งอังกฤษและจีน
+Not only ___ he late, but he also forgot the report. | was | he was, is he, did | Not only ขึ้นต้นประโยค ต้องสลับ was he | เขาไม่เพียงมาสายแต่ยังลืมรายงานด้วย
+`);
+D(4, 'โต้แย้งอย่างสุภาพ', `
+A: I think we should close the road. / B: ___ | I see your point, but that might cause traffic jams. | Yes, you are a road.; I think so road.; Close it yesterday. | A: ผมคิดว่าเราควรปิดถนน / B: เข้าใจครับ แต่อาจทำให้รถติด
+A: This plan won't work. / B: ___ | Could you tell me why you think so? | Yes, it works.; Plans are paper.; I won't work today. | A: แผนนี้ไม่ได้ผลหรอก / B: ช่วยบอกเหตุผลได้ไหมว่าทำไมคิดแบบนั้น
+A: Everyone agrees with me. / B: ___ | Actually, I have a different opinion. | Everyone is here.; I agree with everyone, bye.; Me is everyone. | A: ทุกคนเห็นด้วยกับผม / B: ที่จริงผมมีความเห็นต่าง
+A: Let's discuss it calmly. / B: ___ | You're right. Let's look at the facts. | I'm not calm, sorry.; Discuss is a word.; Calm down yourself. | A: มาคุยกันใจเย็นๆ เถอะ / B: จริงครับ มาดูข้อเท็จจริงกัน
+A: Can we meet halfway? / B: ___ | That sounds fair to me. | Halfway is far.; I'm on my way.; No, meet me at home. | A: เราพบกันครึ่งทางได้ไหม / B: ฟังดูยุติธรรมดีครับ
+`);
+R(4, 'บทความ', 'Stress and Health', `Police officers often work long hours and face dangerous situations, which can lead to high levels of stress. Long-term stress may cause sleep problems, heart disease, and depression. Experts suggest several ways to manage it: regular exercise, enough sleep, and talking with family or friends. Some police departments now provide counselors for their staff. Taking care of mental health is not a sign of weakness; it helps officers serve the public better.`,
+`ตำรวจมักทำงานหลายชั่วโมงและเผชิญสถานการณ์อันตราย ซึ่งอาจทำให้เครียดมาก ความเครียดระยะยาวอาจทำให้นอนไม่หลับ เป็นโรคหัวใจ และซึมเศร้า ผู้เชี่ยวชาญแนะนำวิธีจัดการหลายอย่าง เช่น ออกกำลังกายสม่ำเสมอ นอนให้พอ และพูดคุยกับครอบครัวหรือเพื่อน ปัจจุบันหน่วยงานตำรวจบางแห่งมีนักให้คำปรึกษาให้เจ้าหน้าที่ การดูแลสุขภาพจิตไม่ใช่ความอ่อนแอ แต่ช่วยให้เจ้าหน้าที่รับใช้ประชาชนได้ดีขึ้น`, `
+Why do police officers often feel stressed? | Long hours and dangerous situations | Too much free time; Low salary only; Easy work
+Which is NOT a way to manage stress mentioned? | Working more hours | Regular exercise; Enough sleep; Talking with family
+What do some police departments provide? | Counselors | Free cars; Longer holidays; More weapons
+What is the writer's opinion about mental health care? | It helps officers serve better. | It shows weakness.; It is not important.; It costs too much.
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
