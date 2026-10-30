@@ -3115,6 +3115,195 @@ cryptocurrency | สกุลเงินดิจิทัล | Scammers asked 
 illicit | ผิดกฎหมาย/ลับลมคมใน | Illicit funds were moved abroad. | เงินผิดกฎหมายถูกโอนไปต่างประเทศ
 `);
 
+U('basic', 0, 'คำกริยาง่ายๆ 2', `
+look | มอง | Look at me. | มองฉันสิ
+listen | ฟัง | Listen to the teacher. | ฟังครู
+play | เล่น | Children play outside. | เด็กๆ เล่นข้างนอก
+---
+give | ให้ | Give me the pen. | ส่งปากกาให้หน่อย
+get | ได้รับ | I get up at six. | ฉันตื่นตอนหกโมง
+make | ทำ/สร้าง | Make a cake. | ทำเค้ก
+like | ชอบ | I like dogs. | ฉันชอบหมา
+want | ต้องการ | I want water. | ฉันต้องการน้ำ
+need | จำเป็นต้อง | I need help. | ฉันต้องการความช่วยเหลือ
+`);
+U('daily', 1, 'สัตว์เลี้ยงและสัตว์อื่นๆ', `
+pet | สัตว์เลี้ยง | Do you have a pet? | คุณมีสัตว์เลี้ยงไหม
+puppy | ลูกสุนัข | The puppy is cute. | ลูกหมาน่ารัก
+kitten | ลูกแมว | The kitten is sleeping. | ลูกแมวกำลังนอน
+rabbit | กระต่าย | The rabbit eats carrots. | กระต่ายกินแครอท
+tiger | เสือ | Tigers are dangerous. | เสืออันตราย
+mosquito | ยุง | Mosquitoes bite at night. | ยุงกัดตอนกลางคืน
+---
+ant | มด | There are ants on the table. | มีมดบนโต๊ะ
+frog | กบ | Frogs live near water. | กบอาศัยใกล้น้ำ
+crocodile | จระเข้ | Don't swim here. Crocodiles! | อย่าว่ายตรงนี้ มีจระเข้!
+turtle | เต่า | The turtle is slow. | เต่าเดินช้า
+lizard | จิ้งจก | There's a lizard on the wall. | มีจิ้งจกบนผนัง
+cockroach | แมลงสาบ | I hate cockroaches. | ฉันเกลียดแมลงสาบ
+`);
+U('police', 1, 'สถานที่ราชการ', `
+city hall | ศาลากลาง/สำนักงานเขต | Go to city hall. | ไปสำนักงานเขต
+embassy | สถานทูต | Call your embassy. | โทรหาสถานทูต
+immigration office | ตรวจคนเข้าเมือง | Visit the immigration office. | ไปที่ตรวจคนเข้าเมือง
+district office | ที่ว่าการอำเภอ | Get it at the district office. | ไปทำที่อำเภอ
+courthouse | อาคารศาล | The courthouse is downtown. | ศาลอยู่ใจกลางเมือง
+fire station | สถานีดับเพลิง | The fire station is near. | สถานีดับเพลิงอยู่ใกล้
+---
+military camp | ค่ายทหาร | It's a military camp. | เป็นค่ายทหาร
+police academy | โรงเรียนนายร้อยตำรวจ | He studies at the police academy. | เขาเรียนที่โรงเรียนนายร้อยตำรวจ
+training center | ศูนย์ฝึก | Recruits go to the training center. | ผู้สมัครไปศูนย์ฝึก
+headquarters | กองบัญชาการ | Report to headquarters. | รายงานตัวที่กองบัญชาการ
+checkpoint booth | ป้อมตำรวจ | Ask at the police booth. | ถามที่ป้อมตำรวจ
+`);
+U('daily', 2, 'งานและอาชีพเพิ่มเติม', `
+mechanic | ช่างซ่อมรถ | The mechanic fixed my car. | ช่างซ่อมรถของฉันแล้ว
+electrician | ช่างไฟฟ้า | Call an electrician. | เรียกช่างไฟ
+plumber | ช่างประปา | The plumber is coming. | ช่างประปากำลังมา
+pilot | นักบิน | He wants to be a pilot. | เขาอยากเป็นนักบิน
+accountant | นักบัญชี | My sister is an accountant. | พี่สาวเป็นนักบัญชี
+---
+dentist | ทันตแพทย์ | I went to the dentist. | ฉันไปหาหมอฟัน
+chef | เชฟ | The chef cooks well. | เชฟทำอาหารเก่ง
+guard | ยาม | The guard stopped him. | ยามหยุดเขาไว้
+cashier | แคชเชียร์ | Pay the cashier. | จ่ายที่แคชเชียร์
+volunteer worker | อาสาสมัคร | She is a volunteer worker. | เธอเป็นอาสาสมัคร
+`);
+U('talk', 2, 'ช่วยเหลือและขอบคุณ', `
+let me help | ให้ฉันช่วย | Let me help you. | ให้ฉันช่วยนะ
+here you are | นี่ครับ/ค่ะ | Here you are. | นี่ครับ
+go ahead | เชิญเลย | Go ahead, please. | เชิญเลยครับ
+no thanks | ไม่เป็นไร ขอบคุณ | No thanks, I'm fine. | ไม่เป็นไร ฉันโอเค
+that's kind of you | คุณใจดีจัง | That's kind of you. | คุณใจดีจัง
+it's my pleasure | ยินดีเลย | It's my pleasure. | ด้วยความยินดี
+---
+don't mention it | ไม่ต้องเกรงใจ | Don't mention it. | ไม่ต้องเกรงใจ
+I owe you one | ติดหนี้บุญคุณ | Thanks! I owe you one. | ขอบคุณ! ติดค้างไว้นะ
+anytime | เมื่อไหร่ก็ได้ | Anytime! | ได้ทุกเมื่อ!
+take your time | ไม่ต้องรีบ | Take your time. | ไม่ต้องรีบ
+be careful | ระวังนะ | Be careful on the road. | ระวังบนถนนนะ
+good job | เก่งมาก | Good job! | เก่งมาก!
+`);
+U('daily', 3, 'ข่าวและเหตุการณ์ทั่วไป', `
+election day | วันเลือกตั้ง | Election day is Sunday. | วันเลือกตั้งคือวันอาทิตย์
+festival | เทศกาล | Loy Krathong is a festival. | ลอยกระทงเป็นเทศกาล
+ceremony | พิธี | The ceremony starts at nine. | พิธีเริ่มเก้าโมง
+holiday season | ช่วงวันหยุดยาว | Traffic is heavy in holiday season. | ช่วงหยุดยาวรถติด
+celebration | การเฉลิมฉลอง | There was a big celebration. | มีการเฉลิมฉลองใหญ่
+parade | ขบวนพาเหรด | We watched the parade. | เราดูขบวนพาเหรด
+---
+concert | คอนเสิร์ต | The concert was crowded. | คอนเสิร์ตคนแน่น
+exhibition | นิทรรศการ | Visit the exhibition. | ไปชมนิทรรศการ
+competition | การแข่งขัน | She won the competition. | เธอชนะการแข่งขัน
+fireworks | ดอกไม้ไฟ | The fireworks were beautiful. | ดอกไม้ไฟสวยมาก
+countdown | การนับถอยหลัง | Join the New Year countdown. | ร่วมเคาท์ดาวน์ปีใหม่
+crowded | แออัด | The street is crowded. | ถนนคนแน่น
+`);
+U('police', 3, 'อาวุธและวัตถุอันตราย', `
+pistol | ปืนพก | He had a pistol. | เขามีปืนพก
+rifle | ปืนยาว | The soldier carried a rifle. | ทหารถือปืนยาว
+ammunition | กระสุน | They seized ammunition. | ยึดกระสุนได้
+explosive | วัตถุระเบิด | Don't touch the explosive. | อย่าแตะวัตถุระเบิด
+bomb squad | หน่วยเก็บกู้ระเบิด | Call the bomb squad. | เรียกหน่วยเก็บกู้ระเบิด
+license to carry | ใบอนุญาตพกพา | Do you have a license to carry? | มีใบอนุญาตพกพาไหม
+---
+replica | ของเลียนแบบ | It was a replica gun. | เป็นปืนปลอม
+sharp object | ของมีคม | No sharp objects allowed. | ห้ามนำของมีคมเข้า
+firearm | อาวุธปืน | Firearms must be registered. | อาวุธปืนต้องขึ้นทะเบียน
+trigger | ไกปืน | Keep your finger off the trigger. | อย่าวางนิ้วบนไกปืน
+holster | ซองปืน | Put the gun in the holster. | ใส่ปืนในซอง
+taser | ปืนช็อตไฟฟ้า | The officer used a taser. | เจ้าหน้าที่ใช้ปืนช็อตไฟฟ้า
+`);
+U('talk', 4, 'การแสดงความเห็นใจ', `
+I'm so sorry | เสียใจด้วยจริงๆ | I'm so sorry for your loss. | เสียใจด้วยกับการสูญเสีย
+that must be hard | คงลำบากมาก | That must be hard for you. | คงลำบากสำหรับคุณมาก
+I understand | ฉันเข้าใจ | I understand how you feel. | ฉันเข้าใจความรู้สึกคุณ
+it's not your fault | ไม่ใช่ความผิดคุณ | It's not your fault. | ไม่ใช่ความผิดของคุณ
+cheer up | ร่าเริงหน่อยนะ | Cheer up! | ร่าเริงหน่อยนะ!
+I'm here for you | ฉันอยู่ตรงนี้นะ | I'm here for you. | ฉันอยู่ข้างคุณนะ
+---
+get well soon | หายไวๆ | Get well soon! | หายไวๆ นะ!
+my condolences | ขอแสดงความเสียใจ | My condolences to your family. | ขอแสดงความเสียใจต่อครอบครัวคุณ
+it'll be OK | ทุกอย่างจะโอเค | Don't worry, it'll be OK. | ไม่ต้องห่วง ทุกอย่างจะโอเค
+take care of yourself | ดูแลตัวเองด้วย | Take care of yourself. | ดูแลตัวเองด้วยนะ
+what a shame | น่าเสียดาย | What a shame! | น่าเสียดายจัง!
+that's terrible | แย่มากเลย | Oh, that's terrible. | โอ้ แย่มากเลย
+`);
+U('daily', 4, 'การทำงานและอาชีพการงาน', `
+resume | ประวัติย่อ | Send your resume. | ส่งประวัติย่อมา
+job interview | สัมภาษณ์งาน | I have a job interview. | ฉันมีสัมภาษณ์งาน
+applicant | ผู้สมัคร | There are 500 applicants. | มีผู้สมัคร 500 คน
+hire | จ้าง | They hired ten officers. | พวกเขารับเจ้าหน้าที่สิบคน
+retire | เกษียณ | My father retired last year. | พ่อเกษียณปีที่แล้ว
+---
+full-time | เต็มเวลา | It's a full-time job. | เป็นงานเต็มเวลา
+part-time | พาร์ทไทม์ | I work part-time. | ฉันทำงานพาร์ทไทม์
+benefits | สวัสดิการ | The job has good benefits. | งานนี้สวัสดิการดี
+probation period | ช่วงทดลองงาน | The probation period is three months. | ทดลองงานสามเดือน
+qualification | คุณวุฒิ | What are your qualifications? | คุณมีคุณวุฒิอะไรบ้าง
+career path | เส้นทางอาชีพ | Plan your career path. | วางแผนเส้นทางอาชีพ
+`);
+U('police', 4, 'การค้ามนุษย์และการคุ้มครอง', `
+human trafficking | การค้ามนุษย์ | Human trafficking is a serious crime. | การค้ามนุษย์เป็นอาชญากรรมร้ายแรง
+forced labor | แรงงานบังคับ | They rescued victims of forced labor. | ช่วยเหยื่อแรงงานบังคับ
+exploitation | การแสวงประโยชน์ | Stop child exploitation. | หยุดการแสวงประโยชน์จากเด็ก
+domestic violence | ความรุนแรงในครอบครัว | Report domestic violence. | แจ้งเหตุความรุนแรงในครอบครัว
+abuse | การทารุณ/ล่วงละเมิด | Child abuse must be reported. | การทารุณเด็กต้องแจ้งความ
+protection order | คำสั่งคุ้มครอง | She got a protection order. | เธอได้รับคำสั่งคุ้มครอง
+---
+safe house | บ้านพักปลอดภัย | Victims stay in a safe house. | ผู้เสียหายพักที่บ้านพักปลอดภัย
+underage | อายุต่ำกว่าเกณฑ์ | Selling alcohol to the underage is illegal. | ขายเหล้าให้เด็กผิดกฎหมาย
+guardian | ผู้ปกครอง | Call the child's guardian. | โทรหาผู้ปกครองของเด็ก
+social worker | นักสังคมสงเคราะห์ | A social worker will help. | นักสังคมสงเคราะห์จะช่วย
+rescue operation | ปฏิบัติการช่วยเหลือ | The rescue operation succeeded. | ปฏิบัติการช่วยเหลือสำเร็จ
+victim support | การช่วยเหลือผู้เสียหาย | Contact victim support. | ติดต่อหน่วยช่วยเหลือผู้เสียหาย
+`);
+U('talk', 5, 'การเจรจาและไกล่เกลี่ย', `
+mediate | ไกล่เกลี่ย | The officer mediated the dispute. | เจ้าหน้าที่ไกล่เกลี่ยข้อพิพาท
+common ground | จุดร่วม | Let's find common ground. | มาหาจุดร่วมกัน
+concession | การยอมผ่อนปรน | Both sides made concessions. | ทั้งสองฝ่ายยอมผ่อนปรน
+settlement | การตกลงยุติ | They reached a settlement. | พวกเขาตกลงยุติเรื่องได้
+mutual | ซึ่งกันและกัน | Mutual respect is key. | การเคารพซึ่งกันและกันคือหัวใจ
+grievance | ความคับข้องใจ | Listen to their grievances. | รับฟังความคับข้องใจของพวกเขา
+---
+impasse | ทางตัน | Talks reached an impasse. | การเจรจาถึงทางตัน
+leverage | อำนาจต่อรอง | We have little leverage. | เรามีอำนาจต่อรองน้อย
+counteroffer | ข้อเสนอโต้กลับ | They made a counteroffer. | พวกเขายื่นข้อเสนอโต้กลับ
+non-negotiable | ต่อรองไม่ได้ | Safety is non-negotiable. | ความปลอดภัยต่อรองไม่ได้
+de-escalation | การลดความตึงเครียด | De-escalation saves lives. | การลดความตึงเครียดช่วยรักษาชีวิต
+middle ground | ทางสายกลาง | We found a middle ground. | เราพบทางสายกลาง
+`);
+U('daily', 6, 'ปรัชญาและจริยธรรม', `
+ethics | จริยธรรม | Police ethics are important. | จริยธรรมตำรวจสำคัญ
+moral | ศีลธรรม/ทางศีลธรรม | It's a moral question. | เป็นคำถามทางศีลธรรม
+principle | หลักการ | He has strong principles. | เขามีหลักการที่หนักแน่น
+virtue | คุณธรรม | Honesty is a virtue. | ความซื่อสัตย์เป็นคุณธรรม
+justify | ให้เหตุผลรองรับ | Can you justify that? | คุณให้เหตุผลรองรับได้ไหม
+conscience | มโนธรรม | Follow your conscience. | ทำตามมโนธรรม
+---
+accountable | ต้องรับผิดชอบ | Leaders must be accountable. | ผู้นำต้องรับผิดชอบ
+fairness | ความเป็นธรรม | Fairness matters. | ความเป็นธรรมสำคัญ
+prejudice | อคติ | Fight prejudice. | ต่อสู้กับอคติ
+dignity | ศักดิ์ศรี | Treat people with dignity. | ปฏิบัติต่อคนอย่างมีศักดิ์ศรี
+compassion | ความเห็นอกเห็นใจ | Show compassion to victims. | แสดงความเห็นใจต่อผู้เสียหาย
+abuse of power | การใช้อำนาจโดยมิชอบ | Abuse of power is a crime. | การใช้อำนาจโดยมิชอบเป็นความผิด
+`);
+U('talk', 6, 'การพูดในที่สาธารณะ', `
+keynote | ปาฐกถาหลัก | She gave the keynote speech. | เธอกล่าวปาฐกถาหลัก
+audience engagement | การมีส่วนร่วมของผู้ฟัง | Audience engagement was high. | ผู้ฟังมีส่วนร่วมสูง
+rhetorical question | คำถามเชิงวาทศิลป์ | He asked a rhetorical question. | เขาถามคำถามเชิงวาทศิลป์
+anecdote | เรื่องเล่าสั้นๆ | Start with an anecdote. | เริ่มด้วยเรื่องเล่าสั้นๆ
+articulate | พูดได้ชัดเจน | She is very articulate. | เธอพูดได้ชัดเจนมาก
+eloquent | มีวาทศิลป์ | It was an eloquent speech. | เป็นสุนทรพจน์ที่ไพเราะ
+---
+elaborate | อธิบายเพิ่มเติม | Could you elaborate? | ช่วยขยายความได้ไหม
+in conclusion | โดยสรุป | In conclusion, we must act. | โดยสรุป เราต้องลงมือ
+let me clarify | ขอชี้แจง | Let me clarify one point. | ขอชี้แจงประเด็นหนึ่ง
+take questions | รับคำถาม | I'll now take questions. | ตอนนี้ขอรับคำถาม
+visual aid | สื่อประกอบ | Use a visual aid. | ใช้สื่อประกอบ
+stage fright | ประหม่าบนเวที | I have stage fright. | ฉันประหม่าเวลาขึ้นเวที
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
