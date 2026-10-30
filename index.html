@@ -1566,7 +1566,9 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 [data-theme="dark"]{--hm-ink:#0b1422;--hm-soft:0 1px 2px rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.6)}
 .hm{max-width:1120px;gap:16px;display:grid;grid-template-columns:1fr;align-items:start}
 .hm-hello{display:flex;flex-direction:column;gap:2px;padding:2px 2px 4px}
-.hm-hello small{font-size:13px;color:var(--muted);font-weight:500}
+.hm-hello small{font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hm-cd{font-size:12.5px;font-weight:700;color:#fff;background:var(--hm-ink);padding:3px 10px;border-radius:999px}
+.hm-cd.soon{background:var(--red)}
 .hm-hello h2{font-size:clamp(24px,6.4vw,30px);line-height:1.2;letter-spacing:-.03em;font-weight:700}
 .hm-card{border:0;border-radius:24px;padding:20px;box-shadow:var(--hm-soft)}
 .hm-head b{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
@@ -3076,7 +3078,7 @@ function renderHome(){
 
   $('#view').innerHTML = `<div class="hm">
   <header class="hm-hello">
-    <small>${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'})}</small>
+    <small>${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'})}${cd && !cd.isPassed ? ` <span class="hm-cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday ? 'วันนี้วันสอบ สู้ๆ!' : `อีก ${cd.daysLeft} วันสอบ`}</span>` : ''}</small>
     <h2>${hi} 👋</h2>
   </header>
 
