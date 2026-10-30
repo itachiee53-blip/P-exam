@@ -1763,22 +1763,22 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm{display:flex;flex-direction:column;gap:14px;max-width:720px;margin:0 auto;padding-bottom:8px}
 .hm-hello{font-size:15px;font-weight:600;color:var(--text)}
 .hm-hello span{color:var(--muted);font-weight:500}
-.hm-today{border-radius:26px;padding:20px;color:#fff;background:linear-gradient(150deg,#6aa6da,#3b82c4 75%);
-  display:grid;grid-template-columns:96px 1fr;gap:16px 18px;align-items:center;box-shadow:0 20px 36px -24px rgba(59,130,196,.8)}
-.hm-ring{position:relative;width:96px;height:96px}
-.hm-ring svg{width:96px;height:96px;transform:rotate(-90deg)}
+.hm-today{border-radius:28px;padding:26px 22px 22px;color:#fff;background:linear-gradient(150deg,#6aa6da,#3b82c4 75%);
+  display:grid;grid-template-columns:116px 1fr;gap:22px 20px;align-items:center;box-shadow:0 20px 36px -24px rgba(59,130,196,.8)}
+.hm-ring{position:relative;width:116px;height:116px}
+.hm-ring svg{width:116px;height:116px;transform:rotate(-90deg)}
 .hm-ring circle{fill:none;stroke-width:9;stroke-linecap:round}
 .hm-ring .bgc{stroke:rgba(255,255,255,.25)}
 .hm-ring .fgc{stroke:#fff;transition:stroke-dashoffset .8s ease-out}
 .hm-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.hm-ring-txt b{font-size:22px;line-height:1;letter-spacing:-.03em}
+.hm-ring-txt b{font-size:26px;line-height:1;letter-spacing:-.03em}
 .hm-ring-txt span{font-size:11px;opacity:.85;margin-top:3px}
 .hm-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
 .hm-pills span{background:rgba(255,255,255,.22);font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px}
 .hm-pills .cd{background:#000;color:#e1e5ac}.hm-pills .cd.soon{background:#ef3e4a;color:#fff}
 .hm-today h2{font-size:24px;line-height:1.15;letter-spacing:-.03em}
 .hm-today p{font-size:12.5px;opacity:.9;margin-top:4px}
-.hm-start{grid-column:1/-1;height:50px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
+.hm-start{grid-column:1/-1;height:54px;margin-top:2px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
   display:flex;align-items:center;justify-content:center;gap:8px}
 .hm-start svg{width:18px;height:18px;fill:currentColor}
 .hm-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -1974,6 +1974,41 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 </div>
 <script>
 "use strict";
+// ==========================================
+// บันทึกข้อผิดพลาดในเครื่อง (ไม่ส่งออกไปไหน จนกว่าผู้ใช้กดคัดลอกเอง)
+// ==========================================
+const ERRLOG_KEY = 'pp_errlog', ERRLOG_MAX = 50;
+let lastTapLabel = '';
+function readErrLog(){ try{ return JSON.parse(localStorage.getItem(ERRLOG_KEY)) || []; }catch(e){ return []; } }
+function logErr(msg, where){
+  try{
+    const list = readErrLog();
+    list.unshift({ t: Date.now(), page: (document.body && document.body.dataset.page) || 'เริ่มแอป',
+      msg: String(msg).slice(0, 300), where: where ? String(where).slice(0, 120) : '', tap: lastTapLabel });
+    localStorage.setItem(ERRLOG_KEY, JSON.stringify(list.slice(0, ERRLOG_MAX)));
+  }catch(e){}
+}
+function deviceInfo(){
+  const ua = navigator.userAgent;
+  const br = (ua.match(/SamsungBrowser\/[\d.]+/) || ua.match(/(CriOS|Chrome|FxiOS|Firefox|Edg)\/[\d.]+/) || ua.match(/Version\/[\d.]+.*Safari/) || ['ไม่ทราบ'])[0].replace(/\.\d+(\.\d+)*$/,'');
+  const os = (ua.match(/Android [\d.]+/) || ua.match(/(iPhone|iPad) OS [\d_]+/) || ua.match(/(Windows|Mac OS X)[^;)]*/) || [''])[0].replace(/_/g,'.');
+  return `${br} · ${os} · จอ ${innerWidth}×${innerHeight}`;
+}
+window.addEventListener('error', e => {
+  const el = e.target;
+  if(el && el !== window && el.getAttribute){
+    const u = el.getAttribute('src') || el.getAttribute('href');
+    if(u) logErr(`โหลดไฟล์ไม่สำเร็จ: ${u.split('/').pop().slice(0,60)}`, el.tagName.toLowerCase()); // ข้าม <img src=""> ที่ยังว่าง
+  }
+  else logErr(e.message || 'Error', e.filename ? `บรรทัด ${e.lineno}:${e.colno}` : '');
+}, true);
+window.addEventListener('unhandledrejection', e => logErr((e.reason && (e.reason.message || e.reason)) || 'Promise error', 'async'));
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest && e.target.closest('button,[data-go],.chip,.sw');
+  if(!b) return;
+  // เก็บแค่ชื่อปุ่ม ไม่เก็บเนื้อหาข้อสอบ
+  lastTapLabel = b.closest('.opt,.qrow,.fcard') ? 'ตัวเลือก/ข้อสอบ' : (b.title || b.textContent || b.id || '').trim().replace(/\s+/g,' ').slice(0, 30);
+}, {capture:true, passive:true});
 const LB = ['ก','ข','ค','ง'];
 const DIFFS = ['ง่าย','ปานกลาง','ยาก'];
 const ICONS = {'กฎหมาย':'scale','งานสารบรรณ':'file-stack','คอมพิวเตอร์':'monitor','ภาษาไทย':'book-open','ความรู้ทั่วไป':'globe','ระเบียบตำรวจ':'shield','คณิตศาสตร์':'calculator','ความสามารถทั่วไป':'brain','ภาษาอังกฤษ':'languages'};
@@ -2637,7 +2672,7 @@ const SFX_FILES = {tap:'sounds/tap.mp3', pick:'sounds/pick.mp3', ok:'sounds/corr
 const sfxEl = {}, sfxBuf = {};
 const SFX_VOLUME = 0.45;
 let audioCtx = null, lastTapAt = 0;
-Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; sfxEl[k] = a; });
+Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; a.onerror = () => logErr(`โหลดเสียงไม่สำเร็จ: ${src}`, 'audio'); sfxEl[k] = a; });
 try{
   const C = window.AudioContext || window.webkitAudioContext;
   if(C){
@@ -6120,6 +6155,10 @@ function renderSetting(){
       <button class="btn red" id="d_reset"><i data-lucide="rotate-ccw"></i>ล้างสถิติ</button>
     </div>
     <input type="file" id="d_file" accept="application/json" hidden>
+    <div class="srow" style="margin-top:8px;border-top:1px solid var(--line)"><div class="ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="bug"></i></div>
+      <div style="flex:1"><b>บันทึกข้อผิดพลาด</b><small>เก็บปัญหาที่เกิดในเครื่องนี้ไว้ส่งให้ช่วยแก้</small></div>
+      <button class="c-select" id="btnErrLog">${readErrLog().length ? `ดู (${readErrLog().length})` : 'ไม่มี'}</button>
+    </div>
   </div>
 
   <div class="card" style="margin-top:14px;text-align:center;color:var(--muted);font-size:12.5px">
@@ -6257,6 +6296,7 @@ function renderSetting(){
   });
 
   $('#d_out').onclick=()=>{ playTone('tap'); exportBackup(); renderSetting(); };
+  $('#btnErrLog').onclick = () => openErrLog();
   
   $('#d_in').onclick=()=>{ playTone('tap'); $('#d_file').click(); };
   $('#d_file').onchange=e=>{
@@ -6323,6 +6363,30 @@ function remindBackup(){
     ข้อสอบ ${S.questions.length.toLocaleString()} ข้อและสถิติทั้งหมดเก็บอยู่ในเบราว์เซอร์นี้เท่านั้น ถ้าล้างข้อมูลเบราว์เซอร์หรือเปลี่ยนเครื่องจะหายทั้งหมด</p>`,
     `<button class="btn ghost" data-close>ภายหลัง</button><button class="btn" id="btnNagBackup"><i data-lucide="download"></i>สำรองเลย</button>`);
   $('#btnNagBackup').onclick = () => { exportBackup(); closeModal(); };
+}
+
+function openErrLog(){
+  const list = readErrLog();
+  const fmt = x => new Date(x.t).toLocaleString('th-TH',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  const META_PAGE = {home:'หน้าแรก',quiz:'ข้อสอบ',cards:'บัตรจำ',exam:'จำลองสอบ',run:'กำลังสอบ',result:'ผลลัพธ์',setting:'ตั้งค่า'};
+  const pg = p => META_PAGE[p] || p;
+  const text = `ข้อมูลเครื่อง: ${deviceInfo()}\n\n` + (list.length ? list.map(x =>
+    `${fmt(x)} · ${pg(x.page)}\n  ${x.msg}${x.where ? ' ('+x.where+')' : ''}${x.tap ? '\n  แตะล่าสุด: '+x.tap : ''}`).join('\n\n') : 'ไม่มีข้อผิดพลาด');
+  openModal('บันทึกข้อผิดพลาด', `
+    ${list.length ? list.map(x => `<div style="padding:10px 0;border-bottom:1px solid var(--line)">
+        <div style="font-size:12px;color:var(--muted)">${esc(fmt(x))} · ${esc(pg(x.page))}</div>
+        <div style="font-size:13.5px;font-weight:600;color:var(--red);word-break:break-word;margin-top:2px">${esc(x.msg)}</div>
+        ${x.where ? `<div style="font-size:12px;color:var(--muted)">${esc(x.where)}</div>` : ''}
+        ${x.tap ? `<div style="font-size:12px;color:var(--text2)">แตะล่าสุด: ${esc(x.tap)}</div>` : ''}
+      </div>`).join('') : '<div class="empty" style="padding:24px"><div>ไม่มีข้อผิดพลาด 🎉</div></div>'}
+    <div style="font-size:12px;color:var(--muted);margin-top:12px">ข้อมูลเครื่อง: ${esc(deviceInfo())}</div>`,
+    `<button class="btn ghost" id="errClear"><i data-lucide="trash-2"></i>ล้าง</button><button class="btn" id="errCopy"><i data-lucide="copy"></i>คัดลอกทั้งหมด</button>`);
+  $('#errClear').onclick = () => { localStorage.removeItem(ERRLOG_KEY); closeModal(); if(PAGE==='setting') renderSetting(); toast('ล้างแล้ว','ok'); };
+  $('#errCopy').onclick = async () => {
+    try{ await navigator.clipboard.writeText(text); }
+    catch(e){ const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+    toast('คัดลอกแล้ว วางในแชตได้เลย','ok');
+  };
 }
 
 function theme(){
