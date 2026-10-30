@@ -4687,6 +4687,22 @@ human rights | สิทธิมนุษยชน | Respect human rights. | �
 rule of law | หลักนิติธรรม | Uphold the rule of law. | ธำรงหลักนิติธรรม
 `);
 
+U('talk', 1, 'คำลงท้ายและคำทักทายพิเศษ', `
+good afternoon | สวัสดีตอนบ่าย | Good afternoon, sir. | สวัสดีตอนบ่ายครับ
+good evening | สวัสดีตอนเย็น | Good evening, everyone. | สวัสดีตอนเย็นทุกคน
+happy new year | สวัสดีปีใหม่ | Happy New Year! | สวัสดีปีใหม่!
+congratulations | ยินดีด้วย | Congratulations on your exam! | ยินดีด้วยที่สอบผ่าน!
+welcome back | ยินดีต้อนรับกลับมา | Welcome back! | ยินดีต้อนรับกลับมา!
+take it easy | ทำตัวสบายๆ | Take it easy. | ทำตัวสบายๆ นะ
+---
+good luck tomorrow | ขอให้โชคดีพรุ่งนี้ | Good luck tomorrow! | ขอให้โชคดีพรุ่งนี้!
+safe travels | เดินทางปลอดภัย | Safe travels! | เดินทางปลอดภัยนะ!
+sweet dreams | ฝันดี | Good night. Sweet dreams. | ราตรีสวัสดิ์ ฝันดี
+cheers | ไชโย/ขอบใจ | Cheers, mate! | ขอบใจนะเพื่อน!
+best wishes | ด้วยความปรารถนาดี | Best wishes to your family. | ขอให้ครอบครัวคุณมีความสุข
+see you soon | แล้วพบกันใหม่ | See you soon, friend. | แล้วพบกันใหม่เพื่อน
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
