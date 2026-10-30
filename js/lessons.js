@@ -6,6 +6,8 @@
 //   ระดับ: 1 เริ่มต้น · 2 พื้นฐาน · 3 ปานกลาง · 4 ดี
 //   บทเรียน: บรรทัดละคำ  "คำ/วลี | คำแปล | ประโยคตัวอย่าง | คำแปลประโยค"
 //            คั่นแต่ละบทด้วยบรรทัด ---   (บทละ 5–6 คำกำลังดี)
+// บทสนทนา: D(ระดับ, 'หัวข้อ', `A: ... / B: ___ | คำตอบ | ตัวหลอก1; ตัวหลอก2; ตัวหลอก3 | คำแปลบทสนทนา`)  (ตัวหลอกคั่นด้วย ;)
+// อ่านจับใจความ: R(ระดับ, 'หัวข้อ', 'ชื่อเรื่อง', `บทความ`, `คำแปล`, `คำถาม | คำตอบ | ตัวหลอก1; ตัวหลอก2; ตัวหลอก3`)
 // ไวยากรณ์: G(ระดับ, 'หัวข้อ', 'กฎสั้นๆ', `ประโยคมี ___ | คำตอบ | ตัวหลอก1, ตัวหลอก2, ตัวหลอก3 | เหตุผล | คำแปล`)
 // แอปสร้างแบบฝึกให้เองทั้งหมด: เลือกคำแปล แปลไทย→อังกฤษ ฟัง เติมคำ เรียงประโยค จับคู่
 // =====================================================================
@@ -13,7 +15,9 @@ const COURSES = {
   police: { name: 'สอบตำรวจ', ic: 'shield', color: '#2f6fb5', units: [] },
   daily:  { name: 'ชีวิตประจำวัน', ic: 'home', color: '#0f9d76', units: [] },
   talk:   { name: 'สนทนาและการทำงาน', ic: 'messages-square', color: '#8b5cf6', units: [] },
-  grammar:{ name: 'ไวยากรณ์ออกสอบ', ic: 'spell-check', color: '#e8590c', units: [], gram: true }
+  grammar:{ name: 'ไวยากรณ์ออกสอบ', ic: 'spell-check', color: '#e8590c', units: [], gram: true },
+  dialog: { name: 'บทสนทนาออกสอบ', ic: 'message-circle', color: '#0ea5e9', units: [], gram: true, kind: 'dialog' },
+  read:   { name: 'อ่านจับใจความ', ic: 'book-open-text', color: '#16a34a', units: [], gram: true, kind: 'read' }
 };
 const ENG_LEVELS = ['', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี'];
 function U(course, lv, t, text){
@@ -659,6 +663,134 @@ He doesn't smoke, ___? | does he | doesn't he, is he, did he | ปฏิเส�
 They went home, ___? | didn't they | did they, don't they, weren't they | went (อดีต) → didn't | พวกเขากลับบ้านแล้วใช่ไหม
 It is hot today, ___? | isn't it | is it, doesn't it, wasn't it | is → isn't it | วันนี้ร้อนใช่ไหม
 You will come, ___? | won't you | will you, don't you, aren't you | will → won't | คุณจะมาใช่ไหม
+`);
+
+// ===== บทสนทนาออกสอบ =====
+function D(lv, t, text){
+  const ls = text.trim().split(/\n\s*---\s*\n/).map(block => block.trim().split('\n').map(line => {
+    const [d, a, w, tr] = line.split('|').map(s => (s || '').trim());
+    return { lines: d.split('/').map(x => x.trim()), q: d, a, w: w.split(';').map(x => x.trim()).filter(Boolean), tr: tr || '', why: '', en: a, th: '' };
+  }));
+  const C = COURSES.dialog; C.units.push({ t, lv, rule: '', ls }); (C.def = C.def || []).push(t);
+}
+D(1, 'ทักทายและขอความช่วยเหลือ', `
+A: Good morning. How are you? / B: ___ | I'm fine, thank you. And you? | Good night.; I'm 25 years old.; Yes, I am a student. | A: อรุณสวัสดิ์ สบายดีไหม / B: สบายดี ขอบคุณ แล้วคุณล่ะ
+A: Thank you for your help. / B: ___ | You're welcome. | Yes, please.; I'm sorry.; See you yesterday. | A: ขอบคุณที่ช่วย / B: ด้วยความยินดี
+A: Excuse me, where is the bank? / B: ___ | It's next to the post office. | It's 10 o'clock.; I like the bank.; Yes, it is. | A: ขอโทษครับ ธนาคารอยู่ที่ไหน / B: อยู่ข้างที่ทำการไปรษณีย์
+A: I'm sorry I'm late. / B: ___ | That's all right. | You're welcome.; Nice to meet you.; Yes, you are. | A: ขอโทษที่มาสาย / B: ไม่เป็นไร
+A: Nice to meet you. / B: ___ | Nice to meet you too. | I'm fine, thanks.; Goodbye.; Yes, I do. | A: ยินดีที่ได้รู้จัก / B: ยินดีที่ได้รู้จักเช่นกัน
+---
+A: Can you help me, please? / B: ___ | Sure. What's the problem? | No, I can't swim.; It's my pleasure to eat.; I'm not hungry. | A: ช่วยฉันหน่อยได้ไหม / B: ได้ มีปัญหาอะไร
+A: What time is it? / B: ___ | It's half past two. | It's Monday.; It's very hot.; It's two kilometers. | A: กี่โมงแล้ว / B: บ่ายสองโมงครึ่ง
+A: May I use your phone? / B: ___ | Of course. Here you are. | No, I'm busy tomorrow.; Yes, it's my phone number.; I don't know him. | A: ขอใช้โทรศัพท์หน่อยได้ไหม / B: ได้เลย นี่ครับ
+A: Would you like some water? / B: ___ | Yes, please. | Yes, I would like it yesterday.; No, I'm water.; I like swimming. | A: ดื่มน้ำไหม / B: ครับ ขอบคุณ
+A: How can I get to the hospital? / B: ___ | Go straight and turn left. | It is a big hospital.; I am a doctor.; By the hospital. | A: ไปโรงพยาบาลยังไง / B: ตรงไปแล้วเลี้ยวซ้าย
+`);
+D(2, 'ที่สถานีตำรวจ', `
+A: Good afternoon. How can I help you? / B: ___ | I want to report a stolen motorbike. | I want to buy a motorbike.; I'm a good driver.; Good afternoon to you too, bye. | A: สวัสดีครับ มีอะไรให้ช่วยไหม / B: ผมต้องการแจ้งความรถมอเตอร์ไซค์หาย
+A: When did it happen? / B: ___ | Last night, around ten o'clock. | At the market.; Because I was tired.; With my friend. | A: เกิดเหตุเมื่อไหร่ / B: เมื่อคืน ประมาณสี่ทุ่ม
+A: Where did you park it? / B: ___ | In front of my apartment. | At eight o'clock.; It's red.; I parked it quickly. | A: คุณจอดไว้ที่ไหน / B: หน้าอพาร์ตเมนต์ของผม
+A: Can you describe the thief? / B: ___ | He was tall and wore a black jacket. | He stole my bike.; I don't like him.; He was at nine. | A: บรรยายลักษณะขโมยได้ไหม / B: เขาตัวสูงและใส่แจ็กเก็ตสีดำ
+A: Please fill in this form. / B: ___ | OK. Can I borrow a pen? | No, I'm full.; Yes, it's a nice form.; I'm sorry to hear that. | A: กรุณากรอกแบบฟอร์มนี้ / B: ได้ครับ ขอยืมปากกาหน่อย
+---
+A: I lost my wallet. / B: ___ | When did you last see it? | Congratulations!; That's a good idea.; I like your wallet. | A: ฉันทำกระเป๋าเงินหาย / B: คุณเห็นมันครั้งสุดท้ายเมื่อไหร่
+A: What was in your wallet? / B: ___ | My ID card and about 2,000 baht. | It was brown leather.; I lost it on the bus.; Yes, there was. | A: ในกระเป๋ามีอะไรบ้าง / B: บัตรประชาชนกับเงินประมาณ 2,000 บาท
+A: Can I see your ID card? / B: ___ | Here it is. | I can see it.; It's my card game.; Yes, I see. | A: ขอดูบัตรประชาชนหน่อย / B: นี่ครับ
+A: We will call you if we find it. / B: ___ | Thank you very much, officer. | I will find you.; Don't call me again.; It's not my phone. | A: ถ้าเราเจอจะโทรหาคุณ / B: ขอบคุณมากครับ คุณตำรวจ
+A: Is anyone hurt? / B: ___ | No, everyone is safe. | Yes, I'm hungry.; It's not my car.; I don't have time. | A: มีใครบาดเจ็บไหม / B: ไม่มี ทุกคนปลอดภัย
+`);
+D(3, 'ท้องถนนและการจราจร', `
+A: Can I see your driving license, please? / B: ___ | Sure. Here you are. | I can drive very well.; My car is new.; I don't like driving. | A: ขอดูใบขับขี่หน่อยครับ / B: ได้ครับ นี่ครับ
+A: Do you know why I stopped you? / B: ___ | Was I driving too fast? | Because I like you.; Yes, I stopped too.; I know your name. | A: รู้ไหมว่าทำไมผมเรียกให้หยุด / B: ผมขับเร็วเกินไปเหรอครับ
+A: You were not wearing a helmet. / B: ___ | I'm sorry. I won't do it again. | Thank you, it's a nice helmet.; Yes, I'm wearing it now, bye.; My helmet is at home, so it's OK. | A: คุณไม่ได้สวมหมวกกันน็อก / B: ขอโทษครับ จะไม่ทำอีก
+A: There's been an accident on the highway. / B: ___ | Is anyone injured? | Let's have lunch.; I like highways.; Happy birthday! | A: เกิดอุบัติเหตุบนทางหลวง / B: มีคนบาดเจ็บไหม
+A: How far is the next checkpoint? / B: ___ | About five kilometers from here. | It's at noon.; It's very far away, yesterday.; About five o'clock. | A: ด่านตรวจถัดไปอยู่ไกลแค่ไหน / B: ประมาณห้ากิโลเมตรจากที่นี่
+---
+A: Could you move your car, please? / B: ___ | Oh, sorry. I'll move it now. | Yes, I love my car.; No, it's a red car.; It's my parking. Goodbye forever. | A: ช่วยเลื่อนรถหน่อยได้ไหมครับ / B: ขอโทษครับ จะเลื่อนเดี๋ยวนี้
+A: Have you been drinking tonight? / B: ___ | No, officer. I only had water. | Yes, I'm driving now.; I drink every morning.; Tonight is very dark. | A: คืนนี้คุณดื่มมาหรือเปล่า / B: เปล่าครับ ผมดื่มแค่น้ำ
+A: Which way to the airport? / B: ___ | Take the second exit on the left. | The airport is big.; By plane.; At three o'clock. | A: ไปสนามบินทางไหน / B: ใช้ทางออกที่สองทางซ้าย
+A: The road is closed because of flooding. / B: ___ | Is there another way? | I like rain.; Good, let's swim there.; The road is long. | A: ถนนปิดเพราะน้ำท่วม / B: มีทางอื่นไหม
+A: You have to pay a fine of 500 baht. / B: ___ | Where can I pay it? | I like 500 baht.; Fine, thank you.; It's very cheap food. | A: คุณต้องเสียค่าปรับ 500 บาท / B: จ่ายได้ที่ไหน
+`);
+D(4, 'สถานการณ์ทั่วไป', `
+A: I think someone is following me. / B: ___ | Stay calm. Where are you now? | Follow me, please.; That's a good idea.; I don't think so, bye. | A: ฉันว่ามีคนตามฉันมา / B: ใจเย็นๆ ตอนนี้คุณอยู่ที่ไหน
+A: Would you mind waiting outside? / B: ___ | Not at all. | Yes, I'd love to.; No, I don't wait.; I mind you. | A: รบกวนรอข้างนอกได้ไหม / B: ได้เลย (ไม่รบกวน)
+A: Why do you want to be a police officer? / B: ___ | Because I want to help people and keep society safe. | Because I am a police officer.; I want to be rich tomorrow.; Yes, I want. | A: ทำไมคุณถึงอยากเป็นตำรวจ / B: เพราะผมอยากช่วยเหลือประชาชนและรักษาความปลอดภัยของสังคม
+A: What would you do if you saw a crime? / B: ___ | I would call the police immediately. | I would see it again.; I did it yesterday.; I will crime. | A: ถ้าเห็นการก่ออาชญากรรมคุณจะทำอย่างไร / B: ผมจะโทรแจ้งตำรวจทันที
+A: How long have you lived here? / B: ___ | For about ten years. | Since ten kilometers.; Yes, I live here.; At ten o'clock. | A: คุณอาศัยอยู่ที่นี่มานานเท่าไหร่ / B: ประมาณสิบปี
+---
+A: Let's meet at the station at 8. / B: ___ | Sounds good. See you then. | I met you yesterday.; The station is big.; Good night forever. | A: เจอกันที่สถานีตอน 8 โมง / B: ได้เลย แล้วเจอกัน
+A: I passed the police exam! / B: ___ | Congratulations! I'm so happy for you. | I'm sorry to hear that.; Never mind.; Take care of yourself. | A: ผมสอบตำรวจผ่านแล้ว! / B: ยินดีด้วย ดีใจกับคุณมาก
+A: My mother is in the hospital. / B: ___ | I'm sorry to hear that. I hope she gets better soon. | Congratulations!; That's great news!; Have a nice trip. | A: แม่ของฉันอยู่โรงพยาบาล / B: เสียใจด้วย ขอให้ท่านหายเร็วๆ
+A: Could you speak more slowly, please? / B: ___ | Of course. Sorry about that. | No, I speak English.; Yes, I'm slow.; I'm fast. | A: ช่วยพูดช้าลงหน่อยได้ไหม / B: ได้ครับ ขอโทษด้วย
+A: Do you mind if I open the window? / B: ___ | No, go ahead. | Yes, please open it.; I don't have a window.; It's very windy, thanks. | A: ขอเปิดหน้าต่างได้ไหม / B: ได้เลย เชิญ
+`);
+
+// ===== อ่านจับใจความ =====
+function R(lv, t, title, text, tr, qs){
+  const C = COURSES.read;
+  let u = C.units.find(x => x.t === t);
+  if(!u){ u = { t, lv, rule: '', ls: [] }; C.units.push(u); (C.def = C.def || []).push(t); }
+  u.ls.push(qs.trim().split('\n').map(line => {
+    const [q, a, w] = line.split('|').map(s => (s || '').trim());
+    return { q, a, w: w.split(';').map(x => x.trim()).filter(Boolean), tr: '', why: '', en: a, th: '', title, text: text.trim().replace(/\s+/g, ' '), ptr: tr.trim().replace(/\s+/g, ' ') };
+  }));
+}
+R(1, 'เรื่องสั้นง่ายๆ', 'My Day', `Somchai is a police officer. He wakes up at five every morning. He runs in the park for thirty minutes. Then he eats breakfast with his family. He goes to work by motorbike. He works at a police station near the market. He likes his job because he can help people.`,
+`สมชายเป็นตำรวจ เขาตื่นนอนตีห้าทุกเช้า เขาวิ่งในสวนสาธารณะสามสิบนาที แล้วกินอาหารเช้ากับครอบครัว เขาไปทำงานด้วยมอเตอร์ไซค์ เขาทำงานที่สถานีตำรวจใกล้ตลาด เขาชอบงานของเขาเพราะได้ช่วยเหลือผู้คน`, `
+What is Somchai's job? | A police officer | A teacher; A doctor; A driver
+What time does he wake up? | At five | At six; At seven; At eight
+How does he go to work? | By motorbike | By bus; On foot; By car
+Why does he like his job? | He can help people. | He can sleep a lot.; It is near his home.; He gets a lot of money.
+`);
+R(1, 'เรื่องสั้นง่ายๆ', 'The Lost Dog', `Mali has a small white dog. Its name is Lucky. Yesterday Lucky ran out of the house and did not come back. Mali was very sad. She put a photo of Lucky on the internet. In the evening, a neighbor called her. He found Lucky in the temple near their village. Mali was very happy.`,
+`มะลิมีสุนัขสีขาวตัวเล็กชื่อลักกี้ เมื่อวานลักกี้วิ่งออกจากบ้านแล้วไม่กลับมา มะลิเสียใจมาก เธอโพสต์รูปลักกี้ลงอินเทอร์เน็ต ตอนเย็นเพื่อนบ้านโทรหาเธอ เขาพบลักกี้ที่วัดใกล้หมู่บ้าน มะลิดีใจมาก`, `
+What color is Lucky? | White | Black; Brown; Gray
+When did Lucky run away? | Yesterday | Last week; This morning; Two days ago
+Who found Lucky? | A neighbor | A police officer; Mali's mother; A monk
+Where was Lucky found? | At a temple | At a school; At the market; In the park
+`);
+R(2, 'ข่าวและประกาศ', 'Road Notice', `Notice: Rama IV Road will be closed from 10 p.m. Saturday to 5 a.m. Sunday for road repairs. Drivers should use Sathorn Road instead. Buses number 4 and 47 will change their routes. For more information, please call 1197. We are sorry for any inconvenience.`,
+`ประกาศ: ถนนพระรามสี่จะปิดตั้งแต่สี่ทุ่มวันเสาร์ถึงตีห้าวันอาทิตย์เพื่อซ่อมถนน ผู้ขับขี่ควรใช้ถนนสาทรแทน รถเมล์สาย 4 และ 47 จะเปลี่ยนเส้นทาง สอบถามเพิ่มเติมโทร 1197 ขออภัยในความไม่สะดวก`, `
+Why will the road be closed? | For road repairs | For a festival; Because of an accident; Because of flooding
+When will the road open again? | 5 a.m. Sunday | 10 p.m. Saturday; 5 p.m. Sunday; Monday morning
+Which road should drivers use? | Sathorn Road | Rama IV Road; Silom Road; Highway 4
+What number can people call for information? | 1197 | 191; 1669; 47
+`);
+R(2, 'ข่าวและประกาศ', 'Thief Caught', `Police in Chiang Mai arrested a 28-year-old man on Monday. He stole mobile phones from tourists at the night market. A shop owner saw him and called the police. Officers found twelve phones in his bag. The man said he needed money to pay his debts. He will go to court next week.`,
+`ตำรวจเชียงใหม่จับกุมชายอายุ 28 ปีเมื่อวันจันทร์ เขาขโมยโทรศัพท์มือถือจากนักท่องเที่ยวที่ตลาดกลางคืน เจ้าของร้านเห็นจึงโทรแจ้งตำรวจ เจ้าหน้าที่พบโทรศัพท์สิบสองเครื่องในกระเป๋าของเขา ชายคนนั้นบอกว่าต้องการเงินไปใช้หนี้ เขาจะขึ้นศาลสัปดาห์หน้า`, `
+What did the man steal? | Mobile phones | Wallets; Motorbikes; Cameras
+Who called the police? | A shop owner | A tourist; His friend; A taxi driver
+How many phones did the police find? | Twelve | Two; Twenty; Eight
+Why did he steal? | He needed money for his debts. | He wanted to travel.; He wanted new phones.; He was angry at tourists.
+`);
+R(3, 'งานตำรวจ', 'Online Scam Warning', `The police are warning people about a new phone scam. Criminals call and say they are from a bank. They say there is a problem with your account and ask for your password. Banks never ask for passwords by phone. If you get this kind of call, hang up and contact your bank directly. You can also report it to the police at 1441.`,
+`ตำรวจเตือนประชาชนเรื่องแก๊งหลอกลวงทางโทรศัพท์รูปแบบใหม่ คนร้ายโทรมาอ้างว่าเป็นธนาคาร บอกว่าบัญชีของคุณมีปัญหาและขอรหัสผ่าน ธนาคารไม่เคยขอรหัสผ่านทางโทรศัพท์ ถ้าได้รับสายแบบนี้ให้วางสายแล้วติดต่อธนาคารโดยตรง หรือแจ้งตำรวจที่ 1441`, `
+Who do the criminals say they are? | Bank staff | Police officers; Doctors; Teachers
+What do the criminals ask for? | Your password | Your address; Your photo; Your car
+What should you do if you get this call? | Hang up and contact your bank | Give them your password; Call them back later; Send them money
+What is the main idea of this text? | A warning about phone scams | How to open a bank account; How to become a police officer; A new phone for sale
+`);
+R(3, 'งานตำรวจ', 'Community Police', `Many police stations now have community police officers. These officers walk around neighborhoods, talk to people, and listen to their problems. They also visit schools to teach children about road safety and drugs. Because people trust them, they often get useful information about crimes. This program has helped reduce crime in many areas.`,
+`ปัจจุบันสถานีตำรวจหลายแห่งมีตำรวจชุมชน เจ้าหน้าที่เหล่านี้เดินตรวจในชุมชน พูดคุยกับประชาชน และรับฟังปัญหา พวกเขายังไปโรงเรียนเพื่อสอนเด็กเรื่องความปลอดภัยบนท้องถนนและยาเสพติด เพราะประชาชนไว้ใจ พวกเขาจึงมักได้ข้อมูลที่เป็นประโยชน์เกี่ยวกับอาชญากรรม โครงการนี้ช่วยลดอาชญากรรมได้ในหลายพื้นที่`, `
+What do community police officers do? | Talk to people and listen to their problems | Sell things in the market; Drive buses; Work only in offices
+What do they teach children? | Road safety and drugs | Mathematics; English songs; Cooking
+Why do they get useful information? | People trust them | They pay people; They use cameras; They read newspapers
+What is the result of this program? | Less crime | More traffic; More drugs; Fewer schools
+`);
+R(4, 'บทความ', 'Fitness Test', `Every applicant for the police force must pass a fitness test. The test usually includes running, push-ups, and sit-ups. Many applicants fail because they start training too late. Experts recommend exercising at least three months before the test. A healthy diet and enough sleep are also important. Being fit is not only for the test; officers need good health throughout their careers.`,
+`ผู้สมัครเป็นตำรวจทุกคนต้องผ่านการทดสอบสมรรถภาพร่างกาย ซึ่งมักประกอบด้วยการวิ่ง วิดพื้น และลุกนั่ง ผู้สมัครหลายคนสอบไม่ผ่านเพราะเริ่มฝึกช้าเกินไป ผู้เชี่ยวชาญแนะนำให้ออกกำลังกายอย่างน้อยสามเดือนก่อนสอบ อาหารที่มีประโยชน์และการนอนหลับที่เพียงพอก็สำคัญ การมีร่างกายแข็งแรงไม่ได้มีไว้แค่สอบ เพราะตำรวจต้องมีสุขภาพดีตลอดชีวิตการทำงาน`, `
+Why do many applicants fail? | They start training too late. | The test is too easy.; They eat too much.; They sleep too much.
+How long before the test should you start exercising? | At least three months | One week; Three days; One year
+Which is NOT part of the test? | Swimming | Running; Push-ups; Sit-ups
+What does the writer mean by "throughout their careers"? | During their whole working life | Only during the test; Only at night; After they retire
+`);
+R(4, 'บทความ', 'Cybercrime', `Cybercrime is increasing quickly around the world. Criminals use the internet to steal money, personal data, and even identities. Some create fake shopping websites, while others send emails with dangerous links. Police forces now train special officers to investigate online crimes. However, experts say the best protection is public awareness: people should use strong passwords and never share personal information with strangers.`,
+`อาชญากรรมไซเบอร์เพิ่มขึ้นอย่างรวดเร็วทั่วโลก คนร้ายใช้อินเทอร์เน็ตขโมยเงิน ข้อมูลส่วนตัว และแม้แต่ตัวตน บางคนสร้างเว็บไซต์ขายของปลอม บางคนส่งอีเมลที่มีลิงก์อันตราย ปัจจุบันตำรวจฝึกเจ้าหน้าที่พิเศษเพื่อสืบสวนอาชญากรรมออนไลน์ อย่างไรก็ตาม ผู้เชี่ยวชาญกล่าวว่าการป้องกันที่ดีที่สุดคือการตระหนักรู้ของประชาชน ควรใช้รหัสผ่านที่คาดเดายากและไม่ให้ข้อมูลส่วนตัวกับคนแปลกหน้า`, `
+What is happening to cybercrime? | It is increasing quickly. | It is decreasing.; It has stopped.; It only happens in Thailand.
+Which is an example of cybercrime in the text? | Fake shopping websites | Stealing cars; Selling drugs on the street; Fighting in a bar
+According to experts, what is the best protection? | Public awareness | More police stations; Expensive computers; Closing the internet
+The word "strangers" means | people you do not know | your family members; police officers; your best friends
 `);
 
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)

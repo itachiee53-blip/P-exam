@@ -61,6 +61,7 @@ function speakWord(text, slow){
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US'; if(enVoice) u.voice = enVoice;
   u.rate = slow ? 0.55 : 0.9;
+  u.volume = 0.6; // เสียงอ่านเบาลง (เดิมดังเต็มที่)
   speechSynthesis.speak(u);
 }
 
