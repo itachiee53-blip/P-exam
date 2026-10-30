@@ -2895,6 +2895,226 @@ statistic | สถิติ | Crime statistics are falling. | สถิติอ
 bias | อคติ | Avoid bias in research. | หลีกเลี่ยงอคติในการวิจัย
 `);
 
+U('basic', 0, 'สีเพิ่มเติม', `
+pink | สีชมพู | She likes pink. | เธอชอบสีชมพู
+purple | สีม่วง | The flower is purple. | ดอกไม้สีม่วง
+brown | สีน้ำตาล | He has brown eyes. | เขาตาสีน้ำตาล
+gray | สีเทา | The sky is gray. | ท้องฟ้าสีเทา
+gold | สีทอง/ทอง | She wears a gold ring. | เธอใส่แหวนทอง
+silver | สีเงิน/เงิน | The car is silver. | รถสีเงิน
+---
+dark | มืด/เข้ม | The room is dark. | ห้องมืด
+bright | สว่าง/สด | The light is bright. | ไฟสว่าง
+colorful | หลากสี | The market is colorful. | ตลาดมีสีสัน
+dirty | สกปรก | My shoes are dirty. | รองเท้าฉันสกปรก
+quiet | เงียบ | The library is quiet. | ห้องสมุดเงียบ
+loud | ดัง | The music is loud. | เพลงดัง
+`);
+U('daily', 1, 'การเดินทางในเมือง', `
+taxi | แท็กซี่ | Take a taxi. | นั่งแท็กซี่
+motorcycle taxi | วินมอเตอร์ไซค์ | I take a motorcycle taxi. | ฉันนั่งวินมอเตอร์ไซค์
+skytrain | รถไฟฟ้า | The skytrain is fast. | รถไฟฟ้าเร็ว
+subway | รถไฟใต้ดิน | Take the subway to Silom. | นั่งรถไฟใต้ดินไปสีลม
+boat | เรือ | We took a boat. | เรานั่งเรือ
+bicycle | จักรยาน | I ride a bicycle. | ฉันปั่นจักรยาน
+---
+bus stop | ป้ายรถเมล์ | Wait at the bus stop. | รอที่ป้ายรถเมล์
+get on | ขึ้น (รถ) | Get on the bus. | ขึ้นรถเมล์
+get off | ลง (รถ) | Get off here. | ลงตรงนี้
+fare | ค่าโดยสาร | The fare is 20 baht. | ค่าโดยสาร 20 บาท
+driver's seat | ที่นั่งคนขับ | Sit in the driver's seat. | นั่งที่คนขับ
+rush hour | ชั่วโมงเร่งด่วน | Avoid rush hour. | หลีกเลี่ยงชั่วโมงเร่งด่วน
+`);
+U('police', 1, 'สิ่งของในคดี', `
+wallet | กระเป๋าสตางค์ | My wallet was stolen. | กระเป๋าสตางค์ถูกขโมย
+purse | กระเป๋าถือ | She lost her purse. | เธอทำกระเป๋าถือหาย
+jewelry | เครื่องประดับ | They stole her jewelry. | พวกเขาขโมยเครื่องประดับ
+laptop | แล็ปท็อป | My laptop is missing. | แล็ปท็อปหาย
+backpack | เป้ | He carried a black backpack. | เขาสะพายเป้สีดำ
+necklace | สร้อยคอ | Her gold necklace is gone. | สร้อยทองของเธอหายไป
+---
+ring | แหวน | I lost my ring. | ฉันทำแหวนหาย
+bracelet | สร้อยข้อมือ | It's a silver bracelet. | เป็นสร้อยข้อมือเงิน
+earrings | ต่างหู | She wore earrings. | เธอใส่ต่างหู
+bank card | บัตรธนาคาร | Cancel your bank card. | อายัดบัตรธนาคาร
+brand | ยี่ห้อ | What brand is your phone? | โทรศัพท์ยี่ห้ออะไร
+model | รุ่น | What model is it? | รุ่นอะไร
+`);
+U('talk', 1, 'คำถามในชีวิตประจำวัน', `
+how are you | สบายดีไหม | Hi, how are you? | สวัสดี สบายดีไหม
+what do you do | ทำงานอะไร | What do you do? | คุณทำงานอะไร
+where do you live | อยู่ที่ไหน | Where do you live? | คุณอยู่ที่ไหน
+how old are you | อายุเท่าไหร่ | How old are you? | คุณอายุเท่าไหร่
+do you have | คุณมี...ไหม | Do you have a pen? | คุณมีปากกาไหม
+can I help you | ให้ช่วยอะไรไหม | Can I help you? | ให้ช่วยอะไรไหม
+---
+what's wrong | เป็นอะไร | What's wrong? | เป็นอะไรไป
+what happened | เกิดอะไรขึ้น | What happened? | เกิดอะไรขึ้น
+are you OK | คุณโอเคไหม | Are you OK? | คุณโอเคไหม
+nice to meet you | ยินดีที่ได้รู้จัก | Nice to meet you, Ann. | ยินดีที่ได้รู้จักนะแอน
+see you later | แล้วเจอกัน | See you later! | แล้วเจอกัน!
+have a nice day | ขอให้เป็นวันที่ดี | Have a nice day! | ขอให้เป็นวันที่ดี!
+`);
+U('daily', 2, 'งานอดิเรกเพิ่มเติม', `
+painting | การวาดภาพ | Her hobby is painting. | งานอดิเรกของเธอคือวาดภาพ
+fishing | การตกปลา | We go fishing on weekends. | เราไปตกปลาวันหยุด
+camping | การตั้งแคมป์ | Let's go camping. | ไปตั้งแคมป์กัน
+gardening | การทำสวน | My mother loves gardening. | แม่ชอบทำสวน
+photography | การถ่ายภาพ | He is into photography. | เขาชอบถ่ายภาพ
+cycling | การปั่นจักรยาน | Cycling is good exercise. | การปั่นจักรยานเป็นการออกกำลังที่ดี
+---
+hiking | การเดินป่า | We went hiking in Chiang Mai. | เราไปเดินป่าที่เชียงใหม่
+chess | หมากรุก | Do you play chess? | เล่นหมากรุกไหม
+guitar | กีตาร์ | He plays the guitar. | เขาเล่นกีตาร์
+karaoke | คาราโอเกะ | Let's sing karaoke. | ไปร้องคาราโอเกะกัน
+novel | นวนิยาย | I'm reading a novel. | ฉันกำลังอ่านนิยาย
+collect | สะสม | He collects coins. | เขาสะสมเหรียญ
+`);
+U('police', 2, 'บรรยายเหตุการณ์', `
+suddenly | ทันใดนั้น | Suddenly, he ran away. | ทันใดนั้นเขาก็วิ่งหนี
+loudly | เสียงดัง | He shouted loudly. | เขาตะโกนเสียงดัง
+shout | ตะโกน | Someone shouted for help. | มีคนตะโกนขอความช่วยเหลือ
+scream | กรีดร้อง | I heard a woman scream. | ฉันได้ยินผู้หญิงกรีดร้อง
+push | ผลัก | He pushed me. | เขาผลักฉัน
+hit | ตี/ชน | The car hit a tree. | รถชนต้นไม้
+---
+grab | คว้า | He grabbed my bag. | เขาคว้ากระเป๋าฉัน
+fall | ล้ม | She fell down. | เธอล้มลง
+break | ทำแตก/พัง | They broke the window. | พวกเขาทุบหน้าต่างแตก
+threaten | ข่มขู่ | He threatened me. | เขาข่มขู่ฉัน
+attack | โจมตี/ทำร้าย | A dog attacked the boy. | สุนัขทำร้ายเด็ก
+`);
+U('daily', 3, 'อาหารและร้านอาหารขั้นกลาง', `
+appetizer | อาหารเรียกน้ำย่อย | Let's order an appetizer. | สั่งอาหารเรียกน้ำย่อยกัน
+main course | อาหารจานหลัก | What's the main course? | อาหารจานหลักคืออะไร
+buffet | บุฟเฟต์ | We had a buffet lunch. | เรากินบุฟเฟต์กลางวัน
+portion | ปริมาณ (ต่อจาน) | The portion is big. | ปริมาณเยอะ
+grilled | ย่าง | I'll have grilled fish. | ขอปลาย่าง
+steamed | นึ่ง | Steamed rice, please. | ขอข้าวสวย
+---
+raw | ดิบ | Don't eat raw meat. | อย่ากินเนื้อดิบ
+well-done | สุกมาก | Steak, well-done please. | สเต๊กสุกมาก
+waiter | พนักงานเสิร์ฟ | Call the waiter. | เรียกพนักงานเสิร์ฟ
+tip | ทิป | Leave a tip. | ให้ทิป
+reservation table | โต๊ะที่จองไว้ | We have a table booked. | เราจองโต๊ะไว้แล้ว
+allergy | อาการแพ้ | I have a peanut allergy. | ฉันแพ้ถั่วลิสง
+`);
+U('police', 3, 'สิทธิผู้ต้องหา', `
+right to remain silent | สิทธิที่จะไม่ให้การ | You have the right to remain silent. | คุณมีสิทธิที่จะไม่ให้การ
+attorney | ทนายความ | You may call an attorney. | คุณโทรหาทนายได้
+interpreter | ล่าม | Do you need an interpreter? | ต้องการล่ามไหม
+detention | การควบคุมตัว | He is in detention. | เขาถูกควบคุมตัว
+charge sheet | บันทึกข้อกล่าวหา | Read the charge sheet. | อ่านบันทึกข้อกล่าวหา
+bail bond | หลักทรัพย์ประกัน | Post a bail bond. | วางหลักทรัพย์ประกันตัว
+---
+consulate | สถานกงสุล | Contact your consulate. | ติดต่อสถานกงสุล
+fair treatment | การปฏิบัติอย่างเป็นธรรม | Everyone gets fair treatment. | ทุกคนได้รับการปฏิบัติอย่างเป็นธรรม
+inform of rights | แจ้งสิทธิ | We must inform you of your rights. | เราต้องแจ้งสิทธิให้คุณทราบ
+legal aid | ความช่วยเหลือทางกฎหมาย | Free legal aid is available. | มีความช่วยเหลือทางกฎหมายฟรี
+release on bail | ปล่อยตัวชั่วคราว | He was released on bail. | เขาได้รับการปล่อยตัวชั่วคราว
+holding cell | ห้องควบคุมชั่วคราว | Put him in the holding cell. | นำตัวไปห้องควบคุมชั่วคราว
+`);
+U('talk', 3, 'การชวนและการปฏิเสธ', `
+how about | ...ดีไหม | How about dinner tonight? | คืนนี้กินข้าวด้วยกันดีไหม
+why don't we | ทำไมเราไม่... | Why don't we go now? | ทำไมเราไม่ไปตอนนี้เลย
+shall we | ...กันไหม | Shall we start? | เริ่มกันไหม
+I'd love to | ยินดีมาก | I'd love to come. | ยินดีมากที่จะไป
+sounds good | ฟังดูดี | Sounds good to me. | ฟังดูดีนะ
+count me in | นับฉันด้วย | Count me in! | นับฉันด้วย!
+---
+I'm afraid I can't | เกรงว่าไม่ได้ | I'm afraid I can't come. | เกรงว่าไปไม่ได้
+maybe another time | ไว้คราวหน้า | Maybe another time. | ไว้คราวหน้านะ
+I have plans | มีนัดแล้ว | Sorry, I have plans. | ขอโทษ มีนัดแล้ว
+rain check | ขอเลื่อนไปก่อน | Can I take a rain check? | ขอเลื่อนไปก่อนได้ไหม
+I'll pass | ขอผ่าน | Thanks, but I'll pass. | ขอบคุณ แต่ขอผ่าน
+let me check | ขอเช็คก่อน | Let me check my schedule. | ขอเช็คตารางก่อน
+`);
+U('daily', 4, 'ความสัมพันธ์และสังคม', `
+relationship | ความสัมพันธ์ | They have a good relationship. | พวกเขามีความสัมพันธ์ที่ดี
+trust | ความไว้วางใจ | Trust is important. | ความไว้ใจสำคัญ
+argue | ทะเลาะ/โต้เถียง | They argue a lot. | พวกเขาทะเลาะกันบ่อย
+---
+friendship | มิตรภาพ | Our friendship is strong. | มิตรภาพของเราแน่นแฟ้น
+loneliness | ความเหงา | Loneliness affects health. | ความเหงากระทบสุขภาพ
+community spirit | จิตสำนึกชุมชน | The village has great community spirit. | หมู่บ้านนี้มีจิตสำนึกชุมชนดี
+peer pressure | แรงกดดันจากเพื่อน | Don't give in to peer pressure. | อย่ายอมตามแรงกดดันจากเพื่อน
+generation gap | ช่องว่างระหว่างวัย | There is a generation gap. | มีช่องว่างระหว่างวัย
+get along | เข้ากันได้ | They get along well. | พวกเขาเข้ากันได้ดี
+`);
+U('talk', 4, 'การเล่าเรื่อง', `
+once upon a time | กาลครั้งหนึ่ง | Once upon a time, there was a king. | กาลครั้งหนึ่งมีพระราชา
+at first | ตอนแรก | At first, I was scared. | ตอนแรกฉันกลัว
+later on | ต่อมา | Later on, we became friends. | ต่อมาเราก็เป็นเพื่อนกัน
+all of a sudden | ทันใดนั้น | All of a sudden, the lights went out. | ทันใดนั้นไฟก็ดับ
+in the end | ในท้ายที่สุด | In the end, it was fine. | สุดท้ายก็ไม่เป็นไร
+to my surprise | ที่น่าแปลกใจ | To my surprise, he passed. | น่าแปลกใจที่เขาสอบผ่าน
+---
+luckily | โชคดีที่ | Luckily, nobody was hurt. | โชคดีที่ไม่มีใครบาดเจ็บ
+unfortunately | โชคไม่ดีที่ | Unfortunately, I missed the bus. | โชคไม่ดีที่ฉันตกรถ
+as soon as | ทันทีที่ | Call me as soon as you arrive. | ถึงแล้วโทรหาทันที
+while | ขณะที่ | While I was cooking, he called. | ขณะที่ฉันทำอาหาร เขาโทรมา
+by the time | กว่าจะ | By the time we arrived, it was dark. | กว่าเราจะถึงก็มืดแล้ว
+it turned out | ปรากฏว่า | It turned out he was right. | ปรากฏว่าเขาพูดถูก
+`);
+U('police', 5, 'การตรวจที่เกิดเหตุ', `
+crime scene tape | เทปกั้นที่เกิดเหตุ | Don't cross the crime scene tape. | อย่าข้ามเทปกั้นที่เกิดเหตุ
+evidence bag | ถุงเก็บหลักฐาน | Put it in an evidence bag. | ใส่ถุงเก็บหลักฐาน
+gloves | ถุงมือ | Wear gloves at the scene. | สวมถุงมือในที่เกิดเหตุ
+footprint | รอยเท้า | They found a footprint. | พบรอยเท้า
+bloodstain | คราบเลือด | There was a bloodstain on the wall. | มีคราบเลือดบนผนัง
+bullet | กระสุน | They found a bullet. | พบกระสุน
+---
+photograph | ถ่ายภาพ (หลักฐาน) | Photograph the scene. | ถ่ายภาพที่เกิดเหตุ
+sketch | ภาพสเก็ตช์ | Draw a sketch of the room. | วาดภาพสเก็ตช์ห้อง
+contaminate | ปนเปื้อน | Don't contaminate the evidence. | อย่าทำให้หลักฐานปนเปื้อน
+secure the area | กันพื้นที่ | Secure the area first. | กันพื้นที่ก่อน
+chain of custody | ห่วงโซ่การครอบครองหลักฐาน | Keep the chain of custody. | รักษาห่วงโซ่การครอบครองหลักฐาน
+`);
+U('daily', 5, 'ภาษากฎหมายทั่วไป', `
+clause | ข้อ (ในสัญญา) | Read clause 5. | อ่านข้อ 5
+terms and conditions | ข้อกำหนดและเงื่อนไข | Read the terms and conditions. | อ่านข้อกำหนดและเงื่อนไข
+consent | ความยินยอม | You need written consent. | ต้องมีความยินยอมเป็นลายลักษณ์อักษร
+breach of contract | ผิดสัญญา | That's a breach of contract. | นั่นคือการผิดสัญญา
+dispute | ข้อพิพาท | They settled the dispute. | พวกเขายุติข้อพิพาท
+---
+witness statement | คำให้การพยาน | Sign the witness statement. | ลงนามในคำให้การพยาน
+legally binding | มีผลผูกพันทางกฎหมาย | This contract is legally binding. | สัญญานี้มีผลผูกพันทางกฎหมาย
+notary | ผู้รับรองเอกสาร | Get it signed by a notary. | ให้ผู้รับรองเอกสารลงนาม
+power of attorney | หนังสือมอบอำนาจ | I need a power of attorney. | ฉันต้องการหนังสือมอบอำนาจ
+fine print | ข้อความตัวเล็ก (เงื่อนไขแฝง) | Always read the fine print. | อ่านตัวเล็กทุกครั้ง
+void | เป็นโมฆะ | The contract is void. | สัญญาเป็นโมฆะ
+`);
+U('talk', 6, 'ภาษาการทูตและทางการ', `
+with all due respect | ด้วยความเคารพ | With all due respect, I disagree. | ด้วยความเคารพ ผมไม่เห็นด้วย
+I take your point | ผมเข้าใจประเด็นของคุณ | I take your point, but… | ผมเข้าใจประเด็นของคุณ แต่...
+it's worth noting | ควรสังเกตว่า | It's worth noting that costs rose. | ควรสังเกตว่าต้นทุนสูงขึ้น
+on behalf of | ในนามของ | On behalf of the police, thank you. | ในนามตำรวจ ขอบคุณครับ
+please be advised | ขอแจ้งให้ทราบว่า | Please be advised the road is closed. | ขอแจ้งให้ทราบว่าถนนปิด
+in light of | เนื่องจาก/ในแง่ของ | In light of new evidence, we reopened the case. | เนื่องจากมีหลักฐานใหม่ เราจึงเปิดคดีใหม่
+---
+with regard to | เกี่ยวกับ | With regard to your request, yes. | เกี่ยวกับคำขอของคุณ ได้ครับ
+I would like to stress | ขอเน้นย้ำว่า | I would like to stress safety. | ขอเน้นย้ำเรื่องความปลอดภัย
+we regret to inform | เสียใจที่ต้องแจ้งว่า | We regret to inform you… | เราเสียใจที่ต้องแจ้งว่า...
+at this stage | ในขั้นนี้ | At this stage, we cannot comment. | ในขั้นนี้ยังไม่สามารถให้ความเห็นได้
+going forward | นับจากนี้ | Going forward, we will improve. | นับจากนี้เราจะปรับปรุง
+to that end | เพื่อการนั้น | To that end, we hired more staff. | เพื่อการนั้น เราจ้างคนเพิ่ม
+`);
+U('police', 6, 'อาชญากรรมทางการเงิน', `
+embezzlement | การยักยอกทรัพย์ | He was charged with embezzlement. | เขาถูกตั้งข้อหายักยอกทรัพย์
+insider trading | การใช้ข้อมูลภายในซื้อขายหุ้น | Insider trading is illegal. | การใช้ข้อมูลภายในซื้อขายหุ้นผิดกฎหมาย
+Ponzi scheme | แชร์ลูกโซ่ | It was a Ponzi scheme. | มันคือแชร์ลูกโซ่
+tax evasion | การหลีกเลี่ยงภาษี | He was jailed for tax evasion. | เขาติดคุกข้อหาเลี่ยงภาษี
+shell company | บริษัทบังหน้า | They used a shell company. | พวกเขาใช้บริษัทบังหน้า
+asset freeze | การอายัดทรัพย์ | The court ordered an asset freeze. | ศาลสั่งอายัดทรัพย์
+---
+audit | การตรวจสอบบัญชี | The audit found problems. | การตรวจสอบบัญชีพบปัญหา
+kickback | เงินใต้โต๊ะ | He took kickbacks. | เขารับเงินใต้โต๊ะ
+mule account | บัญชีม้า | Don't rent out a mule account. | อย่าเปิดบัญชีม้าให้เช่า
+whistleblower | ผู้เปิดโปง | A whistleblower exposed the fraud. | ผู้เปิดโปงเปิดเผยการฉ้อโกง
+cryptocurrency | สกุลเงินดิจิทัล | Scammers asked for cryptocurrency. | มิจฉาชีพขอเงินดิจิทัล
+illicit | ผิดกฎหมาย/ลับลมคมใน | Illicit funds were moved abroad. | เงินผิดกฎหมายถูกโอนไปต่างประเทศ
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
