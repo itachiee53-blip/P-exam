@@ -806,7 +806,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .ls-top span{font-size:13px;font-weight:700;color:var(--muted)}
 .ls-wrap .vc-prog i{background:var(--c)}
-.ls-body{display:flex;flex-direction:column;gap:14px;min-height:46vh}
+.ls-body{display:flex;flex-direction:column;gap:14px}
 .ls-kind{font-size:14px;font-weight:700;color:var(--muted)}
 .ls-word{font-size:clamp(30px,8vw,42px);letter-spacing:-.02em;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .ls-word.th{font-size:clamp(26px,7vw,36px)}
@@ -1092,3 +1092,12 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-newb .eng-badge{animation-delay:.2s}
 .eng-cert{margin:2px 0;animation-delay:.1s}
 .vc-done .btn{width:100%}
+
+/* เรียงประโยค: ปุ่มคำใบ้/ดูเฉลย + ระยะกระชับ */
+.ls-help{display:flex;gap:8px;justify-content:center}
+.ls-help-btn{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.ls-help-btn:first-child{color:#d97706;border-color:color-mix(in srgb,#f59e0b 40%,var(--line));background:color-mix(in srgb,#f59e0b 8%,var(--surface))}
+.ls-help-btn svg{width:16px;height:16px}
+#lsFb{margin-top:12px}
+.ls-ans{min-height:52px}
+.ls-tiles:not(:has(.ls-tile:not(.used))){display:none}
