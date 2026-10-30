@@ -757,3 +757,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .qbar>.chips{flex:1 1 100%!important}
   .qbar>.ib{margin-left:auto}
 }
+/* ชั้นหนังสือ: กดค้างแล้วไม่ให้มือถือเปิดเมนูรูป/ลากรูป/เลือกข้อความ */
+.shelf .book{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.shelf .book img{-webkit-user-drag:none;pointer-events:none}

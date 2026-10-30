@@ -51,12 +51,13 @@ function initShelfDrag(){
   const shelf = $('.shelf'); if(!shelf) return;
   let timer = null, drag = null, sx = 0, sy = 0, justDragged = false;
   const cancel = () => { clearTimeout(timer); timer = null; };
-  shelf.addEventListener('contextmenu', e => e.preventDefault());
-  shelf.addEventListener('pointerdown', e => {
-    const book = e.target.closest('.book[data-key]');
-    if(!book || e.target.closest('.hb-act')) return;
-    sx = e.clientX; sy = e.clientY;
+  // มือถือใช้ touch event: pointer event โดนเบราว์เซอร์ยกเลิกเองตอนกดค้าง/เลื่อน ทำให้ลากไม่ได้
+  const start = (x, y, target) => {
+    const book = target.closest && target.closest('.book[data-key]');
+    if(!book || target.closest('.hb-act')) return;
+    sx = x; sy = y; cancel();
     timer = setTimeout(() => {
+      timer = null;
       const r = book.getBoundingClientRect();
       const ghost = book.cloneNode(true);
       ghost.className = 'book drag-ghost';
@@ -67,29 +68,38 @@ function initShelfDrag(){
       navigator.vibrate && navigator.vibrate(15);
       playTone('pick');
     }, 450);
-  });
-  shelf.addEventListener('pointermove', e => {
-    if(!drag){ if(timer && Math.hypot(e.clientX - sx, e.clientY - sy) > 10) cancel(); return; }
-    drag.ghost.style.left = e.clientX - drag.ox + 'px';
-    drag.ghost.style.top = e.clientY - drag.oy + 'px';
-    const over = document.elementFromPoint(e.clientX, e.clientY)?.closest('.shelf .book[data-key]:not(.dragging)');
+  };
+  const move = (x, y) => {
+    if(!drag){ if(timer && Math.hypot(x - sx, y - sy) > 10) cancel(); return; }
+    drag.ghost.style.left = x - drag.ox + 'px';
+    drag.ghost.style.top = y - drag.oy + 'px';
+    const main = $('.main'); if(main){ if(y < 90) main.scrollTop -= 14; else if(y > innerHeight - 110) main.scrollTop += 14; }
+    const over = document.elementFromPoint(x, y)?.closest('.shelf .book[data-key]:not(.dragging)');
     if(over){
       const r = over.getBoundingClientRect();
-      shelf.insertBefore(drag.book, e.clientX > r.left + r.width / 2 ? over.nextSibling : over);
+      shelf.insertBefore(drag.book, x > r.left + r.width / 2 ? over.nextSibling : over);
     }
-  });
+  };
   const end = () => {
     cancel();
     if(!drag) return;
     drag.ghost.remove(); drag.book.classList.remove('dragging');
     const order = $$('.shelf .book[data-key]').map(b => b.dataset.key);
-    if(order.join() !== (S.shelf || []).join()){ S.shelf = order; save(); toast('จัดลำดับแล้ว', 'ok'); }
-    drag = null; justDragged = true; setTimeout(() => justDragged = false, 300);
+    // เก็บลำดับของชั้นอื่น (หนังสือเล่มอื่น/ชั้นหน้าแรก) ไว้ด้วย
+    const old = S.shelf || [], merged = [...order, ...old.filter(k => !order.includes(k))];
+    if(merged.join() !== old.join()){ S.shelf = merged; save(); toast('จัดลำดับแล้ว', 'ok'); }
+    drag = null; justDragged = true; setTimeout(() => justDragged = false, 350);
   };
-  shelf.addEventListener('pointerup', end);
-  shelf.addEventListener('pointercancel', end);
-  // ระหว่างลาก ไม่ให้หน้าเลื่อน และไม่นับเป็นการแตะเปิดหนังสือ
-  shelf.addEventListener('touchmove', e => { if(drag) e.preventDefault(); }, { passive: false });
+  shelf.addEventListener('contextmenu', e => e.preventDefault());
+  shelf.addEventListener('touchstart', e => { if(e.touches.length > 1){ cancel(); return; } start(e.touches[0].clientX, e.touches[0].clientY, e.target); }, { passive: true });
+  shelf.addEventListener('touchmove', e => { if(drag) e.preventDefault(); move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  shelf.addEventListener('touchend', end);
+  shelf.addEventListener('touchcancel', end);
+  // เมาส์ (คอม)
+  shelf.addEventListener('pointerdown', e => { if(e.pointerType === 'mouse' && e.button === 0) start(e.clientX, e.clientY, e.target); });
+  shelf.addEventListener('pointermove', e => { if(e.pointerType === 'mouse') move(e.clientX, e.clientY); });
+  shelf.addEventListener('pointerup', e => { if(e.pointerType === 'mouse') end(); });
+  // ไม่นับเป็นการแตะเปิดหนังสือหลังลากเสร็จ
   shelf.addEventListener('click', e => { if(justDragged){ e.stopPropagation(); e.preventDefault(); } }, true);
 }
 
