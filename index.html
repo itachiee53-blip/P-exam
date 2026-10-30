@@ -2822,6 +2822,8 @@ function openIconPicker(catName){
           <input type="file" id="coverFile" accept="image/*" hidden>
         </div>
       </div>
+      ${S.questions.some(q => q.cat === catName) ? `<button type="button" class="btn sm ghost" id="btnClearCatQ" style="color:var(--red);align-self:flex-start">
+        <i data-lucide="eraser"></i>ล้างข้อสอบในวิชานี้ (${S.questions.filter(q => q.cat === catName).length} ข้อ) · หนังสือยังอยู่</button>` : ''}
       <div>
         <label style="font-size:12.5px;color:var(--muted);font-weight:600;display:block;margin-bottom:8px">เลือกไอคอน (36 แบบ)</label>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-height:220px;overflow-y:auto;padding:3px" id="iconPoolGrid">
@@ -2876,6 +2878,12 @@ function openIconPicker(catName){
 
   const paintCover = () => { $('#coverPrev').innerHTML = coverHtml(); $('#btnCoverDel').hidden = !selectedCover; icons($('#coverPrev')); };
   $('#btnCover').onclick = () => $('#coverFile').click();
+  if($('#btnClearCatQ')) $('#btnClearCatQ').onclick = async () => {
+    const n = S.questions.filter(q => q.cat === catName).length;
+    if(!(await ask(`ล้างข้อสอบวิชา ${catName}?`, `ลบข้อสอบทั้งหมด ${n} ข้อในวิชานี้ หนังสือ ปก และสียังอยู่ (ย้อนกลับได้)`, 'ล้างข้อสอบ'))) return;
+    removeQuestions(q => q.cat === catName, `ล้างข้อสอบวิชา ${catName}`);
+    syncChrome(); refreshPage(); undoToast(`ล้างข้อสอบวิชา ${catName} แล้ว`);
+  };
   $('#coverFile').onchange = async e => {
     const f = e.target.files[0]; if(!f) return;
     const img = await optimizeImage(f, 720, 0.82);
