@@ -1070,6 +1070,222 @@ What does the word "image" mean here? | how people see the country | a photo; a 
 What is the main idea? | English is important for Thai police. | Tourists should learn Thai.; Thailand has many accidents.; Police should travel more.
 `);
 
+// ===== เพิ่มเติม (ชุดที่ 4) =====
+U('police', 2, 'ป้ายและประกาศ', `
+no entry | ห้ามเข้า | The sign says no entry. | ป้ายเขียนว่าห้ามเข้า
+keep out | ห้ามเข้าใกล้ | Danger! Keep out. | อันตราย! ห้ามเข้าใกล้
+no parking | ห้ามจอด | You can't park here. It says no parking. | จอดที่นี่ไม่ได้ ป้ายเขียนว่าห้ามจอด
+one way | เดินรถทางเดียว | This is a one way street. | ถนนนี้เดินรถทางเดียว
+exit | ทางออก | Where is the exit? | ทางออกอยู่ที่ไหน
+caution | ระวัง | Caution: wet floor. | ระวัง พื้นเปียก
+---
+speed limit | จำกัดความเร็ว | The speed limit is 80. | จำกัดความเร็ว 80
+pedestrian | คนเดินเท้า | Stop for pedestrians. | หยุดให้คนเดินเท้า
+crosswalk | ทางม้าลาย | Cross at the crosswalk. | ข้ามที่ทางม้าลาย
+staff only | เฉพาะเจ้าหน้าที่ | This room is for staff only. | ห้องนี้เฉพาะเจ้าหน้าที่
+out of order | ใช้การไม่ได้ | The elevator is out of order. | ลิฟต์ใช้การไม่ได้
+fire exit | ทางหนีไฟ | Use the fire exit. | ใช้ทางหนีไฟ
+`);
+U('police', 3, 'ภัยพิบัติและการกู้ภัย', `
+earthquake | แผ่นดินไหว | The earthquake damaged many houses. | แผ่นดินไหวทำให้บ้านหลายหลังเสียหาย
+landslide | ดินถล่ม | The landslide blocked the road. | ดินถล่มปิดทางถนน
+evacuate | อพยพ | Please evacuate the building. | กรุณาอพยพออกจากอาคาร
+shelter | ที่พักพิง | They stayed in a shelter. | พวกเขาพักที่ศูนย์พักพิง
+survivor | ผู้รอดชีวิต | They found two survivors. | พวกเขาพบผู้รอดชีวิตสองคน
+damage | ความเสียหาย | The storm caused heavy damage. | พายุสร้างความเสียหายหนัก
+---
+disaster | ภัยพิบัติ | The flood was a disaster. | น้ำท่วมครั้งนั้นเป็นภัยพิบัติ
+warning | คำเตือน | They gave a storm warning. | พวกเขาประกาศเตือนพายุ
+victim | ผู้ประสบภัย | The victims need food and water. | ผู้ประสบภัยต้องการอาหารและน้ำ
+supplies | สิ่งของจำเป็น | Send supplies to the village. | ส่งของจำเป็นไปที่หมู่บ้าน
+volunteer | อาสาสมัคร | Many volunteers came to help. | อาสาสมัครหลายคนมาช่วย
+safe zone | พื้นที่ปลอดภัย | Go to the safe zone. | ไปที่พื้นที่ปลอดภัย
+`);
+U('police', 4, 'คำพ้องความหมายออกสอบ', `
+large | ใหญ่ (= big) | It is a large building. | เป็นอาคารขนาดใหญ่
+begin | เริ่ม (= start) | The class begins at nine. | ชั้นเรียนเริ่มเก้าโมง
+quick | เร็ว (= fast) | He made a quick decision. | เขาตัดสินใจอย่างรวดเร็ว
+assist | ช่วยเหลือ (= help) | Officers assist the public. | เจ้าหน้าที่ช่วยเหลือประชาชน
+purchase | ซื้อ (= buy) | He purchased a new car. | เขาซื้อรถใหม่
+observe | สังเกต (= watch) | Observe the suspect carefully. | สังเกตผู้ต้องสงสัยอย่างละเอียด
+---
+difficult | ยาก (= hard) | The test was difficult. | ข้อสอบยาก
+huge | ใหญ่มาก (= very big) | There was a huge crowd. | มีฝูงชนจำนวนมาก
+silent | เงียบ (= quiet) | Please be silent. | กรุณาเงียบ
+correct | ถูกต้อง (= right) | Your answer is correct. | คำตอบของคุณถูกต้อง
+finish | เสร็จ (= end) | Finish your report today. | ทำรายงานให้เสร็จวันนี้
+attempt | พยายาม (= try) | He attempted to escape. | เขาพยายามหลบหนี
+`);
+U('daily', 1, 'อาชีพ', `
+teacher | ครู | My mother is a teacher. | แม่ของฉันเป็นครู
+doctor | หมอ | The doctor is busy. | หมอยุ่งอยู่
+nurse | พยาบาล | The nurse is very kind. | พยาบาลใจดีมาก
+farmer | ชาวนา/เกษตรกร | My father is a farmer. | พ่อของฉันเป็นเกษตรกร
+soldier | ทหาร | He wants to be a soldier. | เขาอยากเป็นทหาร
+driver | คนขับรถ | The bus driver is careful. | คนขับรถเมล์ขับอย่างระวัง
+---
+engineer | วิศวกร | She is an engineer. | เธอเป็นวิศวกร
+cook | พ่อครัว/แม่ครัว | He is a good cook. | เขาทำอาหารเก่ง
+student | นักเรียน/นักศึกษา | I am a student. | ฉันเป็นนักเรียน
+worker | คนงาน | The workers are building a road. | คนงานกำลังสร้างถนน
+seller | คนขาย | The seller is friendly. | คนขายเป็นมิตร
+firefighter | นักดับเพลิง | The firefighters saved the family. | นักดับเพลิงช่วยครอบครัวนั้นไว้
+`);
+U('daily', 3, 'Phrasal verbs ที่ใช้บ่อย', `
+get up | ลุกขึ้น/ตื่นนอน | I get up at six. | ฉันตื่นนอนตอนหกโมง
+turn on | เปิด (ไฟ/เครื่อง) | Turn on the light. | เปิดไฟ
+turn off | ปิด (ไฟ/เครื่อง) | Turn off your phone. | ปิดโทรศัพท์
+look for | มองหา | I'm looking for my keys. | ฉันกำลังหากุญแจ
+pick up | หยิบ/ไปรับ | I'll pick you up at five. | ฉันจะไปรับคุณตอนห้าโมง
+give up | ยอมแพ้/เลิก | Don't give up. | อย่ายอมแพ้
+---
+find out | ค้นพบ/สืบรู้ | The police found out the truth. | ตำรวจรู้ความจริงแล้ว
+look after | ดูแล | She looks after her mother. | เธอดูแลแม่
+put on | สวมใส่ | Put on your helmet. | สวมหมวกกันน็อก
+take off | ถอด/เครื่องขึ้น | Take off your shoes. | ถอดรองเท้า
+run away | วิ่งหนี | The thief ran away. | ขโมยวิ่งหนีไป
+fill in | กรอก (แบบฟอร์ม) | Fill in your name here. | กรอกชื่อตรงนี้
+`);
+U('daily', 4, 'สำนวนที่ใช้บ่อย', `
+take care | ดูแลตัวเองนะ | Take care and see you soon. | ดูแลตัวเองนะ แล้วเจอกัน
+good luck | ขอให้โชคดี | Good luck with your exam. | ขอให้สอบโชคดี
+never mind | ไม่เป็นไร | Never mind, it's not important. | ไม่เป็นไร ไม่สำคัญ
+it depends | แล้วแต่ | It depends on the weather. | แล้วแต่สภาพอากาศ
+by the way | อีกอย่างหนึ่ง | By the way, where do you live? | ว่าแต่ คุณอยู่ที่ไหน
+in a hurry | รีบ | Sorry, I'm in a hurry. | ขอโทษ ฉันรีบอยู่
+---
+on duty | ปฏิบัติหน้าที่อยู่ | He is on duty tonight. | คืนนี้เขาเข้าเวร
+off duty | นอกเวลางาน | She is off duty today. | วันนี้เธอไม่ได้เข้าเวร
+as soon as possible | เร็วที่สุดเท่าที่ทำได้ | Call me as soon as possible. | โทรหาฉันเร็วที่สุด
+for example | ตัวอย่างเช่น | I like fruit, for example mangoes. | ฉันชอบผลไม้ เช่น มะม่วง
+make sure | ตรวจให้แน่ใจ | Make sure the door is locked. | ตรวจให้แน่ใจว่าประตูล็อกแล้ว
+keep calm | ใจเย็นไว้ | Keep calm and wait. | ใจเย็นไว้แล้วรอ
+`);
+U('talk', 1, 'แนะนำตัว', `
+introduce | แนะนำ | Let me introduce myself. | ขอแนะนำตัวเอง
+born | เกิด | I was born in Khon Kaen. | ฉันเกิดที่ขอนแก่น
+live | อาศัยอยู่ | I live in Bangkok. | ฉันอาศัยอยู่ในกรุงเทพฯ
+hobby | งานอดิเรก | My hobby is running. | งานอดิเรกของฉันคือการวิ่ง
+graduate | จบการศึกษา | I graduated from Chiang Mai University. | ฉันจบจากมหาวิทยาลัยเชียงใหม่
+age | อายุ | What is your age? | คุณอายุเท่าไหร่
+---
+married | แต่งงานแล้ว | Are you married? | คุณแต่งงานแล้วหรือยัง
+single | โสด | I'm single. | ฉันโสด
+hometown | บ้านเกิด | My hometown is in the north. | บ้านเกิดของฉันอยู่ภาคเหนือ
+favorite | ที่ชอบที่สุด | My favorite food is som tam. | อาหารที่ชอบที่สุดคือส้มตำ
+dream | ความฝัน | My dream is to be a police officer. | ความฝันของฉันคือการเป็นตำรวจ
+free time | เวลาว่าง | I read in my free time. | ฉันอ่านหนังสือเวลาว่าง
+`);
+U('talk', 3, 'แนะนำและเตือน', `
+advise | แนะนำ | I advise you to rest. | ฉันแนะนำให้คุณพักผ่อน
+had better | ควรจะ (ไม่งั้นแย่) | You had better leave now. | คุณควรออกไปเดี๋ยวนี้
+careful | ระมัดระวัง | Be careful on the road. | ระวังบนถนนด้วย
+watch out | ระวัง! | Watch out! A car is coming. | ระวัง! มีรถมา
+don't forget | อย่าลืม | Don't forget your ID card. | อย่าลืมบัตรประชาชน
+instead | แทน | Take the bus instead. | นั่งรถเมล์แทน
+---
+recommend | แนะนำ | I recommend this hotel. | ฉันแนะนำโรงแรมนี้
+risk | ความเสี่ยง | It's a big risk. | มันเสี่ยงมาก
+avoid | หลีกเลี่ยง | Avoid going out at night. | หลีกเลี่ยงการออกไปข้างนอกตอนกลางคืน
+important | สำคัญ | It's important to sleep well. | การนอนหลับให้ดีเป็นสิ่งสำคัญ
+better | ดีกว่า | It's better to ask. | ถามดีกว่า
+remember | จำ/อย่าลืม | Remember to lock the door. | อย่าลืมล็อกประตู
+`);
+G(1, 'Wh-questions', 'What อะไร · Where ที่ไหน · When เมื่อไหร่ · Who ใคร · Why ทำไม · How อย่างไร', `
+___ is your name? | What | Where, Who, How | ถามชื่อใช้ What | คุณชื่ออะไร
+___ do you live? | Where | What, When, Who | ถามสถานที่ใช้ Where | คุณอาศัยอยู่ที่ไหน
+___ is the exam? | When | Who, Where, Why | ถามเวลาใช้ When | สอบเมื่อไหร่
+___ is that man? | Who | What, Which, Whose | ถามบุคคลใช้ Who | ผู้ชายคนนั้นคือใคร
+___ were you late? | Why | How, What, Who | ถามเหตุผลใช้ Why | ทำไมคุณมาสาย
+___ do you go to work? | How | What, Who, Whose | ถามวิธีใช้ How | คุณไปทำงานอย่างไร
+`);
+G(2, 'Prepositions of movement', 'into เข้าไปใน · out of ออกจาก · across ข้าม · through ผ่าน (ทะลุ) · along ไปตาม · toward ไปทาง', `
+The thief ran ___ the house. | out of | out, off of, outside to | ออกจากใช้ out of | ขโมยวิ่งออกจากบ้าน
+Walk ___ the road carefully. | across | through, into, among | ข้ามถนนใช้ across | ข้ามถนนอย่างระมัดระวัง
+The train went ___ the tunnel. | through | across, on, over to | ผ่านอุโมงค์ใช้ through | รถไฟวิ่งผ่านอุโมงค์
+He jumped ___ the pool. | into | in to, inside of, onto of | เข้าไปในใช้ into | เขากระโดดลงสระ
+We walked ___ the river. | along | among, between, into | ไปตามแนวใช้ along | เราเดินเลียบแม่น้ำ
+The car drove ___ the station. | toward | into of, between, among | มุ่งไปทางใช้ toward | รถขับไปทางสถานี
+`);
+G(3, 'Subject-verb agreement', 'ประธานเอกพจน์ + กริยาเอกพจน์ · Everyone / Each / Nobody = เอกพจน์ · A and B = พหูพจน์', `
+Everyone ___ here. | is | are, were, be | Everyone เป็นเอกพจน์ | ทุกคนอยู่ที่นี่
+Tom and Jerry ___ friends. | are | is, was, be | A and B เป็นพหูพจน์ | ทอมกับเจอร์รี่เป็นเพื่อนกัน
+Each of the students ___ a book. | has | have, having, are | Each = เอกพจน์ | นักเรียนแต่ละคนมีหนังสือ
+The news ___ good. | is | are, were, have | news นับไม่ได้ ใช้เอกพจน์ | ข่าวนี้ดี
+One of my friends ___ a police officer. | is | are, were, be | One of ... = เอกพจน์ | เพื่อนคนหนึ่งของฉันเป็นตำรวจ
+The police ___ looking for the man. | are | is, was, has | police ใช้กริยาพหูพจน์ | ตำรวจกำลังตามหาชายคนนั้น
+`);
+G(4, 'If type 3 & wish', 'If + had V3, would have + V3 = สมมติอดีตที่ไม่เกิดจริง · wish + V2 (ปัจจุบัน) / had V3 (อดีต)', `
+If I had studied, I ___ passed. | would have | will have, would, had | If + had V3 → would have V3 | ถ้าฉันตั้งใจเรียน ฉันคงสอบผ่านไปแล้ว
+If he ___ earlier, he wouldn't have missed the bus. | had left | left, has left, would leave | If + had V3 | ถ้าเขาออกเร็วกว่านี้ เขาคงไม่พลาดรถเมล์
+I wish I ___ rich. | were | am, will be, be | wish + were (ปัจจุบันที่ไม่จริง) | ฉันอยากรวยจัง
+She wishes she ___ English well. | spoke | speaks, speak, will speak | wish + V2 | เธออยากพูดภาษาอังกฤษเก่ง
+I wish I ___ that. | hadn't said | didn't say, don't say, won't say | เสียดายอดีตใช้ had V3 | ฉันไม่น่าพูดแบบนั้นเลย
+If it had not rained, we ___ gone out. | would have | will have, had, would | would have + V3 | ถ้าฝนไม่ตก เราคงออกไปข้างนอกแล้ว
+`);
+G(4, 'Modal + have V3', 'should have V3 = ควรจะทำ (แต่ไม่ได้ทำ) · must have V3 = คงจะ (มั่นใจ) · might have V3 = อาจจะ', `
+You ___ told me earlier. | should have | should, must, can | ควรทำแต่ไม่ได้ทำ | คุณน่าจะบอกฉันก่อนหน้านี้
+The ground is wet. It ___ rained. | must have | should have, can, will | มั่นใจเรื่องอดีต | พื้นเปียก ฝนคงตกมา
+He isn't here. He ___ gone home. | might have | should, must, will | อาจจะ (ไม่แน่ใจ) | เขาไม่อยู่ เขาอาจกลับบ้านไปแล้ว
+I should have ___ harder. | studied | study, studying, studies | modal + have + V3 | ฉันน่าจะตั้งใจเรียนให้มากกว่านี้
+She must have ___ her keys. | lost | lose, losing, loses | must have + V3 | เธอคงทำกุญแจหาย
+You shouldn't have ___ so fast. | driven | drive, drove, driving | drive → driven | คุณไม่ควรขับเร็วขนาดนั้น
+`);
+D(2, 'ช่วยเหลือนักท่องเที่ยว', `
+A: I lost my passport. What should I do? / B: ___ | You should report it to the police and contact your embassy. | You should buy a new bag.; Passports are very cheap.; Please enjoy your trip. | A: ฉันทำหนังสือเดินทางหาย ควรทำอย่างไร / B: คุณควรแจ้งตำรวจและติดต่อสถานทูต
+A: Where is the nearest police station? / B: ___ | It's about 200 meters down this road. | It's very new.; Yes, it's a police station.; I'm a tourist too. | A: สถานีตำรวจที่ใกล้ที่สุดอยู่ไหน / B: ไปตามถนนนี้ประมาณ 200 เมตร
+A: A taxi driver charged me too much. / B: ___ | Do you remember the taxi number? | Taxis are yellow.; You should pay more.; I like taxis. | A: คนขับแท็กซี่เก็บเงินเกิน / B: คุณจำทะเบียนแท็กซี่ได้ไหม
+A: Is it safe to walk here at night? / B: ___ | Yes, but stay on the main road. | No, I walk every day.; It's a nice night.; Yes, it's very dark. | A: เดินแถวนี้ตอนกลางคืนปลอดภัยไหม / B: ปลอดภัย แต่เดินบนถนนใหญ่นะ
+A: Can you call a doctor? My friend is sick. / B: ___ | Of course. I'll call an ambulance now. | Your friend is very nice.; I'm not a doctor, bye.; Sick is not good food. | A: ช่วยเรียกหมอได้ไหม เพื่อนไม่สบาย / B: ได้เลย จะเรียกรถพยาบาลเดี๋ยวนี้
+---
+A: Someone took my bag at the beach. / B: ___ | When did it happen? | The beach is beautiful.; Take another bag.; I like the sea. | A: มีคนเอากระเป๋าฉันไปที่ชายหาด / B: เกิดเหตุเมื่อไหร่
+A: Do you speak English? / B: ___ | Yes, a little. How can I help? | Yes, I'm from England.; No, I'm English.; English is a country. | A: คุณพูดภาษาอังกฤษได้ไหม / B: ได้นิดหน่อย มีอะไรให้ช่วยไหม
+A: How do I get to the Grand Palace? / B: ___ | You can take a boat or a taxi. | It's a very grand palace.; The king lives there.; I got there last year. | A: ไปวัดพระแก้ว/พระบรมมหาราชวังยังไง / B: นั่งเรือหรือแท็กซี่ไปได้
+A: Thank you so much for your help, officer. / B: ___ | My pleasure. Enjoy your stay in Thailand. | Yes, I'm an officer.; Please help me too.; No, thank you. | A: ขอบคุณมากที่ช่วยครับคุณตำรวจ / B: ยินดีครับ ขอให้เที่ยวเมืองไทยให้สนุก
+A: Can I see your ID, please? / B: ___ | Here's my passport. | I can see you.; My ID is beautiful.; No, I can't see. | A: ขอดูบัตรประจำตัวหน่อย / B: นี่หนังสือเดินทางของผมครับ
+`);
+D(3, 'เหตุฉุกเฉิน', `
+A: Help! There's a fire in my building! / B: ___ | Stay calm. What's the address? | That's a nice building.; Fire is very hot.; Please call me tomorrow. | A: ช่วยด้วย! ไฟไหม้ตึก! / B: ใจเย็นๆ ที่อยู่คืออะไร
+A: Is anyone still inside? / B: ___ | Yes, an old woman is on the third floor. | Yes, I'm outside.; Inside is warm.; No, I don't know inside. | A: ยังมีคนอยู่ข้างในไหม / B: มี คุณยายอยู่ชั้นสาม
+A: My son is missing. / B: ___ | What was he wearing when you last saw him? | He is a good son.; Don't worry, he is missing.; I miss him too. | A: ลูกชายฉันหายไป / B: ตอนที่เห็นครั้งสุดท้ายเขาใส่ชุดอะไร
+A: There's been a car accident. / B: ___ | Where exactly are you? | Cars are expensive.; I had an accident too.; Accidents are fun. | A: เกิดอุบัติเหตุรถชน / B: คุณอยู่ตรงไหนแน่
+A: Someone is breaking into my house! / B: ___ | Lock yourself in a room. Police are on the way. | Please open the door for him.; Your house is big.; Call me next week. | A: มีคนกำลังงัดบ้านฉัน! / B: ล็อกตัวเองในห้อง ตำรวจกำลังไป
+---
+A: He's not breathing! / B: ___ | Start CPR now. The ambulance is coming. | Please wait until tomorrow.; He's very tired.; Breathing is easy. | A: เขาไม่หายใจ! / B: ทำ CPR เดี๋ยวนี้ รถพยาบาลกำลังมา
+A: How many people are injured? / B: ___ | Three people, one seriously. | Three cars.; Many times.; At three o'clock. | A: มีคนบาดเจ็บกี่คน / B: สามคน สาหัสหนึ่งคน
+A: Can you describe the car? / B: ___ | It was a white pickup truck. | It drove very fast, bye.; I like cars.; It was yesterday. | A: บรรยายลักษณะรถได้ไหม / B: เป็นรถกระบะสีขาว
+A: Which way did he go? / B: ___ | He ran toward the market. | He went yesterday.; He is a good runner.; By the way. | A: เขาไปทางไหน / B: เขาวิ่งไปทางตลาด
+A: Please stay on the line. / B: ___ | OK, I'm still here. | Line is long.; I'm standing in line.; No, I'm busy. | A: กรุณาถือสายรอ / B: ได้ ยังอยู่ในสาย
+`);
+R(1, 'เรื่องสั้นง่ายๆ', 'A New Friend', `Tom is from England. He is visiting Thailand for two weeks. On his first day, he got lost in Bangkok. A young police officer helped him find his hotel. The officer spoke English well. They talked about football and Thai food. Now they are friends, and they send messages every week.`,
+`ทอมมาจากอังกฤษ เขามาเที่ยวประเทศไทยสองสัปดาห์ วันแรกเขาหลงทางในกรุงเทพฯ ตำรวจหนุ่มคนหนึ่งช่วยพาเขาไปโรงแรม ตำรวจคนนั้นพูดภาษาอังกฤษเก่ง พวกเขาคุยกันเรื่องฟุตบอลและอาหารไทย ตอนนี้พวกเขาเป็นเพื่อนกันและส่งข้อความหากันทุกสัปดาห์`, `
+Where is Tom from? | England | America; Japan; Thailand
+How long is Tom staying in Thailand? | Two weeks | Two days; Two months; One week
+Who helped Tom? | A police officer | A taxi driver; A teacher; A hotel worker
+What did they talk about? | Football and Thai food | Cars and money; Music and movies; Work and school
+`);
+R(2, 'ข่าวและประกาศ', 'Job Notice', `The Royal Thai Police is accepting applications for new officers. Applicants must be Thai citizens, aged 18 to 27, and have finished high school. They must also pass a written test, a fitness test, and an interview. Applications are open online from 1 to 30 June. Results will be announced in September.`,
+`สำนักงานตำรวจแห่งชาติเปิดรับสมัครเจ้าหน้าที่ตำรวจใหม่ ผู้สมัครต้องมีสัญชาติไทย อายุ 18 ถึง 27 ปี และจบมัธยมปลาย ต้องผ่านการสอบข้อเขียน การทดสอบสมรรถภาพ และการสัมภาษณ์ เปิดรับสมัครออนไลน์ตั้งแต่ 1 ถึง 30 มิถุนายน ประกาศผลในเดือนกันยายน`, `
+What is this notice about? | Applying to be a police officer | Buying a police car; A new police station; A football match
+What age can apply? | 18 to 27 | 15 to 20; 20 to 35; Over 30
+Which is NOT a test? | A swimming test | A written test; A fitness test; An interview
+When will results be announced? | In September | In June; On 30 June; Next year
+`);
+R(3, 'งานตำรวจ', 'Drunk Driving', `Drunk driving is one of the main causes of road deaths in Thailand. Alcohol makes drivers slow to react and causes poor judgment. The legal limit for most drivers is 50 milligrams of alcohol per 100 milliliters of blood. Drivers who break the law can be fined, lose their license, or even go to prison. Police say the safest choice is simple: if you drink, don't drive.`,
+`การเมาแล้วขับเป็นสาเหตุหลักอย่างหนึ่งของการเสียชีวิตบนท้องถนนในประเทศไทย แอลกอฮอล์ทำให้ผู้ขับขี่ตอบสนองช้าและตัดสินใจผิดพลาด เกณฑ์ตามกฎหมายสำหรับผู้ขับขี่ส่วนใหญ่คือ 50 มิลลิกรัมต่อเลือด 100 มิลลิลิตร ผู้ฝ่าฝืนอาจถูกปรับ ถูกยึดใบขับขี่ หรือถึงขั้นจำคุก ตำรวจบอกว่าทางเลือกที่ปลอดภัยที่สุดคือ ถ้าดื่มอย่าขับ`, `
+What does alcohol do to drivers? | Makes them slow to react | Makes them drive better; Makes them sleep less; Helps them see at night
+What is the legal limit for most drivers? | 50 mg per 100 ml of blood | 100 mg per 50 ml; 5 mg per 100 ml; There is no limit
+Which is NOT a punishment mentioned? | Doing community service | A fine; Losing the license; Prison
+What is the police's advice? | If you drink, don't drive. | Drive slowly after drinking.; Drink only at night.; Take a taxi to work.
+`);
+R(4, 'บทความ', 'Teamwork in Policing', `Police work is rarely done alone. Solving a case often requires officers, detectives, forensic experts, and members of the public to work together. Good communication is essential: if information is not shared, important clues may be missed. Leaders play a key role by giving clear orders and supporting their team. Studies show that teams with strong trust and cooperation solve more cases and make fewer mistakes.`,
+`งานตำรวจแทบไม่เคยทำคนเดียว การคลี่คลายคดีมักต้องอาศัยเจ้าหน้าที่ นักสืบ ผู้เชี่ยวชาญด้านนิติวิทยาศาสตร์ และประชาชนร่วมมือกัน การสื่อสารที่ดีจึงจำเป็นมาก ถ้าไม่แบ่งปันข้อมูล เบาะแสสำคัญอาจตกหล่น ผู้นำมีบทบาทสำคัญด้วยการสั่งการที่ชัดเจนและสนับสนุนทีม งานวิจัยพบว่าทีมที่ไว้ใจและร่วมมือกันดีจะคลี่คลายคดีได้มากกว่าและผิดพลาดน้อยกว่า`, `
+What is the main idea? | Police work needs teamwork. | Police should work alone.; Forensic experts are the most important.; Leaders don't need teams.
+What may happen if information is not shared? | Important clues may be missed. | Cases are solved faster.; Leaders give clearer orders.; The public helps more.
+The word "essential" means | very important | not necessary; very cheap; dangerous
+According to studies, strong teams | solve more cases and make fewer mistakes | work fewer hours; need no leaders; make more mistakes
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
