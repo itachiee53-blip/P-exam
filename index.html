@@ -1337,7 +1337,7 @@ html .card-def{color:#f5f5f6}
 .home-profile-header{padding:0}
 .hp-avatar-wrap{width:52px;height:52px;border-radius:50%!important;box-shadow:0 0 0 3px var(--surface),0 0 0 4px var(--line)!important}
 .hp-name-row b{font-size:16px}
-.hp-track-badge{color:var(--cf-deep);font-weight:600}
+.hp-track-badge{color:var(--blue);font-weight:600}
 @media(max-width:980px){.topbar .ib{width:52px;height:52px;border-radius:50%}}
 
 .hero{
@@ -1380,8 +1380,8 @@ html .card-def{color:#f5f5f6}
 @media(max-width:980px){
   .bottomnav{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);gap:6px;padding:7px;border-radius:999px;justify-content:center}
   .bn{flex:0 0 42px;height:42px;padding:0;font-size:0;gap:0;border-radius:50%;background:var(--surface2);justify-content:center}
-  .bn.on{flex:0 0 auto;flex-direction:row;gap:6px;font-size:13px;padding:0 16px;border-radius:999px;background:var(--cf-deep);color:#fff;transform:none}
-  .bn.on svg{color:#fff!important}
+  .bn.on{flex:0 0 auto;flex-direction:row;gap:6px;font-size:13px;padding:0 16px;border-radius:999px;background:var(--primary);color:var(--onp);transform:none}
+  .bn.on svg{color:var(--onp)!important}
 }
 
 /* การ์ดสถิติสัปดาห์ในกอง */
@@ -1389,9 +1389,7 @@ html .card-def{color:#f5f5f6}
 /* สีความเข้ม (ใช้ร่วมกันทั้งปฏิทินและการ์ด) */
 
 .h0{background:var(--surface3)} .neo-cd.h0{background:var(--surface2)}
-.h1{background:#d6e6f5} .h2{background:#a3c7e9} .h3{background:#6aa6da;color:#fff} .h4{background:#3b82c4;color:#fff}
-[data-theme="dark"] .h1{background:#163049} [data-theme="dark"] .h2{background:#1f4a73}
-[data-theme="dark"] .h3{background:#3b82c4} [data-theme="dark"] .h4{background:#6aa6da;color:#000}
+.h1{background:color-mix(in srgb,var(--cf-deep) 22%,var(--surface))} .h2{background:color-mix(in srgb,var(--cf-deep) 45%,var(--surface))} .h3{background:color-mix(in srgb,var(--cf-deep) 72%,var(--surface));color:#fff} .h4{background:var(--cf-deep);color:#fff}
 /* ปฏิทิน */
 .neo-cal{position:fixed;inset:0;z-index:110;background:rgba(5,5,7,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
 .neo-cal.on{opacity:1;pointer-events:auto}
@@ -1572,10 +1570,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-hello h2{font-size:clamp(24px,6.4vw,30px);line-height:1.2;letter-spacing:-.03em;font-weight:700}
 .hm-card{border:0;border-radius:24px;padding:20px;box-shadow:var(--hm-soft)}
 .hm-head b{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-.hm-today{background:radial-gradient(120% 90% at 100% 0%,#3b82c4 0%,transparent 60%),linear-gradient(160deg,#1d3a5f,var(--hm-ink));
-  box-shadow:0 24px 44px -26px rgba(29,58,95,.9);border-radius:28px;padding:24px 22px 22px;gap:22px 20px}
+.hm-today{background:radial-gradient(120% 90% at 100% 0%,var(--cf-deep) 0%,transparent 60%),linear-gradient(160deg,color-mix(in srgb,var(--cf-deep) 45%,var(--hm-ink)),var(--hm-ink));
+  box-shadow:0 24px 44px -26px color-mix(in srgb,var(--cf-deep) 70%,transparent);border-radius:28px;padding:24px 22px 22px;gap:22px 20px}
 .hm-ring .bgc{stroke:rgba(255,255,255,.14)}
-.hm-ring .fgc{stroke:#9ccbf2}
+.hm-ring .fgc{stroke:var(--cf)}
 .hm-ring circle{stroke-width:7}
 .hm-today small{opacity:.7;letter-spacing:.02em}
 .hm-today h2{font-size:40px!important;letter-spacing:-.04em}
@@ -1610,6 +1608,19 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .hm-hello h2{font-size:22px}
   .main{padding-top:6px}
 }
+
+.ico{width:1em;height:1em;vertical-align:-.14em;display:inline-block;stroke-width:2.2}
+.hm-tstats .ico{color:var(--cf)}
+.pal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.pal-grid{grid-template-columns:repeat(3,1fr)}}
+.pal-card{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:18px;background:var(--surface2);border:2px solid transparent;text-align:left}
+.pal-card.on{border-color:var(--text)}
+.pal-card b{font-size:13.5px;padding:0 4px 2px}
+.pal-prev{position:relative;height:74px;border-radius:12px;display:block;overflow:hidden}
+.pal-prev i{position:absolute;bottom:10px;width:18px;height:18px;border-radius:50%}
+.pal-prev i:first-child{left:10px}.pal-prev i:last-child{left:34px}
+.rte-color-palette{gap:10px}
+.rte-dot{width:30px;height:30px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
@@ -1723,21 +1734,18 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
     
     <div class="rte-color-palette" id="rteColorPalette">
       <span style="font-size:12px;color:var(--muted);margin-right:2px">สี:</span>
-      <div class="rte-dot" data-col="#e04347" style="background:#e04347" title="แดง"></div>
-      <div class="rte-dot" data-col="#ff6b6b" style="background:#ff6b6b" title="ชมพูอมแดง"></div>
-      <div class="rte-dot" data-col="#f08c00" style="background:#f08c00" title="ส้ม"></div>
-      <div class="rte-dot" data-col="#f59f00" style="background:#f59f00" title="เหลืองมัสตาร์ด"></div>
-      <div class="rte-dot" data-col="#12a150" style="background:#12a150" title="เขียว"></div>
-      <div class="rte-dot" data-col="#20c997" style="background:#20c997" title="เขียวมิ้นต์"></div>
-      <div class="rte-dot" data-col="#0097a7" style="background:#0097a7" title="ฟ้าคราม"></div>
-      <div class="rte-dot" data-col="#2b7cf0" style="background:#2b7cf0" title="น้ำเงิน"></div>
-      <div class="rte-dot" data-col="#4dabf7" style="background:#4dabf7" title="ฟ้าอ่อน"></div>
-      <div class="rte-dot" data-col="#7a5af8" style="background:#7a5af8" title="ม่วงไวโอเล็ต"></div>
-      <div class="rte-dot" data-col="#be4bdb" style="background:#be4bdb" title="ม่วงมาเจนต้า"></div>
-      <div class="rte-dot" data-col="#e64980" style="background:#e64980" title="ชมพูเบอร์รี่"></div>
-      <div class="rte-dot" data-col="#868e96" style="background:#868e96" title="เทากลาง"></div>
-      <div class="rte-dot" data-col="#495057" style="background:#495057" title="เทาเข้ม"></div>
-      <div class="rte-dot" data-col="#845ef7" style="background:#845ef7" title="ลาเวนเดอร์"></div>
+      <div class="rte-dot" data-col="#e5484d" style="background:#e5484d" title="แดง"></div>
+      <div class="rte-dot" data-col="#f76b15" style="background:#f76b15" title="ส้ม"></div>
+      <div class="rte-dot" data-col="#c99a06" style="background:#c99a06" title="ทอง"></div>
+      <div class="rte-dot" data-col="#5d9b1c" style="background:#5d9b1c" title="เขียวมะนาว"></div>
+      <div class="rte-dot" data-col="#2f9e64" style="background:#2f9e64" title="เขียว"></div>
+      <div class="rte-dot" data-col="#0e9f9a" style="background:#0e9f9a" title="เขียวน้ำทะเล"></div>
+      <div class="rte-dot" data-col="#0b8bd6" style="background:#0b8bd6" title="ฟ้า"></div>
+      <div class="rte-dot" data-col="#3e63dd" style="background:#3e63dd" title="น้ำเงิน"></div>
+      <div class="rte-dot" data-col="#8e4ec6" style="background:#8e4ec6" title="ม่วง"></div>
+      <div class="rte-dot" data-col="#d6409f" style="background:#d6409f" title="ชมพู"></div>
+      <div class="rte-dot" data-col="#9a6235" style="background:#9a6235" title="น้ำตาล"></div>
+      <div class="rte-dot" data-col="#5f6673" style="background:#5f6673" title="เทา"></div>
       <div class="rte-dot" data-col="var(--text)" style="background:var(--text);border-color:var(--line)" title="สีข้อความหลัก"></div>
     </div>
 
@@ -1804,18 +1812,18 @@ const ICON_POOL = [
 ];
 
 const COLOR_POOL = [
-  {bg:'var(--blue-2)',fg:'var(--blue)',name:'น้ำเงิน'},
-  {bg:'var(--green-2)',fg:'var(--green)',name:'เขียว'},
-  {bg:'var(--orange-2)',fg:'var(--orange)',name:'ส้ม'},
-  {bg:'var(--red-2)',fg:'var(--red)',name:'แดง'},
-  {bg:'var(--violet-2)',fg:'var(--violet)',name:'ม่วง'},
-  {bg:'var(--cyan-2)',fg:'var(--cyan)',name:'ฟ้าคราม'},
-  {bg:'#e0f2fe',fg:'#0284c7',name:'สกายบลู'},
-  {bg:'#fce7f3',fg:'#db2777',name:'ชมพู'},
-  {bg:'#ccfbf1',fg:'#0d9488',name:'มิ้นต์'},
-  {bg:'#fef3c7',fg:'#d97706',name:'อำพัน'},
-  {bg:'#fae8ff',fg:'#a855f7',name:'บานเย็น'},
-  {bg:'#f1f5f9',fg:'#475569',name:'สเลตเทา'}
+  {bg:'color-mix(in srgb,#e5484d 16%,var(--surface))',fg:'#e5484d',name:'แดง'},
+  {bg:'color-mix(in srgb,#f76b15 16%,var(--surface))',fg:'#f76b15',name:'ส้ม'},
+  {bg:'color-mix(in srgb,#c99a06 16%,var(--surface))',fg:'#c99a06',name:'ทอง'},
+  {bg:'color-mix(in srgb,#5d9b1c 16%,var(--surface))',fg:'#5d9b1c',name:'เขียวมะนาว'},
+  {bg:'color-mix(in srgb,#2f9e64 16%,var(--surface))',fg:'#2f9e64',name:'เขียว'},
+  {bg:'color-mix(in srgb,#0e9f9a 16%,var(--surface))',fg:'#0e9f9a',name:'เขียวน้ำทะเล'},
+  {bg:'color-mix(in srgb,#0b8bd6 16%,var(--surface))',fg:'#0b8bd6',name:'ฟ้า'},
+  {bg:'color-mix(in srgb,#3e63dd 16%,var(--surface))',fg:'#3e63dd',name:'น้ำเงิน'},
+  {bg:'color-mix(in srgb,#8e4ec6 16%,var(--surface))',fg:'#8e4ec6',name:'ม่วง'},
+  {bg:'color-mix(in srgb,#d6409f 16%,var(--surface))',fg:'#d6409f',name:'ชมพู'},
+  {bg:'color-mix(in srgb,#9a6235 16%,var(--surface))',fg:'#9a6235',name:'น้ำตาล'},
+  {bg:'color-mix(in srgb,#5f6673 16%,var(--surface))',fg:'#5f6673',name:'เทา'}
 ];
 
 // ค่าเริ่มต้นของสายสอบ (ผู้ใช้แก้/เพิ่มสายได้ในตั้งค่า → เก็บไว้ใน S.tracks)
@@ -2894,7 +2902,7 @@ function calculateReadinessAndMastery(trackKey = 'admin'){
       d.statusText = d.pct >= 60 ? 'ทรงดี แต่ต้องกวาดข้อเพิ่ม' : 'ต้องฝึกข้อใหม่เพิ่ม';
     } else {
       d.confidence = 'high';
-      d.statusText = d.pct >= 60 ? '✓ แม่นยำพร้อมสอบ' : '⚠️ ยังไม่ถึงเกณฑ์ 60%';
+      d.statusText = d.pct >= 60 ? '✓ แม่นยำพร้อมสอบ' : 'ยังไม่ถึงเกณฑ์ 60%';
     }
 
     // คำนวณภาพรวมโอกาสติด
@@ -3079,7 +3087,7 @@ function renderHome(){
   $('#view').innerHTML = `<div class="hm">
   <header class="hm-hello">
     <small>${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'})}${cd && !cd.isPassed ? ` <span class="hm-cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday ? 'วันนี้วันสอบ สู้ๆ!' : `อีก ${cd.daysLeft} วันสอบ`}</span>` : ''}</small>
-    <h2>${hi} 👋</h2>
+    <h2>${hi}</h2>
   </header>
 
   <section class="hm-today" ${heroBg}>
@@ -3095,7 +3103,7 @@ function renderHome(){
       ${ses ? `<div class="hm-ses"><i data-lucide="file-clock"></i><span>ค้างอยู่: ${esc(ses.label)}</span></div>` : ''}
     </div>
     <div class="hm-tstats">
-      <div><b>🔥 ${streak()}</b><span>วันต่อเนื่อง</span></div>
+      <div><b><i data-lucide="flame" class="ico"></i> ${streak()}</b><span>วันต่อเนื่อง</span></div>
       <div><b>${t.answered ? Math.round(t.correct/t.answered*100)+'%' : '–'}</b><span>ถูกวันนี้</span></div>
       <div><b>${cd && !cd.isPassed ? cd.daysLeft : '–'}</b><span>วันถึงสอบ</span></div>
     </div>
@@ -3381,7 +3389,7 @@ function renderQuiz(){
 
         ${q.e ? `
           <div style="display:block!important;width:100%!important;box-sizing:border-box!important;margin:8px 0 4px 0!important;font-size:13.5px!important;color:var(--text2)!important;white-space:pre-wrap!important;line-height:1.65!important;border-left:3.5px solid var(--blue)!important;padding:10px 14px!important;background:var(--surface2)!important;border-radius:0 12px 12px 0!important;">
-            💡 ${highlightMatch(q.e, QF.term)}
+            <i data-lucide="lightbulb" class="ico"></i> ${highlightMatch(q.e, QF.term)}
           </div>` : ''}
 
         ${(q.eImgs && q.eImgs.length) ? `
@@ -4419,7 +4427,7 @@ const poolOf=(cats,onlyStar,diff)=>S.questions.filter(q=>(!cats.length||cats.inc
 // เลือกสายสอบ (ค่าเดียวทั้งแอป)
 function pickTrack(after){
   const opts = Object.keys(S.tracks).map(k => { const t = getTrack(k); return { val: k, label: `${t.label} · ${t.ruleDesc}` }; });
-  opts.push({ val: '__edit', label: '⚙️ แก้เกณฑ์ / เพิ่มสายใหม่…' });
+  opts.push({ val: '__edit', label: 'แก้เกณฑ์ / เพิ่มสายใหม่…' });
   openPicker({ title: 'เลือกสายสอบ', options: opts, value: curTrackKey(), onSelect: v => {
     if(v === '__edit') return setTimeout(() => openTrackEditor(curTrackKey()), 80);
     S.settings.track = v; save(); syncChrome(); after && after();
@@ -4968,7 +4976,7 @@ function paintQ(){
       <div class="fb ${picked===q.a?'ok':'no'}">
         <b>${picked===q.a?'✓ ถูกต้อง':'✗ เฉลย: '+LB[q.a]+'. '}</b>
         <span style="font-weight:500">${q.c[q.a]}</span>
-        ${q.e ? `<div style="margin-top:8px;white-space:pre-wrap;line-height:1.6;border-left:3px solid currentColor;padding-left:10px;background:rgba(0,0,0,.03);border-radius:0 8px 8px 0;padding-top:4px;padding-bottom:4px">💡 ${q.e}</div>` : ''}
+        ${q.e ? `<div style="margin-top:8px;white-space:pre-wrap;line-height:1.6;border-left:3px solid currentColor;padding-left:10px;background:rgba(0,0,0,.03);border-radius:0 8px 8px 0;padding-top:4px;padding-bottom:4px"><i data-lucide="lightbulb" class="ico"></i> ${q.e}</div>` : ''}
         ${(q.eImgs && q.eImgs.length) ? `
           <div class="q-media-box" style="margin-top:10px">
             ${q.eImgs.map((img, idx) => `<img src="${img}" class="q-media-img" style="--img-w:${ew}" onclick="openLightboxGallery(${eImgsJson}, ${idx})">`).join('')}
@@ -5437,7 +5445,7 @@ function openRoundDetail(resultId, selectedCat = null){
             </div>
             ${choiceExpPicked ? `
               <div style="font-size:12.5px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed rgba(239,68,68,0.2);line-height:1.5;text-align:left">
-                💡 <b>เหตุผล:</b> ${choiceExpPicked}
+                <i data-lucide="lightbulb" class="ico"></i> <b>เหตุผล:</b> ${choiceExpPicked}
               </div>` : ''}
             ${pickedImg ? `<img src="${pickedImg}" class="img-thumb" style="width:${cw};height:auto;max-height:140px;margin-top:10px;border-radius:10px" onclick="openLightboxGallery(['${pickedImg}'], 0)">` : ''}
           </div>
@@ -5457,7 +5465,7 @@ function openRoundDetail(resultId, selectedCat = null){
             </div>
             ${choiceExpCorrect ? `
               <div style="font-size:12.5px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px dashed rgba(18,161,80,0.2);line-height:1.5;text-align:left">
-                💡 <b>เหตุผล:</b> ${choiceExpCorrect}
+                <i data-lucide="lightbulb" class="ico"></i> <b>เหตุผล:</b> ${choiceExpCorrect}
               </div>` : ''}
             ${correctImg ? `<img src="${correctImg}" class="img-thumb" style="width:${cw};height:auto;max-height:140px;margin-top:10px;border-radius:10px" onclick="openLightboxGallery(['${correctImg}'], 0)">` : ''}
           </div>
@@ -5467,7 +5475,7 @@ function openRoundDetail(resultId, selectedCat = null){
         <!-- อธิบายเพิ่มเติม -->
         ${q.e ? `
           <div style="margin-top:12px;padding:12px 14px;background:var(--surface2);border-radius:14px;font-size:13px;color:var(--text2);line-height:1.6;text-align:left">
-            <span style="font-size:11.5px;font-weight:800;color:var(--blue);display:block;margin-bottom:2px">💡 อธิบายเพิ่มเติม</span>
+            <span style="font-size:11.5px;font-weight:800;color:var(--blue);display:block;margin-bottom:2px"><i data-lucide="lightbulb" class="ico"></i> อธิบายเพิ่มเติม</span>
             ${q.e}
           </div>` : ''}
 
@@ -5821,6 +5829,11 @@ function renderSetting(){
       <div style="flex:1"><b>โหมดมืด</b><small>ถนอมตา</small></div>
       <div class="sw ${st.dark?'on':''}" id="s_dark"><i></i></div></div>
 
+    <div class="srow"><div class="ic" style="background:var(--blue-2);color:var(--blue)"><i data-lucide="palette"></i></div>
+      <div style="flex:1"><b>ธีมสี</b><small>เลือกโทนสีของทั้งแอป</small></div>
+      <button class="c-select" id="btnPalette"><span>${(THEMES.find(x => x.id === st.palette) || THEMES[0]).name}</span><i data-lucide="chevron-down"></i></button>
+    </div>
+
     <div class="srow"><div class="ic" style="background:var(--green-2);color:var(--green)"><i data-lucide="target"></i></div>
       <div style="flex:1"><b>เป้าต่อวัน</b><small>จำนวนข้อ</small></div>
       <button class="c-select" id="btnGoal">
@@ -6017,6 +6030,7 @@ function renderSetting(){
 
   $('#d_out').onclick=()=>{ playTone('tap'); exportBackup(); renderSetting(); };
   $('#btnErrLog').onclick = () => openErrLog();
+  $('#btnPalette').onclick = () => openPalettePicker();
   $('#btnUndoList').onclick = () => openUndoList();
   
   $('#d_in').onclick=()=>{ playTone('tap'); $('#d_file').click(); };
@@ -6105,7 +6119,7 @@ function openErrLog(){
         <div style="font-size:13.5px;font-weight:600;color:var(--red);word-break:break-word;margin-top:2px">${esc(x.msg)}</div>
         ${x.where ? `<div style="font-size:12px;color:var(--muted)">${esc(x.where)}</div>` : ''}
         ${x.tap ? `<div style="font-size:12px;color:var(--text2)">แตะล่าสุด: ${esc(x.tap)}</div>` : ''}
-      </div>`).join('') : '<div class="empty" style="padding:24px"><div>ไม่มีข้อผิดพลาด 🎉</div></div>'}
+      </div>`).join('') : '<div class="empty" style="padding:24px"><div>ไม่มีข้อผิดพลาด</div></div>'}
     <div style="font-size:12px;color:var(--muted);margin-top:12px">ข้อมูลเครื่อง: ${esc(deviceInfo())}</div>`,
     `<button class="btn ghost" id="errClear"><i data-lucide="trash-2"></i>ล้าง</button><button class="btn" id="errCopy"><i data-lucide="copy"></i>คัดลอกทั้งหมด</button>`);
   $('#errClear').onclick = () => { localStorage.removeItem(ERRLOG_KEY); closeModal(); if(PAGE==='setting') renderSetting(); toast('ล้างแล้ว','ok'); };
@@ -6283,8 +6297,49 @@ function deleteCategory(c){
   };
 }
 
+
+// ธีมสีของแอป: c1 = สีอ่อน/ไฮไลต์, c2 = สีหลัก, ink = สีเข้มสุด (การ์ดวันนี้)
+const THEMES = [
+  { id: 'ocean',    name: 'Ocean',        c1: '#8cc0ec', c2: '#3b82c4', ink: '#14243a' },
+  { id: 'royal',    name: 'Royal Police', c1: '#f2c14e', c2: '#1f3a6d', ink: '#0d1a33' },
+  { id: 'indigo',   name: 'Indigo Night', c1: '#a9aaff', c2: '#5b5bd6', ink: '#1b1a3a' },
+  { id: 'emerald',  name: 'Emerald',      c1: '#7fe0b8', c2: '#0f9f6e', ink: '#0c2a21' },
+  { id: 'lagoon',   name: 'Lagoon',       c1: '#7ee3ea', c2: '#0e8f9a', ink: '#082a2e' },
+  { id: 'sakura',   name: 'Sakura',       c1: '#f9b4cf', c2: '#d64a7e', ink: '#36131f' },
+  { id: 'sunset',   name: 'Sunset',       c1: '#fdc08a', c2: '#e2600f', ink: '#331809' },
+  { id: 'lavender', name: 'Lavender',     c1: '#cdbcfd', c2: '#8257e5', ink: '#21163b' },
+  { id: 'graphite', name: 'Graphite',     c1: '#d3d9e0', c2: '#3f4752', ink: '#111418' },
+  { id: 'neo',      name: 'NEO ขาวดำ',    c1: '#e1e5ac', c2: '#111111', ink: '#000000', onp: '#e1e5ac' }
+];
+function applyPalette(){
+  const t = THEMES.find(x => x.id === S.settings.palette) || THEMES[0];
+  const dark = !!S.settings.dark, r = document.documentElement.style;
+  const accent = dark ? t.c1 : t.c2;
+  const set = (k, v) => r.setProperty(k, v);
+  set('--cf', t.c1); set('--cf-deep', t.c2); set('--hm-ink', t.ink);
+  set('--blue', accent); set('--blue-2', `color-mix(in srgb, ${accent} 15%, var(--surface))`);
+  set('--primary', dark ? t.c1 : t.c2); set('--onp', dark ? t.ink : (t.onp || '#ffffff'));
+  set('--acc', t.c1); set('--acc-glow', `color-mix(in srgb, ${t.c2} 32%, transparent)`);
+  set('--grid-line', `color-mix(in srgb, ${t.c2} ${dark ? 6 : 10}%, transparent)`);
+  const meta = document.querySelector('meta[name="theme-color"]'); if(meta) meta.content = dark ? t.ink : t.c2;
+}
+function openPalettePicker(){
+  const cur = (THEMES.find(x => x.id === S.settings.palette) || THEMES[0]).id;
+  openModal('ธีมสี', `<div class="pal-grid">${THEMES.map(t => `
+    <button class="pal-card ${t.id === cur ? 'on' : ''}" data-pal="${t.id}">
+      <span class="pal-prev" style="background:radial-gradient(120% 90% at 100% 0%,${t.c2},transparent 62%),linear-gradient(160deg,color-mix(in srgb,${t.c2} 45%,${t.ink}),${t.ink})">
+        <i style="background:${t.c1}"></i><i style="background:${t.c2};box-shadow:0 0 0 2px rgba(255,255,255,.5)"></i></span>
+      <b>${t.name}</b></button>`).join('')}</div>`, `<button class="btn ghost block" data-close>เสร็จ</button>`);
+  $$('[data-pal]').forEach(b => b.onclick = () => {
+    S.settings.palette = b.dataset.pal; save(); theme();
+    $$('[data-pal]').forEach(x => x.classList.toggle('on', x === b));
+    if(PAGE === 'setting') { const lb = $('#btnPalette span'); if(lb) lb.textContent = THEMES.find(x => x.id === b.dataset.pal).name; }
+  });
+}
+
 function theme(){
   document.documentElement.dataset.theme=S.settings.dark?'dark':'light';
+  applyPalette();
   $('#btnTheme').innerHTML=`<i data-lucide="${S.settings.dark?'sun':'moon'}"></i>`;
   icons();
 }
