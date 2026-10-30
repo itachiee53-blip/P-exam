@@ -2686,6 +2686,215 @@ invariably | อย่างสม่ำเสมอ/ทุกครั้ง | 
 presumably | สันนิษฐานว่า | Presumably, he left early. | สันนิษฐานว่าเขาออกไปก่อน
 `);
 
+U('basic', 0, 'รูปทรงและขนาด', `
+circle | วงกลม | Draw a circle. | วาดวงกลม
+square | สี่เหลี่ยมจัตุรัส | The table is square. | โต๊ะเป็นสี่เหลี่ยม
+line | เส้น | Draw a line. | ลากเส้น
+round | กลม | The ball is round. | ลูกบอลกลม
+heavy | หนัก | This bag is heavy. | กระเป๋านี้หนัก
+---
+light | เบา | The box is light. | กล่องเบา
+full | เต็ม | The bus is full. | รถเมล์เต็ม
+empty | ว่างเปล่า | The glass is empty. | แก้วว่าง
+wide | กว้าง | The road is wide. | ถนนกว้าง
+thick | หนา | The book is thick. | หนังสือหนา
+`);
+U('basic', 0, 'คำเวลาง่ายๆ', `
+now | ตอนนี้ | I am busy now. | ตอนนี้ฉันยุ่ง
+soon | เร็วๆ นี้ | See you soon. | แล้วเจอกันเร็วๆ นี้
+often | บ่อย | I often walk to work. | ฉันเดินไปทำงานบ่อย
+---
+afternoon | ตอนบ่าย | See you this afternoon. | เจอกันบ่ายนี้
+evening | ตอนเย็น | We eat dinner in the evening. | เรากินข้าวเย็นตอนเย็น
+`);
+U('daily', 1, 'ในครัว', `
+fork | ส้อม | Use a fork and spoon. | ใช้ช้อนส้อม
+glass | แก้ว | A glass of water, please. | ขอน้ำหนึ่งแก้ว
+pan | กระทะ | Heat the pan. | ตั้งกระทะให้ร้อน
+pot | หม้อ | Cook rice in a pot. | หุงข้าวในหม้อ
+stove | เตา | Turn off the stove. | ปิดเตา
+---
+sugar | น้ำตาล | No sugar, please. | ไม่ใส่น้ำตาล
+salt | เกลือ | Add a little salt. | ใส่เกลือนิดหน่อย
+oil | น้ำมัน | Fry it in oil. | ทอดในน้ำมัน
+sauce | ซอส | Fish sauce is salty. | น้ำปลาเค็ม
+ice | น้ำแข็ง | Coffee with ice, please. | ขอกาแฟใส่น้ำแข็ง
+chopsticks | ตะเกียบ | Eat noodles with chopsticks. | กินก๋วยเตี๋ยวด้วยตะเกียบ
+`);
+U('daily', 1, 'สภาพอากาศพื้นฐาน', `
+warm | อบอุ่น | It's warm today. | วันนี้อากาศอุ่น
+dry | แห้ง | The air is dry. | อากาศแห้ง
+foggy | มีหมอก | It's foggy this morning. | เช้านี้มีหมอก
+thunder | ฟ้าร้อง | I heard thunder. | ฉันได้ยินฟ้าร้อง
+lightning | ฟ้าแลบ | Lightning is dangerous. | ฟ้าผ่าอันตราย
+---
+rainbow | รุ้ง | Look at the rainbow! | ดูรุ้งสิ!
+cloud | เมฆ | There are many clouds. | มีเมฆเยอะ
+temperature | อุณหภูมิ | The temperature is 35 degrees. | อุณหภูมิ 35 องศา
+degree | องศา | It's 30 degrees today. | วันนี้ 30 องศา
+humid | ชื้น | Bangkok is hot and humid. | กรุงเทพฯ ร้อนชื้น
+breeze | ลมพัดเบาๆ | I like the sea breeze. | ฉันชอบลมทะเล
+`);
+U('police', 1, 'ข้อมูลส่วนตัว', `
+first name | ชื่อจริง | What is your first name? | ชื่อจริงของคุณคืออะไร
+last name | นามสกุล | Spell your last name. | สะกดนามสกุล
+address | ที่อยู่ | Write your address. | เขียนที่อยู่
+nationality | สัญชาติ | What is your nationality? | คุณสัญชาติอะไร
+date of birth | วันเกิด | Your date of birth, please. | ขอวันเดือนปีเกิด
+gender | เพศ | Gender: male or female. | เพศ: ชายหรือหญิง
+---
+phone number | เบอร์โทร | Give me your phone number. | ขอเบอร์โทรศัพท์
+email address | อีเมล | Write your email address. | เขียนอีเมล
+occupation | อาชีพ | What is your occupation? | คุณประกอบอาชีพอะไร
+ID number | เลขบัตรประชาชน | What is your ID number? | เลขบัตรประชาชนของคุณคืออะไร
+signature | ลายเซ็น | Your signature here. | เซ็นชื่อตรงนี้
+married status | สถานภาพสมรส | What is your marital status? | สถานภาพสมรสของคุณคืออะไร
+`);
+U('daily', 2, 'ร่างกายเพิ่มเติม', `
+neck | คอ | My neck hurts. | ฉันปวดคอ
+shoulder | ไหล่ | He hurt his shoulder. | เขาเจ็บไหล่
+knee | หัวเข่า | I fell on my knee. | ฉันล้มเข่ากระแทก
+stomach | ท้อง | I have a stomachache. | ฉันปวดท้อง
+chest | หน้าอก | He has chest pain. | เขาเจ็บหน้าอก
+skin | ผิวหนัง | Protect your skin from the sun. | ปกป้องผิวจากแดด
+---
+elbow | ข้อศอก | He hit me with his elbow. | เขาใช้ศอกกระแทกฉัน
+wrist | ข้อมือ | She wears a watch on her wrist. | เธอใส่นาฬิกาที่ข้อมือ
+ankle | ข้อเท้า | I twisted my ankle. | ข้อเท้าฉันพลิก
+toe | นิ้วเท้า | My toe hurts. | นิ้วเท้าฉันเจ็บ
+lip | ริมฝีปาก | Her lips are red. | ริมฝีปากเธอแดง
+tongue | ลิ้น | Don't burn your tongue. | ระวังลิ้นพอง
+`);
+U('daily', 2, 'ช้อปปิ้งออนไลน์', `
+order online | สั่งออนไลน์ | I order food online. | ฉันสั่งอาหารออนไลน์
+cart | ตะกร้าสินค้า | Add it to your cart. | ใส่ลงตะกร้า
+checkout | ชำระเงิน | Go to checkout. | ไปที่ชำระเงิน
+shipping | การจัดส่ง | Shipping is free. | ส่งฟรี
+tracking number | เลขพัสดุ | Here is your tracking number. | นี่คือเลขพัสดุ
+parcel | พัสดุ | My parcel arrived. | พัสดุมาถึงแล้ว
+---
+review | รีวิว | Read the reviews first. | อ่านรีวิวก่อน
+out of stock | สินค้าหมด | It's out of stock. | สินค้าหมด
+coupon | คูปอง | Use this coupon. | ใช้คูปองนี้
+cash on delivery | เก็บเงินปลายทาง | I'll pay cash on delivery. | ฉันจะจ่ายเก็บเงินปลายทาง
+return | คืนสินค้า | Can I return it? | คืนสินค้าได้ไหม
+`);
+U('talk', 2, 'คุยเรื่องอาหาร', `
+hungry for | อยากกิน | I'm hungry for pizza. | อยากกินพิซซ่า
+taste | รสชาติ/ชิม | Taste this soup. | ชิมซุปนี้
+smell | กลิ่น/ได้กลิ่น | It smells good. | กลิ่นหอม
+vegetarian | มังสวิรัติ | I'm vegetarian. | ฉันกินมังสวิรัติ
+not too spicy | ไม่เผ็ดมาก | Not too spicy, please. | ไม่เผ็ดมากนะ
+---
+take away | สั่งกลับบ้าน | Take away, please. | ใส่ถุงกลับบ้าน
+eat here | ทานที่นี่ | We'll eat here. | ทานที่นี่
+dessert | ของหวาน | What's for dessert? | ของหวานมีอะไร
+snack | ของว่าง | I want a snack. | อยากกินของว่าง
+recipe | สูตรอาหาร | Can I have the recipe? | ขอสูตรได้ไหม
+treat | เลี้ยง | Lunch is my treat. | มื้อกลางวันนี้ฉันเลี้ยง
+`);
+U('police', 2, 'สถานีตำรวจ', `
+front desk | เคาน์เตอร์หน้า | Ask at the front desk. | สอบถามที่เคาน์เตอร์หน้า
+duty officer | ร้อยเวร/เจ้าหน้าที่เวร | Talk to the duty officer. | คุยกับเจ้าหน้าที่เวร
+complaint form | แบบฟอร์มแจ้งความ | Fill out a complaint form. | กรอกแบบฟอร์มแจ้งความ
+case number | เลขคดี | Keep your case number. | เก็บเลขคดีไว้
+police report | บันทึกประจำวัน | I need a police report for insurance. | ฉันต้องใช้ใบแจ้งความยื่นประกัน
+detective | นักสืบ | A detective will call you. | นักสืบจะโทรหาคุณ
+---
+interview room | ห้องสอบสวน | Wait in the interview room. | รอในห้องสอบสวน
+lost property | ของหาย | Is this lost property? | นี่ของหายใช่ไหม
+claim | แจ้งขอรับ/อ้างสิทธิ์ | You can claim it here. | มาขอรับคืนได้ที่นี่
+proof | หลักฐานยืนยัน | Do you have proof of ownership? | มีหลักฐานความเป็นเจ้าของไหม
+on call | เวรเรียก | The doctor is on call. | หมออยู่เวร
+patrol car | รถสายตรวจ | A patrol car is coming. | รถสายตรวจกำลังมา
+`);
+U('daily', 3, 'สุขภาพและการออกกำลังกาย', `
+diet | การควบคุมอาหาร | I'm on a diet. | ฉันกำลังคุมอาหาร
+calorie | แคลอรี | This has many calories. | อันนี้แคลอรีสูง
+muscle | กล้ามเนื้อ | Exercise builds muscle. | ออกกำลังกายสร้างกล้ามเนื้อ
+stretch | ยืดเส้น | Stretch before running. | ยืดเส้นก่อนวิ่ง
+push-up | วิดพื้น | Do twenty push-ups. | วิดพื้นยี่สิบครั้ง
+sit-up | ลุกนั่ง | I can do forty sit-ups. | ฉันลุกนั่งได้สี่สิบครั้ง
+---
+jog | วิ่งเหยาะ | I jog every evening. | ฉันวิ่งเหยาะทุกเย็น
+fit | ฟิต/แข็งแรง | Police must be fit. | ตำรวจต้องแข็งแรง
+energy | พลังงาน | I have no energy today. | วันนี้ไม่มีแรง
+rest | พักผ่อน | You need rest. | คุณต้องพักผ่อน
+habit | นิสัย | Exercise is a good habit. | การออกกำลังกายเป็นนิสัยที่ดี
+`);
+U('talk', 3, 'โทรศัพท์และข้อความ', `
+voicemail | ข้อความเสียง | Leave a voicemail. | ฝากข้อความเสียงไว้
+missed call | สายที่ไม่ได้รับ | I had a missed call from you. | ฉันมีสายที่ไม่ได้รับจากคุณ
+call back | โทรกลับ | I'll call you back. | เดี๋ยวโทรกลับ
+hang up | วางสาย | Don't hang up. | อย่าวางสาย
+busy line | สายไม่ว่าง | The line is busy. | สายไม่ว่าง
+put through | ต่อสาย | I'll put you through. | จะต่อสายให้
+---
+text | ส่งข้อความ | Text me later. | ส่งข้อความมานะ
+video call | วิดีโอคอล | Let's have a video call. | วิดีโอคอลกัน
+speaker | ลำโพง | Put it on speaker. | เปิดลำโพง
+battery dying | แบตใกล้หมด | My battery is dying. | แบตฉันใกล้หมด
+bad signal | สัญญาณไม่ดี | Sorry, bad signal. | ขอโทษ สัญญาณไม่ดี
+group chat | แชทกลุ่ม | Add me to the group chat. | เพิ่มฉันเข้าแชทกลุ่ม
+`);
+U('daily', 4, 'การศึกษา', `
+university | มหาวิทยาลัย | She studies at a university. | เธอเรียนมหาวิทยาลัย
+scholarship | ทุนการศึกษา | She won a scholarship. | เธอได้ทุน
+semester | ภาคเรียน | The semester starts in June. | ภาคเรียนเริ่มมิถุนายน
+lecture | การบรรยาย | The lecture was long. | การบรรยายยาวมาก
+assignment | งานที่ได้รับมอบหมาย | Submit your assignment. | ส่งงาน
+---
+tuition | ค่าเล่าเรียน | Tuition is expensive. | ค่าเล่าเรียนแพง
+enroll | ลงทะเบียนเรียน | Enroll before Friday. | ลงทะเบียนก่อนวันศุกร์
+grade | เกรด/คะแนน | I got a good grade. | ฉันได้เกรดดี
+research | การวิจัย | He does research on crime. | เขาวิจัยเรื่องอาชญากรรม
+knowledge | ความรู้ | Knowledge is power. | ความรู้คือพลัง
+`);
+U('police', 4, 'ยาเสพติด', `
+methamphetamine | ยาบ้า (เมทแอมเฟตามีน) | Police seized methamphetamine pills. | ตำรวจยึดยาบ้า
+cannabis | กัญชา | Cannabis laws have changed. | กฎหมายกัญชาเปลี่ยนแล้ว
+overdose | ใช้ยาเกินขนาด | He died of an overdose. | เขาเสียชีวิตจากการใช้ยาเกินขนาด
+addiction | การติดยา | Addiction is a disease. | การติดยาเป็นโรค
+rehab | ศูนย์บำบัด | He went to rehab. | เขาเข้าบำบัด
+urine test | ตรวจปัสสาวะ | Take a urine test. | ตรวจปัสสาวะ
+---
+trafficker | ผู้ค้ายารายใหญ่ | The trafficker was arrested. | ผู้ค้ารายใหญ่ถูกจับ
+pills | เม็ดยา | They found 10,000 pills. | พบยาหนึ่งหมื่นเม็ด
+crystal meth | ไอซ์ | Crystal meth is very dangerous. | ไอซ์อันตรายมาก
+sniffer dog | สุนัขดมกลิ่น | The sniffer dog found drugs. | สุนัขดมกลิ่นพบยาเสพติด
+hideout | ที่ซ่อน/แหล่งกบดาน | Police raided their hideout. | ตำรวจบุกแหล่งกบดาน
+supply | จัดหา/การจัดหา | Cut off the drug supply. | ตัดการส่งยาเสพติด
+`);
+U('talk', 5, 'การให้ข้อเสนอแนะ', `
+constructive | สร้างสรรค์ | Give constructive feedback. | ให้คำติชมเชิงสร้างสรรค์
+criticism | คำวิจารณ์ | Accept criticism calmly. | รับคำวิจารณ์อย่างใจเย็น
+praise | คำชม | He deserves praise. | เขาสมควรได้คำชม
+improvement | การปรับปรุง | There is room for improvement. | ยังปรับปรุงได้อีก
+area to improve | จุดที่ควรพัฒนา | This is an area to improve. | นี่คือจุดที่ควรพัฒนา
+---
+well done | ทำได้ดี | Well done, team! | ทีมทำได้ดีมาก!
+keep it up | ทำต่อไปนะ | Great work, keep it up! | เยี่ยม ทำต่อไปนะ!
+to be honest | พูดตามตรง | To be honest, it needs work. | พูดตามตรง ยังต้องปรับอีก
+I noticed | ฉันสังเกตว่า | I noticed you were late. | ฉันสังเกตว่าคุณมาสาย
+next time | ครั้งหน้า | Next time, check it twice. | ครั้งหน้าตรวจสองรอบนะ
+overall | โดยรวม | Overall, it was good. | โดยรวมดี
+`);
+U('daily', 6, 'วิทยาศาสตร์และการวิจัย', `
+experiment | การทดลอง | They did an experiment. | พวกเขาทำการทดลอง
+evidence-based | อิงหลักฐาน | Use evidence-based methods. | ใช้วิธีที่อิงหลักฐาน
+methodology | ระเบียบวิธี | Explain your methodology. | อธิบายระเบียบวิธี
+variable | ตัวแปร | Control the variables. | ควบคุมตัวแปร
+correlation | ความสัมพันธ์เชิงสถิติ | There is a correlation. | มีความสัมพันธ์กัน
+sample | กลุ่มตัวอย่าง | The sample was small. | กลุ่มตัวอย่างน้อย
+---
+findings | ผลการศึกษา | The findings were clear. | ผลการศึกษาชัดเจน
+data set | ชุดข้อมูล | Analyze the data set. | วิเคราะห์ชุดข้อมูล
+peer review | การประเมินโดยผู้ทรงคุณวุฒิ | The study passed peer review. | งานวิจัยผ่านการประเมิน
+theory | ทฤษฎี | It's only a theory. | เป็นแค่ทฤษฎี
+statistic | สถิติ | Crime statistics are falling. | สถิติอาชญากรรมลดลง
+bias | อคติ | Avoid bias in research. | หลีกเลี่ยงอคติในการวิจัย
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
