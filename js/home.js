@@ -171,7 +171,7 @@ function syncChrome(){
   $('#pillC').textContent=S.cards.length.toLocaleString();
   const fab=$('#fab');
   if(PAGE==='quiz') setQuizFab();
-  else if(PAGE==='cards'){fab.hidden=engBusy();fab.innerHTML='<i data-lucide="plus"></i>เพิ่มคำ';fab.onclick=()=>{playTone('tap');vcAdd();};}
+  else if(PAGE==='cards') fab.hidden=true;
   else fab.hidden=true;
   icons();
 }
@@ -523,7 +523,7 @@ function renderHome(){
   $$('[data-todo]').forEach(b => b.onclick = () => {
     const k = b.dataset.todo;
     if(k === 'new') return startTodayNew();
-    if(k === 'cards') return vcStart(null);
+    if(k === 'cards'){ go('cards'); return engDue().length ? engReview() : null; }
     const ids = wrongQueue().map(q => q.id);
     if(!ids.length) return toast('ไม่มีข้อที่ต้องทวน เก่งมาก!','ok');
     startExam({ids, count:ids.length, minutes:0, mode:'practice', label:'ทวนข้อผิด'});

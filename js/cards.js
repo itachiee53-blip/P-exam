@@ -1,182 +1,21 @@
 "use strict";
-// ===== บัตรจำคำศัพท์: หมวด → ทวนทีละใบ (จำได้ / ยังไม่ได้) =====
+// ===== หน้า "ภาษาอังกฤษ" (เรียนตามเลเวล อยู่ใน english.js) =====
+// S.cards = คำที่เรียนแล้ว ใช้ทวนตามรอบวัน (บททวนอัตโนมัติ)
 const VC_GAP = [0, 1, 3, 7, 14, 30]; // วันก่อนทวนรอบถัดไป ตามระดับความจำ 0–5
-const VC_MAX = 20;                   // คำต่อรอบ
-let VC = { run: null };
-const deckOf = c => c.deck || c.cat || 'ทั่วไป';
-const vcDecks = () => [...new Set([...(S.decks || []), ...S.cards.map(deckOf)])];
-const vcCourse = d => Object.values(COURSES).find(c => c.name === d);
-const vcStyle = d => { const C = vcCourse(d); return C ? [C.ic, C.color] : VOCAB[d] ? [VOCAB[d][0], VOCAB[d][1]] : ['book-open', tone(d)[1]]; };
-const vcPct = L => L.length ? Math.round(L.reduce((a, c) => a + Math.min(c.box || 0, 5), 0) / (L.length * 5) * 100) : 0;
 const vcText = s => String(s || '').replace(/<[^>]+>/g, ' ').trim();
-// คำที่เคยทวนแล้วและถึงรอบ (ไม่นับคำใหม่)
-const vcDueCount = d => S.cards.filter(c => c.seen && (c.due || 0) <= Date.now() && (!d || deckOf(c) === d)).length;
-
-// ครั้งแรก: ล้างบัตรทดสอบเดิม แล้วใส่ชุดคำศัพท์เริ่มต้น (ครั้งต่อไปห้ามล้าง ให้เพิ่มอย่างเดียว)
+const vcDueCount = () => S.cards.filter(c => c.seen && (c.due || 0) <= Date.now()).length;
+// เปลี่ยนเป็นเรียนตามเลเวล: ลบคำชุดเริ่มต้นที่ยังไม่เคยเรียน (ครั้งเดียว)
 function ensureVocab(){
-  if(S.settings.vocabV) return;
-  S.cards = []; S.decks = Object.keys(VOCAB);
-  Object.entries(VOCAB).forEach(([deck, [, , ws]]) => ws.forEach(w => {
-    const [f, b, ex] = w.split('|'); S.cards.push({ id: uid(), f, b, ex: ex || '', deck, box: 0, due: 0 });
-  }));
-  S.settings.vocabV = VOCAB_V; save();
+  if((S.settings.vocabV || 0) >= 2) return;
+  S.cards = S.cards.filter(c => c.seen); S.decks = []; S.settings.vocabV = 2; save();
 }
-
-// คิวทวน: คำที่ถึงรอบก่อน แล้วเติมคำใหม่ ถ้าไม่มีเลยให้ทวนคำที่ยังจำได้น้อยสุด
-function vcQueue(d){
-  const L = S.cards.filter(c => !d || deckOf(c) === d), now = Date.now();
-  let q = L.filter(c => c.seen && (c.due || 0) <= now).sort((a, b) => (a.due || 0) - (b.due || 0));
-  q = q.concat(L.filter(c => !c.seen)).slice(0, VC_MAX);
-  if(!q.length) q = L.slice().sort((a, b) => (a.box || 0) - (b.box || 0)).slice(0, VC_MAX);
-  return q.map(c => c.id);
-}
-function vcStart(d){
-  const q = vcQueue(d);
-  if(!q.length) return toast('ยังไม่มีคำในหมวดนี้', 'err');
-  VC.run = { d, q, i: 0, flip: false, ok: 0, again: 0, redo: new Set() }; ENG_TAB = 'review';
-  PAGE === 'cards' ? renderCards() : go('cards');
-}
-
-// หน้า "ภาษาอังกฤษ": แท็บบทเรียน (english.js) + แท็บทบทวน (บัตรคำ)
 function renderCards(){
   ensureVocab();
-  const fab = $('#fab'); if(fab) fab.hidden = engBusy();
-  if(VC.run) return renderVcRun();
+  const fab = $('#fab'); if(fab) fab.hidden = true;
   if(LS) return renderLesson();
-  if(PT) return renderPlace();
-  if(!engState().lv) return renderOnboard();
-  ENG_TAB === 'review' ? renderVcHome() : ENG_TAB === 'stats' ? renderEngStats() : renderEngPath();
+  if(ENG_TAB === 'stats') return renderEngStats();
+  ENG_LV === null ? renderEngLevels() : renderEngPath(ENG_LV);
 }
-function renderVcHome(){
-  const ds = vcDecks(), all = vcQueue(null).length, due = vcDueCount();
-  $('#view').innerHTML = engTabs() + `
-  <div class="vc-hero">
-    <div><small>ทวนวันนี้</small><b>${all}</b><span>คำ${due ? ` · ถึงรอบ ${due}` : ''}</span></div>
-    <button class="vc-go" id="vcAll"><i data-lucide="play"></i>เริ่ม</button>
-  </div>
-  ${[['จากบทเรียน', 'graduation-cap', ds.filter(vcCourse)], ['ชุดคำศัพท์', 'layers', ds.filter(d => !vcCourse(d))]].filter(([, , L]) => L.length).map(([t, ic, L]) => `
-  <div class="sec"><i data-lucide="${ic}"></i>${t}<span class="more" style="text-decoration:none;color:var(--muted)">${L.length} หมวด</span></div>
-  <div class="vc-grid">${L.map(d => {
-    const W = S.cards.filter(c => deckOf(c) === d), pct = vcPct(W), n = vcDueCount(d), [ic2, col] = vcStyle(d);
-    return `<button class="vc-deck" data-deck="${esc(d)}" style="--c:${col}">
-      <span class="vc-ic"><i data-lucide="${ic2}"></i></span>${n ? `<em class="vc-due">${n}</em>` : ''}
-      <b>${esc(d)}</b><small>${W.length} คำ · จำได้ ${pct}%</small>
-      <span class="vc-bar"><i style="width:${pct}%"></i></span></button>`;
-  }).join('')}</div>`).join('') || '<div class="empty">ยังไม่มีคำศัพท์</div>'}`;
-  engBindTabs();
-  $('#vcAll').onclick = () => vcStart(null);
-  $$('[data-deck]').forEach(b => b.onclick = () => vcStart(b.dataset.deck));
-  icons();
-}
-
-function renderVcRun(){
-  const R = VC.run, len = R.q.length;
-  if(R.i >= len){
-    $('#view').innerHTML = `<div class="vc-done">
-      <span class="vc-done-ic"><i data-lucide="party-popper"></i></span><b>จบรอบแล้ว</b>
-      <p>จำได้ ${R.ok} · ทวนซ้ำ ${R.again}</p>
-      <div class="vc-done-acts"><button class="btn ghost lg" id="vcHome">กลับ</button><button class="btn lg" id="vcMore"><i data-lucide="play"></i>ทวนต่อ</button></div></div>`;
-    $('#vcHome').onclick = () => { VC.run = null; renderCards(); };
-    $('#vcMore').onclick = () => vcStart(R.d);
-    playTone('submit'); return icons();
-  }
-  const c = S.cards.find(x => x.id === R.q[R.i]);
-  if(!c){ R.i++; return renderVcRun(); }
-  const [, col] = vcStyle(deckOf(c));
-  $('#view').innerHTML = `
-  <div class="vc-top">
-    <button class="ib" id="vcX" title="ออก"><i data-lucide="x"></i></button>
-    <div class="vc-prog"><i style="width:${R.i / len * 100}%"></i></div><span>${R.i + 1}/${len}</span>
-    <button class="ib" id="vcList" title="รายการคำ"><i data-lucide="list"></i></button>
-  </div>
-  <div class="vc-card" id="vcCard" style="--c:${col}"><div class="vc-inner">
-    <div class="vc-face vc-front"><small>${esc(deckOf(c))}</small><h2>${c.f}</h2>
-      <button class="vc-say" id="vcSay" title="ฟังเสียง"><i data-lucide="volume-2"></i></button><p>แตะเพื่อดูคำแปล</p></div>
-    <div class="vc-face vc-back"><small>${c.f}</small><h2>${c.b}</h2>${c.ex ? `<p class="vc-ex">${esc(c.ex)}</p>` : ''}</div>
-  </div></div>
-  <div class="vc-acts" id="vcActs">
-    <button class="vc-no" id="vcNo"><i data-lucide="rotate-ccw"></i>ยังไม่ได้</button>
-    <button class="vc-yes" id="vcYes"><i data-lucide="check"></i>จำได้</button>
-  </div>`;
-  const card = $('#vcCard'), flip = () => { R.flip = !R.flip; card.classList.toggle('flip', R.flip); $('#vcActs').classList.toggle('on', R.flip); };
-  let sx = null;
-  card.onclick = flip;
-  card.ontouchstart = e => { sx = e.touches[0].clientX; };
-  card.ontouchend = e => { if(sx == null || !R.flip) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if(Math.abs(dx) > 70){ e.preventDefault(); vcGrade(c, dx > 0); } };
-  $('#vcSay').onclick = e => { e.stopPropagation(); speakWord(vcText(c.f).split('↔')[0]); };
-  $('#vcNo').onclick = () => vcGrade(c, false);
-  $('#vcYes').onclick = () => vcGrade(c, true);
-  $('#vcX').onclick = () => { VC.run = null; renderCards(); };
-  $('#vcList').onclick = () => vcList(R.d);
-  icons();
-}
-function vcGrade(c, ok){
-  const R = VC.run; if(!R || !R.flip) return;
-  c.seen = 1;
-  if(ok){ c.box = Math.min((c.box || 0) + 1, 5); c.due = Date.now() + VC_GAP[c.box] * 864e5; R.ok++; }
-  else{ c.box = 0; c.due = Date.now(); R.again++; if(!R.redo.has(c.id)){ R.redo.add(c.id); R.q.push(c.id); } }
-  save(); playTone(ok ? 'ok' : 'wrong');
-  const card = $('#vcCard'); card.classList.add(ok ? 'out-r' : 'out-l');
-  setTimeout(() => { R.i++; R.flip = false; renderVcRun(); }, 220);
-}
-
-// รายการคำในหมวด: แตะเพื่อแก้ ปุ่มถังขยะเพื่อลบ
-function vcList(d){
-  const L = S.cards.filter(c => !d || deckOf(c) === d);
-  openModal(d || 'คำศัพท์ทั้งหมด', `<div class="vc-list">${L.map(c => `
-    <div class="vc-row" data-ved="${c.id}"><div><b>${c.f}</b><small>${c.b}</small></div>
-      <span class="vc-lv">${'●'.repeat(Math.min(c.box || 0, 5))}${'○'.repeat(5 - Math.min(c.box || 0, 5))}</span>
-      <button class="ib sm" data-vdel="${c.id}"><i data-lucide="trash-2"></i></button></div>`).join('') || '<div class="empty">ไม่มีคำ</div>'}</div>`,
-    `${d ? `<button class="btn ghost" id="vcDelDeck"><i data-lucide="trash-2"></i>ลบหมวด</button>` : ''}<button class="btn" data-close>ปิด</button>`);
-  $$('[data-ved]').forEach(r => r.onclick = e => { if(e.target.closest('[data-vdel]')) return; const c = S.cards.find(x => x.id === r.dataset.ved); closeModal(); setTimeout(() => vcForm(c), 120); });
-  $$('[data-vdel]').forEach(b => b.onclick = () => { removeCards(x => x.id === b.dataset.vdel, 'ลบคำ 1 คำ'); b.closest('.vc-row').remove(); syncChrome(); });
-  if($('#vcDelDeck')) $('#vcDelDeck').onclick = async () => {
-    if(!await ask(`ลบหมวด "${d}"?`, `คำ ${L.length} คำจะถูกลบ`, 'ลบ')) return;
-    removeCards(x => deckOf(x) === d, `ลบหมวด ${d}`); S.decks = (S.decks || []).filter(x => x !== d);
-    VC.run = null; save(); syncChrome(); renderCards(); undoToast(`ลบหมวด "${d}" แล้ว`);
-  };
-}
-
-// เพิ่ม/แก้คำ (พิมพ์ชื่อหมวดใหม่ได้เลย)
-function vcForm(card){
-  const c = card || { f: '', b: '', ex: '', deck: (VC.run && VC.run.d) || vcDecks()[0] || 'ทั่วไป' };
-  openModal(card ? 'แก้คำ' : 'เพิ่มคำ', `
-    <div class="field"><label>คำศัพท์</label><input class="inp" id="vf_f" value="${esc(vcText(c.f))}" placeholder="เช่น arrest"></div>
-    <div class="field"><label>คำแปล</label><input class="inp" id="vf_b" value="${esc(vcText(c.b))}" placeholder="เช่น จับกุม"></div>
-    <div class="field"><label>ตัวอย่าง (ไม่ใส่ก็ได้)</label><input class="inp" id="vf_e" value="${esc(c.ex || '')}"></div>
-    <div class="field"><label>หมวด</label><input class="inp" id="vf_d" list="vfDecks" value="${esc(deckOf(c))}">
-      <datalist id="vfDecks">${vcDecks().map(d => `<option value="${esc(d)}">`).join('')}</datalist></div>`,
-    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="vf_ok"><i data-lucide="check"></i>บันทึก</button>`, { focus: '#vf_f' });
-  $('#vf_ok').onclick = () => {
-    const f = $('#vf_f').value.trim(), b = $('#vf_b').value.trim(), ex = $('#vf_e').value.trim();
-    const deck = ($('#vf_d').value.trim() || 'ทั่วไป').replace(/[<>"'`]/g, '');
-    if(!f || !b) return toast('ใส่คำศัพท์และคำแปล', 'err');
-    if(!(S.decks || []).includes(deck)) S.decks = [...(S.decks || []), deck];
-    if(card) Object.assign(card, sanitizeCard({ ...card, f, b, ex, deck }));
-    else{ const id = uid(); S.cards.unshift(sanitizeCard({ id, f, b, ex, deck, box: 0, due: 0 })); pushUndo('เพิ่มคำ 1 คำ', { addC: [id] }); }
-    save(); closeModal(); syncChrome(); renderCards(); toast('บันทึกแล้ว', 'ok');
-  };
-}
-// นำเข้าหลายคำ: คำ | คำแปล | หมวด
-function vcBulk(){
-  openModal('นำเข้าหลายคำ', `<div class="field"><label>บรรทัดละคำ: คำ | คำแปล | หมวด</label>
-    <textarea class="inp" id="vb" style="min-height:190px;font-size:13px" placeholder="arrest | จับกุม | งานตำรวจ"></textarea></div>`,
-    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="vbGo"><i data-lucide="download"></i>นำเข้า</button>`, { focus: '#vb' });
-  $('#vbGo').onclick = () => {
-    const added = [];
-    $('#vb').value.split('\n').forEach(ln => {
-      const [f, b, d] = ln.split('|').map(x => (x || '').trim()); if(!f || !b) return;
-      const deck = (d || 'ทั่วไป').replace(/[<>"'`]/g, ''), id = uid();
-      if(!(S.decks || []).includes(deck)) S.decks = [...(S.decks || []), deck];
-      S.cards.unshift(sanitizeCard({ id, f, b, ex: '', deck, box: 0, due: 0 })); added.push(id);
-    });
-    if(!added.length) return toast('รูปแบบไม่ถูกต้อง', 'err');
-    pushUndo(`นำเข้า ${added.length} คำ`, { addC: added });
-    save(); closeModal(); syncChrome(); renderCards(); undoToast(`นำเข้า ${added.length} คำแล้ว`);
-  };
-}
-function vcAdd(){ openPicker({ title: 'เพิ่มคำศัพท์', value: '', options: [{ val: 'one', label: 'เพิ่มทีละคำ' }, { val: 'bulk', label: 'นำเข้าหลายคำ' }],
-  onSelect: v => setTimeout(() => v === 'one' ? vcForm() : vcBulk(), 120) }); }
 
 let CFG={cats:[],count:20,minutes:30,mode:'exam',onlyStar:false,diff:''};
 const poolOf=(cats,onlyStar,diff)=>S.questions.filter(q=>(!cats.length||cats.includes(q.cat))&&(!onlyStar||q.star)&&(!diff||q.d===diff));

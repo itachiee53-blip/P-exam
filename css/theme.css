@@ -762,65 +762,19 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .pace-sum svg{width:15px;height:15px}
 .pace-sum b{color:var(--green)}
 /* ===== บัตรจำคำศัพท์ ===== */
-.vc-hero{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 22px;border-radius:26px;color:#fff;
-  background:radial-gradient(120% 120% at 100% 0%,color-mix(in srgb,#fff 18%,transparent),transparent 55%),linear-gradient(150deg,var(--cf),var(--cf-deep));box-shadow:var(--hm-soft)}
-.vc-hero small{display:block;font-size:13px;opacity:.85;font-weight:600}
-.vc-hero b{font-size:44px;line-height:1.05;letter-spacing:-.03em;margin-right:6px}
-.vc-hero span{font-size:14px;opacity:.9}
-.vc-go{display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:999px;background:#fff;color:var(--cf-deep);font:inherit;font-weight:800;font-size:16px;cursor:pointer;flex:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
-.vc-go svg{width:18px;height:18px;fill:currentColor}
-.vc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.vc-deck{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:18px 16px 16px;border:1px solid var(--line);border-radius:22px;background:var(--surface);
-  color:var(--text);font:inherit;text-align:left;cursor:pointer;box-shadow:var(--hm-soft);transition:transform .15s}
-.vc-deck:active{transform:scale(.97)}
 .vc-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;margin-bottom:8px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--surface))}
 .vc-ic svg{width:23px;height:23px}
-.vc-deck b{font-size:15.5px}
-.vc-deck small{font-size:12px;color:var(--muted)}
-.vc-due{position:absolute;top:14px;right:14px;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:var(--c);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
 .vc-bar{width:100%;height:6px;border-radius:9px;background:var(--surface2);margin-top:8px;overflow:hidden}
 .vc-bar i{display:block;height:100%;border-radius:9px;background:var(--c)}
 /* หน้าทวน */
-.vc-top{display:flex;align-items:center;gap:12px;max-width:560px;margin:0 auto 16px}
-.vc-top span{font-size:13px;font-weight:700;color:var(--muted);min-width:40px;text-align:right}
 .vc-prog{flex:1;height:8px;border-radius:9px;background:var(--surface2);overflow:hidden}
 .vc-prog i{display:block;height:100%;border-radius:9px;background:var(--cf);transition:width .3s}
-.vc-card{max-width:560px;height:min(56vh,420px);margin:0 auto;perspective:1400px;cursor:pointer;transition:transform .22s,opacity .22s}
-.vc-inner{position:relative;width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
-.vc-card.flip .vc-inner{transform:rotateY(180deg)}
-.vc-card.out-r{transform:translateX(60%) rotate(8deg);opacity:0}
-.vc-card.out-l{transform:translateX(-60%) rotate(-8deg);opacity:0}
-.vc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;border-radius:30px;text-align:center;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 24px 50px -24px color-mix(in srgb,var(--c) 70%,transparent)}
-.vc-front{color:#fff;background:radial-gradient(110% 90% at 0% 0%,color-mix(in srgb,#fff 22%,transparent),transparent 60%),linear-gradient(155deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c) 60%,color-mix(in srgb,var(--c) 88%,#000))}
-.vc-back{background:var(--surface);color:var(--text);border:2px solid color-mix(in srgb,var(--c) 30%,var(--line));transform:rotateY(180deg)}
-.vc-face small{position:absolute;top:20px;left:22px;font-size:12.5px;font-weight:700;opacity:.8}
-.vc-back small{color:var(--c);opacity:1}
-.vc-face h2{font-size:clamp(28px,8vw,44px);line-height:1.2;letter-spacing:-.02em;word-break:break-word}
-.vc-back h2{font-size:clamp(24px,6.5vw,36px)}
-.vc-front p{position:absolute;bottom:22px;font-size:13px;opacity:.8}
-.vc-ex{font-size:15px;color:var(--muted);font-style:italic;max-width:420px}
-.vc-say{position:absolute;top:14px;right:14px;width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;background:rgba(255,255,255,.2)}
-.vc-say svg{width:20px;height:20px}
-.vc-acts{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:18px auto 0;opacity:.35;pointer-events:none;transition:opacity .2s}
-.vc-acts.on{opacity:1;pointer-events:auto}
-.vc-acts button{display:flex;align-items:center;justify-content:center;gap:8px;height:58px;border:0;border-radius:20px;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
-.vc-acts svg{width:20px;height:20px}
-.vc-no{background:var(--red-2);color:var(--red)}
-.vc-yes{background:var(--green);color:#fff}
 .vc-done{max-width:420px;margin:8vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
 .vc-done-ic{display:grid;place-items:center;width:84px;height:84px;border-radius:28px;color:var(--cf-deep);background:color-mix(in srgb,var(--cf) 18%,var(--surface));margin-bottom:6px}
 .vc-done-ic svg{width:40px;height:40px}
 .vc-done b{font-size:24px}
 .vc-done p{color:var(--muted);margin-bottom:12px}
-.vc-done-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
 /* รายการคำ */
-.vc-list{display:flex;flex-direction:column}
-.vc-row{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line);cursor:pointer}
-.vc-row>div{flex:1;min-width:0}
-.vc-row b{display:block;font-size:14.5px}
-.vc-row small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vc-lv{font-size:9px;letter-spacing:2px;color:var(--green);flex:none}
 /* ===== เรียนภาษาอังกฤษ ===== */
 .eng-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:18px;background:var(--surface2);max-width:560px;margin:0 auto 16px}
 .eng-tabs button{display:flex;align-items:center;justify-content:center;gap:7px;height:42px;border:0;border-radius:14px;background:transparent;color:var(--muted);font:inherit;font-weight:700;cursor:pointer}
@@ -847,18 +801,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 @keyframes engBob{50%{transform:translateY(-4px)}}
 .eng-stars{margin-top:6px;font-size:13px;color:#eab308;letter-spacing:1px}
 .eng-stars em,.ls-stars em{font-style:normal;color:var(--line)}
-.eng-onb{max-width:520px;margin:4vh auto 0;display:flex;flex-direction:column;gap:12px}
-.eng-onb h2{font-size:24px;text-align:center}
-.eng-onb>p{text-align:center;color:var(--muted);margin-bottom:6px}
-.eng-pick{display:flex;align-items:center;gap:14px;padding:16px;border-radius:20px;border:2px solid var(--line);background:var(--surface);font:inherit;color:var(--text);text-align:left;cursor:pointer}
-.eng-pick:active{border-color:var(--c)}
-.eng-pick .vc-ic{margin:0}
-.eng-pick>span:nth-child(2),.eng-pick>b{flex:1}
-.eng-pick b{font-size:16px;display:block}
-.eng-pick small{color:var(--muted);font-size:12.5px}
-.eng-pick>svg{width:18px;height:18px;color:var(--muted)}
-.eng-lvdot{width:46px;text-align:center;color:var(--cf);font-size:10px;letter-spacing:1px}
-.eng-res{font-size:32px!important;color:var(--cf-deep)}
 /* บทเรียน */
 .ls-wrap,.ls-top,.ls-body{max-width:560px;margin-left:auto;margin-right:auto}
 .ls-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
@@ -986,14 +928,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .eng-cta::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);background-size:250% 100%;animation:engShimmer 2.6s linear infinite;pointer-events:none;mix-blend-mode:soft-light}
 @keyframes engShimmer{from{background-position:150% 0}to{background-position:-100% 0}}
 .eng-hero-bar{position:relative;display:flex;justify-content:space-between;margin-top:12px;font-size:12px;font-weight:700;opacity:.85}
-.eng-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px;margin:12px auto 6px}
-.eng-quick button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 6px;border-radius:20px;border:2px solid color-mix(in srgb,var(--q) 25%,var(--line));
-  background:color-mix(in srgb,var(--q) 8%,var(--surface));color:var(--text);font:inherit;cursor:pointer;animation:engIn .5s both;transition:transform .12s}
-.eng-quick button:nth-child(2){animation-delay:.06s}.eng-quick button:nth-child(3){animation-delay:.12s}
-.eng-quick button:active{transform:scale(.95)}
-.eng-quick button:disabled{opacity:.45}
-.eng-quick svg{width:26px;height:26px;color:var(--q);margin-bottom:2px}
-.eng-quick b{font-size:13.5px}.eng-quick small{font-size:11.5px;color:var(--muted)}
 .eng-unit{position:relative;overflow:hidden}
 .eng-uic{position:absolute;right:58px;bottom:-14px;width:76px!important;height:76px!important;opacity:.16;transform:rotate(-12deg)}
 .eng-nw{animation:engPopN .45s cubic-bezier(.3,1.5,.5,1) both;animation-delay:var(--d)}
@@ -1022,7 +956,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 @media(min-width:900px) and (orientation:landscape){
   .eng-lay{display:grid;grid-template-columns:minmax(340px,420px) 1fr;gap:28px;align-items:start}
   .eng-side{position:sticky;top:12px}
-  .eng-side .eng-tabs,.eng-side .eng-hero,.eng-side .eng-quick{max-width:none}
+  .eng-side .eng-tabs,.eng-side .eng-hero{max-width:none}
   .eng-map .eng-unit:first-child{margin-top:0}
 }
 /* ===== ภาษาอังกฤษ รอบ 2: บทสนทนา / อ่าน / ทดสอบหน่วย ===== */
@@ -1049,10 +983,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-ptr{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-size:14.5px!important}
 .ls-q{font-size:18px;font-weight:700}
 .eng-unit{flex-wrap:wrap}
-.eng-utest{flex:1 1 100%;position:relative;display:flex;align-items:center;justify-content:center;gap:7px;height:38px;margin-top:4px;border:0;border-radius:12px;
-  background:rgba(255,255,255,.2);color:#fff;font:inherit;font-weight:800;font-size:13px;cursor:pointer}
-.eng-utest svg{width:16px;height:16px}
-.eng-utest.done{background:#facc15;color:#713f12;cursor:default}
 .vc-done-ic.fail{color:var(--red);background:var(--red-2)}
 /* ===== ภาษาอังกฤษ รอบ 3: พิมพ์ตอบ / แตะคำ / สถิติ / ถ้วยรางวัล ===== */
 .eng-tabs{grid-template-columns:repeat(3,1fr)}
@@ -1100,3 +1030,52 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-newb{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:2px 0 8px}
 .ls-newb small{flex:1 1 100%;font-weight:800;color:#d97706}
 .ls-newb .eng-badge{animation:lsPop .5s .4s cubic-bezier(.3,1.6,.5,1) both;min-width:110px}
+/* ===== เรียนตามเลเวล ===== */
+.eng-tabs.two{grid-template-columns:1fr 1fr}
+.eng-tabs.two::before{width:calc(50% - 8px)}
+.eng-tabs.two[data-on="stats"]::before{transform:translateX(calc(100% + 6px))}
+.eng-lvs{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
+.eng-lv{border-radius:24px;background:var(--surface);border:2px solid color-mix(in srgb,var(--c) 30%,var(--line));box-shadow:var(--hm-soft);overflow:hidden;animation:engIn .45s both;animation-delay:var(--d)}
+.eng-lv-main{display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;border:0;background:none;font:inherit;color:var(--text);text-align:left;cursor:pointer}
+.eng-lv-main>svg{width:22px;height:22px;color:var(--c);flex:none}
+.eng-lv-n{flex:none;width:62px;height:62px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:900;line-height:1;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));box-shadow:0 5px 0 color-mix(in srgb,var(--c) 75%,#000)}
+.eng-lv-n small{font-size:11px;font-weight:800;opacity:.9}
+.eng-lv-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.eng-lv-t b{font-size:17px}
+.eng-lv-t small{font-size:12px;color:var(--muted)}
+.eng-lv-t .vc-bar{margin-top:4px}
+.eng-lv-t .vc-bar i{background:var(--c)}
+.eng-lv.lock{border-color:var(--line);opacity:.75}
+.eng-lv.lock .eng-lv-n{filter:grayscale(1);opacity:.6}
+.eng-lv.lock .eng-lv-main>svg{color:var(--muted)}
+.eng-lv.pass .eng-lv-main>svg{color:#d97706}
+.eng-lv-skip{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;height:42px;border:0;border-top:1px dashed var(--line);background:color-mix(in srgb,var(--c) 7%,var(--surface));color:var(--c);font:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.eng-lv-skip svg{width:16px;height:16px}
+.eng-lvhead{display:flex;align-items:center;gap:12px;max-width:560px;margin:0 auto 10px;padding:12px 14px;border-radius:22px;color:#fff;background:linear-gradient(120deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));box-shadow:0 14px 30px -18px var(--c)}
+.eng-lvhead .ib{background:rgba(255,255,255,.22);color:#fff;border:0}
+.eng-lvhead>div{flex:1}
+.eng-lvhead small{display:block;font-size:12px;font-weight:800;opacity:.85}
+.eng-lvhead b{font-size:20px}
+.eng-review{display:flex;align-items:center;gap:12px;width:100%;max-width:560px;margin:10px auto 0;padding:13px 15px;border-radius:18px;border:2px solid color-mix(in srgb,#8b5cf6 30%,var(--line));
+  background:color-mix(in srgb,#8b5cf6 8%,var(--surface));color:var(--text);font:inherit;text-align:left;cursor:pointer;animation:engIn .4s both}
+.eng-review>svg:first-child{width:22px;height:22px;color:#8b5cf6;animation:engSpin 3s linear infinite}
+@keyframes engSpin{to{transform:rotate(360deg)}}
+.eng-review span{flex:1}.eng-review b{display:block;font-size:14.5px}.eng-review small{color:var(--muted);font-size:12px}
+.eng-review>svg:last-child{width:17px;height:17px;color:var(--muted)}
+.eng-exam{display:flex;flex-direction:column;align-items:center;gap:4px;max-width:560px;margin:26px auto 10px;padding:22px 18px;border-radius:26px;text-align:center;color:#fff;
+  background:radial-gradient(120% 100% at 50% 0%,rgba(255,255,255,.3),transparent 60%),linear-gradient(150deg,#fbbf24,#f59e0b 55%,var(--c));box-shadow:0 18px 40px -20px #f59e0b}
+.eng-exam>svg{width:46px;height:46px;animation:engFlame 2s ease-in-out infinite}
+.eng-exam b{font-size:22px}
+.eng-exam small{font-size:13px;opacity:.9}
+.eng-exam .eng-cta{color:#b45309;margin-top:12px}
+.eng-exam.lock{background:var(--surface2);color:var(--muted);box-shadow:none}
+.eng-exam.lock>svg{animation:none;opacity:.5}
+.eng-exam.pass{background:linear-gradient(150deg,#fde68a,#f59e0b)}
+.ls-time{flex:none;min-width:58px;text-align:center;padding:6px 10px;border-radius:12px;background:var(--surface2);font-weight:800;font-size:14px;font-variant-numeric:tabular-nums}
+.ls-time.warn{background:var(--red-2);color:var(--red);animation:neoPulse 1s ease-in-out infinite}
+.eng-cert{position:relative;width:100%;margin:6px 0 10px;padding:18px;border-radius:20px;border:3px double #d97706;background:linear-gradient(160deg,#fffbeb,#fef3c7);color:#78350f;animation:lsPop .6s .2s cubic-bezier(.3,1.5,.5,1) both}
+.eng-cert small{display:block;font-size:12px;font-weight:800;letter-spacing:.2em;color:#b45309}
+.eng-cert b{display:block;font-size:22px;margin:4px 0}
+.eng-cert span{font-size:13px;font-weight:700}
+.eng-cert em{display:block;margin-top:8px;font-style:normal;font-weight:800;color:#16a34a}
