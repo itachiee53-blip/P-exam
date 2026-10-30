@@ -3,8 +3,6 @@ function renderExam(){
   const avail=poolOf(CFG.cats,CFG.onlyStar,CFG.diff).length;
   const use=Math.min(avail,CFG.count);
   const track = getTrack(curTrackKey());
-  const have = c => S.questions.filter(q => q.cat === c).length;
-  const short = Object.entries(track.quota).filter(([c, n]) => have(c) < n);
 
   $('#view').innerHTML=`
   <div class="card">
@@ -48,27 +46,9 @@ function renderExam(){
     </div>
     <button class="btn lg block green" id="start" style="margin-top:18px" ${avail?'':'disabled'}>
       <i data-lucide="play"></i>${avail?'เริ่มสอบ':'ไม่มีข้อสอบ'}</button>
-  </div>
-
-  <div class="sec"><i data-lucide="trophy" style="color:var(--orange)"></i>จำลองสนามจริงตามสาย</div>
-  <button class="card hm-full" id="btnFullSim">
-    <div class="hm-ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="trophy"></i></div>
-    <div class="hm-grow"><b>สาย${esc(track.label)}</b>
-      <small>${track.quotaTotal} ข้อ · ${track.minutes || '∞'} นาที · ${esc(track.ruleDesc)}</small>
-      ${short.length ? `<small style="color:var(--orange)">ข้อในคลังไม่พอ: ${short.map(([c,n])=>`${esc(c)} ${have(c)}/${n}`).join(', ')}</small>` : ''}</div>
-    <i data-lucide="play" class="hm-chev"></i>
-  </button>
-
-  <div class="sec"><i data-lucide="bookmark-check" style="color:var(--blue)"></i>ชุดฝึกด่วน</div>
-  <div class="grid g2">
-    ${[['ฝึกเร็ว','25 ข้อ · 30 น.',25,30,'zap','var(--blue-2)','var(--blue)'],
-       ['มาตรฐาน','50 ข้อ · 60 น.',50,60,'target','var(--green-2)','var(--green)']]
-      .map(([t,s,n,m,ic,bg,fg])=>`<button class="quick" data-preset="${n}|${m}">
-        <div class="ic" style="background:${bg};color:${fg}"><i data-lucide="${ic}"></i></div>${t}<small>${s}</small></button>`).join('')}
   </div>`;
 
   $('#btnPickExamTrack').onclick = () => pickTrack(renderExam);
-  $('#btnFullSim').onclick = () => startExam({ full: true, mode: 'exam', minutes: track.minutes, label: `สนามจริง ${track.label}` });
   $$('[data-ed]').forEach(b => b.onclick = () => { CFG.diff = b.dataset.ed; renderExam(); });
 
   function updateExamSummary(){
@@ -149,15 +129,6 @@ function renderExam(){
     startExam({...CFG,label:`${CFG.mode==='exam'?'สอบ':'ฝึก'} ${use} ข้อ`});
   };
 
-  $$('[data-preset]').forEach(b=>{
-    b.onclick=()=>{
-      playTone('tap');
-      const [n,m]=b.dataset.preset.split('|').map(Number);
-      CFG.count=n;CFG.minutes=m;CFG.mode='exam';renderExam();
-      const use=Math.min(poolOf(CFG.cats,CFG.onlyStar).length,n);
-      startExam({...CFG,label:`สอบ ${use} ข้อ`});
-    };
-  });
   icons();
 }
 

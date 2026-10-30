@@ -749,3 +749,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .inst-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .inst-head small{display:block;font-size:11.5px;color:var(--muted)}
 .inst-head b{font-size:20px;letter-spacing:-.02em}
+/* การ์ดวันนี้: ข้อความยาว (ค้างอยู่: ...) ห้ามดันปุ่มล้นขอบ */
+.hm-today>*{min-width:0}
+.hm-start{max-width:100%;box-sizing:border-box}
