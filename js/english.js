@@ -10,7 +10,7 @@ function engState(){
 }
 const engFlat = c => COURSES[c].units.flatMap((u, ui) => u.ls.map((ws, li) => ({ c, ui, li, u, ws, key: `${c}:${u.t}:${li}` })));
 const engPool = c => COURSES[c].units.flatMap(u => u.ls.flat());
-const engLvWords = () => Object.values(COURSES).flatMap(C => C.units.flatMap(u => u.ls.flat().map(w => ({ ...w, lv: u.lv }))));
+const engLvWords = () => Object.values(COURSES).filter(C => !C.gram).flatMap(C => C.units.flatMap(u => u.ls.flat().map(w => ({ ...w, lv: u.lv }))));
 const shuf = a => { a = a.slice(); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // ตัวเลือกหลอก: ไม่เอาคำเดียวกันที่มีอีกความหมาย (เช่น fine = ค่าปรับ / สบายดี)
 const engOpts = (w, pool, f) => shuf([w[f], ...shuf([...new Set(pool.filter(x => x.en.toLowerCase() !== w.en.toLowerCase() && x.th !== w.th).map(x => x[f]))]).slice(0, 3)]);
@@ -48,15 +48,17 @@ function renderEngPath(){
       <span><small>คอร์ส</small><b>${C.name}</b></span><i data-lucide="chevron-down"></i></button>
     <button class="eng-stat" id="engGoal"><span><i data-lucide="flame"></i>${engStreak()}</span><span><i data-lucide="zap"></i>${today}/${E.goal}</span></button>
     <div class="eng-goal"><i style="width:${pct}%"></i></div>
-  </div>${engMiss().length >= 3 ? `<button class="eng-mis" id="engMis"><i data-lucide="dumbbell"></i><span><b>ฝึกคำที่ผิด</b><small>${engMiss().length} คำ</small></span><i data-lucide="chevron-right"></i></button>` : ''}`;
-  C.units.forEach(u => {
+  </div>${!C.gram && engMiss().length >= 3 ? `<button class="eng-mis" id="engMis"><i data-lucide="dumbbell"></i><span><b>ฝึกคำที่ผิด</b><small>${engMiss().length} คำ</small></span><i data-lucide="chevron-right"></i></button>` : ''}`;
+  const UC = [C.color, '#0f9d76', '#8b5cf6', '#e8590c', '#d6336c', '#1098ad', '#ca8a04', '#2f6fb5'];
+  C.units.forEach((u, ui) => {
+    const uc = UC[ui % UC.length];
     const nd = u.ls.filter((_, li) => E.done[`${E.course}:${u.t}:${li}`]).length;
-    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${C.color}"><div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
+    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${uc}"><div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
       <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="trophy"></i>' : `${nd}/${u.ls.length}`}</span></div><div class="eng-nodes">`;
     u.ls.forEach(() => {
       const x = F[i], st = E.done[x.key] || 0, open = engOpen(F, i), now = i === cur;
       html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
-        <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${C.color}">
+        <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${uc}">
           <i data-lucide="${st ? 'check' : !open ? 'lock' : now ? 'play' : 'book-open'}"></i></button>
         ${st ? `<span class="eng-stars">${'★'.repeat(st)}<em>${'★'.repeat(3 - st)}</em></span>` : ''}</div>`;
       i++;
@@ -148,6 +150,14 @@ function engEx(t, w, pool){
 const engMiss = () => S.cards.filter(c => c.seen && !(c.box > 0)).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '' })).filter(w => w.en && w.th);
 function lessonStart(c, i, custom){
   const E = engState(), x = custom ? { key: null, ws: custom } : engFlat(c)[i], ws = x.ws, pool = engPool(c).concat(custom || []), items = [];
+  if(COURSES[c].gram){
+    // ไวยากรณ์: การ์ดกฎ → ข้อเติมคำ (มีเหตุผล) → เรียงประโยค 2 ข้อ
+    items.push({ t: 'rule', u: x.u });
+    shuf(ws).forEach(g => items.push({ t: 'gram', w: g, opts: shuf([g.a, ...g.w]) }));
+    shuf(ws).slice(0, 2).forEach(g => items.push(engEx('order', { en: g.a, th: '', ex: g.q.replace('___', g.a), tr: g.tr }, [])));
+    LS = { c, i, key: x.key, ws, gram: true, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
+    return renderCards();
+  }
   const types = ['word', 'blank', 'order', ...('speechSynthesis' in window ? ['listen'] : [])];
   for(let k = 0; k < ws.length; k += 2){
     const pair = ws.slice(k, k + 2);
@@ -159,22 +169,26 @@ function lessonStart(c, i, custom){
   LS = { c, i, key: x.key, ws, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
   renderCards();
 }
-const ENG_KIND = { intro: 'คำใหม่', mean: 'คำนี้แปลว่าอะไร', word: 'ภาษาอังกฤษคือคำไหน', listen: 'ฟังแล้วเลือกคำที่ได้ยิน',
-  blank: 'เติมคำในช่องว่าง', order: 'เรียงเป็นประโยค', match: 'จับคู่คำกับคำแปล' };
+const ENG_KIND = { intro: ['คำใหม่', '#0f9d76', 'sparkles'], mean: ['คำนี้แปลว่าอะไร', '#2f6fb5', 'languages'], word: ['ภาษาอังกฤษคือคำไหน', '#8b5cf6', 'type'],
+  listen: ['ฟังแล้วเลือกคำที่ได้ยิน', '#e8590c', 'headphones'], blank: ['เติมคำในช่องว่าง', '#1098ad', 'text-cursor-input'], order: ['เรียงเป็นประโยค', '#d6336c', 'list-ordered'],
+  match: ['จับคู่คำกับคำแปล', '#ca8a04', 'puzzle'], rule: ['กฎไวยากรณ์', '#4f46e5', 'book-open'], gram: ['เลือกคำที่ถูกต้อง', '#e8590c', 'spell-check'] };
+const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
   const L = LS;
   if(L.k >= L.items.length) return lessonEnd();
   const it = L.items[L.k], w = it.w, col = COURSES[L.c].color;
   const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button>`;
-  const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}">${esc(o)}</button>`).join('');
+  const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}" style="--b:${ENG_OC[k % 4]}"><em>${'ABCD'[k]}</em>${esc(o)}</button>`).join('');
   let body = '';
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
-      <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${esc(w.ex)}</p>` : ''}</div>`;
+      <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${esc(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
+  if(it.t === 'rule') body = `<div class="ls-rule"><b>${esc(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${esc(r.trim())}</span>`).join('')}</div>`;
+  if(it.t === 'gram') body = `<p class="ls-sent">${esc(w.q).replace('___', '<u>_____</u>')}</p><div class="ls-opts">${opts}</div>`;
   if(it.t === 'mean') body = `<h2 class="ls-word">${esc(w.en)} ${say}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'word') body = `<h2 class="ls-word th">${esc(w.th)}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'listen') body = `<button class="ls-big-say" data-say><i data-lucide="volume-2"></i></button><div class="ls-opts">${opts}</div>`;
   if(it.t === 'blank') body = `<p class="ls-sent">${esc(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
-  if(it.t === 'order') body = `<small class="ls-hint">ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}</small>
+  if(it.t === 'order') body = `<small class="ls-hint">${w.tr ? esc(w.tr) : `ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}`}</small>
       <div class="ls-ans">${it.pick.map(k => `<button class="ls-tile" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
       <div class="ls-tiles">${it.toks.map((s, k) => `<button class="ls-tile ${it.pick.includes(k) ? 'used' : ''}" data-tok="${k}">${esc(s)}</button>`).join('')}</div>
       ${L.st === null ? `<button class="btn lg block" id="lsCheck" ${it.pick.length ? '' : 'disabled'}>ตรวจ</button>` : ''}`;
@@ -186,11 +200,11 @@ function renderLesson(){
   $('#view').innerHTML = `<div class="ls-wrap" style="--c:${col}">
     <div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
       <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div></div>
-    <div class="ls-body"><small class="ls-kind">${ENG_KIND[it.t]}</small>${body}</div>
-    <div id="lsFb">${it.t === 'intro' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
+    <div class="ls-body"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
+    <div id="lsFb">${it.t === 'intro' || it.t === 'rule' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
   if(it.t === 'listen' || it.t === 'intro') setTimeout(() => engSay(w.en), 250);
-  const ans = it.t === 'mean' ? w && w.th : w && w.en;
+  const ans = it.t === 'mean' ? w && w.th : it.t === 'gram' ? w.a : w && w.en;
   $$('[data-o]').forEach(b => b.onclick = () => {
     if(L.st !== null) return;
     const ok = it.opts[+b.dataset.o] === ans;
@@ -221,11 +235,19 @@ function lessonFb(ok, ans, noRedo){
   if(ok){ L.ok++; L.combo++; L.maxC = Math.max(L.maxC, L.combo); }
   else{
     L.bad++; L.combo = 0;
-    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
+    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(it.t === 'gram' ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : 'คำตอบที่ถูก'}</b>
-    ${!ok && ans ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
+    ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
+  // ประโยคเต็ม + คำแปล + อ่านให้ฟัง (เติมคำ / เรียงประโยค / ไวยากรณ์)
+  const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
+  if(full){
+    $('#lsFb').insertAdjacentHTML('beforeend', `<div class="ls-full">${it.t === 'gram' && it.w.why ? `<small class="ls-why"><i data-lucide="lightbulb"></i>${esc(it.w.why)}</small>` : ''}
+      <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><div><b>${esc(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
+    $('[data-sayfull]').onclick = () => speakWord(full);
+    setTimeout(() => speakWord(full), 350);
+  }
   icons($('#lsFb'));
   if(ok){ const r = $('#lsFb').getBoundingClientRect(); engConfetti(L.combo >= 3 ? 22 : 12, r.left + 40, r.top + 20); }
   $('#lsNext').onclick = () => { L.k++; L.st = null; renderLesson(); };
@@ -241,7 +263,7 @@ function lessonEnd(){
     L.goal = before < E.goal && before + xp >= E.goal;
     // คำในบทเข้าคลัง "ทบทวน" (ระบบทวนตามรอบวัน)
     const deck = COURSES[L.c].name;
-    L.ws.forEach(w => {
+    if(!L.gram) L.ws.forEach(w => {
       E.known[w.en] = 1;
       let c = S.cards.find(x => vcText(x.f).toLowerCase() === w.en.toLowerCase());
       if(!c){ c = { id: uid(), f: w.en, b: w.th, ex: w.ex, deck, box: 0, due: 0 }; S.cards.push(c); }
