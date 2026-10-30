@@ -6367,6 +6367,7 @@ let cloudCache = null;
 
 async function openCloudHubModal(forceRefresh = false) {
   playTone('tap');
+  await ensureOwnerHash();
 
   if (cloudCache && !forceRefresh) {
     renderCloudHub(cloudCache);
@@ -6459,7 +6460,7 @@ function renderCloudHub(data) {
         (!data.items || !data.items.length 
           ? '<div style="text-align:center;padding:24px;color:var(--muted)">ยังไม่มีข้อสอบบนคลาวด์</div>' 
           : data.items.map((item, i) => {
-              const mine = item.ownerId && item.ownerId === cloudOwnerId();
+              const mine = item.ownerHash && item.ownerHash === myOwnerHash;
               const by = mine ? 'ของคุณ' : item.ownerName ? 'โดย ' + esc(item.ownerName) : 'ไฟล์เก่า (ไม่ระบุคนอัป)';
               return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--surface2);border:1px solid var(--line);padding:10px 14px;border-radius:14px">' +
                 '<div style="min-width:0">' +
@@ -6489,6 +6490,15 @@ function renderCloudHub(data) {
 }
 
 // รหัสเจ้าของไฟล์ประจำเครื่อง: ใช้ยืนยันว่าลบได้เฉพาะไฟล์ที่ตัวเองอัป
+let myOwnerHash = '';
+async function ensureOwnerHash(){
+  if(myOwnerHash) return myOwnerHash;
+  try{
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(cloudOwnerId()));
+    myOwnerHash = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }catch(e){ logErr('คำนวณรหัสเจ้าของไม่ได้: ' + e.message, 'cloud'); }
+  return myOwnerHash;
+}
 function cloudOwnerId(){
   if(!S.settings.cloudOwner){ S.settings.cloudOwner = uid() + uid() + uid(); save(); }
   return S.settings.cloudOwner;
@@ -6666,7 +6676,7 @@ window.triggerUploadPicker = function() {
 
           if (upTextInfo) upTextInfo.textContent = 'กำลังส่งส่วนที่ ' + (i + 1) + '/' + totalChunks + '...';
 
-          await fetch(GDRIVE_SCRIPT_URL, {
+          const upRes = await fetch(GDRIVE_SCRIPT_URL, {
             method: "POST",
             redirect: "follow",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -6682,6 +6692,8 @@ window.triggerUploadPicker = function() {
             })
           });
 
+          const upJson = await upRes.json().catch(() => ({}));
+          if (upJson && upJson.ok === false) throw new Error(upJson.error || 'อัปโหลดไม่สำเร็จ');
           targetPercent = Math.round(((i + 1) / totalChunks) * 100);
         }
 
@@ -6724,7 +6736,7 @@ window.triggerUploadPicker = function() {
         document.body.style.pointerEvents = '';
         document.body.style.userSelect = '';
         overlay.remove();
-        toast('การอัปโหลดขัดข้อง กรุณาลองใหม่อีกครั้ง', 'err');
+        toast(err && err.message ? err.message : 'การอัปโหลดขัดข้อง กรุณาลองใหม่อีกครั้ง', 'err');
       }
     }
   });
