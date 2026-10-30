@@ -4453,6 +4453,240 @@ limitations | ข้อจำกัด | The study has limitations. | การ�
 draw a conclusion | สรุปผล | We can draw a conclusion. | เราสามารถสรุปผลได้
 `);
 
+U('daily', 1, 'กริยาที่ใช้บ่อย 3', `
+wait for | รอ | Wait for me. | รอฉันด้วย
+think about | คิดเกี่ยวกับ | Think about it. | คิดดูก่อน
+talk to | คุยกับ | Talk to your boss. | คุยกับหัวหน้า
+listen to | ฟัง | Listen to music. | ฟังเพลง
+pay for | จ่ายค่า | I'll pay for lunch. | ฉันจ่ายค่าข้าวเที่ยง
+---
+help out | ช่วยเหลือ | Can you help out? | ช่วยหน่อยได้ไหม
+clean up | เก็บกวาด | Clean up your desk. | เก็บโต๊ะให้เรียบร้อย
+wake | ปลุก | Wake me at six. | ปลุกฉันตอนหกโมง
+hurry up | รีบหน่อย | Hurry up! | รีบหน่อย!
+sit down | นั่งลง | Please sit down. | เชิญนั่ง
+`);
+U('police', 1, 'คำบอกทิศทาง', `
+north | ทิศเหนือ | Drive north. | ขับไปทางเหนือ
+south | ทิศใต้ | The suspect went south. | ผู้ต้องสงสัยไปทางใต้
+east | ทิศตะวันออก | The sun rises in the east. | ดวงอาทิตย์ขึ้นทางตะวันออก
+west | ทิศตะวันตก | Head west on this road. | ไปทางตะวันตก
+toward | ไปทาง | He ran toward the river. | เขาวิ่งไปทางแม่น้ำ
+away from | ออกห่างจาก | Move away from the car. | ออกห่างจากรถ
+---
+corner of | หัวมุมของ | At the corner of Silom Road. | ที่หัวมุมถนนสีลม
+end of the street | สุดถนน | It's at the end of the street. | อยู่สุดถนน
+nearby | ใกล้ๆ | Is there a hospital nearby? | ใกล้ๆ มีโรงพยาบาลไหม
+far away | ไกลออกไป | It's far away. | ไกลมาก
+landmark | จุดสังเกต | Any landmark near you? | ใกล้คุณมีจุดสังเกตอะไรไหม
+`);
+U('daily', 2, 'ร้านอาหารตามสั่ง', `
+fried rice | ข้าวผัด | One fried rice, please. | ขอข้าวผัดหนึ่งจาน
+noodle soup | ก๋วยเตี๋ยวน้ำ | I'll have noodle soup. | ขอก๋วยเตี๋ยวน้ำ
+papaya salad | ส้มตำ | Papaya salad, not spicy. | ส้มตำไม่เผ็ด
+curry | แกง | Green curry is delicious. | แกงเขียวหวานอร่อย
+fried egg | ไข่ดาว | Add a fried egg. | เพิ่มไข่ดาว
+basil | กะเพรา | Pork with basil, please. | ขอกะเพราหมู
+---
+pork | หมู | I don't eat pork. | ฉันไม่กินหมู
+beef | เนื้อวัว | Beef noodles, please. | ขอก๋วยเตี๋ยวเนื้อ
+shrimp | กุ้ง | I'm allergic to shrimp. | ฉันแพ้กุ้ง
+seafood | อาหารทะเล | I love seafood. | ฉันชอบอาหารทะเล
+extra | พิเศษ | Extra rice, please. | ขอข้าวพิเศษ
+less sugar | หวานน้อย | Less sugar, please. | หวานน้อย
+`);
+U('talk', 2, 'ประโยคแสดงความกังวลและให้กำลังใจ', `
+don't worry | ไม่ต้องห่วง | Don't worry about it. | ไม่ต้องห่วง
+you can do it | คุณทำได้ | You can do it! | คุณทำได้!
+I'm worried about | ฉันกังวลเรื่อง | I'm worried about the test. | ฉันกังวลเรื่องสอบ
+it's OK | ไม่เป็นไร | It's OK. | ไม่เป็นไร
+try your best | พยายามให้เต็มที่ | Try your best. | ทำให้ดีที่สุด
+never give up | อย่ายอมแพ้ | Never give up! | อย่ายอมแพ้!
+---
+I believe in you | ฉันเชื่อในตัวคุณ | I believe in you. | ฉันเชื่อในตัวคุณ
+almost there | ใกล้แล้ว | We're almost there. | ใกล้ถึงแล้ว
+one step at a time | ทีละขั้น | Take it one step at a time. | ค่อยๆ ทำทีละขั้น
+what if | ถ้าเกิด... | What if I fail? | ถ้าเกิดสอบตกล่ะ
+calm your nerves | คลายความตื่นเต้น | Calm your nerves. | คลายความตื่นเต้นหน่อย
+you've got this | คุณทำได้แน่ | You've got this! | คุณทำได้แน่!
+`);
+U('police', 2, 'คดีลักทรัพย์และบุกรุก', `
+break in | งัดเข้า | Someone broke in last night. | มีคนงัดบ้านเมื่อคืน
+burglar | ขโมยขึ้นบ้าน | The burglar took my TV. | ขโมยเอาทีวีไป
+broken lock | กุญแจถูกงัด | The lock is broken. | กุญแจถูกงัด
+missing items | ของที่หายไป | List the missing items. | ทำรายการของที่หาย
+fingerprints | ลายนิ้วมือ | Don't touch anything. We need fingerprints. | อย่าแตะอะไร เราต้องเก็บลายนิ้วมือ
+security camera | กล้องรักษาความปลอดภัย | Check the security camera. | ตรวจกล้องรักษาความปลอดภัย
+---
+broken window | หน้าต่างแตก | They came in through a broken window. | เข้ามาทางหน้าต่างที่แตก
+estimated value | มูลค่าโดยประมาณ | What's the estimated value? | มูลค่าประมาณเท่าไหร่
+serial number | หมายเลขเครื่อง | Do you know the serial number? | รู้หมายเลขเครื่องไหม
+pawn shop | โรงรับจำนำ | Check the pawn shops. | ตรวจตามโรงรับจำนำ
+stolen goods | ของโจร | They sold stolen goods. | พวกเขาขายของโจร
+`);
+U('daily', 3, 'งานบริการและลูกค้า', `
+counter | เคาน์เตอร์ | Pay at the counter. | จ่ายที่เคาน์เตอร์
+queue up | เข้าแถว | Please queue up. | กรุณาเข้าแถว
+next please | คนต่อไป | Next, please! | คนต่อไป!
+service charge | ค่าบริการ | Is there a service charge? | มีค่าบริการไหม
+warranty | การรับประกัน | It has a one-year warranty. | รับประกันหนึ่งปี
+replacement | ของทดแทน | Can I get a replacement? | ขอเปลี่ยนของใหม่ได้ไหม
+---
+membership | สมาชิก | Do you have a membership card? | มีบัตรสมาชิกไหม
+points | แต้มสะสม | You earned 50 points. | คุณได้ 50 แต้ม
+free delivery | ส่งฟรี | Free delivery over 500 baht. | ส่งฟรีเมื่อซื้อเกิน 500 บาท
+satisfaction | ความพึงพอใจ | Customer satisfaction is high. | ความพึงพอใจลูกค้าสูง
+feedback form | แบบฟอร์มความเห็น | Fill out the feedback form. | กรอกแบบประเมิน
+loyal customer | ลูกค้าประจำ | She is a loyal customer. | เธอเป็นลูกค้าประจำ
+`);
+U('police', 3, 'การปฏิบัติต่อคนเปราะบาง', `
+elderly person | ผู้สูงอายุ | Help the elderly person cross. | ช่วยผู้สูงอายุข้ามถนน
+disability | ความพิการ | He has a disability. | เขามีความพิการ
+wheelchair | รถเข็น | She uses a wheelchair. | เธอใช้รถเข็น
+hearing impaired | บกพร่องทางการได้ยิน | He is hearing impaired. | เขาบกพร่องทางการได้ยิน
+sign language | ภาษามือ | Do you know sign language? | รู้ภาษามือไหม
+mental illness | ป่วยทางจิต | Treat mental illness with care. | ดูแลผู้ป่วยจิตเวชอย่างระมัดระวัง
+---
+homeless | คนไร้บ้าน | Help homeless people. | ช่วยเหลือคนไร้บ้าน
+runaway | เด็กหนีออกจากบ้าน | The runaway was found. | พบเด็กที่หนีออกจากบ้านแล้ว
+gentle | อ่อนโยน | Use a gentle voice. | ใช้น้ำเสียงอ่อนโยน
+caregiver | ผู้ดูแล | Call the caregiver. | โทรหาผู้ดูแล
+special needs | ความต้องการพิเศษ | The child has special needs. | เด็กมีความต้องการพิเศษ
+`);
+U('talk', 3, 'เล่าความฝันและเป้าหมาย', `
+someday | สักวันหนึ่ง | Someday I'll travel the world. | สักวันฉันจะเที่ยวรอบโลก
+achieve my dream | ทำความฝันให้สำเร็จ | I will achieve my dream. | ฉันจะทำความฝันให้สำเร็จ
+plan to | วางแผนจะ | I plan to study abroad. | ฉันวางแผนไปเรียนต่างประเทศ
+hope to | หวังว่าจะ | I hope to pass. | หวังว่าจะสอบผ่าน
+work hard | ทำงานหนัก | I work hard every day. | ฉันทำงานหนักทุกวัน
+in the future | ในอนาคต | In the future, I'll be a leader. | ในอนาคตฉันจะเป็นผู้นำ
+---
+my goal is | เป้าหมายของฉันคือ | My goal is to help people. | เป้าหมายของฉันคือช่วยคน
+step by step | ทีละขั้น | Step by step, I improve. | ฉันพัฒนาทีละขั้น
+make it happen | ทำให้เป็นจริง | I'll make it happen. | ฉันจะทำให้เป็นจริง
+dream job | งานในฝัน | Police officer is my dream job. | ตำรวจคืออาชีพในฝัน
+inspire | สร้างแรงบันดาลใจ | My father inspires me. | พ่อเป็นแรงบันดาลใจ
+determined | มุ่งมั่น | I'm determined to succeed. | ฉันมุ่งมั่นจะสำเร็จ
+`);
+U('daily', 4, 'ศัพท์กีฬาขั้นกลาง', `
+tournament | ทัวร์นาเมนต์ | They won the tournament. | พวกเขาชนะทัวร์นาเมนต์
+referee | ผู้ตัดสิน | The referee blew the whistle. | ผู้ตัดสินเป่านกหวีด
+score a goal | ยิงประตู | He scored a goal. | เขายิงประตูได้
+draw | เสมอ | The match was a draw. | การแข่งขันเสมอ
+champion | แชมป์ | She is the champion. | เธอเป็นแชมป์
+---
+stadium | สนามกีฬา | The stadium was full. | สนามเต็ม
+athlete | นักกีฬา | He is a professional athlete. | เขาเป็นนักกีฬาอาชีพ
+medal | เหรียญรางวัล | She won a gold medal. | เธอได้เหรียญทอง
+injury time | ทดเวลาบาดเจ็บ | They scored in injury time. | ยิงได้ในช่วงทดเวลา
+Muay Thai | มวยไทย | He trains Muay Thai. | เขาฝึกมวยไทย
+`);
+U('police', 4, 'การประสานงานหน่วยงาน', `
+fire department | หน่วยดับเพลิง | Call the fire department. | เรียกหน่วยดับเพลิง
+rescue team | ทีมกู้ภัย | The rescue team arrived. | ทีมกู้ภัยมาถึง
+paramedic | เจ้าหน้าที่กู้ชีพ | Paramedics treated him. | เจ้าหน้าที่กู้ชีพรักษาเขา
+coast guard | หน่วยยามฝั่ง | The coast guard found the boat. | ยามฝั่งพบเรือ
+customs officer | เจ้าหน้าที่ศุลกากร | Customs officers checked bags. | เจ้าหน้าที่ศุลกากรตรวจกระเป๋า
+immigration officer | เจ้าหน้าที่ตรวจคนเข้าเมือง | Talk to the immigration officer. | คุยกับเจ้าหน้าที่ตรวจคนเข้าเมือง
+---
+local authority | หน่วยงานท้องถิ่น | Inform the local authority. | แจ้งหน่วยงานท้องถิ่น
+army | กองทัพบก | The army helped with the flood. | ทหารช่วยน้ำท่วม
+agency | หน่วยงาน | Many agencies worked together. | หลายหน่วยงานร่วมมือกัน
+joint team | ทีมร่วม | A joint team was formed. | ตั้งทีมร่วม
+share information | แบ่งปันข้อมูล | Agencies share information. | หน่วยงานแบ่งปันข้อมูล
+hand over | ส่งต่อ (คดี/ตัว) | Hand over the suspect. | ส่งตัวผู้ต้องสงสัย
+`);
+U('talk', 4, 'การให้เหตุผล', `
+the reason is | เหตุผลคือ | The reason is simple. | เหตุผลง่ายมาก
+that's why | นั่นคือเหตุผลที่ | That's why I came. | นั่นคือเหตุผลที่ฉันมา
+due to | เนื่องจาก | The game was canceled due to rain. | เกมถูกยกเลิกเพราะฝน
+as a result | ผลก็คือ | As a result, we were late. | ผลคือเรามาสาย
+since | เนื่องจาก | Since you're here, help me. | ไหนๆ ก็มาแล้ว ช่วยหน่อย
+in order to | เพื่อที่จะ | I study in order to pass. | ฉันอ่านเพื่อให้สอบผ่าน
+---
+so that | เพื่อให้ | Speak slowly so that I understand. | พูดช้าๆ เพื่อให้ฉันเข้าใจ
+because of | เพราะ | We stayed in because of the rain. | เราอยู่ในบ้านเพราะฝน
+for this reason | ด้วยเหตุนี้ | For this reason, we said no. | ด้วยเหตุนี้เราจึงปฏิเสธ
+the main reason | เหตุผลหลัก | The main reason is cost. | เหตุผลหลักคือราคา
+it depends on | ขึ้นอยู่กับ | It depends on the weather. | ขึ้นอยู่กับสภาพอากาศ
+otherwise | มิฉะนั้น | Hurry, otherwise we'll be late. | รีบหน่อย ไม่งั้นจะสาย
+`);
+U('daily', 5, 'สุขภาพจิตขั้นสูง', `
+mindfulness | การมีสติ | Practice mindfulness. | ฝึกสติ
+therapy | การบำบัด | She goes to therapy. | เธอไปบำบัด
+self-care | การดูแลตัวเอง | Self-care is important. | การดูแลตัวเองสำคัญ
+boundaries | ขอบเขตส่วนตัว | Set healthy boundaries. | ตั้งขอบเขตที่ดี
+emotional | ทางอารมณ์ | She was very emotional. | เธออารมณ์อ่อนไหวมาก
+support group | กลุ่มช่วยเหลือ | Join a support group. | เข้าร่วมกลุ่มช่วยเหลือ
+---
+panic attack | อาการแพนิก | He had a panic attack. | เขามีอาการแพนิก
+insomnia | นอนไม่หลับ | I suffer from insomnia. | ฉันนอนไม่หลับ
+recover from | ฟื้นจาก | She recovered from trauma. | เธอฟื้นจากบาดแผลทางใจ
+seek help | ขอความช่วยเหลือ | Seek help early. | ขอความช่วยเหลือแต่เนิ่นๆ
+stigma | ตราบาป | Fight the stigma of mental illness. | ต่อสู้กับตราบาปเรื่องโรคจิตเวช
+hotline number | เบอร์สายด่วน | Call the mental health hotline 1323. | โทรสายด่วนสุขภาพจิต 1323
+`);
+U('police', 5, 'การบังคับใช้กฎหมายจราจรขั้นสูง', `
+speed camera | กล้องจับความเร็ว | A speed camera caught him. | กล้องจับความเร็วจับได้
+demerit points | ตัดแต้มใบขับขี่ | He lost demerit points. | เขาถูกตัดแต้ม
+license suspension | พักใช้ใบขับขี่ | He got a license suspension. | ถูกพักใบขับขี่
+blood alcohol | ระดับแอลกอฮอล์ในเลือด | His blood alcohol was high. | แอลกอฮอล์ในเลือดสูง
+overloaded | บรรทุกเกิน | The truck was overloaded. | รถบรรทุกเกินพิกัด
+unregistered | ไม่จดทะเบียน | It's an unregistered vehicle. | เป็นรถไม่จดทะเบียน
+---
+expired | หมดอายุ | Your license is expired. | ใบขับขี่หมดอายุ
+traffic court | ศาลจราจร | You must go to traffic court. | ต้องไปศาลจราจร
+impound | ยึดรถ | We will impound the car. | เราจะยึดรถ
+modified exhaust | ท่อแต่ง | Modified exhausts are illegal. | ท่อแต่งเสียงดังผิดกฎหมาย
+street racing | แข่งรถบนถนน | Street racing is dangerous. | แข่งรถบนถนนอันตราย
+road rage | ความโกรธบนท้องถนน | It was a road rage incident. | เป็นเหตุบันดาลโทสะบนถนน
+`);
+U('talk', 5, 'การโน้มน้าวขั้นสูง', `
+I strongly believe | ฉันเชื่ออย่างยิ่ง | I strongly believe this is right. | ฉันเชื่ออย่างยิ่งว่าถูก
+the evidence shows | หลักฐานแสดงว่า | The evidence shows it works. | หลักฐานแสดงว่าได้ผล
+consider this | ลองพิจารณาสิ่งนี้ | Consider this example. | ลองพิจารณาตัวอย่างนี้
+imagine if | ลองนึกดูว่าถ้า | Imagine if everyone helped. | ลองนึกว่าถ้าทุกคนช่วย
+the benefit is | ประโยชน์คือ | The benefit is clear. | ประโยชน์ชัดเจน
+it's in our interest | เป็นประโยชน์ของเรา | It's in our interest to act. | การลงมือเป็นประโยชน์ของเรา
+---
+I urge you | ขอเรียกร้องให้คุณ | I urge you to reconsider. | ขอให้คุณพิจารณาใหม่
+let's not forget | อย่าลืมว่า | Let's not forget the victims. | อย่าลืมผู้เสียหาย
+the fact is | ความจริงคือ | The fact is, we need help. | ความจริงคือเราต้องการความช่วยเหลือ
+without a doubt | อย่างไม่ต้องสงสัย | Without a doubt, it's worth it. | คุ้มค่าแน่นอน
+most importantly | ที่สำคัญที่สุด | Most importantly, stay safe. | ที่สำคัญที่สุด ปลอดภัยไว้
+think of the cost | คิดถึงต้นทุน | Think of the cost of doing nothing. | คิดถึงต้นทุนของการไม่ทำอะไร
+`);
+U('daily', 6, 'ศัพท์เทคโนโลยีขั้นสูง', `
+algorithm | อัลกอริทึม | The algorithm decides what we see. | อัลกอริทึมกำหนดสิ่งที่เราเห็น
+artificial intelligence | ปัญญาประดิษฐ์ | Artificial intelligence is changing work. | AI กำลังเปลี่ยนการทำงาน
+automation | ระบบอัตโนมัติ | Automation saves time. | ระบบอัตโนมัติประหยัดเวลา
+blockchain | บล็อกเชน | Blockchain records transactions. | บล็อกเชนบันทึกธุรกรรม
+facial recognition | การจดจำใบหน้า | Facial recognition found the suspect. | ระบบจดจำใบหน้าพบผู้ต้องสงสัย
+big data | ข้อมูลขนาดใหญ่ | Police use big data. | ตำรวจใช้ข้อมูลขนาดใหญ่
+---
+biometric | ชีวมิติ | Biometric data is sensitive. | ข้อมูลชีวมิติเป็นข้อมูลอ่อนไหว
+deepfake | ดีปเฟก | That video is a deepfake. | คลิปนั้นเป็นดีปเฟก
+drone | โดรน | Police used a drone. | ตำรวจใช้โดรน
+cloud storage | ที่เก็บข้อมูลบนคลาวด์ | Save it in cloud storage. | บันทึกบนคลาวด์
+digital forensics | นิติวิทยาศาสตร์ดิจิทัล | Digital forensics recovered the files. | นิติดิจิทัลกู้ไฟล์คืนได้
+cyberattack | การโจมตีทางไซเบอร์ | The bank suffered a cyberattack. | ธนาคารถูกโจมตีทางไซเบอร์
+`);
+U('police', 6, 'การปฏิรูปและธรรมาภิบาลตำรวจ', `
+oversight | การกำกับดูแล | Independent oversight is needed. | ต้องมีการกำกับดูแลอิสระ
+public trust | ความไว้วางใจของประชาชน | Build public trust. | สร้างความไว้วางใจของประชาชน
+code of conduct | จรรยาบรรณ | Follow the code of conduct. | ปฏิบัติตามจรรยาบรรณ
+disciplinary action | การลงโทษทางวินัย | He faced disciplinary action. | เขาถูกลงโทษทางวินัย
+internal affairs | หน่วยตรวจสอบภายใน | Internal affairs is investigating. | หน่วยตรวจสอบภายในกำลังสอบสวน
+use of force | การใช้กำลัง | Use of force must be justified. | การใช้กำลังต้องมีเหตุผลรองรับ
+---
+community policing | ตำรวจชุมชน | Community policing builds trust. | ตำรวจชุมชนสร้างความไว้ใจ
+performance review | การประเมินผลงาน | Annual performance review. | การประเมินผลงานประจำปี
+merit-based | ตามระบบคุณธรรม | Promotion should be merit-based. | การเลื่อนตำแหน่งควรยึดคุณธรรม
+professionalism | ความเป็นมืออาชีพ | Show professionalism. | แสดงความเป็นมืออาชีพ
+human rights | สิทธิมนุษยชน | Respect human rights. | เคารพสิทธิมนุษยชน
+rule of law | หลักนิติธรรม | Uphold the rule of law. | ธำรงหลักนิติธรรม
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
