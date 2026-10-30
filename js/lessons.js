@@ -1967,6 +1967,196 @@ The word "reluctant" means | unwilling | happy; quick; required
 What does the writer recommend? | Investing in language training | Hiring only foreigners; Ignoring tourists; Using only translators apps
 `);
 
+// ===== เพิ่มเติม (ชุดที่ 6): Lv.5–6 =====
+U('police', 5, 'ความมั่นคงและอาชญากรรมข้ามชาติ', `
+terrorism | การก่อการร้าย | Police work to prevent terrorism. | ตำรวจทำงานเพื่อป้องกันการก่อการร้าย
+border | ชายแดน | They patrol the border. | พวกเขาลาดตระเวนตามชายแดน
+smuggling | การลักลอบขนของ | Drug smuggling is a serious problem. | การลักลอบขนยาเสพติดเป็นปัญหาร้ายแรง
+money laundering | การฟอกเงิน | He was charged with money laundering. | เขาถูกตั้งข้อหาฟอกเงิน
+extradite | ส่งตัวข้ามแดน | He was extradited to Thailand. | เขาถูกส่งตัวข้ามแดนกลับไทย
+intelligence | ข่าวกรอง | They received intelligence about the plan. | พวกเขาได้รับข่าวกรองเกี่ยวกับแผน
+---
+counterfeit | ปลอมแปลง | Police seized counterfeit money. | ตำรวจยึดธนบัตรปลอม
+network | เครือข่าย | They broke up a criminal network. | พวกเขาทลายเครือข่ายอาชญากรรม
+suspect list | รายชื่อผู้ต้องสงสัย | His name is on the suspect list. | ชื่อเขาอยู่ในรายชื่อผู้ต้องสงสัย
+cooperation | ความร่วมมือ | International cooperation is essential. | ความร่วมมือระหว่างประเทศเป็นสิ่งจำเป็น
+seize | ยึด | Officers seized the drugs. | เจ้าหน้าที่ยึดยาเสพติด
+fugitive | ผู้หลบหนี | The fugitive was caught in Laos. | ผู้หลบหนีถูกจับได้ที่ลาว
+`);
+U('daily', 5, 'สุขภาพและการแพทย์', `
+symptom | อาการ | What are your symptoms? | คุณมีอาการอย่างไร
+diagnosis | การวินิจฉัย | The doctor made a diagnosis. | แพทย์วินิจฉัยโรคแล้ว
+prescription | ใบสั่งยา | You need a prescription. | คุณต้องมีใบสั่งยา
+treatment | การรักษา | The treatment worked well. | การรักษาได้ผลดี
+recover | ฟื้นตัว | He recovered quickly. | เขาฟื้นตัวเร็ว
+infection | การติดเชื้อ | The wound has an infection. | แผลติดเชื้อ
+---
+injection | การฉีดยา | The nurse gave him an injection. | พยาบาลฉีดยาให้เขา
+emergency room | ห้องฉุกเฉิน | Take him to the emergency room. | พาเขาไปห้องฉุกเฉิน
+surgery | การผ่าตัด | She needs surgery. | เธอต้องผ่าตัด
+allergic | แพ้ | I'm allergic to seafood. | ฉันแพ้อาหารทะเล
+blood pressure | ความดันโลหิต | Check your blood pressure. | วัดความดันโลหิต
+mental health | สุขภาพจิต | Mental health is important. | สุขภาพจิตสำคัญ
+`);
+U('talk', 5, 'การโน้มน้าวและนำเสนอ', `
+persuade | โน้มน้าว | I tried to persuade him. | ฉันพยายามโน้มน้าวเขา
+convince | ทำให้เชื่อ | She convinced me to try. | เธอทำให้ฉันยอมลอง
+argument | ข้อโต้แย้ง | That's a strong argument. | นั่นเป็นข้อโต้แย้งที่หนักแน่น
+evidence | หลักฐาน | Do you have evidence for that? | คุณมีหลักฐานไหม
+point out | ชี้ให้เห็น | I'd like to point out one problem. | ขอชี้ให้เห็นปัญหาหนึ่ง
+emphasize | เน้นย้ำ | I want to emphasize safety. | ฉันอยากเน้นย้ำเรื่องความปลอดภัย
+---
+in addition | นอกจากนี้ | In addition, it is cheaper. | นอกจากนี้ยังถูกกว่า
+on the other hand | ในทางกลับกัน | On the other hand, it takes time. | ในทางกลับกัน มันใช้เวลา
+to sum up | สรุปแล้ว | To sum up, we need more officers. | สรุปแล้ว เราต้องการเจ้าหน้าที่เพิ่ม
+in my view | ในมุมมองของฉัน | In my view, this plan works. | ในมุมมองของฉัน แผนนี้ใช้ได้
+advantage | ข้อดี | What are the advantages? | ข้อดีมีอะไรบ้าง
+disadvantage | ข้อเสีย | The main disadvantage is cost. | ข้อเสียหลักคือค่าใช้จ่าย
+`);
+U('daily', 5, 'Phrasal verbs ชีวิตประจำวัน 2', `
+show up | มาถึง/โผล่มา | He didn't show up. | เขาไม่มา
+calm down | ใจเย็นลง | Please calm down. | กรุณาใจเย็นๆ
+check in | เช็คอิน | We checked in at noon. | เราเช็คอินตอนเที่ยง
+break down | (รถ) เสีย | My car broke down. | รถฉันเสีย
+go through | ผ่าน (ความยาก)/ตรวจดู | She went through a hard time. | เธอผ่านช่วงเวลาที่ยากลำบาก
+take over | รับช่วงต่อ | Who will take over the case? | ใครจะรับช่วงคดีนี้ต่อ
+---
+hand in | ส่ง (งาน) | Hand in your report by Friday. | ส่งรายงานภายในวันศุกร์
+point out | ชี้ให้เห็น | He pointed out the mistake. | เขาชี้ข้อผิดพลาดให้เห็น
+come across | พบโดยบังเอิญ | I came across an old photo. | ฉันเจอรูปเก่าโดยบังเอิญ
+deal with | จัดการกับ | We must deal with this problem. | เราต้องจัดการปัญหานี้
+end up | ลงเอย | We ended up at the station. | เราลงเอยที่สถานี
+keep up with | ตามทัน | It's hard to keep up with the news. | ตามข่าวให้ทันยาก
+`);
+G(5, 'Participle clauses', 'ย่อประโยค: V-ing = ทำเอง (กริยาเกิดพร้อม/ก่อน) · V3 = ถูกกระทำ · Having V3 = ทำเสร็จก่อน', `
+___ the police, the thief ran away. | Seeing | Seen, Saw, To seeing | ขโมยเห็นเอง ใช้ V-ing | เมื่อเห็นตำรวจ ขโมยก็วิ่งหนี
+___ in 1990, the building is very old. | Built | Building, Build, Having building | อาคารถูกสร้าง ใช้ V3 | อาคารที่สร้างในปี 1990 นี้เก่ามาก
+___ finished the report, he went home. | Having | Have, Had, Being | Having + V3 = ทำเสร็จก่อน | หลังทำรายงานเสร็จ เขาก็กลับบ้าน
+The man ___ near the door is my boss. | standing | stood, stands, to stand | ขยายคำนาม (กำลังยืน) | ผู้ชายที่ยืนใกล้ประตูคือหัวหน้าฉัน
+The car ___ last night was found. | stolen | stealing, stole, steal | ขยายคำนาม (ถูกขโมย) | รถที่ถูกขโมยเมื่อคืนถูกพบแล้ว
+___ tired, she went to bed early. | Feeling | Felt, Feel, To feel | V-ing บอกเหตุผล | เพราะรู้สึกเหนื่อย เธอจึงเข้านอนเร็ว
+`);
+G(5, 'Linking words: although / despite / however', 'although + ประโยค · despite / in spite of + นาม/V-ing · however, + ประโยคใหม่', `
+___ it was raining, we went out. | Although | Despite, However, In spite | although + ประโยค | แม้ว่าฝนตก เราก็ออกไป
+___ the rain, we went out. | Despite | Although, However, Even | despite + นาม | แม้ฝนตก เราก็ออกไป
+He studied hard. ___, he failed. | However | Although, Despite, Because | however + คอมมา + ประโยคใหม่ | เขาตั้งใจเรียน อย่างไรก็ตามเขาสอบตก
+In spite of ___ tired, she kept working. | being | she was, be, been | in spite of + V-ing | ทั้งที่เหนื่อย เธอก็ทำงานต่อ
+She passed ___ she didn't study much. | even though | despite, however, in spite of | even though + ประโยค | เธอสอบผ่านทั้งที่ไม่ค่อยได้อ่าน
+___ his age, he runs very fast. | Despite | Although, However, Even though | despite + นาม | แม้อายุมาก เขาวิ่งเร็วมาก
+`);
+G(5, 'Future Perfect & Future Continuous', 'will be + V-ing = กำลังทำอยู่ ณ เวลาในอนาคต · will have + V3 = จะทำเสร็จแล้วก่อนเวลาในอนาคต', `
+This time tomorrow, I ___ on the beach. | will be lying | will lie, will have lain, am lying | กำลังทำอยู่ในอนาคต | พรุ่งนี้เวลานี้ฉันจะนอนอยู่บนชายหาด
+By 2030, he ___ for the police for ten years. | will have worked | will work, will be work, works | By + อนาคต = ทำเสร็จ/ครบแล้ว | ถึงปี 2030 เขาจะทำงานตำรวจครบสิบปี
+Don't call at 8. We ___ dinner. | will be having | will have had, have, had | กำลังทำ ณ ตอนนั้น | อย่าโทรตอนสองทุ่ม ตอนนั้นเรากำลังกินข้าว
+By the time you arrive, I ___ the report. | will have finished | will finish, finish, am finishing | By the time = เสร็จก่อน | กว่าคุณจะมา ฉันคงทำรายงานเสร็จแล้ว
+At noon, she ___ her exam. | will be taking | will have take, takes, took | กำลังทำตอนเที่ยง | ตอนเที่ยงเธอจะกำลังสอบอยู่
+Will you ___ the car tomorrow? | be using | have using, using, used | ถามแผนอย่างสุภาพ | พรุ่งนี้คุณจะใช้รถไหม
+`);
+D(5, 'แสดงความเห็นในที่ประชุม', `
+A: What do you think about the new plan? / B: ___ | Overall it's good, but I'm concerned about the cost. | I think it's a plan.; New is new.; I don't think, sorry. | A: คุณคิดอย่างไรกับแผนใหม่ / B: โดยรวมดี แต่ผมกังวลเรื่องค่าใช้จ่าย
+A: Could you explain that in more detail? / B: ___ | Sure. Let me give you an example. | Detail is small.; No, it's enough.; Explain it yourself. | A: ช่วยอธิบายละเอียดกว่านี้ได้ไหม / B: ได้ครับ ขอยกตัวอย่าง
+A: I'm afraid I don't agree. / B: ___ | That's fair. What would you suggest instead? | Don't be afraid.; Agree with me now.; You're wrong forever. | A: ผมเกรงว่าจะไม่เห็นด้วย / B: เข้าใจครับ แล้วคุณจะเสนออะไรแทน
+A: Let's move on to the next point. / B: ___ | Before we do, can I add one thing? | Point is sharp.; Move your car.; Next is next. | A: ไปประเด็นถัดไปกัน / B: ก่อนไป ขอเพิ่มอีกเรื่องได้ไหม
+A: So, do we all agree? / B: ___ | Yes, I think we've reached a decision. | We are all here.; Agree is a word.; I agree to disagree to agree. | A: สรุปเห็นด้วยกันหมดไหม / B: ครับ คิดว่าเราได้ข้อสรุปแล้ว
+`);
+R(5, 'บทความวิเคราะห์', 'Social Media and Crime', `Social media has changed the way crimes are committed and solved. Criminals use online platforms to sell illegal goods, recruit members, and deceive victims. At the same time, the police increasingly rely on public posts to identify suspects and track their movements. In several recent cases, videos shared by ordinary citizens provided the key evidence. However, investigators must verify such material carefully, since images can be edited or taken out of context.`,
+`โซเชียลมีเดียเปลี่ยนวิธีการก่อและคลี่คลายอาชญากรรม คนร้ายใช้แพลตฟอร์มออนไลน์ขายของผิดกฎหมาย ชักชวนสมาชิก และหลอกลวงเหยื่อ ในขณะเดียวกัน ตำรวจก็พึ่งพาโพสต์สาธารณะในการระบุตัวผู้ต้องสงสัยและติดตามความเคลื่อนไหวมากขึ้น ในหลายคดีล่าสุด วิดีโอที่ประชาชนทั่วไปแชร์กลายเป็นหลักฐานสำคัญ อย่างไรก็ตาม ผู้สืบสวนต้องตรวจสอบข้อมูลเหล่านี้อย่างรอบคอบ เพราะภาพอาจถูกตัดต่อหรือนำมาใช้ผิดบริบท`, `
+How do criminals use social media? | To sell illegal goods and deceive victims | To report crimes; To help police; To teach English
+What did ordinary citizens provide in some cases? | Key evidence | Money; Weapons; Lawyers
+Why must investigators verify material carefully? | Images can be edited. | Videos are too long.; Posts are expensive.; Citizens are always wrong.
+The phrase "out of context" means | without the surrounding situation | in the wrong country; too old; very clear
+`);
+U('police', 6, 'กฎหมายและสิทธิขั้นสูง', `
+due process | กระบวนการที่ชอบด้วยกฎหมาย | Everyone deserves due process. | ทุกคนควรได้รับกระบวนการที่ชอบด้วยกฎหมาย
+presumption of innocence | หลักสันนิษฐานว่าบริสุทธิ์ | The law respects the presumption of innocence. | กฎหมายเคารพหลักสันนิษฐานว่าบริสุทธิ์
+warrantless | โดยไม่มีหมาย | Warrantless searches are limited. | การค้นโดยไม่มีหมายถูกจำกัด
+admissible | (หลักฐาน) รับฟังได้ | The evidence was not admissible. | หลักฐานนั้นรับฟังไม่ได้
+statute | บทบัญญัติกฎหมาย | The statute was changed in 2019. | บทบัญญัติกฎหมายถูกแก้ในปี 2019
+liability | ความรับผิด | The company accepted liability. | บริษัทยอมรับความรับผิด
+---
+negligence | ความประมาท | He was charged with negligence. | เขาถูกตั้งข้อหาประมาท
+misconduct | การประพฤติมิชอบ | The officer was fired for misconduct. | เจ้าหน้าที่ถูกไล่ออกเพราะประพฤติมิชอบ
+accountability | ความรับผิดชอบที่ตรวจสอบได้ | The public demands accountability. | ประชาชนเรียกร้องความรับผิดชอบ
+impartial | เป็นกลาง | A judge must be impartial. | ผู้พิพากษาต้องเป็นกลาง
+infringe | ละเมิด (สิทธิ) | Don't infringe on people's rights. | อย่าละเมิดสิทธิของประชาชน
+mandate | อำนาจหน้าที่/คำสั่ง | Police have a mandate to protect. | ตำรวจมีหน้าที่ปกป้อง
+`);
+U('daily', 6, 'คำคุณศัพท์ขั้นสูง', `
+meticulous | ละเอียดถี่ถ้วน | She is meticulous in her work. | เธอทำงานละเอียดถี่ถ้วน
+resilient | ฟื้นตัวเก่ง/ไม่ย่อท้อ | He is resilient under pressure. | เขาไม่ย่อท้อแม้ถูกกดดัน
+diligent | ขยันหมั่นเพียร | A diligent student studies daily. | นักเรียนที่ขยันจะอ่านทุกวัน
+reluctant | ลังเล/ไม่เต็มใจ | He was reluctant to talk. | เขาไม่ค่อยเต็มใจพูด
+vulnerable | เปราะบาง | Children are vulnerable. | เด็กเป็นกลุ่มเปราะบาง
+crucial | สำคัญยิ่ง | Timing is crucial. | จังหวะเวลาสำคัญมาก
+---
+genuine | แท้/จริงใจ | Is this a genuine signature? | ลายเซ็นนี้ของจริงไหม
+hostile | เป็นศัตรู/ไม่เป็นมิตร | The crowd became hostile. | ฝูงชนเริ่มก้าวร้าว
+consistent | สม่ำเสมอ/สอดคล้อง | His story is not consistent. | เรื่องของเขาไม่สอดคล้องกัน
+thorough | ละเอียดทั่วถึง | We need a thorough search. | เราต้องค้นอย่างละเอียด
+reckless | สะเพร่า/ประมาทเลินเล่อ | That was reckless driving. | นั่นคือการขับขี่ที่ประมาท
+transparent | โปร่งใส | The process must be transparent. | กระบวนการต้องโปร่งใส
+`);
+U('talk', 6, 'สำนวนขั้นสูง 2', `
+a blessing in disguise | เรื่องร้ายที่กลายเป็นดี | Losing that job was a blessing in disguise. | การตกงานนั้นกลายเป็นเรื่องดี
+the tip of the iceberg | แค่ส่วนเล็กๆ ที่เห็น | This case is just the tip of the iceberg. | คดีนี้เป็นแค่ยอดภูเขาน้ำแข็ง
+get out of hand | ควบคุมไม่ได้ | The situation got out of hand. | สถานการณ์ควบคุมไม่ได้
+a wake-up call | สัญญาณเตือนให้ตื่นตัว | The accident was a wake-up call. | อุบัติเหตุเป็นสัญญาณเตือน
+go the extra mile | ทุ่มเทเกินหน้าที่ | Good officers go the extra mile. | ตำรวจที่ดีทุ่มเทเกินหน้าที่
+read between the lines | อ่านนัยแฝง | Read between the lines of his statement. | อ่านนัยแฝงในคำให้การของเขา
+---
+jump to conclusions | ด่วนสรุป | Don't jump to conclusions. | อย่าด่วนสรุป
+the benefit of the doubt | ยกประโยชน์แห่งความสงสัย | Give him the benefit of the doubt. | ยกประโยชน์แห่งความสงสัยให้เขา
+think outside the box | คิดนอกกรอบ | We need to think outside the box. | เราต้องคิดนอกกรอบ
+on the same wavelength | คิดตรงกัน | We're on the same wavelength. | เราคิดตรงกัน
+bite off more than you can chew | รับงานเกินตัว | Don't bite off more than you can chew. | อย่ารับงานเกินตัว
+keep a low profile | เก็บตัวเงียบ | The suspect is keeping a low profile. | ผู้ต้องสงสัยเก็บตัวเงียบ
+`);
+U('daily', 6, 'ศัพท์สังคมและเศรษฐกิจ', `
+inequality | ความเหลื่อมล้ำ | Inequality is a global issue. | ความเหลื่อมล้ำเป็นปัญหาระดับโลก
+urbanization | การกลายเป็นเมือง | Urbanization is changing villages. | การขยายตัวของเมืองกำลังเปลี่ยนหมู่บ้าน
+infrastructure | โครงสร้างพื้นฐาน | The city needs better infrastructure. | เมืองต้องการโครงสร้างพื้นฐานที่ดีกว่านี้
+welfare | สวัสดิการ | The government improved social welfare. | รัฐบาลปรับปรุงสวัสดิการสังคม
+migration | การย้ายถิ่น | Migration affects the labor market. | การย้ายถิ่นส่งผลต่อตลาดแรงงาน
+regulation | การกำกับดูแล | Stronger regulation is needed. | ต้องการการกำกับดูแลที่เข้มงวดขึ้น
+---
+recession | ภาวะเศรษฐกิจถดถอย | The country is in a recession. | ประเทศอยู่ในภาวะเศรษฐกิจถดถอย
+investment | การลงทุน | Foreign investment is growing. | การลงทุนจากต่างชาติกำลังเพิ่มขึ้น
+corruption | การคอร์รัปชัน | Corruption damages trust. | คอร์รัปชันทำลายความไว้วางใจ
+transparency | ความโปร่งใส | We need more transparency. | เราต้องการความโปร่งใสมากขึ้น
+priority | สิ่งสำคัญอันดับแรก | Education should be a priority. | การศึกษาควรเป็นเรื่องสำคัญอันดับแรก
+impact | ผลกระทบ | The impact was huge. | ผลกระทบใหญ่มาก
+`);
+G(6, 'Advanced modals', 'needn\'t have V3 = ทำไปแล้วโดยไม่จำเป็น · could have V3 = (ตอนนั้น) ทำได้แต่ไม่ได้ทำ · can\'t have V3 = เป็นไปไม่ได้ว่า (อดีต)', `
+You ___ brought food. We have plenty. | needn't have | mustn't have, can't have, shouldn't | ทำไปแล้วแต่ไม่จำเป็น | คุณไม่จำเป็นต้องเอาอาหารมาก็ได้ เรามีเยอะ
+He ___ been the thief. He was with me. | can't have | mustn't have, needn't have, shouldn't | เป็นไปไม่ได้ (อดีต) | เขาไม่น่าใช่ขโมย เขาอยู่กับฉัน
+You ___ called me! I would have helped. | could have | can have, must, will have | ทำได้แต่ไม่ได้ทำ | คุณน่าจะโทรหาฉัน ฉันจะได้ช่วย
+She ___ forgotten. She never forgets. | can't have | must have, should have, would | ไม่น่าเป็นไปได้ | เธอไม่น่าลืม เธอไม่เคยลืม
+They ___ left early. The lights are off. | must have | can't have, needn't have, shouldn't | มั่นใจว่าเกิดแล้ว | พวกเขาคงออกไปแล้ว ไฟปิดอยู่
+We ___ worried. Everything was fine. | needn't have | mustn't have, can't have, wouldn't | กังวลไปเปล่าๆ | เราไม่น่ากังวลเลย ทุกอย่างเรียบร้อยดี
+`);
+G(6, 'Nominalization & formal style', 'ภาษาทางการนิยมใช้คำนาม: decide → decision · investigate → investigation · ใช้ The + นาม + of', `
+The ___ of the case took two years. | investigation | investigate, investigating, investigated | ใช้คำนามหลัง the | การสืบสวนคดีนี้ใช้เวลาสองปี
+His ___ to resign surprised everyone. | decision | decide, decided, deciding | คำนามของ decide | การตัดสินใจลาออกของเขาทำให้ทุกคนแปลกใจ
+The ___ of the new law is next month. | introduction | introduce, introducing, introduced | คำนามของ introduce | การบังคับใช้กฎหมายใหม่คือเดือนหน้า
+There has been a sharp ___ in crime. | increase | increasing, increased, increases | a + คำนาม | อาชญากรรมเพิ่มขึ้นอย่างมาก
+We appreciate your ___. | cooperation | cooperate, cooperative, cooperating | หลัง your ใช้คำนาม | เราขอบคุณสำหรับความร่วมมือ
+The ___ of evidence led to his release. | absence | absent, absently, absences of | the + คำนาม + of | การไม่มีหลักฐานทำให้เขาได้รับการปล่อยตัว
+`);
+D(6, 'การเจรจาต่อรองในสถานการณ์วิกฤต', `
+A: Nobody come closer! / B: ___ | Okay, I'm staying right here. Let's just talk. | Come here now!; I'm coming closer.; You can't stop me. | A: ห้ามใครเข้ามาใกล้! / B: โอเค ผมอยู่ตรงนี้ มาคุยกันก่อน
+A: Nobody listens to me. / B: ___ | I'm listening now. Tell me what happened. | That's not true.; Talk to someone else.; I'm busy. | A: ไม่มีใครฟังผมเลย / B: ตอนนี้ผมฟังอยู่ เล่าให้ฟังหน่อยว่าเกิดอะไรขึ้น
+A: I want a car and no police. / B: ___ | I hear you. Let me see what I can do, but first, is everyone safe? | Sure, take my car.; No way, never.; Police are everywhere, ha. | A: ผมต้องการรถและไม่มีตำรวจ / B: ผมได้ยินแล้ว ขอดูว่าทำอะไรได้บ้าง แต่ก่อนอื่น ทุกคนปลอดภัยไหม
+A: Why should I trust you? / B: ___ | Because I've been honest with you, and I want this to end safely. | You shouldn't.; Trust is cheap.; Because I'm the boss. | A: ทำไมผมต้องเชื่อคุณ / B: เพราะผมพูดตรงกับคุณมาตลอด และอยากให้เรื่องนี้จบอย่างปลอดภัย
+A: If I come out, what happens to me? / B: ___ | You'll be treated fairly, and you can tell your side of the story. | You'll go to prison forever.; Nothing, go home.; I don't know, bye. | A: ถ้าผมออกไป จะเกิดอะไรขึ้น / B: คุณจะได้รับการปฏิบัติอย่างเป็นธรรม และได้เล่าเรื่องในมุมของคุณ
+`);
+R(6, 'บทความวิชาการ', 'Restorative Justice', `Traditional justice systems focus primarily on punishing offenders. Restorative justice, by contrast, aims to repair the harm caused by crime by bringing victims, offenders, and communities together. Through facilitated meetings, offenders are encouraged to acknowledge the consequences of their actions and make amends. Research suggests that this approach can reduce reoffending and increase victim satisfaction. Nevertheless, it is not suitable for every case, particularly those involving serious violence or significant power imbalances.`,
+`ระบบยุติธรรมแบบดั้งเดิมเน้นการลงโทษผู้กระทำผิดเป็นหลัก ในทางตรงข้าม ยุติธรรมเชิงสมานฉันท์มุ่งเยียวยาความเสียหายจากอาชญากรรม โดยนำผู้เสียหาย ผู้กระทำผิด และชุมชนมาพบกัน ผ่านการประชุมที่มีผู้ดำเนินการ ผู้กระทำผิดได้รับการส่งเสริมให้ยอมรับผลจากการกระทำและชดใช้ งานวิจัยชี้ว่าแนวทางนี้ลดการกระทำผิดซ้ำและเพิ่มความพึงพอใจของผู้เสียหาย อย่างไรก็ตาม ไม่เหมาะกับทุกคดี โดยเฉพาะคดีที่มีความรุนแรงร้ายแรงหรือมีความไม่เท่าเทียมทางอำนาจอย่างมาก`, `
+What do traditional justice systems mainly focus on? | Punishing offenders | Helping communities; Paying victims; Educating police
+What is the main aim of restorative justice? | To repair the harm caused by crime | To punish more strictly; To replace courts; To free all prisoners
+According to research, restorative justice can | reduce reoffending | increase crime; remove victims; end all violence
+"make amends" is closest in meaning to | make up for a wrong | make a promise; make an arrest; make money
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
