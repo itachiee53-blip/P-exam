@@ -31,9 +31,9 @@ function playTone(type='tap'){
       if(audioCtx.state === 'suspended') audioCtx.resume();
       const src = audioCtx.createBufferSource();
       src.buffer = sfxBuf[type];
-      // เฟดเข้า 4ms: ไฟล์เสียงเริ่มที่ความดังเกือบสุดทันที ลำโพงมือถือจะได้ยินเป็นเสียงคลิก
+      // เฟดเข้าสั้นๆ กันลำโพงมือถือดังคลิกตอนเริ่มเสียง
       const g = audioCtx.createGain(), t = audioCtx.currentTime;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(SFX_VOLUME, t + 0.004);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(SFX_VOLUME, t + 0.0015);
       src.connect(g).connect(audioCtx.destination);
       src.start(t);
     } else if(sfxEl[type]){
