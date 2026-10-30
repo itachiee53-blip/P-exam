@@ -2444,6 +2444,248 @@ uphold | ธำรงไว้ | Police uphold the law. | ตำรวจธำ�
 circumvent | หลบเลี่ยง | They tried to circumvent the rules. | พวกเขาพยายามหลบเลี่ยงกฎ
 `);
 
+// ===== เพิ่มเติม (ชุดที่ 8) =====
+U('daily', 1, 'ของใช้ส่วนตัว', `
+toothbrush | แปรงสีฟัน | I need a new toothbrush. | ฉันต้องการแปรงสีฟันใหม่
+soap | สบู่ | Wash your hands with soap. | ล้างมือด้วยสบู่
+towel | ผ้าเช็ดตัว | Can I have a towel? | ขอผ้าเช็ดตัวหน่อย
+shampoo | แชมพู | This shampoo smells nice. | แชมพูนี้หอม
+mirror | กระจกเงา | Look in the mirror. | ส่องกระจก
+comb | หวี | Where is my comb? | หวีของฉันอยู่ไหน
+---
+tissue | กระดาษทิชชู | Do you have a tissue? | มีทิชชูไหม
+charger | ที่ชาร์จ | I forgot my charger. | ฉันลืมที่ชาร์จ
+toothpaste | ยาสีฟัน | We need toothpaste. | เราต้องซื้อยาสีฟัน
+razor | มีดโกน | He bought a razor. | เขาซื้อมีดโกน
+keychain | พวงกุญแจ | This keychain is cute. | พวงกุญแจนี้น่ารัก
+lotion | โลชั่น | Use sun lotion at the beach. | ทากันแดดตอนไปทะเล
+`);
+U('daily', 1, 'กริยาที่ใช้บ่อย 2', `
+learn | เรียนรู้ | I want to learn English. | ฉันอยากเรียนภาษาอังกฤษ
+teach | สอน | She teaches math. | เธอสอนคณิตศาสตร์
+study | เรียน/ศึกษา | I study every night. | ฉันอ่านหนังสือทุกคืน
+try | ลอง/พยายาม | Try again. | ลองอีกครั้ง
+forget | ลืม | Don't forget your keys. | อย่าลืมกุญแจ
+carry | ถือ/แบก | Can you carry this box? | ช่วยถือกล่องนี้ได้ไหม
+---
+bring | นำมา | Bring your ID card. | นำบัตรประชาชนมา
+take | หยิบ/พาไป | Take an umbrella. | เอาร่มไปด้วย
+put | วาง | Put it on the table. | วางไว้บนโต๊ะ
+send | ส่ง | Send me a message. | ส่งข้อความมาหาฉัน
+receive | ได้รับ | I received your email. | ฉันได้รับอีเมลของคุณแล้ว
+use | ใช้ | Can I use your phone? | ขอใช้โทรศัพท์หน่อย
+`);
+U('daily', 2, 'เครื่องใช้ไฟฟ้า', `
+fridge | ตู้เย็น | Put the milk in the fridge. | ใส่นมไว้ในตู้เย็น
+fan | พัดลม | Turn on the fan. | เปิดพัดลม
+air conditioner | เครื่องปรับอากาศ | The air conditioner is broken. | แอร์เสีย
+washing machine | เครื่องซักผ้า | The washing machine is noisy. | เครื่องซักผ้าเสียงดัง
+microwave | ไมโครเวฟ | Heat it in the microwave. | อุ่นในไมโครเวฟ
+iron | เตารีด/รีดผ้า | I iron my uniform every day. | ฉันรีดเครื่องแบบทุกวัน
+---
+vacuum | ดูดฝุ่น | Vacuum the floor. | ดูดฝุ่นพื้น
+light bulb | หลอดไฟ | Change the light bulb. | เปลี่ยนหลอดไฟ
+plug | ปลั๊ก/เสียบปลั๊ก | Plug in the TV. | เสียบปลั๊กทีวี
+socket | เต้ารับไฟฟ้า | The socket is near the bed. | เต้ารับอยู่ใกล้เตียง
+remote | รีโมท | Where is the remote? | รีโมทอยู่ไหน
+kettle | กาต้มน้ำ | Boil water in the kettle. | ต้มน้ำในกาต้มน้ำ
+`);
+U('daily', 2, 'ผลไม้และผัก', `
+banana | กล้วย | Monkeys like bananas. | ลิงชอบกล้วย
+mango | มะม่วง | Mango with sticky rice is delicious. | ข้าวเหนียวมะม่วงอร่อย
+orange | ส้ม | I drink orange juice. | ฉันดื่มน้ำส้ม
+apple | แอปเปิล | An apple a day is healthy. | กินแอปเปิลวันละลูกดีต่อสุขภาพ
+watermelon | แตงโม | Watermelon is sweet. | แตงโมหวาน
+coconut | มะพร้าว | Drink fresh coconut water. | ดื่มน้ำมะพร้าวสด
+---
+carrot | แครอท | Rabbits eat carrots. | กระต่ายกินแครอท
+onion | หัวหอม | Cut the onion. | หั่นหัวหอม
+garlic | กระเทียม | Thai food uses garlic. | อาหารไทยใช้กระเทียม
+potato | มันฝรั่ง | I like fried potatoes. | ฉันชอบมันฝรั่งทอด
+tomato | มะเขือเทศ | Add some tomatoes. | ใส่มะเขือเทศหน่อย
+cabbage | กะหล่ำปลี | Cabbage is cheap. | กะหล่ำปลีราคาถูก
+`);
+U('police', 2, 'ข้อหาที่พบบ่อย', `
+trespassing | บุกรุก | No trespassing! | ห้ามบุกรุก!
+speeding | ขับรถเร็วเกินกำหนด | He was stopped for speeding. | เขาถูกเรียกเพราะขับเร็วเกินกำหนด
+littering | ทิ้งขยะ | Littering is fined. | ทิ้งขยะมีโทษปรับ
+gambling | การพนัน | Illegal gambling is a crime. | การพนันผิดกฎหมายเป็นอาชญากรรม
+fighting | การทะเลาะวิวาท | They were arrested for fighting. | พวกเขาถูกจับเพราะทะเลาะวิวาท
+shoplifting | ลักขโมยในร้าน | She was caught shoplifting. | เธอถูกจับขณะขโมยของในร้าน
+---
+drunk driving | เมาแล้วขับ | Drunk driving kills. | เมาแล้วขับคร่าชีวิต
+illegal parking | จอดรถผิดกฎหมาย | You'll get a ticket for illegal parking. | จอดผิดจะโดนใบสั่ง
+forgery | การปลอมเอกสาร | Forgery is a serious offense. | การปลอมเอกสารเป็นความผิดร้ายแรง
+noise complaint | ร้องเรียนเสียงดัง | We got a noise complaint. | มีคนร้องเรียนเรื่องเสียงดัง
+harassment | การคุกคาม | Report any harassment. | แจ้งความหากถูกคุกคาม
+possession | การครอบครอง (ของผิดกฎหมาย) | He was arrested for drug possession. | เขาถูกจับข้อหาครอบครองยาเสพติด
+`);
+U('daily', 3, 'ที่อยู่อาศัย', `
+apartment | อพาร์ตเมนต์ | I live in an apartment. | ฉันอาศัยอยู่ในอพาร์ตเมนต์
+landlord | เจ้าของที่พัก | Call the landlord. | โทรหาเจ้าของห้อง
+tenant | ผู้เช่า | The tenant pays every month. | ผู้เช่าจ่ายทุกเดือน
+lease | สัญญาเช่า | Sign the lease. | เซ็นสัญญาเช่า
+utilities | ค่าน้ำค่าไฟ | Utilities are included. | รวมค่าน้ำค่าไฟแล้ว
+electricity | ไฟฟ้า | The electricity is off. | ไฟดับ
+---
+water bill | ค่าน้ำ | I paid the water bill. | ฉันจ่ายค่าน้ำแล้ว
+maintenance | การซ่อมบำรุง | Call maintenance for repairs. | เรียกฝ่ายซ่อมบำรุง
+furniture | เฟอร์นิเจอร์ | The room has no furniture. | ห้องไม่มีเฟอร์นิเจอร์
+move in | ย้ายเข้า | We move in next week. | เราย้ายเข้าสัปดาห์หน้า
+move out | ย้ายออก | He moved out yesterday. | เขาย้ายออกเมื่อวาน
+security guard | ยามรักษาความปลอดภัย | Ask the security guard. | ถามยาม
+`);
+U('talk', 3, 'มารยาทและวัฒนธรรม', `
+polite | สุภาพ | Thai people are polite. | คนไทยสุภาพ
+rude | หยาบคาย | Don't be rude. | อย่าหยาบคาย
+respect | เคารพ | Respect the elderly. | เคารพผู้สูงอายุ
+custom | ธรรมเนียม | It's a local custom. | มันเป็นธรรมเนียมท้องถิ่น
+tradition | ประเพณี | Songkran is a Thai tradition. | สงกรานต์เป็นประเพณีไทย
+culture | วัฒนธรรม | I love Thai culture. | ฉันรักวัฒนธรรมไทย
+---
+greet | ทักทาย | We greet with a wai. | เราทักทายด้วยการไหว้
+gesture | ท่าทาง | It's a friendly gesture. | เป็นท่าทางที่เป็นมิตร
+behave | ประพฤติ | Please behave yourself. | กรุณาประพฤติตัวดีๆ
+manners | มารยาท | He has good manners. | เขามีมารยาทดี
+appropriate | เหมาะสม | Wear appropriate clothes. | แต่งกายให้เหมาะสม
+offend | ทำให้ขุ่นเคือง | I didn't mean to offend you. | ฉันไม่ได้ตั้งใจทำให้คุณขุ่นเคือง
+`);
+U('police', 3, 'การจราจรขั้นกลาง', `
+intersection | ทางแยก | Slow down at the intersection. | ชะลอที่ทางแยก
+lane | ช่องทาง | Stay in your lane. | อยู่ในช่องทางของคุณ
+overtake | แซง | Don't overtake on a bend. | อย่าแซงทางโค้ง
+traffic jam | รถติด | I'm stuck in a traffic jam. | ฉันติดอยู่ในรถติด
+roadblock | การตั้งด่านปิดถนน | Police set up a roadblock. | ตำรวจตั้งด่านปิดถนน
+detour | ทางเบี่ยง | Take the detour. | ใช้ทางเบี่ยง
+---
+horn | แตร | Don't use your horn here. | ห้ามบีบแตรที่นี่
+red light | ไฟแดง | He ran a red light. | เขาฝ่าไฟแดง
+U-turn | กลับรถ | No U-turn here. | ห้ามกลับรถที่นี่
+motorway | ทางด่วน/มอเตอร์เวย์ | Motorbikes can't use the motorway. | มอเตอร์ไซค์ขึ้นมอเตอร์เวย์ไม่ได้
+toll | ค่าผ่านทาง | Pay the toll here. | จ่ายค่าผ่านทางที่นี่
+pedestrian bridge | สะพานลอย | Use the pedestrian bridge. | ใช้สะพานลอย
+`);
+U('daily', 4, 'บุคลิกภาพ', `
+ambitious | มีความทะเยอทะยาน | She is very ambitious. | เธอมีความทะเยอทะยานมาก
+generous | ใจกว้าง | He is generous to everyone. | เขาใจกว้างกับทุกคน
+stubborn | ดื้อ | My brother is stubborn. | พี่ชายฉันดื้อ
+shy | ขี้อาย | She is shy with strangers. | เธอขี้อายกับคนแปลกหน้า
+outgoing | ชอบเข้าสังคม | He is outgoing and friendly. | เขาชอบเข้าสังคมและเป็นมิตร
+selfish | เห็นแก่ตัว | Don't be selfish. | อย่าเห็นแก่ตัว
+---
+humble | ถ่อมตัว | Great leaders are humble. | ผู้นำที่ยิ่งใหญ่ถ่อมตัว
+mature | เป็นผู้ใหญ่ | He is mature for his age. | เขาเป็นผู้ใหญ่เกินวัย
+lazy | ขี้เกียจ | Don't be lazy. | อย่าขี้เกียจ
+cheerful | ร่าเริง | She is always cheerful. | เธอร่าเริงเสมอ
+curious | อยากรู้อยากเห็น | Children are curious. | เด็กๆ อยากรู้อยากเห็น
+sensitive | อ่อนไหว | He is very sensitive. | เขาอ่อนไหวมาก
+`);
+U('police', 4, 'การสื่อสารทางวิทยุ', `
+copy that | รับทราบ | Copy that, over. | รับทราบ เปลี่ยน
+over | เปลี่ยน (จบประโยค) | Unit 5 here, over. | หน่วย 5 พูด เปลี่ยน
+standby | สแตนด์บาย/รอ | Standby for orders. | รอคำสั่ง
+en route | กำลังเดินทางไป | Unit 3 en route. | หน่วย 3 กำลังเดินทางไป
+on scene | ถึงที่เกิดเหตุแล้ว | We are on scene. | เราถึงที่เกิดเหตุแล้ว
+dispatch | ศูนย์สั่งการ | Dispatch, we need an ambulance. | ศูนย์ เราต้องการรถพยาบาล
+---
+requesting backup | ขอกำลังเสริม | Requesting backup at the market. | ขอกำลังเสริมที่ตลาด
+suspect fleeing | ผู้ต้องสงสัยกำลังหลบหนี | Suspect fleeing on foot. | ผู้ต้องสงสัยกำลังวิ่งหนี
+all clear | ปลอดภัย/เคลียร์แล้ว | The building is all clear. | อาคารเคลียร์แล้ว
+ETA | เวลาที่คาดว่าจะถึง | What's your ETA? | คาดว่าจะถึงเมื่อไหร่
+unit | หน่วย (ปฏิบัติการ) | Send another unit. | ส่งอีกหน่วยไป
+negative | ไม่/ไม่ใช่ (ทางวิทยุ) | Negative, no suspects found. | ไม่พบผู้ต้องสงสัย
+`);
+U('talk', 4, 'การขอร้องอย่างสุภาพ', `
+would you mind | รบกวน...ได้ไหม | Would you mind closing the door? | รบกวนปิดประตูได้ไหม
+could you possibly | พอจะ...ได้ไหม | Could you possibly help me? | พอจะช่วยฉันได้ไหม
+I was wondering if | ไม่ทราบว่า...ได้ไหม | I was wondering if you're free. | ไม่ทราบว่าคุณว่างไหม
+would it be possible | เป็นไปได้ไหมที่จะ | Would it be possible to leave early? | เป็นไปได้ไหมที่จะออกก่อน
+I'd appreciate it if | จะขอบคุณมากถ้า | I'd appreciate it if you called me. | จะขอบคุณมากถ้าคุณโทรมา
+sorry to bother you | ขอโทษที่รบกวน | Sorry to bother you, but… | ขอโทษที่รบกวนนะ แต่...
+---
+if you don't mind | ถ้าไม่รบกวน | If you don't mind, I'll sit here. | ถ้าไม่รบกวน ขอนั่งตรงนี้
+when you have a moment | เมื่อคุณว่าง | Call me when you have a moment. | ว่างเมื่อไหร่โทรหาฉันนะ
+at your convenience | ตามสะดวก | Reply at your convenience. | ตอบกลับตามสะดวก
+thank you in advance | ขอบคุณล่วงหน้า | Thank you in advance. | ขอบคุณล่วงหน้า
+may I ask | ขอถามได้ไหม | May I ask your name? | ขอทราบชื่อได้ไหม
+I'd be grateful | จะขอบคุณมาก | I'd be grateful for your help. | จะขอบคุณมากสำหรับความช่วยเหลือ
+`);
+U('daily', 5, 'ศัพท์ธุรกิจ', `
+revenue | รายได้ | Revenue increased this year. | รายได้เพิ่มขึ้นปีนี้
+profit | กำไร | The company made a profit. | บริษัทมีกำไร
+loss | ขาดทุน/การสูญเสีย | They had a big loss. | พวกเขาขาดทุนมาก
+stakeholder | ผู้มีส่วนได้ส่วนเสีย | Talk to all stakeholders. | คุยกับผู้มีส่วนได้ส่วนเสียทุกฝ่าย
+merger | การควบรวมกิจการ | The merger was approved. | การควบรวมได้รับอนุมัติ
+entrepreneur | ผู้ประกอบการ | She is a young entrepreneur. | เธอเป็นผู้ประกอบการรุ่นใหม่
+---
+supply chain | ห่วงโซ่อุปทาน | The supply chain was disrupted. | ห่วงโซ่อุปทานหยุดชะงัก
+startup | บริษัทเกิดใหม่ | He works at a tech startup. | เขาทำงานที่สตาร์ทอัพด้านเทคโนโลยี
+turnover | ยอดขาย/อัตราลาออก | Staff turnover is high. | อัตราการลาออกของพนักงานสูง
+shareholder | ผู้ถือหุ้น | Shareholders voted yes. | ผู้ถือหุ้นลงมติเห็นชอบ
+forecast | พยากรณ์ | The sales forecast is good. | การคาดการณ์ยอดขายดี
+asset | สินทรัพย์ | Police froze his assets. | ตำรวจอายัดทรัพย์สินของเขา
+`);
+U('police', 5, 'การควบคุมฝูงชน', `
+crowd control | การควบคุมฝูงชน | Officers trained in crowd control. | เจ้าหน้าที่ฝึกการควบคุมฝูงชน
+riot | การจลาจล | The protest turned into a riot. | การประท้วงกลายเป็นจลาจล
+barricade | สิ่งกีดขวาง | They removed the barricade. | พวกเขารื้อสิ่งกีดขวาง
+disperse | สลาย (ฝูงชน) | Police dispersed the crowd. | ตำรวจสลายฝูงชน
+demonstration | การชุมนุม | The demonstration was peaceful. | การชุมนุมเป็นไปอย่างสงบ
+rally | การชุมนุมใหญ่ | Thousands joined the rally. | คนนับพันร่วมชุมนุม
+---
+curfew | เคอร์ฟิว | A curfew was announced. | มีการประกาศเคอร์ฟิว
+escalate | บานปลาย | Don't let it escalate. | อย่าให้บานปลาย
+de-escalate | ลดความตึงเครียด | Officers tried to de-escalate. | เจ้าหน้าที่พยายามลดความตึงเครียด
+peaceful | สงบ | Keep the protest peaceful. | ชุมนุมอย่างสงบ
+megaphone | โทรโข่ง | He spoke through a megaphone. | เขาพูดผ่านโทรโข่ง
+cordon | แนวกั้น | Police set up a cordon. | ตำรวจตั้งแนวกั้น
+`);
+U('talk', 5, 'สำนวนในการทำงาน', `
+touch base | ติดต่อกันสักหน่อย | Let's touch base next week. | สัปดาห์หน้าคุยกันหน่อย
+ballpark figure | ตัวเลขคร่าวๆ | Give me a ballpark figure. | ขอตัวเลขคร่าวๆ
+back to square one | กลับไปเริ่มใหม่ | The plan failed. Back to square one. | แผนล้ม ต้องเริ่มใหม่
+get the ball rolling | เริ่มดำเนินการ | Let's get the ball rolling. | เริ่มลงมือกันเถอะ
+in the loop | รับรู้ความเคลื่อนไหว | Keep me in the loop. | อัปเดตให้ฉันรู้ด้วย
+cut to the chase | เข้าเรื่องเลย | Let's cut to the chase. | เข้าเรื่องเลยดีกว่า
+---
+think on your feet | คิดไว/แก้สถานการณ์เฉพาะหน้า | Police must think on their feet. | ตำรวจต้องคิดไว
+call the shots | เป็นคนตัดสินใจ | The chief calls the shots. | หัวหน้าเป็นคนตัดสินใจ
+win-win situation | ได้ประโยชน์ทั้งสองฝ่าย | It's a win-win situation. | เป็นสถานการณ์ที่ได้ทั้งสองฝ่าย
+learning curve | ช่วงเรียนรู้ | The new system has a learning curve. | ระบบใหม่ต้องใช้เวลาเรียนรู้
+up in the air | ยังไม่แน่นอน | Our plans are up in the air. | แผนของเรายังไม่แน่นอน
+pull your weight | ทำส่วนของตัวเองให้ดี | Everyone must pull their weight. | ทุกคนต้องทำหน้าที่ของตัวเองให้ดี
+`);
+U('daily', 6, 'การเมืองและการปกครอง', `
+legislation | กฎหมาย (ที่ออกโดยรัฐสภา) | New legislation was passed. | กฎหมายใหม่ผ่านแล้ว
+parliament | รัฐสภา | Parliament debated the bill. | รัฐสภาอภิปรายร่างกฎหมาย
+coalition | รัฐบาลผสม/พันธมิตร | They formed a coalition. | พวกเขาจัดตั้งรัฐบาลผสม
+referendum | การลงประชามติ | A referendum will be held. | จะมีการลงประชามติ
+amendment | การแก้ไขเพิ่มเติม | They proposed an amendment. | พวกเขาเสนอการแก้ไขเพิ่มเติม
+bureaucracy | ระบบราชการ | Bureaucracy slows things down. | ระบบราชการทำให้ทุกอย่างช้า
+---
+decentralize | กระจายอำนาจ | Decentralize power to local areas. | กระจายอำนาจสู่ท้องถิ่น
+sovereignty | อำนาจอธิปไตย | National sovereignty must be respected. | ต้องเคารพอำนาจอธิปไตย
+diplomacy | การทูต | Diplomacy solved the conflict. | การทูตแก้ความขัดแย้ง
+sanction | การคว่ำบาตร | They imposed sanctions. | พวกเขาใช้มาตรการคว่ำบาตร
+ratify | ให้สัตยาบัน | The treaty was ratified. | สนธิสัญญาได้รับการให้สัตยาบัน
+constituency | เขตเลือกตั้ง | He won in his constituency. | เขาชนะในเขตเลือกตั้งของเขา
+`);
+U('talk', 6, 'คำวิเศษณ์ขั้นสูง', `
+inevitably | อย่างหลีกเลี่ยงไม่ได้ | Prices will inevitably rise. | ราคาจะสูงขึ้นอย่างหลีกเลี่ยงไม่ได้
+predominantly | ส่วนใหญ่ | The area is predominantly rural. | พื้นที่ส่วนใหญ่เป็นชนบท
+arguably | อาจกล่าวได้ว่า | It is arguably the best plan. | อาจกล่าวได้ว่าเป็นแผนที่ดีที่สุด
+notably | โดยเฉพาะอย่างยิ่ง | Crime fell, notably in Bangkok. | อาชญากรรมลดลง โดยเฉพาะในกรุงเทพฯ
+subsequently | ต่อมา | He was subsequently arrested. | ต่อมาเขาถูกจับ
+substantially | อย่างมาก | Costs rose substantially. | ค่าใช้จ่ายเพิ่มขึ้นอย่างมาก
+---
+thereby | ด้วยเหตุนั้น/โดยการนั้น | He confessed, thereby closing the case. | เขาสารภาพ ทำให้คดีปิดลง
+hence | ดังนั้น | It was late; hence, we left. | ดึกแล้ว เราจึงกลับ
+albeit | แม้ว่า | It worked, albeit slowly. | มันได้ผล แม้จะช้า
+ostensibly | โดยอ้างว่า/ภายนอกดูเหมือน | He came, ostensibly to help. | เขามาโดยอ้างว่าจะช่วย
+invariably | อย่างสม่ำเสมอ/ทุกครั้ง | He is invariably late. | เขามาสายทุกครั้ง
+presumably | สันนิษฐานว่า | Presumably, he left early. | สันนิษฐานว่าเขาออกไปก่อน
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
