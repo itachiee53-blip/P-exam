@@ -3304,6 +3304,223 @@ visual aid | สื่อประกอบ | Use a visual aid. | ใช้ส�
 stage fright | ประหม่าบนเวที | I have stage fright. | ฉันประหม่าเวลาขึ้นเวที
 `);
 
+U('basic', 0, 'คำบุพบทและคำง่ายๆ', `
+here | ที่นี่ | Come here. | มานี่
+there | ที่นั่น | Go there. | ไปที่นั่น
+up | ขึ้น | Look up. | มองขึ้นไป
+down | ลง | Sit down. | นั่งลง
+left side | ด้านซ้าย | It's on the left side. | อยู่ด้านซ้าย
+right side | ด้านขวา | It's on the right side. | อยู่ด้านขวา
+---
+very | มาก | It's very hot. | ร้อนมาก
+too | เกินไป/ด้วย | It's too big. | ใหญ่เกินไป
+and | และ | You and me. | คุณและฉัน
+but | แต่ | It's cheap but good. | ถูกแต่ดี
+or | หรือ | Tea or coffee? | ชาหรือกาแฟ
+with | กับ | Come with me. | มากับฉัน
+`);
+U('daily', 1, 'ร้านค้าและการซื้อ', `
+market stall | แผงลอย | She has a market stall. | เธอมีแผงในตลาด
+too expensive | แพงไป | It's too expensive. | แพงไป
+cheaper | ถูกกว่า | Do you have a cheaper one? | มีอันที่ถูกกว่าไหม
+I'll take it | เอาอันนี้ | OK, I'll take it. | โอเค เอาอันนี้
+---
+just looking | แค่ดูเฉยๆ | I'm just looking. | แค่ดูเฉยๆ
+open hours | เวลาเปิด | What are your open hours? | ร้านเปิดกี่โมง
+closed | ปิด | The shop is closed today. | วันนี้ร้านปิด
+sale | ลดราคา | Shoes are on sale. | รองเท้าลดราคา
+pay by card | จ่ายบัตร | Can I pay by card? | จ่ายบัตรได้ไหม
+`);
+U('police', 1, 'ยานพาหนะและรถ', `
+pickup truck | รถกระบะ | He drove a white pickup truck. | เขาขับรถกระบะสีขาว
+van | รถตู้ | A van stopped outside. | มีรถตู้จอดข้างนอก
+truck | รถบรรทุก | The truck was too fast. | รถบรรทุกขับเร็วไป
+scooter | รถสกู๊ตเตอร์ | She rides a scooter. | เธอขี่สกู๊ตเตอร์
+sedan | รถเก๋ง | It's a black sedan. | เป็นรถเก๋งสีดำ
+wheel | ล้อ | The wheel is flat. | ล้อแบน
+---
+tire | ยางรถ | Check your tires. | ตรวจยางรถ
+headlight | ไฟหน้า | Turn on your headlights. | เปิดไฟหน้า
+brake | เบรก | Use the brake. | เหยียบเบรก
+fuel | เชื้อเพลิง | We are low on fuel. | น้ำมันใกล้หมด
+dent | รอยบุบ | There's a dent in the door. | ประตูมีรอยบุบ
+`);
+U('talk', 1, 'คำตอบสั้นๆ', `
+of course not | ไม่เลย | Of course not! | ไม่เลย!
+I see | อ๋อ เข้าใจแล้ว | Oh, I see. | อ๋อ เข้าใจแล้ว
+really | จริงเหรอ | Really? | จริงเหรอ
+me too | ฉันด้วย | Me too! | ฉันด้วย!
+me neither | ฉันก็ไม่ | Me neither. | ฉันก็ไม่
+---
+not really | ไม่ค่อย | Not really. | ไม่ค่อยหรอก
+I don't think so | ไม่น่าใช่ | I don't think so. | ไม่น่าจะใช่
+exactly | ถูกต้องเลย | Exactly! | ถูกต้องเลย!
+wait a minute | เดี๋ยวก่อน | Wait a minute! | เดี๋ยวก่อน!
+`);
+U('daily', 2, 'กิจวัตรตอนเย็นและที่บ้าน', `
+come home | กลับบ้าน | I come home at six. | ฉันกลับบ้านหกโมง
+take a bath | อาบน้ำ (แช่) | I take a bath at night. | ฉันอาบน้ำตอนกลางคืน
+make dinner | ทำอาหารเย็น | Mom makes dinner. | แม่ทำอาหารเย็น
+do the dishes | ล้างจาน | I do the dishes. | ฉันล้างจาน
+watch TV | ดูทีวี | We watch TV together. | เราดูทีวีด้วยกัน
+go to bed | เข้านอน | I go to bed early. | ฉันเข้านอนเร็ว
+---
+set an alarm | ตั้งนาฬิกาปลุก | Set an alarm for five. | ตั้งปลุกตีห้า
+feed the cat | ให้อาหารแมว | Feed the cat, please. | ให้อาหารแมวด้วย
+take out the trash | เอาขยะไปทิ้ง | Take out the trash. | เอาขยะไปทิ้ง
+make the bed | ปูเตียง | Make your bed. | ปูเตียงด้วย
+lock the door | ล็อกประตู | Lock the door at night. | ล็อกประตูตอนกลางคืน
+turn off the lights | ปิดไฟ | Turn off the lights. | ปิดไฟ
+`);
+U('police', 2, 'สายตรวจและเวร', `
+beat | เขตตรวจ | This street is on my beat. | ถนนนี้อยู่ในเขตตรวจของฉัน
+night shift | กะกลางคืน | I work the night shift. | ฉันเข้ากะกลางคืน
+partner | คู่หู | My partner is driving. | คู่หูกำลังขับรถ
+patrol route | เส้นทางตรวจ | Follow the patrol route. | ตามเส้นทางตรวจ
+logbook | สมุดบันทึก | Write it in the logbook. | เขียนลงสมุดบันทึก
+briefing | การชี้แจงก่อนปฏิบัติงาน | The briefing is at 7. | ประชุมชี้แจงตอนเจ็ดโมง
+---
+call sign | รหัสเรียกขาน | My call sign is Alpha 2. | รหัสเรียกขานคือ อัลฟา 2
+response time | เวลาตอบสนอง | Our response time is five minutes. | เราไปถึงภายในห้านาที
+hot spot | จุดเสี่ยง | This market is a hot spot. | ตลาดนี้เป็นจุดเสี่ยง
+check on | ไปดู/ตรวจดู | Check on the old man. | ไปดูคุณลุงหน่อย
+handover | การส่งเวร | The handover is at 8. | ส่งเวรตอนแปดโมง
+off-duty | นอกเวร | He was off-duty. | เขาไม่ได้อยู่เวร
+`);
+U('daily', 3, 'การแพทย์ฉุกเฉินพื้นฐาน', `
+CPR | การปั๊มหัวใจ | Do you know CPR? | คุณทำ CPR เป็นไหม
+choke | สำลัก | The child is choking. | เด็กกำลังสำลัก
+burn | แผลไฟไหม้/ลวก | Cool the burn with water. | ราดน้ำที่แผลไฟลวก
+faint | เป็นลม | She fainted in the heat. | เธอเป็นลมเพราะร้อน
+dizzy | เวียนหัว | I feel dizzy. | ฉันเวียนหัว
+pulse | ชีพจร | Check his pulse. | ตรวจชีพจร
+---
+bleeding | เลือดออก | Stop the bleeding. | ห้ามเลือด
+pressure | แรงกด | Apply pressure. | กดไว้
+stretcher | เปลหาม | Bring a stretcher. | เอาเปลหามมา
+heart attack | หัวใจวาย | He had a heart attack. | เขาหัวใจวาย
+seizure | อาการชัก | He is having a seizure. | เขากำลังชัก
+recovery position | ท่าพักฟื้น | Put him in the recovery position. | จับเขานอนท่าพักฟื้น
+`);
+U('talk', 3, 'การบ่นและร้องเรียน', `
+I'd like to complain | ขอร้องเรียน | I'd like to complain about the noise. | ขอร้องเรียนเรื่องเสียงดัง
+not working | ใช้ไม่ได้ | The light is not working. | ไฟใช้ไม่ได้
+it's not acceptable | รับไม่ได้ | This is not acceptable. | อย่างนี้รับไม่ได้
+I expected | ฉันคาดว่า | I expected better service. | ฉันคาดว่าบริการจะดีกว่านี้
+disappointing | น่าผิดหวัง | The food was disappointing. | อาหารน่าผิดหวัง
+fix it | ซ่อม/แก้ให้ | Please fix it. | ช่วยแก้ให้ด้วย
+---
+refund please | ขอคืนเงิน | I want a refund, please. | ขอคืนเงิน
+speak to someone | คุยกับใครสักคน | Can I speak to someone in charge? | ขอคุยกับผู้รับผิดชอบ
+this is the second time | ครั้งที่สองแล้ว | This is the second time! | นี่ครั้งที่สองแล้ว!
+I'm not happy with | ฉันไม่พอใจ | I'm not happy with this. | ฉันไม่พอใจเรื่องนี้
+what will you do | คุณจะทำยังไง | What will you do about it? | คุณจะจัดการยังไง
+make it right | แก้ไขให้ถูกต้อง | Please make it right. | ช่วยแก้ให้ถูกต้อง
+`);
+U('daily', 4, 'บ้านและการซ่อมแซม', `
+leak | รั่ว | The roof is leaking. | หลังคารั่ว
+repair | ซ่อมแซม | We need to repair the wall. | ต้องซ่อมผนัง
+tool | เครื่องมือ | Bring your tools. | เอาเครื่องมือมาด้วย
+hammer | ค้อน | Use a hammer. | ใช้ค้อน
+screwdriver | ไขควง | Pass me the screwdriver. | ส่งไขควงมา
+ladder | บันได (พาด) | Hold the ladder. | จับบันไดไว้
+---
+paint | ทาสี | We painted the house. | เราทาสีบ้าน
+renovate | ปรับปรุง (บ้าน) | They renovated the kitchen. | พวกเขาปรับปรุงครัว
+pipe | ท่อ | The pipe is broken. | ท่อแตก
+wire | สายไฟ | Don't touch the wire. | อย่าแตะสายไฟ
+roof | หลังคา | The roof needs repair. | หลังคาต้องซ่อม
+blackout | ไฟดับทั้งพื้นที่ | There was a blackout. | ไฟดับทั้งเขต
+`);
+U('police', 4, 'การสอบสวนผู้ต้องสงสัย', `
+alibi check | ตรวจสอบข้อแก้ตัว | We did an alibi check. | เราตรวจสอบข้อแก้ตัว
+lie | โกหก | He lied to the police. | เขาโกหกตำรวจ
+contradict | ขัดแย้ง | His statements contradict. | คำให้การของเขาขัดกัน
+nervous behavior | พฤติกรรมกระวนกระวาย | He showed nervous behavior. | เขาแสดงพฤติกรรมกระวนกระวาย
+cooperate fully | ให้ความร่วมมือเต็มที่ | Please cooperate fully. | กรุณาให้ความร่วมมือเต็มที่
+open-ended question | คำถามปลายเปิด | Ask open-ended questions. | ถามคำถามปลายเปิด
+---
+leading question | คำถามชี้นำ | Avoid leading questions. | หลีกเลี่ยงคำถามชี้นำ
+body language | ภาษากาย | Watch his body language. | สังเกตภาษากาย
+confession | คำสารภาพ | He signed a confession. | เขาลงนามคำสารภาพ
+accomplice | ผู้สมรู้ร่วมคิด | He had an accomplice. | เขามีผู้สมรู้ร่วมคิด
+timeline | ลำดับเหตุการณ์ | Build a timeline. | ทำลำดับเหตุการณ์
+deny everything | ปฏิเสธทุกอย่าง | The suspect denied everything. | ผู้ต้องสงสัยปฏิเสธทุกอย่าง
+`);
+U('talk', 4, 'การให้คำแนะนำทาง/วิธีทำ', `
+first step | ขั้นแรก | The first step is easy. | ขั้นแรกง่าย
+next step | ขั้นต่อไป | What's the next step? | ขั้นต่อไปคืออะไร
+make sure you | อย่าลืม... | Make sure you lock it. | อย่าลืมล็อกนะ
+be sure to | ต้อง...ให้ได้ | Be sure to bring your ID. | ต้องนำบัตรมาให้ได้
+it's best to | ดีที่สุดคือ | It's best to go early. | ไปเช้าดีที่สุด
+you'll need | คุณต้องใช้ | You'll need a passport. | คุณต้องใช้พาสปอร์ต
+---
+straight ahead | ตรงไปข้างหน้า | Go straight ahead. | ตรงไปข้างหน้า
+take the second left | เลี้ยวซ้ายที่สอง | Take the second left. | เลี้ยวซ้ายแยกที่สอง
+you can't miss it | หาง่ายมาก | It's big. You can't miss it. | ใหญ่มาก หาง่าย
+on foot | เดินเท้า | It's ten minutes on foot. | เดินสิบนาที
+across from | ตรงข้าม | It's across from the bank. | อยู่ตรงข้ามธนาคาร
+at the end of | ที่สุด/ปลาย | It's at the end of the street. | อยู่สุดถนน
+`);
+U('daily', 5, 'ความรู้สึกที่ซับซ้อน', `
+nostalgic | คิดถึงอดีต | This song makes me nostalgic. | เพลงนี้ทำให้คิดถึงอดีต
+skeptical | ไม่เชื่อง่ายๆ | I'm skeptical about it. | ฉันยังไม่ค่อยเชื่อ
+optimistic | มองโลกในแง่ดี | Stay optimistic. | มองโลกในแง่ดีไว้
+pessimistic | มองโลกในแง่ร้าย | Don't be so pessimistic. | อย่ามองโลกในแง่ร้ายนัก
+indifferent | เฉยเมย | He seemed indifferent. | เขาดูเฉยเมย
+---
+devastated | เสียใจสุดๆ | She was devastated by the news. | เธอเสียใจสุดๆ กับข่าว
+thrilled | ดีใจสุดๆ | I'm thrilled to be here. | ดีใจมากที่ได้มา
+insecure | ไม่มั่นใจในตัวเอง | He feels insecure. | เขารู้สึกไม่มั่นใจ
+content | พอใจ | I'm content with my life. | ฉันพอใจกับชีวิต
+hopeful | มีความหวัง | We are hopeful. | เรามีความหวัง
+`);
+U('police', 5, 'ข่าวกรองและการเฝ้าติดตาม', `
+stakeout | การซุ่มเฝ้า | They did a stakeout all night. | พวกเขาซุ่มเฝ้าทั้งคืน
+wiretap | การดักฟัง | A wiretap needs a court order. | การดักฟังต้องมีคำสั่งศาล
+tip-off | การแจ้งเบาะแส | They got a tip-off. | ได้รับแจ้งเบาะแส
+lead | เบาะแสที่ตามต่อได้ | We have a new lead. | เรามีเบาะแสใหม่
+tail | สะกดรอยตาม | Tail the suspect. | สะกดรอยผู้ต้องสงสัย
+cover | การอำพราง | Don't blow your cover. | อย่าให้ถูกเปิดโปง
+---
+sting operation | ปฏิบัติการล่อซื้อ | It was a sting operation. | เป็นปฏิบัติการล่อซื้อ
+decoy | ตัวล่อ | They used a decoy. | พวกเขาใช้ตัวล่อ
+safe distance | ระยะปลอดภัย | Keep a safe distance. | รักษาระยะห่างปลอดภัย
+monitor | ติดตาม/เฝ้าดู | Monitor his phone. | ติดตามโทรศัพท์ของเขา
+profile | โปรไฟล์/ประวัติ | We built a profile of the suspect. | เราทำโปรไฟล์ผู้ต้องสงสัย
+classified | ลับ | This information is classified. | ข้อมูลนี้เป็นความลับ
+`);
+U('daily', 6, 'ศัพท์ทางจิตวิทยา', `
+cognitive | เกี่ยวกับการรับรู้/ความคิด | It affects cognitive skills. | มันกระทบทักษะการคิด
+perception | การรับรู้ | Perception is not always reality. | การรับรู้ไม่ใช่ความจริงเสมอ
+motivation | แรงจูงใจ | Find your motivation. | หาแรงจูงใจของคุณ
+resilience | ความยืดหยุ่นทางใจ | Build resilience. | สร้างความเข้มแข็งทางใจ
+trauma | บาดแผลทางใจ | Victims may suffer trauma. | ผู้เสียหายอาจมีบาดแผลทางใจ
+empathy | ความเข้าอกเข้าใจ | Empathy helps officers. | ความเข้าอกเข้าใจช่วยเจ้าหน้าที่
+---
+coping | การรับมือ | Learn coping skills. | เรียนรู้วิธีรับมือ
+burnout | ภาวะหมดไฟ | Avoid burnout. | หลีกเลี่ยงภาวะหมดไฟ
+self-esteem | ความนับถือตนเอง | She has low self-esteem. | เธอนับถือตัวเองต่ำ
+impulse | แรงกระตุ้น | He acted on impulse. | เขาทำไปตามอารมณ์ชั่ววูบ
+behavioral | ทางพฤติกรรม | There are behavioral changes. | มีการเปลี่ยนแปลงทางพฤติกรรม
+well-being | ความเป็นอยู่ที่ดี | Mental well-being matters. | สุขภาวะทางใจสำคัญ
+`);
+U('talk', 6, 'การโต้วาที', `
+counterargument | ข้อโต้แย้งกลับ | Consider the counterargument. | พิจารณาข้อโต้แย้งกลับ
+rebuttal | การโต้กลับ | Prepare your rebuttal. | เตรียมคำโต้กลับ
+premise | ข้อตั้ง | The premise is wrong. | ข้อตั้งผิด
+fallacy | ตรรกะวิบัติ | That's a logical fallacy. | นั่นคือตรรกะวิบัติ
+valid point | ประเด็นที่สมเหตุสมผล | You make a valid point. | คุณมีประเด็นที่สมเหตุสมผล
+concede | ยอมรับ (ในบางส่วน) | I concede that point. | ผมยอมรับประเด็นนั้น
+---
+outweigh | มีน้ำหนักมากกว่า | The benefits outweigh the costs. | ข้อดีมากกว่าข้อเสีย
+by contrast | ในทางตรงข้าม | By contrast, the rural rate fell. | ในทางตรงข้าม อัตราในชนบทลดลง
+it follows that | จึงตามมาว่า | It follows that we must act. | จึงตามมาว่าเราต้องลงมือ
+to some extent | ในระดับหนึ่ง | I agree to some extent. | เห็นด้วยในระดับหนึ่ง
+compelling | น่าเชื่อถือ/หนักแน่น | It's a compelling argument. | เป็นข้อโต้แย้งที่หนักแน่น
+flawed | มีข้อบกพร่อง | The logic is flawed. | ตรรกะมีข้อบกพร่อง
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
