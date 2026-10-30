@@ -287,16 +287,11 @@ html .front{
   border:1px solid var(--line)!important;box-shadow:var(--sh2)!important;
 }
 html .front .tag{background:var(--text)!important;color:var(--bg)!important}
-html .card-word{color:var(--text);font-weight:700;letter-spacing:-.03em;font-size:28px}
-html .btn-tts{background:var(--surface2);color:var(--text)}
 html .back{
   background:#000000!important;color:#f5f5f6!important;border:1px solid rgba(255,255,255,.08)!important;
   box-shadow:0 30px 60px -30px rgba(0,0,0,.8),inset 0 0 120px rgba(225,229,172,.08)!important;
 }
 html .back .tag{background:var(--acc)!important;color:var(--acc-ink)!important}
-html .card-def{color:#f5f5f6}
-.srs-btn{border-radius:16px;transition:transform .2s var(--spring)}
-@media(hover:hover){.srs-btn:hover{transform:translateY(-3px)}}
 
 /* ---------- modal / toast ---------- */
 .mask{background:rgba(5,5,7,.6)}
@@ -766,3 +761,63 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .pace-sum{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
 .pace-sum svg{width:15px;height:15px}
 .pace-sum b{color:var(--green)}
+/* ===== บัตรจำคำศัพท์ ===== */
+.vc-hero{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 22px;border-radius:26px;color:#fff;
+  background:radial-gradient(120% 120% at 100% 0%,color-mix(in srgb,#fff 18%,transparent),transparent 55%),linear-gradient(150deg,var(--cf),var(--cf-deep));box-shadow:var(--hm-soft)}
+.vc-hero small{display:block;font-size:13px;opacity:.85;font-weight:600}
+.vc-hero b{font-size:44px;line-height:1.05;letter-spacing:-.03em;margin-right:6px}
+.vc-hero span{font-size:14px;opacity:.9}
+.vc-go{display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:999px;background:#fff;color:var(--cf-deep);font:inherit;font-weight:800;font-size:16px;cursor:pointer;flex:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.vc-go svg{width:18px;height:18px;fill:currentColor}
+.vc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.vc-deck{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:18px 16px 16px;border:1px solid var(--line);border-radius:22px;background:var(--surface);
+  color:var(--text);font:inherit;text-align:left;cursor:pointer;box-shadow:var(--hm-soft);transition:transform .15s}
+.vc-deck:active{transform:scale(.97)}
+.vc-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;margin-bottom:8px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--surface))}
+.vc-ic svg{width:23px;height:23px}
+.vc-deck b{font-size:15.5px}
+.vc-deck small{font-size:12px;color:var(--muted)}
+.vc-due{position:absolute;top:14px;right:14px;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:var(--c);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.vc-bar{width:100%;height:6px;border-radius:9px;background:var(--surface2);margin-top:8px;overflow:hidden}
+.vc-bar i{display:block;height:100%;border-radius:9px;background:var(--c)}
+/* หน้าทวน */
+.vc-top{display:flex;align-items:center;gap:12px;max-width:560px;margin:0 auto 16px}
+.vc-top span{font-size:13px;font-weight:700;color:var(--muted);min-width:40px;text-align:right}
+.vc-prog{flex:1;height:8px;border-radius:9px;background:var(--surface2);overflow:hidden}
+.vc-prog i{display:block;height:100%;border-radius:9px;background:var(--cf);transition:width .3s}
+.vc-card{max-width:560px;height:min(56vh,420px);margin:0 auto;perspective:1400px;cursor:pointer;transition:transform .22s,opacity .22s}
+.vc-inner{position:relative;width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.vc-card.flip .vc-inner{transform:rotateY(180deg)}
+.vc-card.out-r{transform:translateX(60%) rotate(8deg);opacity:0}
+.vc-card.out-l{transform:translateX(-60%) rotate(-8deg);opacity:0}
+.vc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;border-radius:30px;text-align:center;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 24px 50px -24px color-mix(in srgb,var(--c) 70%,transparent)}
+.vc-front{color:#fff;background:radial-gradient(110% 90% at 0% 0%,color-mix(in srgb,#fff 22%,transparent),transparent 60%),linear-gradient(155deg,var(--c),color-mix(in srgb,var(--c) 60%,#000))}
+.vc-back{background:var(--surface);color:var(--text);border:2px solid color-mix(in srgb,var(--c) 30%,var(--line));transform:rotateY(180deg)}
+.vc-face small{position:absolute;top:20px;left:22px;font-size:12.5px;font-weight:700;opacity:.8}
+.vc-back small{color:var(--c);opacity:1}
+.vc-face h2{font-size:clamp(28px,8vw,44px);line-height:1.2;letter-spacing:-.02em;word-break:break-word}
+.vc-back h2{font-size:clamp(24px,6.5vw,36px)}
+.vc-front p{position:absolute;bottom:22px;font-size:13px;opacity:.8}
+.vc-ex{font-size:15px;color:var(--muted);font-style:italic;max-width:420px}
+.vc-say{position:absolute;top:14px;right:14px;width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;background:rgba(255,255,255,.2)}
+.vc-say svg{width:20px;height:20px}
+.vc-acts{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:18px auto 0;opacity:.35;pointer-events:none;transition:opacity .2s}
+.vc-acts.on{opacity:1;pointer-events:auto}
+.vc-acts button{display:flex;align-items:center;justify-content:center;gap:8px;height:58px;border:0;border-radius:20px;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
+.vc-acts svg{width:20px;height:20px}
+.vc-no{background:var(--red-2);color:var(--red)}
+.vc-yes{background:var(--green);color:#fff}
+.vc-done{max-width:420px;margin:8vh auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.vc-done-ic{display:grid;place-items:center;width:84px;height:84px;border-radius:28px;color:var(--cf-deep);background:color-mix(in srgb,var(--cf) 18%,var(--surface));margin-bottom:6px}
+.vc-done-ic svg{width:40px;height:40px}
+.vc-done b{font-size:24px}
+.vc-done p{color:var(--muted);margin-bottom:12px}
+.vc-done-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+/* รายการคำ */
+.vc-list{display:flex;flex-direction:column}
+.vc-row{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.vc-row>div{flex:1;min-width:0}
+.vc-row b{display:block;font-size:14.5px}
+.vc-row small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vc-lv{font-size:9px;letter-spacing:2px;color:var(--green);flex:none}

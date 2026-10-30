@@ -49,10 +49,6 @@ document.addEventListener('pointerdown', e => {
   if(b && !b.disabled && !b.classList.contains('opt')) playTone('tap');
 }, {passive:true});
 
-function speakCard(){
-  const el = document.querySelector('#fc .card-word');
-  if(el) speakWord(el.textContent.trim());
-}
 function speakWord(text) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();

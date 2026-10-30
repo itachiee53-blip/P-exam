@@ -325,10 +325,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
 .fab svg{width:18px;height:18px}
 
 /* Card & Stage Styling มินิมอลโมเดิร์น */
-.fstage {
-  max-width: 440px;
-  margin: 0 auto;
-}
 
 .fcard {
   perspective: 1600px;
@@ -372,13 +368,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   box-shadow: 0 16px 36px rgba(54, 76, 132, 0.08) !important;
 }
 
-.front .card-header-row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .front .tag {
   background: #95b1ee !important;
   color: #ffffff !important;
@@ -388,53 +377,9 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   font-size: 11.5px !important;
 }
 
-.btn-tts {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(149, 177, 238, 0.2);
-  border: none;
-  display: inline-grid;
-  place-items: center;
-  color: #364c84;
-  transition: transform 0.15s, background 0.15s;
-}
-
-.btn-tts:active {
-  transform: scale(0.9);
-  background: #95b1ee;
-  color: #fff;
-}
-
 /* จัดกล่องตรงกลางการ์ดทั้งแนวตั้งและแนวนอน */
-.front .card-body-wrap,
-.back .card-body-wrap {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  margin: auto 0 !important;
-}
 
 /* บังคับตัวหนังสือให้อยู่กึ่งกลางแน่นอน */
-.card-word {
-  font-size: 26px;
-  font-weight: 700;
-  color: #364c84;
-  letter-spacing: -0.2px;
-  line-height: 1.4;
-  word-break: break-word;
-  white-space: pre-wrap;
-  width: 100%;
-  text-align: center !important;
-}
-
-.card-word font, .card-word span {
-  font-size: inherit;
-  color: inherit;
-}
 
 /* ด้านหลัง: น้ำเงินเข้มโมเดิร์น (#364C84) คอนทราสต์ตัดเฉลยชัด */
 .back {
@@ -445,13 +390,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   transform: rotateY(180deg);
 }
 
-.back .card-header-row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .back .tag {
   background: #e7f1a8 !important;
   color: #364c84 !important;
@@ -460,48 +398,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   padding: 4px 12px !important;
   font-size: 11.5px !important;
 }
-
-.back .card-body-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  margin: auto 0;
-}
-
-.card-def {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fffdf5;
-  line-height: 1.5;
-  word-break: break-word;
-  white-space: pre-wrap;
-  width: 100%;
-  text-align: center;
-}
-.card-def font, .card-def span {
-  font-size: inherit;
-  color: inherit;
-}
-
-.card-img-preview {
-  max-width: 100%;
-  max-height: 130px;
-  border-radius: 14px;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-
-.srs-ctrl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.srs-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;font-size:13px;font-weight:600;border:1px solid var(--line)}
-.srs-btn small{font-size:10px;font-weight:400;opacity:.8}
-.srs-btn.l1{background:var(--red-2);color:var(--red);border-color:transparent}
-.srs-btn.l2{background:var(--orange-2);color:var(--orange);border-color:transparent}
-.srs-btn.l3{background:var(--blue-2);color:var(--blue);border-color:transparent}
-.srs-btn.l4{background:var(--green-2);color:var(--green);border-color:transparent}
 
 .rtop{display:flex;align-items:center;gap:9px;margin-bottom:12px;flex-wrap:wrap}
 .timer{display:flex;align-items:center;gap:7px;padding:9px 15px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-variant-numeric:tabular-nums;box-shadow:var(--sh1)}
