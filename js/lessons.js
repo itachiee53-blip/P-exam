@@ -4067,6 +4067,212 @@ civic duty | หน้าที่พลเมือง | Voting is a civic duty
 grassroots | รากหญ้า | It's a grassroots movement. | เป็นขบวนการระดับรากหญ้า
 `);
 
+U('daily', 1, 'เครื่องดื่มและขนม', `
+soda | น้ำอัดลม | A can of soda, please. | ขอน้ำอัดลมหนึ่งกระป๋อง
+iced tea | ชาเย็น | Thai iced tea is sweet. | ชาเย็นหวาน
+smoothie | น้ำปั่น | A mango smoothie, please. | ขอน้ำมะม่วงปั่น
+beer | เบียร์ | He doesn't drink beer. | เขาไม่ดื่มเบียร์
+candy | ลูกอม | Kids love candy. | เด็กชอบลูกอม
+chocolate | ช็อกโกแลต | I like dark chocolate. | ฉันชอบดาร์กช็อกโกแลต
+---
+cookie | คุกกี้ | Have a cookie. | กินคุกกี้สิ
+ice cream | ไอศกรีม | Let's get ice cream. | ไปกินไอศกรีมกัน
+cake | เค้ก | Happy birthday cake! | เค้กวันเกิด!
+chips | มันฝรั่งทอดกรอบ | A bag of chips. | มันฝรั่งทอดหนึ่งถุง
+sticky rice | ข้าวเหนียว | I eat sticky rice. | ฉันกินข้าวเหนียว
+straw | หลอด | No straw, please. | ไม่เอาหลอด
+`);
+U('police', 1, 'ตัวเลขและเวลาในงานตำรวจ', `
+o'clock | นาฬิกา (บอกเวลา) | It happened at ten o'clock. | เกิดเหตุตอนสิบนาฬิกา
+half past | ครึ่ง (เวลา) | Half past nine. | เก้าโมงครึ่ง
+quarter past | สิบห้านาที (หลังชั่วโมง) | Quarter past eight. | แปดโมงสิบห้า
+a.m. | ก่อนเที่ยง | 2 a.m. | ตีสอง
+p.m. | หลังเที่ยง | 3 p.m. | บ่ายสามโมง
+midnight | เที่ยงคืน | At midnight. | ตอนเที่ยงคืน
+---
+noon | เที่ยงวัน | At noon. | ตอนเที่ยง
+about | ประมาณ | About five people. | ประมาณห้าคน
+first time | ครั้งแรก | Is this the first time? | นี่ครั้งแรกหรือเปล่า
+twice | สองครั้ง | He called twice. | เขาโทรสองครั้ง
+dozen | โหล | A dozen eggs. | ไข่หนึ่งโหล
+`);
+U('daily', 2, 'ร้านเสริมสวยและบริการ', `
+haircut | การตัดผม | I need a haircut. | ฉันต้องตัดผม
+barber | ช่างตัดผมชาย | The barber is busy. | ช่างตัดผมยุ่ง
+salon | ร้านทำผม | She went to the salon. | เธอไปร้านทำผม
+massage | นวด | Let's get a Thai massage. | ไปนวดไทยกัน
+laundry service | บริการซักรีด | Use the laundry service. | ใช้บริการซักรีด
+tailor | ช่างตัดเสื้อ | The tailor made my suit. | ช่างตัดสูทให้ฉัน
+---
+appointment time | เวลานัด | What's my appointment time? | นัดกี่โมง
+walk-in | ไม่ต้องนัด | Walk-ins are welcome. | ไม่ต้องนัดก็ได้
+trim | เล็มผม | Just a trim, please. | แค่เล็มนิดหน่อย
+dye | ย้อมสี | I want to dye my hair. | ฉันอยากย้อมผม
+nails | เล็บ | She got her nails done. | เธอไปทำเล็บ
+price list | รายการราคา | Can I see the price list? | ขอดูรายการราคา
+`);
+U('talk', 2, 'บอกความชอบและความต้องการ', `
+I prefer | ฉันชอบ...มากกว่า | I prefer tea. | ฉันชอบชามากกว่า
+I can't stand | ทนไม่ได้ | I can't stand the heat. | ทนร้อนไม่ไหว
+I'm fond of | ชื่นชอบ | I'm fond of cats. | ฉันชอบแมว
+I'm not a fan of | ไม่ค่อยชอบ | I'm not a fan of spicy food. | ไม่ค่อยชอบเผ็ด
+I'd rather | ฉันอยาก...มากกว่า | I'd rather stay home. | ฉันอยากอยู่บ้านมากกว่า
+I feel like | อยาก (ทำ) | I feel like eating noodles. | อยากกินก๋วยเตี๋ยว
+---
+my favorite | ที่ฉันชอบที่สุด | Blue is my favorite. | สีฟ้าคือสีที่ชอบที่สุด
+I'm crazy about | คลั่งไคล้ | I'm crazy about football. | ฉันคลั่งฟุตบอล
+it's not my thing | ไม่ใช่แนวฉัน | Dancing is not my thing. | เต้นไม่ใช่แนวฉัน
+either is fine | อะไรก็ได้ | Tea or coffee? Either is fine. | ชาหรือกาแฟ อะไรก็ได้
+I don't mind | ไม่ว่าอะไร | I don't mind waiting. | ไม่ว่าที่ต้องรอ
+whatever you like | ตามใจคุณ | Choose whatever you like. | เลือกตามใจเลย
+`);
+U('police', 2, 'การดูแลผู้เสียหาย', `
+are you safe | ปลอดภัยไหม | Are you safe now? | ตอนนี้ปลอดภัยไหม
+you're safe now | ปลอดภัยแล้ว | Don't worry, you're safe now. | ไม่ต้องห่วง ปลอดภัยแล้ว
+take a deep breath | หายใจลึกๆ | Take a deep breath. | หายใจลึกๆ
+tell me what happened | เล่าให้ฟัง | Tell me what happened. | เล่าให้ฟังว่าเกิดอะไรขึ้น
+in your own words | ในแบบของคุณเอง | Tell me in your own words. | เล่าตามแบบของคุณ
+we will help | เราจะช่วย | We will help you. | เราจะช่วยคุณ
+---
+family contact | ติดต่อครอบครัว | Can we call your family? | ให้เราโทรหาครอบครัวไหม
+medical help | ความช่วยเหลือทางการแพทย์ | Do you need medical help? | ต้องการแพทย์ไหม
+follow-up | ติดตามผล | We'll do a follow-up call. | เราจะโทรติดตาม
+you did the right thing | คุณทำถูกแล้ว | You did the right thing. | คุณทำถูกแล้ว
+`);
+U('daily', 3, 'สภาพอากาศและภัยธรรมชาติ', `
+heatwave | คลื่นความร้อน | There is a heatwave this week. | สัปดาห์นี้มีคลื่นความร้อน
+typhoon | ไต้ฝุ่น | A typhoon is coming. | ไต้ฝุ่นกำลังมา
+tsunami | สึนามิ | A tsunami warning was issued. | ออกคำเตือนสึนามิ
+monsoon | มรสุม | The monsoon brings rain. | มรสุมนำฝนมา
+flash flood | น้ำป่าไหลหลาก | Beware of flash floods. | ระวังน้ำป่าไหลหลาก
+---
+heavy rain | ฝนตกหนัก | Heavy rain is expected. | คาดว่าฝนตกหนัก
+hail | ลูกเห็บ | It hailed yesterday. | เมื่อวานลูกเห็บตก
+storm warning | ประกาศเตือนพายุ | There is a storm warning. | มีประกาศเตือนพายุ
+power outage | ไฟดับ | The storm caused a power outage. | พายุทำให้ไฟดับ
+emergency kit | ชุดอุปกรณ์ฉุกเฉิน | Prepare an emergency kit. | เตรียมชุดฉุกเฉิน
+high tide | น้ำขึ้น | Don't swim at high tide. | อย่าว่ายน้ำตอนน้ำขึ้น
+`);
+U('talk', 3, 'การพูดเรื่องอดีตและประสบการณ์', `
+I used to | ฉันเคย... | I used to live in Korat. | ฉันเคยอยู่โคราช
+have you ever | เคย...ไหม | Have you ever been to Japan? | เคยไปญี่ปุ่นไหม
+I've never | ฉันไม่เคย | I've never seen snow. | ฉันไม่เคยเห็นหิมะ
+back then | ตอนนั้น | Back then, I was poor. | ตอนนั้นฉันจน
+when I was young | ตอนเด็ก | When I was young, I lived here. | ตอนเด็กฉันอยู่ที่นี่
+a long time ago | นานมาแล้ว | It was a long time ago. | นานมาแล้ว
+---
+these days | ทุกวันนี้ | These days, I work a lot. | ทุกวันนี้ฉันทำงานหนัก
+recently | เมื่อเร็วๆ นี้ | I recently moved. | ฉันเพิ่งย้ายบ้าน
+so far | จนถึงตอนนี้ | So far, so good. | จนถึงตอนนี้ก็ดี
+since then | ตั้งแต่นั้น | Since then, I've changed. | ตั้งแต่นั้นฉันก็เปลี่ยน
+experience of | ประสบการณ์เรื่อง | I have experience of teaching. | ฉันมีประสบการณ์สอน
+memorable | น่าจดจำ | It was a memorable trip. | เป็นทริปที่น่าจดจำ
+`);
+U('daily', 4, 'สุขภาพระบบต่างๆ', `
+diabetes | เบาหวาน | He has diabetes. | เขาเป็นเบาหวาน
+blood test | ตรวจเลือด | You need a blood test. | คุณต้องตรวจเลือด
+X-ray | เอกซเรย์ | Take an X-ray. | ถ่ายเอกซเรย์
+vaccine | วัคซีน | Get the flu vaccine. | ฉีดวัคซีนไข้หวัดใหญ่
+check-up | ตรวจสุขภาพ | I have a yearly check-up. | ฉันตรวจสุขภาพทุกปี
+cholesterol | คอเลสเตอรอล | His cholesterol is high. | คอเลสเตอรอลเขาสูง
+---
+side effect | ผลข้างเคียง | Are there side effects? | มีผลข้างเคียงไหม
+dose | ขนาดยา | Take one dose daily. | กินวันละหนึ่งครั้ง
+painkiller | ยาแก้ปวด | Take a painkiller. | กินยาแก้ปวด
+antibiotic | ยาปฏิชีวนะ | Finish the antibiotics. | กินยาปฏิชีวนะให้หมด
+admitted | ได้รับเข้าโรงพยาบาล | He was admitted to hospital. | เขาต้องนอนโรงพยาบาล
+discharged | ออกจากโรงพยาบาล | She was discharged today. | วันนี้เธอออกจากโรงพยาบาล
+`);
+U('police', 4, 'งานธุรการตำรวจ', `
+paperwork | งานเอกสาร | I have a lot of paperwork. | ฉันมีงานเอกสารเยอะ
+file a report | ทำรายงาน | File a report today. | ทำรายงานวันนี้
+deadline for filing | กำหนดส่งเอกสาร | The filing deadline is Friday. | กำหนดส่งคือวันศุกร์
+approval | การอนุมัติ | We need approval first. | ต้องได้รับอนุมัติก่อน
+official letter | หนังสือราชการ | Send an official letter. | ส่งหนังสือราชการ
+stamp | ตราประทับ | It needs an official stamp. | ต้องประทับตรา
+---
+copy of ID | สำเนาบัตรประชาชน | Bring a copy of your ID. | นำสำเนาบัตรมา
+certified copy | สำเนารับรอง | A certified copy, please. | ขอสำเนารับรอง
+database | ฐานข้อมูล | Check the database. | ตรวจฐานข้อมูล
+record | บันทึก/ประวัติ | He has a criminal record. | เขามีประวัติอาชญากรรม
+background check | ตรวจประวัติ | Do a background check. | ตรวจสอบประวัติ
+archive | เอกสารเก่า/คลัง | It's in the archive. | อยู่ในคลังเอกสาร
+`);
+U('talk', 4, 'การสนทนาในที่ทำงาน', `
+how's work | งานเป็นไง | How's work going? | งานเป็นยังไงบ้าง
+swamped | ยุ่งมาก | I'm swamped today. | วันนี้งานล้นมือ
+on track | เป็นไปตามแผน | We're on track. | ทุกอย่างเป็นไปตามแผน
+behind schedule | ล่าช้ากว่ากำหนด | The project is behind schedule. | โครงการล่าช้า
+heads-up | แจ้งเตือนล่วงหน้า | Thanks for the heads-up. | ขอบคุณที่บอกล่วงหน้า
+brainstorm | ระดมความคิด | Let's brainstorm. | มาระดมความคิดกัน
+---
+wrap up | สรุปปิด | Let's wrap up the meeting. | สรุปปิดการประชุม
+action items | สิ่งที่ต้องทำต่อ | Here are the action items. | นี่คือสิ่งที่ต้องทำต่อ
+sign off | อนุมัติ/ลงนาม | The boss signed off on it. | หัวหน้าอนุมัติแล้ว
+bring up to speed | อัปเดตให้ทัน | Let me bring you up to speed. | ขออัปเดตให้คุณทราบ
+work from home | ทำงานที่บ้าน | I work from home on Friday. | ศุกร์ฉันทำงานที่บ้าน
+team building | กิจกรรมสร้างทีม | We had team building. | เรามีกิจกรรมสร้างทีม
+`);
+U('daily', 5, 'เศรษฐกิจและการค้า', `
+export | ส่งออก | Thailand exports rice. | ไทยส่งออกข้าว
+import | นำเข้า | We import oil. | เรานำเข้าน้ำมัน
+trade | การค้า | Trade is growing. | การค้ากำลังเติบโต
+tariff | ภาษีศุลกากร | New tariffs were added. | มีภาษีนำเข้าใหม่
+GDP | ผลิตภัณฑ์มวลรวม | GDP grew by 3 percent. | GDP โต 3 เปอร์เซ็นต์
+tourism industry | อุตสาหกรรมท่องเที่ยว | The tourism industry recovered. | อุตสาหกรรมท่องเที่ยวฟื้นตัว
+---
+consumer | ผู้บริโภค | Protect consumers. | ปกป้องผู้บริโภค
+demand | อุปสงค์/ความต้องการ | Demand is high. | ความต้องการสูง
+minimum wage | ค่าแรงขั้นต่ำ | The minimum wage rose. | ค่าแรงขั้นต่ำขึ้น
+labor | แรงงาน | Labor costs are rising. | ค่าแรงสูงขึ้น
+recovery | การฟื้นตัว | The economy is in recovery. | เศรษฐกิจกำลังฟื้นตัว
+`);
+U('police', 5, 'การฝึกและสมรรถภาพตำรวจ', `
+recruit | ผู้สมัคร/พลทหารใหม่ | New recruits start Monday. | ผู้เข้ารับการฝึกเริ่มวันจันทร์
+drill | การฝึกซ้อม | We have a fire drill. | เรามีการซ้อมหนีไฟ
+firearms training | การฝึกยิงปืน | Firearms training is weekly. | ฝึกยิงปืนทุกสัปดาห์
+self-defense | การป้องกันตัว | Learn self-defense. | เรียนการป้องกันตัว
+endurance | ความอดทน | Running builds endurance. | การวิ่งสร้างความอดทน
+obstacle course | สนามเครื่องกีดขวาง | Finish the obstacle course. | ผ่านสนามเครื่องกีดขวาง
+---
+physical test | ทดสอบร่างกาย | I passed the physical test. | ผ่านการทดสอบร่างกาย
+written exam | ข้อสอบข้อเขียน | The written exam is hard. | ข้อสอบข้อเขียนยาก
+graduation ceremony | พิธีจบการศึกษา | My graduation ceremony is soon. | พิธีจบใกล้แล้ว
+marksmanship | ความแม่นยำในการยิง | His marksmanship is excellent. | เขายิงแม่นมาก
+fitness standard | เกณฑ์สมรรถภาพ | Meet the fitness standard. | ผ่านเกณฑ์สมรรถภาพ
+cadet | นักเรียนนายร้อย | He is a police cadet. | เขาเป็นนักเรียนนายร้อยตำรวจ
+`);
+U('talk', 6, 'สำนวนขั้นสูง 3', `
+the ball is in your court | ถึงตาคุณตัดสินใจ | The ball is in your court now. | ตอนนี้ถึงตาคุณแล้ว
+a double-edged sword | ดาบสองคม | Social media is a double-edged sword. | โซเชียลเป็นดาบสองคม
+add insult to injury | ซ้ำเติม | To add insult to injury, it rained. | ซ้ำเติมด้วยฝนตก
+by the book | ตามระเบียบเป๊ะ | He does everything by the book. | เขาทำทุกอย่างตามระเบียบ
+caught red-handed | จับได้คาหนังคาเขา | The thief was caught red-handed. | ขโมยถูกจับคาหนังคาเขา
+turn a blind eye | ทำเป็นมองไม่เห็น | Don't turn a blind eye to crime. | อย่าเมินเฉยต่ออาชญากรรม
+---
+a long shot | โอกาสน้อย | It's a long shot, but try. | โอกาสน้อยแต่ลองดู
+the bottom line | ประเด็นสำคัญที่สุด | The bottom line is safety. | สิ่งสำคัญที่สุดคือความปลอดภัย
+in a nutshell | โดยสรุปสั้นๆ | In a nutshell, we won. | สรุปสั้นๆ เราชนะ
+play it by ear | ดูสถานการณ์ไป | Let's play it by ear. | ดูสถานการณ์ไปก่อน
+under the table | ใต้โต๊ะ (ไม่ถูกกฎหมาย) | He was paid under the table. | เขาได้เงินใต้โต๊ะ
+go down the drain | สูญเปล่า | All our work went down the drain. | งานทั้งหมดสูญเปล่า
+`);
+U('daily', 6, 'ภาษาวิชาการ (คำเชื่อมขั้นสูง)', `
+notwithstanding | แม้ว่า/อย่างไรก็ตาม | Notwithstanding the risks, we proceeded. | แม้มีความเสี่ยง เราก็ดำเนินการ
+in accordance with | ตามที่สอดคล้องกับ | Act in accordance with the law. | ปฏิบัติตามกฎหมาย
+with respect to | ในส่วนที่เกี่ยวกับ | With respect to cost, it's fine. | ในเรื่องค่าใช้จ่ายโอเค
+insofar as | ในขอบเขตที่ | Insofar as I know, he's innocent. | เท่าที่ฉันรู้ เขาบริสุทธิ์
+thus | ดังนั้น | Thus, the case was closed. | ดังนั้นคดีจึงปิด
+whereby | ซึ่งโดยการนั้น | A system whereby crimes are reported online. | ระบบที่ให้แจ้งความออนไลน์ได้
+---
+hitherto | จนถึงบัดนี้ | A hitherto unknown suspect. | ผู้ต้องสงสัยที่ไม่เคยรู้จักมาก่อน
+henceforth | นับจากนี้ไป | Henceforth, rules will change. | นับจากนี้กฎจะเปลี่ยน
+provided that | โดยมีเงื่อนไขว่า | You can go, provided that you return. | ไปได้ ถ้ากลับมา
+inasmuch as | เนื่องจาก | Inasmuch as he confessed, he got less time. | เนื่องจากสารภาพจึงได้ลดโทษ
+vis-à-vis | เมื่อเทียบกับ | Our position vis-à-vis the others. | จุดยืนของเราเทียบกับคนอื่น
+de facto | โดยพฤตินัย | He is the de facto leader. | เขาเป็นผู้นำโดยพฤตินัย
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
