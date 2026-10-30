@@ -3,7 +3,7 @@
 // คอร์สเรียนภาษาอังกฤษ (ไฟล์เนื้อหา: เพิ่มบทเรียนได้ที่นี่ที่เดียว)
 // ---------------------------------------------------------------------
 // U(คอร์ส, ระดับ, 'ชื่อหน่วย', `บทเรียน`)
-//   ระดับ (= เลเวล Lv.): 0 เริ่มจากศูนย์ · 1 เริ่มต้น · 2 พื้นฐาน · 3 ปานกลาง · 4 ดี
+//   ระดับ (= เลเวล Lv.): 0 เริ่มจากศูนย์ · 1 เริ่มต้น · 2 พื้นฐาน · 3 ปานกลาง · 4 ดี · 5 คล่อง · 6 เชี่ยวชาญ
 //   บทเรียน: บรรทัดละคำ  "คำ/วลี | คำแปล | ประโยคตัวอย่าง | คำแปลประโยค"
 //            คั่นแต่ละบทด้วยบรรทัด ---   (บทละ 5–6 คำกำลังดี)
 // บทสนทนา: D(ระดับ, 'หัวข้อ', `A: ... / B: ___ | คำตอบ | ตัวหลอก1; ตัวหลอก2; ตัวหลอก3 | คำแปลบทสนทนา`)  (ตัวหลอกคั่นด้วย ;)
@@ -20,7 +20,7 @@ const COURSES = {
   dialog: { name: 'บทสนทนาออกสอบ', ic: 'message-circle', color: '#38bdf8', units: [], gram: true, kind: 'dialog' },
   read:   { name: 'อ่านจับใจความ', ic: 'book-open-text', color: '#ec6ba8', units: [], gram: true, kind: 'read' }
 };
-const ENG_LEVELS = ['เริ่มจากศูนย์', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี'];
+const ENG_LEVELS = ['เริ่มจากศูนย์', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี', 'คล่อง', 'เชี่ยวชาญ'];
 function U(course, lv, t, text){
   const ls = text.trim().split(/\n\s*---\s*\n/).map(block => block.trim().split('\n').map(line => {
     const [en, th, ex, tr] = line.split('|').map(s => (s || '').trim());
@@ -730,7 +730,7 @@ A: Do you mind if I open the window? / B: ___ | No, go ahead. | Yes, please open
 // ===== อ่านจับใจความ =====
 function R(lv, t, title, text, tr, qs){
   const C = COURSES.read;
-  let u = C.units.find(x => x.t === t);
+  let u = C.units.find(x => x.t === t && x.lv === lv);
   if(!u){ u = { t, lv, rule: '', ls: [] }; C.units.push(u); (C.def = C.def || []).push(t); }
   u.ls.push(qs.trim().split('\n').map(line => {
     const [q, a, w] = line.split('|').map(s => (s || '').trim());
@@ -1723,6 +1723,248 @@ Why do police officers often feel stressed? | Long hours and dangerous situation
 Which is NOT a way to manage stress mentioned? | Working more hours | Regular exercise; Enough sleep; Talking with family
 What do some police departments provide? | Counselors | Free cars; Longer holidays; More weapons
 What is the writer's opinion about mental health care? | It helps officers serve better. | It shows weakness.; It is not important.; It costs too much.
+`);
+
+// ===== Lv.5 คล่อง =====
+U('daily', 5, 'ภาษาข่าว', `
+crisis | วิกฤต | The country faces an economic crisis. | ประเทศเผชิญวิกฤตเศรษฐกิจ
+reform | ปฏิรูป | The government promised police reform. | รัฐบาลสัญญาว่าจะปฏิรูปตำรวจ
+protest | ประท้วง | Thousands joined the protest. | คนหลายพันเข้าร่วมการประท้วง
+scandal | เรื่องอื้อฉาว | The minister resigned after the scandal. | รัฐมนตรีลาออกหลังเรื่องอื้อฉาว
+inflation | เงินเฟ้อ | Inflation makes food more expensive. | เงินเฟ้อทำให้อาหารแพงขึ้น
+policy | นโยบาย | The new policy starts next year. | นโยบายใหม่เริ่มปีหน้า
+---
+unemployment | การว่างงาน | Unemployment is rising. | การว่างงานเพิ่มขึ้น
+debate | การอภิปราย | There was a heated debate. | มีการอภิปรายอย่างดุเดือด
+campaign | การรณรงค์ | They started a road safety campaign. | พวกเขาเริ่มรณรงค์ความปลอดภัยทางถนน
+poll | ผลสำรวจความเห็น | A new poll shows strong support. | ผลสำรวจใหม่แสดงการสนับสนุนอย่างมาก
+controversy | ข้อถกเถียง | The decision caused controversy. | การตัดสินใจนั้นก่อให้เกิดข้อถกเถียง
+official | เจ้าหน้าที่/เป็นทางการ | An official confirmed the news. | เจ้าหน้าที่ยืนยันข่าวแล้ว
+`);
+U('daily', 5, 'อารมณ์แบบละเอียด', `
+frustrated | หงุดหงิด/คับข้องใจ | I'm frustrated with the slow internet. | ฉันหงุดหงิดกับเน็ตช้า
+overwhelmed | ท่วมท้น/รับมือไม่ไหว | She felt overwhelmed by work. | เธอรู้สึกงานล้นมือ
+relieved | โล่งใจ | I was relieved to hear the news. | ฉันโล่งใจที่ได้ยินข่าวนี้
+grateful | ซาบซึ้งใจ | I'm grateful for your help. | ฉันซาบซึ้งใจที่คุณช่วย
+embarrassed | อาย | He was embarrassed by his mistake. | เขาอายกับความผิดพลาดของตัวเอง
+confused | สับสน | I'm confused. Can you explain again? | ฉันสับสน อธิบายอีกครั้งได้ไหม
+---
+disappointed | ผิดหวัง | I was disappointed with the result. | ฉันผิดหวังกับผลลัพธ์
+furious | โกรธจัด | The customer was furious. | ลูกค้าโกรธจัด
+exhausted | เหนื่อยล้ามาก | After the shift, I was exhausted. | หลังเข้าเวรฉันเหนื่อยมาก
+delighted | ดีใจมาก | We are delighted to meet you. | เรายินดีมากที่ได้พบคุณ
+jealous | อิจฉา | He is jealous of his brother. | เขาอิจฉาพี่ชาย
+ashamed | ละอายใจ | He felt ashamed of what he did. | เขาละอายใจกับสิ่งที่ทำ
+`);
+U('police', 5, 'กระบวนการยุติธรรม', `
+prosecute | ฟ้องร้องดำเนินคดี | The state will prosecute him. | รัฐจะฟ้องดำเนินคดีกับเขา
+defendant | จำเลย | The defendant denied the charges. | จำเลยปฏิเสธข้อกล่าวหา
+plaintiff | โจทก์ | The plaintiff asked for compensation. | โจทก์เรียกค่าเสียหาย
+verdict | คำตัดสิน | The court will give its verdict today. | ศาลจะอ่านคำตัดสินวันนี้
+acquit | ยกฟ้อง/ตัดสินว่าไม่ผิด | He was acquitted of all charges. | เขาได้รับการยกฟ้องทุกข้อหา
+convict | ตัดสินว่ามีความผิด | She was convicted of fraud. | เธอถูกตัดสินว่าผิดฐานฉ้อโกง
+---
+testimony | คำให้การ | His testimony was important. | คำให้การของเขาสำคัญมาก
+probation | การคุมประพฤติ | He was put on probation for a year. | เขาถูกคุมประพฤติหนึ่งปี
+parole | การพักโทษ | She was released on parole. | เธอได้รับการพักโทษ
+compensation | ค่าชดเชย | The victim received compensation. | ผู้เสียหายได้รับค่าชดเชย
+lawsuit | คดีความ | They filed a lawsuit against the company. | พวกเขายื่นฟ้องบริษัท
+appeal | ยื่นอุทธรณ์ | The lawyer will appeal the decision. | ทนายจะยื่นอุทธรณ์คำตัดสิน
+`);
+U('talk', 5, 'ที่ทำงานขั้นสูง', `
+colleague | เพื่อนร่วมงาน | My colleague helped me. | เพื่อนร่วมงานช่วยฉัน
+promotion | การเลื่อนตำแหน่ง | He got a promotion last year. | เขาได้เลื่อนตำแหน่งปีที่แล้ว
+resign | ลาออก | She decided to resign. | เธอตัดสินใจลาออก
+workload | ปริมาณงาน | My workload is heavy this month. | เดือนนี้งานฉันหนัก
+delegate | มอบหมายงาน | A good leader knows how to delegate. | ผู้นำที่ดีรู้วิธีมอบหมายงาน
+priority | ลำดับความสำคัญ | Safety is our top priority. | ความปลอดภัยคือสิ่งสำคัญที่สุดของเรา
+---
+supervise | ควบคุมดูแล | He supervises ten officers. | เขาดูแลเจ้าหน้าที่สิบนาย
+initiative | ความคิดริเริ่ม | She showed great initiative. | เธอแสดงความคิดริเริ่มอย่างดี
+collaborate | ร่วมมือกัน | We collaborate with other agencies. | เราร่วมมือกับหน่วยงานอื่น
+assess | ประเมิน | We need to assess the risk. | เราต้องประเมินความเสี่ยง
+performance | ผลการปฏิบัติงาน | His performance was excellent. | ผลงานของเขายอดเยี่ยม
+deadline | กำหนดเส้นตาย | We missed the deadline. | เราพลาดกำหนดส่ง
+`);
+U('talk', 5, 'สำนวนอังกฤษ (Idioms)', `
+once in a blue moon | นานๆ ครั้ง | I eat fast food once in a blue moon. | ฉันกินฟาสต์ฟู้ดนานๆ ครั้ง
+cost an arm and a leg | แพงมหาโหด | That car cost an arm and a leg. | รถคันนั้นแพงหูฉี่
+hit the books | ตั้งใจอ่านหนังสือ | I need to hit the books tonight. | คืนนี้ต้องอ่านหนังสือหนัก
+beat around the bush | พูดอ้อมค้อม | Stop beating around the bush. | เลิกพูดอ้อมค้อมได้แล้ว
+the last straw | ฟางเส้นสุดท้าย | Being late again was the last straw. | มาสายอีกครั้งคือฟางเส้นสุดท้าย
+speak of the devil | พูดถึงก็มาพอดี | Speak of the devil, here he is! | พูดถึงก็มาพอดีเลย
+---
+better late than never | มาช้ายังดีกว่าไม่มา | You finished it? Better late than never. | เสร็จแล้วเหรอ ช้ายังดีกว่าไม่ทำ
+in hot water | เดือดร้อน/มีปัญหา | He's in hot water with his boss. | เขามีปัญหากับหัวหน้า
+let the cat out of the bag | เผลอหลุดความลับ | Who let the cat out of the bag? | ใครเผลอหลุดความลับ
+see eye to eye | เห็นตรงกัน | We don't always see eye to eye. | เราไม่ได้เห็นตรงกันเสมอไป
+cut corners | ทำแบบลวกๆ | Don't cut corners on safety. | อย่าทำลวกๆ เรื่องความปลอดภัย
+on thin ice | เสี่ยงต่อปัญหา | You're on thin ice after that mistake. | หลังความผิดพลาดนั้นคุณกำลังเสี่ยง
+`);
+G(5, 'Mixed conditionals', 'If + had V3, would + V1 now (อดีตส่งผลถึงปัจจุบัน) · If + V2, would have V3 (นิสัยปัจจุบันส่งผลอดีต)', `
+If I had studied harder, I ___ a police officer now. | would be | would have been, will be, am | อดีต → ผลตอนนี้ (now) | ถ้าเมื่อก่อนฉันตั้งใจเรียน ตอนนี้ฉันคงเป็นตำรวจแล้ว
+If she ___ the job, she would be rich now. | had taken | took, takes, would take | If + had V3 | ถ้าเธอรับงานนั้น ตอนนี้เธอคงรวยแล้ว
+If he weren't so lazy, he ___ the exam last year. | would have passed | would pass, passed, will pass | นิสัยปัจจุบัน → ผลในอดีต | ถ้าเขาไม่ขี้เกียจ ปีที่แล้วเขาคงสอบผ่านไปแล้ว
+If I ___ my phone, I could call you now. | hadn't lost | didn't lose, don't lose, wouldn't lose | If + had V3 | ถ้าฉันไม่ทำโทรศัพท์หาย ตอนนี้คงโทรหาคุณได้
+If you had listened, you ___ confused now. | wouldn't be | won't be, wouldn't have been, aren't | อดีต → ตอนนี้ | ถ้าคุณตั้งใจฟัง ตอนนี้คงไม่สับสน
+If she spoke English, she ___ the tourist yesterday. | could have helped | can help, could help, helped | ความสามารถปัจจุบัน → อดีต | ถ้าเธอพูดอังกฤษได้ เมื่อวานคงช่วยนักท่องเที่ยวได้
+`);
+G(5, 'Relative clauses แบบมีคอมมา', 'ข้อมูลเพิ่มเติม (non-defining) ใส่คอมมา ใช้ who / which / whose ห้ามใช้ that', `
+My father, ___ is a doctor, lives in Khon Kaen. | who | that, which, whose | คน + ข้อมูลเพิ่ม ใช้ who | พ่อของฉันซึ่งเป็นหมอ อาศัยอยู่ที่ขอนแก่น
+Bangkok, ___ is the capital, is very crowded. | which | that, who, where | สิ่ง/สถานที่ + คอมมา ใช้ which | กรุงเทพฯ ซึ่งเป็นเมืองหลวง มีคนแออัดมาก
+The officer, ___ car was stolen, reported it. | whose | who, which, that | ของใคร ใช้ whose | เจ้าหน้าที่ที่รถถูกขโมยได้แจ้งความ
+He passed the exam, ___ surprised everyone. | which | that, what, who | which อ้างทั้งประโยค | เขาสอบผ่าน ซึ่งทำให้ทุกคนแปลกใจ
+Phuket, ___ I visited last year, is beautiful. | which | where, that, who | ทำหน้าที่กรรมของ visited ใช้ which | ภูเก็ตที่ฉันไปเมื่อปีก่อนสวยมาก
+My sister, ___ you met yesterday, is a nurse. | whom | which, whose, that | กรรมเป็นคน ใช้ whom (หรือ who) | พี่สาวที่คุณเจอเมื่อวานเป็นพยาบาล
+`);
+G(5, 'Wish / If only (ขั้นสูง)', 'wish + would = อยากให้คนอื่นเปลี่ยน · wish + could = อยากทำได้ · If only = ถ้าเพียงแต่ (เน้นกว่า wish)', `
+I wish you ___ stop talking. | would | will, can, did | อยากให้คนอื่นเปลี่ยนพฤติกรรม | ฉันอยากให้คุณหยุดพูดเสียที
+I wish I ___ speak five languages. | could | can, will, would to | อยากมีความสามารถ | ฉันอยากพูดได้ห้าภาษา
+If only I ___ more time! | had | have, would have, will have | If only + V2 (ปัจจุบัน) | ถ้าฉันมีเวลามากกว่านี้ก็ดี
+If only she ___ the truth earlier. | had told | told, tells, would tell | If only + had V3 (อดีต) | ถ้าเธอบอกความจริงเร็วกว่านี้ก็ดี
+He wishes it ___ raining. | would stop | stops, stopped, will stop | wish + would | เขาอยากให้ฝนหยุดตก
+I wish I ___ so much last night. | hadn't eaten | didn't eat, wouldn't eat, don't eat | เสียดายอดีต | ฉันไม่น่ากินเยอะขนาดนั้นเมื่อคืน
+`);
+D(5, 'สัมภาษณ์และที่ทำงาน', `
+A: Tell me about yourself. / B: ___ | I'm a hardworking person with three years of experience in security. | I'm fine, thank you.; Myself is good.; Tell me first. | A: เล่าเกี่ยวกับตัวคุณหน่อย / B: ผมเป็นคนขยันและมีประสบการณ์ด้านรักษาความปลอดภัยสามปี
+A: How do you handle pressure? / B: ___ | I stay calm, focus on priorities, and solve one problem at a time. | I handle it with my hands.; Pressure is very high.; I don't know pressure. | A: คุณรับมือกับความกดดันอย่างไร / B: ผมใจเย็น จัดลำดับความสำคัญ และแก้ทีละปัญหา
+A: Where do you see yourself in five years? / B: ___ | I hope to become a skilled investigator. | I see myself in the mirror.; In five years ago.; Yes, I see. | A: อีกห้าปีคุณเห็นตัวเองเป็นอย่างไร / B: ผมหวังว่าจะเป็นนักสืบที่เชี่ยวชาญ
+A: Do you have any questions for us? / B: ___ | Yes. What training do new officers receive? | No, I'm the question.; Questions are hard.; Yes, I have a car. | A: มีคำถามอะไรถึงเราไหม / B: มีครับ เจ้าหน้าที่ใหม่จะได้รับการฝึกอบรมอะไรบ้าง
+A: We'll let you know by next week. / B: ___ | Thank you for your time. I look forward to hearing from you. | Let me know now.; Next week is late, bye.; I know it already. | A: เราจะแจ้งผลภายในสัปดาห์หน้า / B: ขอบคุณที่สละเวลาครับ หวังว่าจะได้ข่าวดี
+`);
+D(5, 'ระงับเหตุตึงเครียด', `
+A: This is ridiculous! I've waited two hours! / B: ___ | I understand you're upset. Let me see how I can help. | Wait two more hours.; It's not ridiculous.; Calm down or leave! | A: บ้าไปแล้ว! รอมาสองชั่วโมง! / B: เข้าใจว่าคุณไม่พอใจ ขอดูว่าจะช่วยอย่างไรได้
+A: He hit my car and drove away! / B: ___ | Are you hurt? Did you see the license plate? | Your car is old anyway.; He drove very well.; That's not my problem. | A: เขาชนรถผมแล้วขับหนี! / B: คุณบาดเจ็บไหม เห็นป้ายทะเบียนไหม
+A: I didn't do anything wrong! / B: ___ | Then please stay calm and let's sort this out together. | You did everything wrong.; Wrong is not right.; Go away now. | A: ผมไม่ได้ทำอะไรผิด! / B: งั้นใจเย็นๆ แล้วมาช่วยกันคลี่คลายเรื่องนี้
+A: Why are you stopping me? / B: ___ | You were driving without your headlights on. | Because I like stopping.; I'm not stopping.; Ask your friend. | A: ทำไมเรียกผมหยุด / B: คุณขับรถโดยไม่เปิดไฟหน้า
+A: I want to speak to your supervisor. / B: ___ | Certainly. I'll call him for you. | He doesn't speak.; No, I am the boss of the world.; Speak to me later forever. | A: ขอคุยกับหัวหน้าคุณ / B: ได้ครับ จะเรียกให้
+`);
+R(5, 'บทความวิเคราะห์', 'Fake News', `Fake news spreads quickly on social media, often faster than the truth. Some false stories are created to make money from clicks, while others aim to influence public opinion. During emergencies, fake news can cause panic and even put lives at risk. Before sharing a story, readers should check the source, look for the same news on trusted websites, and be careful with shocking headlines. Thinking critically is one of the most important skills in the digital age.`,
+`ข่าวปลอมแพร่กระจายอย่างรวดเร็วบนโซเชียลมีเดีย มักเร็วกว่าความจริง ข่าวปลอมบางเรื่องสร้างขึ้นเพื่อหาเงินจากยอดคลิก บางเรื่องมุ่งชี้นำความคิดของประชาชน ในเหตุฉุกเฉิน ข่าวปลอมอาจทำให้เกิดความตื่นตระหนกและเป็นอันตรายต่อชีวิต ก่อนแชร์ ผู้อ่านควรตรวจสอบแหล่งที่มา หาข่าวเดียวกันจากเว็บที่เชื่อถือได้ และระวังพาดหัวที่ชวนตกใจ การคิดวิเคราะห์จึงเป็นทักษะสำคัญที่สุดอย่างหนึ่งในยุคดิจิทัล`, `
+Why are some fake stories created? | To make money from clicks | To help police; To teach English; To sell newspapers only
+What can fake news cause during emergencies? | Panic | Better safety; Less traffic; Good weather
+Which is NOT advice in the text? | Share shocking stories quickly | Check the source; Use trusted websites; Be careful with headlines
+The phrase "thinking critically" is closest to | carefully judging information | thinking negatively; thinking fast; not thinking
+`);
+R(5, 'งานตำรวจยุคใหม่', 'Body Cameras', `Many police forces now require officers to wear body cameras. Supporters say the cameras protect both the public and the police, because they provide clear evidence of what really happened. Studies in some countries found fewer complaints against officers after cameras were introduced. However, critics worry about privacy, especially when cameras record people inside their homes. Clear rules about when to record and how long to keep videos are therefore essential.`,
+`ปัจจุบันตำรวจหลายแห่งกำหนดให้เจ้าหน้าที่ติดกล้องที่ตัว ผู้สนับสนุนบอกว่ากล้องปกป้องทั้งประชาชนและตำรวจ เพราะเป็นหลักฐานชัดเจนว่าเกิดอะไรขึ้นจริง งานศึกษาในบางประเทศพบว่าข้อร้องเรียนต่อเจ้าหน้าที่ลดลงหลังเริ่มใช้กล้อง อย่างไรก็ตาม ผู้วิจารณ์กังวลเรื่องความเป็นส่วนตัว โดยเฉพาะเมื่อกล้องบันทึกภาพคนในบ้าน กฎที่ชัดเจนว่าจะบันทึกเมื่อไหร่และเก็บวิดีโอนานแค่ไหนจึงจำเป็นมาก`, `
+Why do supporters like body cameras? | They provide clear evidence. | They are cheap.; They replace officers.; They stop all crime.
+What happened after cameras were introduced in some countries? | Fewer complaints against officers | More complaints; More crime; Officers quit
+What is the critics' main worry? | Privacy | Cost; Battery life; Camera size
+What does the writer think is essential? | Clear rules about recording | More cameras; Banning cameras; Bigger police forces
+`);
+// ===== Lv.6 เชี่ยวชาญ =====
+U('daily', 6, 'Phrasal verbs ขั้นสูง', `
+put off | เลื่อนออกไป | Don't put off your training. | อย่าผัดวันประกันพรุ่งเรื่องการฝึก
+come up with | คิดขึ้นมาได้ | She came up with a great idea. | เธอคิดไอเดียเจ๋งๆ ได้
+look into | ตรวจสอบ/สืบดู | The police will look into the case. | ตำรวจจะตรวจสอบคดีนี้
+turn down | ปฏิเสธ | He turned down the bribe. | เขาปฏิเสธสินบน
+carry out | ดำเนินการ | They carried out the operation. | พวกเขาดำเนินปฏิบัติการ
+bring up | ยกขึ้นมาพูด/เลี้ยงดู | Don't bring up that topic. | อย่ายกเรื่องนั้นขึ้นมาพูด
+---
+figure out | คิดออก/หาทางออก | I can't figure out the answer. | ฉันคิดคำตอบไม่ออก
+get along with | เข้ากันได้ | I get along with my team. | ฉันเข้ากับทีมได้ดี
+run out of | หมด (ของ) | We ran out of water. | น้ำหมดแล้ว
+set up | ตั้ง/จัดตั้ง | They set up a checkpoint. | พวกเขาตั้งด่านตรวจ
+hold up | ปล้น/ทำให้ล่าช้า | Two men held up the bank. | ชายสองคนปล้นธนาคาร
+make up | แต่งเรื่อง/คืนดี | He made up the whole story. | เขาแต่งเรื่องทั้งหมดขึ้นมา
+`);
+U('daily', 6, 'คำเชื่อมและศัพท์เชิงวิชาการ', `
+perspective | มุมมอง | Try to see it from my perspective. | ลองมองจากมุมของฉันดู
+assumption | ข้อสันนิษฐาน | Your assumption is wrong. | ข้อสันนิษฐานของคุณผิด
+ambiguous | กำกวม | The instructions were ambiguous. | คำสั่งกำกวม
+inevitable | หลีกเลี่ยงไม่ได้ | Change is inevitable. | การเปลี่ยนแปลงเป็นสิ่งหลีกเลี่ยงไม่ได้
+comprehensive | ครอบคลุม | We need a comprehensive plan. | เราต้องการแผนที่ครอบคลุม
+sustainable | ยั่งยืน | We need sustainable solutions. | เราต้องการทางแก้ที่ยั่งยืน
+---
+nevertheless | อย่างไรก็ตาม | It was risky; nevertheless, we did it. | มันเสี่ยง แต่เราก็ทำ
+furthermore | ยิ่งไปกว่านั้น | Furthermore, the plan is cheap. | ยิ่งไปกว่านั้น แผนนี้ราคาถูก
+whereas | ในขณะที่ (เปรียบเทียบ) | He likes tea, whereas I like coffee. | เขาชอบชา ในขณะที่ฉันชอบกาแฟ
+consequently | ด้วยเหตุนี้ | He was late; consequently, he missed the bus. | เขามาสาย จึงตกรถ
+despite | ทั้งที่/แม้ว่า | Despite the rain, we went out. | แม้ฝนตก เราก็ออกไป
+moreover | นอกจากนี้ | Moreover, it saves time. | นอกจากนี้ยังประหยัดเวลา
+`);
+U('police', 6, 'นิติวิทยาศาสตร์และการสืบสวน', `
+forensic | นิติวิทยาศาสตร์ | The forensic team arrived. | ทีมนิติวิทยาศาสตร์มาถึงแล้ว
+DNA | ดีเอ็นเอ | DNA matched the suspect. | ดีเอ็นเอตรงกับผู้ต้องสงสัย
+autopsy | การชันสูตรศพ | The autopsy showed poisoning. | ผลชันสูตรพบว่าถูกวางยา
+trace | ร่องรอย | They found traces of blood. | พวกเขาพบร่องรอยเลือด
+tamper | แก้ไข/ยุ่งเกี่ยว (หลักฐาน) | Someone tampered with the evidence. | มีคนยุ่งกับหลักฐาน
+circumstantial | (หลักฐาน) แวดล้อม | The evidence is only circumstantial. | หลักฐานเป็นแค่พยานแวดล้อม
+---
+informant | ผู้ให้ข้อมูล | An informant gave us a tip. | ผู้ให้ข้อมูลส่งเบาะแสมา
+cold case | คดีที่ยังไม่คลี่คลาย (นาน) | They reopened a cold case. | พวกเขารื้อคดีเก่าขึ้นมาใหม่
+conviction | การตัดสินว่ามีความผิด | The evidence led to a conviction. | หลักฐานนำไปสู่การตัดสินลงโทษ
+interrogation | การสอบสวน | The interrogation lasted hours. | การสอบสวนกินเวลาหลายชั่วโมง
+eyewitness | ประจักษ์พยาน | An eyewitness saw the crash. | ประจักษ์พยานเห็นการชน
+breakthrough | ความคืบหน้าครั้งสำคัญ | DNA was the breakthrough in the case. | ดีเอ็นเอคือจุดพลิกของคดี
+`);
+U('talk', 6, 'แสลงร่วมสมัย', `
+lit | สนุกสุดๆ/ปัง | The party was lit! | ปาร์ตี้ปังมาก
+salty | งอน/หงุดหงิด | Why are you so salty? | ทำไมงอนจัง
+ghost | หายเงียบ | He ghosted me after the date. | เขาหายเงียบหลังเดต
+flex | อวด | Stop flexing your new phone. | เลิกอวดมือถือใหม่ได้แล้ว
+low-key | แอบ/นิดๆ | I'm low-key nervous. | แอบตื่นเต้นนิดๆ
+vibe | ฟีล/บรรยากาศ | This café has a nice vibe. | ร้านนี้ฟีลดี
+---
+no cap | ไม่โม้/จริงๆ นะ | That was the best food ever, no cap. | อร่อยที่สุดเลย ไม่โม้
+sus | น่าสงสัย | That guy looks sus. | หมอนั่นดูน่าสงสัย
+FOMO | กลัวตกกระแส | I went because of FOMO. | ไปเพราะกลัวตกกระแส
+cringe | น่าอาย/เขิน | That video is so cringe. | คลิปนั้นน่าอายมาก
+slay | ทำได้ปังมาก | You slayed that presentation! | พรีเซนต์ปังมาก!
+bet | ได้เลย/จัดไป | See you at 7? Bet. | เจอกันหนึ่งทุ่มนะ ได้เลย
+`);
+G(6, 'Inversion', 'ขึ้นต้นด้วยคำปฏิเสธ/จำกัด (Never, Rarely, Not only, Hardly, Only then) → กลับกริยาช่วยไว้หน้าประธาน', `
+Never ___ such a big crowd. | have I seen | I have seen, I saw, did I saw | Never + กริยาช่วย + ประธาน | ฉันไม่เคยเห็นฝูงชนมากขนาดนี้
+Rarely ___ late for work. | is he | he is, does he is, he does | Rarely + be + ประธาน | เขาแทบไม่เคยมาทำงานสาย
+Hardly had I arrived ___ the phone rang. | when | than, then, that | Hardly ... when | ฉันเพิ่งมาถึง โทรศัพท์ก็ดังทันที
+Only then ___ the truth. | did I realize | I realized, I did realize, realized I | Only then + did + ประธาน + V1 | ตอนนั้นเองฉันจึงรู้ความจริง
+Under no circumstances ___ open this door. | should you | you should, you shouldn't, should not you | Under no circumstances + กริยาช่วย + ประธาน | ห้ามเปิดประตูนี้ไม่ว่ากรณีใดๆ
+Not until midnight ___ home. | did they come | they came, they did come, came they | Not until + did + ประธาน | พวกเขากลับบ้านตอนเที่ยงคืนนั่นแหละ
+`);
+G(6, 'Passive ขั้นสูง (It is said that)', 'It is said / believed / reported that ... · ประธาน + is said + to V1 / to have V3', `
+It ___ that the suspect has left the country. | is believed | believes, is believing, believed | It + is + V3 + that | เชื่อกันว่าผู้ต้องสงสัยหนีออกนอกประเทศแล้ว
+The man is said ___ very rich. | to be | being, be, to been | is said + to V1 | ว่ากันว่าชายคนนั้นรวยมาก
+He is reported ___ the money last year. | to have stolen | to steal, stealing, stole | เหตุการณ์อดีต: to have V3 | มีรายงานว่าเขาขโมยเงินเมื่อปีก่อน
+It ___ that prices will rise. | is expected | expects, is expecting, expected to | It is expected that | คาดกันว่าราคาจะสูงขึ้น
+She is thought ___ in Chiang Mai now. | to be living | to live yesterday, living, lives | กำลังเกิดขึ้น: to be V-ing | เชื่อว่าตอนนี้เธออาศัยอยู่ที่เชียงใหม่
+The thieves ___ to have escaped by boat. | are believed | believe, are believing, believed by | ประธานพหูพจน์ + are believed | เชื่อว่าคนร้ายหนีไปทางเรือ
+`);
+G(6, 'Subjunctive & Cleft', 'It is essential/important that + ประธาน + V1 (ไม่เติม s) · It was ... that ... = เน้นส่วนที่สำคัญ', `
+It is essential that every officer ___ the rules. | follow | follows, followed, will follow | that + ประธาน + V1 เสมอ | จำเป็นที่เจ้าหน้าที่ทุกคนต้องทำตามกฎ
+The judge insisted that he ___ present. | be | is, was, being | insist that + be | ผู้พิพากษายืนยันว่าเขาต้องมา
+I suggest that she ___ a lawyer. | contact | contacts, contacted, will contact | suggest that + V1 | ฉันแนะนำว่าเธอควรติดต่อทนาย
+It was the neighbor ___ called the police. | who | which, whose, what | It was + คน + who | เพื่อนบ้านนั่นแหละที่โทรเรียกตำรวจ
+It was in 2020 ___ the law changed. | that | which, who, when it | It was + เวลา + that | กฎหมายเปลี่ยนในปี 2020 นั่นเอง
+What I need ___ more time. | is | are, have, be | What I need + is | สิ่งที่ฉันต้องการคือเวลาเพิ่ม
+`);
+D(6, 'สื่อสารกับสื่อมวลชน', `
+A: Can you confirm the suspect has been arrested? / B: ___ | I can confirm that a 35-year-old man is in custody. | Yes, I'm the suspect.; No comment, bye forever.; I arrested you. | A: ยืนยันได้ไหมว่าจับผู้ต้องสงสัยได้แล้ว / B: ยืนยันได้ว่าชายอายุ 35 ปีอยู่ในความควบคุมของเรา
+A: What was the motive? / B: ___ | It's too early to say. The investigation is ongoing. | Motive is a word.; He liked motives.; Ask him yourself. | A: แรงจูงใจคืออะไร / B: ยังเร็วเกินไปที่จะบอก การสอบสวนยังดำเนินอยู่
+A: Is the public in danger? / B: ___ | There is no ongoing threat to the public. | The public is big.; Danger is everywhere, run!; Yes, I'm in danger. | A: ประชาชนตกอยู่ในอันตรายไหม / B: ขณะนี้ไม่มีภัยคุกคามต่อประชาชน
+A: Will you release the CCTV footage? / B: ___ | We'll release it once it doesn't affect the case. | Footage is long.; I released it yesterday to my friend.; CCTV is a camera. | A: จะเผยแพร่ภาพจากกล้องวงจรปิดไหม / B: จะเผยแพร่เมื่อไม่กระทบต่อคดี
+A: What should witnesses do? / B: ___ | Anyone with information should call our hotline. | Witnesses should run.; Do nothing at all.; They should watch TV. | A: พยานควรทำอย่างไร / B: ใครมีข้อมูลโทรแจ้งสายด่วนของเรา
+`);
+D(6, 'คุยเล่นแบบเจ้าของภาษา', `
+A: How's it going? / B: ___ | Not bad. Pretty busy these days, though. | It's going to Bangkok.; Going is good walking.; I'm going now, bye. | A: เป็นไงบ้าง / B: ก็ดีนะ ช่วงนี้ยุ่งหน่อย
+A: Long time no see! / B: ___ | I know! It's been ages. How have you been? | I see you now.; Long time is long.; No, I don't see. | A: ไม่เจอกันนานเลย! / B: ใช่! นานมากเลย สบายดีไหม
+A: Guess what? I got the job! / B: ___ | No way! That's amazing. Congrats! | What job?; Guess it again.; I don't guess. | A: รู้อะไรไหม ฉันได้งานแล้ว! / B: จริงดิ! สุดยอด ยินดีด้วย!
+A: Want to grab a coffee? / B: ___ | Sure, I could use a break. | Grab it yourself.; Coffee is brown.; I grab every day. | A: ไปหากาแฟกินกันไหม / B: ได้ กำลังอยากพักพอดี
+A: I'm so stressed about the exam. / B: ___ | Hang in there. You've got this! | Exams are easy for me.; Stress is a word.; Don't take it. | A: เครียดเรื่องสอบมาก / B: สู้ๆ นะ ทำได้แน่นอน!
+`);
+R(6, 'บทความวิชาการ', 'Artificial Intelligence in Policing', `Artificial intelligence is increasingly used in policing, from analyzing CCTV footage to predicting where crimes are likely to occur. Proponents argue that such tools allow limited resources to be deployed more efficiently. Nevertheless, critics warn that algorithms trained on biased data may reinforce existing inequalities, unfairly targeting certain communities. Moreover, decisions made by complex systems can be difficult to explain in court. Consequently, many experts insist that AI should support, rather than replace, human judgment.`,
+`ปัญญาประดิษฐ์ถูกนำมาใช้ในงานตำรวจมากขึ้น ตั้งแต่วิเคราะห์ภาพกล้องวงจรปิดไปจนถึงคาดการณ์ว่าอาชญากรรมน่าจะเกิดที่ใด ผู้สนับสนุนให้เหตุผลว่าเครื่องมือเหล่านี้ช่วยใช้ทรัพยากรที่มีจำกัดได้อย่างมีประสิทธิภาพ อย่างไรก็ตาม ผู้วิจารณ์เตือนว่าอัลกอริทึมที่ฝึกด้วยข้อมูลที่มีอคติอาจตอกย้ำความไม่เท่าเทียม และเล็งเป้าบางชุมชนอย่างไม่เป็นธรรม นอกจากนี้ การตัดสินใจของระบบที่ซับซ้อนยังอธิบายในศาลได้ยาก ด้วยเหตุนี้ ผู้เชี่ยวชาญจำนวนมากจึงยืนยันว่า AI ควรสนับสนุน ไม่ใช่แทนที่ การตัดสินใจของมนุษย์`, `
+According to proponents, AI helps police | use limited resources more efficiently | replace all officers; stop all crime; avoid courts
+What is the risk of biased data? | It may unfairly target some communities. | It makes AI faster.; It reduces costs.; It improves privacy.
+The word "Consequently" shows | a result | a contrast; an example; a time
+What is the writer's main conclusion? | AI should support human judgment. | AI should replace humans.; AI should be banned.; AI is always fair.
+`);
+R(6, 'บทความวิชาการ', 'The Value of Bilingual Officers', `In an increasingly globalized society, bilingual officers are no longer a luxury but a necessity. Language barriers can delay emergency responses, lead to misunderstandings, and even result in wrongful arrests. Officers who can communicate with victims and witnesses in their own language often obtain more accurate information. Furthermore, they help build trust with migrant and tourist communities, who may otherwise be reluctant to report crimes. Investing in language training, therefore, benefits both the police and the public.`,
+`ในสังคมที่เชื่อมโยงกันทั่วโลกมากขึ้น เจ้าหน้าที่ที่พูดได้สองภาษาไม่ใช่ของฟุ่มเฟือยอีกต่อไป แต่เป็นสิ่งจำเป็น อุปสรรคทางภาษาอาจทำให้การตอบสนองเหตุฉุกเฉินล่าช้า เกิดความเข้าใจผิด หรือถึงขั้นจับกุมผิดตัว เจ้าหน้าที่ที่สื่อสารกับผู้เสียหายและพยานด้วยภาษาของพวกเขาได้มักได้ข้อมูลที่แม่นยำกว่า ยิ่งไปกว่านั้น ยังช่วยสร้างความไว้วางใจกับชุมชนแรงงานต่างชาติและนักท่องเที่ยว ซึ่งอาจลังเลที่จะแจ้งความ การลงทุนฝึกภาษาจึงเป็นประโยชน์ทั้งต่อตำรวจและประชาชน`, `
+According to the text, bilingual officers are | a necessity | a luxury; unnecessary; too expensive
+Which is NOT a problem caused by language barriers? | Higher salaries | Delayed responses; Misunderstandings; Wrongful arrests
+The word "reluctant" means | unwilling | happy; quick; required
+What does the writer recommend? | Investing in language training | Hiring only foreigners; Ignoring tourists; Using only translators apps
 `);
 
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
