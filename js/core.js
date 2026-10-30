@@ -39,7 +39,6 @@ const DIFFS = ['ง่าย','ปานกลาง','ยาก'];
 const ICONS = {'กฎหมาย':'scale','งานสารบรรณ':'file-stack','คอมพิวเตอร์':'monitor','ภาษาไทย':'book-open','ความรู้ทั่วไป':'globe','ระเบียบตำรวจ':'shield','คณิตศาสตร์':'calculator','ความสามารถทั่วไป':'brain','ภาษาอังกฤษ':'languages'};
 const TONES = [['var(--blue-2)','var(--blue)'],['var(--green-2)','var(--green)'],['var(--orange-2)','var(--orange)'],['var(--red-2)','var(--red)'],['var(--violet-2)','var(--violet)']];
 
-const SRS_INTERVALS = [0.5, 2, 5, 14];
 const THAI_MONTHS = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
 const GOAL_OPTIONS = [10, 20, 50, 150, 300, 600];
 

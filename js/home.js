@@ -171,7 +171,7 @@ function syncChrome(){
   $('#pillC').textContent=S.cards.length.toLocaleString();
   const fab=$('#fab');
   if(PAGE==='quiz') setQuizFab();
-  else if(PAGE==='cards'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มบัตร';fab.onclick=()=>{playTone('tap');cForm();};}
+  else if(PAGE==='cards'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มคำ';fab.onclick=()=>{playTone('tap');vcAdd();};}
   else fab.hidden=true;
   icons();
 }
@@ -448,7 +448,7 @@ function renderHome(){
   const weak = weakSubjects(trackKey);
   const weekData = getMonToSunWeek();
   const wrongN = wrongQueue().length;
-  const due = S.cards.filter(c=>(c.due||0)<=Date.now()).length;
+  const due = vcDueCount();
   const ses = S.session;
   const sesDone = ses ? ses.ans.filter(a=>a!==null).length : 0;
   const heroBg = S.settings.heroBg
@@ -523,7 +523,7 @@ function renderHome(){
   $$('[data-todo]').forEach(b => b.onclick = () => {
     const k = b.dataset.todo;
     if(k === 'new') return startTodayNew();
-    if(k === 'cards'){ CFF.mode = 'due'; CFF.cat = 'ทั้งหมด'; CFF.i = 0; return go('cards'); }
+    if(k === 'cards') return vcStart(null);
     const ids = wrongQueue().map(q => q.id);
     if(!ids.length) return toast('ไม่มีข้อที่ต้องทวน เก่งมาก!','ok');
     startExam({ids, count:ids.length, minutes:0, mode:'practice', label:'ทวนข้อผิด'});

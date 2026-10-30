@@ -1,439 +1,172 @@
 "use strict";
+// ===== บัตรจำคำศัพท์: หมวด → ทวนทีละใบ (จำได้ / ยังไม่ได้) =====
+const VC_GAP = [0, 1, 3, 7, 14, 30]; // วันก่อนทวนรอบถัดไป ตามระดับความจำ 0–5
+const VC_MAX = 20;                   // คำต่อรอบ
+let VC = { run: null };
+const deckOf = c => c.deck || c.cat || 'ทั่วไป';
+const vcDecks = () => [...new Set([...(S.decks || []), ...S.cards.map(deckOf)])];
+const vcStyle = d => VOCAB[d] ? [VOCAB[d][0], VOCAB[d][1]] : ['book-open', tone(d)[1]];
+const vcPct = L => L.length ? Math.round(L.reduce((a, c) => a + Math.min(c.box || 0, 5), 0) / (L.length * 5) * 100) : 0;
+const vcText = s => String(s || '').replace(/<[^>]+>/g, ' ').trim();
+// คำที่เคยทวนแล้วและถึงรอบ (ไม่นับคำใหม่)
+const vcDueCount = d => S.cards.filter(c => c.seen && (c.due || 0) <= Date.now() && (!d || deckOf(c) === d)).length;
+
+// ครั้งแรก: ล้างบัตรทดสอบเดิม แล้วใส่ชุดคำศัพท์เริ่มต้น (ครั้งต่อไปห้ามล้าง ให้เพิ่มอย่างเดียว)
+function ensureVocab(){
+  if(S.settings.vocabV) return;
+  S.cards = []; S.decks = Object.keys(VOCAB);
+  Object.entries(VOCAB).forEach(([deck, [, , ws]]) => ws.forEach(w => {
+    const [f, b, ex] = w.split('|'); S.cards.push({ id: uid(), f, b, ex: ex || '', deck, box: 0, due: 0 });
+  }));
+  S.settings.vocabV = VOCAB_V; save();
+}
+
+// คิวทวน: คำที่ถึงรอบก่อน แล้วเติมคำใหม่ ถ้าไม่มีเลยให้ทวนคำที่ยังจำได้น้อยสุด
+function vcQueue(d){
+  const L = S.cards.filter(c => !d || deckOf(c) === d), now = Date.now();
+  let q = L.filter(c => c.seen && (c.due || 0) <= now).sort((a, b) => (a.due || 0) - (b.due || 0));
+  q = q.concat(L.filter(c => !c.seen)).slice(0, VC_MAX);
+  if(!q.length) q = L.slice().sort((a, b) => (a.box || 0) - (b.box || 0)).slice(0, VC_MAX);
+  return q.map(c => c.id);
+}
+function vcStart(d){
+  const q = vcQueue(d);
+  if(!q.length) return toast('ยังไม่มีคำในหมวดนี้', 'err');
+  VC.run = { d, q, i: 0, flip: false, ok: 0, again: 0, redo: new Set() };
+  PAGE === 'cards' ? renderCards() : go('cards');
+}
+
 function renderCards(){
-  const L=cPool(); CFF.i=L.length?clamp(CFF.i,0,L.length-1):0;
-  const c=L[CFF.i];
-  let dueN=0;
-  try {
-    dueN = S.cards.filter(x=>(x.due||0)<=Date.now()).length;
-  } catch(e) { dueN = 0; }
-
-  $('#view').innerHTML=`
-  <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px">
-    <div class="chips sc" style="flex:1;min-width:0">
-      ${['ทั้งหมด',...S.cats].map(x=>`<button class="chip ${CFF.cat===x?'on':''}" data-cc="${esc(x)}">${esc(x)}</button>`).join('')}
-    </div>
-    <button class="ib" id="btnCardMenu" title="เมนูจัดการ"><i data-lucide="more-vertical"></i></button>
-    <button class="ib" id="cList" title="สลับมุมมอง"><i data-lucide="${CFF.list==='card'?'list':'square'}"></i></button>
+  ensureVocab();
+  if(VC.run) return renderVcRun();
+  const ds = vcDecks(), all = vcQueue(null).length, due = vcDueCount();
+  $('#view').innerHTML = `
+  <div class="vc-hero">
+    <div><small>ทวนวันนี้</small><b>${all}</b><span>คำ${due ? ` · ถึงรอบ ${due}` : ''}</span></div>
+    <button class="vc-go" id="vcAll"><i data-lucide="play"></i>เริ่ม</button>
   </div>
-  <div class="chips" style="margin-bottom:14px">
-    ${[['due',`ค้าง (${dueN})`],['all','ทั้งหมด'],['hard','ไม่แม่น']].map(([k,t])=>
-      `<button class="chip ${CFF.mode===k?'on':''}" data-cm="${k}">${t}</button>`).join('')}
-  </div>
-
-  ${CFF.list==='list' ? listView() : cardView(L,c)}
-
-  <div class="grid g4 keep" style="margin-top:18px;max-width:640px;margin-left:auto;margin-right:auto">
-    <div class="card mini"><b style="color:var(--red)">${S.cards.filter(x=>(x.box||0)===0).length}</b><span>ลืม</span></div>
-    <div class="card mini"><b style="color:var(--orange)">${S.cards.filter(x=>(x.box||0)===1).length}</b><span>พอได้</span></div>
-    <div class="card mini"><b style="color:var(--blue)">${S.cards.filter(x=>(x.box||0)===2).length}</b><span>ดี</span></div>
-    <div class="card mini"><b style="color:var(--green)">${S.cards.filter(x=>(x.box||0)>=3).length}</b><span>แม่นยำ</span></div>
-  </div>`;
-
-    function cardView(L, c){
-    if(!L.length) return `<div class="card empty" style="max-width:640px;margin:0 auto">
-      <i data-lucide="layers"></i><div>ไม่มีบัตรจำ</div></div>`;
-    const box=(c.box||0);
-    const boxLabels = ['ลืม', 'พอได้', 'ดี', 'แม่นยำ'];
-    const boxTagCls = ['r', 'o', 'b', 'g'];
-
-    // ตรวจจับว่าข้อความด้านหน้ามีตัวภาษาอังกฤษหรือไม่ เพื่อแสดงปุ่มอ่านออกเสียง
-    const isEnglish = /[a-zA-Z]/.test(c.f);
-
-    return `<div class="fstage">
-      <div class="row" style="justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:8px">
-        <span>${CFF.i+1} / ${L.length}</span>
-        <div class="row" style="gap:6px">
-          <span class="tag ${boxTagCls[box]||'g'}">${boxLabels[box]||'แม่นยำ'}</span>
-        </div>
-      </div>
-      <div class="bar"><i style="width:${(CFF.i+1)/L.length*100}%"></i></div>
-      
-      <div class="fcard ${CFF.flip?'flip':''}" id="fc">
-        <div class="fin">
-          
-          <!-- หน้าบัตร (FRONT) -->
-          <div class="face front">
-            <div class="card-header-row">
-              <span class="tag b">${esc(c.cat)}</span>
-              ${isEnglish ? `
-                <button type="button" class="btn-tts" onclick="event.stopPropagation();speakCard()" title="ฟังเสียงอ่าน">
-                  <i data-lucide="volume-2" style="width:18px;height:18px"></i>
-                </button>
-              ` : '<span></span>'}
-            </div>
-
-            <div class="card-body-wrap">
-              ${c.fImg && c.fPos !== 'top' ? `<img src="${c.fImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.fImg}'], 0)">` : ''}
-              <div class="card-word">${c.f}</div>
-              ${c.fImg && c.fPos === 'top' ? `<img src="${c.fImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.fImg}'], 0)">` : ''}
-            </div>
-
-            <div class="card-hint-row">
-              <i data-lucide="touchpad" style="width:13px;height:13px"></i>
-              <span>แตะเพื่อดูคำแปล / ตัวอย่าง</span>
-            </div>
-          </div>
-
-          <!-- หลังบัตร (BACK) -->
-          <div class="face back">
-            <div class="card-header-row">
-              <span class="tag g"><i data-lucide="check" style="width:11px;height:11px"></i> คำตอบ & คำแปล</span>
-              <span style="font-size:11px;color:var(--muted)">SRS กล่องที่ ${box+1}</span>
-            </div>
-
-            <div class="card-body-wrap">
-              ${c.bImg && c.bPos !== 'top' ? `<img src="${c.bImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.bImg}'], 0)">` : ''}
-              <div class="card-def">${c.b}</div>
-              ${c.bImg && c.bPos === 'top' ? `<img src="${c.bImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.bImg}'], 0)">` : ''}
-            </div>
-
-            <div class="card-hint-row">
-              <i data-lucide="rotate-ccw" style="width:13px;height:13px"></i>
-              <span>แตะเพื่อพลิกกลับ</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      
-      <!-- ปุ่มประเมินความจำ Spaced Repetition (SRS) -->
-      <div class="srs-ctrl">
-        <button class="srs-btn l1" data-srs="0">ลืม<small>ทวนวันนี้</small></button>
-        <button class="srs-btn l2" data-srs="1">พอได้<small>2 วัน</small></button>
-        <button class="srs-btn l3" data-srs="2">ดี<small>5 วัน</small></button>
-        <button class="srs-btn l4" data-srs="3">แม่น<small>14 วัน</small></button>
-      </div>
-
-      <div class="row" style="justify-content:center;gap:8px;margin-top:14px">
-        <button class="ib sm" id="cPrev" title="ก่อนหน้า"><i data-lucide="chevron-left"></i></button>
-        <button class="ib sm" id="cShuf" title="สลับ"><i data-lucide="shuffle"></i></button>
-        <button class="ib sm" id="cEdit" title="แก้ไข"><i data-lucide="pencil"></i></button>
-        <button class="ib sm" id="cDrop" title="ลบ"><i data-lucide="trash-2"></i></button>
-        <button class="ib sm" id="cNext" title="ถัดไป"><i data-lucide="chevron-right"></i></button>
-      </div>
-    </div>`;
-  }
-
-  function listView(){
-    const L=S.cards.filter(x=>CFF.cat==='ทั้งหมด'||x.cat===CFF.cat);
-    if(!L.length)return `<div class="card empty"><i data-lucide="layers"></i><div>ไม่มีบัตร</div></div>`;
-    const boxLabels = ['ลืม', 'พอได้', 'ดี', 'แม่นยำ'];
-    const boxTagCls = ['r', 'o', 'b', 'g'];
-    return L.map(x=>`<div class="qrow"><div class="no">${(x.box||0)+1}</div>
-      <div class="body"><div class="qt">${x.f}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px;white-space:pre-wrap">${x.b}</div>
-        <div class="meta"><span class="tag b">${esc(x.cat)}</span>
-          <span class="tag ${boxTagCls[x.box]||'g'}">${boxLabels[x.box]||'แม่นยำ'}</span></div></div>
-      <div class="side"><button class="ib sm" data-cedit="${x.id}"><i data-lucide="pencil"></i></button>
-        <button class="ib sm" data-cdrop="${x.id}"><i data-lucide="trash-2"></i></button></div></div>`).join('');
-  }
-
-  $$('[data-cc]').forEach(b=>b.onclick=()=>{ playTone('tap'); CFF.cat=b.dataset.cc; CFF.i=0; CFF.flip=false; renderCards(); });$$('[data-cm]').forEach(b=>b.onclick=()=>{ playTone('tap'); CFF.mode=b.dataset.cm; CFF.i=0; CFF.flip=false; renderCards(); });$('#cList').onclick=()=>{ playTone('tap'); CFF.list=CFF.list==='card'?'list':'card'; renderCards(); };
-
-  $('#btnCardMenu').onclick = () => {
-    playTone('tap');
-    const curCat = CFF.cat;
-    const catCardCount = curCat === 'ทั้งหมด' ? S.cards.length : S.cards.filter(x => x.cat === curCat).length;
-    
-    const body = `
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <button class="picker-item" id="mImport">
-          <div class="row" style="gap:10px">
-            <i data-lucide="clipboard-list" style="width:18px;height:18px;color:var(--blue)"></i>
-            <span>นำเข้าชุดบัตรจำ</span>
-          </div>
-        </button>
-        <button class="picker-item" id="mDeleteChoice" style="color:var(--red)">
-          <div class="row" style="gap:10px">
-            <i data-lucide="trash-2" style="width:18px;height:18px;color:var(--red)"></i>
-            <span>ลบบัตรจำทั้งหมด</span>
-          </div>
-        </button>
-      </div>
-    `;
-
-    openModal('จัดการบัตรจำ', body, `<button class="btn ghost block" data-close>ปิด</button>`);
-
-    $('#mImport').onclick = () => {
-      closeModal();
-      bulkCardForm();
-    };
-
-    $('#mDeleteChoice').onclick = () => {
-      playTone('tap');
-      const delBody = `
-        <div style="display:flex;flex-direction:column;gap:8px">
-          ${curCat !== 'ทั้งหมด' ? `
-            <button class="picker-item" id="mDelCurCat" style="color:var(--red)">
-              <div style="text-align:left">
-                <b>ลบเฉพาะหมวด "${esc(curCat)}"</b>
-                <small style="display:block;color:var(--muted)">มีทั้งหมด ${catCardCount} ใบ</small>
-              </div>
-            </button>
-          ` : ''}
-          <button class="picker-item" id="mDelSelectCat">
-            <div style="text-align:left">
-              <b>เลือกหมวดวิชาที่จะลบ</b>
-              <small style="display:block;color:var(--muted)">เลือกวิชาที่ต้องการลบ</small>
-            </div>
-          </button>
-          <button class="picker-item" id="mDelAll" style="color:var(--red);border-color:var(--red-2);background:var(--red-2)">
-            <div style="text-align:left">
-              <b>ลบบัตรจำทุกวิชาทั้งหมด (${S.cards.length} ใบ)</b>
-              <small style="display:block;color:var(--red)">ล้างบัตรคำในระบบทั้งหมดถาวร</small>
-            </div>
-          </button>
-        </div>
-      `;
-
-      openModal('เลือกลักษณะการลบ', delBody, `<button class="btn ghost block" data-close>ยกเลิก</button>`);
-
-      if($('#mDelCurCat')){
-        $('#mDelCurCat').onclick = async () => {
-          closeModal();
-          if(await ask(`ลบบัตรหมวด "${curCat}"?`, `จะลบบัตรคำในหมวดนี้ทั้งหมด ${catCardCount} ใบ`, 'ลบ')){
-            removeCards(x => x.cat === curCat, `ลบบัตรหมวด ${curCat}`);
-            CFF.cat = 'ทั้งหมด';
-            CFF.i = 0;
-            renderCards();
-            syncChrome();
-            undoToast(`ลบบัตรหมวด "${curCat}" แล้ว`);
-          }
-        };
-      }
-
-      $('#mDelSelectCat').onclick = () => {
-        closeModal();
-        const pickList = S.cats.map(c => {
-          const count = S.cards.filter(x => x.cat === c).length;
-          return { val: c, label: `${c} (${count} ใบ)` };
-        });
-        openPicker({
-          title: 'เลือกวิชาที่ต้องการลบบัตร',
-          options: pickList,
-          value: '',
-          onSelect: async (selectedCat) => {
-            const count = S.cards.filter(x => x.cat === selectedCat).length;
-            if(!count) return toast('หมวดนี้ไม่มีบัตรคำ', 'err');
-            if(await ask(`ลบบัตรหมวด "${selectedCat}"?`, `จะลบบัตรคำในหมวดนี้ทั้งหมด ${count} ใบ`, 'ลบ')){
-              removeCards(x => x.cat === selectedCat, `ลบบัตรหมวด ${selectedCat}`);
-              CFF.cat = 'ทั้งหมด';
-              CFF.i = 0;
-              renderCards();
-              syncChrome();
-              undoToast(`ลบบัตรหมวด "${selectedCat}" แล้ว`);
-            }
-          }
-        });
-      };
-
-      $('#mDelAll').onclick = async () => {
-        closeModal();
-        if(await ask('ลบบัตรจำทั้งหมด?', `จะลบบัตรคำทุกหมวดวิชาทั้งหมด ${S.cards.length} ใบอย่างถาวร`, 'ลบทั้งหมด')){
-          removeCards(() => true, 'ลบบัตรจำทั้งหมด');
-          CFF.cat = 'ทั้งหมด';
-          CFF.i = 0;
-          renderCards();
-          syncChrome();
-          undoToast('ลบบัตรคำทั้งหมดแล้ว');
-        }
-      };
-    };
-  };
-
-  $$('[data-cedit]').forEach(b=>b.onclick=()=>{ playTone('tap'); cForm(S.cards.find(x=>x.id===b.dataset.cedit)); });$$
-('[data-cdrop]').forEach(b=>b.onclick=async()=>{
-    if(await ask('ลบบัตรนี้?','บัตรจะถูกลบถาวร','ลบ')){
-      removeCards(x=>x.id===b.dataset.cdrop, 'ลบบัตร 1 ใบ');
-      renderCards();
-      syncChrome();
-      undoToast('ลบบัตรแล้ว');
-    }
-  });
-
-  if(c && CFF.list === 'card'){
-    const fc = $('#fc');     if(fc) {       fc.onclick = () => {         playTone('tap');         CFF.flip = !CFF.flip;         fc.classList.toggle('flip', CFF.flip);       };     }      $$('[data-srs]').forEach(b => {
-      b.onclick = () => rateCard(c, +b.dataset.srs);
-    });
-
-    if($('#cNext')) $('#cNext').onclick = () => step(1);
-    if($('#cPrev')) $('#cPrev').onclick = () => step(-1);
-    if($('#cShuf')) $('#cShuf').onclick = () => {
-      playTone('tap');
-      CFF.i = Math.floor(Math.random() * L.length);
-      CFF.flip = false;
-      renderCards();
-      toast('สุ่มใหม่');
-    };
-    if($('#cEdit')) $('#cEdit').onclick = () => cForm(c);
-    if($('#cDrop')) $('#cDrop').onclick = async () => {
-      if(await ask('ลบบัตรนี้?', 'บัตรจะถูกลบถาวร', 'ลบ')){
-        removeCards(x => x.id === c.id, 'ลบบัตร 1 ใบ');
-        renderCards();
-        syncChrome();
-        undoToast('ลบบัตรแล้ว');
-      }
-    };
-  }
+  <div class="sec"><i data-lucide="layers"></i>หมวดคำศัพท์<span class="more" style="text-decoration:none;color:var(--muted)">${S.cards.length} คำ</span></div>
+  <div class="vc-grid">${ds.map(d => {
+    const L = S.cards.filter(c => deckOf(c) === d), pct = vcPct(L), n = vcDueCount(d), [ic, col] = vcStyle(d);
+    return `<button class="vc-deck" data-deck="${esc(d)}" style="--c:${col}">
+      <span class="vc-ic"><i data-lucide="${ic}"></i></span>${n ? `<em class="vc-due">${n}</em>` : ''}
+      <b>${esc(d)}</b><small>${L.length} คำ · จำได้ ${pct}%</small>
+      <span class="vc-bar"><i style="width:${pct}%"></i></span></button>`;
+  }).join('') || '<div class="empty">ยังไม่มีคำศัพท์</div>'}</div>`;
+  $('#vcAll').onclick = () => vcStart(null);
+  $$('[data-deck]').forEach(b => b.onclick = () => vcStart(b.dataset.deck));
   icons();
-
-  function step(n){ playTone('tap'); CFF.flip=false; const len=cPool().length||1; CFF.i=(CFF.i+n+len)%len; renderCards(); }
-  
-  function rateCard(card, level){
-    card.box = level;
-    const days = SRS_INTERVALS[level];
-    card.due = Date.now() + Math.round(days * 864e5);
-    save();
-    playTone(level >= 2 ? 'ok' : 'wrong');
-    const msg = ['ทวนซ้ำวันนี้', 'ทวนอีก 2 วัน', 'ทวนอีก 5 วัน', 'แม่นยำ (อีก 14 วัน)'][level];
-    toast(msg, level >= 2 ? 'ok' : 'info');
-    CFF.flip = false;
-    
-    const currentList = cPool();
-    const len = currentList.length;
-    if(!len){ renderCards(); return; }
-    
-    CFF.i = (CFF.i + 1) % len;
-    renderCards();
-  }
 }
 
-function cForm(card){
-  const d=card||{f:'',b:'',fImg:'',bImg:'',fPos:'bottom',bPos:'bottom',cat:CFF.cat!=='ทั้งหมด'?CFF.cat:S.cats[0],box:3};
-  let selectedCat = d.cat;
-  let curFImg = d.fImg || '';
-  let curBImg = d.bImg || '';
-  let curFPos = d.fPos || 'bottom';
-  let curBPos = d.bPos || 'bottom';
-
-  function paintCardImgPreviews(){
-    const fBox = $('#f_img_preview');
-    const bBox = $('#b_img_preview');
-    if(fBox){
-      fBox.innerHTML = curFImg ? `
-        <div class="img-preview-box">
-          <img src="${curFImg}" class="img-thumb" style="width:70px;height:70px" onclick="openLightboxGallery(['${curFImg}'], 0)">
-          <button type="button" class="del-btn" id="delFImg">×</button>
-        </div>` : '';
-      if($('#delFImg')) $('#delFImg').onclick = () => { curFImg = ''; paintCardImgPreviews(); };
-    }
-    if(bBox){
-      bBox.innerHTML = curBImg ? `
-        <div class="img-preview-box">
-          <img src="${curBImg}" class="img-thumb" style="width:70px;height:70px" onclick="openLightboxGallery(['${curBImg}'], 0)">
-          <button type="button" class="del-btn" id="delBImg">×</button>
-        </div>` : '';
-      if($('#delBImg')) $('#delBImg').onclick = () => { curBImg = ''; paintCardImgPreviews(); };
-    }
+function renderVcRun(){
+  const R = VC.run, len = R.q.length;
+  if(R.i >= len){
+    $('#view').innerHTML = `<div class="vc-done">
+      <span class="vc-done-ic"><i data-lucide="party-popper"></i></span><b>จบรอบแล้ว</b>
+      <p>จำได้ ${R.ok} · ทวนซ้ำ ${R.again}</p>
+      <div class="vc-done-acts"><button class="btn ghost lg" id="vcHome">กลับ</button><button class="btn lg" id="vcMore"><i data-lucide="play"></i>ทวนต่อ</button></div></div>`;
+    $('#vcHome').onclick = () => { VC.run = null; renderCards(); };
+    $('#vcMore').onclick = () => vcStart(R.d);
+    playTone('submit'); return icons();
   }
+  const c = S.cards.find(x => x.id === R.q[R.i]);
+  if(!c){ R.i++; return renderVcRun(); }
+  const [, col] = vcStyle(deckOf(c));
+  $('#view').innerHTML = `
+  <div class="vc-top">
+    <button class="ib" id="vcX" title="ออก"><i data-lucide="x"></i></button>
+    <div class="vc-prog"><i style="width:${R.i / len * 100}%"></i></div><span>${R.i + 1}/${len}</span>
+    <button class="ib" id="vcList" title="รายการคำ"><i data-lucide="list"></i></button>
+  </div>
+  <div class="vc-card" id="vcCard" style="--c:${col}"><div class="vc-inner">
+    <div class="vc-face vc-front"><small>${esc(deckOf(c))}</small><h2>${c.f}</h2>
+      <button class="vc-say" id="vcSay" title="ฟังเสียง"><i data-lucide="volume-2"></i></button><p>แตะเพื่อดูคำแปล</p></div>
+    <div class="vc-face vc-back"><small>${c.f}</small><h2>${c.b}</h2>${c.ex ? `<p class="vc-ex">${esc(c.ex)}</p>` : ''}</div>
+  </div></div>
+  <div class="vc-acts" id="vcActs">
+    <button class="vc-no" id="vcNo"><i data-lucide="rotate-ccw"></i>ยังไม่ได้</button>
+    <button class="vc-yes" id="vcYes"><i data-lucide="check"></i>จำได้</button>
+  </div>`;
+  const card = $('#vcCard'), flip = () => { R.flip = !R.flip; card.classList.toggle('flip', R.flip); $('#vcActs').classList.toggle('on', R.flip); };
+  let sx = null;
+  card.onclick = flip;
+  card.ontouchstart = e => { sx = e.touches[0].clientX; };
+  card.ontouchend = e => { if(sx == null || !R.flip) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if(Math.abs(dx) > 70){ e.preventDefault(); vcGrade(c, dx > 0); } };
+  $('#vcSay').onclick = e => { e.stopPropagation(); speakWord(vcText(c.f).split('↔')[0]); };
+  $('#vcNo').onclick = () => vcGrade(c, false);
+  $('#vcYes').onclick = () => vcGrade(c, true);
+  $('#vcX').onclick = () => { VC.run = null; renderCards(); };
+  $('#vcList').onclick = () => vcList(R.d);
+  icons();
+}
+function vcGrade(c, ok){
+  const R = VC.run; if(!R || !R.flip) return;
+  c.seen = 1;
+  if(ok){ c.box = Math.min((c.box || 0) + 1, 5); c.due = Date.now() + VC_GAP[c.box] * 864e5; R.ok++; }
+  else{ c.box = 0; c.due = Date.now(); R.again++; if(!R.redo.has(c.id)){ R.redo.add(c.id); R.q.push(c.id); } }
+  save(); playTone(ok ? 'ok' : 'wrong');
+  const card = $('#vcCard'); card.classList.add(ok ? 'out-r' : 'out-l');
+  setTimeout(() => { R.i++; R.flip = false; renderVcRun(); }, 220);
+}
 
-  openModal(card?'แก้ไขบัตร':'เพิ่มบัตร',`
-    <div class="field">
-      <div class="row" style="justify-content:space-between;margin-bottom:6px">
-        <label style="margin:0">ด้านหน้า (คำถาม/คำสำคัญ) *</label>
-        <div class="row" style="gap:6px">
-          <button type="button" class="btn sm ghost" onclick="openRichTextEditor('k_f')" style="padding:4px 9px;font-size:12px"><i data-lucide="type"></i>จัดฟอนต์</button>
-          <button type="button" class="btn sm ghost" id="btnAddFImg"><i data-lucide="image-plus"></i>แนบรูป</button>
-        </div>
-        <input type="file" id="inp_fimg" accept="image/*" hidden>
-      </div>
-      <textarea class="inp" id="k_f" placeholder="คำถาม" style="min-height:90px">${esc(d.f)}</textarea>
-      <div class="row" style="margin-top:6px;gap:8px;align-items:center">
-        <small style="color:var(--muted)">ตำแหน่งข้อความ:</small>
-        <div class="chips" id="wrap_fpos">
-          <button type="button" class="chip sm ${curFPos==='top'?'on':''}" data-fpos="top">ไว้บนรูป</button>
-          <button type="button" class="chip sm ${curFPos==='bottom'?'on':''}" data-fpos="bottom">ไว้ใต้รูป</button>
-        </div>
-      </div>
-      <div id="f_img_preview" style="margin-top:6px"></div>
-    </div>
-
-    <div class="field">
-      <div class="row" style="justify-content:space-between;margin-bottom:6px">
-        <label style="margin:0">ด้านหลัง (คำตอบ/สรุป) *</label>
-        <div class="row" style="gap:6px">
-          <button type="button" class="btn sm ghost" onclick="openRichTextEditor('k_b')" style="padding:4px 9px;font-size:12px"><i data-lucide="type"></i>จัดฟอนต์</button>
-          <button type="button" class="btn sm ghost" id="btnAddBImg"><i data-lucide="image-plus"></i>แนบรูป</button>
-        </div>
-        <input type="file" id="inp_bimg" accept="image/*" hidden>
-      </div>
-      <textarea class="inp" id="k_b" placeholder="คำตอบ" style="min-height:90px">${esc(d.b)}</textarea>
-      <div class="row" style="margin-top:6px;gap:8px;align-items:center">
-        <small style="color:var(--muted)">ตำแหน่งข้อความ:</small>
-        <div class="chips" id="wrap_bpos">
-          <button type="button" class="chip sm ${curBPos==='top'?'on':''}" data-bpos="top">ไว้บนรูป</button>
-          <button type="button" class="chip sm ${curBPos==='bottom'?'on':''}" data-bpos="bottom">ไว้ใต้รูป</button>
-        </div>
-      </div>
-      <div id="b_img_preview" style="margin-top:6px"></div>
-    </div>
-
-    <div class="field">
-      <label>หมวดหมู่ *</label>
-      <div class="chips" id="k_cats">
-        ${S.cats.map(c=>`<button type="button" class="chip ${selectedCat===c?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}
-      </div>
-    </div>`,
-    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="k_save"><i data-lucide="save"></i>บันทึก</button>`,{focus:'#k_f'});
-
-  paintCardImgPreviews();
-  icons($('#modal'));
-
-  $$('#wrap_fpos .chip').forEach(b => {     b.onclick = () => {       playTone('tap');       curFPos = b.dataset.fpos;       $$
-('#wrap_fpos .chip').forEach(x => x.classList.toggle('on', x === b));
-    };
-  });
-
-  $$('#wrap_bpos .chip').forEach(b => {     b.onclick = () => {       playTone('tap');       curBPos = b.dataset.bpos;       $$
-('#wrap_bpos .chip').forEach(x => x.classList.toggle('on', x === b));
-    };
-  });
-
-  $('#btnAddFImg').onclick = () => $('#inp_fimg').click();
-  $('#inp_fimg').onchange = async e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const optImg = await optimizeImage(file, 1024, 0.80);
-    openImageEditor(optImg, (finalImg) => {
-      curFImg = finalImg;
-      paintCardImgPreviews();
-    });
-    e.target.value = '';
-  };
-
-  $('#btnAddBImg').onclick = () => $('#inp_bimg').click();
-  $('#inp_bimg').onchange = async e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const optImg = await optimizeImage(file, 1024, 0.80);
-    openImageEditor(optImg, (finalImg) => {
-      curBImg = finalImg;
-      paintCardImgPreviews();
-    });
-    e.target.value = '';
-  };
-
-  $$('#k_cats .chip').forEach(b=>b.onclick=()=>{     playTone('tap'); selectedCat=b.dataset.cat;     $$
-('#k_cats .chip').forEach(x=>x.classList.toggle('on',x===b));
-  });
-
-  $('#k_save').onclick=()=>{
-    const f=sanitizeHTML($('#k_f').value.trim()),b=sanitizeHTML($('#k_b').value.trim());
-    if(!f&&!curFImg)return toast('ใส่คำถามหรือรูปด้านหน้าก่อน','err');
-    if(!b&&!curBImg)return toast('ใส่คำตอบหรือรูปด้านหลังก่อน','err');
-    playTone('tap');
-    closeModal();
-    setTimeout(()=>{
-      if(card){
-        card.f=f; card.b=b; card.fImg=curFImg; card.bImg=curBImg;
-        card.fPos=curFPos; card.bPos=curBPos; card.cat=selectedCat;
-      } else {
-        S.cards.unshift({id:uid(), f, b, fImg:curFImg, bImg:curBImg, fPos:curFPos, bPos:curBPos, cat:selectedCat, box:3, due:0});
-      }
-      save();renderCards();syncChrome();toast(card?'แก้ไขแล้ว':'เพิ่มแล้ว','ok');
-    }, 40);
+// รายการคำในหมวด: แตะเพื่อแก้ ปุ่มถังขยะเพื่อลบ
+function vcList(d){
+  const L = S.cards.filter(c => !d || deckOf(c) === d);
+  openModal(d || 'คำศัพท์ทั้งหมด', `<div class="vc-list">${L.map(c => `
+    <div class="vc-row" data-ved="${c.id}"><div><b>${c.f}</b><small>${c.b}</small></div>
+      <span class="vc-lv">${'●'.repeat(Math.min(c.box || 0, 5))}${'○'.repeat(5 - Math.min(c.box || 0, 5))}</span>
+      <button class="ib sm" data-vdel="${c.id}"><i data-lucide="trash-2"></i></button></div>`).join('') || '<div class="empty">ไม่มีคำ</div>'}</div>`,
+    `${d ? `<button class="btn ghost" id="vcDelDeck"><i data-lucide="trash-2"></i>ลบหมวด</button>` : ''}<button class="btn" data-close>ปิด</button>`);
+  $$('[data-ved]').forEach(r => r.onclick = e => { if(e.target.closest('[data-vdel]')) return; const c = S.cards.find(x => x.id === r.dataset.ved); closeModal(); setTimeout(() => vcForm(c), 120); });
+  $$('[data-vdel]').forEach(b => b.onclick = () => { removeCards(x => x.id === b.dataset.vdel, 'ลบคำ 1 คำ'); b.closest('.vc-row').remove(); syncChrome(); });
+  if($('#vcDelDeck')) $('#vcDelDeck').onclick = async () => {
+    if(!await ask(`ลบหมวด "${d}"?`, `คำ ${L.length} คำจะถูกลบ`, 'ลบ')) return;
+    removeCards(x => deckOf(x) === d, `ลบหมวด ${d}`); S.decks = (S.decks || []).filter(x => x !== d);
+    VC.run = null; save(); syncChrome(); renderCards(); undoToast(`ลบหมวด "${d}" แล้ว`);
   };
 }
+
+// เพิ่ม/แก้คำ (พิมพ์ชื่อหมวดใหม่ได้เลย)
+function vcForm(card){
+  const c = card || { f: '', b: '', ex: '', deck: (VC.run && VC.run.d) || vcDecks()[0] || 'ทั่วไป' };
+  openModal(card ? 'แก้คำ' : 'เพิ่มคำ', `
+    <div class="field"><label>คำศัพท์</label><input class="inp" id="vf_f" value="${esc(vcText(c.f))}" placeholder="เช่น arrest"></div>
+    <div class="field"><label>คำแปล</label><input class="inp" id="vf_b" value="${esc(vcText(c.b))}" placeholder="เช่น จับกุม"></div>
+    <div class="field"><label>ตัวอย่าง (ไม่ใส่ก็ได้)</label><input class="inp" id="vf_e" value="${esc(c.ex || '')}"></div>
+    <div class="field"><label>หมวด</label><input class="inp" id="vf_d" list="vfDecks" value="${esc(deckOf(c))}">
+      <datalist id="vfDecks">${vcDecks().map(d => `<option value="${esc(d)}">`).join('')}</datalist></div>`,
+    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="vf_ok"><i data-lucide="check"></i>บันทึก</button>`, { focus: '#vf_f' });
+  $('#vf_ok').onclick = () => {
+    const f = $('#vf_f').value.trim(), b = $('#vf_b').value.trim(), ex = $('#vf_e').value.trim();
+    const deck = ($('#vf_d').value.trim() || 'ทั่วไป').replace(/[<>"'`]/g, '');
+    if(!f || !b) return toast('ใส่คำศัพท์และคำแปล', 'err');
+    if(!(S.decks || []).includes(deck)) S.decks = [...(S.decks || []), deck];
+    if(card) Object.assign(card, sanitizeCard({ ...card, f, b, ex, deck }));
+    else{ const id = uid(); S.cards.unshift(sanitizeCard({ id, f, b, ex, deck, box: 0, due: 0 })); pushUndo('เพิ่มคำ 1 คำ', { addC: [id] }); }
+    save(); closeModal(); syncChrome(); renderCards(); toast('บันทึกแล้ว', 'ok');
+  };
+}
+// นำเข้าหลายคำ: คำ | คำแปล | หมวด
+function vcBulk(){
+  openModal('นำเข้าหลายคำ', `<div class="field"><label>บรรทัดละคำ: คำ | คำแปล | หมวด</label>
+    <textarea class="inp" id="vb" style="min-height:190px;font-size:13px" placeholder="arrest | จับกุม | งานตำรวจ"></textarea></div>`,
+    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="vbGo"><i data-lucide="download"></i>นำเข้า</button>`, { focus: '#vb' });
+  $('#vbGo').onclick = () => {
+    const added = [];
+    $('#vb').value.split('\n').forEach(ln => {
+      const [f, b, d] = ln.split('|').map(x => (x || '').trim()); if(!f || !b) return;
+      const deck = (d || 'ทั่วไป').replace(/[<>"'`]/g, ''), id = uid();
+      if(!(S.decks || []).includes(deck)) S.decks = [...(S.decks || []), deck];
+      S.cards.unshift(sanitizeCard({ id, f, b, ex: '', deck, box: 0, due: 0 })); added.push(id);
+    });
+    if(!added.length) return toast('รูปแบบไม่ถูกต้อง', 'err');
+    pushUndo(`นำเข้า ${added.length} คำ`, { addC: added });
+    save(); closeModal(); syncChrome(); renderCards(); undoToast(`นำเข้า ${added.length} คำแล้ว`);
+  };
+}
+function vcAdd(){ openPicker({ title: 'เพิ่มคำศัพท์', value: '', options: [{ val: 'one', label: 'เพิ่มทีละคำ' }, { val: 'bulk', label: 'นำเข้าหลายคำ' }],
+  onSelect: v => setTimeout(() => v === 'one' ? vcForm() : vcBulk(), 120) }); }
+
 let CFG={cats:[],count:20,minutes:30,mode:'exam',onlyStar:false,diff:''};
 const poolOf=(cats,onlyStar,diff)=>S.questions.filter(q=>(!cats.length||cats.includes(q.cat))&&(!onlyStar||q.star)&&(!diff||q.d===diff));
 
