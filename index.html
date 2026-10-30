@@ -1747,6 +1747,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .inst-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .qsel{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex:none}
 .qsel small{font-size:10.5px;font-weight:700;color:var(--muted)}
+.qrow{content-visibility:auto;contain-intrinsic-size:auto 140px}
 .qrow .qans{display:none}.qrow.open .qans{display:block}
 .qexp{margin:8px 0 4px;font-size:13.5px;color:var(--text2);white-space:pre-wrap;line-height:1.65;border-left:3.5px solid var(--blue);padding:10px 14px;background:var(--surface2);border-radius:0 12px 12px 0}
 .qpeek{border:0;cursor:pointer;font:inherit;color:var(--blue)}.qrow.open .qpeek{color:var(--muted)}
@@ -3031,7 +3032,7 @@ function renderShelfTop(){
     </div>`;
   $('#btnBulk').onclick = () => bulkForm();
   $('#btnNewBook').onclick = () => createBook();
-  $$('[data-book]').forEach(b => b.onclick = () => openBookAnim(b, () => { QF.book = b.dataset.book; QF.cat = 'ทั้งหมด'; QF.term = ''; QF.limit = 25; renderQuiz(); $('.main').scrollTo(0, 0); }));
+  $$('[data-book]').forEach(b => b.onclick = () => openBookAnim(b, () => { QF.book = b.dataset.book; QF.cat = 'ทั้งหมด'; QF.term = ''; QF.limit = 25; QF.off = 0; renderQuiz(); $('.main').scrollTo(0, 0); }));
   $$('[data-editbook]').forEach(b => b.onclick = () => editBook(b.dataset.editbook));
   initShelfDrag();
   icons();
@@ -3772,7 +3773,7 @@ function renderQuiz(){
     const start = QF.batchIdx * BATCH_SIZE;
     L = L.slice(start, start + BATCH_SIZE);
   }
-  const show = L.slice(0, QF.limit);    
+  const off = QF.off || 0, show = L.slice(off, off + QF.limit);    
   const showCategorySection = !QF.term;
 
   $('#view').innerHTML=`
@@ -3857,7 +3858,7 @@ function renderQuiz(){
 
       return `<div class="qrow">
         <div class="qrow-top">
-          ${QF.sel ? `<label class="qsel"><input type="checkbox" data-qsel="${q.id}" ${SEL.has(q.id) ? 'checked' : ''}><small>${i+1}</small></label>` : `<div class="no">${i+1}</div>`}
+          ${QF.sel ? `<label class="qsel"><input type="checkbox" data-qsel="${q.id}" ${SEL.has(q.id) ? 'checked' : ''}><small>${off+i+1}</small></label>` : `<div class="no">${off+i+1}</div>`}
           <div class="body">
             <div class="qt">${highlightedQ}</div>${(q.qImgs && q.qImgs.length) ? `
               <div class="q-media-box">
@@ -3898,7 +3899,8 @@ function renderQuiz(){
       </div>
     `}
   </div>
-  ${L.length > QF.limit && showCategorySection ? `<button class="btn ghost block" id="more" style="margin-top:10px"><i data-lucide="chevron-down"></i>ดูเพิ่ม 25 ข้อ</button>` : ''}`;
+  ${off ? `<button class="btn ghost block" id="fromTop" style="margin-top:10px"><i data-lucide="chevrons-up"></i>แสดงตั้งแต่ข้อ 1</button>` : ''}
+  ${L.length > off + QF.limit && showCategorySection ? `<button class="btn ghost block" id="more" style="margin-top:10px"><i data-lucide="chevron-down"></i>ดูเพิ่ม 25 ข้อ</button>` : ''}`;
 
   const qs = $('#qs');
   qs.oninput = e => {
@@ -3906,14 +3908,14 @@ function renderQuiz(){
     const val = e.target.value;
     searchDebounce = setTimeout(() => {
       QF.term = val.trim().toLowerCase();
-      QF.limit = 25;
+      QF.limit = 25; QF.off = 0;
       renderQuiz();
       const n = $('#qs'); if(n){ n.focus(); n.setSelectionRange(n.value.length, n.value.length); }
     }, 250);
   };
 
-  if($('#qsClear')) $('#qsClear').onclick=()=>{ playTone('tap'); QF.term=''; QF.limit=25; renderQuiz(); };
-  $$('[data-c]').forEach(b=>b.onclick=()=>{ playTone('tap'); QF.cat=b.dataset.c; QF.batchIdx=undefined; QF.limit=25; renderQuiz(); });
+  if($('#qsClear')) $('#qsClear').onclick=()=>{ playTone('tap'); QF.term=''; QF.limit=25; QF.off=0; renderQuiz(); };
+  $$('[data-c]').forEach(b=>b.onclick=()=>{ playTone('tap'); QF.cat=b.dataset.c; QF.batchIdx=undefined; QF.limit=25; QF.off=0; renderQuiz(); });
   $('#fStar').onclick=()=>{ playTone('tap'); QF.star=!QF.star; renderQuiz(); };
 
   $('#btnSort').onclick=()=>{ openPicker({
@@ -3972,9 +3974,10 @@ function renderQuiz(){
 
   $$('[data-edit]').forEach(b=>b.onclick=()=>qForm(S.questions.find(x=>x.id===b.dataset.edit)));
 
+  if($('#fromTop')) $('#fromTop').onclick = () => { QF.off = 0; QF.limit = 25; renderQuiz(); };
   if($('#more'))$('#more').onclick=()=>{ playTone('tap'); QF.limit+=25; renderQuiz(); };
   $('#btnBulk').onclick=()=>{ playTone('tap'); bulkForm(); };
-  $('#btnSelMode').onclick = () => { QF.sel = !QF.sel; SEL.clear(); renderQuiz(); };
+  $('#btnSelMode').onclick = () => { QF.sel = !QF.sel; QF.off = 0; QF.limit = 25; SEL.clear(); renderQuiz(); };
   $$('[data-peek]').forEach(b => b.onclick = () => { const r = b.closest('.qrow'); r.classList.toggle('open'); b.textContent = r.classList.contains('open') ? 'ซ่อนเฉลย' : 'ดูเฉลย'; });
   $$('[data-qsel]').forEach(c => c.onchange = () => { c.checked ? SEL.add(c.dataset.qsel) : SEL.delete(c.dataset.qsel); paintSelBar(); });
   paintSelBar();
@@ -3995,8 +3998,9 @@ function renderQuiz(){
         if(!a || !b) return toast('ใส่เลขข้อ', 'err');
         if(a > b) [a, b] = [b, a];
         a = clamp(a, 1, L.length); b = clamp(b, 1, L.length);
-        L.slice(a - 1, b).forEach(q => SEL.add(q.id)); closeModal();
-        if(QF.limit < b) { QF.limit = b; renderQuiz(); } else { $$('[data-qsel]').forEach(c => c.checked = SEL.has(c.dataset.qsel)); paintSelBar(); }
+        SEL.clear(); L.slice(a - 1, b).forEach(q => SEL.add(q.id)); closeModal();
+        QF.off = a - 1; QF.limit = Math.max(25, b - a + 1); renderQuiz();
+        requestAnimationFrame(() => { const r = $('#qlist .qrow'); r && r.scrollIntoView({ block: 'start' }); });
         toast(`เลือกข้อ ${a}–${b} (${b - a + 1} ข้อ)`, 'ok');
       };
     };
@@ -7364,13 +7368,14 @@ window.triggerUploadPicker = function() {
 
   // แป้นพิมพ์บังช่องกรอก: ติดตามพื้นที่ที่มองเห็นจริง แล้วเลื่อนช่องที่กดมาไว้กลางจอ
   const vv=window.visualViewport, rs=document.documentElement.style;
-  const fit=()=>{if(!vv)return;rs.setProperty('--neo-vvh',vv.height+'px');rs.setProperty('--neo-vvt',vv.offsetTop+'px');};
+  let fq=0,lh=-1,lt=-1;
+  const fit=()=>{if(!vv||fq)return;fq=requestAnimationFrame(()=>{fq=0;const h=Math.round(vv.height),t=Math.round(vv.offsetTop);if(h===lh&&t===lt)return;lh=h;lt=t;rs.setProperty('--neo-vvh',h+'px');rs.setProperty('--neo-vvt',t+'px');});};
   if(vv){vv.addEventListener('resize',fit);vv.addEventListener('scroll',fit);fit();}
-  const show=f=>f&&f.isConnected&&f.scrollIntoView({block:'center',behavior:'smooth'});
+  const show=f=>{if(!f||!f.isConnected)return;const r=f.getBoundingClientRect(),h=vv?vv.height+vv.offsetTop:innerHeight;if(r.top>=(vv?vv.offsetTop:0)&&r.bottom<=h)return;f.scrollIntoView({block:'center',behavior:'smooth'});};
   document.addEventListener('focusin',e=>{
     const f=e.target;
     if(!f.matches||!f.matches('input:not([type=range]):not([type=file]),textarea,select,[contenteditable="true"]'))return;
-    setTimeout(()=>show(f),350);setTimeout(()=>show(f),800);
+    setTimeout(()=>show(f),400);
   });
   if(vv)vv.addEventListener('resize',()=>{const f=document.activeElement;if(f&&f.matches&&f.matches('input,textarea,[contenteditable="true"]'))show(f);});
 
