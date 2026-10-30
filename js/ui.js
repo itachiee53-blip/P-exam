@@ -5,7 +5,7 @@
 // เสียงปุ่ม: โหลดไฟล์ใน sounds/ เข้า Web Audio (เล่นทันที ไม่หน่วง) ถ้าไม่ได้ใช้ <audio> แทน
 const SFX_FILES = {tap:'sounds/tap.mp3', pick:'sounds/pick.mp3', ok:'sounds/correct.mp3', wrong:'sounds/wrong.mp3', submit:'sounds/done.mp3'};
 const sfxEl = {}, sfxBuf = {};
-const SFX_VOLUME = 0.45;
+const SFX_VOLUME = 0.95;
 let audioCtx = null, lastTapAt = 0;
 Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; a.onerror = () => logErr(`โหลดเสียงไม่สำเร็จ: ${src}`, 'audio'); sfxEl[k] = a; });
 try{
@@ -31,9 +31,11 @@ function playTone(type='tap'){
       if(audioCtx.state === 'suspended') audioCtx.resume();
       const src = audioCtx.createBufferSource();
       src.buffer = sfxBuf[type];
-      const g = audioCtx.createGain(); g.gain.value = SFX_VOLUME;
+      // เฟดเข้า 4ms: ไฟล์เสียงเริ่มที่ความดังเกือบสุดทันที ลำโพงมือถือจะได้ยินเป็นเสียงคลิก
+      const g = audioCtx.createGain(), t = audioCtx.currentTime;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(SFX_VOLUME, t + 0.004);
       src.connect(g).connect(audioCtx.destination);
-      src.start(0);
+      src.start(t);
     } else if(sfxEl[type]){
       const a = sfxEl[type]; a.volume = SFX_VOLUME; a.currentTime = 0; a.play().catch(()=>{});
     }
