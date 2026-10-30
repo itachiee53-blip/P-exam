@@ -110,7 +110,7 @@ function ask(title,msg,okText='ยืนยัน',danger=true){
   });
 }
 
-const META={home:['หน้าแรก','ติวสอบตำรวจ'],quiz:['ข้อสอบ','คลังข้อสอบ'],cards:['บัตรจำ','ทบทวนความจำ'],
+const META={home:['หน้าแรก','ติวสอบตำรวจ'],quiz:['ข้อสอบ','คลังข้อสอบ'],cards:['ภาษาอังกฤษ','เรียนทีละบท'],
   exam:['จำลองสอบ','จัดชุดสอบ'],run:['กำลังสอบ','มีสมาธิ'],result:['ผลลัพธ์','สรุปผลคะแนน'],setting:['ตั้งค่า','ปรับแต่งระบบ']};
 let PAGE='home';
 
@@ -171,7 +171,7 @@ function syncChrome(){
   $('#pillC').textContent=S.cards.length.toLocaleString();
   const fab=$('#fab');
   if(PAGE==='quiz') setQuizFab();
-  else if(PAGE==='cards'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มคำ';fab.onclick=()=>{playTone('tap');vcAdd();};}
+  else if(PAGE==='cards'){fab.hidden=engBusy();fab.innerHTML='<i data-lucide="plus"></i>เพิ่มคำ';fab.onclick=()=>{playTone('tap');vcAdd();};}
   else fab.hidden=true;
   icons();
 }
@@ -458,7 +458,7 @@ function renderHome(){
   const todo = [
     {id:'new',  ic:'sparkles',   bg:'color-mix(in srgb,var(--t1) 18%,var(--surface))', fg:'color-mix(in srgb,var(--t1) 80%,var(--text))',   title:'ทำข้อสอบตามเป้า', sub: newDone ? `ครบ ${goal} ข้อแล้ว · ทำเพิ่มได้` : `อีก ${goal - t.answered} ข้อ`, done:newDone},
     {id:'wrong',ic:'repeat',     bg:'color-mix(in srgb,var(--t2) 18%,var(--surface))', fg:'color-mix(in srgb,var(--t2) 80%,var(--text))',    title:'ทวนข้อที่ยังผิด',  sub: wrongN ? `${wrongN} ข้อ` : 'ไม่มีข้อค้าง', done:!wrongN},
-    {id:'cards',ic:'layers',     bg:'color-mix(in srgb,var(--t3) 20%,var(--surface))', fg:'color-mix(in srgb,var(--t3) 80%,var(--text))', title:'บัตรจำถึงรอบทวน', sub: due ? `${due} ใบ` : 'ไม่มีบัตรค้าง', done:!due}
+    {id:'cards',ic:'layers',     bg:'color-mix(in srgb,var(--t3) 20%,var(--surface))', fg:'color-mix(in srgb,var(--t3) 80%,var(--text))', title:'ทบทวนคำศัพท์', sub: due ? `${due} คำ` : 'ไม่มีคำค้าง', done:!due}
   ];
 
   const msRow = m => {
