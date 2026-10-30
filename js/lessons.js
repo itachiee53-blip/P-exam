@@ -3712,6 +3712,198 @@ debrief | สรุปผลหลังปฏิบัติการ | We'll d
 protocol | ระเบียบปฏิบัติ | Follow the protocol. | ทำตามระเบียบปฏิบัติ
 `);
 
+U('daily', 1, 'อารมณ์พื้นฐาน', `
+sad | เศร้า | Why are you sad? | ทำไมเศร้า
+scared | กลัว | I'm scared of dogs. | ฉันกลัวหมา
+bored | เบื่อ | I'm bored. | ฉันเบื่อ
+surprised | แปลกใจ | I was surprised. | ฉันแปลกใจ
+lonely | เหงา | He feels lonely. | เขารู้สึกเหงา
+sleepy | ง่วง | I'm sleepy. | ฉันง่วง
+---
+thirsty | กระหายน้ำ | I'm thirsty. | ฉันหิวน้ำ
+sick | ป่วย | She is sick today. | วันนี้เธอป่วย
+glad | ดีใจ | I'm glad you came. | ดีใจที่คุณมา
+upset | ไม่พอใจ/เสียใจ | Don't be upset. | อย่าเสียใจเลย
+cold feeling | รู้สึกหนาว | I feel cold. | ฉันรู้สึกหนาว
+`);
+U('police', 1, 'คำถามพื้นฐานของตำรวจ', `
+what's your name | คุณชื่ออะไร | What's your name, sir? | คุณชื่ออะไรครับ
+where are you going | จะไปไหน | Where are you going? | คุณจะไปไหน
+where are you from | มาจากไหน | Where are you from? | คุณมาจากไหน
+is this your car | รถคุณใช่ไหม | Is this your car? | รถคันนี้ของคุณใช่ไหม
+do you have ID | มีบัตรไหม | Do you have ID? | มีบัตรประจำตัวไหม
+how can I help | ให้ช่วยอะไร | How can I help you? | ให้ช่วยอะไรครับ
+---
+what happened here | เกิดอะไรขึ้นที่นี่ | What happened here? | เกิดอะไรขึ้นที่นี่
+anyone hurt | มีใครเจ็บไหม | Is anyone hurt? | มีใครเจ็บไหม
+which way | ทางไหน | Which way did he go? | เขาไปทางไหน
+what color | สีอะไร | What color was the car? | รถสีอะไร
+how many people | กี่คน | How many people were there? | มีกี่คน
+`);
+U('daily', 2, 'การเดินทางทางอากาศ', `
+boarding pass | บัตรขึ้นเครื่อง | Show your boarding pass. | แสดงบัตรขึ้นเครื่อง
+gate | ประตูขึ้นเครื่อง | Go to gate 5. | ไปประตู 5
+flight | เที่ยวบิน | My flight is at noon. | เที่ยวบินฉันเที่ยงวัน
+check-in counter | เคาน์เตอร์เช็คอิน | Go to the check-in counter. | ไปเคาน์เตอร์เช็คอิน
+carry-on | กระเป๋าถือขึ้นเครื่อง | One carry-on bag only. | กระเป๋าถือขึ้นเครื่องหนึ่งใบ
+window seat | ที่นั่งริมหน้าต่าง | A window seat, please. | ขอที่นั่งริมหน้าต่าง
+---
+aisle seat | ที่นั่งริมทางเดิน | I prefer an aisle seat. | ฉันชอบที่นั่งริมทางเดิน
+security check | ตรวจความปลอดภัย | Go through the security check. | ผ่านจุดตรวจความปลอดภัย
+land | (เครื่อง) ลง | We landed safely. | เราลงจอดปลอดภัย
+baggage claim | จุดรับกระเป๋า | Go to baggage claim. | ไปรับกระเป๋า
+jet lag | อาการเจ็ตแล็ก | I have jet lag. | ฉันเจ็ตแล็ก
+`);
+U('talk', 2, 'การถามและให้ข้อมูล', `
+could you tell me | ช่วยบอกหน่อยได้ไหม | Could you tell me the time? | ช่วยบอกเวลาหน่อย
+do you know | คุณรู้ไหม | Do you know where it is? | รู้ไหมว่าอยู่ไหน
+I'm looking for | ฉันกำลังหา | I'm looking for the bank. | ฉันหาธนาคาร
+is there | มี...ไหม | Is there a shop near here? | แถวนี้มีร้านไหม
+how far | ไกลแค่ไหน | How far is it? | ไกลแค่ไหน
+how do I | ฉันจะ...อย่างไร | How do I get there? | ไปที่นั่นยังไง
+---
+what time does | ...กี่โมง | What time does it open? | เปิดกี่โมง
+let me know | บอกให้รู้ด้วย | Let me know, OK? | บอกด้วยนะ
+I have a question | ฉันมีคำถาม | I have a question. | ฉันมีคำถาม
+could you repeat | พูดซ้ำได้ไหม | Could you repeat that? | พูดอีกทีได้ไหม
+what does it mean | แปลว่าอะไร | What does it mean? | แปลว่าอะไร
+how do you spell | สะกดยังไง | How do you spell it? | สะกดยังไง
+`);
+U('police', 2, 'การช่วยเหลือนักท่องเที่ยว', `
+tourist | นักท่องเที่ยว | The tourist needs help. | นักท่องเที่ยวต้องการความช่วยเหลือ
+lost passport | พาสปอร์ตหาย | I have a lost passport. | ฉันทำพาสปอร์ตหาย
+overcharge | เก็บเงินเกิน | The driver overcharged me. | คนขับเก็บเงินเกิน
+receipt please | ขอใบเสร็จ | Ask for a receipt. | ขอใบเสร็จ
+travel insurance | ประกันการเดินทาง | Do you have travel insurance? | มีประกันการเดินทางไหม
+hotel name | ชื่อโรงแรม | What's your hotel name? | ชื่อโรงแรมอะไร
+---
+translate | แปล | I'll translate for you. | ผมจะแปลให้
+map app | แอปแผนที่ | Use the map app. | ใช้แอปแผนที่
+tourist police | ตำรวจท่องเที่ยว | Call the tourist police at 1155. | โทรตำรวจท่องเที่ยว 1155
+scam warning | เตือนการหลอกลวง | Here is a scam warning. | นี่คือคำเตือนการหลอกลวง
+local rules | กฎท้องถิ่น | Respect local rules. | เคารพกฎท้องถิ่น
+enjoy your stay | ขอให้เที่ยวสนุก | Enjoy your stay! | ขอให้เที่ยวสนุก!
+`);
+U('daily', 3, 'สุขภาพจิตและความเครียด', `
+stress | ความเครียด | Work causes stress. | งานทำให้เครียด
+anxiety | ความวิตกกังวล | He suffers from anxiety. | เขามีภาวะวิตกกังวล
+depression | ภาวะซึมเศร้า | Depression is an illness. | ซึมเศร้าเป็นโรค
+relax | ผ่อนคลาย | Try to relax. | พยายามผ่อนคลาย
+meditate | นั่งสมาธิ | I meditate every morning. | ฉันนั่งสมาธิทุกเช้า
+counselor | ผู้ให้คำปรึกษา | Talk to a counselor. | คุยกับผู้ให้คำปรึกษา
+---
+sleep well | หลับสบาย | I didn't sleep well. | ฉันนอนไม่ค่อยหลับ
+take a walk | ไปเดินเล่น | Take a walk to relax. | ไปเดินเล่นให้ผ่อนคลาย
+talk it out | ระบายออกมา | Let's talk it out. | มาคุยระบายกัน
+overthink | คิดมาก | Don't overthink. | อย่าคิดมาก
+ask for help | ขอความช่วยเหลือ | It's OK to ask for help. | ขอความช่วยเหลือได้นะ
+`);
+U('talk', 3, 'แสดงความเห็นด้วยและไม่เห็นด้วย', `
+I agree with you | ฉันเห็นด้วยกับคุณ | I agree with you. | ฉันเห็นด้วยกับคุณ
+you're right | คุณพูดถูก | You're right. | คุณพูดถูก
+that's true | จริง | That's true. | จริง
+I'm not so sure | ไม่ค่อยแน่ใจ | I'm not so sure about that. | ไม่ค่อยแน่ใจนะ
+I see what you mean | เข้าใจที่คุณพูด | I see what you mean, but… | เข้าใจที่คุณพูด แต่...
+I'm against it | ฉันไม่เห็นด้วย | I'm against it. | ฉันคัดค้าน
+---
+that's a good point | ประเด็นดี | That's a good point. | ประเด็นดี
+not necessarily | ไม่จำเป็นเสมอไป | Not necessarily. | ไม่จำเป็นเสมอไป
+fair enough | ก็สมเหตุสมผล | Fair enough. | ก็โอเค สมเหตุสมผล
+I couldn't agree more | เห็นด้วยที่สุด | I couldn't agree more. | เห็นด้วยที่สุด
+let's agree to disagree | ต่างคนต่างความเห็นก็ได้ | Let's agree to disagree. | เห็นต่างกันได้
+on the contrary | ตรงกันข้าม | On the contrary, it's cheap. | ตรงกันข้าม มันถูก
+`);
+U('daily', 4, 'การเงินส่วนบุคคล', `
+income | รายได้ | My income is stable. | รายได้ฉันมั่นคง
+expense | ค่าใช้จ่าย | Track your expenses. | ติดตามค่าใช้จ่าย
+installment | ผ่อนชำระ | I pay in installments. | ฉันผ่อนชำระ
+mortgage | สินเชื่อบ้าน | We have a mortgage. | เรามีหนี้บ้าน
+pension | เงินบำนาญ | He gets a pension. | เขาได้เงินบำนาญ
+insurance premium | เบี้ยประกัน | The premium is high. | เบี้ยประกันแพง
+---
+credit score | คะแนนเครดิต | Check your credit score. | เช็คคะแนนเครดิต
+overdue | เกินกำหนด | The bill is overdue. | บิลเกินกำหนดชำระ
+emergency fund | เงินสำรองฉุกเฉิน | Keep an emergency fund. | มีเงินสำรองฉุกเฉินไว้
+loan shark | เงินกู้นอกระบบ | Avoid loan sharks. | หลีกเลี่ยงเงินกู้นอกระบบ
+financial plan | แผนการเงิน | Make a financial plan. | วางแผนการเงิน
+spending habit | พฤติกรรมการใช้จ่าย | Change your spending habits. | เปลี่ยนพฤติกรรมการใช้จ่าย
+`);
+U('police', 4, 'การรักษาความปลอดภัยงานใหญ่', `
+VIP | บุคคลสำคัญ | Protect the VIP. | อารักขาบุคคลสำคัญ
+escort | คุ้มกัน/ขบวนนำ | Police escorted the bus. | ตำรวจนำขบวนรถบัส
+security check point | จุดตรวจความปลอดภัย | Pass the security checkpoint. | ผ่านจุดตรวจความปลอดภัย
+metal detector | เครื่องตรวจโลหะ | Walk through the metal detector. | เดินผ่านเครื่องตรวจโลหะ
+bag search | ตรวจกระเป๋า | There is a bag search. | มีการตรวจกระเป๋า
+restricted area | พื้นที่หวงห้าม | This is a restricted area. | นี่คือพื้นที่หวงห้าม
+---
+access card | บัตรผ่าน | Show your access card. | แสดงบัตรผ่าน
+crowd flow | การไหลของฝูงชน | Manage the crowd flow. | จัดการการไหลของฝูงชน
+emergency exit | ทางออกฉุกเฉิน | Keep the emergency exit clear. | อย่าขวางทางออกฉุกเฉิน
+evacuation route | เส้นทางอพยพ | Know the evacuation route. | รู้เส้นทางอพยพ
+lost child | เด็กหลง | We found a lost child. | เราพบเด็กหลง
+first aid station | จุดปฐมพยาบาล | Go to the first aid station. | ไปจุดปฐมพยาบาล
+`);
+U('talk', 4, 'อีเมลและการเขียนงาน', `
+dear sir | เรียนท่าน | Dear Sir or Madam, | เรียนท่านที่เกี่ยวข้อง
+I am writing to | ข้าพเจ้าเขียนมาเพื่อ | I am writing to apply for the job. | เขียนมาเพื่อสมัครงาน
+please find attached | ตามที่แนบมา | Please find attached my CV. | ตามที่แนบประวัติมา
+regarding | เกี่ยวกับ | Regarding your email… | เกี่ยวกับอีเมลของคุณ...
+I look forward to | หวังว่าจะ | I look forward to your reply. | หวังว่าจะได้รับคำตอบ
+best regards | ด้วยความนับถือ | Best regards, Nut | ด้วยความนับถือ นัท
+---
+kind regards | ด้วยความเคารพ | Kind regards, | ด้วยความเคารพ
+subject line | หัวเรื่องอีเมล | Write a clear subject line. | เขียนหัวเรื่องให้ชัด
+forward | ส่งต่อ | Forward the email to me. | ส่งต่ออีเมลมาให้
+cc | สำเนาถึง | CC your manager. | ส่งสำเนาถึงหัวหน้า
+reply all | ตอบทุกคน | Don't click reply all. | อย่ากดตอบทุกคน
+follow up | ติดตามผล | I'll follow up tomorrow. | พรุ่งนี้จะติดตามผล
+`);
+U('daily', 5, 'สิ่งแวดล้อมและพลังงาน', `
+solar panel | แผงโซลาร์ | We installed solar panels. | เราติดแผงโซลาร์
+wind turbine | กังหันลม | Wind turbines make power. | กังหันลมผลิตไฟ
+carbon footprint | รอยเท้าคาร์บอน | Reduce your carbon footprint. | ลดรอยเท้าคาร์บอน
+electric vehicle | รถยนต์ไฟฟ้า | I drive an electric vehicle. | ฉันขับรถยนต์ไฟฟ้า
+fossil fuel | เชื้อเพลิงฟอสซิล | Stop using fossil fuels. | เลิกใช้เชื้อเพลิงฟอสซิล
+biodegradable | ย่อยสลายได้ | Use biodegradable bags. | ใช้ถุงย่อยสลายได้
+---
+ecosystem | ระบบนิเวศ | Protect the ecosystem. | ปกป้องระบบนิเวศ
+habitat | ถิ่นที่อยู่ | The tiger's habitat is shrinking. | ถิ่นที่อยู่ของเสือลดลง
+greenhouse gas | ก๊าซเรือนกระจก | Cut greenhouse gases. | ลดก๊าซเรือนกระจก
+sustainability | ความยั่งยืน | Sustainability is key. | ความยั่งยืนเป็นหัวใจ
+PM2.5 | ฝุ่นพีเอ็ม 2.5 | PM2.5 is high today. | วันนี้ฝุ่น PM2.5 สูง
+air quality | คุณภาพอากาศ | Check the air quality. | เช็คคุณภาพอากาศ
+`);
+U('talk', 6, 'การวิจารณ์และการวิเคราะห์', `
+critique | บทวิจารณ์/วิจารณ์ | Write a critique of the policy. | เขียนบทวิจารณ์นโยบาย
+assess the impact | ประเมินผลกระทบ | We must assess the impact. | ต้องประเมินผลกระทบ
+pros and cons | ข้อดีข้อเสีย | List the pros and cons. | ระบุข้อดีข้อเสีย
+underlying cause | สาเหตุเบื้องลึก | Find the underlying cause. | หาสาเหตุเบื้องลึก
+long-term effect | ผลระยะยาว | Consider the long-term effects. | พิจารณาผลระยะยาว
+trade-off | การได้อย่างเสียอย่าง | It's a trade-off. | เป็นการได้อย่างเสียอย่าง
+---
+in hindsight | เมื่อมองย้อนกลับไป | In hindsight, it was a mistake. | มองย้อนไปแล้วมันผิดพลาด
+take into account | นำมาพิจารณา | Take cost into account. | นำค่าใช้จ่ายมาพิจารณา
+on balance | เมื่อชั่งน้ำหนักแล้ว | On balance, the plan is good. | ชั่งน้ำหนักแล้วแผนนี้ดี
+shortcoming | ข้อบกพร่อง | The plan has shortcomings. | แผนมีข้อบกพร่อง
+nuance | ความแตกต่างเล็กน้อย | Notice the nuance. | สังเกตความต่างเล็กน้อย
+paradigm | กระบวนทัศน์ | It's a paradigm shift. | เป็นการเปลี่ยนกระบวนทัศน์
+`);
+U('police', 6, 'ความร่วมมือระหว่างประเทศ', `
+Interpol | ตำรวจสากล | Interpol issued a notice. | ตำรวจสากลออกหมาย
+red notice | หมายแดง | He is on a red notice. | เขาถูกออกหมายแดง
+bilateral | ทวิภาคี | A bilateral agreement was signed. | ลงนามข้อตกลงทวิภาคี
+treaty | สนธิสัญญา | An extradition treaty exists. | มีสนธิสัญญาส่งผู้ร้ายข้ามแดน
+liaison officer | เจ้าหน้าที่ประสานงาน | Contact the liaison officer. | ติดต่อเจ้าหน้าที่ประสานงาน
+joint operation | ปฏิบัติการร่วม | It was a joint operation. | เป็นปฏิบัติการร่วม
+---
+cross-border | ข้ามพรมแดน | Cross-border crime is rising. | อาชญากรรมข้ามพรมแดนเพิ่มขึ้น
+deport | เนรเทศ | He was deported. | เขาถูกเนรเทศ
+mutual legal assistance | ความช่วยเหลือทางกฎหมายระหว่างกัน | They requested mutual legal assistance. | ขอความช่วยเหลือทางกฎหมายระหว่างประเทศ
+jurisdictional | เกี่ยวกับเขตอำนาจ | There was a jurisdictional dispute. | มีข้อพิพาทเรื่องเขตอำนาจ
+global network | เครือข่ายทั่วโลก | They broke a global network. | ทลายเครือข่ายทั่วโลก
+asylum | ลี้ภัย | He applied for asylum. | เขายื่นขอลี้ภัย
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
