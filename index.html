@@ -1732,6 +1732,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .bk-front .hb-face{width:100%;height:100%;aspect-ratio:auto}
 .bk-front .hb-name{font-size:clamp(16px,5vw,22px)}
 .bk-inside{transform:rotateY(180deg);background:linear-gradient(90deg,color-mix(in srgb,var(--bk) 30%,#fff),color-mix(in srgb,var(--bk) 14%,#fff));box-shadow:inset 0 0 0 10px color-mix(in srgb,var(--bk) 85%,#000)}
+
+.shelf .book.dragging{opacity:.3}
+.drag-ghost{position:fixed;z-index:200;pointer-events:none;transform:scale(1.06) rotate(-3deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.3))}
+.shelf .hb{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 </style>
 </head>
 <body>
@@ -2801,6 +2805,54 @@ async function openBookAnim(btn, done){
   ov.remove(); bookAnimBusy = false;
 }
 
+
+// กดค้างที่หนังสือ (0.45 วิ) แล้วลากเพื่อจัดลำดับวิชาใหม่
+function initShelfDrag(){
+  const shelf = $('.shelf'); if(!shelf) return;
+  let timer = null, drag = null, sx = 0, sy = 0, justDragged = false;
+  const cancel = () => { clearTimeout(timer); timer = null; };
+  shelf.addEventListener('contextmenu', e => e.preventDefault());
+  shelf.addEventListener('pointerdown', e => {
+    const book = e.target.closest('.book');
+    if(!book || e.target.closest('.hb-act')) return;
+    sx = e.clientX; sy = e.clientY;
+    timer = setTimeout(() => {
+      const r = book.getBoundingClientRect();
+      const ghost = book.cloneNode(true);
+      ghost.className = 'book drag-ghost';
+      Object.assign(ghost.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px' });
+      document.body.appendChild(ghost);
+      book.classList.add('dragging');
+      drag = { book, ghost, ox: sx - r.left, oy: sy - r.top };
+      navigator.vibrate && navigator.vibrate(15);
+      playTone('pick');
+    }, 450);
+  });
+  shelf.addEventListener('pointermove', e => {
+    if(!drag){ if(timer && Math.hypot(e.clientX - sx, e.clientY - sy) > 10) cancel(); return; }
+    drag.ghost.style.left = e.clientX - drag.ox + 'px';
+    drag.ghost.style.top = e.clientY - drag.oy + 'px';
+    const over = document.elementFromPoint(e.clientX, e.clientY)?.closest('.shelf .book:not(.dragging)');
+    if(over){
+      const r = over.getBoundingClientRect();
+      shelf.insertBefore(drag.book, e.clientX > r.left + r.width / 2 ? over.nextSibling : over);
+    }
+  });
+  const end = () => {
+    cancel();
+    if(!drag) return;
+    drag.ghost.remove(); drag.book.classList.remove('dragging');
+    const order = $$('.shelf .book').map(b => b.dataset.cat);
+    if(order.join() !== S.cats.join()){ S.cats = order; save(); toast('จัดลำดับแล้ว', 'ok'); }
+    drag = null; justDragged = true; setTimeout(() => justDragged = false, 300);
+  };
+  shelf.addEventListener('pointerup', end);
+  shelf.addEventListener('pointercancel', end);
+  // ระหว่างลาก ไม่ให้หน้าเลื่อน และไม่นับเป็นการแตะเปิดหนังสือ
+  shelf.addEventListener('touchmove', e => { if(drag) e.preventDefault(); }, { passive: false });
+  shelf.addEventListener('click', e => { if(justDragged){ e.stopPropagation(); e.preventDefault(); } }, true);
+}
+
 function openIconPicker(catName){
   const curIcon = cicon(catName);
   const curTone = tone(catName);
@@ -3440,7 +3492,7 @@ function renderQuiz(){
   </div>
 
       ${showCategorySection ? `
-    <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะปกเพื่อเริ่ม</span></div>
+    <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะเพื่อเริ่ม · กดค้างเพื่อย้าย</span></div>
     <div class="shelf">
       ${S.cats.map(c => {
         const qInCat = S.questions.filter(q => q.cat === c);
@@ -3450,7 +3502,7 @@ function renderQuiz(){
         const sets = total ? Math.ceil(total / 50) : 0;
         const cover = (S.catCovers || {})[c];
         const fg = tone(c)[1];
-        return `<div class="book">
+        return `<div class="book" data-cat="${esc(c)}">
           <button class="hb" data-play="${esc(c)}" style="--bk:${fg}" aria-label="เริ่มทำ ${esc(c)}">
             ${bookFace(c, cover, fg)}
             <span class="hb-pages"></span><span class="hb-ribbon"></span>
@@ -3577,6 +3629,7 @@ function renderQuiz(){
     onSelect: v => { QF.sort = v; renderQuiz(); }
   }); };
 
+  initShelfDrag();
   $$('[data-play]').forEach(b => {
     b.onclick = () => openBookAnim(b, () => {
       const catName = b.dataset.play;
