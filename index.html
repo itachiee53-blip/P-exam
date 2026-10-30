@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
-<title>Police Prep NEO · ติวสอบตำรวจ</title>
+<title>P-exam · ติวสอบตำรวจ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1749,6 +1749,13 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 }
 /* ===== หน้าแรกแบบใหม่: โปร่ง เลื่อนได้ แบ่งเป็นการ์ดเรียบ ===== */
 #btnTheme{display:none}
+.hm-tstats{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hm-tstats div{background:rgba(255,255,255,.16);border-radius:16px;padding:10px 6px;text-align:center}
+.hm-tstats b{display:block;font-size:19px;letter-spacing:-.02em}
+.hm-tstats span{font-size:11px;opacity:.85}
+.hm-ses{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.18);padding:6px 10px;border-radius:12px;min-width:0}
+.hm-ses svg{width:14px;height:14px;flex:none}
+.hm-ses span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hm-today small{font-size:12px;opacity:.85}
 .hm-today h2 span{font-size:16px;font-weight:600;opacity:.85;margin-left:2px}
 .hm-today h2{font-size:34px!important}
@@ -1763,10 +1770,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm{display:flex;flex-direction:column;gap:14px;max-width:720px;margin:0 auto;padding-bottom:8px}
 .hm-hello{font-size:15px;font-weight:600;color:var(--text)}
 .hm-hello span{color:var(--muted);font-weight:500}
-.hm-today{border-radius:28px;padding:26px 22px 22px;color:#fff;background:linear-gradient(150deg,#6aa6da,#3b82c4 75%);
-  display:grid;grid-template-columns:116px 1fr;gap:22px 20px;align-items:center;box-shadow:0 20px 36px -24px rgba(59,130,196,.8)}
-.hm-ring{position:relative;width:116px;height:116px}
-.hm-ring svg{width:116px;height:116px;transform:rotate(-90deg)}
+.hm-today{border-radius:30px;padding:30px 24px 24px;color:#fff;background:linear-gradient(150deg,#6aa6da,#3b82c4 75%);
+  display:grid;grid-template-columns:124px 1fr;gap:26px 18px;align-items:center;box-shadow:0 20px 36px -24px rgba(59,130,196,.8)}
+.hm-ring{position:relative;width:124px;height:124px}
+.hm-ring svg{width:124px;height:124px;transform:rotate(-90deg)}
 .hm-ring circle{fill:none;stroke-width:9;stroke-linecap:round}
 .hm-ring .bgc{stroke:rgba(255,255,255,.25)}
 .hm-ring .fgc{stroke:#fff;transition:stroke-dashoffset .8s ease-out}
@@ -1778,7 +1785,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-pills .cd{background:#000;color:#e1e5ac}.hm-pills .cd.soon{background:#ef3e4a;color:#fff}
 .hm-today h2{font-size:24px;line-height:1.15;letter-spacing:-.03em}
 .hm-today p{font-size:12.5px;opacity:.9;margin-top:4px}
-.hm-start{grid-column:1/-1;height:54px;margin-top:2px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
+.hm-start{grid-column:1/-1;justify-self:center;width:min(100%,260px);height:54px;margin-top:2px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
   display:flex;align-items:center;justify-content:center;gap:8px}
 .hm-start svg{width:18px;height:18px;fill:currentColor}
 .hm-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -1845,7 +1852,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
         <i data-lucide="shield-check"></i>
       </div>
       <div>
-        <b id="sideUserName">Police Prep</b>
+        <b id="sideUserName">P-exam</b>
         <span><i data-lucide="sparkles"></i> ติวสอบตำรวจ</span>
       </div>
     </div>
@@ -2286,7 +2293,7 @@ function optimizeImage(file, maxWidth = 800, quality = 0.75){
 }
 
 function updateSidebarProfile(){
-  const name = (S.settings.name || '').trim() || 'Police Prep';
+  const name = (S.settings.name || '').trim() || 'P-exam';
   const avatar = S.settings.avatar || '';
 
   const sideNameEl = $('#sideUserName');
@@ -2945,7 +2952,7 @@ async function go(p){
   if(p === 'home'){
     const currentTrackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
     const trackInfo = POLICE_TRACKS[currentTrackKey];
-    const name = (S.settings.name || '').trim() || 'Police Prep';
+    const name = (S.settings.name || '').trim() || 'P-exam';
     const avatar = S.settings.avatar || '';
 
     topBlock.innerHTML = `
@@ -3369,8 +3376,14 @@ function renderHome(){
       <small>วันนี้ทำแล้ว</small>
       <h2>${t.answered}<span>/${goal} ข้อ</span></h2>
       <p>${S.settings.goal ? 'เป้าที่ตั้งเอง' : 'เป้าอัตโนมัติจากวันสอบ'} · เปลี่ยนได้ในตั้งค่า</p>
+      ${ses ? `<div class="hm-ses"><i data-lucide="file-clock"></i><span>ค้างอยู่: ${esc(ses.label)}</span></div>` : ''}
     </div>
-    <button class="hm-start" id="hmStart"><i data-lucide="play"></i>${ses ? `ทำต่อ: ${esc(ses.label)} (${sesDone}/${ses.ids.length})` : 'เริ่มทำวันนี้'}</button>
+    <div class="hm-tstats">
+      <div><b>🔥 ${streak()}</b><span>วันต่อเนื่อง</span></div>
+      <div><b>${t.answered ? Math.round(t.correct/t.answered*100)+'%' : '–'}</b><span>ถูกวันนี้</span></div>
+      <div><b>${cd && !cd.isPassed ? cd.daysLeft : '–'}</b><span>วันถึงสอบ</span></div>
+    </div>
+    <button class="hm-start" id="hmStart"><i data-lucide="play"></i>${ses ? `ทำต่อ · ${sesDone}/${ses.ids.length} ข้อ` : 'เริ่มทำวันนี้'}</button>
   </section>
 
   <section class="hm-card">
@@ -3391,7 +3404,7 @@ function renderHome(){
   </section>
 
   <section class="hm-card">
-    <div class="hm-head"><b>สัปดาห์นี้ <span class="hm-streak">🔥 ${streak()} วันต่อเนื่อง</span></b><button class="hm-link" id="hmCal">ปฏิทิน</button></div>
+    <div class="hm-head"><b>สัปดาห์นี้</b><button class="hm-link" id="hmCal">ปฏิทิน</button></div>
     <div class="hm-week">${weekData.map((x,i)=>`<button data-dayclick="${i}" class="${x.n>0?'done':''} ${x.today?'today':''}"><span>${x.lb}</span><b>${x.n>0?x.n:'·'}</b></button>`).join('')}</div>
   </section>
   </div>`;
@@ -6162,7 +6175,7 @@ function renderSetting(){
   </div>
 
   <div class="card" style="margin-top:14px;text-align:center;color:var(--muted);font-size:12.5px">
-    <b style="color:var(--text)">Police Prep</b><br>ออฟไลน์ 100%
+    <b style="color:var(--text)">P-exam</b><br>ออฟไลน์ 100%
   </div>`;
 
   $('#btnManageFont').onclick = () => {
@@ -6347,7 +6360,7 @@ function backupDaysAgo(){
 function exportBackup(){
   const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
   const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob); a.download=`policeprep-backup-${dkey()}.json`; a.click();
+  a.href=URL.createObjectURL(blob); a.download=`p-exam-backup-${dkey()}.json`; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1500);
   S.settings.lastBackup = Date.now(); save();
   toast('ส่งออกแล้ว','ok');
