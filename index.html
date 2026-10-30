@@ -1666,9 +1666,9 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hb-emblem svg{width:52%;height:52%;stroke-width:1.6}
 .hb-name{font-size:clamp(14px,4vw,17px);font-weight:700;line-height:1.2;letter-spacing:-.01em;text-wrap:balance;text-shadow:0 1px 6px rgba(0,0,0,.25)}
 /* ขอบกระดาษ + ปกหลังด้านล่าง */
-.hb-pages{position:absolute;z-index:1;left:5px;right:0;bottom:0;height:24px;border-radius:0 0 12px 7px;
+.hb-pages{position:absolute;z-index:1;left:0;right:0;bottom:0;height:24px;border-radius:0 0 12px 4px;
   background:color-mix(in srgb,var(--bk) 70%,#0b0f17);box-shadow:0 12px 18px -12px color-mix(in srgb,var(--bk) 55%,#000)}
-.hb-pages::before{content:"";position:absolute;left:3px;right:6px;bottom:5px;height:9px;border-radius:0 0 7px 3px;
+.hb-pages::before{content:"";position:absolute;left:8px;right:6px;bottom:5px;height:9px;border-radius:0 0 7px 0;
   background:repeating-linear-gradient(180deg,#fffdf7 0 2px,#e7e1d3 2px 3px)}
 /* ริบบิ้นที่คั่นหน้า */
 .hb-ribbon{position:absolute;z-index:3;right:17%;bottom:-4px;width:15px;height:30px;background:var(--cf);
@@ -1712,17 +1712,23 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .bk-page b{font-size:20px;line-height:1.25;text-wrap:balance}
 .bk-page span{font-size:12px;color:#7a7268}
 .bk-page i{width:36%;height:2px;border-radius:2px;background:var(--bk);opacity:.55;margin-top:6px}
-.bk-page::after{content:"";position:absolute;top:-5px;right:18%;width:13px;height:62%;background:var(--cf);
+.bk-page::after{content:"";position:absolute;top:-5px;right:14%;width:11px;height:20%;background:var(--cf);
   clip-path:polygon(0 0,100% 0,100% 100%,50% 94%,0 100%);box-shadow:inset 0 6px 6px -4px rgba(0,0,0,.25)}
 .bk-cover{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;will-change:transform}
 .bk-front,.bk-inside{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:2px 12px 12px 2px;overflow:hidden}
 .bk-front .hb-face{width:100%;height:100%;aspect-ratio:auto}
 .bk-front .hb-name{font-size:clamp(16px,5vw,22px)}
-.bk-inside{transform:rotateY(180deg);inset:-5px -6px -6px 0;background:color-mix(in srgb,var(--bk) 72%,#0b0f17);box-shadow:0 34px 44px -26px rgba(0,0,0,.45)}
-.bk-inside::before{content:"";position:absolute;inset:5px 6px 6px 0;border-radius:0 9px 9px 0;
-  background:linear-gradient(270deg,rgba(60,40,20,.2) 0,rgba(60,40,20,.05) 8%,transparent 18%),
-    radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--bk) 22%,transparent) 1px,transparent 1.6px) 0 0/12px 12px,
-    color-mix(in srgb,var(--bk) 10%,#fbf7ee)}
+.bk-inside{transform:rotateY(180deg);inset:-5px 0 -6px -6px;border-radius:12px 2px 2px 12px;background:color-mix(in srgb,var(--bk) 72%,#0b0f17);box-shadow:0 34px 44px -26px rgba(0,0,0,.45)}
+.bk-inside::before{content:"";position:absolute;inset:5px 0 6px 6px;border-radius:9px 0 0 9px;
+  background:linear-gradient(270deg,rgba(60,40,20,.22) 0,rgba(60,40,20,.06) 7%,transparent 16%),linear-gradient(180deg,#fffdf8,#f7f2e7);
+  box-shadow:-1px 0 0 #e6dfcf,-2px 1px 0 #fbf8f0,-3px 1px 0 #e3dbc9}
+.bk-lp{position:absolute;inset:5px 0 6px 6px;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12%;text-align:center;color:#2a2622}
+.bk-lp small{font-size:10px;font-weight:700;letter-spacing:.2em;color:#9a8f80;margin-top:10px}
+.bk-lp b{font-size:20px}
+.bk-lp > span:last-child{font-size:12px;color:#7a7268}
+.bk-emb{width:42%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;color:var(--bk);border:1.5px solid color-mix(in srgb,var(--bk) 45%,transparent);
+  background:color-mix(in srgb,var(--bk) 8%,transparent)}
+.bk-emb svg{width:46%;height:46%;stroke-width:1.6}
 .bk-front .hb-face{width:100%;height:100%;aspect-ratio:auto}
 .bk-front .hb-name{font-size:clamp(16px,5vw,22px)}
 .bk-inside{transform:rotateY(180deg);background:linear-gradient(90deg,color-mix(in srgb,var(--bk) 30%,#fff),color-mix(in srgb,var(--bk) 14%,#fff));box-shadow:inset 0 0 0 10px color-mix(in srgb,var(--bk) 85%,#000)}
@@ -2770,7 +2776,9 @@ async function openBookAnim(btn, done){
   ov.innerHTML = `<div class="bk-3d" style="left:${(innerWidth - W) / 2}px;top:${(innerHeight - H) / 2}px;width:${W}px;height:${H}px">
       <div class="bk-back"></div>
       <div class="bk-page"><small>P-EXAM</small><b>${esc(name)}</b><span>${total.toLocaleString()} ข้อ · ทำแล้ว ${total ? Math.round(done0 / total * 100) : 0}%</span><i></i></div>
-      <div class="bk-cover"><div class="bk-front">${face.outerHTML}</div><div class="bk-inside"></div></div>
+      <div class="bk-cover"><div class="bk-front">${face.outerHTML}</div><div class="bk-inside"><div class="bk-lp">
+        <span class="bk-emb"><i data-lucide="${cicon(name)}"></i></span>
+        <small>คลังข้อสอบ</small><b>${total ? Math.ceil(total / 50) : 0} ชุด</b><span>ชุดละ 50 ข้อ</span></div></div></div>
     </div>`;
   document.body.appendChild(ov);
   icons(ov);
