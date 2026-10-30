@@ -1745,7 +1745,11 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .inst-sub b{font-size:14.5px}.inst-sub small{font-size:12px;color:var(--muted)}
 .inst-sub .hb-bar{width:100%}
 .inst-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.qsel{display:grid;place-items:center;width:30px;height:30px;flex:none}
+.qsel{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex:none}
+.qsel small{font-size:10.5px;font-weight:700;color:var(--muted)}
+.qrow .qans{display:none}.qrow.open .qans{display:block}
+.qexp{margin:8px 0 4px;font-size:13.5px;color:var(--text2);white-space:pre-wrap;line-height:1.65;border-left:3.5px solid var(--blue);padding:10px 14px;background:var(--surface2);border-radius:0 12px 12px 0}
+.qpeek{border:0;cursor:pointer;font:inherit;color:var(--blue)}.qrow.open .qpeek{color:var(--muted)}
 .qsel input{width:20px;height:20px;accent-color:var(--blue)}
 .sel-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:8px;
   padding:8px 8px 8px 16px;border-radius:999px;background:var(--surface);box-shadow:0 14px 34px -12px rgba(0,0,0,.35);max-width:calc(100% - 24px);white-space:nowrap}
@@ -3084,9 +3088,13 @@ function openInstitute(id){
     closeModal(); setTimeout(() => openSetPicker(c, qs, `${bk.name} · ${c}`), 120);
   });
   $('#in_add').onclick = () => {
-    const opts = S.cats.filter(c => !cats.includes(c)).map(c => ({ val: c, label: c }));
-    if(!opts.length) return toast('ทุกวิชาอยู่ในเล่มแล้ว');
-    openPicker({ title: 'เพิ่มวิชาในเล่ม', options: opts, value: '', onSelect: c => { bk.cats.push(c); save(); setTimeout(() => openInstitute(id), 120); } });
+    const opts = [{ val: '__new', label: '+ สร้างวิชาใหม่' }, ...S.cats.filter(c => !cats.includes(c)).map(c => ({ val: c, label: c }))];
+    const add = c => { if(!S.cats.includes(c)) S.cats.push(c); if(!bk.cats.includes(c)) bk.cats.push(c); save(); syncChrome(); refreshPage(); setTimeout(() => openInstitute(id), 120); };
+    openPicker({ title: 'เพิ่มวิชาในเล่ม', options: opts, value: '', onSelect: c => c !== '__new' ? add(c) : setTimeout(() => {
+      openModal('สร้างวิชาใหม่', `<div class="field"><label>ชื่อวิชา</label><input class="inp" id="nc_name" placeholder="เช่น สังคม"></div>`,
+        `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="nc_ok"><i data-lucide="check"></i>เพิ่ม</button>`, { focus: '#nc_name' });
+      $('#nc_ok').onclick = () => { const v = $('#nc_name').value.trim().replace(/[<>"'`]/g, ''); if(!v) return toast('ใส่ชื่อวิชา', 'err'); closeModal(); add(v); };
+    }, 120) });
   };
   if($('#in_move')) $('#in_move').onclick = () => openPicker({ title: 'ย้ายข้อสอบวิชาไหนเข้าเล่มนี้', value: '',
     options: loose.map(([c, n]) => ({ val: c, label: `${c} (${n} ข้อที่ยังไม่อยู่ในเล่มไหน)` })),
@@ -3849,13 +3857,13 @@ function renderQuiz(){
 
       return `<div class="qrow">
         <div class="qrow-top">
-          ${QF.sel ? `<label class="qsel"><input type="checkbox" data-qsel="${q.id}" ${SEL.has(q.id) ? 'checked' : ''}></label>` : `<div class="no">${i+1}</div>`}
+          ${QF.sel ? `<label class="qsel"><input type="checkbox" data-qsel="${q.id}" ${SEL.has(q.id) ? 'checked' : ''}><small>${i+1}</small></label>` : `<div class="no">${i+1}</div>`}
           <div class="body">
             <div class="qt">${highlightedQ}</div>${(q.qImgs && q.qImgs.length) ? `
               <div class="q-media-box">
                 ${q.qImgs.map((img, idx) => `<img src="${img}" class="q-media-img" style="--img-w:${qw}" onclick="openLightboxGallery(${qImgsJson},${idx})">`).join('')}
               </div>` : ''}
-            <div class="ansline">
+            <div class="qans"><div class="ansline">
               ตอบ: ${LB[q.a]}.
               <div style="margin-top:4px">
                 ${isBoxed ? `<div class="opt-boxed-text">${highlightedAns}</div>` : `<span class="opt-text">${highlightedAns}</span>`}
@@ -3865,6 +3873,9 @@ function renderQuiz(){
               <div class="img-grid" style="margin-top:6px">
                 <img src="${cImg}" class="img-thumb" style="width:${cw};height:auto;max-height:160px" onclick="openLightboxGallery(['${cImg}'], 0)">
               </div>` : ''}
+            ${q.e ? `<div class="qexp"><i data-lucide="lightbulb" class="ico"></i> ${highlightMatch(q.e, QF.term)}</div>` : ''}
+            ${(q.eImgs && q.eImgs.length) ? `<div class="q-media-box" style="margin-top:8px">${q.eImgs.map((img, idx) => `<img src="${img}" class="q-media-img" style="--img-w:${ew}" onclick="openLightboxGallery(${eImgsJson},${idx})">`).join('')}</div>` : ''}
+            </div>
           </div>
           <div class="side">
             <button class="ib sm star ${q.star?'on':''}" data-star="${q.id}"><i data-lucide="star"></i></button>
@@ -3873,18 +3884,8 @@ function renderQuiz(){
           </div>
         </div>
 
-        ${q.e ? `
-          <div style="display:block!important;width:100%!important;box-sizing:border-box!important;margin:8px 0 4px 0!important;font-size:13.5px!important;color:var(--text2)!important;white-space:pre-wrap!important;line-height:1.65!important;border-left:3.5px solid var(--blue)!important;padding:10px 14px!important;background:var(--surface2)!important;border-radius:0 12px 12px 0!important;">
-            <i data-lucide="lightbulb" class="ico"></i> ${highlightMatch(q.e, QF.term)}
-          </div>` : ''}
-
-        ${(q.eImgs && q.eImgs.length) ? `
-          <div class="q-media-box" style="margin-top:8px">
-            ${q.eImgs.map((img, idx) => `<img src="${img}" class="q-media-img" style="--img-w:${ew}" onclick="openLightboxGallery(${eImgsJson},${idx})">`).join('')}
-          </div>` : ''}
-
         <div class="meta" style="margin-top:4px">
-          <span class="tag b">${esc(q.cat)}</span>
+          <span class="tag b">${esc(q.cat)}</span><button class="tag qpeek" data-peek>ดูเฉลย</button>
           <span class="tag ${q.d==='ยาก'?'r':q.d==='ปานกลาง'?'o':'g'}">${esc(q.d||'ง่าย')}</span>
           ${st?`<span class="tag">ถูก ${st.ok} · ผิด ${st.bad}</span>`:''}
         </div>
@@ -3974,16 +3975,31 @@ function renderQuiz(){
   if($('#more'))$('#more').onclick=()=>{ playTone('tap'); QF.limit+=25; renderQuiz(); };
   $('#btnBulk').onclick=()=>{ playTone('tap'); bulkForm(); };
   $('#btnSelMode').onclick = () => { QF.sel = !QF.sel; SEL.clear(); renderQuiz(); };
+  $$('[data-peek]').forEach(b => b.onclick = () => { const r = b.closest('.qrow'); r.classList.toggle('open'); b.textContent = r.classList.contains('open') ? 'ซ่อนเฉลย' : 'ดูเฉลย'; });
   $$('[data-qsel]').forEach(c => c.onchange = () => { c.checked ? SEL.add(c.dataset.qsel) : SEL.delete(c.dataset.qsel); paintSelBar(); });
   paintSelBar();
   function paintSelBar(){
     let bar = $('#selBar');
     if(!QF.sel){ if(bar) bar.remove(); return; }
     if(!bar){ bar = document.createElement('div'); bar.id = 'selBar'; bar.className = 'sel-bar'; document.body.appendChild(bar); }
-    bar.innerHTML = `<b>เลือก ${SEL.size} ข้อ</b><button class="btn ghost sm" id="selAll">เลือกทั้งหมด ${L.length}</button><button class="btn sm" id="selMove"><i data-lucide="folder-input"></i>ย้ายไปเล่ม</button>`;
+    bar.innerHTML = `<b>เลือก ${SEL.size} ข้อ</b><button class="btn ghost sm" id="selRange"><i data-lucide="hash"></i>เลือกช่วงข้อ</button><button class="btn ghost sm" id="selAll">ทั้งหมด ${L.length}</button><button class="btn sm" id="selMove"><i data-lucide="folder-input"></i>ย้ายไปเล่ม</button>`;
     icons(bar);
     $('#selAll').onclick = () => { L.forEach(q => SEL.add(q.id)); $$('[data-qsel]').forEach(c => c.checked = true); paintSelBar(); };
     $('#selMove').onclick = moveSelected;
+    $('#selRange').onclick = () => {
+      openModal('เลือกช่วงข้อ', `<div style="font-size:13px;color:var(--muted);margin-bottom:10px">เลขข้อตามรายการ${QF.cat && QF.cat !== 'ทั้งหมด' ? ' วิชา ' + esc(QF.cat) : ''} (1–${L.length}) · เลือกวิชาจากแถบด้านบนก่อน เลขจะได้ตรงกับหนังสือ</div>
+        <div class="row" style="gap:8px;align-items:center"><input class="inp" id="rg_a" type="number" inputmode="numeric" min="1" max="${L.length}" placeholder="จากข้อ"><span>ถึง</span><input class="inp" id="rg_b" type="number" inputmode="numeric" min="1" max="${L.length}" placeholder="ถึงข้อ"></div>`,
+        `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="rg_ok"><i data-lucide="check"></i>เลือก</button>`, { focus: '#rg_a' });
+      $('#rg_ok').onclick = () => {
+        let a = parseInt($('#rg_a').value), b = parseInt($('#rg_b').value || $('#rg_a').value);
+        if(!a || !b) return toast('ใส่เลขข้อ', 'err');
+        if(a > b) [a, b] = [b, a];
+        a = clamp(a, 1, L.length); b = clamp(b, 1, L.length);
+        L.slice(a - 1, b).forEach(q => SEL.add(q.id)); closeModal();
+        if(QF.limit < b) { QF.limit = b; renderQuiz(); } else { $$('[data-qsel]').forEach(c => c.checked = SEL.has(c.dataset.qsel)); paintSelBar(); }
+        toast(`เลือกข้อ ${a}–${b} (${b - a + 1} ข้อ)`, 'ok');
+      };
+    };
   }
   if($('#btnRandom'))$('#btnRandom').onclick=()=>{
     playTone('tap');
