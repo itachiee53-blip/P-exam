@@ -2822,8 +2822,7 @@ function openIconPicker(catName){
           <input type="file" id="coverFile" accept="image/*" hidden>
         </div>
       </div>
-      ${S.questions.some(q => q.cat === catName) ? `<button type="button" class="btn sm ghost" id="btnClearCatQ" style="color:var(--red);align-self:flex-start">
-        <i data-lucide="eraser"></i>ล้างข้อสอบในวิชานี้ (${S.questions.filter(q => q.cat === catName).length} ข้อ) · หนังสือยังอยู่</button>` : ''}
+}
       <div>
         <label style="font-size:12.5px;color:var(--muted);font-weight:600;display:block;margin-bottom:8px">เลือกไอคอน (36 แบบ)</label>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-height:220px;overflow-y:auto;padding:3px" id="iconPoolGrid">
@@ -2878,12 +2877,6 @@ function openIconPicker(catName){
 
   const paintCover = () => { $('#coverPrev').innerHTML = coverHtml(); $('#btnCoverDel').hidden = !selectedCover; icons($('#coverPrev')); };
   $('#btnCover').onclick = () => $('#coverFile').click();
-  if($('#btnClearCatQ')) $('#btnClearCatQ').onclick = async () => {
-    const n = S.questions.filter(q => q.cat === catName).length;
-    if(!(await ask(`ล้างข้อสอบวิชา ${catName}?`, `ลบข้อสอบทั้งหมด ${n} ข้อในวิชานี้ หนังสือ ปก และสียังอยู่ (ย้อนกลับได้)`, 'ล้างข้อสอบ'))) return;
-    removeQuestions(q => q.cat === catName, `ล้างข้อสอบวิชา ${catName}`);
-    syncChrome(); refreshPage(); undoToast(`ล้างข้อสอบวิชา ${catName} แล้ว`);
-  };
   $('#coverFile').onchange = async e => {
     const f = e.target.files[0]; if(!f) return;
     const img = await optimizeImage(f, 720, 0.82);
@@ -6414,7 +6407,6 @@ function openUndoList(){
 // ลบหมวด: ที่เดียวทั้งแอป ให้เลือกว่าจะย้ายข้อมูลหรือลบทิ้ง
 function deleteCategory(c){
   const qn = S.questions.filter(q => q.cat === c).length, cn = S.cards.filter(x => x.cat === c).length;
-  if(S.cats.length <= 1) return toast('ต้องมีอย่างน้อย 1 หมวด', 'err');
   const others = S.cats.filter(x => x !== c);
   const meta = { name: c, i: S.cats.indexOf(c), icon: S.catIcons?.[c], tone: S.catTones?.[c], cover: S.catCovers?.[c] };
   const finish = rec => {
@@ -6423,24 +6415,18 @@ function deleteCategory(c){
     pushUndo(`ลบหมวด ${c}`, { ...rec, delCats: [meta] });
     save(); closeModal(); syncChrome(); refreshPage(); undoToast(`ลบหมวด ${c} แล้ว`);
   };
-  openModal(`ลบหมวด "${esc(c)}"`, `
-    <p style="color:var(--text2);line-height:1.6;margin-bottom:14px">หมวดนี้มีข้อสอบ <b>${qn}</b> ข้อ และบัตรจำ <b>${cn}</b> ใบ</p>
-    ${qn + cn ? `<div class="field"><label>ย้ายข้อมูลไปหมวด</label>
-      <select class="inp" id="dc_to">${others.map(x => `<option>${esc(x)}</option>`).join('')}</select></div>
-      <button class="btn block" id="dc_move"><i data-lucide="folder-input"></i>ย้ายแล้วลบหมวด</button>
-      <button class="btn red block" id="dc_all" style="margin-top:8px"><i data-lucide="trash-2"></i>ลบหมวดพร้อมข้อสอบและบัตรทั้งหมด</button>`
-    : `<button class="btn red block" id="dc_all"><i data-lucide="trash-2"></i>ลบหมวด</button>`}
-    <p style="font-size:12px;color:var(--muted);margin-top:10px">ย้อนกลับได้ภายหลังจากตั้งค่า → ย้อนกลับการเปลี่ยนแปลง</p>`,
+  openModal(`ลบ "${esc(c)}"`, `
+    <p style="color:var(--text2);line-height:1.6;margin-bottom:14px">มีข้อสอบ <b>${qn}</b> ข้อ · บัตรจำ <b>${cn}</b> ใบ</p>
+    <button class="btn ghost block" id="dc_q" ${qn ? '' : 'disabled'}><i data-lucide="eraser"></i>ลบเฉพาะข้อสอบ (หนังสือยังอยู่)</button>
+    <button class="btn red block" id="dc_all" style="margin-top:8px"><i data-lucide="trash-2"></i>ลบทั้งหมด (หนังสือ ข้อสอบ บัตรจำ)</button>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px">กดย้อนกลับได้ถ้าลบผิด</p>`,
     `<button class="btn ghost block" data-close>ยกเลิก</button>`);
-  if($('#dc_move')) $('#dc_move').onclick = () => {
-    const to = $('#dc_to').value;
-    const moveQ = S.questions.filter(q => q.cat === c).map(q => ({ id: q.id, cat: c }));
-    const moveC = S.cards.filter(x => x.cat === c).map(x => ({ id: x.id, cat: c }));
-    S.questions.forEach(q => { if(q.cat === c) q.cat = to; });
-    S.cards.forEach(x => { if(x.cat === c) x.cat = to; });
-    finish({ moveQ, moveC });
+  $('#dc_q').onclick = () => {
+    removeQuestions(q => q.cat === c, `ลบข้อสอบวิชา ${c}`);
+    closeModal(); syncChrome(); refreshPage(); undoToast(`ลบข้อสอบวิชา ${c} แล้ว`);
   };
   $('#dc_all').onclick = () => {
+    if(S.cats.length <= 1) return toast('ต้องมีอย่างน้อย 1 วิชา', 'err');
     const delQ = withIdx(S.questions, q => q.cat === c), delC = withIdx(S.cards, x => x.cat === c);
     S.questions = S.questions.filter(q => q.cat !== c); S.cards = S.cards.filter(x => x.cat !== c);
     finish({ delQ, delC });
