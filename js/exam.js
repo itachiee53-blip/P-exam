@@ -659,9 +659,8 @@ function renderResult(){
   const tr = getTrack(trackKey);
   const catRow = c => {
     const v = r.byCat[c]; const p = Math.round(v.c / v.t * 100), cc = p >= ev.passPct ? 'var(--green)' : 'var(--red)';
-    const q = tr.quota[c];
     const sec = v.s != null ? Math.round(v.s / v.t) : null;
-    return `<div class="crow"><div class="lb">${esc(c)}${q && v.t < q ? ` <small style="color:var(--muted)">(${v.t}/${q})</small>` : ''}${sec != null ? `<small class="pace ${sec > pace ? 'slow' : ''}">${sec} วิ/ข้อ</small>` : ''}</div>
+    return `<div class="crow"><div class="lb">${esc(c)}${sec != null ? `<small class="pace ${sec > pace ? 'slow' : ''}">${sec} วิ/ข้อ</small>` : ''}</div>
       <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
       <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div></div>`;
   };
@@ -669,22 +668,20 @@ function renderResult(){
   const pace = tr.minutes && tr.quotaTotal ? Math.round(tr.minutes * 60 / tr.quotaTotal) : 60;
   const hasPace = Object.values(r.byCat).some(v => v.s != null);
   const avg = hasPace ? Math.round(Object.values(r.byCat).reduce((a, v) => a + (v.s || 0), 0) / r.total) : 0;
-  const paceHtml = hasPace ? `<div class="pace-sum ${avg > pace ? 'slow' : ''}"><i data-lucide="timer"></i>เฉลี่ย <b>${avg} วิ/ข้อ</b> · สนามจริงควรไม่เกิน ${pace} วิ/ข้อ</div>` : '';
+  const paceHtml = hasPace ? `<div class="pace-sum ${avg > pace ? 'slow' : ''}"><i data-lucide="timer"></i><b>${avg} วิ/ข้อ</b> (ไม่ควรเกิน ${pace})</div>` : '';
   let scoreSectionHtml;
   if(ev.rule === 'parts'){
     const inParts = new Set(ev.parts.flatMap(x => x.cats));
     const others = Object.keys(r.byCat).filter(c => !inParts.has(c));
-    scoreSectionHtml = `<div class="card">${ev.parts.map((pt, i) => `
+    scoreSectionHtml = `<div class="card">${ev.parts.filter(pt => pt.cats.some(c => r.byCat[c])).map((pt, i) => `
       <div class="part-header ${i ? 'p2' : ''}"><span>${esc(pt.name)}</span>
         <span style="color:${pt.T ? (pt.pass ? 'var(--green)' : 'var(--red)') : 'var(--muted)'}">${pt.T ? `${pt.C}/${pt.T} (${pt.pct}%)` : 'ยังไม่ได้ทำ'}</span></div>
-      ${pt.cats.filter(c => r.byCat[c]).map(catRow).join('') || '<div style="font-size:12px;color:var(--muted);padding:4px 0">ไม่มีวิชาในภาคนี้ในชุดนี้</div>'}`).join('')}
-      ${others.length ? `<div class="part-header p2"><span>วิชาที่ไม่นับภาค</span></div>${others.map(catRow).join('')}` : ''}
-      <div style="font-size:12px;color:var(--muted);margin-top:10px">เกณฑ์สาย${esc(tr.label)}: ${esc(tr.ruleDesc)}</div></div>`;
+      ${pt.cats.filter(c => r.byCat[c]).map(catRow).join('')}`).join('')}
+      ${others.length ? `<div class="part-header p2"><span>วิชาอื่น</span></div>${others.map(catRow).join('')}` : ''}</div>`;
   } else {
     scoreSectionHtml = `<div class="card">
       <div class="part-header"><span>คะแนนรวม</span><span style="color:${ev.pass ? 'var(--green)' : 'var(--red)'}">${r.correct}/${r.total} (${ev.overall}%)</span></div>
-      ${Object.keys(r.byCat).map(catRow).join('')}
-      <div style="font-size:12px;color:var(--muted);margin-top:10px">เกณฑ์สาย${esc(tr.label)}: ${esc(tr.ruleDesc)} · รายวิชาเป็นข้อมูลประกอบ</div></div>`;
+      ${Object.keys(r.byCat).map(catRow).join('')}</div>`;
   }
   scoreSectionHtml = scoreSectionHtml.replace('<div class="card">', '<div class="card">' + paceHtml);
 
