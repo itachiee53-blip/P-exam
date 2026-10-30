@@ -49,13 +49,19 @@ document.addEventListener('pointerdown', e => {
   if(b && !b.disabled && !b.classList.contains('opt')) playTone('tap');
 }, {passive:true});
 
-function speakWord(text) {
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'en-US';
-  utterance.rate = 0.9;
-  window.speechSynthesis.speak(utterance);
+// เสียงอ่าน: เลือกเสียงภาษาอังกฤษของเครื่อง (ไม่ให้ใช้เสียงไทยอ่านคำอังกฤษ), slow = อ่านช้า
+let enVoice = null;
+const pickVoice = () => { const v = speechSynthesis.getVoices();
+  enVoice = v.find(x => /en[-_]US/i.test(x.lang) && /google|natural|samantha/i.test(x.name)) || v.find(x => /en[-_](US|GB)/i.test(x.lang)) || v.find(x => /^en/i.test(x.lang)) || null; };
+if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speakWord(text, slow){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  if(!enVoice) pickVoice();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; if(enVoice) u.voice = enVoice;
+  u.rate = slow ? 0.55 : 0.9;
+  speechSynthesis.speak(u);
 }
 
 function toast(msg,type='info'){

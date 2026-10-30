@@ -14,15 +14,15 @@ const engLvWords = () => Object.values(COURSES).filter(C => !C.gram).flatMap(C =
 const shuf = a => { a = a.slice(); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // ตัวเลือกหลอก: ไม่เอาคำเดียวกันที่มีอีกความหมาย (เช่น fine = ค่าปรับ / สบายดี)
 const engOpts = (w, pool, f) => shuf([w[f], ...shuf([...new Set(pool.filter(x => x.en.toLowerCase() !== w.en.toLowerCase() && x.th !== w.th).map(x => x[f]))]).slice(0, 3)]);
-const engSay = t => speakWord(String(t).split('↔')[0]);
+const engSay = (t, slow) => speakWord(String(t).split('↔')[0], slow);
 // บทที่เปิดได้: บทแรก / บทก่อนหน้าผ่านแล้ว / ต่ำกว่าระดับที่วัดได้ / บทแรกของระดับที่วัดได้
 function engOpen(F, i){
   const E = engState();
   // + บทที่อยู่ก่อนบทที่เคยผ่านแล้ว (เช่น หน่วยใหม่ที่เพิ่มแทรกเข้ามา)
   return i === 0 || !!E.done[F[i - 1].key] || F[i].u.lv < E.lv || i === F.findIndex(x => x.u.lv >= E.lv) || F.slice(i).some(x => E.done[x.key]);
 }
-// ระหว่างเรียน/วัดระดับ/ทวน ซ่อนปุ่มเพิ่มคำ
-const engBusy = () => !!(LS || PT || VC.run || !engState().lv);
+// ปุ่มเพิ่มคำ: ขึ้นเฉพาะหน้าแท็บทบทวน
+const engBusy = () => !!(LS || PT || VC.run || !engState().lv || ENG_TAB === 'learn');
 const engToday = () => engState().days[dkey()] || 0;
 function engStreak(){
   const d = engState().days, t = new Date(); let n = 0;
@@ -30,7 +30,7 @@ function engStreak(){
   while(d[dkey(t)]){ n++; t.setDate(t.getDate() - 1); }
   return n;
 }
-const engTabs = () => `<div class="eng-tabs">
+const engTabs = () => `<div class="eng-tabs" data-on="${ENG_TAB}">
   <button class="${ENG_TAB === 'learn' ? 'on' : ''}" data-etab="learn"><i data-lucide="graduation-cap"></i>บทเรียน</button>
   <button class="${ENG_TAB === 'review' ? 'on' : ''}" data-etab="review"><i data-lucide="layers"></i>ทบทวน</button></div>`;
 const engBindTabs = () => $$('[data-etab]').forEach(b => b.onclick = () => { ENG_TAB = b.dataset.etab; renderCards(); });
@@ -41,23 +41,37 @@ function renderEngPath(){
   // บทถัดไป: เริ่มที่ระดับที่วัดได้ก่อน ถ้าผ่านหมดแล้วค่อยย้อนไปบทที่ยังไม่ทำ
   const next = f => F.findIndex((x, i) => f(x) && engOpen(F, i) && !E.done[x.key]);
   let cur = next(x => x.u.lv >= E.lv); if(cur < 0) cur = next(() => true);
-  const today = engToday(), pct = Math.min(100, Math.round(today / E.goal * 100));
-  let i = 0, html = engTabs() + `
-  <div class="eng-head" style="--c:${C.color}">
-    <button class="eng-course" id="engCourse"><span class="vc-ic"><i data-lucide="${C.ic}"></i></span>
-      <span><small>คอร์ส</small><b>${C.name}</b></span><i data-lucide="chevron-down"></i></button>
-    <button class="eng-stat" id="engGoal"><span><i data-lucide="flame"></i>${engStreak()}</span><span><i data-lucide="zap"></i>${today}/${E.goal}</span></button>
-    <div class="eng-goal"><i style="width:${pct}%"></i></div>
-  </div>${!C.gram && engMiss().length >= 3 ? `<button class="eng-mis" id="engMis"><i data-lucide="dumbbell"></i><span><b>ฝึกคำที่ผิด</b><small>${engMiss().length} คำ</small></span><i data-lucide="chevron-right"></i></button>` : ''}`;
+  const today = engToday(), pct = Math.min(100, Math.round(today / E.goal * 100)), RC = 2 * Math.PI * 21;
+  const nx = F[cur], miss = C.gram ? 0 : engMiss().length, due = vcDueCount();
+  const doneN = F.filter(x => E.done[x.key]).length;
+  let i = 0, html = `<div class="eng-lay"><div class="eng-side">` + engTabs() + `
+  <section class="eng-hero" style="--c:${C.color}">
+    <span class="eng-bubbles"><i></i><i></i><i></i></span>
+    <div class="eng-hero-top">
+      <button class="eng-course" id="engCourse"><span class="eng-cic"><i data-lucide="${C.ic}"></i></span><b>${C.name}</b><i data-lucide="chevron-down"></i></button>
+      <button class="eng-streak" id="engGoal" title="ไฟต่อเนื่อง / เป้าวันนี้"><i data-lucide="flame"></i>${engStreak()}
+        <span class="eng-ring"><svg class="rg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="21"/><circle class="fg" cx="25" cy="25" r="21" stroke-dasharray="${RC}" stroke-dashoffset="${RC * (1 - pct / 100)}"/></svg><i data-lucide="zap"></i></span></button>
+    </div>
+    ${nx ? `<small>บทต่อไป</small><h2>${esc(nx.u.t)}</h2><p>บทที่ ${nx.li + 1} · ระดับ ${nx.u.lv} ${ENG_LEVELS[nx.u.lv]}</p>
+      <button class="eng-cta" id="engGo"><i data-lucide="play"></i>เริ่มเรียน</button>`
+      : `<small>เยี่ยมมาก</small><h2>ผ่านครบทุกบทแล้ว</h2><p>ลองคอร์สอื่นหรือทบทวนต่อ</p>`}
+    <div class="eng-hero-bar"><span>${doneN}/${F.length} บท</span><span>วันนี้ ${today}/${E.goal} XP</span></div>
+  </section>
+  <div class="eng-quick">
+    <button data-q="miss" style="--q:#ef4444" ${miss ? '' : 'disabled'}><i data-lucide="dumbbell"></i><b>ฝึกคำที่ผิด</b><small>${miss} คำ</small></button>
+    <button data-q="rev" style="--q:#8b5cf6"><i data-lucide="layers"></i><b>ทบทวน</b><small>${due ? `ถึงรอบ ${due}` : 'ทวนคำ'}</small></button>
+    <button data-q="lv" style="--q:#0ea5e9"><i data-lucide="target"></i><b>วัดระดับ</b><small>${ENG_LEVELS[E.lv]}</small></button>
+  </div></div><div class="eng-map">`;
   const UC = [C.color, '#0f9d76', '#8b5cf6', '#e8590c', '#d6336c', '#1098ad', '#ca8a04', '#2f6fb5'];
   C.units.forEach((u, ui) => {
     const uc = UC[ui % UC.length];
     const nd = u.ls.filter((_, li) => E.done[`${E.course}:${u.t}:${li}`]).length;
-    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${uc}"><div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
+    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${uc}"><i data-lucide="${C.gram ? 'spell-check' : C.ic}" class="eng-uic"></i>
+      <div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
       <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="trophy"></i>' : `${nd}/${u.ls.length}`}</span></div><div class="eng-nodes">`;
     u.ls.forEach(() => {
       const x = F[i], st = E.done[x.key] || 0, open = engOpen(F, i), now = i === cur;
-      html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
+      html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px;--d:${Math.min(i, 14) * 35}ms">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
         <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${uc}">
           <i data-lucide="${st ? 'check' : !open ? 'lock' : now ? 'play' : 'book-open'}"></i></button>
         ${st ? `<span class="eng-stars">${'★'.repeat(st)}<em>${'★'.repeat(3 - st)}</em></span>` : ''}</div>`;
@@ -65,7 +79,7 @@ function renderEngPath(){
     });
     html += '</div>';
   });
-  html += `<button class="btn ghost block" id="engRe" style="margin-top:22px"><i data-lucide="target"></i>วัดระดับใหม่</button>`;
+  html += `</div></div><button class="eng-jump" id="engJump" hidden><i data-lucide="locate-fixed"></i>บทปัจจุบัน</button>`;
   $('#view').innerHTML = html;
   engBindTabs();
   $('#engCourse').onclick = () => openPicker({ title: 'เลือกคอร์ส', value: E.course,
@@ -73,10 +87,20 @@ function renderEngPath(){
   $('#engGoal').onclick = () => openPicker({ title: 'เป้า XP ต่อวัน', value: E.goal,
     options: [10, 20, 30, 50, 80].map(n => ({ val: n, label: `${n} XP` })), onSelect: v => { E.goal = +v; save(); renderCards(); } });
   $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(E.course, k) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
-  $('#engRe').onclick = () => { ONB = { step: 1 }; renderCards(); };
-  if($('#engMis')) $('#engMis').onclick = () => lessonStart(E.course, -1, shuf(engMiss()).slice(0, 6));
+  if($('#engGo')) $('#engGo').onclick = () => lessonStart(E.course, cur);
+  $$('[data-q]').forEach(b => b.onclick = () => {
+    const q = b.dataset.q;
+    if(q === 'miss') return lessonStart(E.course, -1, shuf(engMiss()).slice(0, 6));
+    if(q === 'rev'){ ENG_TAB = 'review'; return renderCards(); }
+    ONB = { step: 1 }; renderCards();
+  });
   icons();
-  const n = $('.eng-node.now'); if(n) requestAnimationFrame(() => n.scrollIntoView({ block: 'center' }));
+  // ปุ่มลอย "บทปัจจุบัน": ขึ้นเมื่อปุ่มบทปัจจุบันไม่อยู่ในจอ
+  const n = $('.eng-node.now'), j = $('#engJump');
+  if(n && j && 'IntersectionObserver' in window){
+    new IntersectionObserver(([e]) => { if(j.isConnected) j.hidden = e.isIntersecting; }).observe(n);
+    j.onclick = () => n.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
 }
 
 // ---------- ครั้งแรก: เลือกคอร์ส → บอกระดับ → วัดระดับ ----------
@@ -177,7 +201,7 @@ function renderLesson(){
   const L = LS;
   if(L.k >= L.items.length) return lessonEnd();
   const it = L.items[L.k], w = it.w, col = COURSES[L.c].color;
-  const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button>`;
+  const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button>`;
   const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}" style="--b:${ENG_OC[k % 4]}"><em>${'ABCD'[k]}</em>${esc(o)}</button>`).join('');
   let body = '';
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
@@ -186,7 +210,7 @@ function renderLesson(){
   if(it.t === 'gram') body = `<p class="ls-sent">${esc(w.q).replace('___', '<u>_____</u>')}</p><div class="ls-opts">${opts}</div>`;
   if(it.t === 'mean') body = `<h2 class="ls-word">${esc(w.en)} ${say}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'word') body = `<h2 class="ls-word th">${esc(w.th)}</h2><div class="ls-opts">${opts}</div>`;
-  if(it.t === 'listen') body = `<button class="ls-big-say" data-say><i data-lucide="volume-2"></i></button><div class="ls-opts">${opts}</div>`;
+  if(it.t === 'listen') body = `<div class="ls-listen"><button class="ls-big-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-big-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button></div><div class="ls-opts">${opts}</div>`;
   if(it.t === 'blank') body = `<p class="ls-sent">${esc(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
   if(it.t === 'order') body = `<small class="ls-hint">${w.tr ? esc(w.tr) : `ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}`}</small>
       <div class="ls-ans">${it.pick.map(k => `<button class="ls-tile" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
@@ -203,6 +227,7 @@ function renderLesson(){
     <div class="ls-body"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
     <div id="lsFb">${it.t === 'intro' || it.t === 'rule' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
+  $$('[data-slow]').forEach(b => b.onclick = () => engSay(w.en, true));
   if(it.t === 'listen' || it.t === 'intro') setTimeout(() => engSay(w.en), 250);
   const ans = it.t === 'mean' ? w && w.th : it.t === 'gram' ? w.a : w && w.en;
   $$('[data-o]').forEach(b => b.onclick = () => {
@@ -244,8 +269,9 @@ function lessonFb(ok, ans, noRedo){
   const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
   if(full){
     $('#lsFb').insertAdjacentHTML('beforeend', `<div class="ls-full">${it.t === 'gram' && it.w.why ? `<small class="ls-why"><i data-lucide="lightbulb"></i>${esc(it.w.why)}</small>` : ''}
-      <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><div><b>${esc(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
+      <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-sayslow title="ฟังช้า"><i data-lucide="snail"></i></button><div><b>${esc(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
     $('[data-sayfull]').onclick = () => speakWord(full);
+    $('[data-sayslow]').onclick = () => speakWord(full, true);
     setTimeout(() => speakWord(full), 350);
   }
   icons($('#lsFb'));

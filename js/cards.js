@@ -5,7 +5,8 @@ const VC_MAX = 20;                   // คำต่อรอบ
 let VC = { run: null };
 const deckOf = c => c.deck || c.cat || 'ทั่วไป';
 const vcDecks = () => [...new Set([...(S.decks || []), ...S.cards.map(deckOf)])];
-const vcStyle = d => VOCAB[d] ? [VOCAB[d][0], VOCAB[d][1]] : ['book-open', tone(d)[1]];
+const vcCourse = d => Object.values(COURSES).find(c => c.name === d);
+const vcStyle = d => { const C = vcCourse(d); return C ? [C.ic, C.color] : VOCAB[d] ? [VOCAB[d][0], VOCAB[d][1]] : ['book-open', tone(d)[1]]; };
 const vcPct = L => L.length ? Math.round(L.reduce((a, c) => a + Math.min(c.box || 0, 5), 0) / (L.length * 5) * 100) : 0;
 const vcText = s => String(s || '').replace(/<[^>]+>/g, ' ').trim();
 // คำที่เคยทวนแล้วและถึงรอบ (ไม่นับคำใหม่)
@@ -53,14 +54,15 @@ function renderVcHome(){
     <div><small>ทวนวันนี้</small><b>${all}</b><span>คำ${due ? ` · ถึงรอบ ${due}` : ''}</span></div>
     <button class="vc-go" id="vcAll"><i data-lucide="play"></i>เริ่ม</button>
   </div>
-  <div class="sec"><i data-lucide="layers"></i>หมวดคำศัพท์<span class="more" style="text-decoration:none;color:var(--muted)">${S.cards.length} คำ</span></div>
-  <div class="vc-grid">${ds.map(d => {
-    const L = S.cards.filter(c => deckOf(c) === d), pct = vcPct(L), n = vcDueCount(d), [ic, col] = vcStyle(d);
+  ${[['จากบทเรียน', 'graduation-cap', ds.filter(vcCourse)], ['ชุดคำศัพท์', 'layers', ds.filter(d => !vcCourse(d))]].filter(([, , L]) => L.length).map(([t, ic, L]) => `
+  <div class="sec"><i data-lucide="${ic}"></i>${t}<span class="more" style="text-decoration:none;color:var(--muted)">${L.length} หมวด</span></div>
+  <div class="vc-grid">${L.map(d => {
+    const W = S.cards.filter(c => deckOf(c) === d), pct = vcPct(W), n = vcDueCount(d), [ic2, col] = vcStyle(d);
     return `<button class="vc-deck" data-deck="${esc(d)}" style="--c:${col}">
-      <span class="vc-ic"><i data-lucide="${ic}"></i></span>${n ? `<em class="vc-due">${n}</em>` : ''}
-      <b>${esc(d)}</b><small>${L.length} คำ · จำได้ ${pct}%</small>
+      <span class="vc-ic"><i data-lucide="${ic2}"></i></span>${n ? `<em class="vc-due">${n}</em>` : ''}
+      <b>${esc(d)}</b><small>${W.length} คำ · จำได้ ${pct}%</small>
       <span class="vc-bar"><i style="width:${pct}%"></i></span></button>`;
-  }).join('') || '<div class="empty">ยังไม่มีคำศัพท์</div>'}</div>`;
+  }).join('')}</div>`).join('') || '<div class="empty">ยังไม่มีคำศัพท์</div>'}`;
   engBindTabs();
   $('#vcAll').onclick = () => vcStart(null);
   $$('[data-deck]').forEach(b => b.onclick = () => vcStart(b.dataset.deck));
