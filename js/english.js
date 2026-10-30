@@ -359,7 +359,7 @@ function lessonEnd(){
   $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic ${T && !L.pass ? 'fail' : ''}"><i data-lucide="${T ? (L.pass ? 'award' : 'rotate-ccw') : 'trophy'}"></i></span>
     <b>${T ? (L.pass ? `ผ่าน Lv.${T.L}!` : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ทวนบทที่ยังอ่อนแล้วลองใหม่นะ</p>' : ''}
     ${T && L.pass ? `<div class="eng-cert" style="--c:${L.col}"><small>ใบประกาศ</small><b>Lv.${T.L} ${ENG_LEVELS[T.L]}</b><span>${r.acc}% · ${dkey()}</span>${T.L + 1 < ENG_LV_N ? `<em>ปลดล็อก Lv.${T.L + 1} แล้ว</em>` : ''}</div>` : ''}
-    <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.15 + k * .18}s">★</span>`).join('')}</div>
+    <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.1 + k * .12}s">★</span>`).join('')}</div>
     ${r.bonus ? `<span class="ls-combo"><i data-lucide="flame"></i>คอมโบ ${LS.maxC} ติด +${r.bonus} XP</span>` : ''}
     ${(L.newB || []).length ? `<div class="ls-newb"><small>ได้ถ้วยรางวัลใหม่!</small>${L.newB.map(b => `<span class="eng-badge on"><i data-lucide="${b[2]}"></i>${b[1]}</span>`).join('')}</div>` : ''}
     <div class="ls-res"><div><b id="lsXp">+0</b><small>XP</small></div><div><b>${r.acc}%</b><small>แม่นยำ</small></div><div><b>${mmss(r.sec)}</b><small>เวลา</small></div></div>
