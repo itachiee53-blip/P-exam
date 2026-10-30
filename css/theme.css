@@ -760,3 +760,9 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 /* ชั้นหนังสือ: กดค้างแล้วไม่ให้มือถือเปิดเมนูรูป/ลากรูป/เลือกข้อความ */
 .shelf .book{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .shelf .book img{-webkit-user-drag:none;pointer-events:none}
+/* ความเร็วต่อข้อในผลสอบ */
+.crow .pace{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-top:2px}
+.crow .pace.slow,.pace-sum.slow b{color:var(--orange)}
+.pace-sum{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.pace-sum svg{width:15px;height:15px}
+.pace-sum b{color:var(--green)}

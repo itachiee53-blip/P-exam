@@ -165,7 +165,7 @@ function startExam(cfg){
   EX={live:true,qs,
       order:qs.map(q=>S.settings.shuffleC?shuffle([0,1,2,3]):[0,1,2,3]),
       ans:Array(qs.length).fill(null),flag:Array(qs.length).fill(false),
-      cuts:qs.map(()=>[]),
+      cuts:qs.map(()=>[]), qt:qs.map(()=>0),
       streakOk:0,
       streakWrong:0,
       i:0,left:(cfg.minutes||0)*60,tid:null,mode:cfg.mode||'exam',
@@ -180,7 +180,7 @@ function resumeExam(){
   const qs=s.ids.map(id=>S.questions.find(q=>q.id===id)).filter(Boolean);
   if(qs.length!==s.ids.length){S.session=null;save();go('home');return toast('ชุดเดิมไม่สมบูรณ์','err');}
   EX={live:true,qs,order:s.order,ans:s.ans,flag:s.flag,
-      cuts:s.cuts || qs.map(()=>[]),
+      cuts:s.cuts || qs.map(()=>[]), qt:s.qt || qs.map(()=>0),
       streakOk:s.streakOk || 0,
       streakWrong:s.streakWrong || 0,
       i:s.i,left:s.left,tid:null,
@@ -204,6 +204,7 @@ function persist(){
     ans: EX.ans,
     flag: EX.flag,
     cuts: EX.cuts,
+    qt: EX.qt,
     streakOk: EX.streakOk,
     streakWrong: EX.streakWrong,
     i: EX.i,
@@ -220,6 +221,7 @@ function stopClock(){ if(EX.tid)clearInterval(EX.tid); EX.tid=null; }
 function clock(){
   if(!EX.live||EX.paused||document.hidden)return;
   EX.elapsed++;
+  if(EX.qt) EX.qt[EX.i] = (EX.qt[EX.i] || 0) + 1; // เวลาที่อยู่กับข้อที่เปิดอยู่
   if(EX.cfg.minutes)EX.left--;
   const t=$('#tmr');
   if(t){ 
@@ -558,7 +560,7 @@ function submitExam(timeup){
   const d=day();
 
   EX.qs.forEach((q,i)=>{
-    byCat[q.cat]=byCat[q.cat]||{t:0,c:0}; byCat[q.cat].t++;
+    byCat[q.cat]=byCat[q.cat]||{t:0,c:0,s:0}; byCat[q.cat].t++; byCat[q.cat].s+=(EX.qt&&EX.qt[i])||0;
     const a=EX.ans[i];
     if(EX.mode!=='practice'){
       const st=S.qstat[q.id]=S.qstat[q.id]||{seen:0,ok:0,bad:0,streakOk:0,streakBad:0};
@@ -658,10 +660,16 @@ function renderResult(){
   const catRow = c => {
     const v = r.byCat[c]; const p = Math.round(v.c / v.t * 100), cc = p >= ev.passPct ? 'var(--green)' : 'var(--red)';
     const q = tr.quota[c];
-    return `<div class="crow"><div class="lb">${esc(c)}${q && v.t < q ? ` <small style="color:var(--muted)">(${v.t}/${q})</small>` : ''}</div>
+    const sec = v.s != null ? Math.round(v.s / v.t) : null;
+    return `<div class="crow"><div class="lb">${esc(c)}${q && v.t < q ? ` <small style="color:var(--muted)">(${v.t}/${q})</small>` : ''}${sec != null ? `<small class="pace ${sec > pace ? 'slow' : ''}">${sec} วิ/ข้อ</small>` : ''}</div>
       <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
       <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div></div>`;
   };
+  // ความเร็วต่อข้อ เทียบกับเวลาสนามจริงของสาย (เช่น 180 นาที / 170 ข้อ ≈ 64 วิ)
+  const pace = tr.minutes && tr.quotaTotal ? Math.round(tr.minutes * 60 / tr.quotaTotal) : 60;
+  const hasPace = Object.values(r.byCat).some(v => v.s != null);
+  const avg = hasPace ? Math.round(Object.values(r.byCat).reduce((a, v) => a + (v.s || 0), 0) / r.total) : 0;
+  const paceHtml = hasPace ? `<div class="pace-sum ${avg > pace ? 'slow' : ''}"><i data-lucide="timer"></i>เฉลี่ย <b>${avg} วิ/ข้อ</b> · สนามจริงควรไม่เกิน ${pace} วิ/ข้อ</div>` : '';
   let scoreSectionHtml;
   if(ev.rule === 'parts'){
     const inParts = new Set(ev.parts.flatMap(x => x.cats));
@@ -678,6 +686,7 @@ function renderResult(){
       ${Object.keys(r.byCat).map(catRow).join('')}
       <div style="font-size:12px;color:var(--muted);margin-top:10px">เกณฑ์สาย${esc(tr.label)}: ${esc(tr.ruleDesc)} · รายวิชาเป็นข้อมูลประกอบ</div></div>`;
   }
+  scoreSectionHtml = scoreSectionHtml.replace('<div class="card">', '<div class="card">' + paceHtml);
 
   $('#view').innerHTML=`
   <div class="card" style="text-align:center;padding:26px 18px">
