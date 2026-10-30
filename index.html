@@ -1050,7 +1050,7 @@ body::before{
 body::after{
   content:"";position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;
   top:-220px;right:-160px;background:radial-gradient(circle,var(--acc-glow),transparent 65%);
-  opacity:.55;animation:neoFloat 14s ease-in-out infinite alternate;
+  opacity:.55;
 }
 @keyframes neoFloat{to{transform:translate(-120px,140px) scale(1.15)}}
 .app{position:relative;z-index:1}
@@ -1060,8 +1060,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
 
 /* ---------- sidebar ---------- */
 .sidebar{
-  background:color-mix(in srgb,var(--surface) 72%,transparent);
-  -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  background:var(--surface);
+  
   border-right:1px solid var(--line);padding:22px 14px;
 }
 .brand .logo-wrap,.hp-avatar-wrap{
@@ -1098,8 +1098,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
   .bottomnav{
     left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));
     border-radius:24px;padding:6px;border:1px solid var(--line);
-    background:color-mix(in srgb,var(--surface) 78%,transparent);
-    -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
+    background:color-mix(in srgb,var(--surface) 97%,transparent);
+    
     box-shadow:0 20px 40px -18px rgba(0,0,0,.45);
   }
   .main{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
@@ -1300,7 +1300,7 @@ html .card-def{color:#f5f5f6}
 @media(hover:hover){.srs-btn:hover{transform:translateY(-3px)}}
 
 /* ---------- modal / toast ---------- */
-.mask{background:rgba(5,5,7,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.mask{background:rgba(5,5,7,.6)}
 .mask.on .modal{animation:neoModal .45s var(--spring)}
 @keyframes neoModal{from{opacity:0;transform:translateY(24px) scale(.96)}}
 .modal,.rte-modal,.img-editor-modal{border-radius:26px;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
@@ -1449,7 +1449,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 @media(max-width:980px){
   .main{padding-top:0}
   .topbar{position:sticky;top:0;z-index:30;margin:0 -13px 14px;padding:12px 13px 10px;
-    background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+    background:color-mix(in srgb,var(--bg) 96%,transparent)}
   /* ข้อ 7: ตัวอักษรพอดีจอเล็ก */
   .topbar h1{font-size:22px}
   .hp-avatar-wrap{width:44px;height:44px}
@@ -1470,7 +1470,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   body[data-page="run"] .bottomnav{display:none}
   body[data-page="run"] .main{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
   .rnav{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;padding:8px;margin:12px -8px 0;
-    border-radius:20px;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+    border-radius:20px;background:color-mix(in srgb,var(--bg) 96%,transparent);}
   .rtop{gap:6px}
   .rtop .ib{width:38px;height:38px;border-radius:12px}
   .rtop .timer{padding:8px 12px}
@@ -5220,7 +5220,7 @@ async function confirmSubmit(){
   const body = `
     <div style="text-align:center;padding:12px 0">
       <div class="submit-check-icon">
-       <img src="go.gif" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block;" onerror="this.style.display='none'">
+       <i data-lucide="send"></i>
       </div>
       
       <div id="procStatusTxt" style="font-size:16px;font-weight:700;margin-top:8px;color:var(--text)">
@@ -6334,11 +6334,12 @@ function sanitizeState(st){
 // ระบบย้อนกลับ (Undo): จำการเพิ่ม/ลบ/ย้ายล่าสุด 15 รายการ (เก็บในเครื่อง)
 // ==========================================
 let UNDO = [];
-const saveUndo = () => dbSet('undo', UNDO);
+let undoSaveT = null;
+const saveUndo = () => { clearTimeout(undoSaveT); undoSaveT = setTimeout(() => (window.requestIdleCallback || setTimeout)(() => dbSet('undo', UNDO)), 600); };
 function pushUndo(label, rec){
   UNDO.unshift({ label, t: Date.now(), ...rec });
   let full = 0;
-  UNDO = UNDO.filter(u => !u.full || ++full <= 2).slice(0, 15); // สำเนาทั้งระบบเก็บแค่ 2 อันล่าสุด (ไฟล์ใหญ่)
+  UNDO = UNDO.filter(u => !u.full || ++full <= 1).slice(0, 15); // สำเนาทั้งระบบเก็บแค่ 2 อันล่าสุด (ไฟล์ใหญ่)
   saveUndo();
 }
 const withIdx = (arr, pred) => arr.map((obj, i) => ({ i, obj })).filter(x => pred(x.obj));
@@ -7012,6 +7013,7 @@ window.triggerUploadPicker = function() {
 
   // spotlight ตามนิ้ว/เมาส์
   let lit=null;
+  if(matchMedia('(hover:hover)').matches)
   document.addEventListener('pointermove',e=>{
     const el=e.target.closest&&e.target.closest(LIT);
     if(lit&&lit!==el)lit.classList.remove('neo-lit');
