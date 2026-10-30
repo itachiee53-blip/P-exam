@@ -1539,7 +1539,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-week button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;border-radius:14px;background:var(--surface2)}
 .hm-week span{font-size:11px;color:var(--muted);font-weight:600}
 .hm-week b{font-size:13px;color:var(--muted)}
-.hm-week .done{background:var(--blue-2)}.hm-week .done b{color:var(--blue)}
+.hm-week .done{background:color-mix(in srgb,var(--t1) 18%,var(--surface))}.hm-week .done b{color:color-mix(in srgb,var(--t1) 80%,var(--text))}
 .hm-week .today{box-shadow:inset 0 0 0 1.5px var(--text)}
 .hm-prob{font-size:22px;font-weight:700;letter-spacing:-.03em}
 .hm-bar{height:6px;border-radius:9px;background:var(--surface3);overflow:hidden}
@@ -1570,20 +1570,20 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-hello h2{font-size:clamp(24px,6.4vw,30px);line-height:1.2;letter-spacing:-.03em;font-weight:700}
 .hm-card{border:0;border-radius:24px;padding:20px;box-shadow:var(--hm-soft)}
 .hm-head b{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-.hm-today{background:radial-gradient(120% 90% at 100% 0%,var(--cf-deep) 0%,transparent 60%),linear-gradient(160deg,color-mix(in srgb,var(--cf-deep) 45%,var(--hm-ink)),var(--hm-ink));
+.hm-today{color:var(--today-fg);background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--cf) 45%,transparent) 0%,transparent 55%),linear-gradient(160deg,var(--today-a),var(--today-b));
   box-shadow:0 24px 44px -26px color-mix(in srgb,var(--cf-deep) 70%,transparent);border-radius:28px;padding:24px 22px 22px;gap:22px 20px}
-.hm-ring .bgc{stroke:rgba(255,255,255,.14)}
-.hm-ring .fgc{stroke:var(--cf)}
+.hm-ring .bgc{stroke:var(--today-track)}
+.hm-ring .fgc{stroke:var(--today-ring)}
 .hm-ring circle{stroke-width:7}
 .hm-today small{opacity:.7;letter-spacing:.02em}
 .hm-today h2{font-size:40px!important;letter-spacing:-.04em}
 .hm-today p{opacity:.7}
-.hm-tstats{background:rgba(255,255,255,.07);border-radius:18px;padding:12px 4px;gap:0}
+.hm-tstats{background:var(--today-soft);border-radius:18px;padding:12px 4px;gap:0}
 .hm-tstats div{background:none;border-radius:0;padding:0 6px}
-.hm-tstats div+div{border-left:1px solid rgba(255,255,255,.12)}
+.hm-tstats div+div{border-left:1px solid var(--today-line)}
 .hm-tstats b{font-size:20px}
-.hm-start{background:#fff;color:var(--hm-ink);height:52px;border-radius:999px;width:100%!important;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
-.hm-ses{background:rgba(255,255,255,.1)}
+.hm-start{background:var(--today-btn);color:var(--today-btnfg);height:52px;border-radius:999px;width:100%!important;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.hm-ses{background:var(--today-soft)}
 .hm-todo{padding:10px 0;border-top:1px solid var(--line)}
 .hm-head+.hm-todo{border-top:0}
 .hm-todo .hm-ic{border-radius:50%}
@@ -1610,15 +1610,14 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 }
 
 .ico{width:1em;height:1em;vertical-align:-.14em;display:inline-block;stroke-width:2.2}
-.hm-tstats .ico{color:var(--cf)}
+.hm-tstats .ico{color:var(--today-ring)}
 .pal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:560px){.pal-grid{grid-template-columns:repeat(3,1fr)}}
 .pal-card{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:18px;background:var(--surface2);border:2px solid transparent;text-align:left}
 .pal-card.on{border-color:var(--text)}
 .pal-card b{font-size:13.5px;padding:0 4px 2px}
-.pal-prev{position:relative;height:74px;border-radius:12px;display:block;overflow:hidden}
-.pal-prev i{position:absolute;bottom:10px;width:18px;height:18px;border-radius:50%}
-.pal-prev i:first-child{left:10px}.pal-prev i:last-child{left:34px}
+.pal-sw{display:flex;height:64px;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.pal-sw i{flex:1}
 .rte-color-palette{gap:10px}
 .rte-dot{width:30px;height:30px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
 </style>
@@ -3071,9 +3070,9 @@ function renderHome(){
   const newDone = t.answered >= goal;
 
   const todo = [
-    {id:'new',  ic:'sparkles',   bg:'var(--blue-2)',   fg:'var(--blue)',   title:'ทำข้อสอบตามเป้า', sub: newDone ? `ครบ ${goal} ข้อแล้ว · ทำเพิ่มได้` : `อีก ${goal - t.answered} ข้อ`, done:newDone},
-    {id:'wrong',ic:'repeat',     bg:'var(--red-2)',    fg:'var(--red)',    title:'ทวนข้อที่ยังผิด',  sub: wrongN ? `${wrongN} ข้อ` : 'ไม่มีข้อค้าง', done:!wrongN},
-    {id:'cards',ic:'layers',     bg:'var(--orange-2)', fg:'var(--orange)', title:'บัตรจำถึงรอบทวน', sub: due ? `${due} ใบ` : 'ไม่มีบัตรค้าง', done:!due}
+    {id:'new',  ic:'sparkles',   bg:'color-mix(in srgb,var(--t1) 18%,var(--surface))', fg:'color-mix(in srgb,var(--t1) 80%,var(--text))',   title:'ทำข้อสอบตามเป้า', sub: newDone ? `ครบ ${goal} ข้อแล้ว · ทำเพิ่มได้` : `อีก ${goal - t.answered} ข้อ`, done:newDone},
+    {id:'wrong',ic:'repeat',     bg:'color-mix(in srgb,var(--t2) 18%,var(--surface))', fg:'color-mix(in srgb,var(--t2) 80%,var(--text))',    title:'ทวนข้อที่ยังผิด',  sub: wrongN ? `${wrongN} ข้อ` : 'ไม่มีข้อค้าง', done:!wrongN},
+    {id:'cards',ic:'layers',     bg:'color-mix(in srgb,var(--t3) 20%,var(--surface))', fg:'color-mix(in srgb,var(--t3) 80%,var(--text))', title:'บัตรจำถึงรอบทวน', sub: due ? `${due} ใบ` : 'ไม่มีบัตรค้าง', done:!due}
   ];
 
   const msRow = m => {
@@ -6298,42 +6297,58 @@ function deleteCategory(c){
 }
 
 
-// ธีมสีของแอป: c1 = สีอ่อน/ไฮไลต์, c2 = สีหลัก, ink = สีเข้มสุด (การ์ดวันนี้)
+// ธีมสี: แต่ละธีมเป็นชุดหลายสี
+// bg = พื้นหน้าแอป, main = ปุ่ม/สีหลัก, ink = สีเข้มสุด, today = ไล่สีการ์ดวันนี้ [บน, ล่าง],
+// todayLight = การ์ดวันนี้สีอ่อน (ตัวอักษรเข้ม), ring = วงแหวน/ไฮไลต์, tints = 3 สีรองสำหรับรายการ/สถิติ
 const THEMES = [
-  { id: 'ocean',    name: 'Ocean',        c1: '#8cc0ec', c2: '#3b82c4', ink: '#14243a' },
-  { id: 'royal',    name: 'Royal Police', c1: '#f2c14e', c2: '#1f3a6d', ink: '#0d1a33' },
-  { id: 'indigo',   name: 'Indigo Night', c1: '#a9aaff', c2: '#5b5bd6', ink: '#1b1a3a' },
-  { id: 'emerald',  name: 'Emerald',      c1: '#7fe0b8', c2: '#0f9f6e', ink: '#0c2a21' },
-  { id: 'lagoon',   name: 'Lagoon',       c1: '#7ee3ea', c2: '#0e8f9a', ink: '#082a2e' },
-  { id: 'sakura',   name: 'Sakura',       c1: '#f9b4cf', c2: '#d64a7e', ink: '#36131f' },
-  { id: 'sunset',   name: 'Sunset',       c1: '#fdc08a', c2: '#e2600f', ink: '#331809' },
-  { id: 'lavender', name: 'Lavender',     c1: '#cdbcfd', c2: '#8257e5', ink: '#21163b' },
-  { id: 'graphite', name: 'Graphite',     c1: '#d3d9e0', c2: '#3f4752', ink: '#111418' },
-  { id: 'neo',      name: 'NEO ขาวดำ',    c1: '#e1e5ac', c2: '#111111', ink: '#000000', onp: '#e1e5ac' }
+  { id:'skygarden', name:'Sky Garden',    bg:'#fff1f2', main:'#313857', ink:'#232843', today:['#598099','#313857'], ring:'#edbabc', tints:['#598099','#bb7b85','#e2b45a'], sw:['#edbabc','#faedcd','#313857','#bb7b85','#598099'] },
+  { id:'winter',    name:'Winter Hearth', bg:'#fefdf0', main:'#3f7680', ink:'#23414a', today:['#bfdfe2','#d7edef'], todayLight:true, ring:'#f0b93a', tints:['#5aa3ad','#e0a92b','#7aa7c7'], sw:['#d7edef','#bfdfe2','#fefac2','#ffd87b','#3f7680'] },
+  { id:'ocean',     name:'Ocean',         bg:'#f4f8fc', main:'#2f6fae', ink:'#14243a', today:['#3b82c4','#14243a'], ring:'#8cc0ec', tints:['#3b82c4','#f08a6c','#e3b04b'], sw:['#14243a','#2f6fae','#8cc0ec','#f4e3c1','#f08a6c'] },
+  { id:'royal',     name:'Royal Police',  bg:'#f7f5ef', main:'#1f3a6d', ink:'#0d1a33', today:['#2c4f8f','#0d1a33'], ring:'#f2c14e', tints:['#2c4f8f','#a23b47','#c99a2e'], sw:['#0d1a33','#1f3a6d','#f2c14e','#a23b47','#f7f5ef'] },
+  { id:'matcha',    name:'Matcha',        bg:'#f5f7ee', main:'#4a6b35', ink:'#22321a', today:['#7a9a5a','#22321a'], ring:'#d6e8a8', tints:['#5f8a3e','#d9895b','#c2a24a'], sw:['#22321a','#4a6b35','#a7c47a','#d6e8a8','#f1e3c8'] },
+  { id:'peach',     name:'Peach Sunset',  bg:'#fff6ef', main:'#c2553f', ink:'#4a1f26', today:['#f08a68','#7a2e3a'], ring:'#ffd6a5', tints:['#e0714f','#5e9a8c','#e6a93b'], sw:['#7a2e3a','#c2553f','#f6bd60','#ffd6a5','#84a59d'] },
+  { id:'lavender',  name:'Lavender',      bg:'#f7f4fd', main:'#6a4bb8', ink:'#2a1d48', today:['#8f75e3','#2a1d48'], ring:'#e2d4ff', tints:['#7d5fd6','#e07aa0','#5aa3d6'], sw:['#2a1d48','#6a4bb8','#b8a4f0','#ffd1dc','#b9e0ff'] },
+  { id:'lagoon',    name:'Mint Lagoon',   bg:'#f0faf8', main:'#127b74', ink:'#0b3536', today:['#2ab3a5','#0b3536'], ring:'#b8f2e6', tints:['#16958c','#f08b84','#e0b552'], sw:['#0b3536','#127b74','#5ed1c3','#b8f2e6','#ffa69e'] },
+  { id:'graphite',  name:'Graphite',      bg:'#f4f5f7', main:'#3d4550', ink:'#14171c', today:['#4b5563','#14171c'], ring:'#d3d9e0', tints:['#55606e','#c26a5a','#8a96a6'], sw:['#14171c','#3d4550','#8a96a6','#d3d9e0','#c26a5a'] },
+  { id:'neo',       name:'NEO ขาวดำ',     bg:'#fbfbf8', main:'#111111', ink:'#000000', today:['#2a2a2a','#000000'], ring:'#e1e5ac', tints:['#6aa6da','#ef3e4a','#ea7a00'], sw:['#000000','#e1e5ac','#fbfbf8','#6aa6da','#dbe3e9'], onp:'#e1e5ac' }
 ];
 function applyPalette(){
   const t = THEMES.find(x => x.id === S.settings.palette) || THEMES[0];
-  const dark = !!S.settings.dark, r = document.documentElement.style;
-  const accent = dark ? t.c1 : t.c2;
-  const set = (k, v) => r.setProperty(k, v);
-  set('--cf', t.c1); set('--cf-deep', t.c2); set('--hm-ink', t.ink);
+  const dark = !!S.settings.dark, r = document.documentElement.style, set = (k, v) => r.setProperty(k, v);
+  const lightCard = t.todayLight && !dark;
+  const accent = dark ? t.ring : t.main;
+  set('--cf', t.ring); set('--cf-deep', t.main); set('--hm-ink', t.ink);
   set('--blue', accent); set('--blue-2', `color-mix(in srgb, ${accent} 15%, var(--surface))`);
-  set('--primary', dark ? t.c1 : t.c2); set('--onp', dark ? t.ink : (t.onp || '#ffffff'));
-  set('--acc', t.c1); set('--acc-glow', `color-mix(in srgb, ${t.c2} 32%, transparent)`);
-  set('--grid-line', `color-mix(in srgb, ${t.c2} ${dark ? 6 : 10}%, transparent)`);
-  const meta = document.querySelector('meta[name="theme-color"]'); if(meta) meta.content = dark ? t.ink : t.c2;
+  set('--primary', dark ? t.ring : t.main); set('--onp', dark ? t.ink : (t.onp || '#ffffff'));
+  set('--acc', t.ring); set('--acc-glow', `color-mix(in srgb, ${t.main} 30%, transparent)`);
+  set('--grid-line', `color-mix(in srgb, ${t.main} ${dark ? 6 : 9}%, transparent)`);
+  t.tints.forEach((c, i) => set(`--t${i+1}`, c));
+  // พื้นหน้าแอปมีโทนของธีม (เฉพาะโหมดสว่าง)
+  if(dark){ ['--bg','--surface2','--surface3','--line'].forEach(k => r.removeProperty(k)); }
+  else {
+    set('--bg', t.bg); set('--surface2', `color-mix(in srgb, ${t.main} 5%, #ffffff)`);
+    set('--surface3', `color-mix(in srgb, ${t.main} 12%, #ffffff)`); set('--line', `color-mix(in srgb, ${t.main} 12%, #ffffff)`);
+  }
+  // การ์ดวันนี้
+  const [ta, tb] = lightCard || !dark ? t.today : [t.main, t.ink];
+  set('--today-a', ta); set('--today-b', tb);
+  set('--today-fg', lightCard ? t.ink : '#ffffff');
+  set('--today-soft', lightCard ? 'rgba(255,255,255,.55)' : 'rgba(255,255,255,.08)');
+  set('--today-line', lightCard ? `color-mix(in srgb, ${t.ink} 14%, transparent)` : 'rgba(255,255,255,.14)');
+  set('--today-btn', lightCard ? t.ring : '#ffffff'); set('--today-btnfg', t.ink);
+  set('--today-ring', lightCard ? t.main : t.ring); set('--today-track', lightCard ? 'rgba(255,255,255,.7)' : 'rgba(255,255,255,.14)');
+  const meta = document.querySelector('meta[name="theme-color"]'); if(meta) meta.content = dark ? '#000000' : t.bg;
 }
 function openPalettePicker(){
   const cur = (THEMES.find(x => x.id === S.settings.palette) || THEMES[0]).id;
   openModal('ธีมสี', `<div class="pal-grid">${THEMES.map(t => `
-    <button class="pal-card ${t.id === cur ? 'on' : ''}" data-pal="${t.id}">
-      <span class="pal-prev" style="background:radial-gradient(120% 90% at 100% 0%,${t.c2},transparent 62%),linear-gradient(160deg,color-mix(in srgb,${t.c2} 45%,${t.ink}),${t.ink})">
-        <i style="background:${t.c1}"></i><i style="background:${t.c2};box-shadow:0 0 0 2px rgba(255,255,255,.5)"></i></span>
-      <b>${t.name}</b></button>`).join('')}</div>`, `<button class="btn ghost block" data-close>เสร็จ</button>`);
+    <button class="pal-card ${t.id === cur ? 'on' : ''}" data-pal="${t.id}" style="background:${t.bg}">
+      <span class="pal-sw">${t.sw.map(c => `<i style="background:${c}"></i>`).join('')}</span>
+      <b style="color:${t.ink}">${t.name}</b></button>`).join('')}</div>`, `<button class="btn ghost block" data-close>เสร็จ</button>`);
   $$('[data-pal]').forEach(b => b.onclick = () => {
     S.settings.palette = b.dataset.pal; save(); theme();
     $$('[data-pal]').forEach(x => x.classList.toggle('on', x === b));
-    if(PAGE === 'setting') { const lb = $('#btnPalette span'); if(lb) lb.textContent = THEMES.find(x => x.id === b.dataset.pal).name; }
+    const lb = $('#btnPalette span'); if(lb) lb.textContent = THEMES.find(x => x.id === b.dataset.pal).name;
   });
 }
 
