@@ -826,19 +826,11 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .eng-tabs button{display:flex;align-items:center;justify-content:center;gap:7px;height:42px;border:0;border-radius:14px;background:transparent;color:var(--muted);font:inherit;font-weight:700;cursor:pointer}
 .eng-tabs button.on{background:var(--surface);color:var(--text);box-shadow:var(--hm-soft)}
 .eng-tabs svg{width:17px;height:17px}
-.eng-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;max-width:560px;margin:0 auto 8px;padding:14px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--hm-soft)}
 .eng-course{display:flex;align-items:center;gap:10px;border:0;background:none;font:inherit;color:var(--text);cursor:pointer;text-align:left;padding:0}
 .eng-course .vc-ic{margin:0;width:42px;height:42px}
 .eng-course small{display:block;font-size:11.5px;color:var(--muted)}
 .eng-course b{font-size:15.5px}
 .eng-course>svg{width:16px;height:16px;color:var(--muted)}
-.eng-stat{display:flex;gap:12px;border:0;background:none;font:inherit;font-weight:800;font-size:14px;color:var(--text);cursor:pointer}
-.eng-stat span{display:flex;align-items:center;gap:4px}
-.eng-stat svg{width:18px;height:18px}
-.eng-stat span:first-child svg{color:#f97316}
-.eng-stat span:last-child svg{color:#eab308}
-.eng-goal{flex:1 1 100%;height:6px;border-radius:9px;background:var(--surface2);overflow:hidden}
-.eng-goal i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#facc15,#f97316)}
 .eng-unit{max-width:560px;margin:22px auto 6px;padding:16px 18px;border-radius:20px;color:#fff;background:linear-gradient(140deg,var(--c),color-mix(in srgb,var(--c) 62%,#000))}
 .eng-unit small{display:block;font-size:12px;opacity:.85;font-weight:600}
 .eng-unit b{font-size:17px}
@@ -923,11 +915,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .eng-uprog{flex:none;min-width:44px;height:30px;padding:0 10px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.22);font-size:13px;font-weight:800}
 .eng-uprog svg{width:17px;height:17px}
 .eng-unit.full .eng-uprog{background:#facc15;color:#713f12}
-.eng-mis{display:flex;align-items:center;gap:12px;width:100%;max-width:560px;margin:10px auto 0;padding:12px 14px;border-radius:18px;border:1px solid color-mix(in srgb,var(--red) 30%,var(--line));
-  background:color-mix(in srgb,var(--red) 7%,var(--surface));color:var(--text);font:inherit;text-align:left;cursor:pointer}
-.eng-mis>svg:first-child{width:22px;height:22px;color:var(--red)}
-.eng-mis span{flex:1}.eng-mis b{display:block;font-size:14.5px}.eng-mis small{color:var(--muted);font-size:12px}
-.eng-mis>svg:last-child{width:17px;height:17px;color:var(--muted)}
 .eng-node.done{animation:engShine 3s ease-in-out infinite}
 @keyframes engShine{0%,85%,100%{filter:none}92%{filter:brightness(1.18)}}
 .ls-combo{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;background:#fff3e0;color:#ea580c;font-size:13px;font-weight:800;animation:lsPop .35s cubic-bezier(.3,1.6,.5,1)}
@@ -960,3 +947,81 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-full>div small{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
 .ls-why{flex:1 1 100%;display:flex;align-items:flex-start;gap:6px;font-size:13.5px;font-weight:600;color:#b45309;padding-bottom:8px;border-bottom:1px dashed var(--line)}
 .ls-why svg{width:16px;height:16px;flex:none;margin-top:2px}
+/* ===== ภาษาอังกฤษ รอบ 1: หน้าแรกใหม่ + แอนิเมชัน ===== */
+.eng-tabs{position:relative}
+.eng-tabs::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 8px);border-radius:14px;background:var(--surface);box-shadow:var(--hm-soft);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+.eng-tabs[data-on="review"]::before{transform:translateX(calc(100% + 6px))}
+.eng-tabs button{position:relative;z-index:1}
+.eng-tabs button.on{background:transparent;box-shadow:none}
+.eng-hero{position:relative;overflow:hidden;max-width:560px;margin:0 auto;padding:18px 20px 16px;border-radius:30px;color:#fff;
+  background:radial-gradient(120% 100% at 100% 0%,color-mix(in srgb,#fff 22%,transparent),transparent 55%),linear-gradient(150deg,var(--c),color-mix(in srgb,var(--c) 55%,#000));
+  box-shadow:0 22px 44px -24px color-mix(in srgb,var(--c) 80%,transparent);animation:engIn .5s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes engIn{from{transform:translateY(16px) scale(.97);opacity:0}}
+.eng-bubbles i{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);animation:engFloat 7s ease-in-out infinite}
+.eng-bubbles i:nth-child(1){width:120px;height:120px;right:-30px;top:-30px}
+.eng-bubbles i:nth-child(2){width:70px;height:70px;right:70px;bottom:-20px;animation-delay:-2s}
+.eng-bubbles i:nth-child(3){width:34px;height:34px;left:58%;top:30%;animation-delay:-4s}
+@keyframes engFloat{50%{transform:translate(-10px,12px) scale(1.08)}}
+.eng-hero-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.eng-course{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border:0;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;font:inherit;cursor:pointer}
+.eng-course b{font-size:14px}
+.eng-course>svg{width:15px;height:15px;opacity:.8}
+.eng-cic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--c)}
+.eng-cic svg{width:17px;height:17px}
+.eng-streak{display:flex;align-items:center;gap:6px;border:0;background:none;color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.eng-streak>svg{width:22px;height:22px;color:#fdba74;animation:engFlame 1.2s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes engFlame{50%{transform:scale(1.15) rotate(-4deg)}}
+.eng-ring{position:relative;width:40px;height:40px;display:grid;place-items:center}
+.eng-ring .rg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.eng-ring circle{fill:none;stroke:rgba(255,255,255,.25);stroke-width:5}
+.eng-ring circle.fg{stroke:#fde047;stroke-linecap:round;transition:stroke-dashoffset .8s}
+.eng-ring>svg:not(.rg){width:17px;height:17px;color:#fde047}
+.eng-hero>small{position:relative;font-size:12.5px;opacity:.8;font-weight:700}
+.eng-hero h2{position:relative;font-size:26px;line-height:1.2;margin:2px 0}
+.eng-hero p{position:relative;font-size:13px;opacity:.85}
+.eng-cta{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:56px;margin-top:14px;border:0;border-radius:18px;
+  background:#fff;color:var(--c);font:inherit;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.18);transition:transform .1s}
+.eng-cta:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.eng-cta svg{width:20px;height:20px;fill:currentColor}
+.eng-cta::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);background-size:250% 100%;animation:engShimmer 2.6s linear infinite;pointer-events:none;mix-blend-mode:soft-light}
+@keyframes engShimmer{from{background-position:150% 0}to{background-position:-100% 0}}
+.eng-hero-bar{position:relative;display:flex;justify-content:space-between;margin-top:12px;font-size:12px;font-weight:700;opacity:.85}
+.eng-quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px;margin:12px auto 6px}
+.eng-quick button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 6px;border-radius:20px;border:2px solid color-mix(in srgb,var(--q) 25%,var(--line));
+  background:color-mix(in srgb,var(--q) 8%,var(--surface));color:var(--text);font:inherit;cursor:pointer;animation:engIn .5s both;transition:transform .12s}
+.eng-quick button:nth-child(2){animation-delay:.06s}.eng-quick button:nth-child(3){animation-delay:.12s}
+.eng-quick button:active{transform:scale(.95)}
+.eng-quick button:disabled{opacity:.45}
+.eng-quick svg{width:26px;height:26px;color:var(--q);margin-bottom:2px}
+.eng-quick b{font-size:13.5px}.eng-quick small{font-size:11.5px;color:var(--muted)}
+.eng-unit{position:relative;overflow:hidden}
+.eng-uic{position:absolute;right:58px;bottom:-14px;width:76px!important;height:76px!important;opacity:.16;transform:rotate(-12deg)}
+.eng-nw{animation:engPopN .45s cubic-bezier(.3,1.5,.5,1) both;animation-delay:var(--d)}
+@keyframes engPopN{from{transform:translateX(var(--o)) scale(.3);opacity:0}}
+.eng-node.now{animation:engPulse 1.8s ease-in-out infinite}
+@keyframes engPulse{0%,100%{outline-offset:4px;outline-color:color-mix(in srgb,var(--c) 25%,transparent)}50%{outline-offset:9px;outline-color:color-mix(in srgb,var(--c) 8%,transparent)}}
+.eng-jump{position:fixed;right:16px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:6px;height:44px;padding:0 16px;border:0;border-radius:999px;
+  background:var(--text);color:var(--bg);font:inherit;font-weight:800;font-size:13.5px;cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);animation:engIn .3s}
+.eng-jump svg{width:17px;height:17px}
+@media(min-width:981px){.eng-jump{bottom:28px;right:28px}}
+/* บทเรียน: เข้ามาแบบสไลด์ ตัวเลือกไล่กันขึ้น */
+.ls-body{animation:lsIn .35s cubic-bezier(.2,.9,.3,1)}
+@keyframes lsIn{from{transform:translateX(26px);opacity:0}}
+.ls-opts .ls-opt{animation:lsUp .35s both}
+.ls-opts .ls-opt:nth-child(2){animation-delay:.05s}.ls-opts .ls-opt:nth-child(3){animation-delay:.1s}.ls-opts .ls-opt:nth-child(4){animation-delay:.15s}
+.ls-opt.ok{animation:lsPop2 .35s!important}
+.ls-say.slow{color:#16a34a;background:color-mix(in srgb,#16a34a 12%,var(--surface))}
+.ls-listen{display:flex;justify-content:center;align-items:flex-end;gap:14px}
+.ls-big-say.slow{width:64px;height:64px;border-radius:20px;background:#16a34a;box-shadow:0 5px 0 #166534}
+.ls-big-say.slow svg{width:28px;height:28px}
+.ls-big-say{transition:transform .1s}.ls-big-say:active{transform:translateY(4px)}
+.ls-wrap .vc-prog{position:relative}
+.ls-wrap .vc-prog i{position:relative;overflow:hidden}
+.ls-wrap .vc-prog i::after{content:"";position:absolute;inset:0 0 50% 0;margin:2px 6px;border-radius:9px;background:rgba(255,255,255,.45)}
+/* แท็บเล็ตแนวนอน: ซ้าย = การ์ดบทต่อไป (ติดอยู่กับที่), ขวา = เส้นทางบทเรียน */
+@media(min-width:900px) and (orientation:landscape){
+  .eng-lay{display:grid;grid-template-columns:minmax(340px,420px) 1fr;gap:28px;align-items:start}
+  .eng-side{position:sticky;top:12px}
+  .eng-side .eng-tabs,.eng-side .eng-hero,.eng-side .eng-quick{max-width:none}
+  .eng-map .eng-unit:first-child{margin-top:0}
+}
