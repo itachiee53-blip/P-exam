@@ -45,7 +45,7 @@ function renderCards(){
   if(LS) return renderLesson();
   if(PT) return renderPlace();
   if(!engState().lv) return renderOnboard();
-  ENG_TAB === 'review' ? renderVcHome() : renderEngPath();
+  ENG_TAB === 'review' ? renderVcHome() : ENG_TAB === 'stats' ? renderEngStats() : renderEngPath();
 }
 function renderVcHome(){
   const ds = vcDecks(), all = vcQueue(null).length, due = vcDueCount();
