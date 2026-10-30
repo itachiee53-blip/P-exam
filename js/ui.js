@@ -5,7 +5,9 @@
 // เสียงปุ่ม: โหลดไฟล์ใน sounds/ เข้า Web Audio (เล่นทันที ไม่หน่วง) ถ้าไม่ได้ใช้ <audio> แทน
 const SFX_FILES = {tap:'sounds/tap.mp3', pick:'sounds/pick.mp3', ok:'sounds/correct.mp3', wrong:'sounds/wrong.mp3', submit:'sounds/done.mp3'};
 const sfxEl = {}, sfxBuf = {};
-const SFX_VOLUME = 0.95;
+// มือถือ = จอด้านสั้นไม่ถึง 600px; เสียงปุ่มเบาลง (มือถือเบากว่าเพื่อให้เสียงพูดเด่น)
+const IS_PHONE = Math.min(screen.width, screen.height) < 600;
+const SFX_VOLUME = IS_PHONE ? 0.3 : 0.4;
 let audioCtx = null, lastTapAt = 0;
 Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; a.onerror = () => logErr(`โหลดเสียงไม่สำเร็จ: ${src}`, 'audio'); sfxEl[k] = a; });
 try{
@@ -58,11 +60,10 @@ function speakWord(text, slow){
   if(!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
   if(!enVoice) pickVoice();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; if(enVoice) u.voice = enVoice;
-  u.rate = slow ? 0.55 : 0.9;
-  u.volume = 0.6; // เสียงอ่านเบาลง (เดิมดังเต็มที่)
-  speechSynthesis.speak(u);
+  const say = (t, rate) => { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if(enVoice) u.voice = enVoice; u.rate = rate; u.volume = IS_PHONE ? 1 : 0.7; speechSynthesis.speak(u); };
+  // ช้า: บางเครื่องแทบไม่เปลี่ยนความเร็ว จึงอ่านทีละคำ (มีช่วงหยุดระหว่างคำ) และลดความเร็วลงมาก
+  if(slow){ const ws = String(text).split(/\s+/).filter(Boolean); ws.length > 1 ? ws.forEach(w => say(w, 0.6)) : say(text, 0.4); }
+  else say(text, 0.9);
 }
 
 function toast(msg,type='info'){
