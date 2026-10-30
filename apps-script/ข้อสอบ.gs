@@ -4,12 +4,25 @@
  * - ลบได้เฉพาะไฟล์ที่ตัวเองอัป (เทียบรหัสเจ้าของประจำเครื่อง)
  * - ไฟล์เก่าที่ไม่มีเจ้าของ: เจ้าของ Drive ลบเองได้ใน Google Drive
  *
- * ⚠️ ก่อนวาง: คัดลอกบรรทัด "var folder = DriveApp...." จากโค้ดเดิมของคุณ
- *    มาวางแทนบรรทัดในฟังก์ชัน getFolder_() ด้านล่าง (ให้ใช้โฟลเดอร์เดิม)
+ * วางทั้งไฟล์ได้เลย ไม่ต้องแก้อะไร: สคริปต์จะสร้างโฟลเดอร์ "P-exam คลังข้อสอบ" ใน Drive ให้เอง
+ * (ถ้ามีโฟลเดอร์ชื่อนี้อยู่แล้วจะใช้อันเดิม)
  */
+var FOLDER_NAME = 'P-exam คลังข้อสอบ';
+
 function getFolder_() {
-  var folder = DriveApp.getFolderById('วาง_ID_โฟลเดอร์เดิม_ตรงนี้'); // ← แทนทั้งบรรทัดด้วยบรรทัดเดิมของคุณ
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty('FOLDER_ID');
+  if (id) { try { return DriveApp.getFolderById(id); } catch (e) {} }
+  var it = DriveApp.getFoldersByName(FOLDER_NAME);
+  var folder = it.hasNext() ? it.next() : DriveApp.createFolder(FOLDER_NAME);
+  props.setProperty('FOLDER_ID', folder.getId());
   return folder;
+}
+
+// กด Run ฟังก์ชันนี้ 1 ครั้งหลังวาง เพื่อให้ Google ขอสิทธิ์และสร้างโฟลเดอร์
+function setup() {
+  var f = getFolder_();
+  Logger.log('พร้อมใช้งาน โฟลเดอร์: ' + f.getName() + ' (' + f.getUrl() + ')');
 }
 
 function doPost(e) {
