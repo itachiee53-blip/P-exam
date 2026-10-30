@@ -94,6 +94,13 @@ function initShelfDrag(){
 }
 
 // หน้าเลือกชุด (ชุดละ 50 ข้อ) ใช้ทั้งหนังสือวิชาเดิมและวิชาในหนังสือสถาบัน
+// สุ่มทำ: เลือกจำนวนข้อ (ใช้ทั้งในหน้าชุดข้อสอบและคลังข้อ)
+function randomPick(ids, name, noTime){
+  const N = ids.length; if(!N) return;
+  const opts = [10, 20, 30, 50, 100].filter(n => n < N).map(n => ({ val: n, label: `${n} ข้อ` })).concat({ val: N, label: `ทั้งหมด ${N} ข้อ` });
+  openPicker({ title: 'สุ่มทำกี่ข้อ', options: opts, value: '', onSelect: n => { n = +n; setTimeout(() =>
+    startExam({ ids, count: n, minutes: noTime ? 0 : n, mode: 'practice', label: `สุ่ม ${name} ${n} ข้อ` }), 150); } });
+}
 function openSetPicker(catName, allQs, title){
       if (!allQs.length) return toast('ไม่มีข้อสอบในหมวดนี้', 'err');
 
@@ -173,10 +180,7 @@ function openSetPicker(catName, allQs, title){
       };
 
       $('#btnQuickRandom20').onclick = () => {
-        const noTime = chk?.checked, N = allQs.length;
-        const opts = [10, 20, 30, 50, 100].filter(n => n < N).map(n => ({ val: n, label: `${n} ข้อ` })).concat({ val: N, label: `ทั้งหมด ${N} ข้อ` });
-        openPicker({ title: 'สุ่มทำกี่ข้อ', options: opts, value: '', onSelect: n => { n = +n; setTimeout(() =>
-          startExam({ ids: allQs.map(q => q.id), count: n, minutes: noTime ? 0 : n, mode: 'practice', label: `สุ่ม ${title || catName} ${n} ข้อ` }), 150); } });
+        randomPick(allQs.map(q => q.id), title || catName, chk?.checked);
       };
 
       $$('[data-batchidx]').forEach(btn => {
@@ -228,7 +232,6 @@ function renderShelfTop(){
   $('#view').innerHTML = `
     <div class="row" style="gap:8px;flex-wrap:wrap">
       <button class="btn ghost sm" id="btnBulk"><i data-lucide="clipboard-list"></i>นำเข้าชุด</button>
-      <button class="btn ghost sm" onclick="openCloudHubModal()"><i data-lucide="cloud"></i>คลังออนไลน์</button>
     </div>
     <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะเพื่อเปิด · กดค้างเพื่อย้าย</span></div>
     <div class="shelf">${items.map(it => {

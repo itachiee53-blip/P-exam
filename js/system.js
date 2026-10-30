@@ -308,3 +308,9 @@ window.addEventListener('popstate', () => {
   history.back();
 });
 if('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(e => logErr('ลงทะเบียนโหมดออฟไลน์ไม่สำเร็จ: ' + e.message, 'sw'));
+
+// กันซูมด้วยสองนิ้ว
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 1) e.preventDefault();
+}, { passive: false });
