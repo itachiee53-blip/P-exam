@@ -1734,7 +1734,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 }
 @media(max-width:980px){
   /* ปุ่มเพิ่มข้อ/บัตร ย้ายขึ้นไปเป็นปุ่มกลมบนแถบหัว ไม่บังเนื้อหา */
-  .fab{top:calc(12px + env(safe-area-inset-top));bottom:auto;right:113px;width:44px;height:44px;padding:0;
+  .fab{top:calc(12px + env(safe-area-inset-top));bottom:auto;right:65px;width:44px;height:44px;padding:0;
     border-radius:50%;justify-content:center;font-size:0;gap:0;z-index:66}
   .fab svg{width:20px;height:20px}
   /* หน้าสอบ: ซ่อนแท็บล่างเพื่อโฟกัส ปุ่มก่อนหน้า/ถัดไปติดขอบล่าง */
@@ -1748,6 +1748,18 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .rtop .tag{display:none}
 }
 /* ===== หน้าแรกแบบใหม่: โปร่ง เลื่อนได้ แบ่งเป็นการ์ดเรียบ ===== */
+#btnTheme{display:none}
+.hm-today small{font-size:12px;opacity:.85}
+.hm-today h2 span{font-size:16px;font-weight:600;opacity:.85;margin-left:2px}
+.hm-today h2{font-size:34px!important}
+.hm-count{font-size:12.5px;font-weight:700;color:var(--muted)}
+.hm-todo,.hm-ms{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:4px 0}
+.hm-todo b{display:block;font-size:14px}.hm-todo small{font-size:12px;color:var(--muted)}
+.hm-todo.done b{color:var(--muted);text-decoration:line-through}
+.hm-todo.done .hm-ic{background:var(--green-2)!important;color:var(--green)!important}
+.hm-chev{width:16px;height:16px;color:var(--muted);flex:none}
+.hm-label{font-size:12px;font-weight:600;color:var(--muted)}
+.hm-streak{font-size:12px;font-weight:600;color:var(--orange);margin-left:6px}
 .hm{display:flex;flex-direction:column;gap:14px;max-width:720px;margin:0 auto;padding-bottom:8px}
 .hm-hello{font-size:15px;font-weight:600;color:var(--text)}
 .hm-hello span{color:var(--muted);font-weight:500}
@@ -3007,28 +3019,10 @@ function getCountdownInfo(){
 }
 
 function analyzeWeakness(trackKey = 'admin'){
-  const track = POLICE_TRACKS[trackKey] || POLICE_TRACKS.admin;
-  const stats = {};
-  S.cats.forEach(c => stats[c] = { bad:0, total:0, seen:0 });
-
-  for(const q of S.questions){
-    const st = S.qstat[q.id];
-    if(st && st.seen){
-      stats[q.cat].seen += st.seen;
-      stats[q.cat].bad += st.bad;
-    }
-  }
-
-  let worstCat = null, maxBad = 0;
-  for(const [c, d] of Object.entries(stats)){
-    const isFocus = track.focusCats.includes(c);
-    const weightedBad = d.bad * (isFocus ? 1.5 : 1.0);
-    if(weightedBad > maxBad && d.bad > 0){
-      maxBad = d.bad;
-      worstCat = c;
-    }
-  }
-  return { worstCat, maxBad };
+  const w = weakSubjects(trackKey)[0];
+  if(!w || w.pct >= 60) return { worstCat:null, maxBad:0 };
+  const bad = S.questions.filter(q => q.cat === w.c).reduce((n,q) => n + (S.qstat[q.id]?.bad || 0), 0);
+  return { worstCat:w.c, maxBad:bad };
 }
 
 function calculateReadinessAndMastery(trackKey = 'admin'){
@@ -3258,104 +3252,130 @@ function evaluatePolicePassing(result, trackKey = 'admin'){
 let bannerTimer = null;
 let bannerIdx = 0;
 
+// ===== ตัวช่วยกลาง (ใช้เกณฑ์เดียวกันทั้งแอป) =====
+// เป้าต่อวัน: ตั้งเอง หรือ 0 = อัตโนมัติจากข้อที่ยังไม่ทำ ÷ วันที่เหลือก่อนสอบ
+function dailyGoal(){
+  const g = +S.settings.goal || 0;
+  if(g > 0) return g;
+  const cd = getCountdownInfo();
+  const left = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0)).length;
+  if(cd && !cd.isPassed && cd.daysLeft > 0 && left) return Math.max(10, Math.ceil(left / cd.daysLeft));
+  return 30;
+}
+// ข้อที่ยังตอบผิดมากกว่าถูก = คิวทวนข้อผิด
+function wrongQueue(){
+  return S.questions.filter(q => { const st = S.qstat[q.id]; return st && (st.bad||0) > (st.ok||0); });
+}
+// วิชาที่อ่อนสุด เรียงจากคะแนนความพร้อมต่ำไปสูง (เฉพาะวิชาที่เริ่มทำแล้ว)
+function weakSubjects(trackKey){
+  const m = calculateReadinessAndMastery(trackKey).mastery;
+  return S.cats.map(c => ({c, ...m[c]})).filter(x => x.seenQ > 0).sort((a,b) => a.pct - b.pct);
+}
+// ฝึกวิชาเดียว: เอาข้อที่ผิดก่อน แล้วตามด้วยข้อที่ยังไม่ทำ
+function practiceSubject(cat){
+  const qs = S.questions.filter(q => q.cat === cat);
+  const st = q => S.qstat[q.id] || {};
+  const ordered = [...qs.filter(q => (st(q).bad||0) > (st(q).ok||0)), ...qs.filter(q => !(st(q).seen > 0)), ...qs];
+  const ids = [...new Set(ordered.map(q => q.id))].slice(0, 15);
+  startExam({ids, count:ids.length, minutes:0, mode:'practice', label:'ซ่อม '+cat});
+}
+function startTodayNew(){
+  const t = day(), goal = dailyGoal();
+  const unseen = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0));
+  const pool = unseen.length ? unseen : S.questions;
+  const count = Math.min(pool.length, Math.max(10, goal - t.answered));
+  startExam({ids:pool.map(q=>q.id), count, minutes:0, mode:'practice', label:'ข้อใหม่วันนี้'});
+}
+
 function renderHome(){
   clearInterval(bannerTimer);
-  const t=day(), goal=S.settings.goal, rawPct=goal>0?Math.round(t.answered/goal*100):0;
+  const t=day(), goal=dailyGoal(), rawPct=goal>0?Math.round(t.answered/goal*100):0;
   const pct=clamp(rawPct,0,100);
   const C=2*Math.PI*42;
   const h=new Date().getHours();
   const hi = h < 11 ? 'สวัสดีตอนเช้า' : h < 16 ? 'สวัสดีตอนบ่าย' : h < 19 ? 'สวัสดีตอนเย็น' : 'สวัสดีตอนค่ำ';
-  const due=S.cards.filter(c=>(c.due||0)<=Date.now()).length;
-  const L=S.session||S.last;
   const trackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
-  const trackInfo = POLICE_TRACKS[trackKey];
-  const weak = analyzeWeakness(trackKey);
   const cd = getCountdownInfo();
   const rStats = calculateReadinessAndMastery(trackKey);
+  const weak = weakSubjects(trackKey);
   const weekData = getMonToSunWeek();
-  const left = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0)).length;
-  const pace = cd && !cd.isPassed && !cd.isToday && left ? Math.ceil(left/cd.daysLeft) : 0;
+  const wrongN = wrongQueue().length;
+  const due = S.cards.filter(c=>(c.due||0)<=Date.now()).length;
+  const ses = S.session;
+  const sesDone = ses ? ses.ans.filter(a=>a!==null).length : 0;
   const heroBg = S.settings.heroBg
     ? `style="background:linear-gradient(rgba(20,40,70,.35),rgba(20,40,70,.55)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
+  const newDone = t.answered >= goal;
 
-  let resumeHtml = '';
-  if(L){
-    const on = !!S.session;
-    const tot = on ? S.session.ids.length : 0, done = on ? S.session.ans.filter(a=>a!==null).length : 0;
-    resumeHtml = `<button class="hm-card hm-resume" id="btnResume">
-      <div class="hm-ic" style="background:var(--blue-2);color:var(--blue)"><i data-lucide="${on?'file-clock':'rotate-ccw'}"></i></div>
-      <div class="hm-grow"><small>${on?'ทำค้างไว้':'ชุดล่าสุด'}</small><b>${esc(L.label||'ชุดล่าสุด')}</b>
-        ${on?`<div class="hm-bar"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`:''}</div>
-      <span class="hm-go">${on?`${done}/${tot}`:'ฝึกซ้ำ'}<i data-lucide="chevron-right"></i></span>
-    </button>`;
-  }
+  const todo = [
+    {id:'new',  ic:'sparkles',   bg:'var(--blue-2)',   fg:'var(--blue)',   title:'ทำข้อสอบตามเป้า', sub: newDone ? `ครบ ${goal} ข้อแล้ว · ทำเพิ่มได้` : `อีก ${goal - t.answered} ข้อ`, done:newDone},
+    {id:'wrong',ic:'repeat',     bg:'var(--red-2)',    fg:'var(--red)',    title:'ทวนข้อที่ยังผิด',  sub: wrongN ? `${wrongN} ข้อ` : 'ไม่มีข้อค้าง', done:!wrongN},
+    {id:'cards',ic:'layers',     bg:'var(--orange-2)', fg:'var(--orange)', title:'บัตรจำถึงรอบทวน', sub: due ? `${due} ใบ` : 'ไม่มีบัตรค้าง', done:!due}
+  ];
 
-  const ms = S.cats.map(c => ({c, ...rStats.mastery[c]})).filter(m => m.totalQ > 0).sort((a,b) => a.pct - b.pct);
   const msRow = m => {
     const col = m.pct >= 60 ? 'var(--green)' : m.pct >= 40 ? 'var(--orange)' : 'var(--red)';
     const [bg, fg] = tone(m.c);
-    return `<div class="hm-ms"><div class="hm-ic sm" style="background:${bg};color:${fg}"><i data-lucide="${cicon(m.c)}"></i></div>
+    return `<button class="hm-ms" data-fixcat="${esc(m.c)}"><div class="hm-ic sm" style="background:${bg};color:${fg}"><i data-lucide="${cicon(m.c)}"></i></div>
       <div class="hm-grow"><div class="hm-ms-top"><b>${esc(m.c)}</b><span style="color:${col}">${m.pct}%</span></div>
-      <div class="hm-bar"><i style="width:${m.pct}%;background:${col}"></i></div></div></div>`;
+      <div class="hm-bar"><i style="width:${m.pct}%;background:${col}"></i></div></div><i data-lucide="chevron-right" class="hm-chev"></i></button>`;
   };
 
   $('#view').innerHTML = `<div class="hm">
-  <div class="hm-hello">${hi} · <span>พร้อมลุยต่อไหม?</span></div>
+  <div class="hm-hello">${hi} · <span>${cd && !cd.isPassed ? (cd.isToday ? 'วันนี้วันสอบ สู้ๆ!' : `อีก ${cd.daysLeft} วันสอบ`) : 'พร้อมลุยต่อไหม?'}</span></div>
 
   <section class="hm-today" ${heroBg}>
     <div class="hm-ring">
       <svg viewBox="0 0 100 100"><circle class="bgc" cx="50" cy="50" r="42"/>
         <circle class="fgc" id="gr" cx="50" cy="50" r="42" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg>
-      <div class="hm-ring-txt"><b id="ringTxt">${rawPct}%</b><span>${t.answered}/${goal}</span></div>
+      <div class="hm-ring-txt"><b id="ringTxt">${rawPct}%</b><span>ของเป้า</span></div>
     </div>
     <div class="hm-today-body">
-      <div class="hm-pills"><span>สาย${esc(trackInfo.name)}</span>${cd && !cd.isPassed ? `<span class="cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday?'สอบวันนี้!':`อีก ${cd.daysLeft} วันสอบ`}</span>`:''}</div>
-      <h2>วันนี้ ${t.answered}/${goal} ข้อ</h2>
-      <p>${pace ? `เหลือ ${left.toLocaleString()} ข้อ · ควรทำวันละ ~${pace} ข้อ` : t.answered >= goal ? 'ถึงเป้าแล้ว เก่งมาก!' : `อีก ${goal - t.answered} ข้อถึงเป้า`}</p>
+      <small>วันนี้ทำแล้ว</small>
+      <h2>${t.answered}<span>/${goal} ข้อ</span></h2>
+      <p>${S.settings.goal ? 'เป้าที่ตั้งเอง' : 'เป้าอัตโนมัติจากวันสอบ'} · เปลี่ยนได้ในตั้งค่า</p>
     </div>
-    <button class="hm-start" id="hmStart"><i data-lucide="play"></i>เริ่มทำตามเป้า</button>
+    <button class="hm-start" id="hmStart"><i data-lucide="play"></i>${ses ? `ทำต่อ: ${esc(ses.label)} (${sesDone}/${ses.ids.length})` : 'เริ่มทำวันนี้'}</button>
   </section>
 
-  <div class="hm-quick">
-    <button data-go="exam"><div class="hm-ic" style="background:var(--violet-2);color:var(--violet)"><i data-lucide="timer"></i></div>จำลองสอบ</button>
-    <button data-go="cards"><div class="hm-ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="layers"></i></div>บัตรจำ${due?`<em>${due}</em>`:''}</button>
-    <button id="hmCal"><div class="hm-ic" style="background:var(--green-2);color:var(--green)"><i data-lucide="calendar-days"></i></div>ปฏิทิน</button>
-    <button id="btnCloudHub"><div class="hm-ic" style="background:var(--cyan-2);color:var(--cyan)"><i data-lucide="cloud-download"></i></div>ออนไลน์</button>
-  </div>
-
-  ${resumeHtml}
-
-  <div class="hm-stats">
-    <div><b>🔥 ${streak()}</b><span>วันต่อเนื่อง</span></div>
-    <div><b>${avg()}%</b><span>ทำถูกแล้ว</span></div>
-    <div><b>${hmin(S.stats.minutes)}</b><span>เวลาสะสม</span></div>
-  </div>
-
   <section class="hm-card">
-    <div class="hm-head"><b>สัปดาห์นี้</b><button class="hm-link" id="hmCal2">ดูปฏิทิน</button></div>
-    <div class="hm-week">${weekData.map((x,i)=>`<button data-dayclick="${i}" class="${x.n>0?'done':''} ${x.today?'today':''}"><span>${x.lb}</span><b>${x.n>0?x.n:'·'}</b></button>`).join('')}</div>
+    <div class="hm-head"><b>สิ่งที่ต้องทำวันนี้</b><span class="hm-count">${todo.filter(x=>x.done).length}/3</span></div>
+    ${todo.map(x=>`<button class="hm-todo ${x.done?'done':''}" data-todo="${x.id}">
+      <div class="hm-ic sm" style="background:${x.bg};color:${x.fg}"><i data-lucide="${x.done?'check':x.ic}"></i></div>
+      <div class="hm-grow"><b>${x.title}</b><small>${x.sub}</small></div><i data-lucide="chevron-right" class="hm-chev"></i></button>`).join('')}
   </section>
 
   <section class="hm-card">
     <div class="hm-head"><b>โอกาสสอบติด</b><span class="hm-prob" style="color:${rStats.badgeColor}">${rStats.passProb}%</span></div>
     <div class="hm-bar lg"><i style="width:${rStats.passProb}%;background:${rStats.badgeColor}"></i></div>
-    <small class="hm-sub">${esc(rStats.statusText)} · เกณฑ์ผ่าน 60% ต่อวิชา</small>
-    ${weak.worstCat ? `<button class="hm-fix" id="btnFixWeak"><i data-lucide="zap"></i><span>ควรเน้น <b>${esc(weak.worstCat)}</b> · ผิด ${weak.maxBad} ครั้ง</span><i data-lucide="chevron-right"></i></button>` : ''}
-    ${ms.length ? `<div class="hm-ms-list">${ms.slice(0,3).map(msRow).join('')}
-      <div id="hmMsMore" hidden>${ms.slice(3).map(msRow).join('')}</div></div>
-      ${ms.length>3?`<button class="hm-link center" id="hmMsToggle">ดูทุกวิชา (${ms.length})</button>`:''}` : '<small class="hm-sub">เพิ่มข้อสอบในหน้าข้อสอบเพื่อเริ่มวิเคราะห์</small>'}
+    <small class="hm-sub">${esc(rStats.statusText)} · คิดจากความแม่นยำและจำนวนข้อที่ทำแล้วแต่ละวิชา</small>
+    ${weak.length ? `<div class="hm-label">${weak[0].pct >= 60 ? 'ทุกวิชาผ่านเกณฑ์ · เรียงจากคะแนนต่ำสุด' : 'วิชาที่ควรเน้น · แตะเพื่อซ่อม'}</div><div class="hm-ms-list">${weak.slice(0,3).map(msRow).join('')}
+      <div id="hmMsMore" hidden>${weak.slice(3).map(msRow).join('')}</div></div>
+      ${weak.length>3?`<button class="hm-link center" id="hmMsToggle">ดูทุกวิชา (${weak.length})</button>`:''}`
+      : '<small class="hm-sub">เริ่มทำข้อสอบเพื่อให้ระบบวิเคราะห์วิชาที่ควรเน้น</small>'}
+  </section>
+
+  <section class="hm-card">
+    <div class="hm-head"><b>สัปดาห์นี้ <span class="hm-streak">🔥 ${streak()} วันต่อเนื่อง</span></b><button class="hm-link" id="hmCal">ปฏิทิน</button></div>
+    <div class="hm-week">${weekData.map((x,i)=>`<button data-dayclick="${i}" class="${x.n>0?'done':''} ${x.today?'today':''}"><span>${x.lb}</span><b>${x.n>0?x.n:'·'}</b></button>`).join('')}</div>
   </section>
   </div>`;
 
   setTimeout(()=>{const g=$('#gr'); if(g) g.style.strokeDashoffset=C-C*pct/100;},60);
-  $('#hmStart').onclick = () => startExam({cats:[],count:goal,minutes:0,mode:'practice',label:'ฝึกตามเป้าวันนี้'});
-  $('#hmCal').onclick = $('#hmCal2').onclick = () => window.openNeoCal && openNeoCal();
-  $('#btnCloudHub').onclick = () => openCloudHubModal();
-  if($('#btnFixWeak')) $('#btnFixWeak').onclick = () => startExam({cats:[weak.worstCat],count:15,minutes:15,mode:'practice',label:'ซ่อม '+weak.worstCat});
-  if($('#btnResume')) $('#btnResume').onclick = () => S.session ? resumeExam() : startExam(S.last);
+  $('#hmStart').onclick = () => ses ? resumeExam() : startTodayNew();
+  $$('[data-todo]').forEach(b => b.onclick = () => {
+    const k = b.dataset.todo;
+    if(k === 'new') return startTodayNew();
+    if(k === 'cards'){ CFF.mode = 'due'; CFF.cat = 'ทั้งหมด'; CFF.i = 0; return go('cards'); }
+    const ids = wrongQueue().map(q => q.id);
+    if(!ids.length) return toast('ไม่มีข้อที่ต้องทวน เก่งมาก!','ok');
+    startExam({ids, count:ids.length, minutes:0, mode:'practice', label:'ทวนข้อผิด'});
+  });
+  $$('[data-fixcat]').forEach(b => b.onclick = () => practiceSubject(b.dataset.fixcat));
+  $('#hmCal').onclick = () => window.openNeoCal && openNeoCal();
   if($('#hmMsToggle')) $('#hmMsToggle').onclick = e => {
     const m = $('#hmMsMore'); m.hidden = !m.hidden;
-    e.currentTarget.textContent = m.hidden ? `ดูทุกวิชา (${ms.length})` : 'ย่อ';
+    e.currentTarget.textContent = m.hidden ? `ดูทุกวิชา (${weak.length})` : 'ย่อ';
   };
   $$('[data-dayclick]').forEach(b => b.onclick = () => openDayBreakdownModal(weekData[+b.dataset.dayclick]));
   icons();
@@ -3578,6 +3598,7 @@ function renderQuiz(){
   <div class="sec"><i data-lucide="list-checks"></i>คลังข้อ<span class="more">${L.length.toLocaleString()} ข้อ</span></div>
   <div class="row" style="gap:8px;margin-bottom:12px;flex-wrap:wrap">
     <button class="btn ghost sm" id="btnBulk"><i data-lucide="clipboard-list"></i>นำเข้าชุด</button>
+    <button class="btn ghost sm" onclick="openCloudHubModal()"><i data-lucide="cloud"></i>คลังออนไลน์</button>
     <button class="btn ghost sm" id="btnRandom" ${L.length?'':'disabled'}><i data-lucide="shuffle"></i>สุ่มทำ</button>
     ${(QF.cat && QF.cat !== 'ทั้งหมด') ? `
       <button class="btn ghost sm" id="btnFilterBatch" style="border-radius:12px;padding:6px 12px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
@@ -3778,13 +3799,7 @@ function renderQuiz(){
           
           let unseenQs = batchQs.filter(q => (S.qstat[q.id]?.seen || 0) === 0);
           
-          if (!unseenQs.length) {
-            batchQs.forEach(q => {
-              if (S.qstat[q.id]) S.qstat[q.id].seen = 0;
-            });
-            save();
-            unseenQs = batchQs;
-          }
+          if (!unseenQs.length) unseenQs = batchQs; // ทำครบแล้ว = ทำซ้ำทั้งชุด (ไม่ลบสถิติ)
 
           closeModal();
           startExam({
@@ -4139,7 +4154,7 @@ function qForm(q, onSavedCallback = null){
         cExps: cExps,
         a: ans, 
         cat: selectedCat, 
-        d: 'ง่าย',
+        d: q ? (q.d || 'ง่าย') : 'ง่าย',
         e: exp, 
         qImgs: curQImgs, 
         eImgs: curEImgs,
@@ -6032,7 +6047,7 @@ function renderSetting(){
     <div class="srow"><div class="ic" style="background:var(--green-2);color:var(--green)"><i data-lucide="target"></i></div>
       <div style="flex:1"><b>เป้าต่อวัน</b><small>จำนวนข้อ</small></div>
       <button class="c-select" id="btnGoal">
-        <span>${st.goal} ข้อ</span>
+        <span>${st.goal ? st.goal + ' ข้อ' : 'อัตโนมัติ (' + dailyGoal() + ' ข้อ)'}</span>
         <i data-lucide="chevron-down"></i>
       </button>
     </div>
@@ -6157,7 +6172,7 @@ function renderSetting(){
   $('#btnGoal').onclick=()=>{
     openPicker({
       title:'เป้าต่อวัน',
-      options: GOAL_OPTIONS.map(n=>({val:n, label:`${n} ข้อ / วัน`})),
+      options: [{val:0, label:'อัตโนมัติ (คำนวณจากวันสอบ)'}, ...GOAL_OPTIONS.map(n=>({val:n, label:`${n} ข้อ / วัน`}))],
       value:st.goal,
       onSelect:(v)=>{
         S.settings.goal = +v;
@@ -6251,7 +6266,7 @@ function renderSetting(){
       const d=JSON.parse(rd.result);
       if(!d||!Array.isArray(d.questions))throw 0;
       S=Object.assign(fresh(),d);
-      S.questions.forEach(q => { q.d = 'ง่าย'; });
+      S.questions.forEach(q => { if(!DIFFS.includes(q.d)) q.d = 'ง่าย'; });
       day(); save(); theme(); go('home'); toast('นำเข้าแล้ว','ok');
     }catch(x){toast('ไฟล์ไม่ถูกต้อง','err');}};
     rd.readAsText(f); e.target.value='';
@@ -6369,14 +6384,7 @@ document.addEventListener('visibilitychange', ()=>{ if(document.hidden) onAppHid
     const stored = await dbGet('state');
     if(stored && Array.isArray(stored.questions)){
       S = stored;
-      let updated = false;
-      S.questions.forEach(q => {
-        if(!q.d || q.d !== 'ง่าย'){
-          q.d = 'ง่าย';
-          updated = true;
-        }
-      });
-      if(updated) save();
+      S.questions.forEach(q => { if(!DIFFS.includes(q.d)) q.d = 'ง่าย'; });
     }else{
       S = fresh();
       await dbSet('state', S);
@@ -6656,7 +6664,7 @@ window.triggerUploadPicker = function() {
             '<i data-lucide="cloud-upload" style="width:28px;height:28px"></i>' +
           '</div>' +
 
-          '<div style="font-size:18px;font-weight:800;color:var(--text,#0f172a);margin-bottom:4px">กำลังสำรองข้อมูล</div>' +
+          '<div style="font-size:18px;font-weight:800;color:var(--text,#0f172a);margin-bottom:4px">กำลังอัปโหลดข้อสอบ</div>' +
           '<div style="font-size:13px;color:var(--muted,#64748b);margin-bottom:20px">' + subName + '</div>' +
 
           '<div style="font-size:48px;font-weight:900;letter-spacing:-1px;color:#2563eb;margin-bottom:12px;font-variant-numeric:tabular-nums;line-height:1" id="upNum">0%</div>' +
@@ -6745,9 +6753,8 @@ window.triggerUploadPicker = function() {
           upBoxIcon.innerHTML = '<i data-lucide="check-circle-2" style="width:28px;height:28px"></i>';
           if (window.lucide) lucide.createIcons();
         }
-        S.settings.lastBackup = Date.now(); save();
-        if (upTextInfo) upTextInfo.textContent = 'สำรองข้อมูลเรียบร้อยแล้ว!';
-        if (upSubInfo) upSubInfo.textContent = 'ข้อมูลของคุณถูกบันทึกขึ้น Google Drive ครบ 100%';
+        if (upTextInfo) upTextInfo.textContent = 'อัปโหลดข้อสอบขึ้นคลังออนไลน์แล้ว!';
+        if (upSubInfo) upSubInfo.textContent = 'อัปโหลดเฉพาะข้อสอบ ไม่รวมสถิติ (สำรองข้อมูลทั้งหมดใช้ปุ่ม "ส่งออก" ในตั้งค่า)';
 
         if (btnFinishUpload) {
           btnFinishUpload.style.display = 'block';
