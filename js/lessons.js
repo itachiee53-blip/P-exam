@@ -3,7 +3,7 @@
 // คอร์สเรียนภาษาอังกฤษ (ไฟล์เนื้อหา: เพิ่มบทเรียนได้ที่นี่ที่เดียว)
 // ---------------------------------------------------------------------
 // U(คอร์ส, ระดับ, 'ชื่อหน่วย', `บทเรียน`)
-//   ระดับ: 1 เริ่มต้น · 2 พื้นฐาน · 3 ปานกลาง · 4 ดี
+//   ระดับ (= เลเวล Lv.): 0 เริ่มจากศูนย์ · 1 เริ่มต้น · 2 พื้นฐาน · 3 ปานกลาง · 4 ดี
 //   บทเรียน: บรรทัดละคำ  "คำ/วลี | คำแปล | ประโยคตัวอย่าง | คำแปลประโยค"
 //            คั่นแต่ละบทด้วยบรรทัด ---   (บทละ 5–6 คำกำลังดี)
 // บทสนทนา: D(ระดับ, 'หัวข้อ', `A: ... / B: ___ | คำตอบ | ตัวหลอก1; ตัวหลอก2; ตัวหลอก3 | คำแปลบทสนทนา`)  (ตัวหลอกคั่นด้วย ;)
@@ -12,6 +12,7 @@
 // แอปสร้างแบบฝึกให้เองทั้งหมด: เลือกคำแปล แปลไทย→อังกฤษ ฟัง เติมคำ เรียงประโยค จับคู่
 // =====================================================================
 const COURSES = {
+  basic:  { name: 'เริ่มจากศูนย์', ic: 'sprout', color: '#22c55e', units: [] },
   police: { name: 'สอบตำรวจ', ic: 'shield', color: '#4f8df7', units: [] },
   daily:  { name: 'ชีวิตประจำวัน', ic: 'home', color: '#1fbf8f', units: [] },
   talk:   { name: 'สนทนาและการทำงาน', ic: 'messages-square', color: '#a07cf8', units: [] },
@@ -19,7 +20,7 @@ const COURSES = {
   dialog: { name: 'บทสนทนาออกสอบ', ic: 'message-circle', color: '#38bdf8', units: [], gram: true, kind: 'dialog' },
   read:   { name: 'อ่านจับใจความ', ic: 'book-open-text', color: '#ec6ba8', units: [], gram: true, kind: 'read' }
 };
-const ENG_LEVELS = ['', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี'];
+const ENG_LEVELS = ['เริ่มจากศูนย์', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี'];
 function U(course, lv, t, text){
   const ls = text.trim().split(/\n\s*---\s*\n/).map(block => block.trim().split('\n').map(line => {
     const [en, th, ex, tr] = line.split('|').map(s => (s || '').trim());
@@ -1284,6 +1285,166 @@ What is the main idea? | Police work needs teamwork. | Police should work alone.
 What may happen if information is not shared? | Important clues may be missed. | Cases are solved faster.; Leaders give clearer orders.; The public helps more.
 The word "essential" means | very important | not necessary; very cheap; dangerous
 According to studies, strong teams | solve more cases and make fewer mistakes | work fewer hours; need no leaders; make more mistakes
+`);
+
+// ===== Lv.0 เริ่มจากศูนย์ =====
+U('basic', 0, 'ตัวเลข 1–12', `
+one | หนึ่ง | I have one brother. | ฉันมีพี่น้องผู้ชายหนึ่งคน
+two | สอง | I have two cats. | ฉันมีแมวสองตัว
+three | สาม | She has three bags. | เธอมีกระเป๋าสามใบ
+four | สี่ | A car has four wheels. | รถมีสี่ล้อ
+five | ห้า | I work five days a week. | ฉันทำงานสัปดาห์ละห้าวัน
+six | หก | I wake up at six. | ฉันตื่นตอนหกโมง
+---
+seven | เจ็ด | A week has seven days. | หนึ่งสัปดาห์มีเจ็ดวัน
+eight | แปด | The shop opens at eight. | ร้านเปิดแปดโมง
+nine | เก้า | The meeting is at nine. | ประชุมเก้าโมง
+ten | สิบ | I have ten fingers. | ฉันมีนิ้วสิบนิ้ว
+eleven | สิบเอ็ด | The bus number is eleven. | รถเมล์สายสิบเอ็ด
+twelve | สิบสอง | A year has twelve months. | หนึ่งปีมีสิบสองเดือน
+`);
+U('basic', 0, 'ตัวเลขหลักสิบ', `
+thirteen | สิบสาม | He is thirteen years old. | เขาอายุสิบสามปี
+fifteen | สิบห้า | Wait fifteen minutes. | รอสิบห้านาที
+twenty | ยี่สิบ | I am twenty years old. | ฉันอายุยี่สิบปี
+thirty | สามสิบ | It costs thirty baht. | ราคาสามสิบบาท
+fifty | ห้าสิบ | The speed limit is fifty. | จำกัดความเร็วห้าสิบ
+zero | ศูนย์ | My number starts with zero. | เบอร์ของฉันขึ้นต้นด้วยศูนย์
+`);
+U('basic', 0, 'วันและเดือน', `
+Monday | วันจันทร์ | I work on Monday. | ฉันทำงานวันจันทร์
+Tuesday | วันอังคาร | See you on Tuesday. | เจอกันวันอังคาร
+Wednesday | วันพุธ | The test is on Wednesday. | สอบวันพุธ
+Thursday | วันพฤหัสบดี | Thursday is a busy day. | วันพฤหัสบดีเป็นวันที่ยุ่ง
+Friday | วันศุกร์ | I love Friday. | ฉันชอบวันศุกร์
+Saturday | วันเสาร์ | We go to the market on Saturday. | เราไปตลาดวันเสาร์
+---
+Sunday | วันอาทิตย์ | I rest on Sunday. | ฉันพักผ่อนวันอาทิตย์
+weekend | วันหยุดสุดสัปดาห์ | Have a nice weekend. | ขอให้มีความสุขในวันหยุด
+month | เดือน | I go home every month. | ฉันกลับบ้านทุกเดือน
+year | ปี | This year I will pass the exam. | ปีนี้ฉันจะสอบผ่าน
+birthday | วันเกิด | Happy birthday! | สุขสันต์วันเกิด
+date | วันที่ | What is the date today? | วันนี้วันที่เท่าไหร่
+---
+January | มกราคม | The new year starts in January. | ปีใหม่เริ่มเดือนมกราคม
+April | เมษายน | Songkran is in April. | สงกรานต์อยู่ในเดือนเมษายน
+June | มิถุนายน | It rains a lot in June. | เดือนมิถุนายนฝนตกเยอะ
+August | สิงหาคม | Mother's Day is in August. | วันแม่อยู่ในเดือนสิงหาคม
+October | ตุลาคม | The exam is in October. | สอบเดือนตุลาคม
+December | ธันวาคม | December is cool. | เดือนธันวาคมอากาศเย็น
+`);
+U('basic', 0, 'คำง่ายๆ ที่ใช้ทุกวัน', `
+hi | หวัดดี | Hi, how are you? | หวัดดี เป็นยังไงบ้าง
+bye | บาย/ลาก่อน | Bye, see you tomorrow. | บาย เจอกันพรุ่งนี้
+yes | ใช่/ครับ/ค่ะ | Yes, I am. | ใช่ ฉันเป็น
+no | ไม่ | No, thank you. | ไม่ ขอบคุณ
+OK | โอเค/ตกลง | OK, let's go. | โอเค ไปกันเถอะ
+see you | แล้วเจอกัน | See you later. | แล้วเจอกันนะ
+---
+man | ผู้ชาย | The man is tall. | ผู้ชายคนนั้นตัวสูง
+woman | ผู้หญิง | The woman is a nurse. | ผู้หญิงคนนั้นเป็นพยาบาล
+boy | เด็กผู้ชาย | The boy is playing. | เด็กผู้ชายกำลังเล่น
+girl | เด็กผู้หญิง | The girl is reading. | เด็กผู้หญิงกำลังอ่านหนังสือ
+baby | ทารก | The baby is sleeping. | ทารกกำลังหลับ
+people | ผู้คน | Many people are here. | มีผู้คนมากมายอยู่ที่นี่
+`);
+U('basic', 0, 'สิ่งของและกริยาง่ายๆ', `
+pen | ปากกา | Can I use your pen? | ขอใช้ปากกาหน่อย
+book | หนังสือ | I read a book. | ฉันอ่านหนังสือ
+chair | เก้าอี้ | Sit on the chair. | นั่งบนเก้าอี้
+cup | ถ้วย/แก้ว | A cup of coffee, please. | ขอกาแฟหนึ่งแก้ว
+car | รถยนต์ | My car is red. | รถของฉันสีแดง
+clock | นาฬิกา (แขวน/ตั้ง) | Look at the clock. | ดูนาฬิกาสิ
+---
+eat | กิน | I eat rice every day. | ฉันกินข้าวทุกวัน
+drink | ดื่ม | Drink some water. | ดื่มน้ำหน่อย
+sleep | นอน | I sleep at ten. | ฉันนอนสี่ทุ่ม
+sit | นั่ง | Please sit down. | เชิญนั่ง
+stand | ยืน | Stand up, please. | กรุณายืนขึ้น
+walk | เดิน | I walk to school. | ฉันเดินไปโรงเรียน
+---
+read | อ่าน | I read every night. | ฉันอ่านหนังสือทุกคืน
+write | เขียน | Write your name here. | เขียนชื่อตรงนี้
+open | เปิด | Open the door, please. | กรุณาเปิดประตู
+close | ปิด | Close the window. | ปิดหน้าต่าง
+come | มา | Come here, please. | มานี่หน่อย
+go | ไป | Let's go home. | กลับบ้านกันเถอะ
+`);
+U('basic', 0, 'คำบอกลักษณะง่ายๆ', `
+big | ใหญ่ | It is a big house. | เป็นบ้านหลังใหญ่
+small | เล็ก | I have a small bag. | ฉันมีกระเป๋าใบเล็ก
+good | ดี | This is good. | อันนี้ดี
+bad | ไม่ดี/แย่ | That is bad. | นั่นแย่
+new | ใหม่ | I have a new phone. | ฉันมีโทรศัพท์ใหม่
+fast | เร็ว | The car is fast. | รถคันนี้เร็ว
+---
+slow | ช้า | The bus is slow. | รถเมล์ช้า
+long | ยาว | The road is long. | ถนนยาว
+easy | ง่าย | English is easy. | ภาษาอังกฤษง่าย
+hard | ยาก/แข็ง | This test is hard. | ข้อสอบนี้ยาก
+beautiful | สวย | The temple is beautiful. | วัดสวยมาก
+happy | มีความสุข | I am happy. | ฉันมีความสุข
+`);
+G(0, 'This / That / These / Those', 'this = นี่ (ใกล้, อันเดียว) · that = นั่น (ไกล, อันเดียว) · these = เหล่านี้ · those = เหล่านั้น', `
+___ is my pen. (ใกล้ตัว) | This | These, Those, They | ใกล้ + อันเดียวใช้ This | นี่คือปากกาของฉัน
+___ are my friends. (ใกล้ตัว) | These | This, That, It | ใกล้ + หลายคนใช้ These | เหล่านี้คือเพื่อนของฉัน
+Look at ___ car over there. | that | this, these, those | ไกล + อันเดียวใช้ that | ดูรถคันนั้นทางโน้นสิ
+___ books on the shelf are old. | Those | That, This, It | ไกล + หลายอันใช้ Those | หนังสือพวกนั้นบนชั้นเก่าแล้ว
+Is ___ your bag? (ถืออยู่) | this | these, those, they | ใกล้ + อันเดียว | นี่กระเป๋าของคุณใช่ไหม
+Are ___ your shoes? (อยู่ไกล) | those | that, this, it | ไกล + หลายอัน | นั่นรองเท้าของคุณใช่ไหม
+`);
+G(0, 'Have / Has', 'I / You / We / They + have · He / She / It + has', `
+I ___ a car. | have | has, am, is | I ใช้ have | ฉันมีรถ
+She ___ a dog. | has | have, is, are | She ใช้ has | เธอมีสุนัข
+They ___ two children. | have | has, are, is | They ใช้ have | พวกเขามีลูกสองคน
+He ___ a headache. | has | have, is, are | He ใช้ has | เขาปวดหัว
+We ___ a test today. | have | has, are, is | We ใช้ have | วันนี้เรามีสอบ
+My mother ___ long hair. | has | have, is, are | my mother = she ใช้ has | แม่ของฉันผมยาว
+`);
+D(0, 'คุยง่ายๆ', `
+A: Hello! / B: ___ | Hi! | Bye!; Yes!; Ten! | A: สวัสดี! / B: หวัดดี!
+A: What's your name? / B: ___ | My name is Nut. | I'm fine.; I'm twenty.; Yes, it is. | A: คุณชื่ออะไร / B: ฉันชื่อนัท
+A: How old are you? / B: ___ | I'm twenty-five. | I'm fine, thanks.; My name is Ann.; I'm from Thailand. | A: คุณอายุเท่าไหร่ / B: ฉันอายุยี่สิบห้า
+A: Where are you from? / B: ___ | I'm from Thailand. | I'm twenty.; I'm a student.; I'm happy. | A: คุณมาจากไหน / B: ฉันมาจากประเทศไทย
+A: Thank you! / B: ___ | You're welcome. | Yes, please.; Hello.; I'm OK. | A: ขอบคุณ! / B: ด้วยความยินดี
+`);
+R(0, 'อ่านเรื่องแรก', 'This Is Ben', `This is Ben. He is twenty years old. He is from Chiang Mai. He has a small dog. Its name is Max. Ben likes rice and chicken. He gets up at six every day.`,
+`นี่คือเบน เขาอายุยี่สิบปี เขามาจากเชียงใหม่ เขามีสุนัขตัวเล็กชื่อแม็กซ์ เบนชอบข้าวกับไก่ เขาตื่นนอนตอนหกโมงทุกวัน`, `
+How old is Ben? | Twenty | Twelve; Two; Thirty
+Where is Ben from? | Chiang Mai | Bangkok; Phuket; England
+What is the dog's name? | Max | Ben; Mai; Lucky
+What time does Ben get up? | At six | At seven; At five; At ten
+`);
+// ===== แสลงและภาษาพูด =====
+U('talk', 3, 'แสลงและภาษาพูด', `
+gonna | จะ (= going to) | I'm gonna call you later. | เดี๋ยวฉันจะโทรหานะ
+wanna | อยาก (= want to) | Do you wanna eat? | อยากกินอะไรไหม
+gotta | ต้อง (= have got to) | I gotta go now. | ฉันต้องไปแล้ว
+what's up | ว่าไง/เป็นไงบ้าง | Hey, what's up? | เฮ้ ว่าไง
+no worries | ไม่เป็นไร/ไม่ต้องห่วง | No worries, I can help. | ไม่ต้องห่วง ฉันช่วยได้
+chill | ชิลๆ/ผ่อนคลาย | Let's just chill at home. | ชิลๆ อยู่บ้านกันเถอะ
+---
+my bad | ผิดเอง/ขอโทษ | Sorry, my bad. | ขอโทษ ผิดเองแหละ
+hang out | ไปเที่ยวเล่น/สังสรรค์ | Let's hang out this weekend. | สุดสัปดาห์นี้ไปเที่ยวกัน
+awesome | สุดยอด | That's awesome! | สุดยอดไปเลย!
+kinda | ค่อนข้าง/นิดๆ | I'm kinda tired. | ฉันเหนื่อยนิดๆ
+I'm down | เอาด้วย | Pizza tonight? I'm down. | คืนนี้กินพิซซ่าไหม เอาด้วย
+cool | เจ๋ง/โอเค | Cool, see you there. | โอเค แล้วเจอกันที่นั่น
+`);
+U('talk', 4, 'แสลงและสำนวนขั้นสูง', `
+piece of cake | ง่ายมาก (หมูๆ) | The test was a piece of cake. | ข้อสอบหมูมาก
+no way | ไม่จริงน่า/ไม่มีทาง | No way! You passed? | ไม่จริงน่า! สอบผ่านเหรอ
+broke | ถังแตก | I'm broke until payday. | ฉันถังแตกจนกว่าเงินเดือนจะออก
+freak out | ตกใจ/สติแตก | Don't freak out. It's OK. | อย่าตกใจ ไม่เป็นไร
+hit the road | ออกเดินทาง | Let's hit the road. | ออกเดินทางกันเถอะ
+under the weather | ไม่ค่อยสบาย | I'm feeling under the weather. | วันนี้ไม่ค่อยสบาย
+---
+break a leg | ขอให้โชคดี (ก่อนแสดง/สอบ) | Break a leg in your interview! | ขอให้สัมภาษณ์โชคดีนะ
+call it a day | พอแค่นี้ก่อน | Let's call it a day. | วันนี้พอแค่นี้ก่อน
+on the same page | เข้าใจตรงกัน | Are we on the same page? | เราเข้าใจตรงกันไหม
+get the hang of it | เริ่มจับทางได้ | You'll get the hang of it. | เดี๋ยวก็จับทางได้
+hang in there | อดทนไว้/สู้ๆ | Hang in there. You can do it. | สู้ๆ นะ คุณทำได้
+it's up to you | แล้วแต่คุณ | Coffee or tea? It's up to you. | กาแฟหรือชา แล้วแต่คุณ
 `);
 
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)

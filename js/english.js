@@ -1,28 +1,20 @@
 "use strict";
 // ===== เรียนภาษาอังกฤษ: วัดระดับ → แผนที่บทเรียน → บทเรียน (แบบฝึกสร้างอัตโนมัติจาก js/lessons.js) =====
-let ENG_TAB = 'learn', LS = null, PT = null, ONB = null;
+let ENG_TAB = 'learn', ENG_LV = null, LS = null, ENG_TIMER = null;
 const ENG_PRAISE = ['ถูกต้อง!', 'เยี่ยม!', 'เก่งมาก!', 'ใช่เลย!', 'สุดยอด!'];
 function engState(){
-  const E = S.eng || (S.eng = { course: 'police', lv: 0, done: {}, xp: 0, days: {}, goal: 30, known: {}, v: 2 });
+  const E = S.eng || (S.eng = { done: {}, xp: 0, days: {}, goal: 30, known: {}, v: 2 });
   // ย้ายคีย์แบบเก่า (คอร์ส:ลำดับหน่วย:บท) เป็น (คอร์ส:ชื่อหน่วย:บท)
   if(!E.v){ const d = {}; Object.entries(E.done || {}).forEach(([k, v]) => { const [c, ui, li] = k.split(':'); const t = COURSES[c] && COURSES[c].def[+ui]; if(t) d[`${c}:${t}:${li}`] = v; }); E.done = d; E.v = 2; }
+  E.lvPass = E.lvPass || {};
   return E;
 }
 const engFlat = c => COURSES[c].units.flatMap((u, ui) => u.ls.map((ws, li) => ({ c, ui, li, u, ws, key: `${c}:${u.t}:${li}` })));
 const engPool = c => COURSES[c].units.flatMap(u => u.ls.flat());
-const engLvWords = () => Object.values(COURSES).filter(C => !C.gram).flatMap(C => C.units.flatMap(u => u.ls.flat().map(w => ({ ...w, lv: u.lv }))));
 const shuf = a => { a = a.slice(); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 // ตัวเลือกหลอก: ไม่เอาคำเดียวกันที่มีอีกความหมาย (เช่น fine = ค่าปรับ / สบายดี)
 const engOpts = (w, pool, f) => shuf([w[f], ...shuf([...new Set(pool.filter(x => x.en.toLowerCase() !== w.en.toLowerCase() && x.th !== w.th).map(x => x[f]))]).slice(0, 3)]);
 const engSay = (t, slow) => speakWord(String(t).split('↔')[0], slow);
-// บทที่เปิดได้: บทแรก / บทก่อนหน้าผ่านแล้ว / ต่ำกว่าระดับที่วัดได้ / บทแรกของระดับที่วัดได้
-function engOpen(F, i){
-  const E = engState();
-  // + บทที่อยู่ก่อนบทที่เคยผ่านแล้ว (เช่น หน่วยใหม่ที่เพิ่มแทรกเข้ามา)
-  return i === 0 || !!E.done[F[i - 1].key] || F[i].u.lv < E.lv || i === F.findIndex(x => x.u.lv >= E.lv) || F.slice(i).some(x => E.done[x.key]);
-}
-// ปุ่มเพิ่มคำ: ขึ้นเฉพาะหน้าแท็บทบทวน
-const engBusy = () => !!(LS || PT || VC.run || !engState().lv || ENG_TAB !== 'review');
 const engToday = () => engState().days[dkey()] || 0;
 function engStreak(){
   const d = engState().days, t = new Date(); let n = 0;
@@ -30,136 +22,157 @@ function engStreak(){
   while(d[dkey(t)]){ n++; t.setDate(t.getDate() - 1); }
   return n;
 }
-const engTabs = () => `<div class="eng-tabs" data-on="${ENG_TAB}">
-  <button class="${ENG_TAB === 'learn' ? 'on' : ''}" data-etab="learn"><i data-lucide="graduation-cap"></i>บทเรียน</button>
-  <button class="${ENG_TAB === 'review' ? 'on' : ''}" data-etab="review"><i data-lucide="layers"></i>ทบทวน</button>
+const engTabs = () => `<div class="eng-tabs two" data-on="${ENG_TAB}">
+  <button class="${ENG_TAB === 'learn' ? 'on' : ''}" data-etab="learn"><i data-lucide="graduation-cap"></i>เรียน</button>
   <button class="${ENG_TAB === 'stats' ? 'on' : ''}" data-etab="stats"><i data-lucide="chart-no-axes-column"></i>สถิติ</button></div>`;
 const engBindTabs = () => $$('[data-etab]').forEach(b => b.onclick = () => { ENG_TAB = b.dataset.etab; renderCards(); });
 
-// ---------- แผนที่บทเรียน ----------
-function renderEngPath(){
-  const E = engState(), C = COURSES[E.course], F = engFlat(E.course);
-  // บทถัดไป: เริ่มที่ระดับที่วัดได้ก่อน ถ้าผ่านหมดแล้วค่อยย้อนไปบทที่ยังไม่ทำ
-  const next = f => F.findIndex((x, i) => f(x) && engOpen(F, i) && !E.done[x.key]);
-  let cur = next(x => x.u.lv >= E.lv); if(cur < 0) cur = next(() => true);
-  const today = engToday(), pct = Math.min(100, Math.round(today / E.goal * 100)), RC = 2 * Math.PI * 21;
-  const nx = F[cur], miss = C.gram ? 0 : engMiss().length, due = vcDueCount();
-  const doneN = F.filter(x => E.done[x.key]).length;
-  let i = 0, html = `<div class="eng-lay"><div class="eng-side">` + engTabs() + `
-  <section class="eng-hero" style="--c:${C.color}">
+// ---------- เลเวล: รวมทุกหมวดเป็นเส้นทางเดียว เรียงแบบติวเตอร์ ----------
+// แต่ละรอบหยิบหน่วยละหมวด: ศัพท์พื้นฐาน → ศัพท์ชีวิตประจำวัน → ไวยากรณ์ → ศัพท์งานตำรวจ → สนทนา → บทสนทนา → อ่าน
+const ENG_ORDER = ['basic', 'daily', 'grammar', 'police', 'talk', 'dialog', 'read'];
+const ENG_CAT = { basic: 'คำศัพท์', daily: 'คำศัพท์', police: 'ศัพท์งานตำรวจ', talk: 'ภาษาพูด', grammar: 'ไวยากรณ์', dialog: 'บทสนทนา', read: 'อ่าน' };
+const ENG_LV_N = ENG_LEVELS.length;
+const ENG_LV_C = ['#22c55e', '#4f8df7', '#a07cf8', '#ff8a4c', '#ec6ba8', '#38bdf8', '#f5a524'];
+const engLvCache = {};
+function engLevel(L){
+  if(engLvCache[L]) return engLvCache[L];
+  const lists = ENG_ORDER.filter(c => COURSES[c]).map(c => COURSES[c].units.map((u, ui) => ({ c, ui, u })).filter(x => x.u.lv === L));
+  const units = []; for(let r = 0; lists.some(l => l[r]); r++) lists.forEach(l => l[r] && units.push(l[r]));
+  const F = units.flatMap(x => { const CF = engFlat(x.c); return x.u.ls.map((ws, li) => { const key = `${x.c}:${x.u.t}:${li}`; return { ...x, li, ws, key, ci: CF.findIndex(y => y.key === key) }; }); });
+  return (engLvCache[L] = { units, F });
+}
+const engLvOpen = L => L === 0 || !!engState().lvPass[L - 1];
+// บทในเลเวล: บทแรก / บทก่อนหน้าผ่านแล้ว / อยู่ก่อนบทที่เคยผ่าน
+function engOpen(F, i){ const E = engState(); return i === 0 || !!E.done[F[i - 1].key] || F.slice(i).some(x => E.done[x.key]); }
+// สิ่งที่ควรทำต่อ: บทถัดไปในเลเวลล่าสุดที่เปิด หรือสอบวัดผลถ้าเรียนครบ
+function engNext(){
+  const E = engState();
+  for(let L = 0; L < ENG_LV_N && engLvOpen(L); L++){
+    if(E.lvPass[L]) continue;
+    const { F } = engLevel(L), i = F.findIndex((x, k) => engOpen(F, k) && !E.done[x.key]);
+    return i >= 0 ? { L, i, x: F[i] } : { L, exam: true };
+  }
+  return null;
+}
+// คำที่ถึงรอบทวน (เรียนแล้ว ใกล้ลืม)
+const engDue = () => S.cards.filter(c => c.seen && (c.due || 0) <= Date.now()).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '', tr: '' })).filter(w => w.en && w.th);
+const engReview = () => lessonStart('daily', -1, shuf(engDue()).slice(0, 6));
+function engGo(n){ if(!n) return; n.exam ? levelExam(n.L) : lessonStart(n.x.c, n.x.ci); }
+
+// ---------- หน้าแรก: การ์ดเลเวล ----------
+function renderEngLevels(){
+  const E = engState(), n = engNext(), today = engToday(), pct = Math.min(100, Math.round(today / E.goal * 100)), RC = 2 * Math.PI * 21, due = engDue().length;
+  const lc = n ? ENG_LV_C[n.L] : '#22c55e';
+  let html = engTabs() + `<div class="eng-lay"><div class="eng-side">
+  <section class="eng-hero" style="--c:${lc}">
     <span class="eng-bubbles"><i></i><i></i><i></i></span>
     <div class="eng-hero-top">
-      <button class="eng-course" id="engCourse"><span class="eng-cic"><i data-lucide="${C.ic}"></i></span><b>${C.name}</b><i data-lucide="chevron-down"></i></button>
+      <span class="eng-course"><span class="eng-cic"><i data-lucide="graduation-cap"></i></span><b>${n ? `Lv.${n.L} ${ENG_LEVELS[n.L]}` : 'ผ่านครบทุกเลเวล'}</b></span>
       <button class="eng-streak" id="engGoal" title="ไฟต่อเนื่อง / เป้าวันนี้"><i data-lucide="flame"></i>${engStreak()}
         <span class="eng-ring"><svg class="rg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="21"/><circle class="fg" cx="25" cy="25" r="21" stroke-dasharray="${RC}" stroke-dashoffset="${RC * (1 - pct / 100)}"/></svg><i data-lucide="zap"></i></span></button>
     </div>
-    ${nx ? `<small>บทต่อไป</small><h2>${esc(nx.u.t)}</h2><p>บทที่ ${nx.li + 1} · ระดับ ${nx.u.lv} ${ENG_LEVELS[nx.u.lv]}</p>
-      <button class="eng-cta" id="engGo"><i data-lucide="play"></i>เริ่มเรียน</button>`
-      : `<small>เยี่ยมมาก</small><h2>ผ่านครบทุกบทแล้ว</h2><p>ลองคอร์สอื่นหรือทบทวนต่อ</p>`}
-    <div class="eng-hero-bar"><span>${doneN}/${F.length} บท</span><span>วันนี้ ${today}/${E.goal} XP</span></div>
+    ${n ? (n.exam ? `<small>พร้อมแล้ว</small><h2>สอบวัดผล Lv.${n.L}</h2><p>ผ่าน 80% เพื่อปลดล็อก Lv.${n.L + 1}</p>`
+      : `<small>บทต่อไป · ${ENG_CAT[n.x.c]}</small><h2>${esc(n.x.u.t)}</h2><p>บทที่ ${n.x.li + 1}</p>`)
+      + `<button class="eng-cta" id="engGo"><i data-lucide="play"></i>${n.exam ? 'เริ่มสอบ' : 'เรียนต่อ'}</button>`
+      : `<small>สุดยอด</small><h2>เรียนครบแล้ว</h2><p>ทวนคำศัพท์ต่อได้เลย</p>`}
+    <div class="eng-hero-bar"><span>${Object.keys(E.lvPass).length}/${ENG_LV_N} เลเวล</span><span>วันนี้ ${today}/${E.goal} XP</span></div>
   </section>
-  <div class="eng-quick">
-    <button data-q="miss" style="--q:#ef4444" ${miss ? '' : 'disabled'}><i data-lucide="dumbbell"></i><b>ฝึกคำที่ผิด</b><small>${miss} คำ</small></button>
-    <button data-q="rev" style="--q:#8b5cf6"><i data-lucide="layers"></i><b>ทบทวน</b><small>${due ? `ถึงรอบ ${due}` : 'ทวนคำ'}</small></button>
-    <button data-q="lv" style="--q:#0ea5e9"><i data-lucide="target"></i><b>วัดระดับ</b><small>${ENG_LEVELS[E.lv]}</small></button>
-  </div></div><div class="eng-map">`;
-  // สีหน่วย: สดใส ไม่เข้ม (ตัวแรกเป็นสีคอร์ส)
-  const UC = [C.color, '#1fbf8f', '#a07cf8', '#ff8a4c', '#ec6ba8', '#38bdf8', '#4f8df7', '#f5a524'];
-  C.units.forEach((u, ui) => {
-    const uc = UC[ui % UC.length];
-    const nd = u.ls.filter((_, li) => E.done[`${E.course}:${u.t}:${li}`]).length;
-    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${uc}"><i data-lucide="${C.gram ? 'spell-check' : C.ic}" class="eng-uic"></i>
-      <div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
-      <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="trophy"></i>' : `${nd}/${u.ls.length}`}</span>
-      ${(E.ut || {})[`${E.course}:${u.t}`] ? '<span class="eng-utest done"><i data-lucide="medal"></i>ผ่านแล้ว</span>'
-        : nd === u.ls.length ? `<button class="eng-utest" data-ut="${ui}"><i data-lucide="medal"></i>ทดสอบท้ายหน่วย</button>`
-        : !engOpen(F, i) ? `<button class="eng-utest" data-ut="${ui}" data-skip="1"><i data-lucide="fast-forward"></i>ทดสอบข้ามหน่วย</button>` : ''}</div><div class="eng-nodes">`;
+  ${due >= 4 ? `<button class="eng-review" id="engRev"><i data-lucide="refresh-cw"></i><span><b>ทวนคำที่ใกล้ลืม</b><small>${due} คำ</small></span><i data-lucide="chevron-right"></i></button>` : ''}
+  </div><div class="eng-map"><div class="eng-lvs">`;
+  for(let L = 0; L < ENG_LV_N; L++){
+    const { F } = engLevel(L), d = F.filter(x => E.done[x.key]).length, open = engLvOpen(L), pass = E.lvPass[L];
+    html += `<div class="eng-lv ${open ? '' : 'lock'} ${pass ? 'pass' : ''}" style="--c:${ENG_LV_C[L]};--d:${L * 60}ms">
+      <button class="eng-lv-main" data-lv="${L}"><span class="eng-lv-n"><small>Lv.</small>${L}</span>
+        <span class="eng-lv-t"><b>${ENG_LEVELS[L]}</b><small>${F.length} บท · ${F.reduce((a, x) => a + x.ws.length, 0)} คำ/ข้อ</small>
+        <span class="vc-bar"><i style="width:${F.length ? d / F.length * 100 : 0}%"></i></span></span>
+        <i data-lucide="${pass ? 'award' : open ? 'chevron-right' : 'lock'}"></i></button>
+      ${!open ? `<button class="eng-lv-skip" data-skip="${L}"><i data-lucide="fast-forward"></i>สอบข้าม: สอบวัดผล Lv.${L - 1}</button>` : ''}</div>`;
+  }
+  html += `</div></div></div>`;
+  $('#view').innerHTML = html;
+  engBindTabs();
+  if($('#engGo')) $('#engGo').onclick = () => engGo(n);
+  if($('#engRev')) $('#engRev').onclick = engReview;
+  $('#engGoal').onclick = () => openPicker({ title: 'เป้า XP ต่อวัน', value: E.goal,
+    options: [10, 20, 30, 50, 80].map(v => ({ val: v, label: `${v} XP` })), onSelect: v => { E.goal = +v; save(); renderCards(); } });
+  $$('[data-lv]').forEach(b => b.onclick = () => { const L = +b.dataset.lv; if(!engLvOpen(L)) return toast(`ผ่าน Lv.${L - 1} ก่อน`, 'err'); ENG_LV = L; renderCards(); $('.main').scrollTo(0, 0); });
+  // สอบข้าม: สอบวัดผลของเลเวลก่อนหน้า ผ่านแล้วเลเวลนี้เปิด
+  $$('[data-skip]').forEach(b => b.onclick = () => levelExam(+b.dataset.skip - 1));
+  icons();
+}
+
+// ---------- หน้าเลเวล: บทเรียนเรียงตามลำดับ + สอบวัดผลท้ายเลเวล ----------
+function renderEngPath(L){
+  const E = engState(), { units, F } = engLevel(L), col = ENG_LV_C[L];
+  const cur = F.findIndex((x, k) => engOpen(F, k) && !E.done[x.key]), d = F.filter(x => E.done[x.key]).length, due = engDue().length;
+  let i = 0, html = `<div class="eng-lvhead" style="--c:${col}">
+    <button class="ib" id="engBack"><i data-lucide="arrow-left"></i></button>
+    <div><small>Lv.${L}</small><b>${ENG_LEVELS[L]}</b></div><span class="eng-uprog">${d}/${F.length}</span></div>
+    ${due >= 4 ? `<button class="eng-review" id="engRev"><i data-lucide="refresh-cw"></i><span><b>บททวนอัตโนมัติ</b><small>${due} คำใกล้ลืม</small></span><i data-lucide="chevron-right"></i></button>` : ''}`;
+  units.forEach(x => {
+    const C = COURSES[x.c], u = x.u, nd = u.ls.filter((_, li) => E.done[`${x.c}:${u.t}:${li}`]).length;
+    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${C.color}"><i data-lucide="${C.ic}" class="eng-uic"></i>
+      <div><small>${ENG_CAT[x.c]}</small><b>${esc(u.t)}</b></div>
+      <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="check"></i>' : `${nd}/${u.ls.length}`}</span></div><div class="eng-nodes">`;
     u.ls.forEach(() => {
-      const x = F[i], st = E.done[x.key] || 0, open = engOpen(F, i), now = i === cur;
+      const y = F[i], st = E.done[y.key] || 0, open = engOpen(F, i), now = i === cur;
       html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px;--d:${Math.min(i, 14) * 35}ms">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
-        <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${uc}">
+        <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${C.color}">
           <i data-lucide="${st ? 'check' : !open ? 'lock' : now ? 'play' : 'book-open'}"></i></button>
         ${st ? `<span class="eng-stars">${'★'.repeat(st)}<em>${'★'.repeat(3 - st)}</em></span>` : ''}</div>`;
       i++;
     });
     html += '</div>';
   });
-  html += `</div></div><button class="eng-jump" id="engJump" hidden><i data-lucide="locate-fixed"></i>บทปัจจุบัน</button>`;
+  const ready = d === F.length, pass = E.lvPass[L];
+  html += `<div class="eng-exam ${ready || pass ? '' : 'lock'} ${pass ? 'pass' : ''}" style="--c:${col}">
+    <i data-lucide="${pass ? 'award' : 'trophy'}"></i><b>${pass ? `ผ่าน Lv.${L} แล้ว` : `สอบวัดผล Lv.${L}`}</b>
+    <small>${pass ? `ผ่านเมื่อ ${pass}` : ready ? '30 ข้อ จับเวลา · ต้องได้ 80%' : `เรียนให้ครบ ${F.length} บทก่อน`}</small>
+    ${ready || pass ? `<button class="eng-cta" id="engExam">${pass ? 'สอบอีกครั้ง' : 'เริ่มสอบ'}</button>` : ''}</div>
+    <button class="eng-jump" id="engJump" hidden><i data-lucide="locate-fixed"></i>บทปัจจุบัน</button>`;
   $('#view').innerHTML = html;
-  engBindTabs();
-  $('#engCourse').onclick = () => openPicker({ title: 'เลือกคอร์ส', value: E.course,
-    options: Object.entries(COURSES).map(([k, c]) => ({ val: k, label: c.name })), onSelect: v => { E.course = v; save(); renderCards(); } });
-  $('#engGoal').onclick = () => openPicker({ title: 'เป้า XP ต่อวัน', value: E.goal,
-    options: [10, 20, 30, 50, 80].map(n => ({ val: n, label: `${n} XP` })), onSelect: v => { E.goal = +v; save(); renderCards(); } });
-  $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(E.course, k) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
-  if($('#engGo')) $('#engGo').onclick = () => lessonStart(E.course, cur);
-  $$('[data-ut]').forEach(b => b.onclick = () => testStart(E.course, +b.dataset.ut, !!b.dataset.skip));
-  $$('[data-q]').forEach(b => b.onclick = () => {
-    const q = b.dataset.q;
-    if(q === 'miss') return lessonStart(E.course, -1, shuf(engMiss()).slice(0, 6));
-    if(q === 'rev'){ ENG_TAB = 'review'; return renderCards(); }
-    ONB = { step: 1 }; renderCards();
-  });
+  $('#engBack').onclick = () => { ENG_LV = null; renderCards(); };
+  if($('#engRev')) $('#engRev').onclick = engReview;
+  if($('#engExam')) $('#engExam').onclick = () => levelExam(L);
+  $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(F[k].c, F[k].ci) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
   icons();
-  // ปุ่มลอย "บทปัจจุบัน": ขึ้นเมื่อปุ่มบทปัจจุบันไม่อยู่ในจอ
-  const n = $('.eng-node.now'), j = $('#engJump');
-  if(n && j && 'IntersectionObserver' in window){
-    new IntersectionObserver(([e]) => { if(j.isConnected) j.hidden = e.isIntersecting; }).observe(n);
-    j.onclick = () => n.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  const nn = $('.eng-node.now'), j = $('#engJump');
+  if(nn && j && 'IntersectionObserver' in window){
+    new IntersectionObserver(([e]) => { if(j.isConnected) j.hidden = e.isIntersecting; }).observe(nn);
+    j.onclick = () => nn.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
 }
 
-// ---------- ครั้งแรก: เลือกคอร์ส → บอกระดับ → วัดระดับ ----------
-function renderOnboard(){
-  const o = ONB || (ONB = { step: 0 });
-  if(o.step === 0){
-    $('#view').innerHTML = `<div class="eng-onb"><h2>อยากเรียนแบบไหน</h2><p>เปลี่ยนทีหลังได้</p>
-      ${Object.entries(COURSES).map(([k, c]) => `<button class="eng-pick" data-oc="${k}" style="--c:${c.color}">
-        <span class="vc-ic"><i data-lucide="${c.ic}"></i></span><b>${c.name}</b><i data-lucide="chevron-right"></i></button>`).join('')}</div>`;
-    $$('[data-oc]').forEach(b => b.onclick = () => { engState().course = b.dataset.oc; o.step = 1; renderOnboard(); });
-  }else{
-    const L = [['เริ่มจากศูนย์', 'ยังรู้คำศัพท์ไม่มาก'], ['พื้นฐาน', 'รู้คำง่ายๆ'], ['ปานกลาง', 'อ่านประโยคสั้นๆ ได้'], ['ดี', 'อ่านเข้าใจได้ดี']];
-    $('#view').innerHTML = `<div class="eng-onb"><h2>ภาษาอังกฤษของคุณระดับไหน</h2><p>แล้วเราจะทดสอบสั้นๆ 12 ข้อ</p>
-      ${L.map(([t, s], k) => `<button class="eng-pick" data-ol="${k}" style="--c:var(--cf)"><span class="eng-lvdot">${'●'.repeat(k + 1)}</span>
-        <span><b>${t}</b><small>${s}</small></span><i data-lucide="chevron-right"></i></button>`).join('')}</div>`;
-    $$('[data-ol]').forEach(b => b.onclick = () => { const k = +b.dataset.ol; k ? placeStart(k) : placeFinish(1); });
-  }
-  icons();
-}
-function placeStart(self){ PT = { lv: self + 1, n: 0, hist: [], used: new Set(), q: null }; placeNext(); }
-function placeNext(){
-  if(PT.n >= 12){ const h = PT.hist.slice(-6); PT.res = clamp(Math.round(h.reduce((a, b) => a + b, 0) / h.length), 1, 4); PT.q = null; return renderCards(); }
-  const all = engLvWords(), cand = all.filter(w => w.lv === PT.lv && !PT.used.has(w.en));
-  const w = (cand.length ? cand : all)[Math.floor(Math.random() * (cand.length || all.length))];
-  PT.used.add(w.en); PT.q = { w, opts: engOpts(w, all, 'th') };
+// ---------- สอบวัดผลท้ายเลเวล: ปนทุกหมวด จับเวลา ผ่าน 80% ----------
+function levelExam(L){
+  const { units } = engLevel(L), items = [], by = k => units.filter(x => (COURSES[x.c].kind || (COURSES[x.c].gram ? 'gram' : 'vocab')) === k);
+  const vocab = shuf(by('vocab').flatMap(x => x.u.ls.flat().map(w => ({ w, c: x.c }))));
+  const gram = shuf(by('gram').flatMap(x => x.u.ls.flat())), dlg = shuf(by('dialog').flatMap(x => x.u.ls.flat()));
+  const read = shuf(by('read').flatMap(x => x.u.ls));
+  const ch = g => ({ w: g, opts: shuf([g.a, ...g.w]) });
+  gram.slice(0, 8).forEach(g => items.push({ t: 'gram', ...ch(g) }));
+  dlg.slice(0, 5).forEach(g => items.push({ t: 'dlg', ...ch(g) }));
+  const need = 30 - items.length - (read.length ? 5 : 0);
+  vocab.slice(0, need).forEach((x, k) => items.push(engEx(['mean', 'word', 'blank'][k % 3], x.w, engPool(x.c))));
+  const mixed = shuf(items);
+  if(read.length){ mixed.push({ t: 'passage', w: read[0][0] }); read[0].forEach(g => mixed.push({ t: 'read', ...ch(g) })); }
+  const q = mixed.filter(x => x.t !== 'passage').length;
+  LS = { c: 'daily', col: ENG_LV_C[L], i: -1, key: null, ws: [], gram: true, exam: { L }, deadline: Date.now() + Math.ceil(q * 0.75) * 60000,
+    items: mixed, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
   renderCards();
 }
-function renderPlace(){
-  if(PT.res){
-    $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic"><i data-lucide="target"></i></span>
-      <small style="color:var(--muted)">ระดับของคุณ</small><b class="eng-res">${ENG_LEVELS[PT.res]}</b>
-      <p>เริ่มบทเรียนระดับ ${PT.res} ได้เลย บทที่ง่ายกว่าเปิดไว้ให้ทวนได้</p>
-      <button class="btn lg block" id="ptGo"><i data-lucide="play"></i>เริ่มเรียน</button></div>`;
-    $('#ptGo').onclick = () => placeFinish(PT.res);
-    return icons();
-  }
-  const q = PT.q;
-  $('#view').innerHTML = `<div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
-    <div class="vc-prog"><i style="width:${PT.n / 12 * 100}%"></i></div><span>${PT.n + 1}/12</span></div>
-    <div class="ls-body"><small class="ls-kind">วัดระดับ · คำนี้แปลว่าอะไร</small><h2 class="ls-word">${esc(q.w.en)}</h2>
-    <div class="ls-opts">${q.opts.map((o, k) => `<button class="ls-opt" data-po="${k}">${esc(o)}</button>`).join('')}</div>
-    <button class="ls-skip" id="ptSkip">ไม่รู้</button></div>`;
-  const pick = ok => {
-    $$('.ls-opt').forEach(b => { b.disabled = true; if(q.opts[+b.dataset.po] === q.w.th) b.classList.add('ok'); });
-    PT.lv = ok ? Math.min(4, PT.lv + 1) : Math.max(1, PT.lv - 1); PT.hist.push(PT.lv); PT.n++;
-    playTone(ok ? 'ok' : 'wrong'); setTimeout(placeNext, 650);
+// นาฬิกาสอบ: หมดเวลา = ข้อที่เหลือนับว่าผิด
+function engClock(){
+  clearInterval(ENG_TIMER);
+  if(!LS || !LS.deadline) return;
+  const tick = () => {
+    if(!LS || !LS.deadline || LS.res){ clearInterval(ENG_TIMER); return; }
+    const left = Math.max(0, Math.round((LS.deadline - Date.now()) / 1000)), t = $('#lsTime');
+    if(t){ t.textContent = mmss(left); t.classList.toggle('warn', left <= 60); }
+    if(!left){ clearInterval(ENG_TIMER); const L = LS; L.bad += L.items.slice(L.k).filter(x => x.t !== 'passage').length; L.k = L.items.length; toast('หมดเวลา', 'err'); renderLesson(); }
   };
-  $$('[data-po]').forEach(b => b.onclick = () => { const ok = q.opts[+b.dataset.po] === q.w.th; if(!ok) b.classList.add('bad'); pick(ok); });
-  $('#ptSkip').onclick = () => pick(false);
-  $('#lsX').onclick = () => { PT = null; renderCards(); };
-  icons();
+  tick(); ENG_TIMER = setInterval(tick, 1000);
 }
-function placeFinish(lv){ engState().lv = lv; PT = null; ONB = null; ENG_TAB = 'learn'; save(); renderCards(); }
 
 // ---------- บทเรียน ----------
 function engEx(t, w, pool){
@@ -186,21 +199,6 @@ function engGramItems(c, ws, items, u, test){
   shuf(ws).forEach(g => items.push({ t: 'gram', ...ch(g) }));
   if(!test) shuf(ws).slice(0, 2).forEach(g => items.push(engEx('order', { en: g.a, th: '', ex: g.q.replace('___', g.a), tr: g.tr }, [])));
 }
-// ทดสอบท้ายหน่วย / ทดสอบข้ามหน่วย: ไม่มีข้อซ้ำ ผ่าน 80%
-function testStart(c, ui, skip){
-  const C = COURSES[c], u = C.units[ui], items = [];
-  if(C.gram){
-    const ws = C.kind === 'read' ? u.ls[Math.floor(Math.random() * u.ls.length)] : shuf(u.ls.flat()).slice(0, 8);
-    engGramItems(c, ws, items, u, true);
-  }else{
-    const pool = engPool(c);
-    shuf(u.ls.flat()).slice(0, 10).forEach((w, k) => items.push(engEx(k % 2 ? 'word' : 'mean', w, pool)));
-  }
-  LS = { c, i: -1, key: null, ws: [], gram: true, test: { ui, skip }, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
-  renderCards();
-}
-// คำที่ตอบผิดล่าสุด (ระดับความจำ 0) จากคลังทบทวน
-const engMiss = () => S.cards.filter(c => c.seen && !(c.box > 0)).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '' })).filter(w => w.en && w.th);
 function lessonStart(c, i, custom){
   const E = engState(), x = custom ? { key: null, ws: custom } : engFlat(c)[i], ws = x.ws, pool = engPool(c).concat(custom || []), items = [];
   if(COURSES[c].gram){
@@ -228,7 +226,7 @@ const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
   const L = LS;
   if(L.k >= L.items.length) return lessonEnd();
-  const it = L.items[L.k], w = it.w, col = COURSES[L.c].color;
+  const it = L.items[L.k], w = it.w, col = L.col || COURSES[L.c].color;
   const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button>`;
   const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}" style="--b:${ENG_OC[k % 4]}"><em>${'ABCD'[k]}</em>${esc(o)}</button>`).join('');
   let body = '';
@@ -259,7 +257,7 @@ function renderLesson(){
   }
   $('#view').innerHTML = `<div class="ls-wrap" style="--c:${col}">
     <div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
-      <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div></div>
+      <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div>${L.deadline ? '<span class="ls-time" id="lsTime"></span>' : ''}</div>
     <div class="ls-body"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
     <div id="lsFb">${it.t === 'intro' || it.t === 'rule' || it.t === 'passage' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
@@ -302,7 +300,8 @@ function renderLesson(){
     else{ it.err++; b.classList.add('bad'); playTone('wrong'); setTimeout(() => b.classList.remove('bad'), 400); }
   });
   if($('#lsNext')) $('#lsNext').onclick = () => { L.k++; renderLesson(); };
-  $('#lsX').onclick = async () => { if(L.k && !await ask('ออกจากบทเรียน?', 'บทนี้ยังไม่บันทึก', 'ออก')) return; LS = null; renderCards(); };
+  $('#lsX').onclick = async () => { if(L.k && !await ask(L.exam ? 'ออกจากการสอบ?' : 'ออกจากบทเรียน?', 'ยังไม่บันทึก', 'ออก')) return; LS = null; renderCards(); };
+  if(L.deadline) engClock();
   icons();
 }
 function lessonFb(ok, ans, noRedo){
@@ -312,7 +311,7 @@ function lessonFb(ok, ans, noRedo){
   if(ok){ L.ok++; L.combo++; L.maxC = Math.max(L.maxC, L.combo); }
   else{
     L.bad++; L.combo = 0;
-    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.test && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
+    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.exam && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : 'คำตอบที่ถูก'}</b>
@@ -338,10 +337,7 @@ function lessonEnd(){
     const stars = acc >= 90 ? 3 : acc >= 70 ? 2 : 1, bonus = L.maxC >= 5 ? 5 : 0, xp = 10 + Math.round(acc / 10) + bonus;
     const before = engToday();
     if(L.key) E.done[L.key] = Math.max(E.done[L.key] || 0, stars);
-    if(L.test){
-      const u = COURSES[L.c].units[L.test.ui]; L.pass = acc >= 80;
-      if(L.pass){ E.ut = E.ut || {}; E.ut[`${L.c}:${u.t}`] = 1; if(L.test.skip) u.ls.forEach((_, li) => { const k = `${L.c}:${u.t}:${li}`; E.done[k] = Math.max(E.done[k] || 0, 1); }); }
-    }
+    if(L.exam){ clearInterval(ENG_TIMER); L.pass = acc >= 80; if(L.pass && !E.lvPass[L.exam.L]) E.lvPass[L.exam.L] = dkey(); }
     E.xp = (E.xp || 0) + xp; E.days[dkey()] = before + xp; E.maxC = Math.max(E.maxC || 0, L.maxC);
     L.goal = before < E.goal && before + xp >= E.goal;
     // คำในบทเข้าคลัง "ทบทวน" (ระบบทวนตามรอบวัน)
@@ -359,17 +355,18 @@ function lessonEnd(){
     save(); syncChrome(); playTone('submit');
   }
   const r = L.res;
-  const T = L.test;
-  $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic ${T && !L.pass ? 'fail' : ''}"><i data-lucide="${T ? (L.pass ? 'medal' : 'rotate-ccw') : 'trophy'}"></i></span>
-    <b>${T ? (L.pass ? (T.skip ? 'ผ่าน! ข้ามหน่วยนี้ได้' : 'ผ่านการทดสอบ!') : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ลองอีกครั้งนะ</p>' : ''}
+  const T = L.exam;
+  $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic ${T && !L.pass ? 'fail' : ''}"><i data-lucide="${T ? (L.pass ? 'award' : 'rotate-ccw') : 'trophy'}"></i></span>
+    <b>${T ? (L.pass ? `ผ่าน Lv.${T.L}!` : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ทวนบทที่ยังอ่อนแล้วลองใหม่นะ</p>' : ''}
+    ${T && L.pass ? `<div class="eng-cert" style="--c:${L.col}"><small>ใบประกาศ</small><b>Lv.${T.L} ${ENG_LEVELS[T.L]}</b><span>${r.acc}% · ${dkey()}</span>${T.L + 1 < ENG_LV_N ? `<em>ปลดล็อก Lv.${T.L + 1} แล้ว</em>` : ''}</div>` : ''}
     <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.15 + k * .18}s">★</span>`).join('')}</div>
     ${r.bonus ? `<span class="ls-combo"><i data-lucide="flame"></i>คอมโบ ${LS.maxC} ติด +${r.bonus} XP</span>` : ''}
     ${(L.newB || []).length ? `<div class="ls-newb"><small>ได้ถ้วยรางวัลใหม่!</small>${L.newB.map(b => `<span class="eng-badge on"><i data-lucide="${b[2]}"></i>${b[1]}</span>`).join('')}</div>` : ''}
     <div class="ls-res"><div><b id="lsXp">+0</b><small>XP</small></div><div><b>${r.acc}%</b><small>แม่นยำ</small></div><div><b>${mmss(r.sec)}</b><small>เวลา</small></div></div>
     ${T && !L.pass ? '<button class="btn ghost lg block" id="lsRetry" style="margin-bottom:8px"><i data-lucide="rotate-ccw"></i>ลองใหม่</button>' : ''}
     <button class="btn lg block" id="lsDone">ต่อไป</button></div>`;
-  $('#lsDone').onclick = () => { LS = null; renderCards(); };
-  if($('#lsRetry')) $('#lsRetry').onclick = () => testStart(L.c, T.ui, T.skip);
+  $('#lsDone').onclick = () => { LS = null; if(T && L.pass) ENG_LV = null; renderCards(); $('.main').scrollTo(0, 0); };
+  if($('#lsRetry')) $('#lsRetry').onclick = () => levelExam(T.L);
   icons();
   // XP วิ่งขึ้น + พลุ (ได้ 3 ดาว หรือถึงเป้าวันนี้)
   const t0 = performance.now(), tick = t => { const p = Math.min(1, (t - t0) / 700); const e = $('#lsXp'); if(!e) return; e.textContent = '+' + Math.round(r.xp * (1 - Math.pow(1 - p, 3))); if(p < 1) requestAnimationFrame(tick); };
@@ -452,8 +449,10 @@ const ENG_BADGES = [
   ['star10', '3 ดาว 10 บท', 'star', E => Object.values(E.done).filter(v => v === 3).length >= 10],
   ['c10', 'คอมโบ 10', 'zap', E => (E.maxC || 0) >= 10],
   ['xp1k', '1,000 XP', 'trophy', E => (E.xp || 0) >= 1000],
-  ['test', 'ผ่านทดสอบหน่วย', 'medal', E => Object.keys(E.ut || {}).length >= 1],
-  ['multi', 'เรียน 3 คอร์ส', 'compass', E => new Set(Object.keys(E.done).map(k => k.split(':')[0])).size >= 3]
+  ['lv0', 'ผ่าน Lv.0', 'sprout', E => !!E.lvPass[0]],
+  ['lv1', 'ผ่าน Lv.1', 'award', E => !!E.lvPass[1]],
+  ['lv2', 'ผ่าน Lv.2', 'award', E => !!E.lvPass[2]],
+  ['lv4', 'ผ่านทุกเลเวล', 'crown', E => !!E.lvPass[ENG_LV_N - 1]]
 ];
 function renderEngStats(){
   const E = engState(), B = E.badges || {}, nb = ENG_BADGES.filter(b => B[b[0]]).length;
@@ -469,8 +468,8 @@ function renderEngStats(){
     <div class="card eng-card"><h3>ความแม่นยำตามแบบฝึก</h3>${acc.length ? acc.map(([k, a]) => { const p = Math.round(a[0] / a[1] * 100);
       return `<div class="eng-row"><span style="--q:${ENG_KIND[k][1]}"><i data-lucide="${ENG_KIND[k][2]}"></i>${ENG_KIND[k][0]}</span><span class="vc-bar"><i style="width:${p}%;background:${p >= 80 ? 'var(--green)' : p >= 60 ? '#eab308' : 'var(--red)'}"></i></span><b>${p}%</b></div>`; }).join('')
       : '<p class="eng-muted">เรียนอีกสักหน่อยแล้วจะขึ้นตรงนี้</p>'}</div>
-    <div class="card eng-card"><h3>คอร์ส</h3>${Object.entries(COURSES).map(([k, C]) => { const F = engFlat(k), n = F.filter(x => E.done[x.key]).length;
-      return `<div class="eng-row"><span style="--q:${C.color}"><i data-lucide="${C.ic}"></i>${C.name}</span><span class="vc-bar"><i style="width:${n / F.length * 100}%;background:${C.color}"></i></span><b>${n}/${F.length}</b></div>`; }).join('')}</div>
+    <div class="card eng-card"><h3>เลเวล</h3>${ENG_LEVELS.map((t, L) => { const { F } = engLevel(L), n = F.filter(x => E.done[x.key]).length;
+      return `<div class="eng-row"><span style="--q:${ENG_LV_C[L]}"><i data-lucide="${E.lvPass[L] ? 'award' : 'graduation-cap'}"></i>Lv.${L} ${t}</span><span class="vc-bar"><i style="width:${n / F.length * 100}%;background:${ENG_LV_C[L]}"></i></span><b>${n}/${F.length}</b></div>`; }).join('')}</div>
     <div class="card eng-card"><h3>ถ้วยรางวัล <small>${nb}/${ENG_BADGES.length}</small></h3><div class="eng-badges">${ENG_BADGES.map(b =>
       `<span class="eng-badge ${B[b[0]] ? 'on' : ''}"><i data-lucide="${B[b[0]] ? b[2] : 'lock'}"></i>${b[1]}</span>`).join('')}</div></div>
   </div>`;
