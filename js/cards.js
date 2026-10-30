@@ -439,8 +439,8 @@ const poolOf=(cats,onlyStar,diff)=>S.questions.filter(q=>(!cats.length||cats.inc
 
 // เลือกสายสอบ (ค่าเดียวทั้งแอป)
 function pickTrack(after){
-  const opts = Object.keys(S.tracks).map(k => { const t = getTrack(k); return { val: k, label: `${t.label} · ${t.ruleDesc}` }; });
-  opts.push({ val: '__edit', label: 'แก้เกณฑ์ / เพิ่มสายใหม่…' });
+  const opts = Object.keys(S.tracks).map(k => { const t = getTrack(k); return { val: k, label: t.label.replace(/ปราบปราม\s*นสต\.?\s*/, 'ปป.').replace(/\b25(\d\d)\b/, '$1') }; });
+  opts.push({ val: '__edit', label: 'แก้เกณฑ์' });
   openPicker({ title: 'เลือกสายสอบ', options: opts, value: curTrackKey(), onSelect: v => {
     if(v === '__edit') return setTimeout(() => openTrackEditor(curTrackKey()), 80);
     S.settings.track = v; save(); syncChrome(); after && after();

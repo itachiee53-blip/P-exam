@@ -17,11 +17,9 @@ function openIconPicker(catName){
           <button type="button" class="btn sm ghost" id="btnCover"><i data-lucide="image-plus"></i>เลือกรูปปก</button>
           <button type="button" class="btn sm ghost" id="btnCoverDel" ${selectedCover ? '' : 'hidden'}><i data-lucide="trash-2"></i>ใช้ปกสีแทน</button>
           <small style="color:var(--muted);font-size:11.5px">รูปแนวตั้ง 3:4 สวยที่สุด</small>
-          <button type="button" class="btn sm ghost" id="btnToBook"><i data-lucide="library"></i>เปลี่ยนเป็นหนังสือสถาบัน</button>
           <input type="file" id="coverFile" accept="image/*" hidden>
         </div>
       </div>
-}
       <div>
         <label style="font-size:12.5px;color:var(--muted);font-weight:600;display:block;margin-bottom:8px">เลือกไอคอน (36 แบบ)</label>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-height:220px;overflow-y:auto;padding:3px" id="iconPoolGrid">
@@ -76,7 +74,6 @@ function openIconPicker(catName){
 
   const paintCover = () => { $('#coverPrev').innerHTML = coverHtml(); $('#btnCoverDel').hidden = !selectedCover; icons($('#coverPrev')); };
   $('#btnCover').onclick = () => $('#coverFile').click();
-  $('#btnToBook').onclick = () => { closeModal(); setTimeout(() => subjectToBook(catName), 120); };
   $('#coverFile').onchange = async e => {
     const f = e.target.files[0]; if(!f) return;
     const img = await optimizeImage(f, 720, 0.82);

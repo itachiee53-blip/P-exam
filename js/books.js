@@ -273,17 +273,6 @@ function createBook(after){
     after && after(id);
   });
 }
-// เปลี่ยนวิชาเดิม (เช่น งานสารบรรณ ที่ใส่ปกบอนทูบีไว้) เป็นหนังสือสถาบัน พร้อมย้ายข้อสอบและปกเข้าไป
-function subjectToBook(cat){
-  bookNameModal(`เปลี่ยน "${esc(cat)}" เป็นหนังสือสถาบัน`, '', name => {
-    S.books = S.books || []; const id = 'b' + uid();
-    S.books.push({ id, name, cats: [cat] });
-    S.bookCovers = S.bookCovers || {};
-    if(S.catCovers?.[cat]){ S.bookCovers[id] = S.catCovers[cat]; delete S.catCovers[cat]; }
-    const n = moveToBook(S.questions.filter(q => q.cat === cat && !q.src).map(q => q.id), id, `ย้าย ${cat} เข้า ${name}`);
-    save(); syncChrome(); refreshPage(); undoToast(`สร้าง "${name}" และย้าย ${n} ข้อเข้าเล่มแล้ว`);
-  });
-}
 function openInstitute(id){
   const bk = bookOf(id); if(!bk) return;
   const cats = [...new Set([...bk.cats, ...bookQs(id).map(q => q.cat)])].filter(c => S.cats.includes(c));
