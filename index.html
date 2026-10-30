@@ -6458,29 +6458,46 @@ function renderCloudHub(data) {
       '<div id="cloudList" style="max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:8px">' +
         (!data.items || !data.items.length 
           ? '<div style="text-align:center;padding:24px;color:var(--muted)">ยังไม่มีข้อสอบบนคลาวด์</div>' 
-          : data.items.map(item => 
-              '<div style="display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border:1px solid var(--line);padding:10px 14px;border-radius:14px">' +
-                '<div>' +
+          : data.items.map((item, i) => {
+              return '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--surface2);border:1px solid var(--line);padding:10px 14px;border-radius:14px">' +
+                '<div style="min-width:0">' +
                   '<b style="font-size:14px;display:block">' + esc(item.name) + '</b>' +
-                  '<small style="color:var(--muted)">' + item.count + ' ข้อ · ' + (item.size / (1024*1024)).toFixed(1) + ' MB · ' + item.date + '</small>' +
+                  '<small style="color:var(--muted)">' + esc(item.count) + ' ข้อ · ' + (+item.size / (1024*1024) || 0).toFixed(1) + ' MB · ' + esc(item.date) + '</small>' +
                 '</div>' +
-                '<div style="display:flex;gap:6px">' +
-                  '<button class="btn btn-sm" onclick="downloadCloudFile(\'' + item.id + '\', \'' + esc(item.name) + '\')" style="background:#2563eb;color:#fff;border-radius:8px;padding:6px 10px">' +
+                '<div style="display:flex;gap:6px;flex:none">' +
+                  '<button class="btn btn-sm" data-cdl="' + i + '" style="background:#2563eb;color:#fff;border-radius:8px;padding:6px 10px">' +
                     '<i data-lucide="download" style="width:14px;height:14px"></i> โหลด' +
                   '</button>' +
-                  '<button class="btn btn-sm" onclick="deleteCloudFile(\'' + item.fileName + '\', \'' + esc(item.name) + '\')" style="background:#ef4444;color:#fff;border-radius:8px;padding:6px 10px">' +
+                  ('<button class="btn btn-sm" data-cdel="' + i + '" style="background:#ef4444;color:#fff;border-radius:8px;padding:6px 10px">' +
                     '<i data-lucide="trash-2" style="width:14px;height:14px"></i>' +
-                  '</button>' +
+                  '</button>') +
                 '</div>' +
-              '</div>'
-            ).join('')
+              '</div>';
+            }            ).join('')
         ) +
       '</div>' +
     '</div>',
     ''
   );
 
+  $$('[data-cdl]').forEach(b => { const it = data.items[+b.dataset.cdl]; b.onclick = () => downloadCloudFile(it.id, it.name); });
+  $$('[data-cdel]').forEach(b => { const it = data.items[+b.dataset.cdel]; b.onclick = () => deleteCloudFile(it.fileName, it.name); });
   if (window.lucide) lucide.createIcons();
+}
+
+// รหัสเจ้าของไฟล์ประจำเครื่อง: ใช้ยืนยันว่าลบได้เฉพาะไฟล์ที่ตัวเองอัป
+let myOwnerHash = '';
+async function ensureOwnerHash(){
+  if(myOwnerHash) return myOwnerHash;
+  try{
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(cloudOwnerId()));
+    myOwnerHash = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }catch(e){ logErr('คำนวณรหัสเจ้าของไม่ได้: ' + e.message, 'cloud'); }
+  return myOwnerHash;
+}
+function cloudOwnerId(){
+  if(!S.settings.cloudOwner){ S.settings.cloudOwner = uid() + uid() + uid(); save(); }
+  return S.settings.cloudOwner;
 }
 
 window.downloadCloudFile = async (fileId, subName) => {
@@ -6524,7 +6541,7 @@ window.downloadCloudFile = async (fileId, subName) => {
 window.deleteCloudFile = (fileName, subName) => {
   openModal('ยืนยันการลบไฟล์', 
     '<div style="text-align:center;padding:12px 0">' +
-      '<div style="font-size:15px;margin-bottom:16px">คุณต้องการลบข้อสอบวิชา <b>"' + subName + '"</b> ออกจาก Google Drive ใช่หรือไม่?</div>' +
+      '<div style="font-size:15px;margin-bottom:16px">คุณต้องการลบข้อสอบวิชา <b>"' + esc(subName) + '"</b> ออกจากคลังออนไลน์ใช่หรือไม่?<br><small style="color:var(--red)">คลังนี้ใช้ร่วมกับเพื่อน ไฟล์นี้อาจเป็นของคนอื่น</small></div>' +
       '<div style="display:flex;gap:10px;justify-content:center">' +
         '<button class="btn btn-sub" onclick="closeModal()">ยกเลิก</button>' +
         '<button class="btn btn-err" id="btnConfirmDelete" style="background:#ef4444;color:#fff">ยืนยันลบ</button>' +
@@ -6537,11 +6554,13 @@ window.deleteCloudFile = (fileName, subName) => {
     closeModal();
     toast('กำลังลบข้อมูล...', 'info');
     try {
-      await fetch(GDRIVE_SCRIPT_URL, {
+      const res = await fetch(GDRIVE_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ action: "delete", fileName: fileName })
+        body: JSON.stringify({ action: "delete", fileName: fileName, ownerId: cloudOwnerId() })
       });
+      const r = await res.json().catch(() => ({}));
+      if (r && (r.error || r.ok === false)) return toast(r.error || 'ลบไม่ได้: ไม่ใช่ไฟล์ของคุณ', 'err');
       toast('ลบไฟล์เรียบร้อย', 'ok');
       cloudCache = null;
       openCloudHubModal(true);
@@ -6653,12 +6672,14 @@ window.triggerUploadPicker = function() {
 
           if (upTextInfo) upTextInfo.textContent = 'กำลังส่งส่วนที่ ' + (i + 1) + '/' + totalChunks + '...';
 
-          await fetch(GDRIVE_SCRIPT_URL, {
+          const upRes = await fetch(GDRIVE_SCRIPT_URL, {
             method: "POST",
             redirect: "follow",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify({
               action: "chunk_upload",
+              ownerId: cloudOwnerId(),
+              ownerName: (S.settings.name || '').trim() || 'ไม่ระบุชื่อ',
               subject: subName,
               totalQuestions: totalQuestions,
               chunkIndex: i,
@@ -6667,6 +6688,8 @@ window.triggerUploadPicker = function() {
             })
           });
 
+          const upJson = await upRes.json().catch(() => ({}));
+          if (upJson && upJson.ok === false) throw new Error(upJson.error || 'อัปโหลดไม่สำเร็จ');
           targetPercent = Math.round(((i + 1) / totalChunks) * 100);
         }
 
@@ -6709,7 +6732,7 @@ window.triggerUploadPicker = function() {
         document.body.style.pointerEvents = '';
         document.body.style.userSelect = '';
         overlay.remove();
-        toast('การอัปโหลดขัดข้อง กรุณาลองใหม่อีกครั้ง', 'err');
+        toast(err && err.message ? err.message : 'การอัปโหลดขัดข้อง กรุณาลองใหม่อีกครั้ง', 'err');
       }
     }
   });
