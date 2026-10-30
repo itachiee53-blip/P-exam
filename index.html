@@ -1560,6 +1560,54 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ===== หน้าแรก v4: เรียบ โปร่ง ลำดับชัด และจัดคอลัมน์ตามจอ ===== */
+:root{--hm-ink:#14243a;--hm-soft:0 1px 2px rgba(20,36,58,.04),0 10px 30px -14px rgba(20,36,58,.16)}
+[data-theme="dark"]{--hm-ink:#0b1422;--hm-soft:0 1px 2px rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.6)}
+.hm{max-width:1120px;gap:16px;display:grid;grid-template-columns:1fr;align-items:start}
+.hm-hello{display:flex;flex-direction:column;gap:2px;padding:2px 2px 4px}
+.hm-hello small{font-size:13px;color:var(--muted);font-weight:500}
+.hm-hello h2{font-size:clamp(24px,6.4vw,30px);line-height:1.2;letter-spacing:-.03em;font-weight:700}
+.hm-card{border:0;border-radius:24px;padding:20px;box-shadow:var(--hm-soft)}
+.hm-head b{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+.hm-today{background:radial-gradient(120% 90% at 100% 0%,#3b82c4 0%,transparent 60%),linear-gradient(160deg,#1d3a5f,var(--hm-ink));
+  box-shadow:0 24px 44px -26px rgba(29,58,95,.9);border-radius:28px;padding:24px 22px 22px;gap:22px 20px}
+.hm-ring .bgc{stroke:rgba(255,255,255,.14)}
+.hm-ring .fgc{stroke:#9ccbf2}
+.hm-ring circle{stroke-width:7}
+.hm-today small{opacity:.7;letter-spacing:.02em}
+.hm-today h2{font-size:40px!important;letter-spacing:-.04em}
+.hm-today p{opacity:.7}
+.hm-tstats{background:rgba(255,255,255,.07);border-radius:18px;padding:12px 4px;gap:0}
+.hm-tstats div{background:none;border-radius:0;padding:0 6px}
+.hm-tstats div+div{border-left:1px solid rgba(255,255,255,.12)}
+.hm-tstats b{font-size:20px}
+.hm-start{background:#fff;color:var(--hm-ink);height:52px;border-radius:999px;width:100%!important;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.hm-ses{background:rgba(255,255,255,.1)}
+.hm-todo{padding:10px 0;border-top:1px solid var(--line)}
+.hm-head+.hm-todo{border-top:0}
+.hm-todo .hm-ic{border-radius:50%}
+.hm-ms{padding:2px 0}
+.hm-prob{font-size:30px}
+.hm-week button{border-radius:14px;padding:10px 0}
+/* มือถือแนวนอน / แท็บเล็ตแนวตั้ง: 2 คอลัมน์ การ์ดวันนี้อยู่ซ้าย */
+@media (min-width:600px){
+  .hm{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-areas:"hello hello" "today todo" "today ready" "week ready"}
+  .hm-hello{grid-area:hello}.hm-today{grid-area:today}.hm-c-todo{grid-area:todo}.hm-c-ready{grid-area:ready}.hm-c-week{grid-area:week}
+}
+/* แท็บเล็ตแนวนอน / จอใหญ่: 3 คอลัมน์ */
+@media (min-width:1024px){
+  .hm{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);grid-template-areas:"hello hello hello" "today todo ready" "today week ready"}
+  .hm-today{grid-template-columns:120px 1fr}.hm-start{grid-column:1/-1}
+}
+/* จอเตี้ย (มือถือแนวนอน): การ์ดวันนี้กระชับ ไม่ล้นจอ */
+@media (orientation:landscape) and (max-height:520px){
+  .hm-today{grid-template-columns:96px 1fr;padding:18px;gap:14px 16px}
+  .hm-ring,.hm-ring svg{width:96px!important;height:96px!important}
+  .hm-today h2{font-size:30px!important}
+  .hm-hello h2{font-size:22px}
+  .main{padding-top:6px}
+}
 </style>
 </head>
 <body>
@@ -3027,7 +3075,10 @@ function renderHome(){
   };
 
   $('#view').innerHTML = `<div class="hm">
-  <div class="hm-hello">${hi} · <span>${cd && !cd.isPassed ? (cd.isToday ? 'วันนี้วันสอบ สู้ๆ!' : `อีก ${cd.daysLeft} วันสอบ`) : 'พร้อมลุยต่อไหม?'}</span></div>
+  <header class="hm-hello">
+    <small>${new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'})}</small>
+    <h2>${hi} 👋</h2>
+  </header>
 
   <section class="hm-today" ${heroBg}>
     <div class="hm-ring">
@@ -3049,14 +3100,14 @@ function renderHome(){
     <button class="hm-start" id="hmStart"><i data-lucide="play"></i>${ses ? `ทำต่อ · ${sesDone}/${ses.ids.length} ข้อ` : 'เริ่มทำวันนี้'}</button>
   </section>
 
-  <section class="hm-card">
+  <section class="hm-card hm-c-todo">
     <div class="hm-head"><b>สิ่งที่ต้องทำวันนี้</b><span class="hm-count">${todo.filter(x=>x.done).length}/3</span></div>
     ${todo.map(x=>`<button class="hm-todo ${x.done?'done':''}" data-todo="${x.id}">
       <div class="hm-ic sm" style="background:${x.bg};color:${x.fg}"><i data-lucide="${x.done?'check':x.ic}"></i></div>
       <div class="hm-grow"><b>${x.title}</b><small>${x.sub}</small></div><i data-lucide="chevron-right" class="hm-chev"></i></button>`).join('')}
   </section>
 
-  <section class="hm-card">
+  <section class="hm-card hm-c-ready">
     <div class="hm-head"><b>โอกาสสอบติด</b><span class="hm-prob" style="color:${rStats.badgeColor}">${rStats.passProb}%</span></div>
     <div class="hm-bar lg"><i style="width:${rStats.passProb}%;background:${rStats.badgeColor}"></i></div>
     <small class="hm-sub">${esc(rStats.statusText)} · คิดจากความแม่นยำและจำนวนข้อที่ทำแล้วแต่ละวิชา</small>
@@ -3066,7 +3117,7 @@ function renderHome(){
       : '<small class="hm-sub">เริ่มทำข้อสอบเพื่อให้ระบบวิเคราะห์วิชาที่ควรเน้น</small>'}
   </section>
 
-  <section class="hm-card">
+  <section class="hm-card hm-c-week">
     <div class="hm-head"><b>สัปดาห์นี้</b><button class="hm-link" id="hmCal">ปฏิทิน</button></div>
     <div class="hm-week">${weekData.map((x,i)=>`<button data-dayclick="${i}" class="${x.n>0?'done':''} ${x.today?'today':''}"><span>${x.lb}</span><b>${x.n>0?x.n:'·'}</b></button>`).join('')}</div>
   </section>
