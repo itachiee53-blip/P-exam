@@ -12,12 +12,12 @@
 // แอปสร้างแบบฝึกให้เองทั้งหมด: เลือกคำแปล แปลไทย→อังกฤษ ฟัง เติมคำ เรียงประโยค จับคู่
 // =====================================================================
 const COURSES = {
-  police: { name: 'สอบตำรวจ', ic: 'shield', color: '#2f6fb5', units: [] },
-  daily:  { name: 'ชีวิตประจำวัน', ic: 'home', color: '#0f9d76', units: [] },
-  talk:   { name: 'สนทนาและการทำงาน', ic: 'messages-square', color: '#8b5cf6', units: [] },
-  grammar:{ name: 'ไวยากรณ์ออกสอบ', ic: 'spell-check', color: '#e8590c', units: [], gram: true },
-  dialog: { name: 'บทสนทนาออกสอบ', ic: 'message-circle', color: '#0ea5e9', units: [], gram: true, kind: 'dialog' },
-  read:   { name: 'อ่านจับใจความ', ic: 'book-open-text', color: '#16a34a', units: [], gram: true, kind: 'read' }
+  police: { name: 'สอบตำรวจ', ic: 'shield', color: '#4f8df7', units: [] },
+  daily:  { name: 'ชีวิตประจำวัน', ic: 'home', color: '#1fbf8f', units: [] },
+  talk:   { name: 'สนทนาและการทำงาน', ic: 'messages-square', color: '#a07cf8', units: [] },
+  grammar:{ name: 'ไวยากรณ์ออกสอบ', ic: 'spell-check', color: '#ff8a4c', units: [], gram: true },
+  dialog: { name: 'บทสนทนาออกสอบ', ic: 'message-circle', color: '#38bdf8', units: [], gram: true, kind: 'dialog' },
+  read:   { name: 'อ่านจับใจความ', ic: 'book-open-text', color: '#ec6ba8', units: [], gram: true, kind: 'read' }
 };
 const ENG_LEVELS = ['', 'เริ่มต้น', 'พื้นฐาน', 'ปานกลาง', 'ดี'];
 function U(course, lv, t, text){
@@ -791,6 +791,283 @@ What is happening to cybercrime? | It is increasing quickly. | It is decreasing.
 Which is an example of cybercrime in the text? | Fake shopping websites | Stealing cars; Selling drugs on the street; Fighting in a bar
 According to experts, what is the best protection? | Public awareness | More police stations; Expensive computers; Closing the internet
 The word "strangers" means | people you do not know | your family members; police officers; your best friends
+`);
+
+// ===== เพิ่มเติม (ชุดที่ 3) =====
+U('police', 1, 'อุปกรณ์และยานพาหนะ', `
+handcuffs | กุญแจมือ | He put handcuffs on the thief. | เขาใส่กุญแจมือให้ขโมย
+radio | วิทยุสื่อสาร | Call the station by radio. | ติดต่อสถานีทางวิทยุ
+gun | ปืน | The officer has a gun. | เจ้าหน้าที่มีปืน
+flashlight | ไฟฉาย | Use a flashlight at night. | ใช้ไฟฉายตอนกลางคืน
+badge | ตราประจำตัว | Show your police badge. | แสดงตราตำรวจของคุณ
+siren | ไซเรน | I heard a police siren. | ฉันได้ยินเสียงไซเรนตำรวจ
+---
+vehicle | ยานพาหนะ | Stop the vehicle now. | หยุดรถเดี๋ยวนี้
+whistle | นกหวีด | He blew a whistle. | เขาเป่านกหวีด
+camera | กล้อง | The camera recorded the crime. | กล้องบันทึกการก่อเหตุไว้
+vest | เสื้อกั๊ก | Wear a safety vest. | สวมเสื้อกั๊กนิรภัย
+boots | รองเท้าบูท | His boots are black. | รองเท้าบูทของเขาสีดำ
+cell | ห้องขัง | He spent the night in a cell. | เขาค้างคืนในห้องขัง
+`);
+U('police', 2, 'ร่างกายและการบาดเจ็บ', `
+head | ศีรษะ | He hit his head. | เขาศีรษะกระแทก
+arm | แขน | My arm hurts. | แขนของฉันเจ็บ
+leg | ขา | She broke her leg. | ขาของเธอหัก
+blood | เลือด | There is blood on the floor. | มีเลือดบนพื้น
+wound | บาดแผล | Clean the wound. | ทำความสะอาดแผล
+bleed | เลือดออก | His nose is bleeding. | จมูกของเขาเลือดออก
+---
+hurt | เจ็บ/ทำให้บาดเจ็บ | Did he hurt you? | เขาทำร้ายคุณหรือเปล่า
+unconscious | หมดสติ | The man is unconscious. | ชายคนนั้นหมดสติ
+breathe | หายใจ | Can he breathe? | เขาหายใจได้ไหม
+first aid | การปฐมพยาบาล | Give him first aid. | ปฐมพยาบาลเขา
+bandage | ผ้าพันแผล | Put a bandage on it. | พันแผลไว้
+bruise | รอยฟกช้ำ | She has a bruise on her arm. | เธอมีรอยฟกช้ำที่แขน
+`);
+U('police', 3, 'อาชญากรรมร้ายแรง', `
+murder | ฆาตกรรม | He was arrested for murder. | เขาถูกจับในข้อหาฆาตกรรม
+kidnap | ลักพาตัว | They kidnapped a child. | พวกเขาลักพาตัวเด็ก
+gang | แก๊ง | The gang sold drugs. | แก๊งนี้ขายยาเสพติด
+assault | ทำร้ายร่างกาย | He was charged with assault. | เขาถูกตั้งข้อหาทำร้ายร่างกาย
+burglary | การย่องเบา/บุกรุกลักทรัพย์ | There was a burglary last night. | เมื่อคืนมีการบุกรุกลักทรัพย์
+pickpocket | ล้วงกระเป๋า | A pickpocket took my wallet. | นักล้วงกระเป๋าเอากระเป๋าเงินฉันไป
+---
+dealer | ผู้ค้า | The police caught a drug dealer. | ตำรวจจับผู้ค้ายาได้
+addict | ผู้ติดยา | He is a drug addict. | เขาเป็นคนติดยา
+trafficking | การค้ามนุษย์/ค้ายา | Human trafficking is a serious crime. | การค้ามนุษย์เป็นอาชญากรรมร้ายแรง
+vandalism | การทำลายทรัพย์สิน | Vandalism is a crime. | การทำลายทรัพย์สินเป็นอาชญากรรม
+arson | การวางเพลิง | The fire was caused by arson. | ไฟไหม้เกิดจากการวางเพลิง
+illegal immigrant | ผู้เข้าเมืองผิดกฎหมาย | They found illegal immigrants. | พวกเขาพบผู้เข้าเมืองผิดกฎหมาย
+`);
+U('police', 4, 'การปฏิบัติหน้าที่', `
+operation | ปฏิบัติการ | The operation started at dawn. | ปฏิบัติการเริ่มตอนรุ่งเช้า
+raid | การบุกตรวจค้น | Police raided the house. | ตำรวจบุกตรวจค้นบ้านหลังนั้น
+surveillance | การเฝ้าติดตาม | The suspect is under surveillance. | ผู้ต้องสงสัยอยู่ระหว่างการเฝ้าติดตาม
+undercover | นอกเครื่องแบบ/แฝงตัว | He works as an undercover officer. | เขาทำงานเป็นตำรวจนอกเครื่องแบบ
+backup | กำลังเสริม | We need backup now. | เราต้องการกำลังเสริมเดี๋ยวนี้
+jurisdiction | เขตอำนาจ | This area is not our jurisdiction. | พื้นที่นี้ไม่ใช่เขตอำนาจของเรา
+---
+discipline | วินัย | Police need strong discipline. | ตำรวจต้องมีวินัยเข้มแข็ง
+commander | ผู้บังคับบัญชา | The commander gave an order. | ผู้บังคับบัญชาสั่งการ
+rank | ยศ | What is your rank? | คุณยศอะไร
+salute | ทำความเคารพ | Salute the flag. | ทำความเคารพธงชาติ
+oath | คำสาบาน | He took an oath to serve the people. | เขาสาบานตนว่าจะรับใช้ประชาชน
+honor | เกียรติ | It is an honor to serve. | เป็นเกียรติที่ได้รับใช้
+`);
+U('daily', 1, 'สีและตัวเลข', `
+red | สีแดง | The light is red. | ไฟเป็นสีแดง
+blue | สีน้ำเงิน/ฟ้า | The sky is blue. | ท้องฟ้าสีฟ้า
+green | สีเขียว | Go when it is green. | ไปได้เมื่อไฟเขียว
+yellow | สีเหลือง | She has a yellow bag. | เธอมีกระเป๋าสีเหลือง
+black | สีดำ | He wore a black shirt. | เขาสวมเสื้อสีดำ
+white | สีขาว | The car is white. | รถสีขาว
+---
+first | ที่หนึ่ง/แรก | This is my first time. | นี่เป็นครั้งแรกของฉัน
+second | ที่สอง/วินาที | Wait a second. | รอสักครู่
+half | ครึ่ง | Cut it in half. | ตัดครึ่ง
+hundred | ร้อย | It costs one hundred baht. | ราคาหนึ่งร้อยบาท
+thousand | พัน | Five thousand people came. | มีคนมาห้าพันคน
+number | ตัวเลข/หมายเลข | What is your phone number? | เบอร์โทรศัพท์ของคุณคืออะไร
+`);
+U('daily', 2, 'ครอบครัวและงานบ้าน', `
+father | พ่อ | My father is a farmer. | พ่อของฉันเป็นชาวนา
+mother | แม่ | My mother cooks well. | แม่ของฉันทำอาหารเก่ง
+brother | พี่ชาย/น้องชาย | I have one brother. | ฉันมีพี่น้องผู้ชายหนึ่งคน
+sister | พี่สาว/น้องสาว | My sister is a nurse. | พี่สาวของฉันเป็นพยาบาล
+husband | สามี | Her husband is kind. | สามีของเธอใจดี
+wife | ภรรยา | His wife is a teacher. | ภรรยาของเขาเป็นครู
+---
+clean | ทำความสะอาด/สะอาด | I clean my room every day. | ฉันทำความสะอาดห้องทุกวัน
+wash | ล้าง/ซัก | Wash your hands. | ล้างมือ
+kitchen | ห้องครัว | Mom is in the kitchen. | แม่อยู่ในครัว
+garden | สวน | We have a small garden. | เรามีสวนเล็กๆ
+laundry | ผ้าที่ต้องซัก | I do the laundry on Sunday. | ฉันซักผ้าวันอาทิตย์
+sweep | กวาด | Sweep the floor, please. | ช่วยกวาดพื้นหน่อย
+`);
+U('daily', 3, 'การเงินและธนาคาร', `
+cash | เงินสด | Do you have cash? | คุณมีเงินสดไหม
+save | เก็บออม | I save money every month. | ฉันเก็บเงินทุกเดือน
+spend | ใช้จ่าย | Don't spend too much. | อย่าใช้จ่ายมากเกินไป
+credit card | บัตรเครดิต | Can I pay by credit card? | จ่ายด้วยบัตรเครดิตได้ไหม
+loan | เงินกู้ | He got a loan from the bank. | เขากู้เงินจากธนาคาร
+debt | หนี้ | She has a lot of debt. | เธอมีหนี้มาก
+---
+withdraw | ถอนเงิน | I want to withdraw money. | ฉันต้องการถอนเงิน
+deposit | ฝากเงิน | Deposit the money today. | ฝากเงินวันนี้
+tax | ภาษี | We pay tax every year. | เราจ่ายภาษีทุกปี
+cost | ราคา/มีราคา | How much does it cost? | ราคาเท่าไหร่
+afford | มีเงินพอซื้อ | I can't afford a new car. | ฉันไม่มีเงินพอซื้อรถใหม่
+budget | งบประมาณ | We have a small budget. | เรามีงบประมาณน้อย
+`);
+U('daily', 4, 'เทคโนโลยี', `
+computer | คอมพิวเตอร์ | I use a computer at work. | ฉันใช้คอมพิวเตอร์ที่ทำงาน
+download | ดาวน์โหลด | Download the app. | ดาวน์โหลดแอป
+update | อัปเดต | Update your phone. | อัปเดตโทรศัพท์ของคุณ
+screen | หน้าจอ | The screen is broken. | หน้าจอแตก
+battery | แบตเตอรี่ | My battery is low. | แบตเตอรี่ของฉันใกล้หมด
+charge | ชาร์จ | I need to charge my phone. | ฉันต้องชาร์จโทรศัพท์
+---
+social media | โซเชียลมีเดีย | Don't post everything on social media. | อย่าโพสต์ทุกอย่างลงโซเชียลมีเดีย
+device | อุปกรณ์ | Turn off your device. | ปิดอุปกรณ์ของคุณ
+install | ติดตั้ง | Install the program. | ติดตั้งโปรแกรม
+delete | ลบ | Delete the message. | ลบข้อความ
+connect | เชื่อมต่อ | Connect to the Wi-Fi. | เชื่อมต่อไวไฟ
+signal | สัญญาณ | There is no signal here. | ที่นี่ไม่มีสัญญาณ
+`);
+U('talk', 2, 'ขอบคุณ ขอโทษ ขออนุญาต', `
+appreciate | ซาบซึ้ง/ขอบคุณ | I appreciate your help. | ฉันซาบซึ้งที่คุณช่วย
+forgive | ให้อภัย | Please forgive me. | โปรดให้อภัยฉัน
+allow | อนุญาต | Are we allowed to park here? | เราจอดรถที่นี่ได้ไหม
+mind | รังเกียจ/รบกวน | Do you mind if I sit here? | ขอนั่งตรงนี้ได้ไหม
+favor | ความช่วยเหลือ | Can you do me a favor? | ช่วยอะไรฉันหน่อยได้ไหม
+permission | การอนุญาต | You need permission. | คุณต้องได้รับอนุญาต
+---
+upstairs | ชั้นบน | The office is upstairs. | สำนักงานอยู่ชั้นบน
+downstairs | ชั้นล่าง | Wait downstairs. | รอที่ชั้นล่าง
+floor | ชั้น/พื้น | It's on the third floor. | อยู่ชั้นสาม
+elevator | ลิฟต์ | Take the elevator. | ขึ้นลิฟต์
+reception | แผนกต้อนรับ | Ask at reception. | สอบถามที่แผนกต้อนรับ
+restroom | ห้องน้ำ | Where is the restroom? | ห้องน้ำอยู่ที่ไหน
+`);
+U('talk', 3, 'บริการและติดต่อราชการ', `
+customer | ลูกค้า | The customer is waiting. | ลูกค้ากำลังรออยู่
+service | บริการ | The service is good. | บริการดี
+form | แบบฟอร์ม | Fill in this form. | กรอกแบบฟอร์มนี้
+sign | ลงชื่อ/ป้าย | Sign here, please. | กรุณาลงชื่อตรงนี้
+document | เอกสาร | Bring your documents. | นำเอกสารมาด้วย
+copy | สำเนา | I need a copy of your ID card. | ฉันต้องการสำเนาบัตรประชาชนของคุณ
+---
+manager | ผู้จัดการ | I want to speak to the manager. | ฉันอยากคุยกับผู้จัดการ
+complaint | คำร้องเรียน | I want to make a complaint. | ฉันต้องการร้องเรียน
+exchange | แลกเปลี่ยน | Can I exchange this shirt? | ขอเปลี่ยนเสื้อตัวนี้ได้ไหม
+wait | รอ | Please wait a moment. | กรุณารอสักครู่
+office hours | เวลาทำการ | Office hours are 8:30 to 4:30. | เวลาทำการคือ 8:30 ถึง 16:30
+queue number | บัตรคิว | Take a queue number. | รับบัตรคิว
+`);
+U('talk', 4, 'ประชุมและนำเสนอ', `
+present | นำเสนอ | I will present the plan. | ฉันจะนำเสนอแผน
+discuss | หารือ | Let's discuss the problem. | มาหารือเรื่องปัญหากัน
+decide | ตัดสินใจ | We need to decide today. | เราต้องตัดสินใจวันนี้
+agenda | วาระการประชุม | What is on the agenda? | มีวาระอะไรบ้าง
+summary | สรุป | Here is a short summary. | นี่คือสรุปสั้นๆ
+result | ผลลัพธ์ | The result is good. | ผลลัพธ์ดี
+---
+propose | เสนอ | I propose a new idea. | ฉันเสนอความคิดใหม่
+feedback | ความคิดเห็นกลับ | Thank you for your feedback. | ขอบคุณสำหรับความคิดเห็น
+progress | ความคืบหน้า | We made good progress. | เราคืบหน้าไปมาก
+conclude | สรุป/ปิดท้าย | Let me conclude. | ขอสรุปปิดท้าย
+example | ตัวอย่าง | Can you give an example? | ยกตัวอย่างได้ไหม
+detail | รายละเอียด | Tell me the details. | บอกรายละเอียดหน่อย
+`);
+G(1, 'There is / There are', 'There is + นามเอกพจน์/นับไม่ได้ · There are + นามพหูพจน์', `
+There ___ a car in front of the house. | is | are, be, am | a car เอกพจน์ใช้ is | มีรถคันหนึ่งอยู่หน้าบ้าน
+There ___ many people in the market. | are | is, am, be | people พหูพจน์ใช้ are | มีคนมากมายในตลาด
+There ___ some water in the glass. | is | are, have, has | water นับไม่ได้ใช้ is | มีน้ำอยู่ในแก้ว
+___ there any questions? | Are | Is, Do, Does | questions พหูพจน์ใช้ Are | มีคำถามไหม
+There ___ two police officers at the gate. | are | is, has, have | two officers พหูพจน์ใช้ are | มีตำรวจสองนายที่ประตู
+There ___ a problem yesterday. | was | were, is, are | yesterday + เอกพจน์ใช้ was | เมื่อวานมีปัญหา
+`);
+G(2, 'Adverbs of frequency', 'always > usually > often > sometimes > never · วางหน้ากริยาแท้ แต่หลัง verb to be', `
+He ___ goes to work by bus. | usually | usual, use, used | วางหน้ากริยา goes | ปกติเขาไปทำงานด้วยรถเมล์
+She is ___ late. | never | ever, not ever, none | หลัง verb to be | เธอไม่เคยมาสาย
+I ___ drink coffee in the morning. | always | all, allways, every | always = เสมอ | ฉันดื่มกาแฟตอนเช้าเสมอ
+They ___ play football on Sunday. | often | much, very, many | often = บ่อย | พวกเขาเล่นฟุตบอลวันอาทิตย์บ่อยๆ
+How ___ do you exercise? | often | many, much, long | How often = บ่อยแค่ไหน | คุณออกกำลังกายบ่อยแค่ไหน
+We ___ eat out on weekends. | sometimes | sometime, some, someday | sometimes = บางครั้ง | บางครั้งเราก็กินข้าวนอกบ้านช่วงสุดสัปดาห์
+`);
+G(2, 'Plural nouns', 'ส่วนใหญ่ + s · ลงท้าย s/sh/ch/x + es · y → ies · คำพิเศษ man→men, child→children', `
+I have two ___. | boxes | boxs, boxies, box | ลงท้าย x เติม es | ฉันมีกล่องสองใบ
+There are three ___ in the room. | men | mans, mens, man | man → men | มีผู้ชายสามคนในห้อง
+The ___ are playing. | children | childs, childrens, child | child → children | เด็กๆ กำลังเล่นกัน
+I visited two ___. | cities | citys, cityes, city | y หลังพยัญชนะ → ies | ฉันไปเที่ยวสองเมือง
+She bought five ___. | watches | watchs, watchies, watch | ลงท้าย ch เติม es | เธอซื้อนาฬิกาห้าเรือน
+My ___ hurt. | feet | foots, feets, foot | foot → feet | เท้าของฉันเจ็บ
+`);
+G(3, 'Past Continuous', 'was/were + V-ing = กำลังทำอยู่ในอดีต · มักใช้กับ when/while', `
+I ___ sleeping when the phone rang. | was | were, am, is | I + was + V-ing | ฉันกำลังนอนอยู่ตอนโทรศัพท์ดัง
+They were ___ TV at 8 last night. | watching | watch, watched, watches | were + V-ing | เมื่อคืนตอนสองทุ่มพวกเขากำลังดูทีวี
+What ___ you doing at that time? | were | was, did, are | you + were | ตอนนั้นคุณกำลังทำอะไรอยู่
+While she was cooking, he ___ the floor. | was cleaning | cleaned, cleans, is cleaning | while + สองเหตุการณ์พร้อมกัน | ขณะที่เธอทำอาหาร เขากำลังทำความสะอาดพื้น
+The thief ___ when the police arrived. | was running | runs, is running, run | กำลังทำอยู่ตอนอีกเหตุการณ์เกิด | ขโมยกำลังวิ่งหนีตอนตำรวจมาถึง
+It ___ raining all day yesterday. | was | were, is, did | It + was | เมื่อวานฝนตกทั้งวัน
+`);
+G(3, 'Too / Enough / So / Such', 'too + adj = เกินไป · adj + enough = พอ · so + adj · such + a + adj + noun', `
+This box is ___ heavy to carry. | too | enough, so, very much | too + adj = เกินไป | กล่องนี้หนักเกินกว่าจะยก
+He is old ___ to drive. | enough | too, so, such | adj + enough | เขาอายุมากพอที่จะขับรถ
+It was ___ a good movie. | such | so, too, enough | such + a + adj + noun | มันเป็นหนังที่ดีมาก
+She is ___ kind. | so | such, enough, too much | so + adj | เธอใจดีมาก
+We don't have ___ time. | enough | too, so, such | enough + noun | เรามีเวลาไม่พอ
+The coffee is too hot ___ drink. | to | for, so, that | too + adj + to V1 | กาแฟร้อนเกินกว่าจะดื่ม
+`);
+G(4, 'Used to / Be used to', 'used to + V1 = เคยทำในอดีต (ตอนนี้ไม่แล้ว) · be used to + V-ing = เคยชิน', `
+I ___ smoke, but I stopped. | used to | use to, am used to, used | used to + V1 = เคยทำ | ฉันเคยสูบบุหรี่ แต่เลิกแล้ว
+He is used to ___ up early. | getting | get, got, gets | be used to + V-ing | เขาชินกับการตื่นเช้า
+Did you ___ live here? | use to | used to, using to, uses to | Did + use to (ไม่มี d) | คุณเคยอยู่ที่นี่ไหม
+She ___ used to the hot weather. | is | does, has, used | be used to | เธอชินกับอากาศร้อน
+There ___ be a cinema here. | used to | is used to, use, using to | used to = เคยมี | ที่นี่เคยมีโรงหนัง
+I'm not used to ___ on the left. | driving | drive, drove, drives | be used to + V-ing | ฉันไม่ชินกับการขับชิดซ้าย
+`);
+G(4, 'Reported speech', 'เล่าคำพูดคนอื่น: ถอยกาล is→was, will→would, can→could · said (that) / told + คน', `
+He said he ___ tired. | was | is, will be, be | is → was | เขาบอกว่าเขาเหนื่อย
+She told ___ that she was busy. | me | to me, I, my | told + คน | เธอบอกฉันว่าเธอยุ่ง
+They said they ___ come tomorrow. | would | will, can, are | will → would | พวกเขาบอกว่าจะมาพรุ่งนี้
+He said he ___ swim. | could | can, cans, is | can → could | เขาบอกว่าเขาว่ายน้ำได้
+The officer asked me where I ___. | lived | live, do live, living | คำถามแบบเล่า ใช้ลำดับประโยคบอกเล่า | เจ้าหน้าที่ถามว่าฉันอาศัยอยู่ที่ไหน
+She asked ___ I was a student. | if | that, what, so | ถามแบบ yes/no ใช้ if | เธอถามว่าฉันเป็นนักเรียนหรือเปล่า
+`);
+D(2, 'ร้านค้าและร้านอาหาร', `
+A: Are you ready to order? / B: ___ | Yes, I'd like fried rice, please. | Yes, I'm ready to sleep.; No, I ordered it yesterday.; It's very delicious, bye. | A: พร้อมสั่งอาหารหรือยัง / B: พร้อมแล้ว ขอข้าวผัดครับ
+A: How would you like to pay? / B: ___ | By credit card, please. | Very much, thank you.; At the restaurant.; It's 200 baht. | A: จะชำระเงินแบบไหน / B: ใช้บัตรเครดิตครับ
+A: Can I try this shirt on? / B: ___ | Sure. The fitting room is over there. | No, it's a shirt.; Yes, it's 500 baht.; I like your shirt too. | A: ขอลองเสื้อตัวนี้ได้ไหม / B: ได้ ห้องลองอยู่ทางโน้น
+A: This is too expensive. / B: ___ | I can give you a 10% discount. | Yes, it's very cheap.; Thank you for coming.; I'm too expensive too. | A: แพงเกินไป / B: ลดให้ 10% ครับ
+A: Anything else? / B: ___ | No, that's all. Thank you. | Yes, I'm else.; I like anything.; See you anything. | A: รับอะไรเพิ่มไหม / B: ไม่แล้ว แค่นี้ ขอบคุณ
+---
+A: Excuse me, this soup is cold. / B: ___ | I'm so sorry. I'll bring you a new one. | Yes, it's a cold day.; Good, cold soup is nice.; Please eat it fast. | A: ขอโทษครับ ซุปเย็นแล้ว / B: ขอโทษจริงๆ จะนำถ้วยใหม่มาให้
+A: Do you have this in a larger size? / B: ___ | Let me check for you. | Yes, I am larger.; It's a big shop.; No, it's my size. | A: มีไซซ์ใหญ่กว่านี้ไหม / B: ขอเช็คให้ก่อนนะครับ
+A: Can I have the bill, please? / B: ___ | Sure, here you are. | Yes, my name is Bill.; I don't like bills.; Bill is not here. | A: ขอบิลด้วย / B: ได้ครับ นี่ครับ
+A: Is service charge included? / B: ___ | Yes, it's already included. | Yes, I'm in service.; No, I'm a charger.; The service was yesterday. | A: รวมค่าบริการแล้วหรือยัง / B: รวมแล้วครับ
+A: What do you recommend? / B: ___ | The green curry is very popular. | I recommend you.; Yes, I do.; It's very far. | A: แนะนำอะไรดี / B: แกงเขียวหวานเป็นที่นิยมมาก
+`);
+D(3, 'โทรศัพท์และนัดหมาย', `
+A: Hello, may I speak to Officer Somchai? / B: ___ | Just a moment, please. | Yes, you speak English.; He is a good officer.; No, I can't speak. | A: สวัสดีครับ ขอสายคุณสมชายครับ / B: รอสักครู่นะครับ
+A: He's not here right now. / B: ___ | Can I leave a message? | Here is right now.; OK, I'm here too.; Good, see you now. | A: ตอนนี้เขาไม่อยู่ / B: ขอฝากข้อความได้ไหม
+A: When are you free this week? / B: ___ | How about Thursday afternoon? | I'm free of charge.; Last week was good.; Yes, I am free. | A: สัปดาห์นี้คุณว่างเมื่อไหร่ / B: บ่ายวันพฤหัสบดีดีไหม
+A: Sorry, I can't hear you. / B: ___ | I'll call you back. | I can't see you.; Yes, you hear me.; Hear is good. | A: ขอโทษ ไม่ได้ยินเลย / B: เดี๋ยวโทรกลับนะ
+A: Can we change the meeting to Monday? / B: ___ | Sure, Monday is fine for me. | Change is good money.; I met him on Monday.; No, it's a meeting. | A: เลื่อนประชุมเป็นวันจันทร์ได้ไหม / B: ได้ วันจันทร์สะดวกครับ
+---
+A: You have the wrong number. / B: ___ | Oh, I'm sorry to bother you. | Thank you, it's my number.; Yes, number one.; It's not wrong. | A: โทรผิดเบอร์แล้วครับ / B: ขอโทษที่รบกวนครับ
+A: Who's calling, please? / B: ___ | This is Nut from the police station. | I'm calling you.; Please call me.; Yes, I'm calling. | A: ใครโทรมาครับ / B: นัทจากสถานีตำรวจครับ
+A: Could you spell your name? / B: ___ | Sure. N-U-T. | My name is long.; I can't spell well, bye.; It's a nice name. | A: ช่วยสะกดชื่อหน่อยได้ไหม / B: ได้ครับ N-U-T
+A: I'll be there in ten minutes. / B: ___ | OK, see you soon. | Ten minutes ago.; I'm not there.; There is ten. | A: อีกสิบนาทีถึง / B: โอเค แล้วเจอกัน
+A: Thank you for calling. / B: ___ | You're welcome. Goodbye. | Yes, call me.; Calling is free.; I'm sorry to hear that. | A: ขอบคุณที่โทรมา / B: ยินดีครับ สวัสดีครับ
+`);
+R(1, 'เรื่องสั้นง่ายๆ', 'At the Market', `Every Saturday, Nida goes to the market with her mother. They buy vegetables, fruit, and fish. Nida likes mangoes very much. The market is very busy in the morning, so they go early. After shopping, they eat noodles at a small shop. Then they take a taxi home because the bags are heavy.`,
+`ทุกวันเสาร์ นิดาไปตลาดกับแม่ พวกเขาซื้อผัก ผลไม้ และปลา นิดาชอบมะม่วงมาก ตลาดคนเยอะมากตอนเช้า พวกเขาจึงไปแต่เช้า หลังซื้อของ พวกเขากินก๋วยเตี๋ยวที่ร้านเล็กๆ แล้วนั่งแท็กซี่กลับบ้านเพราะถุงหนัก`, `
+When does Nida go to the market? | Every Saturday | Every day; Every Sunday; On Monday
+What fruit does Nida like? | Mangoes | Bananas; Apples; Oranges
+Why do they go early? | The market is busy in the morning. | The market closes at 7.; They want to sleep later.; Nida goes to school.
+How do they go home? | By taxi | On foot; By bus; By motorbike
+`);
+R(2, 'ข่าวและประกาศ', 'Lost and Found', `Found: a black wallet near the bus stop on Silom Road on Tuesday evening. It has an ID card, two bank cards, and some cash. The owner can collect it at Bang Rak Police Station from 8 a.m. to 8 p.m. Please bring another document to prove your identity.`,
+`พบกระเป๋าเงินสีดำใกล้ป้ายรถเมล์ถนนสีลมเมื่อเย็นวันอังคาร ข้างในมีบัตรประชาชน บัตรธนาคารสองใบ และเงินสดจำนวนหนึ่ง เจ้าของมารับได้ที่สถานีตำรวจบางรักตั้งแต่ 8 โมงเช้าถึง 2 ทุ่ม กรุณานำเอกสารอื่นมาเพื่อยืนยันตัวตน`, `
+Where was the wallet found? | Near a bus stop | In a taxi; At a hospital; In the police station
+What color is the wallet? | Black | Brown; Red; White
+Where can the owner get it? | Bang Rak Police Station | Silom bus stop; The bank; Any police station
+What must the owner bring? | Another document to prove identity | Some cash; Two bank cards; A photo of the wallet
+`);
+R(3, 'งานตำรวจ', 'Songkran Safety', `During the Songkran holiday, many people travel home and road accidents increase. This year, police set up more than 2,000 checkpoints across the country. Officers checked drivers for alcohol and made sure motorcyclists wore helmets. The police also asked people not to drive when they are tired. As a result, the number of accidents was lower than last year.`,
+`ช่วงวันหยุดสงกรานต์ ผู้คนจำนวนมากเดินทางกลับบ้านและอุบัติเหตุบนท้องถนนเพิ่มขึ้น ปีนี้ตำรวจตั้งด่านตรวจมากกว่า 2,000 จุดทั่วประเทศ เจ้าหน้าที่ตรวจแอลกอฮอล์ผู้ขับขี่และดูว่าผู้ขับขี่มอเตอร์ไซค์สวมหมวกกันน็อก ตำรวจยังขอให้ประชาชนไม่ขับรถตอนเหนื่อย ผลคือจำนวนอุบัติเหตุลดลงจากปีที่แล้ว`, `
+Why do accidents increase during Songkran? | Many people travel home. | The roads are new.; It rains a lot.; There are no police.
+How many checkpoints did police set up? | More than 2,000 | About 200; Exactly 1,000; Less than 2,000
+What did officers check? | Alcohol and helmets | Passports and tickets; Phones and bags; Car colors
+What was the result? | Fewer accidents than last year | More accidents than last year; No checkpoints; More tired drivers
+`);
+R(4, 'บทความ', 'Why Police Need English', `Thailand welcomes millions of foreign tourists every year. When tourists lose their passports, get into accidents, or become victims of crime, they often need help from the police. Officers who can speak English can understand the problem quickly and give clear instructions. This builds trust and improves the country's image. For this reason, English skills are now an important part of police training and recruitment.`,
+`ประเทศไทยต้อนรับนักท่องเที่ยวต่างชาติหลายล้านคนทุกปี เมื่อนักท่องเที่ยวทำหนังสือเดินทางหาย ประสบอุบัติเหตุ หรือตกเป็นเหยื่ออาชญากรรม มักต้องการความช่วยเหลือจากตำรวจ เจ้าหน้าที่ที่พูดภาษาอังกฤษได้จะเข้าใจปัญหาได้เร็วและให้คำแนะนำที่ชัดเจน ซึ่งสร้างความไว้วางใจและภาพลักษณ์ที่ดีให้ประเทศ ด้วยเหตุนี้ ทักษะภาษาอังกฤษจึงเป็นส่วนสำคัญของการฝึกอบรมและการรับสมัครตำรวจ`, `
+Who often needs help from the police? | Foreign tourists | Police trainers; Thai students only; Airline staff
+What can English-speaking officers do? | Understand problems quickly | Travel abroad for free; Avoid all crimes; Stop tourists from coming
+What does the word "image" mean here? | how people see the country | a photo; a passport; a camera
+What is the main idea? | English is important for Thai police. | Tourists should learn Thai.; Thailand has many accidents.; Police should travel more.
 `);
 
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)

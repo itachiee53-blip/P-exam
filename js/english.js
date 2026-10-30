@@ -63,7 +63,8 @@ function renderEngPath(){
     <button data-q="rev" style="--q:#8b5cf6"><i data-lucide="layers"></i><b>ทบทวน</b><small>${due ? `ถึงรอบ ${due}` : 'ทวนคำ'}</small></button>
     <button data-q="lv" style="--q:#0ea5e9"><i data-lucide="target"></i><b>วัดระดับ</b><small>${ENG_LEVELS[E.lv]}</small></button>
   </div></div><div class="eng-map">`;
-  const UC = [C.color, '#0f9d76', '#8b5cf6', '#e8590c', '#d6336c', '#1098ad', '#ca8a04', '#2f6fb5'];
+  // สีหน่วย: สดใส ไม่เข้ม (ตัวแรกเป็นสีคอร์ส)
+  const UC = [C.color, '#1fbf8f', '#a07cf8', '#ff8a4c', '#ec6ba8', '#38bdf8', '#4f8df7', '#f5a524'];
   C.units.forEach((u, ui) => {
     const uc = UC[ui % UC.length];
     const nd = u.ls.filter((_, li) => E.done[`${E.course}:${u.t}:${li}`]).length;
