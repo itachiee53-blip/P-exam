@@ -32,15 +32,23 @@ function vcQueue(d){
 function vcStart(d){
   const q = vcQueue(d);
   if(!q.length) return toast('ยังไม่มีคำในหมวดนี้', 'err');
-  VC.run = { d, q, i: 0, flip: false, ok: 0, again: 0, redo: new Set() };
+  VC.run = { d, q, i: 0, flip: false, ok: 0, again: 0, redo: new Set() }; ENG_TAB = 'review';
   PAGE === 'cards' ? renderCards() : go('cards');
 }
 
+// หน้า "ภาษาอังกฤษ": แท็บบทเรียน (english.js) + แท็บทบทวน (บัตรคำ)
 function renderCards(){
   ensureVocab();
+  const fab = $('#fab'); if(fab) fab.hidden = engBusy();
   if(VC.run) return renderVcRun();
+  if(LS) return renderLesson();
+  if(PT) return renderPlace();
+  if(!engState().lv) return renderOnboard();
+  ENG_TAB === 'review' ? renderVcHome() : renderEngPath();
+}
+function renderVcHome(){
   const ds = vcDecks(), all = vcQueue(null).length, due = vcDueCount();
-  $('#view').innerHTML = `
+  $('#view').innerHTML = engTabs() + `
   <div class="vc-hero">
     <div><small>ทวนวันนี้</small><b>${all}</b><span>คำ${due ? ` · ถึงรอบ ${due}` : ''}</span></div>
     <button class="vc-go" id="vcAll"><i data-lucide="play"></i>เริ่ม</button>
@@ -53,6 +61,7 @@ function renderCards(){
       <b>${esc(d)}</b><small>${L.length} คำ · จำได้ ${pct}%</small>
       <span class="vc-bar"><i style="width:${pct}%"></i></span></button>`;
   }).join('') || '<div class="empty">ยังไม่มีคำศัพท์</div>'}</div>`;
+  engBindTabs();
   $('#vcAll').onclick = () => vcStart(null);
   $$('[data-deck]').forEach(b => b.onclick = () => vcStart(b.dataset.deck));
   icons();
