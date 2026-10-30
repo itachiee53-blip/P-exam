@@ -1692,6 +1692,13 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .qrow .ansline{margin-top:10px;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--green) 10%,var(--surface));font-size:13.5px}
 .qrow .side .ib.sm{width:30px;height:30px;border:0;background:var(--surface2)}
 .qrow .meta .tag{padding:3px 10px}
+
+/* ตัวเลือกระดับความยากในหน้าทำข้อสอบ */
+.dsel{display:inline-flex;gap:2px;padding:2px;border-radius:999px;background:var(--surface2)}
+.dsel button{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;color:var(--muted);transition:background .2s,color .2s}
+.dsel button.on.d0{background:var(--green-2);color:var(--green)}
+.dsel button.on.d1{background:var(--orange-2);color:var(--orange)}
+.dsel button.on.d2{background:var(--red-2);color:var(--red)}
 </style>
 </head>
 <body>
@@ -4972,7 +4979,7 @@ function paintQ(){
     <div class="row" style="gap:7px;flex-wrap:wrap">
       <span class="tag b">ข้อ ${EX.i+1} / ${EX.qs.length}</span>
       <span class="tag">${esc(q.cat)}</span>
-      <span class="tag ${q.d==='ยาก'?'r':q.d==='ปานกลาง'?'o':'g'}">${esc(q.d||'ง่าย')}</span>
+      <span class="dsel" role="group" aria-label="ระดับความยากของข้อนี้">${DIFFS.map((d, i) => `<button type="button" class="d${i} ${(q.d||'ง่าย')===d?'on':''}" data-setd="${d}">${d}</button>`).join('')}</span>
       ${q.star?'<span class="tag o" style="background:#fff6e0;color:#f5a524"><i data-lucide="star" style="width:11px;height:11px"></i>ดาว</span>':''}
       ${cuts.length ? `<span class="tag r"><i data-lucide="scissors" style="width:11px;height:11px"></i>ตัด ${cuts.length}</span>` : ''}
     </div>
@@ -5031,6 +5038,13 @@ function paintQ(){
       </div>` : ''}`;
 
   $$('#opts .opt:not(.is-cut)').forEach(b => b.onclick = () => pick(+b.dataset.o));
+  // ตั้งระดับความยากของข้อนี้เองระหว่างทำ (ระบบปรับอัตโนมัติจะเริ่มนับใหม่จากค่าที่ตั้ง)
+  $$('[data-setd]').forEach(b => b.onclick = () => {
+    q.d = b.dataset.setd;
+    const st = S.qstat[q.id]; if(st){ st.streakOk = 0; st.streakBad = 0; }
+    save();
+    $$('[data-setd]').forEach(x => x.classList.toggle('on', x === b));
+  });
   $$('[data-toggleexp]').forEach(b => {
     b.onclick = (e) => {
       e.stopPropagation();
