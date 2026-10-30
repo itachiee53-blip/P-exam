@@ -1699,6 +1699,23 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .dsel button.on.d0{background:var(--green-2);color:var(--green)}
 .dsel button.on.d1{background:var(--orange-2);color:var(--orange)}
 .dsel button.on.d2{background:var(--red-2);color:var(--red)}
+
+/* แอนิเมชันเปิดหนังสือ */
+.bk-ov{position:fixed;inset:0;z-index:118;background:color-mix(in srgb,var(--bg) 55%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:auto}
+.bk-3d{position:absolute;perspective:1600px;transform-style:preserve-3d;will-change:transform}
+.bk-back{position:absolute;inset:6px -2px -10px 4px;border-radius:4px 14px 14px 4px;background:color-mix(in srgb,var(--bk) 68%,#0b0f17);box-shadow:0 30px 50px -24px rgba(0,0,0,.55)}
+.bk-page{position:absolute;inset:0 0 0 2px;border-radius:2px 12px 12px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12%;text-align:center;
+  background:linear-gradient(90deg,rgba(0,0,0,.12),transparent 9%),repeating-linear-gradient(180deg,#fffdf7 0 25px,#f1ece0 25px 26px);color:#2a2a2a;
+  box-shadow:inset -3px 0 0 #e9e2d2,inset -6px 0 0 #fffdf7,inset -8px 0 0 #e4dccb}
+.bk-page small{font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--bk)}
+.bk-page b{font-size:20px;line-height:1.25;text-wrap:balance}
+.bk-page span{font-size:12px;color:#6b6b6b}
+.bk-page i{width:40%;height:2px;border-radius:2px;background:var(--bk);opacity:.6;margin-top:6px}
+.bk-cover{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;will-change:transform}
+.bk-front,.bk-inside{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:4px 12px 12px 4px;overflow:hidden}
+.bk-front .hb-face{width:100%;height:100%;aspect-ratio:auto}
+.bk-front .hb-name{font-size:clamp(16px,5vw,22px)}
+.bk-inside{transform:rotateY(180deg);background:linear-gradient(90deg,color-mix(in srgb,var(--bk) 30%,#fff),color-mix(in srgb,var(--bk) 14%,#fff));box-shadow:inset 0 0 0 10px color-mix(in srgb,var(--bk) 85%,#000)}
 </style>
 </head>
 <body>
@@ -2722,6 +2739,50 @@ function bookFace(name, cover, fg, icon){
   return `<span class="hb-face ${cover ? 'has-img' : ''}" style="--bk:${fg}">${cover ? `<img src="${cover}" alt="">` :
     `<span class="hb-kicker">P-EXAM</span><span class="hb-emblem"><i data-lucide="${icon || cicon(name)}"></i></span><span class="hb-name">${esc(name)}</span>`}</span>`;
 }
+
+// ==========================================
+// แอนิเมชันเปิดหนังสือ: ปกลอยขึ้นมากลางจอ แล้วเปิดออกเห็นหน้ากระดาษ ก่อนเข้าหน้าเลือกชุด
+// ==========================================
+let bookAnimBusy = false;
+async function openBookAnim(btn, done){
+  const face = btn.querySelector('.hb-face');
+  if(bookAnimBusy) return;
+  if(!face || matchMedia('(prefers-reduced-motion: reduce)').matches || !Element.prototype.animate){ playTone('tap'); return done(); }
+  bookAnimBusy = true;
+  playTone('tap');
+  const name = btn.dataset.play, r = face.getBoundingClientRect();
+  const total = S.questions.filter(q => q.cat === name).length;
+  const done0 = S.questions.filter(q => q.cat === name && (S.qstat[q.id]?.seen || 0) > 0).length;
+  const W = Math.min(250, innerWidth * .56), H = W * 4 / 3;
+  const ov = document.createElement('div');
+  ov.className = 'bk-ov';
+  ov.style.setProperty('--bk', getComputedStyle(btn).getPropertyValue('--bk'));
+  ov.innerHTML = `<div class="bk-3d" style="left:${(innerWidth - W) / 2}px;top:${(innerHeight - H) / 2}px;width:${W}px;height:${H}px">
+      <div class="bk-back"></div>
+      <div class="bk-page"><small>P-EXAM</small><b>${esc(name)}</b><span>${total.toLocaleString()} ข้อ · ทำแล้ว ${total ? Math.round(done0 / total * 100) : 0}%</span><i></i></div>
+      <div class="bk-cover"><div class="bk-front">${face.outerHTML}</div><div class="bk-inside"></div></div>
+    </div>`;
+  document.body.appendChild(ov);
+  icons(ov);
+  const book = ov.querySelector('.bk-3d'), cover = ov.querySelector('.bk-cover'), page = ov.querySelector('.bk-page');
+  const dx = r.left + r.width / 2 - innerWidth / 2, dy = r.top + r.height / 2 - innerHeight / 2, sc = r.width / W;
+  const ease = 'cubic-bezier(.22,1,.36,1)';
+  try{
+    ov.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, fill: 'both' });
+    await book.animate([{ transform: `translate(${dx}px,${dy}px) scale(${sc})` }, { transform: 'translate(0,0) scale(1)' }],
+      { duration: 460, easing: ease, fill: 'both' }).finished;
+    page.animate([{ opacity: .6 }, { opacity: 1 }], { duration: 500, fill: 'both' });
+    await Promise.all([
+      cover.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-158deg)' }], { duration: 720, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' }).finished,
+      book.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${W * .32}px)` }], { duration: 720, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'both' }).finished
+    ]);
+    await new Promise(r => setTimeout(r, 160)); // ค้างหน้ากระดาษให้เห็นชื่อวิชาครู่หนึ่ง
+    done();
+    await ov.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 240, easing: 'ease-out', fill: 'both' }).finished;
+  }catch(e){ done(); }
+  ov.remove(); bookAnimBusy = false;
+}
+
 function openIconPicker(catName){
   const curIcon = cicon(catName);
   const curTone = tone(catName);
@@ -3498,8 +3559,7 @@ function renderQuiz(){
   }); };
 
   $$('[data-play]').forEach(b => {
-    b.onclick = () => {
-      playTone('tap');
+    b.onclick = () => openBookAnim(b, () => {
       const catName = b.dataset.play;
       const allQs = S.questions.filter(q => q.cat === catName);
       if (!allQs.length) return toast('ไม่มีข้อสอบในหมวดนี้', 'err');
@@ -3605,7 +3665,7 @@ function renderQuiz(){
           });
         };
       });
-    };
+    });
   });
 
   $$('[data-dropcat]').forEach(b => b.onclick = () => deleteCategory(b.dataset.dropcat));
