@@ -22,7 +22,7 @@ function engOpen(F, i){
   return i === 0 || !!E.done[F[i - 1].key] || F[i].u.lv < E.lv || i === F.findIndex(x => x.u.lv >= E.lv) || F.slice(i).some(x => E.done[x.key]);
 }
 // ปุ่มเพิ่มคำ: ขึ้นเฉพาะหน้าแท็บทบทวน
-const engBusy = () => !!(LS || PT || VC.run || !engState().lv || ENG_TAB === 'learn');
+const engBusy = () => !!(LS || PT || VC.run || !engState().lv || ENG_TAB !== 'review');
 const engToday = () => engState().days[dkey()] || 0;
 function engStreak(){
   const d = engState().days, t = new Date(); let n = 0;
@@ -32,7 +32,8 @@ function engStreak(){
 }
 const engTabs = () => `<div class="eng-tabs" data-on="${ENG_TAB}">
   <button class="${ENG_TAB === 'learn' ? 'on' : ''}" data-etab="learn"><i data-lucide="graduation-cap"></i>บทเรียน</button>
-  <button class="${ENG_TAB === 'review' ? 'on' : ''}" data-etab="review"><i data-lucide="layers"></i>ทบทวน</button></div>`;
+  <button class="${ENG_TAB === 'review' ? 'on' : ''}" data-etab="review"><i data-lucide="layers"></i>ทบทวน</button>
+  <button class="${ENG_TAB === 'stats' ? 'on' : ''}" data-etab="stats"><i data-lucide="chart-no-axes-column"></i>สถิติ</button></div>`;
 const engBindTabs = () => $$('[data-etab]').forEach(b => b.onclick = () => { ENG_TAB = b.dataset.etab; renderCards(); });
 
 // ---------- แผนที่บทเรียน ----------
@@ -172,6 +173,7 @@ function engEx(t, w, pool){
     if(toks.length >= 3 && toks.length <= 9){ let s = shuf(toks); if(s.join(' ') === toks.join(' ')) s = s.reverse(); return { t, w, toks: s, pick: [] }; }
     t = 'word';
   }
+  if(t === 'type') return { t, w };
   return { t, w, opts: engOpts(w, pool, t === 'mean' ? 'th' : 'en') };
 }
 // แบบฝึกของคอร์สแบบข้อเลือก: ไวยากรณ์ (กฎ → เติมคำ → เรียงประโยค) / บทสนทนา / อ่านจับใจความ (เรื่อง → คำถาม)
@@ -205,7 +207,7 @@ function lessonStart(c, i, custom){
     LS = { c, i, key: x.key, ws, gram: true, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
     return renderCards();
   }
-  const types = ['word', 'blank', 'order', ...('speechSynthesis' in window ? ['listen'] : [])];
+  const types = ['word', 'blank', 'order', 'type', ...('speechSynthesis' in window ? ['listen'] : [])];
   for(let k = 0; k < ws.length; k += 2){
     const pair = ws.slice(k, k + 2);
     pair.forEach(w => { if(!E.known[w.en]) items.push({ t: 'intro', w }); });
@@ -219,7 +221,8 @@ function lessonStart(c, i, custom){
 const ENG_KIND = { intro: ['คำใหม่', '#0f9d76', 'sparkles'], mean: ['คำนี้แปลว่าอะไร', '#2f6fb5', 'languages'], word: ['ภาษาอังกฤษคือคำไหน', '#8b5cf6', 'type'],
   listen: ['ฟังแล้วเลือกคำที่ได้ยิน', '#e8590c', 'headphones'], blank: ['เติมคำในช่องว่าง', '#1098ad', 'text-cursor-input'], order: ['เรียงเป็นประโยค', '#d6336c', 'list-ordered'],
   match: ['จับคู่คำกับคำแปล', '#ca8a04', 'puzzle'], rule: ['กฎไวยากรณ์', '#4f46e5', 'book-open'], gram: ['เลือกคำที่ถูกต้อง', '#e8590c', 'spell-check'],
-  dlg: ['เลือกประโยคตอบให้เหมาะสม', '#0ea5e9', 'message-circle'], passage: ['อ่านเรื่อง', '#16a34a', 'book-open-text'], read: ['ตอบคำถามจากเรื่อง', '#16a34a', 'circle-help'] };
+  dlg: ['เลือกประโยคตอบให้เหมาะสม', '#0ea5e9', 'message-circle'], passage: ['อ่านเรื่อง', '#16a34a', 'book-open-text'], read: ['ตอบคำถามจากเรื่อง', '#16a34a', 'circle-help'],
+  type: ['พิมพ์เป็นภาษาอังกฤษ', '#db2777', 'keyboard'] };
 const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
   const L = LS;
@@ -229,19 +232,21 @@ function renderLesson(){
   const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}" style="--b:${ENG_OC[k % 4]}"><em>${'ABCD'[k]}</em>${esc(o)}</button>`).join('');
   let body = '';
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
-      <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${esc(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
+      <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${engTw(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
   if(it.t === 'rule') body = `<div class="ls-rule"><b>${esc(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${esc(r.trim())}</span>`).join('')}</div>`;
   if(it.t === 'dlg') body = `<div class="ls-chat">${w.lines.map(l => { const m = l.match(/^([AB]):\s*(.*)$/) || [0, 'A', l], me = m[1] === 'B';
-      return `<div class="ls-bub ${me ? 'me' : ''}"><em>${m[1]}</em><span>${m[2] === '___' ? '<i class="ls-dots"><b></b><b></b><b></b></i>' : esc(m[2])}</span></div>`; }).join('')}</div><div class="ls-opts">${opts}</div>`;
+      return `<div class="ls-bub ${me ? 'me' : ''}"><em>${m[1]}</em><span>${m[2] === '___' ? '<i class="ls-dots"><b></b><b></b><b></b></i>' : engTw(m[2])}</span></div>`; }).join('')}</div><div class="ls-opts">${opts}</div>`;
   if(it.t === 'passage' || it.t === 'read') body = `<div class="ls-pass ${it.t === 'read' ? 'mini' : ''}"><b>${esc(w.title)}</b>
-      <button class="ls-say" data-readp><i data-lucide="volume-2"></i></button><p>${esc(w.text)}</p>
+      <button class="ls-say" data-readp><i data-lucide="volume-2"></i></button><p>${engTw(w.text)}</p>
       ${it.t === 'passage' ? `<button class="ls-trbtn" id="lsTr"><i data-lucide="languages"></i>ดูคำแปล</button><p class="ls-ptr" hidden>${esc(w.ptr)}</p>` : ''}</div>
       ${it.t === 'read' ? `<p class="ls-q">${esc(w.q)}</p><div class="ls-opts">${opts}</div>` : ''}`;
-  if(it.t === 'gram') body = `<p class="ls-sent">${esc(w.q).replace('___', '<u>_____</u>')}</p><div class="ls-opts">${opts}</div>`;
+  if(it.t === 'gram') body = `<p class="ls-sent">${engTw(w.q).replace('___', '<u>_____</u>')}</p><div class="ls-opts">${opts}</div>`;
   if(it.t === 'mean') body = `<h2 class="ls-word">${esc(w.en)} ${say}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'word') body = `<h2 class="ls-word th">${esc(w.th)}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'listen') body = `<div class="ls-listen"><button class="ls-big-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-big-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button></div><div class="ls-opts">${opts}</div>`;
-  if(it.t === 'blank') body = `<p class="ls-sent">${esc(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
+  if(it.t === 'type') body = `<h2 class="ls-word th">${esc(w.th)}</h2><input class="inp ls-type" id="lsIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="พิมพ์เป็นภาษาอังกฤษ">
+      ${L.st === null ? '<button class="btn lg block" id="lsCheckT">ตรวจ</button>' : ''}`;
+  if(it.t === 'blank') body = `<p class="ls-sent">${engTw(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
   if(it.t === 'order') body = `<small class="ls-hint">${w.tr ? esc(w.tr) : `ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}`}</small>
       <div class="ls-ans">${it.pick.map(k => `<button class="ls-tile" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
       <div class="ls-tiles">${it.toks.map((s, k) => `<button class="ls-tile ${it.pick.includes(k) ? 'used' : ''}" data-tok="${k}">${esc(s)}</button>`).join('')}</div>
@@ -276,6 +281,19 @@ function renderLesson(){
     const ok = norm(it.pick.map(k => it.toks[k]).join(' ')) === norm(w.ex);
     $('#lsCheck').remove(); lessonFb(ok, w.ex);
   };
+  if($('#lsCheckT')){
+    const go = () => {
+      const v = $('#lsIn').value; if(!v.trim()) return $('#lsIn').focus();
+      const norm = x => x.toLowerCase().replace(/[^a-z' ]/g, '').replace(/\s+/g, ' ').trim(), a = norm(v), t = norm(w.en);
+      const near = a !== t && t.length >= 5 && engLev(a, t) <= 1, ok = a === t || near;
+      $('#lsIn').disabled = true; $('#lsIn').classList.add(ok ? 'ok' : 'bad'); $('#lsCheckT').remove();
+      lessonFb(ok, w.en);
+      if(near) $('.ls-fb > div').insertAdjacentHTML('beforeend', `<span>สะกดที่ถูก: ${esc(w.en)}</span>`);
+    };
+    $('#lsCheckT').onclick = go;
+    $('#lsIn').onkeydown = e => { if(e.key === 'Enter') go(); };
+    setTimeout(() => $('#lsIn') && $('#lsIn').focus(), 300);
+  }
   $$('[data-me]').forEach(b => b.onclick = () => { if(it.done.includes(b.dataset.me)) return; it.sel = b.dataset.me; engSay(it.sel); renderLesson(); });
   $$('[data-mt]').forEach(b => b.onclick = () => {
     const e = b.dataset.mt; if(!it.sel || it.done.includes(e)) return;
@@ -289,6 +307,7 @@ function renderLesson(){
 function lessonFb(ok, ans, noRedo){
   const L = LS, it = L.items[L.k];
   L.st = ok;
+  { const A = engState().acc || (engState().acc = {}), a = A[it.t] || (A[it.t] = [0, 0]); a[1]++; if(ok) a[0]++; } // ความแม่นยำตามแบบฝึก
   if(ok){ L.ok++; L.combo++; L.maxC = Math.max(L.maxC, L.combo); }
   else{
     L.bad++; L.combo = 0;
@@ -301,7 +320,7 @@ function lessonFb(ok, ans, noRedo){
   const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : it.t === 'dlg' ? it.w.a : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
   if(full){
     $('#lsFb').insertAdjacentHTML('beforeend', `<div class="ls-full">${it.t === 'gram' && it.w.why ? `<small class="ls-why"><i data-lucide="lightbulb"></i>${esc(it.w.why)}</small>` : ''}
-      <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-sayslow title="ฟังช้า"><i data-lucide="snail"></i></button><div><b>${esc(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
+      <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-sayslow title="ฟังช้า"><i data-lucide="snail"></i></button><div><b>${engTw(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
     $('[data-sayfull]').onclick = () => speakWord(full);
     $('[data-sayslow]').onclick = () => speakWord(full, true);
     setTimeout(() => speakWord(full), 350);
@@ -322,7 +341,7 @@ function lessonEnd(){
       const u = COURSES[L.c].units[L.test.ui]; L.pass = acc >= 80;
       if(L.pass){ E.ut = E.ut || {}; E.ut[`${L.c}:${u.t}`] = 1; if(L.test.skip) u.ls.forEach((_, li) => { const k = `${L.c}:${u.t}:${li}`; E.done[k] = Math.max(E.done[k] || 0, 1); }); }
     }
-    E.xp = (E.xp || 0) + xp; E.days[dkey()] = before + xp;
+    E.xp = (E.xp || 0) + xp; E.days[dkey()] = before + xp; E.maxC = Math.max(E.maxC || 0, L.maxC);
     L.goal = before < E.goal && before + xp >= E.goal;
     // คำในบทเข้าคลัง "ทบทวน" (ระบบทวนตามรอบวัน)
     const deck = COURSES[L.c].name;
@@ -333,6 +352,9 @@ function lessonEnd(){
       const miss = L.miss.has(w.en); c.seen = 1; c.box = miss ? 0 : Math.max(c.box || 0, 1); c.due = Date.now() + VC_GAP[c.box] * 864e5;
     });
     L.res = { stars, xp, acc, bonus, sec: (Date.now() - L.t0) / 1000 };
+    E.badges = E.badges || {};
+    L.newB = ENG_BADGES.filter(b => !E.badges[b[0]] && b[3](E));
+    L.newB.forEach(b => E.badges[b[0]] = dkey());
     save(); syncChrome(); playTone('submit');
   }
   const r = L.res;
@@ -341,6 +363,7 @@ function lessonEnd(){
     <b>${T ? (L.pass ? (T.skip ? 'ผ่าน! ข้ามหน่วยนี้ได้' : 'ผ่านการทดสอบ!') : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ลองอีกครั้งนะ</p>' : ''}
     <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.15 + k * .18}s">★</span>`).join('')}</div>
     ${r.bonus ? `<span class="ls-combo"><i data-lucide="flame"></i>คอมโบ ${LS.maxC} ติด +${r.bonus} XP</span>` : ''}
+    ${(L.newB || []).length ? `<div class="ls-newb"><small>ได้ถ้วยรางวัลใหม่!</small>${L.newB.map(b => `<span class="eng-badge on"><i data-lucide="${b[2]}"></i>${b[1]}</span>`).join('')}</div>` : ''}
     <div class="ls-res"><div><b id="lsXp">+0</b><small>XP</small></div><div><b>${r.acc}%</b><small>แม่นยำ</small></div><div><b>${mmss(r.sec)}</b><small>เวลา</small></div></div>
     ${T && !L.pass ? '<button class="btn ghost lg block" id="lsRetry" style="margin-bottom:8px"><i data-lucide="rotate-ccw"></i>ลองใหม่</button>' : ''}
     <button class="btn lg block" id="lsDone">ต่อไป</button></div>`;
@@ -350,7 +373,7 @@ function lessonEnd(){
   // XP วิ่งขึ้น + พลุ (ได้ 3 ดาว หรือถึงเป้าวันนี้)
   const t0 = performance.now(), tick = t => { const p = Math.min(1, (t - t0) / 700); const e = $('#lsXp'); if(!e) return; e.textContent = '+' + Math.round(r.xp * (1 - Math.pow(1 - p, 3))); if(p < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
-  if(r.stars === 3 || L.goal || L.pass) setTimeout(() => engConfetti(40, innerWidth / 2, innerHeight / 3), 350);
+  if(r.stars === 3 || L.goal || L.pass || (L.newB || []).length) setTimeout(() => engConfetti(40, innerWidth / 2, innerHeight / 3), 350);
   if(L.goal){ L.goal = false; setTimeout(() => toast('ถึงเป้าวันนี้แล้ว!', 'ok'), 700); }
 }
 // พลุกระดาษเล็กๆ
@@ -364,3 +387,92 @@ function engConfetti(n, x, y){
     document.body.appendChild(e); setTimeout(() => e.remove(), 1000);
   }
 }
+
+// ---------- แตะคำในประโยคเพื่อดูความหมาย ----------
+let ENG_DICT = null;
+const engTw = t => String(t || '').split(/(\s+)/).map(x => /[A-Za-z]/.test(x) ? `<span class="tw">${esc(x)}</span>` : esc(x)).join('');
+function engLookup(w){
+  if(!ENG_DICT){
+    ENG_DICT = new Map();
+    Object.values(COURSES).filter(C => !C.gram).forEach(C => C.units.forEach(u => u.ls.flat().forEach(x => ENG_DICT.set(x.en.toLowerCase(), x.th))));
+    S.cards.forEach(c => { const k = vcText(c.f).toLowerCase(); if(k && !ENG_DICT.has(k)) ENG_DICT.set(k, vcText(c.b)); });
+    // วลีหลายคำ: ค้นจากคำแรกได้ด้วย (wake up → wake)
+    [...ENG_DICT].forEach(([k, v]) => { const f = k.split(' ')[0]; if(f !== k && !ENG_DICT.has(f)) ENG_DICT.set(f, v + ` (${k})`); });
+    ENG_COMMON.split(',').forEach(x => { const [k, v] = x.split(':'); if(!ENG_DICT.has(k)) ENG_DICT.set(k, v); });
+  }
+  const tries = [w, w.replace(/ies$/, 'y'), w.replace(/ied$/, 'y'), w.replace(/es$/, ''), w.replace(/s$/, ''), w.replace(/ed$/, ''), w.replace(/d$/, ''), w.replace(/ing$/, ''), w.replace(/ing$/, 'e'), w.replace(/(.)\1ed$/, '$1'), w.replace(/(.)\1ing$/, '$1')];
+  for(const k of tries) if(ENG_DICT.has(k)) return ENG_DICT.get(k);
+  return '';
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest && e.target.closest('.tw'); if(!t) return;
+  e.stopPropagation();
+  const w = t.textContent.toLowerCase().replace(/[^a-z']/g, ''), th = engLookup(w), r = t.getBoundingClientRect();
+  $$('.tw-tip').forEach(x => x.remove()); $$('.tw.on').forEach(x => x.classList.remove('on')); t.classList.add('on');
+  const tip = document.createElement('div'); tip.className = 'tw-tip';
+  tip.innerHTML = `<b>${esc(w)}</b><span>${th ? esc(th) : 'ยังไม่มีในคลังคำ'}</span>`;
+  document.body.appendChild(tip);
+  tip.style.left = Math.max(8, Math.min(innerWidth - tip.offsetWidth - 8, r.left + r.width / 2 - tip.offsetWidth / 2)) + 'px';
+  tip.style.top = (r.top - tip.offsetHeight - 8 < 8 ? r.bottom + 8 : r.top - tip.offsetHeight - 8) + 'px';
+  speakWord(w);
+  setTimeout(() => { tip.remove(); t.classList.remove('on'); }, 2600);
+}, true);
+// คำพื้นฐานที่ใช้บ่อย (ให้แตะดูความหมายได้แม้ไม่อยู่ในบทเรียน)
+const ENG_COMMON = 'a:หนึ่ง (คำนำหน้านาม),an:หนึ่ง (คำนำหน้านาม),the:คำนำหน้านามเฉพาะ,is:เป็น/อยู่/คือ,am:เป็น/อยู่/คือ,are:เป็น/อยู่/คือ,was:เป็น/อยู่ (อดีต),were:เป็น/อยู่ (อดีต),be:เป็น/อยู่,been:เป็น/อยู่ (V3),' +
+  'i:ฉัน,you:คุณ,he:เขา (ชาย),she:เธอ,it:มัน,we:เรา,they:พวกเขา,me:ฉัน (กรรม),him:เขา (กรรม),her:เธอ/ของเธอ,us:เรา (กรรม),them:พวกเขา (กรรม),my:ของฉัน,your:ของคุณ,his:ของเขา,its:ของมัน,our:ของเรา,their:ของพวกเขา,' +
+  'this:นี่/นี้,that:นั่น/นั้น/ที่,these:เหล่านี้,those:เหล่านั้น,and:และ,or:หรือ,but:แต่,so:ดังนั้น,because:เพราะว่า,if:ถ้า,when:เมื่อ,then:แล้ว/จากนั้น,than:กว่า,' +
+  'in:ใน,on:บน/ใน (วัน),at:ที่/เวลา,to:ไปยัง/เพื่อ,from:จาก,with:กับ,for:สำหรับ/เป็นเวลา,of:ของ,by:โดย/ด้วย,about:เกี่ยวกับ/ประมาณ,near:ใกล้,into:เข้าไปใน,out:ออก,up:ขึ้น,down:ลง,' +
+  'do:ทำ,does:ทำ,did:ทำ (อดีต),done:ทำ (V3),have:มี,has:มี,had:มี (อดีต),go:ไป,goes:ไป,went:ไป (อดีต),come:มา,came:มา (อดีต),get:ได้รับ,got:ได้รับ (อดีต),make:ทำ/สร้าง,take:เอา/ใช้เวลา,took:เอา (อดีต),' +
+  'see:เห็น,saw:เห็น (อดีต),say:พูด,said:พูด (อดีต),tell:บอก,told:บอก (อดีต),give:ให้,gave:ให้ (อดีต),find:พบ,found:พบ (อดีต),think:คิด,want:ต้องการ,need:จำเป็นต้อง,like:ชอบ/เหมือน,love:รัก,' +
+  'can:สามารถ,could:สามารถ (อดีต/สุภาพ),will:จะ,would:จะ (สุภาพ/สมมติ),should:ควร,must:ต้อง,may:อาจ/ขออนุญาต,not:ไม่,no:ไม่/ไม่มี,yes:ใช่,very:มาก,too:เกินไป/ด้วย,all:ทั้งหมด,some:บ้าง/บางส่วน,any:ใดๆ,' +
+  'many:มาก (นับได้),much:มาก (นับไม่ได้),more:มากกว่า,most:มากที่สุด,every:ทุก,one:หนึ่ง,two:สอง,three:สาม,five:ห้า,ten:สิบ,day:วัน,time:เวลา/ครั้ง,year:ปี,man:ผู้ชาย,woman:ผู้หญิง,people:ผู้คน,' +
+  'child:เด็ก,children:เด็กๆ,car:รถยนต์,road:ถนน,city:เมือง,home:บ้าน,park:สวนสาธารณะ/จอด,eat:กิน,eats:กิน,ate:กิน (อดีต),run:วิ่ง,runs:วิ่ง,ran:วิ่ง (อดีต),wake:ตื่น,walk:เดิน,drive:ขับ,' +
+  'big:ใหญ่,small:เล็ก,good:ดี,bad:ไม่ดี,new:ใหม่,long:ยาว,sad:เศร้า,there:ที่นั่น/มี,here:ที่นี่,now:ตอนนี้,again:อีกครั้ง,also:ด้วย/ยัง,only:เท่านั้น,even:แม้แต่,never:ไม่เคย,often:บ่อย,who:ใคร/ผู้ซึ่ง,' +
+  'what:อะไร,where:ที่ไหน,why:ทำไม,how:อย่างไร,which:อันไหน/ซึ่ง,minutes:นาที,o:—,clock:นาฬิกา (o\'clock = นาฬิกา),please:กรุณา,thank:ขอบคุณ,thanks:ขอบคุณ,sorry:ขอโทษ,well:ดี/เก่ง,back:กลับ,next:ถัดไป,last:ล่าสุด/ที่แล้ว,motorbike:รถมอเตอร์ไซค์,dog:สุนัข,photo:รูปภาพ,village:หมู่บ้าน,internet:อินเทอร์เน็ต,tourist:นักท่องเที่ยว,tourists:นักท่องเที่ยว,phones:โทรศัพท์';
+// ระยะแก้คำ (สะกดผิด 1 ตัวยังนับว่าถูก)
+function engLev(a, b){
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for(let j = 1; j <= b.length; j++) d[0][j] = j;
+  for(let i = 1; i <= a.length; i++) for(let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+
+// ---------- ถ้วยรางวัล + สถิติ ----------
+const engDoneN = E => Object.keys(E.done).length;
+const ENG_BADGES = [
+  ['first', 'บทแรก', 'sparkles', E => engDoneN(E) >= 1],
+  ['l10', 'ผ่าน 10 บท', 'book-open', E => engDoneN(E) >= 10],
+  ['l50', 'ผ่าน 50 บท', 'library', E => engDoneN(E) >= 50],
+  ['s3', 'ต่อเนื่อง 3 วัน', 'flame', () => engStreak() >= 3],
+  ['s7', 'ต่อเนื่อง 7 วัน', 'flame', () => engStreak() >= 7],
+  ['s30', 'ต่อเนื่อง 30 วัน', 'flame', () => engStreak() >= 30],
+  ['w50', 'รู้ 50 คำ', 'languages', E => Object.keys(E.known).length >= 50],
+  ['w200', 'รู้ 200 คำ', 'languages', E => Object.keys(E.known).length >= 200],
+  ['star10', '3 ดาว 10 บท', 'star', E => Object.values(E.done).filter(v => v === 3).length >= 10],
+  ['c10', 'คอมโบ 10', 'zap', E => (E.maxC || 0) >= 10],
+  ['xp1k', '1,000 XP', 'trophy', E => (E.xp || 0) >= 1000],
+  ['test', 'ผ่านทดสอบหน่วย', 'medal', E => Object.keys(E.ut || {}).length >= 1],
+  ['multi', 'เรียน 3 คอร์ส', 'compass', E => new Set(Object.keys(E.done).map(k => k.split(':')[0])).size >= 3]
+];
+function renderEngStats(){
+  const E = engState(), B = E.badges || {}, nb = ENG_BADGES.filter(b => B[b[0]]).length;
+  const days = [...Array(7)].map((_, k) => { const d = new Date(); d.setDate(d.getDate() - 6 + k); return [d, E.days[dkey(d)] || 0]; });
+  const mx = Math.max(E.goal, ...days.map(x => x[1])), TD = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
+  const acc = Object.entries(E.acc || {}).filter(([k, a]) => ENG_KIND[k] && a[1] >= 3).sort((a, b) => a[1][0] / a[1][1] - b[1][0] / b[1][1]);
+  $('#view').innerHTML = engTabs() + `<div class="eng-stats">
+    <div class="eng-tiles">${[['zap', '#eab308', (E.xp || 0).toLocaleString(), 'XP รวม'], ['flame', '#f97316', engStreak(), 'วันต่อเนื่อง'],
+      ['languages', '#2f6fb5', Object.keys(E.known).length, 'คำที่เรียนแล้ว'], ['book-check', '#16a34a', engDoneN(E), 'บทที่ผ่าน']]
+      .map(([ic, c, v, t], k) => `<div style="--q:${c};animation-delay:${k * .06}s"><i data-lucide="${ic}"></i><b>${v}</b><small>${t}</small></div>`).join('')}</div>
+    <div class="card eng-card"><h3>XP 7 วันล่าสุด</h3><div class="eng-bars">${days.map(([d, v], k) => `<div class="${k === 6 ? 'today' : ''}"><em>${v || ''}</em>
+      <i style="height:${Math.max(4, v / mx * 100)}%;animation-delay:${k * .05}s"></i><small>${TD[d.getDay()]}</small></div>`).join('')}</div></div>
+    <div class="card eng-card"><h3>ความแม่นยำตามแบบฝึก</h3>${acc.length ? acc.map(([k, a]) => { const p = Math.round(a[0] / a[1] * 100);
+      return `<div class="eng-row"><span style="--q:${ENG_KIND[k][1]}"><i data-lucide="${ENG_KIND[k][2]}"></i>${ENG_KIND[k][0]}</span><span class="vc-bar"><i style="width:${p}%;background:${p >= 80 ? 'var(--green)' : p >= 60 ? '#eab308' : 'var(--red)'}"></i></span><b>${p}%</b></div>`; }).join('')
+      : '<p class="eng-muted">เรียนอีกสักหน่อยแล้วจะขึ้นตรงนี้</p>'}</div>
+    <div class="card eng-card"><h3>คอร์ส</h3>${Object.entries(COURSES).map(([k, C]) => { const F = engFlat(k), n = F.filter(x => E.done[x.key]).length;
+      return `<div class="eng-row"><span style="--q:${C.color}"><i data-lucide="${C.ic}"></i>${C.name}</span><span class="vc-bar"><i style="width:${n / F.length * 100}%;background:${C.color}"></i></span><b>${n}/${F.length}</b></div>`; }).join('')}</div>
+    <div class="card eng-card"><h3>ถ้วยรางวัล <small>${nb}/${ENG_BADGES.length}</small></h3><div class="eng-badges">${ENG_BADGES.map(b =>
+      `<span class="eng-badge ${B[b[0]] ? 'on' : ''}"><i data-lucide="${B[b[0]] ? b[2] : 'lock'}"></i>${b[1]}</span>`).join('')}</div></div>
+  </div>`;
+  engBindTabs(); icons();
+}
+
