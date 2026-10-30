@@ -132,7 +132,6 @@ function renderQuiz(){
   <div class="row" style="gap:8px;margin-bottom:12px;flex-wrap:wrap">
     <button class="btn ghost sm" id="btnBulk"><i data-lucide="clipboard-list"></i>นำเข้าชุด</button>
     <button class="btn ${QF.sel ? '' : 'ghost'} sm" id="btnSelMode"><i data-lucide="list-checks"></i>${QF.sel ? 'เลิกเลือก' : 'เลือกหลายข้อ'}</button>
-    <button class="btn ghost sm" onclick="openCloudHubModal()"><i data-lucide="cloud"></i>คลังออนไลน์</button>
     <button class="btn ghost sm" id="btnRandom" ${L.length?'':'disabled'}><i data-lucide="shuffle"></i>สุ่มทำ</button>
     ${(QF.cat && QF.cat !== 'ทั้งหมด') ? `
       <button class="btn ghost sm" id="btnFilterBatch" style="border-radius:12px;padding:6px 12px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
@@ -307,7 +306,7 @@ function renderQuiz(){
   }
   if($('#btnRandom'))$('#btnRandom').onclick=()=>{
     playTone('tap');
-    startExam({ids:L.map(q=>q.id),count:Math.min(20,L.length),minutes:15,mode:'practice',label:'สุ่มฝึก '+(QF.cat==='ทั้งหมด'?'ทุกหมวด':QF.cat)});
+    randomPick(L.map(q => q.id), QF.cat === 'ทั้งหมด' ? (bookOf(QF.book)?.name || 'ทุกหมวด') : QF.cat);
   };
 
   const btnFB = $('#btnFilterBatch');
