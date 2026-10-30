@@ -87,7 +87,7 @@ function renderQuiz(){
     ${QF.term?'<button class="ib sm" id="qsClear"><i data-lucide="x"></i></button>':''}
   </div>
 
-  <div class="row" style="margin:14px 0 0;gap:8px;flex-wrap:wrap">
+  <div class="row qbar" style="margin:14px 0 0;gap:8px;flex-wrap:wrap">
     <div class="chips sc" style="flex:1;min-width:0">
       ${['ทั้งหมด',...bookSubjects(QF.book)].map(c=>`<button class="chip ${QF.cat===c?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('')}
     </div>
