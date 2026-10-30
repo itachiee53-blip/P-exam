@@ -3904,6 +3904,169 @@ global network | เครือข่ายทั่วโลก | They broke a
 asylum | ลี้ภัย | He applied for asylum. | เขายื่นขอลี้ภัย
 `);
 
+U('basic', 0, 'คำนามรอบตัว 2', `
+---
+road | ถนน | The road is long. | ถนนยาว
+`);
+U('daily', 1, 'ร่างกายและความรู้สึกทางกาย', `
+toothache | ปวดฟัน | I have a toothache. | ฉันปวดฟัน
+stomachache | ปวดท้อง | He has a stomachache. | เขาปวดท้อง
+cough | ไอ | She has a bad cough. | เธอไอหนัก
+sore throat | เจ็บคอ | I have a sore throat. | ฉันเจ็บคอ
+---
+runny nose | น้ำมูกไหล | I have a runny nose. | ฉันน้ำมูกไหล
+itchy | คัน | My skin is itchy. | ผิวฉันคัน
+tired eyes | ตาล้า | I have tired eyes. | ตาฉันล้า
+backache | ปวดหลัง | I have a backache. | ฉันปวดหลัง
+sneeze | จาม | He sneezed loudly. | เขาจามเสียงดัง
+vomit | อาเจียน | She vomited twice. | เธออาเจียนสองครั้ง
+`);
+U('police', 1, 'ป้ายและคำเตือนง่ายๆ', `
+no smoking | ห้ามสูบบุหรี่ | No smoking here. | ห้ามสูบบุหรี่ที่นี่
+danger zone | เขตอันตราย | Keep out of the danger zone. | ห้ามเข้าเขตอันตราย
+slow down | ลดความเร็ว | Slow down, school zone. | ลดความเร็ว เขตโรงเรียน
+wet floor | พื้นเปียก | Caution: wet floor. | ระวังพื้นเปียก
+private | ส่วนบุคคล | Private property. | ทรัพย์สินส่วนบุคคล
+---
+pull | ดึง | Pull to open. | ดึงเพื่อเปิด
+entrance only | ทางเข้าเท่านั้น | This is entrance only. | ทางเข้าเท่านั้น
+no photos | ห้ามถ่ายภาพ | No photos allowed. | ห้ามถ่ายภาพ
+keep left | ชิดซ้าย | Keep left. | ชิดซ้าย
+watch your step | ระวังก้าว | Watch your step. | ระวังขั้นบันได
+`);
+U('daily', 2, 'งานบ้านเพิ่มเติม', `
+dust | ปัดฝุ่น | Dust the shelves. | ปัดฝุ่นชั้นวาง
+mop | ถูพื้น | Mop the floor. | ถูพื้น
+fold | พับ | Fold the clothes. | พับเสื้อผ้า
+hang | แขวน/ตาก | Hang the clothes outside. | ตากผ้าข้างนอก
+tidy up | จัดให้เรียบร้อย | Tidy up your room. | จัดห้องให้เรียบร้อย
+water the plants | รดน้ำต้นไม้ | Water the plants daily. | รดน้ำต้นไม้ทุกวัน
+---
+trash bag | ถุงขยะ | We need trash bags. | เราต้องการถุงขยะ
+bucket | ถังน้ำ | Fill the bucket. | เติมน้ำในถัง
+broom | ไม้กวาด | Where is the broom? | ไม้กวาดอยู่ไหน
+detergent | ผงซักฟอก | Buy detergent. | ซื้อผงซักฟอก
+chore | งานบ้าน | I hate chores. | ฉันเกลียดงานบ้าน
+messy | รก | The room is messy. | ห้องรก
+`);
+U('talk', 2, 'การขออนุญาตและการขอ', `
+can I | ขอ...ได้ไหม | Can I sit here? | ขอนั่งตรงนี้ได้ไหม
+may I | ขออนุญาต | May I come in? | ขออนุญาตเข้าไป
+is it OK if | ...ได้ไหม | Is it OK if I leave early? | ขอกลับก่อนได้ไหม
+could I have | ขอ...หน่อย | Could I have some water? | ขอน้ำหน่อย
+I'd like | ฉันต้องการ | I'd like a coffee. | ขอกาแฟหนึ่งแก้ว
+please wait | กรุณารอ | Please wait here. | กรุณารอที่นี่
+---
+of course you can | ได้อยู่แล้ว | Of course you can. | ได้อยู่แล้ว
+sorry, you can't | ขอโทษ ไม่ได้ | Sorry, you can't park here. | ขอโทษ จอดที่นี่ไม่ได้
+not allowed | ไม่อนุญาต | Pets are not allowed. | ไม่อนุญาตสัตว์เลี้ยง
+go right ahead | เชิญเลย | Go right ahead. | เชิญเลย
+just a second | แป๊บนึง | Just a second, please. | แป๊บนึงนะ
+after you | เชิญก่อน | After you. | เชิญคุณก่อน
+`);
+U('police', 2, 'การค้นและยึดของ', `
+pat down | ตรวจค้นตัว | I need to pat you down. | ขอตรวจค้นตัว
+empty your pockets | เอาของออกจากกระเป๋า | Empty your pockets. | เอาของในกระเป๋าออกมา
+search warrant | หมายค้น | We have a search warrant. | เรามีหมายค้น
+confiscate | ยึด | Police confiscated the drugs. | ตำรวจยึดยาเสพติด
+illegal item | ของผิดกฎหมาย | Any illegal items? | มีของผิดกฎหมายไหม
+inventory | รายการของกลาง | Make an inventory. | ทำรายการของกลาง
+---
+seal | ผนึก | Seal the evidence. | ผนึกของกลาง
+receipt of seizure | ใบรับของกลาง | Here is a receipt of seizure. | นี่ใบรับของกลาง
+owner | เจ้าของ | Who is the owner? | ใครเป็นเจ้าของ
+belongings | ข้าวของ | Take your belongings. | เอาข้าวของไปด้วย
+consent to search | ยินยอมให้ค้น | Do you consent to a search? | ยินยอมให้ค้นไหม
+cash found | เงินสดที่พบ | Count the cash found. | นับเงินสดที่พบ
+`);
+U('daily', 3, 'การเรียนภาษา', `
+vocabulary | คำศัพท์ | Learn new vocabulary. | เรียนคำศัพท์ใหม่
+grammar | ไวยากรณ์ | Grammar is important. | ไวยากรณ์สำคัญ
+pronunciation | การออกเสียง | Practice your pronunciation. | ฝึกการออกเสียง
+fluent | คล่อง | She is fluent in English. | เธอพูดอังกฤษคล่อง
+native speaker | เจ้าของภาษา | Talk to native speakers. | คุยกับเจ้าของภาษา
+dictionary | พจนานุกรม | Use a dictionary. | ใช้พจนานุกรม
+---
+sentence | ประโยค | Write a sentence. | เขียนประโยค
+meaning | ความหมาย | What's the meaning? | ความหมายคืออะไร
+translate into | แปลเป็น | Translate it into Thai. | แปลเป็นภาษาไทย
+listening | การฟัง | Listening is hard. | การฟังยาก
+speaking | การพูด | Speaking takes practice. | การพูดต้องฝึก
+`);
+U('talk', 3, 'การแสดงความประหลาดใจและปฏิกิริยา', `
+wow | ว้าว | Wow, that's amazing! | ว้าว สุดยอด!
+you're kidding | ล้อเล่นน่า | You're kidding! | ล้อเล่นน่า!
+what a surprise | น่าแปลกใจจัง | What a surprise! | น่าแปลกใจจัง!
+oh no | โอ้ไม่นะ | Oh no! I forgot. | โอ้ไม่นะ ลืม!
+that's great | ดีมาก | That's great news! | ข่าวดีมาก!
+I can't believe it | ไม่อยากเชื่อ | I can't believe it! | ไม่อยากเชื่อเลย!
+---
+seriously | จริงจังเหรอ | Seriously? | จริงจังเหรอ
+how come | ทำไมล่ะ | How come you're late? | ทำไมมาสายล่ะ
+lucky you | โชคดีจัง | Lucky you! | โชคดีจัง!
+too bad | แย่จัง | Too bad. | แย่จัง
+fantastic | ยอดเยี่ยม | That's fantastic! | ยอดเยี่ยม!
+no kidding | ไม่ได้ล้อเล่น/จริงเลย | No kidding! | จริงเลย!
+`);
+U('daily', 4, 'การเมืองพื้นฐาน', `
+voter | ผู้มีสิทธิเลือกตั้ง | Every voter must show ID. | ผู้มีสิทธิต้องแสดงบัตร
+candidate | ผู้สมัคร | Who is your candidate? | ผู้สมัครของคุณคือใคร
+party | พรรคการเมือง | Which party won? | พรรคไหนชนะ
+minister | รัฐมนตรี | The minister spoke today. | รัฐมนตรีพูดวันนี้
+prime minister | นายกรัฐมนตรี | The prime minister visited. | นายกฯ มาเยือน
+law maker | ผู้ออกกฎหมาย | Law makers passed the bill. | ผู้ออกกฎหมายผ่านร่างกฎหมาย
+---
+democracy | ประชาธิปไตย | Thailand is a democracy. | ไทยเป็นประชาธิปไตย
+opposition | ฝ่ายค้าน | The opposition disagreed. | ฝ่ายค้านไม่เห็นด้วย
+public service | บริการสาธารณะ | Police provide a public service. | ตำรวจให้บริการสาธารณะ
+local government | ส่วนท้องถิ่น | Contact the local government. | ติดต่อส่วนท้องถิ่น
+civil servant | ข้าราชการ | He is a civil servant. | เขาเป็นข้าราชการ
+`);
+U('police', 4, 'การปฏิบัติงานกลางคืน', `
+nightlife area | ย่านสถานบันเทิง | We patrol the nightlife area. | เราตรวจย่านสถานบันเทิง
+bar | บาร์ | The bar closes at 2 a.m. | บาร์ปิดตีสอง
+closing time | เวลาปิด | It's closing time. | ถึงเวลาปิดแล้ว
+underage drinking | ดื่มเหล้าก่อนวัย | Underage drinking is illegal. | ดื่มเหล้าก่อนวัยผิดกฎหมาย
+brawl | การตะลุมบอน | A brawl broke out. | เกิดการตะลุมบอน
+intoxicated | มึนเมา | He was intoxicated. | เขามึนเมา
+---
+noise level | ระดับเสียง | Keep the noise level down. | ลดระดับเสียง
+license check | ตรวจใบอนุญาต | We'll do a license check. | จะตรวจใบอนุญาต
+bouncer | การ์ดหน้าร้าน | The bouncer called us. | การ์ดหน้าร้านโทรหาเรา
+spiked drink | เครื่องดื่มผสมยา | Watch for spiked drinks. | ระวังเครื่องดื่มผสมยา
+sober up | สร่างเมา | Let him sober up. | ให้เขาสร่างเมาก่อน
+get home safely | กลับบ้านปลอดภัย | Get home safely. | กลับบ้านปลอดภัยนะ
+`);
+U('talk', 5, 'การบริหารทีม', `
+team leader | หัวหน้าทีม | She is our team leader. | เธอเป็นหัวหน้าทีม
+assign | มอบหมาย | Assign tasks clearly. | มอบหมายงานให้ชัด
+set goals | ตั้งเป้า | Set clear goals. | ตั้งเป้าให้ชัด
+motivate | จูงใจ | Motivate your team. | จูงใจทีม
+conflict | ความขัดแย้ง | Resolve the conflict. | แก้ความขัดแย้ง
+morale | ขวัญกำลังใจ | Team morale is high. | ขวัญกำลังใจทีมดี
+---
+recognize | ยกย่อง | Recognize good work. | ยกย่องผลงานดี
+mentor | พี่เลี้ยง | He is my mentor. | เขาเป็นพี่เลี้ยงฉัน
+coach | ฝึกสอน | Coach new officers. | ฝึกสอนเจ้าหน้าที่ใหม่
+evaluate performance | ประเมินผลงาน | We evaluate performance yearly. | ประเมินผลงานทุกปี
+chain of command | สายการบังคับบัญชา | Follow the chain of command. | ทำตามสายการบังคับบัญชา
+`);
+U('daily', 6, 'ศัพท์ทางวัฒนธรรมและสังคมขั้นสูง', `
+diversity | ความหลากหลาย | Diversity makes us stronger. | ความหลากหลายทำให้เราแข็งแกร่ง
+inclusion | การมีส่วนร่วมอย่างทั่วถึง | Promote inclusion. | ส่งเสริมการมีส่วนร่วม
+stereotype | ภาพเหมารวม | Avoid stereotypes. | หลีกเลี่ยงการเหมารวม
+discrimination | การเลือกปฏิบัติ | Discrimination is illegal. | การเลือกปฏิบัติผิดกฎหมาย
+heritage | มรดก | Protect our cultural heritage. | ปกป้องมรดกวัฒนธรรม
+assimilation | การกลมกลืน | Assimilation takes time. | การกลมกลืนต้องใช้เวลา
+---
+marginalized | ถูกทำให้เป็นชายขอบ | Help marginalized groups. | ช่วยกลุ่มชายขอบ
+cohesion | ความเป็นปึกแผ่น | Social cohesion matters. | ความเป็นปึกแผ่นทางสังคมสำคัญ
+tolerance | ความอดกลั้น/ยอมรับความต่าง | Tolerance builds peace. | ความอดกลั้นสร้างสันติ
+equity | ความเสมอภาค (ตามความต้องการ) | Equity is not equality. | ความเสมอภาคไม่ใช่ความเท่ากัน
+civic duty | หน้าที่พลเมือง | Voting is a civic duty. | การเลือกตั้งเป็นหน้าที่พลเมือง
+grassroots | รากหญ้า | It's a grassroots movement. | เป็นขบวนการระดับรากหญ้า
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
