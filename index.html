@@ -1736,6 +1736,21 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .shelf .book.dragging{opacity:.3}
 .drag-ghost{position:fixed;z-index:200;pointer-events:none;transform:scale(1.06) rotate(-3deg);filter:drop-shadow(0 20px 24px rgba(0,0,0,.3))}
 .shelf .hb{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+
+.hb-tag{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--blue-2);color:var(--blue);vertical-align:2px}
+.book-new{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:3/4;border:2px dashed var(--line);border-radius:6px 14px 14px 6px;color:var(--muted);font-size:13px}
+.book-new span{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface2)}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.inst-sub{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border-radius:18px;background:var(--surface2);text-align:left}
+.inst-sub b{font-size:14.5px}.inst-sub small{font-size:12px;color:var(--muted)}
+.inst-sub .hb-bar{width:100%}
+.inst-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.qsel{display:grid;place-items:center;width:30px;height:30px;flex:none}
+.qsel input{width:20px;height:20px;accent-color:var(--blue)}
+.sel-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:8px;
+  padding:8px 8px 8px 16px;border-radius:999px;background:var(--surface);box-shadow:0 14px 34px -12px rgba(0,0,0,.35);max-width:calc(100% - 24px);white-space:nowrap}
+.sel-bar b{font-size:13px}
+@media(min-width:981px){.sel-bar{bottom:24px}}
 </style>
 </head>
 <body>
@@ -2755,6 +2770,14 @@ function openThaiDatePicker(currentVal, onSave){
 }
 
 // หน้าปกหนังสือ: ใช้รูปที่ตั้งไว้ หรือสร้างปกจากสีและไอคอนของวิชา
+// รายการบนชั้น: หนังสือสถาบัน + วิชาที่ยังมีข้อนอกเล่ม (หรือวิชาว่างที่ยังไม่อยู่ในเล่มไหน) เรียงตาม S.shelf
+function shelfItems(){
+  const inBook = new Set((S.books || []).flatMap(b => b.cats));
+  const items = [...(S.books || []).map(b => ({ key: 'b:' + b.id, b })),
+    ...S.cats.filter(c => S.questions.some(q => q.cat === c && !q.src) || (!inBook.has(c) && !S.questions.some(q => q.cat === c))).map(c => ({ key: 'c:' + c, c }))];
+  const ord = S.shelf || [];
+  return items.sort((x, y) => { const a = ord.indexOf(x.key), b = ord.indexOf(y.key); return (a < 0 ? 999 : a) - (b < 0 ? 999 : b); });
+}
 function bookFace(name, cover, fg, icon){
   return `<span class="hb-face ${cover ? 'has-img' : ''}" style="--bk:${fg}">${cover ? `<img src="${cover}" alt="">` :
     `<span class="hb-kicker">P-EXAM</span><span class="hb-emblem"><i data-lucide="${icon || cicon(name)}"></i></span><span class="hb-name">${esc(name)}</span>`}</span>`;
@@ -2770,9 +2793,10 @@ async function openBookAnim(btn, done){
   if(!face || matchMedia('(prefers-reduced-motion: reduce)').matches || !Element.prototype.animate){ playTone('tap'); return done(); }
   bookAnimBusy = true;
   playTone('tap');
-  const name = btn.dataset.play, r = face.getBoundingClientRect();
-  const total = S.questions.filter(q => q.cat === name).length;
-  const done0 = S.questions.filter(q => q.cat === name && (S.qstat[q.id]?.seen || 0) > 0).length;
+  const bk = btn.dataset.book && bookOf(btn.dataset.book), r = face.getBoundingClientRect();
+  const name = bk ? bk.name : btn.dataset.play;
+  const pool = bk ? bookQs(bk.id) : S.questions.filter(q => q.cat === name && !q.src);
+  const total = pool.length, done0 = pool.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
   const W = Math.min(240, innerWidth * .43, innerHeight * .5), H = W * 4 / 3;
   const ov = document.createElement('div');
   ov.className = 'bk-ov';
@@ -2781,8 +2805,8 @@ async function openBookAnim(btn, done){
       <div class="bk-back"></div>
       <div class="bk-page"><small>P-EXAM</small><b>${esc(name)}</b><span>${total.toLocaleString()} ข้อ · ทำแล้ว ${total ? Math.round(done0 / total * 100) : 0}%</span><i></i></div>
       <div class="bk-cover"><div class="bk-front">${face.outerHTML}</div><div class="bk-inside"><div class="bk-lp">
-        <span class="bk-emb"><i data-lucide="${cicon(name)}"></i></span>
-        <small>คลังข้อสอบ</small><b>${total ? Math.ceil(total / 50) : 0} ชุด</b><span>ชุดละ 50 ข้อ</span></div></div></div>
+        <span class="bk-emb"><i data-lucide="${bk ? 'library' : cicon(name)}"></i></span>
+        ${bk ? `<small>หนังสือสถาบัน</small><b>${new Set(pool.map(q => q.cat)).size} วิชา</b><span>เลือกวิชาที่จะทำ</span>` : `<small>คลังข้อสอบ</small><b>${total ? Math.ceil(total / 50) : 0} ชุด</b><span>ชุดละ 50 ข้อ</span>`}</div></div></div>
     </div>`;
   document.body.appendChild(ov);
   icons(ov);
@@ -2813,7 +2837,7 @@ function initShelfDrag(){
   const cancel = () => { clearTimeout(timer); timer = null; };
   shelf.addEventListener('contextmenu', e => e.preventDefault());
   shelf.addEventListener('pointerdown', e => {
-    const book = e.target.closest('.book');
+    const book = e.target.closest('.book[data-key]');
     if(!book || e.target.closest('.hb-act')) return;
     sx = e.clientX; sy = e.clientY;
     timer = setTimeout(() => {
@@ -2832,7 +2856,7 @@ function initShelfDrag(){
     if(!drag){ if(timer && Math.hypot(e.clientX - sx, e.clientY - sy) > 10) cancel(); return; }
     drag.ghost.style.left = e.clientX - drag.ox + 'px';
     drag.ghost.style.top = e.clientY - drag.oy + 'px';
-    const over = document.elementFromPoint(e.clientX, e.clientY)?.closest('.shelf .book:not(.dragging)');
+    const over = document.elementFromPoint(e.clientX, e.clientY)?.closest('.shelf .book[data-key]:not(.dragging)');
     if(over){
       const r = over.getBoundingClientRect();
       shelf.insertBefore(drag.book, e.clientX > r.left + r.width / 2 ? over.nextSibling : over);
@@ -2842,8 +2866,8 @@ function initShelfDrag(){
     cancel();
     if(!drag) return;
     drag.ghost.remove(); drag.book.classList.remove('dragging');
-    const order = $$('.shelf .book').map(b => b.dataset.cat);
-    if(order.join() !== S.cats.join()){ S.cats = order; save(); toast('จัดลำดับแล้ว', 'ok'); }
+    const order = $$('.shelf .book[data-key]').map(b => b.dataset.key);
+    if(order.join() !== (S.shelf || []).join()){ S.shelf = order; save(); toast('จัดลำดับแล้ว', 'ok'); }
     drag = null; justDragged = true; setTimeout(() => justDragged = false, 300);
   };
   shelf.addEventListener('pointerup', end);
@@ -2851,6 +2875,227 @@ function initShelfDrag(){
   // ระหว่างลาก ไม่ให้หน้าเลื่อน และไม่นับเป็นการแตะเปิดหนังสือ
   shelf.addEventListener('touchmove', e => { if(drag) e.preventDefault(); }, { passive: false });
   shelf.addEventListener('click', e => { if(justDragged){ e.stopPropagation(); e.preventDefault(); } }, true);
+}
+
+// หน้าเลือกชุด (ชุดละ 50 ข้อ) ใช้ทั้งหนังสือวิชาเดิมและวิชาในหนังสือสถาบัน
+function openSetPicker(catName, allQs, title){
+      if (!allQs.length) return toast('ไม่มีข้อสอบในหมวดนี้', 'err');
+
+      const BATCH_SIZE = 50;
+      const totalBatches = Math.ceil(allQs.length / BATCH_SIZE);
+
+      const body = `
+        <div style="display:flex;flex-direction:column;gap:14px;padding:2px">
+          <div style="background:var(--surface2);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:15px;font-weight:700;color:var(--text)">${esc(catName)}</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:2px">ทั้งหมด ${allQs.length} ข้อ · แบ่ง ${totalBatches} ชุด</div>
+              </div>
+              <button class="btn sm" id="btnQuickRandom20" style="border-radius:12px;padding:6px 12px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);color:var(--text)">
+                <i data-lucide="shuffle" style="width:14px;height:14px"></i>สุ่มด่วน (20)
+              </button>
+            </div>
+
+            <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;padding-top:10px;border-top:1px solid rgba(0,0,0,0.05)">
+              <span style="font-size:12.5px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px">
+                <i data-lucide="timer-off" style="width:15px;height:15px;color:var(--muted)"></i>ไม่จำกัดเวลา
+              </span>
+              <div style="position:relative;width:40px;height:22px">
+                <input type="checkbox" id="chkNoTimeLimit" style="opacity:0;width:0;height:0">
+                <div id="toggleTrack" style="position:absolute;inset:0;background:var(--line);border-radius:99px;transition:0.25s"></div>
+                <div id="toggleThumb" style="position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:0.25s"></div>
+              </div>
+            </label>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;max-height:340px;overflow-y:auto;padding:2px">
+            ${Array.from({ length: totalBatches }).map((_, idx) => {
+              const startNo = idx * BATCH_SIZE + 1;
+              const endNo = Math.min((idx + 1) * BATCH_SIZE, allQs.length);
+              const batchQs = allQs.slice(startNo - 1, endNo);
+              const doneCount = batchQs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
+              const totalInBatch = batchQs.length;
+              const pct = Math.round((doneCount / totalInBatch) * 100);
+              const isAllDone = doneCount === totalInBatch;
+
+              return `
+                <div class="picker-item" data-batchidx="${idx}" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:8px;padding:12px;margin:0;border-radius:16px;background:var(--surface);border:1px solid ${isAllDone ? 'rgba(16,185,129,0.25)' : 'var(--line)'}">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:13.5px;font-weight:700;color:var(--text)">ชุดที่ ${idx + 1}</span>
+                    <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px;background:${isAllDone ? 'rgba(16,185,129,0.1)' : 'rgba(37,99,235,0.08)'};color:${isAllDone ? '#10b981' : 'var(--blue)'}">
+                      ${doneCount}/${totalInBatch}
+                    </span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)">
+                    <span>ข้อ ${startNo}–${endNo}</span>
+                    <span style="font-weight:600">${pct}%</span>
+                  </div>
+                  <div style="width:100%;height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;border:1px solid var(--line)">
+                    <div style="width:${pct}%;height:100%;background:${isAllDone ? '#10b981' : 'var(--blue)'};border-radius:99px;"></div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      openModal(esc(title || catName), body, `<button class="btn ghost block" data-close style="border-radius:14px">ปิด</button>`);
+
+      const chk = $('#chkNoTimeLimit');
+      const track = $('#toggleTrack');
+      const thumb = $('#toggleThumb');
+      chk.onchange = () => {
+        if (chk.checked) {
+          track.style.background = 'var(--blue)';
+          thumb.style.transform = 'translateX(18px)';
+        } else {
+          track.style.background = 'var(--line)';
+          thumb.style.transform = 'translateX(0)';
+        }
+      };
+
+      $('#btnQuickRandom20').onclick = () => {
+        const noTime = chk?.checked;
+        closeModal();
+        startExam({ ids: allQs.map(q => q.id), count: 20, minutes: noTime ? 0 : 20, mode: 'practice', label: `สุ่ม ${title || catName} 20 ข้อ` });
+      };
+
+      $$('[data-batchidx]').forEach(btn => {
+        btn.onclick = () => {
+          const noTime = chk?.checked;
+          const idx = +btn.dataset.batchidx;
+          const batchQs = allQs.slice(idx * BATCH_SIZE, (idx + 1) * BATCH_SIZE);
+          
+          let unseenQs = batchQs.filter(q => (S.qstat[q.id]?.seen || 0) === 0);
+          
+          if (!unseenQs.length) unseenQs = batchQs; // ทำครบแล้ว = ทำซ้ำทั้งชุด (ไม่ลบสถิติ)
+
+          closeModal();
+          startExam({
+            ids: unseenQs.map(q => q.id),
+            count: unseenQs.length,
+            minutes: noTime ? 0 : Math.round(unseenQs.length * 1.2),
+            mode: 'practice',
+            label: `${title || catName} (ชุด ${idx + 1})`
+          });
+        };
+      });
+}
+
+// ==========================================
+// หนังสือสถาบัน: S.books = [{id, name, cats}] · ข้อสอบที่อยู่ในเล่มมี q.src = id เล่ม
+// จำลองสอบ/เกณฑ์/สถิติ ยังนับตามวิชาเหมือนเดิม (รวมทุกเล่ม)
+// ==========================================
+const bookOf = id => (S.books || []).find(b => b.id === id);
+const bookQs = (id, cat) => S.questions.filter(q => q.src === id && (!cat || q.cat === cat));
+function moveToBook(ids, bookId, label){
+  const set = new Set(ids), moveSrc = [];
+  const bk = bookOf(bookId);
+  S.questions.forEach(q => { if(set.has(q.id) && q.src !== bookId){ moveSrc.push({ id: q.id, src: q.src || '' }); q.src = bookId || undefined; if(bk && !bk.cats.includes(q.cat)) bk.cats.push(q.cat); } });
+  if(!moveSrc.length) return 0;
+  pushUndo(label, { moveSrc }); save(); return moveSrc.length;
+}
+function bookNameModal(title, val, onOk){
+  openModal(title, `<div class="field"><label>ชื่อหนังสือ เช่น ชื่อสถาบัน</label><input class="inp" id="bk_name" value="${esc(val || '')}" placeholder="เช่น บอนทูบี"></div>`,
+    `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="bk_ok"><i data-lucide="check"></i>บันทึก</button>`, { focus: '#bk_name' });
+  $('#bk_ok').onclick = () => { const v = $('#bk_name').value.trim().replace(/[<>"'`]/g, ''); if(!v) return toast('ใส่ชื่อก่อน', 'err'); closeModal(); onOk(v); };
+}
+function createBook(after){
+  bookNameModal('สร้างหนังสือสถาบัน', '', name => {
+    S.books = S.books || []; const id = 'b' + uid();
+    S.books.push({ id, name, cats: [] }); save(); refreshPage(); toast(`สร้าง "${name}" แล้ว`, 'ok');
+    after && after(id);
+  });
+}
+// เปลี่ยนวิชาเดิม (เช่น งานสารบรรณ ที่ใส่ปกบอนทูบีไว้) เป็นหนังสือสถาบัน พร้อมย้ายข้อสอบและปกเข้าไป
+function subjectToBook(cat){
+  bookNameModal(`เปลี่ยน "${esc(cat)}" เป็นหนังสือสถาบัน`, '', name => {
+    S.books = S.books || []; const id = 'b' + uid();
+    S.books.push({ id, name, cats: [cat] });
+    S.bookCovers = S.bookCovers || {};
+    if(S.catCovers?.[cat]){ S.bookCovers[id] = S.catCovers[cat]; delete S.catCovers[cat]; }
+    const n = moveToBook(S.questions.filter(q => q.cat === cat && !q.src).map(q => q.id), id, `ย้าย ${cat} เข้า ${name}`);
+    save(); syncChrome(); refreshPage(); undoToast(`สร้าง "${name}" และย้าย ${n} ข้อเข้าเล่มแล้ว`);
+  });
+}
+function openInstitute(id){
+  const bk = bookOf(id); if(!bk) return;
+  const cats = [...new Set([...bk.cats, ...bookQs(id).map(q => q.cat)])].filter(c => S.cats.includes(c));
+  const loose = S.cats.map(c => [c, S.questions.filter(q => q.cat === c && !q.src).length]).filter(x => x[1]);
+  openModal(esc(bk.name), `
+    <div class="inst-grid">${cats.map(c => {
+      const qs = bookQs(id, c), done = qs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length, pct = qs.length ? Math.round(done / qs.length * 100) : 0;
+      const [bg, fg] = tone(c);
+      return `<button class="inst-sub" data-isub="${esc(c)}" style="--fg:${fg}">
+        <span class="hm-ic" style="background:${bg};color:${fg}"><i data-lucide="${cicon(c)}"></i></span>
+        <b>${esc(c)}</b><small>${qs.length} ข้อ · ${pct}%</small><span class="hb-bar"><i style="width:${pct}%;background:${fg}"></i></span></button>`;
+    }).join('') || '<div class="empty" style="grid-column:1/-1;padding:20px">ยังไม่มีวิชาในเล่มนี้</div>'}</div>
+    <div class="inst-acts">
+      <button class="btn ghost sm" id="in_add"><i data-lucide="plus"></i>เพิ่มวิชาในเล่ม</button>
+      ${loose.length ? `<button class="btn ghost sm" id="in_move"><i data-lucide="folder-input"></i>ย้ายข้อสอบเข้าเล่ม</button>` : ''}
+    </div>`, `<button class="btn ghost block" data-close>ปิด</button>`);
+  $$('[data-isub]').forEach(b => b.onclick = () => {
+    const c = b.dataset.isub, qs = bookQs(id, c);
+    if(!qs.length) return toast('วิชานี้ยังไม่มีข้อสอบในเล่ม ใช้ "ย้ายข้อสอบเข้าเล่ม" หรือเลือกข้อในคลังข้อ', 'err');
+    closeModal(); setTimeout(() => openSetPicker(c, qs, `${bk.name} · ${c}`), 120);
+  });
+  $('#in_add').onclick = () => {
+    const opts = S.cats.filter(c => !cats.includes(c)).map(c => ({ val: c, label: c }));
+    if(!opts.length) return toast('ทุกวิชาอยู่ในเล่มแล้ว');
+    openPicker({ title: 'เพิ่มวิชาในเล่ม', options: opts, value: '', onSelect: c => { bk.cats.push(c); save(); setTimeout(() => openInstitute(id), 120); } });
+  };
+  if($('#in_move')) $('#in_move').onclick = () => openPicker({ title: 'ย้ายข้อสอบวิชาไหนเข้าเล่มนี้', value: '',
+    options: loose.map(([c, n]) => ({ val: c, label: `${c} (${n} ข้อที่ยังไม่อยู่ในเล่มไหน)` })),
+    onSelect: c => { const n = moveToBook(S.questions.filter(q => q.cat === c && !q.src).map(q => q.id), id, `ย้าย ${c} เข้า ${bk.name}`); syncChrome(); refreshPage(); undoToast(`ย้าย ${n} ข้อเข้า "${bk.name}" แล้ว`); setTimeout(() => openInstitute(id), 150); } });
+}
+function editBook(id){
+  const bk = bookOf(id); if(!bk) return;
+  let cover = (S.bookCovers || {})[id] || '';
+  const prev = () => `<div class="hb" style="--bk:var(--cf-deep);width:118px;flex:none">${bookFace(bk.name, cover, 'var(--cf-deep)', 'library')}<span class="hb-pages"></span><span class="hb-ribbon"></span></div>`;
+  const n = bookQs(id).length;
+  openModal(`หนังสือ: ${esc(bk.name)}`, `
+    <div class="row" style="gap:14px;align-items:flex-end">
+      <div id="bkPrev">${prev()}</div>
+      <div style="display:flex;flex-direction:column;gap:8px;flex:1">
+        <button class="btn sm ghost" id="bk_rn"><i data-lucide="pencil"></i>เปลี่ยนชื่อ</button>
+        <button class="btn sm ghost" id="bk_cv"><i data-lucide="image-plus"></i>เลือกรูปปก</button>
+        <button class="btn sm ghost" id="bk_cvdel" ${cover ? '' : 'hidden'}><i data-lucide="trash-2"></i>ใช้ปกสีแทน</button>
+        <input type="file" id="bk_file" accept="image/*" hidden>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+      <button class="btn ghost block" id="bk_out" ${n ? '' : 'disabled'}><i data-lucide="log-out"></i>นำข้อสอบออกจากเล่ม (${n} ข้อ กลับไปหนังสือวิชา)</button>
+      <button class="btn red block" id="bk_del"><i data-lucide="trash-2"></i>ลบเล่มนี้พร้อมข้อสอบในเล่ม</button>
+    </div>`, `<button class="btn ghost" data-close>ปิด</button><button class="btn" id="bk_save"><i data-lucide="save"></i>บันทึกปก</button>`);
+  const paint = () => { $('#bkPrev').innerHTML = prev(); $('#bk_cvdel').hidden = !cover; icons($('#bkPrev')); };
+  $('#bk_cv').onclick = () => $('#bk_file').click();
+  $('#bk_file').onchange = async e => { const f = e.target.files[0]; if(!f) return; const img = await optimizeImage(f, 720, .82); if(img) openImageEditor(img, r => { cover = r; paint(); }); e.target.value = ''; };
+  $('#bk_cvdel').onclick = () => { cover = ''; paint(); };
+  $('#bk_save').onclick = () => { S.bookCovers = S.bookCovers || {}; cover ? S.bookCovers[id] = cover : delete S.bookCovers[id]; save(); closeModal(); refreshPage(); toast('บันทึกแล้ว', 'ok'); };
+  $('#bk_rn').onclick = () => bookNameModal('เปลี่ยนชื่อหนังสือ', bk.name, v => { bk.name = v; save(); refreshPage(); });
+  $('#bk_out').onclick = () => { const k = moveToBook(bookQs(id).map(q => q.id), '', `นำข้อสอบออกจาก ${bk.name}`); closeModal(); syncChrome(); refreshPage(); undoToast(`นำ ${k} ข้อออกจากเล่มแล้ว`); };
+  $('#bk_del').onclick = async () => {
+    if(!(await ask(`ลบ "${bk.name}"?`, `ลบหนังสือและข้อสอบในเล่ม ${n} ข้อ (ย้อนกลับได้)`, 'ลบ'))) return;
+    const delQ = withIdx(S.questions, q => q.src === id);
+    S.questions = S.questions.filter(q => q.src !== id);
+    const bi = S.books.indexOf(bk); S.books.splice(bi, 1);
+    pushUndo(`ลบหนังสือ ${bk.name}`, { delQ, delBook: { i: bi, book: bk, cover: S.bookCovers?.[id] } });
+    if(S.bookCovers) delete S.bookCovers[id];
+    save(); syncChrome(); refreshPage(); undoToast(`ลบ "${bk.name}" แล้ว`);
+  };
+}
+// เลือกหลายข้อในคลังข้อ แล้วย้ายเข้าเล่ม
+const SEL = new Set();
+function moveSelected(){
+  if(!SEL.size) return toast('ยังไม่ได้เลือกข้อ', 'err');
+  const opts = [...(S.books || []).map(b => ({ val: b.id, label: b.name })), { val: '__new', label: '+ สร้างหนังสือใหม่' }, { val: '__none', label: 'นำออกจากเล่ม (กลับไปหนังสือวิชา)' }];
+  openPicker({ title: `ย้าย ${SEL.size} ข้อไปที่`, options: opts, value: '', onSelect: v => {
+    const go2 = id => { const n = moveToBook([...SEL], id, `ย้าย ${SEL.size} ข้อ`); SEL.clear(); QF.sel = false; syncChrome(); refreshPage(); undoToast(`ย้าย ${n} ข้อแล้ว`); };
+    if(v === '__new') return setTimeout(() => createBook(go2), 120);
+    go2(v === '__none' ? '' : v);
+  }});
 }
 
 function openIconPicker(catName){
@@ -2871,6 +3116,7 @@ function openIconPicker(catName){
           <button type="button" class="btn sm ghost" id="btnCover"><i data-lucide="image-plus"></i>เลือกรูปปก</button>
           <button type="button" class="btn sm ghost" id="btnCoverDel" ${selectedCover ? '' : 'hidden'}><i data-lucide="trash-2"></i>ใช้ปกสีแทน</button>
           <small style="color:var(--muted);font-size:11.5px">รูปแนวตั้ง 3:4 สวยที่สุด</small>
+          <button type="button" class="btn sm ghost" id="btnToBook"><i data-lucide="library"></i>เปลี่ยนเป็นหนังสือสถาบัน</button>
           <input type="file" id="coverFile" accept="image/*" hidden>
         </div>
       </div>
@@ -2929,6 +3175,7 @@ function openIconPicker(catName){
 
   const paintCover = () => { $('#coverPrev').innerHTML = coverHtml(); $('#btnCoverDel').hidden = !selectedCover; icons($('#coverPrev')); };
   $('#btnCover').onclick = () => $('#coverFile').click();
+  $('#btnToBook').onclick = () => { closeModal(); setTimeout(() => subjectToBook(catName), 120); };
   $('#coverFile').onchange = async e => {
     const f = e.target.files[0]; if(!f) return;
     const img = await optimizeImage(f, 720, 0.82);
@@ -2979,6 +3226,7 @@ async function go(p){
   playTone('tap');
   PAGE=p;
   document.body.dataset.page=p;
+  if(p !== 'quiz'){ QF.sel = false; SEL.clear(); const sb = document.getElementById('selBar'); if(sb) sb.remove(); }
   $$('[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===p));
   
   const topBlock = $('#topTitleBlock');
@@ -3424,6 +3672,7 @@ function highlightMatch(text, term) {
 function qFiltered(){
   let L = S.questions.slice(); // สำเนา: การเรียงจะไม่ไปสลับลำดับข้อมูลจริง
   if(QF.cat !== 'ทั้งหมด') L = L.filter(q => q.cat === QF.cat);
+  if(QF.src) L = L.filter(q => QF.src === '__none' ? !q.src : q.src === QF.src);
   if(QF.star) L = L.filter(q => q.star);
   if (QF.sort === 'unseen') {
     L = L.filter(q => !(S.qstat[q.id]?.seen > 0));
@@ -3494,28 +3743,30 @@ function renderQuiz(){
       ${showCategorySection ? `
     <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะเพื่อเริ่ม · กดค้างเพื่อย้าย</span></div>
     <div class="shelf">
-      ${S.cats.map(c => {
-        const qInCat = S.questions.filter(q => q.cat === c);
-        const total = qInCat.length;
-        const done = qInCat.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
+      ${shelfItems().map(it => {
+        const qs = it.b ? bookQs(it.b.id) : S.questions.filter(q => q.cat === it.c && !q.src);
+        const total = qs.length, done = qs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
         const pct = total ? Math.round(done / total * 100) : 0;
-        const sets = total ? Math.ceil(total / 50) : 0;
-        const cover = (S.catCovers || {})[c];
-        const fg = tone(c)[1];
-        return `<div class="book" data-cat="${esc(c)}">
-          <button class="hb" data-play="${esc(c)}" style="--bk:${fg}" aria-label="เริ่มทำ ${esc(c)}">
-            ${bookFace(c, cover, fg)}
+        const name = it.b ? it.b.name : it.c;
+        const cover = it.b ? (S.bookCovers || {})[it.b.id] : (S.catCovers || {})[it.c];
+        const fg = it.b ? 'var(--cf-deep)' : tone(it.c)[1];
+        const sub = it.b ? `${new Set(qs.map(q => q.cat)).size} วิชา · ${total.toLocaleString()} ข้อ` : (total ? `${total.toLocaleString()} ข้อ · ${Math.ceil(total / 50)} ชุด` : 'ยังไม่มีข้อสอบ');
+        return `<div class="book" data-key="${it.key}" ${it.c ? `data-cat="${esc(it.c)}"` : ''}>
+          <button class="hb" ${it.b ? `data-book="${it.b.id}"` : `data-play="${esc(it.c)}"`} style="--bk:${fg}" aria-label="เปิด ${esc(name)}">
+            ${bookFace(name, cover, fg, it.b ? 'library' : undefined)}
             <span class="hb-pages"></span><span class="hb-ribbon"></span>
           </button>
           <div class="hb-info">
-            <b>${esc(c)}</b>
-            <small>${total ? `${total.toLocaleString()} ข้อ · ${sets} ชุด` : 'ยังไม่มีข้อสอบ'}</small>
+            <b>${esc(name)}</b>${it.b ? '<span class="hb-tag">สถาบัน</span>' : ''}
+            <small>${sub}</small>
             <div class="hb-row"><span class="hb-bar"><i style="width:${pct}%"></i></span><em>${pct}%</em>
-              <button class="hb-act" data-seticon="${esc(c)}" title="เปลี่ยนปก สี ไอคอน"><i data-lucide="image"></i></button>
-              <button class="hb-act" data-dropcat="${esc(c)}" title="ลบหมวด"><i data-lucide="trash-2"></i></button></div>
+              ${it.b ? `<button class="hb-act" data-editbook="${it.b.id}" title="ชื่อ ปก ลบ"><i data-lucide="settings-2"></i></button>`
+                : `<button class="hb-act" data-seticon="${esc(it.c)}" title="เปลี่ยนปก สี ไอคอน"><i data-lucide="image"></i></button>
+              <button class="hb-act" data-dropcat="${esc(it.c)}" title="ลบ"><i data-lucide="trash-2"></i></button>`}</div>
           </div>
         </div>`;
       }).join('')}
+      <button class="book book-new" id="btnNewBook"><span><i data-lucide="plus"></i></span><b>สร้างหนังสือสถาบัน</b></button>
     </div>
   ` : ''}
 
@@ -3523,6 +3774,8 @@ function renderQuiz(){
   <div class="sec"><i data-lucide="list-checks"></i>คลังข้อ<span class="more">${L.length.toLocaleString()} ข้อ</span></div>
   <div class="row" style="gap:8px;margin-bottom:12px;flex-wrap:wrap">
     <button class="btn ghost sm" id="btnBulk"><i data-lucide="clipboard-list"></i>นำเข้าชุด</button>
+    <button class="btn ${QF.sel ? '' : 'ghost'} sm" id="btnSelMode"><i data-lucide="list-checks"></i>${QF.sel ? 'เลิกเลือก' : 'เลือกหลายข้อ'}</button>
+    ${(S.books || []).length ? `<button class="btn ghost sm" id="btnSrcFilter"><i data-lucide="library"></i>${QF.src ? (QF.src === '__none' ? 'ไม่อยู่ในเล่ม' : esc(bookOf(QF.src)?.name || 'ทุกเล่ม')) : 'ทุกเล่ม'}</button>` : ''}
     <button class="btn ghost sm" onclick="openCloudHubModal()"><i data-lucide="cloud"></i>คลังออนไลน์</button>
     <button class="btn ghost sm" id="btnRandom" ${L.length?'':'disabled'}><i data-lucide="shuffle"></i>สุ่มทำ</button>
     ${(QF.cat && QF.cat !== 'ทั้งหมด') ? `
@@ -3549,7 +3802,7 @@ function renderQuiz(){
 
       return `<div class="qrow">
         <div class="qrow-top">
-          <div class="no">${i+1}</div>
+          ${QF.sel ? `<label class="qsel"><input type="checkbox" data-qsel="${q.id}" ${SEL.has(q.id) ? 'checked' : ''}></label>` : `<div class="no">${i+1}</div>`}
           <div class="body">
             <div class="qt">${highlightedQ}</div>${(q.qImgs && q.qImgs.length) ? `
               <div class="q-media-box">
@@ -3630,114 +3883,11 @@ function renderQuiz(){
   }); };
 
   initShelfDrag();
+  if($('#btnNewBook')) $('#btnNewBook').onclick = () => createBook();
+  $$('[data-book]').forEach(b => b.onclick = () => openBookAnim(b, () => openInstitute(b.dataset.book)));
+  $$('[data-editbook]').forEach(b => b.onclick = () => editBook(b.dataset.editbook));
   $$('[data-play]').forEach(b => {
-    b.onclick = () => openBookAnim(b, () => {
-      const catName = b.dataset.play;
-      const allQs = S.questions.filter(q => q.cat === catName);
-      if (!allQs.length) return toast('ไม่มีข้อสอบในหมวดนี้', 'err');
-
-      const BATCH_SIZE = 50;
-      const totalBatches = Math.ceil(allQs.length / BATCH_SIZE);
-
-      const body = `
-        <div style="display:flex;flex-direction:column;gap:14px;padding:2px">
-          <div style="background:var(--surface2);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-size:15px;font-weight:700;color:var(--text)">${esc(catName)}</div>
-                <div style="font-size:12px;color:var(--muted);margin-top:2px">ทั้งหมด ${allQs.length} ข้อ · แบ่ง ${totalBatches} ชุด</div>
-              </div>
-              <button class="btn sm" id="btnQuickRandom20" style="border-radius:12px;padding:6px 12px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);color:var(--text)">
-                <i data-lucide="shuffle" style="width:14px;height:14px"></i>สุ่มด่วน (20)
-              </button>
-            </div>
-
-            <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;padding-top:10px;border-top:1px solid rgba(0,0,0,0.05)">
-              <span style="font-size:12.5px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px">
-                <i data-lucide="timer-off" style="width:15px;height:15px;color:var(--muted)"></i>ไม่จำกัดเวลา
-              </span>
-              <div style="position:relative;width:40px;height:22px">
-                <input type="checkbox" id="chkNoTimeLimit" style="opacity:0;width:0;height:0">
-                <div id="toggleTrack" style="position:absolute;inset:0;background:var(--line);border-radius:99px;transition:0.25s"></div>
-                <div id="toggleThumb" style="position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:0.25s"></div>
-              </div>
-            </label>
-          </div>
-
-          <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;max-height:340px;overflow-y:auto;padding:2px">
-            ${Array.from({ length: totalBatches }).map((_, idx) => {
-              const startNo = idx * BATCH_SIZE + 1;
-              const endNo = Math.min((idx + 1) * BATCH_SIZE, allQs.length);
-              const batchQs = allQs.slice(startNo - 1, endNo);
-              const doneCount = batchQs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
-              const totalInBatch = batchQs.length;
-              const pct = Math.round((doneCount / totalInBatch) * 100);
-              const isAllDone = doneCount === totalInBatch;
-
-              return `
-                <div class="picker-item" data-batchidx="${idx}" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:8px;padding:12px;margin:0;border-radius:16px;background:var(--surface);border:1px solid ${isAllDone ? 'rgba(16,185,129,0.25)' : 'var(--line)'}">
-                  <div style="display:flex;justify-content:space-between;align-items:center">
-                    <span style="font-size:13.5px;font-weight:700;color:var(--text)">ชุดที่ ${idx + 1}</span>
-                    <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px;background:${isAllDone ? 'rgba(16,185,129,0.1)' : 'rgba(37,99,235,0.08)'};color:${isAllDone ? '#10b981' : 'var(--blue)'}">
-                      ${doneCount}/${totalInBatch}
-                    </span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)">
-                    <span>ข้อ ${startNo}–${endNo}</span>
-                    <span style="font-weight:600">${pct}%</span>
-                  </div>
-                  <div style="width:100%;height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;border:1px solid var(--line)">
-                    <div style="width:${pct}%;height:100%;background:${isAllDone ? '#10b981' : 'var(--blue)'};border-radius:99px;"></div>
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `;
-
-      openModal(`ชุดข้อสอบ: ${esc(catName)}`, body, `<button class="btn ghost block" data-close style="border-radius:14px">ปิด</button>`);
-
-      const chk = $('#chkNoTimeLimit');
-      const track = $('#toggleTrack');
-      const thumb = $('#toggleThumb');
-      chk.onchange = () => {
-        if (chk.checked) {
-          track.style.background = 'var(--blue)';
-          thumb.style.transform = 'translateX(18px)';
-        } else {
-          track.style.background = 'var(--line)';
-          thumb.style.transform = 'translateX(0)';
-        }
-      };
-
-      $('#btnQuickRandom20').onclick = () => {
-        const noTime = chk?.checked;
-        closeModal();
-        startExam({ cats: [catName], count: 20, minutes: noTime ? 0 : 20, mode: 'practice', label: `สุ่ม ${catName} 20 ข้อ` });
-      };
-
-      $$('[data-batchidx]').forEach(btn => {
-        btn.onclick = () => {
-          const noTime = chk?.checked;
-          const idx = +btn.dataset.batchidx;
-          const batchQs = allQs.slice(idx * BATCH_SIZE, (idx + 1) * BATCH_SIZE);
-          
-          let unseenQs = batchQs.filter(q => (S.qstat[q.id]?.seen || 0) === 0);
-          
-          if (!unseenQs.length) unseenQs = batchQs; // ทำครบแล้ว = ทำซ้ำทั้งชุด (ไม่ลบสถิติ)
-
-          closeModal();
-          startExam({
-            ids: unseenQs.map(q => q.id),
-            count: unseenQs.length,
-            minutes: noTime ? 0 : Math.round(unseenQs.length * 1.2),
-            mode: 'practice',
-            label: `${catName} (ชุด ${idx + 1})`
-          });
-        };
-      });
-    });
+    b.onclick = () => openBookAnim(b, () => openSetPicker(b.dataset.play, S.questions.filter(q => q.cat === b.dataset.play && !q.src)));
   });
 
   $$('[data-dropcat]').forEach(b => b.onclick = () => deleteCategory(b.dataset.dropcat));
@@ -3768,6 +3918,21 @@ function renderQuiz(){
 
   if($('#more'))$('#more').onclick=()=>{ playTone('tap'); QF.limit+=25; renderQuiz(); };
   $('#btnBulk').onclick=()=>{ playTone('tap'); bulkForm(); };
+  $('#btnSelMode').onclick = () => { QF.sel = !QF.sel; SEL.clear(); renderQuiz(); };
+  if($('#btnSrcFilter')) $('#btnSrcFilter').onclick = () => openPicker({ title: 'แสดงข้อจากเล่ม', value: QF.src || '',
+    options: [{ val: '', label: 'ทุกเล่ม' }, { val: '__none', label: 'ไม่อยู่ในเล่มไหน' }, ...S.books.map(b => ({ val: b.id, label: b.name }))],
+    onSelect: v => { QF.src = v; QF.limit = 25; renderQuiz(); } });
+  $$('[data-qsel]').forEach(c => c.onchange = () => { c.checked ? SEL.add(c.dataset.qsel) : SEL.delete(c.dataset.qsel); paintSelBar(); });
+  paintSelBar();
+  function paintSelBar(){
+    let bar = $('#selBar');
+    if(!QF.sel){ if(bar) bar.remove(); return; }
+    if(!bar){ bar = document.createElement('div'); bar.id = 'selBar'; bar.className = 'sel-bar'; document.body.appendChild(bar); }
+    bar.innerHTML = `<b>เลือก ${SEL.size} ข้อ</b><button class="btn ghost sm" id="selAll">เลือกทั้งหมด ${L.length}</button><button class="btn sm" id="selMove"><i data-lucide="folder-input"></i>ย้ายไปเล่ม</button>`;
+    icons(bar);
+    $('#selAll').onclick = () => { L.forEach(q => SEL.add(q.id)); $$('[data-qsel]').forEach(c => c.checked = true); paintSelBar(); };
+    $('#selMove').onclick = moveSelected;
+  }
   if($('#btnRandom'))$('#btnRandom').onclick=()=>{
     playTone('tap');
     startExam({ids:L.map(q=>q.id),count:Math.min(20,L.length),minutes:15,mode:'practice',label:'สุ่มฝึก '+(QF.cat==='ทั้งหมด'?'ทุกหมวด':QF.cat)});
@@ -6380,6 +6545,9 @@ function sanitizeState(st){
   st.cats = (st.cats || []).map(c => String(c).replace(/[<>"'`]/g, ''));
   st.settings = st.settings || {};
   st.settings.avatar = safeImg(st.settings.avatar); st.settings.heroBg = safeImg(st.settings.heroBg);
+  st.books = (st.books || []).map(b => ({ id: String(b.id).replace(/[^\w-]/g, ''), name: String(b.name || '').replace(/[<>"'`]/g, ''), cats: (b.cats || []).map(String) }));
+  if(st.bookCovers) Object.keys(st.bookCovers).forEach(k => { st.bookCovers[k] = safeImg(st.bookCovers[k]); if(!st.bookCovers[k]) delete st.bookCovers[k]; });
+  (st.questions || []).forEach(q => { if(q.src) q.src = String(q.src).replace(/[^\w-]/g, ''); });
   if(st.catCovers) Object.keys(st.catCovers).forEach(k => { st.catCovers[k] = safeImg(st.catCovers[k]); if(!st.catCovers[k]) delete st.catCovers[k]; });
   return st;
 }
@@ -6421,6 +6589,8 @@ function applyUndo(idx = 0){
     if(r.delC) restore(S.cards, r.delC);
     (r.moveQ || []).forEach(m => { const q = S.questions.find(x => x.id === m.id); if(q) q.cat = m.cat; });
     (r.moveC || []).forEach(m => { const c = S.cards.find(x => x.id === m.id); if(c) c.cat = m.cat; });
+    (r.moveSrc || []).forEach(m => { const q = S.questions.find(x => x.id === m.id); if(q) q.src = m.src || undefined; });
+    if(r.delBook && !bookOf(r.delBook.book.id)){ (S.books = S.books || []).splice(r.delBook.i, 0, r.delBook.book); if(r.delBook.cover) (S.bookCovers = S.bookCovers || {})[r.delBook.book.id] = r.delBook.cover; }
     (r.delCats || []).forEach(dc => {
       if(!S.cats.includes(dc.name)) S.cats.splice(Math.min(dc.i, S.cats.length), 0, dc.name);
       if(dc.icon) (S.catIcons = S.catIcons || {})[dc.name] = dc.icon;
@@ -6459,7 +6629,7 @@ function openUndoList(){
 
 // ลบหมวด: ที่เดียวทั้งแอป ให้เลือกว่าจะย้ายข้อมูลหรือลบทิ้ง
 function deleteCategory(c){
-  const qn = S.questions.filter(q => q.cat === c).length, cn = S.cards.filter(x => x.cat === c).length;
+  const qn = S.questions.filter(q => q.cat === c && !q.src).length, cn = S.cards.filter(x => x.cat === c).length;
   const others = S.cats.filter(x => x !== c);
   const meta = { name: c, i: S.cats.indexOf(c), icon: S.catIcons?.[c], tone: S.catTones?.[c], cover: S.catCovers?.[c] };
   const finish = rec => {
@@ -6475,7 +6645,7 @@ function deleteCategory(c){
     <p style="font-size:12px;color:var(--muted);margin-top:10px">กดย้อนกลับได้ถ้าลบผิด</p>`,
     `<button class="btn ghost block" data-close>ยกเลิก</button>`);
   $('#dc_q').onclick = () => {
-    removeQuestions(q => q.cat === c, `ลบข้อสอบวิชา ${c}`);
+    removeQuestions(q => q.cat === c && !q.src, `ลบข้อสอบวิชา ${c}`);
     closeModal(); syncChrome(); refreshPage(); undoToast(`ลบข้อสอบวิชา ${c} แล้ว`);
   };
   $('#dc_all').onclick = () => {
