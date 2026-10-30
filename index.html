@@ -2,7 +2,12 @@
 <html lang="th" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#3b82c4">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
 <title>P-exam · ติวสอบตำรวจ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,18 +216,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
 .picker-item .chk{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;color:transparent}
 .picker-item.on .chk{border-color:var(--blue);background:var(--blue);color:#fff}
 
-.banner-slider{position:relative;margin-bottom:14px;overflow:hidden;border-radius:18px}
-.banner-track{display:flex;transition:transform .4s ease;width:100%}
-.banner-slide{flex:0 0 100%;min-width:100%}
-.banner-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
-.b-dot{width:6px;height:6px;border-radius:50%;background:var(--line)}
-.b-dot.on{width:18px;border-radius:4px;background:var(--blue)}
-
-.coach-box{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1);min-height:72px}
-.coach-box .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
-.coach-box b{display:block;font-size:14.5px;line-height:1.3}
-.coach-box small{font-size:12px;color:var(--muted);margin-top:2px;display:block}
-
 .search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 14px;box-shadow:var(--sh1)}
 .search svg{width:18px;height:18px;color:var(--muted);flex:none}
 .search input{flex:1;border:0;background:none;outline:none;padding:11px 0;color:var(--text)}
@@ -258,65 +251,14 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;
   box-shadow:var(--sh1);display:flex;flex-direction:column;gap:14px;
 }
-.streak-row{display:flex;justify-content:space-between;align-items:center;gap:4px}
 .streak-day-item{
   display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;cursor:pointer;user-select:none;
 }
-.streak-circle{
-  width:38px;height:38px;border-radius:50%;background:var(--surface2);border:1.5px solid var(--line);
-  display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted);
-}
-.streak-day-item.is-done .streak-circle{
-  background:var(--blue-2);border-color:var(--blue);color:var(--blue);
-}
-.streak-day-item.is-today .streak-circle{
-  background:var(--blue);border-color:var(--blue);color:#fff;
-}
-.streak-day-item.is-today.is-done .streak-circle{
-  background:var(--green);border-color:var(--green);
-}
-.streak-day-item .day-lbl{font-size:12px;font-weight:600;color:var(--muted)}
-.streak-day-item.is-today .day-lbl{color:var(--blue);font-weight:700}
 
 .mastery-card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;
   box-shadow:var(--sh1);display:flex;flex-direction:column;gap:18px;margin-top:14px;
 }
-.prob-gauge {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 19px;
-  color: #fff;
-  border: 3px solid rgba(255, 255, 255, 0.85);
-  flex: none;
-}
-.prob-gauge-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 14px;
-}
-.prob-header {
-  border-bottom: none !important;
-  padding-bottom: 0 !important;
-}
-
-.prob-info b{font-size:16px;display:block;line-height:1.2}
-.prob-info small{font-size:12px;color:var(--muted)}
-.mastery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.mastery-item{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:11px 14px;display:flex;flex-direction:column;gap:6px;}
-.mastery-item:hover{border-color:var(--blue)}
-.m-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600}
-.m-bar{height:6px;border-radius:6px;background:var(--surface3);overflow:hidden}
-.m-bar i{display:block;height:100%;border-radius:6px;transition:width .4s}
 
 .qrow{
   content-visibility: auto;
@@ -392,61 +334,8 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
 
 .hero h2{font-size:22px} 
 .hero p{opacity:.92;font-size:13px;margin-top:4px}
-.hero .cta{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
 .hero .btn{background:rgba(255,255,255,.2);color:#fff}
 .hero .btn.w{background:#fff;color:#0e2c58}
-
-.ringbox{
-  position: relative;
-  width: 138px;
-  height: 138px;
-  flex: none;
-  margin-left: auto;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-}
-.ringbox svg{
-  width: 138px;
-  height: 138px;
-  transform: rotate(-90deg);
-  display: block;
-}
-.ringbox circle{fill: none; stroke-linecap: round;}
-.ringbox .bgc{
-  stroke: rgba(255, 255, 255, 0.15);
-  stroke-width: 10;
-}
-.ringbox .fgc{
-  stroke-width: 11;
-  stroke: url(#ringGradient);
-  transition: stroke-dashoffset 0.8s ease-out;
-}
-.ringbox .txt{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  pointer-events: none;
-}
-.ringbox .txt b{
-  font-size: 22px;
-  font-weight: 850;
-  line-height: 1;
-  letter-spacing: -0.5px;
-  color: #fff;
-}
-.ringbox .txt span{
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #f1f5f9;
-  margin-top: 3px;
-}
 
 .stat{display:flex;align-items:center;gap:12px}
 .stat .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none}
@@ -471,8 +360,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
 
 .setcard{padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh1);display:flex;flex-direction:column;gap:11px;}
 .setcard .ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:none}
-.setcard .acts{display:flex;gap:7px}
-.setcard .acts .btn{flex:1}
 
 .fab{
   position:fixed;right:24px;bottom:26px;z-index:65;padding:14px 20px;border-radius:30px;
@@ -594,14 +481,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   color: inherit;
 }
 
-
-.front .hint {
-  font-size: 12px !important;
-  color: #95b1ee !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.3px;
-}
-
 /* ด้านหลัง: น้ำเงินเข้มโมเดิร์น (#364C84) คอนทราสต์ตัดเฉลยชัด */
 .back {
   background: #364c84 !important;
@@ -650,12 +529,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
 .card-def font, .card-def span {
   font-size: inherit;
   color: inherit;
-}
-
-.back .hint {
-  font-size: 12px !important;
-  color: rgba(255, 253, 245, 0.6) !important;
-  font-weight: 500 !important;
 }
 
 .card-img-preview {
@@ -888,12 +761,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   .hero > div:first-child {
     width: 100% !important;
   }
-  .hero .ringbox {
-    margin: 16px auto 0 auto !important;
-    align-self: center !important;
-    width: 120px !important;
-    height: 120px !important;
-  }
 }
 
 @media(max-width:720px){
@@ -1124,41 +991,6 @@ textarea.inp{resize:vertical;min-height:96px;line-height:1.6}
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.mastery-icon-pill {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.mastery-icon-pill svg {
-  width: 18px;
-  height: 18px;
-}
-
-.m-bar-v2 {
-  height: 6px;
-  border-radius: 99px;
-  background: var(--surface3);
-  overflow: hidden;
-}
-.m-bar-v2 i {
-  display: block;
-  height: 100%;
-  border-radius: 99px;
-  transition: width 0.4s ease;
-}
-
-.acc-badge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-}
-
 </style>
 <style id="neo-theme">
 /* =========================================================
@@ -1365,14 +1197,9 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
 .bar,.m-bar,.m-bar-v2,.course-progress-track{background:var(--surface3)}
 .bar i{background:linear-gradient(90deg,var(--text),var(--blue))}
 [data-theme="dark"] .bar i{background:linear-gradient(90deg,var(--acc),#6aa6da)}
-.b-dot{background:var(--surface3);transition:all .35s var(--spring)}
-.b-dot.on{background:var(--text);width:22px}
 
 /* ---------- coach / banner ---------- */
-.coach-box{border-left-width:1px!important;overflow:hidden}
-.coach-box::after{
-  content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--acc);
-}
+
 
 /* ---------- HERO ---------- */
 .hero{
@@ -1397,31 +1224,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em}
 .hero .btn{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12)}
 .hero .btn:hover{background:rgba(255,255,255,.14)}
 .hero .btn.w{background:var(--acc);color:var(--acc-ink);border-color:transparent;box-shadow:0 10px 30px -10px rgba(225,229,172,.7)}
-.ringbox .bgc{stroke:rgba(255,255,255,.08);stroke-width:8}
-.ringbox .fgc{stroke:#e1e5ac!important;stroke-width:9}
-.ringbox .txt b{font-size:30px;letter-spacing:-.05em;font-weight:700}
-.ringbox .txt span{color:rgba(255,255,255,.55);font-size:11px;letter-spacing:.06em}
-.ringbox::before{
-  content:"";position:absolute;inset:-8px;border-radius:50%;
-  border:1px dashed rgba(255,255,255,.14);animation:neoSpin 24s linear infinite;
-}
 @keyframes neoSpin{to{transform:rotate(360deg)}}
 
 /* ---------- mastery / gauge ---------- */
 .mastery-card{border-radius:24px}
-.prob-gauge{
-  border:none;width:64px;height:64px;font-size:20px;letter-spacing:-.04em;
-  box-shadow:0 0 0 6px var(--surface2),0 12px 24px -10px rgba(0,0,0,.4);
-}
 .mastery-item-v2{background:var(--surface2);border-radius:18px}
 
 /* ---------- streak ---------- */
-.streak-circle{border-radius:12px;transition:transform .3s var(--spring)}
-@media(hover:hover){.streak-day-item:hover .streak-circle{transform:translateY(-3px) rotate(-6deg)}}
-.streak-day-item.is-done .streak-circle{background:var(--surface);border-color:var(--text);color:var(--text)}
-.streak-day-item.is-today .streak-circle{background:var(--primary);border-color:var(--primary);color:var(--onp);box-shadow:0 8px 18px -8px var(--acc-glow)}
-.streak-day-item.is-today.is-done .streak-circle{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
-.streak-day-item.is-today .day-lbl{color:var(--text)}
+
 
 /* ---------- course cards (หน้าข้อสอบ) ---------- */
 .course-card{
@@ -1478,7 +1288,6 @@ html .front{
   border:1px solid var(--line)!important;box-shadow:var(--sh2)!important;
 }
 html .front .tag{background:var(--text)!important;color:var(--bg)!important}
-html .front .hint{color:var(--muted)!important}
 html .card-word{color:var(--text);font-weight:700;letter-spacing:-.03em;font-size:28px}
 html .btn-tts{background:var(--surface2);color:var(--text)}
 html .back{
@@ -1518,7 +1327,6 @@ html .card-def{color:#f5f5f6}
 
 @media (max-width:980px) and (orientation:portrait){
   html .hero{min-height:0!important;padding:24px 22px!important;border-radius:26px!important}
-  html .hero .ringbox{margin:22px auto 4px!important}
 }
 @media(max-width:720px){
   .topbar h1{font-size:26px}
@@ -1526,13 +1334,6 @@ html .card-def{color:#f5f5f6}
 }
 /* ---------- NEO HOME (การ์ดซ้อน + เมนูแคปซูล) ---------- */
 :root{--cf:#6aa6da;--cf-deep:#3b82c4}
-.neo-greet{font-size:32px;line-height:1.15;letter-spacing:-.04em;font-weight:700;margin:4px 0 16px}
-.neo-greet span{color:var(--muted)}
-.neo-chips{margin-bottom:34px}
-.neo-chips .chip{padding:10px 16px;font-size:14px;background:var(--surface);color:var(--text)}
-.neo-chips .chip i{font-style:normal;color:var(--muted);margin-left:2px}
-.neo-chips .chip.on{background:var(--cf-deep);color:#fff}
-.neo-chips .chip.on i{color:rgba(255,255,255,.75)}
 .home-profile-header{padding:0}
 .hp-avatar-wrap{width:52px;height:52px;border-radius:50%!important;box-shadow:0 0 0 3px var(--surface),0 0 0 4px var(--line)!important}
 .hp-name-row b{font-size:16px}
@@ -1549,81 +1350,32 @@ html .card-def{color:#f5f5f6}
 .hero h2{margin-right:100px}
 .hero p{display:inline-block;background:#fff;color:var(--cf-deep);opacity:1;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px;margin:0 0 12px}
 .hero h2{font-size:34px;line-height:1.12;color:#fff}
-.hero .cta{flex-wrap:nowrap;align-items:center;margin-top:22px;gap:10px}
 .hero .btn.w{
   flex:1;justify-content:flex-start;gap:12px;height:56px;padding:6px 18px 6px 6px;border-radius:999px;
   background:rgba(255,255,255,.22);color:#fff;box-shadow:none;border:0;
 }
 .hero .btn.w svg{flex:none;width:44px;height:44px;padding:13px;border-radius:50%;background:#fff;color:var(--cf-deep);fill:none}
 .hero .btn.w::after{content:"›››";position:static;width:auto;height:auto;background:none;transform:none;margin-left:auto;letter-spacing:2px;opacity:.6;font-size:18px}
-.hero .cta .btn:not(.w){font-size:0;gap:0;width:56px;height:56px;padding:0;border-radius:50%;background:#fff;color:#000;border:0;flex:none}
-.hero .cta .btn:not(.w) svg{width:20px;height:20px}
-.hero .cta .btn:not(.w)::after{display:none}
-html .hero .ringbox{position:absolute!important;top:20px;right:20px;margin:0!important;width:86px!important;height:86px!important}
-.hero .ringbox svg{width:86px;height:86px}
-.ringbox::before{display:none}
-.ringbox .bgc{stroke:rgba(255,255,255,.25)}
-.ringbox .fgc{stroke:#fff!important}
-.ringbox .txt b{font-size:19px}
-.ringbox .txt span{font-size:9.5px;color:rgba(255,255,255,.85)}
 @media (max-width:980px) and (orientation:portrait){html .hero{min-height:0!important;padding:22px!important;border-radius:30px!important}}
 /* กองการ์ดปัดได้ */
-.neo-deck{display:grid;margin-top:8px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.neo-deck > .neo-dcard{grid-area:1/1;transform-origin:50% 0;transition:transform .45s var(--ease),opacity .45s;margin:0}
+
 .neo-dcard[data-pos="0"]{z-index:3}
 .neo-dcard[data-pos="1"]{z-index:2;transform:translateY(-16px) scale(.94);opacity:.9;pointer-events:none}
 .neo-dcard[data-pos="2"]{z-index:1;transform:translateY(-32px) scale(.88);opacity:.7;pointer-events:none}
 .neo-dcard[data-pos]:not([data-pos="0"]):not([data-pos="1"]):not([data-pos="2"]){z-index:0;transform:translateY(-32px) scale(.88);opacity:0;pointer-events:none}
-.neo-deck{grid-template-rows:100%}
 /* ให้ทุกส่วนในกองการ์ดส่งการปัดแนวนอนมาที่สคริปต์ (การ์ดที่เลื่อนได้จะไม่แย่งการปัด) */
-.neo-deck,.neo-deck *{touch-action:pan-y}
+
 .neo-dcard:not([data-pos="0"]) > *{visibility:hidden}
 .neo-dcard[data-pos="1"],.neo-dcard[data-pos="2"]{opacity:1}
 /* เอาแถวชิปออก การ์ดจะยืดลงมาแทน */
-.neo-chips{display:none}
-.neo-greet{margin-bottom:34px}
-body.neo-home .main{padding-bottom:0}
-html .neo-deck .hero{flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important}
-.neo-deck .hero > div:first-child{display:contents}
-.neo-deck .hero p{order:1;align-self:flex-start}
-.neo-deck .hero h2{order:2;margin-right:0;font-size:40px}
-html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right:auto;margin:auto!important;height:min(200px,40%)!important;width:auto!important;aspect-ratio:1;flex:none}
-.neo-deck .hero .ringbox svg{width:100%;height:100%}
-.neo-deck .hero .ringbox .bgc{stroke-width:10}
-.neo-deck .hero .ringbox .fgc{stroke-width:11}
-.neo-deck .hero .ringbox .txt b{font-size:40px}
-.neo-deck .hero .ringbox .txt span{font-size:13px}
-.neo-deck .hero .cta{order:4;margin-top:0}
+
 .neo-dcard{box-shadow:0 26px 40px -28px rgba(0,0,0,.45)}
-.neo-extra{background:var(--surface);border:1px solid var(--line);border-radius:30px;padding:20px;overflow-y:auto;overscroll-behavior:contain}
-.neo-extra > *{margin:0!important}
-.neo-extra .mastery-card,.neo-extra .resume-card,.neo-extra .week-card{border:0;box-shadow:none;background:transparent;padding:0;margin:0}
-.neo-extra .mastery-card::before,.neo-extra .resume-card::before,.neo-extra .week-card::before{display:none}
-.neo-extra .banner-slider{overflow:visible}
-.neo-extra .banner-track{flex-direction:column;gap:10px;transform:none!important}
-.neo-extra .banner-slide{min-width:0}
-.neo-extra .banner-dots{display:none}
-.neo-stat-card,.neo-prob-card{border-radius:30px;padding:22px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
-.neo-stat-card{background:#000;color:#fbfbf8}
-[data-theme="dark"] .neo-stat-card{background:#1a1f25}
-.neo-prob-card{background:#e1e5ac;color:#000}
-.neo-dc-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.neo-dc-head svg{width:22px;height:22px;opacity:.6}
 .neo-pill{display:inline-block;background:#fff;color:#000;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px}
 .neo-pill.ghost{background:rgba(0,0,0,.08)}
-.neo-time small{display:block;font-size:13px;opacity:.6}
-.neo-time b{display:block;font-size:44px;line-height:1.05;letter-spacing:-.04em;color:#e1e5ac}
 .neo-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
 .neo-mini-grid div{background:rgba(255,255,255,.08);border-radius:18px;padding:10px 12px}
 .neo-mini-grid b{display:block;font-size:22px;letter-spacing:-.03em}
 .neo-mini-grid span{font-size:11.5px;opacity:.6}
-.neo-big{font-size:72px;font-weight:700;line-height:1;letter-spacing:-.06em}
-.neo-big small{font-size:28px}
-.neo-prob-card h3{font-size:22px;line-height:1.2}
-.neo-prob-card p{font-size:13px;opacity:.6;margin-top:auto}
-.neo-deck-dots{display:flex;justify-content:center;gap:6px;margin:12px 0 4px}
-.neo-deck-dots i{width:7px;height:7px;border-radius:99px;background:var(--surface3);cursor:pointer;transition:all .35s var(--spring)}
-.neo-deck-dots i.on{width:22px;background:var(--cf-deep)}
 
 @media(max-width:980px){
   .bottomnav{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);gap:6px;padding:7px;border-radius:999px;justify-content:center}
@@ -1633,17 +1385,10 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 }
 
 /* การ์ดสถิติสัปดาห์ในกอง */
-.neo-week{display:flex;flex-direction:column;justify-content:space-between;gap:16px;cursor:pointer}
-.neo-week-sum{display:flex;gap:14px;align-items:center;background:var(--surface2);border-radius:22px;padding:14px}
-.neo-week-sum > div:first-child{flex:1;min-width:0}
-.neo-week-sum small{display:block;font-size:12px;color:var(--muted)}
-.neo-week-sum b{display:block;font-size:26px;letter-spacing:-.04em;line-height:1.15}
-.neo-week-sum span{font-size:12px;color:var(--muted)}
-.neo-week-heat{display:grid;grid-template-columns:repeat(7,12px);gap:4px}
-.neo-week-heat i{width:12px;height:12px;border-radius:4px}
-.neo-cal-btn{margin-top:auto;background:var(--cf-deep);color:#fff;height:52px;border-radius:999px}
+
 /* สีความเข้ม (ใช้ร่วมกันทั้งปฏิทินและการ์ด) */
-.h0{background:var(--surface3)} .hx{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+
+.h0{background:var(--surface3)} .neo-cd.h0{background:var(--surface2)}
 .h1{background:#d6e6f5} .h2{background:#a3c7e9} .h3{background:#6aa6da;color:#fff} .h4{background:#3b82c4;color:#fff}
 [data-theme="dark"] .h1{background:#163049} [data-theme="dark"] .h2{background:#1f4a73}
 [data-theme="dark"] .h3{background:#3b82c4} [data-theme="dark"] .h4{background:#6aa6da;color:#000}
@@ -1667,7 +1412,6 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 .neo-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:12px;touch-action:pan-y}
 .neo-cal-grid > i{font-style:normal;text-align:center;font-size:12px;font-weight:600;color:var(--muted);padding-bottom:2px}
 .neo-cd{aspect-ratio:1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text);transition:transform .25s var(--spring),background .2s}
-.neo-cd.h0{background:var(--surface2)}
 .neo-cd b{font-size:14px;font-weight:600;line-height:1.1}
 .neo-cd small{font-size:9.5px;opacity:.85;line-height:1}
 .neo-cd.today{box-shadow:inset 0 0 0 2px var(--text)}
@@ -1699,19 +1443,6 @@ html .neo-deck .hero .ringbox{order:3;position:relative!important;top:auto;right
 .rte-mask .rte-modal{height:min(88dvh,calc(var(--neo-vvh,100dvh) - 24px))}
 button,.neo-deck,.bottomnav,.neo-cal-sheet{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 body.neo-cal-open{overflow:hidden}
-.neo-deck .hero .cta,.neo-cal-btn{display:none!important}
-.neo-deck .hero h2{font-size:clamp(28px,8vw,36px)}
-.neo-deck .hero .ringbox{height:min(170px,45%)!important}
-.neo-deck .hero .ringbox .txt b{font-size:32px}
-.neo-big{font-size:clamp(52px,16vw,72px)}
-.neo-time b{font-size:clamp(32px,10vw,44px)}
-.neo-greet{font-size:clamp(24px,7vw,32px);margin:0 0 40px}
-.neo-actions{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:8px;margin:6px 0 8px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh1)}
-.neo-act{height:56px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:600;color:var(--muted);background:var(--surface2);transition:transform .15s}
-.neo-act svg{width:19px;height:19px;color:var(--text)}
-.neo-act:active{transform:scale(.95)}
-.neo-act-main{flex-direction:row;gap:8px;font-size:15.5px;font-weight:700;background:var(--primary);color:var(--onp)}
-.neo-act-main svg{width:18px;height:18px;color:var(--onp);fill:currentColor}
 /* ล็อกหน้าแรกไม่ให้เลื่อน (แถบเบราว์เซอร์จะไม่หด/ขยายจนหน้าขยับ) */
 /* ล็อกทุกหน้า: ตัวหน้าเว็บไม่เลื่อน ให้เลื่อนเฉพาะพื้นที่เนื้อหา (.main) */
 html,body{height:100%;overflow:hidden;overscroll-behavior:none}
@@ -1749,6 +1480,19 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 }
 /* ===== หน้าแรกแบบใหม่: โปร่ง เลื่อนได้ แบ่งเป็นการ์ดเรียบ ===== */
 #btnTheme{display:none}
+.toasts{pointer-events:none}
+.toast-undo{pointer-events:auto}
+.toast-undo button{margin-left:6px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.25);color:inherit;font-weight:700;font-size:12.5px}
+.crow{grid-template-columns:minmax(96px,1.1fr) 1fr auto}
+.crow .vl{white-space:nowrap}
+.tr-lbl{display:block;font-size:12.5px;color:var(--muted);font-weight:600;margin:6px 0 8px}
+.tr-rows{display:flex;flex-direction:column;gap:8px}
+.tr-row{display:flex;align-items:center;gap:8px;background:var(--surface2);border-radius:14px;padding:8px 10px}
+.tr-row b{display:block;font-size:13.5px}.tr-row small{margin-top:2px}
+.tr-row .tr-n{width:72px;text-align:center;padding:8px!important;font-size:15px!important}
+.tr-row .tr-part{width:104px;padding:8px!important;font-size:13px!important}
+.hm-full{display:flex;align-items:center;gap:12px;width:100%;text-align:left}
+.hm-full b{display:block;font-size:15px}.hm-full small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 .hm-tstats{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .hm-tstats div{background:rgba(255,255,255,.16);border-radius:16px;padding:10px 6px;text-align:center}
 .hm-tstats b{display:block;font-size:19px;letter-spacing:-.02em}
@@ -1766,7 +1510,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-todo.done .hm-ic{background:var(--green-2)!important;color:var(--green)!important}
 .hm-chev{width:16px;height:16px;color:var(--muted);flex:none}
 .hm-label{font-size:12px;font-weight:600;color:var(--muted)}
-.hm-streak{font-size:12px;font-weight:600;color:var(--orange);margin-left:6px}
 .hm{display:flex;flex-direction:column;gap:14px;max-width:720px;margin:0 auto;padding-bottom:8px}
 .hm-hello{font-size:15px;font-weight:600;color:var(--text)}
 .hm-hello span{color:var(--muted);font-weight:500}
@@ -1780,34 +1523,16 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hm-ring-txt b{font-size:26px;line-height:1;letter-spacing:-.03em}
 .hm-ring-txt span{font-size:11px;opacity:.85;margin-top:3px}
-.hm-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
-.hm-pills span{background:rgba(255,255,255,.22);font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px}
-.hm-pills .cd{background:#000;color:#e1e5ac}.hm-pills .cd.soon{background:#ef3e4a;color:#fff}
 .hm-today h2{font-size:24px;line-height:1.15;letter-spacing:-.03em}
 .hm-today p{font-size:12.5px;opacity:.9;margin-top:4px}
 .hm-start{grid-column:1/-1;justify-self:center;width:min(100%,260px);height:54px;margin-top:2px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
   display:flex;align-items:center;justify-content:center;gap:8px}
 .hm-start svg{width:18px;height:18px;fill:currentColor}
-.hm-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.hm-quick button{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 4px 12px;
-  background:var(--surface);border:1px solid var(--line);border-radius:20px;font-size:12.5px;font-weight:600}
-.hm-quick em{position:absolute;top:8px;right:10px;font-style:normal;font-size:10.5px;font-weight:700;background:var(--red);color:#fff;
-  min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
 .hm-ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none}
 .hm-ic svg{width:20px;height:20px}
 .hm-ic.sm{width:34px;height:34px;border-radius:11px}.hm-ic.sm svg{width:16px;height:16px}
 .hm-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:12px;text-align:left;width:100%}
-.hm-resume{flex-direction:row;align-items:center;gap:12px}
 .hm-grow{flex:1;min-width:0}
-.hm-resume small{display:block;font-size:11.5px;color:var(--muted)}
-.hm-resume b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hm-resume .hm-bar{margin-top:6px}
-.hm-go{display:flex;align-items:center;gap:2px;font-size:12.5px;font-weight:700;color:var(--blue)}
-.hm-go svg{width:16px;height:16px}
-.hm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.hm-stats div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 10px;text-align:center;min-width:0}
-.hm-stats b{display:block;font-size:17px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hm-stats span{font-size:11.5px;color:var(--muted)}
 .hm-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .hm-head b{font-size:15px}
 .hm-link{font-size:12.5px;font-weight:600;color:var(--blue)}
@@ -1823,8 +1548,6 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-bar i{display:block;height:100%;border-radius:9px;background:var(--blue);transition:width .4s}
 .hm-bar.lg{height:10px}
 .hm-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-.hm-fix{display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:14px;background:var(--red-2);color:var(--red);font-size:13px;text-align:left}
-.hm-fix span{flex:1}.hm-fix svg{width:16px;height:16px;flex:none}
 .hm-ms-list{display:flex;flex-direction:column;gap:10px}
 .hm-ms,#hmMsMore{display:flex;gap:10px;align-items:center}
 #hmMsMore{flex-direction:column;align-items:stretch}
@@ -1833,11 +1556,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-ms-top span{font-weight:700}
 @media(min-width:981px){.hm-today{grid-template-columns:120px 1fr 220px}.hm-start{grid-column:auto}.hm-ring,.hm-ring svg{width:120px;height:120px}}
 /* ข้อ 5: นับถอยหลังวันสอบบนการ์ดหน้าแรก */
-.neo-hero-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;order:1}
-.neo-hero-pills p{margin:0!important;order:0!important}
-.neo-hero-cd{background:#000;color:#e1e5ac;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px}
-.neo-hero-cd.soon{background:#ef3e4a;color:#fff}
-.neo-hero-hint{order:2;display:block;margin-top:-14px;font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -2049,56 +1768,67 @@ const COLOR_POOL = [
   {bg:'#f1f5f9',fg:'#475569',name:'สเลตเทา'}
 ];
 
-var POLICE_TRACKS = {
+// ค่าเริ่มต้นของสายสอบ (ผู้ใช้แก้/เพิ่มสายได้ในตั้งค่า → เก็บไว้ใน S.tracks)
+// rule: 'parts' = ต้องผ่านทุกภาค, 'total' = ดูคะแนนรวม
+const DEFAULT_TRACKS = {
   admin: {
-    name: 'อำนวยการ 2569',
-    short: 'ผ่าน 60% ทั้ง 2 ภาค',
-    ruleDesc: 'ผ่านทั้ง 2 ภาค (≥ 60%)',
+    name: 'อำนวยการ', year: '2569', rule: 'parts', passPct: 60, minutes: 180,
     focusCats: ['งานสารบรรณ', 'คอมพิวเตอร์'],
-    quota: {
-      'ความสามารถทั่วไป': 20,
-      'คณิตศาสตร์': 20,
-      'ภาษาไทย': 20,
-      'งานสารบรรณ': 30,
-      'คอมพิวเตอร์': 40,
-      'กฎหมาย': 25,
-      'ภาษาอังกฤษ': 15
-    },
-    p1: ['ความสามารถทั่วไป', 'คณิตศาสตร์', 'ภาษาไทย', 'ความรู้ทั่วไป'],
-    p2: ['คอมพิวเตอร์', 'งานสารบรรณ', 'กฎหมาย', 'ภาษาอังกฤษ', 'ระเบียบตำรวจ']
+    quota: { 'ความสามารถทั่วไป': 20, 'คณิตศาสตร์': 20, 'ภาษาไทย': 20, 'งานสารบรรณ': 30, 'คอมพิวเตอร์': 40, 'กฎหมาย': 25, 'ภาษาอังกฤษ': 15 },
+    parts: [
+      { name: 'ภาค 1 ความรู้ความสามารถทั่วไป', cats: ['ความสามารถทั่วไป', 'คณิตศาสตร์', 'ภาษาไทย', 'ความรู้ทั่วไป'] },
+      { name: 'ภาค 2 ความรู้เฉพาะตำแหน่ง', cats: ['คอมพิวเตอร์', 'งานสารบรรณ', 'กฎหมาย', 'ภาษาอังกฤษ', 'ระเบียบตำรวจ'] }
+    ]
   },
   suppress: {
-    name: 'ปราบปราม นสต.18',
-    short: 'เกณฑ์รวม ≥ 60%',
-    ruleDesc: 'คะแนนรวม ≥ 60%',
+    name: 'ปราบปราม', year: 'นสต.18', rule: 'total', passPct: 60, minutes: 180,
     focusCats: ['กฎหมาย', 'ความสามารถทั่วไป'],
-    quota: {
-      'ความสามารถทั่วไป': 30,
-      'ภาษาไทย': 25,
-      'คอมพิวเตอร์': 25,
-      'ภาษาอังกฤษ': 30,
-      'สังคม': 20,
-      'กฎหมาย': 20
-    },
-    p1: [],
-    p2: []
+    quota: { 'ความสามารถทั่วไป': 30, 'ภาษาไทย': 25, 'คอมพิวเตอร์': 25, 'ภาษาอังกฤษ': 30, 'สังคม': 20, 'กฎหมาย': 20 },
+    parts: []
   }
 };
-
-const NATURAL_MESSAGES = {
-  admin: [
-    { title: 'พร้อมลุยไหม?', sub: 'ทวนสม่ำเสมอ วันสอบสบายแน่' },
-    { title: 'เน้นสารบรรณ+คอมพ์', sub: 'เก็บแต้มชัวร์ โอกาสติดสูง' },
-    { title: 'ลุยทีละสเต็ป', sub: 'แบ่งเวลาอ่านทั้ง 2 ภาคให้พอดี' },
-    { title: 'สู้ๆ ว่าที่นายสิบ', sub: 'ทำข้อสอบทุกวัน สร้างความคุ้นชิน' }
-  ],
-  suppress: [
-    { title: 'ลุยข้อสอบปราบปราม!', sub: 'ฝึกบ่อยๆ สัญชาตญาณจะมาเอง' },
-    { title: 'กฎหมายต้องแม่นและไว', sub: 'จับประเด็นให้ดี อย่าให้โจทย์หลอก' },
-    { title: 'โกยคะแนนรวมทะลุเป้า', sub: 'วิชาถนัดเก็บแต้มให้เต็มที่' },
-    { title: 'พร้อมสอบจริงไหม?', sub: 'ฝึกวันละนิด พัฒนาขึ้นทุกวัน' }
-  ]
-};
+const clone = o => JSON.parse(JSON.stringify(o));
+function curTrackKey(){
+  const t = S.tracks || {};
+  return t[S.settings.track] ? S.settings.track : (Object.keys(t)[0] || 'admin');
+}
+function getTrack(key){
+  const all = S.tracks || DEFAULT_TRACKS;
+  const k = all[key] ? key : curTrackKey();
+  const t = all[k] || DEFAULT_TRACKS.admin;
+  const total = Object.values(t.quota || {}).reduce((a, b) => a + (+b || 0), 0);
+  return { key: k, ...t, label: t.name + (t.year ? ' ' + t.year : ''), quotaTotal: total,
+    ruleDesc: t.rule === 'parts' ? `ต้องผ่านทุกภาค ภาคละ ≥ ${t.passPct}%` : `คะแนนรวม ≥ ${t.passPct}%` };
+}
+// ประเมินผลตามเกณฑ์ของสาย (ใช้ทั้งหน้าผลสอบและประวัติ)
+function evaluateTrack(result, trackKey){
+  const tr = getTrack(trackKey), byCat = result.byCat || {}, P = tr.passPct;
+  const overall = result.total ? Math.round(result.correct / result.total * 100) : 0;
+  const quotaCats = Object.entries(tr.quota || {}).filter(([, n]) => n > 0);
+  const isFull = quotaCats.length > 0 && quotaCats.every(([c, n]) => (byCat[c]?.t || 0) >= n);
+  const note = isFull ? '' : `ชุดนี้ไม่ครบโควตาสนามจริง (${result.total}/${tr.quotaTotal} ข้อ) ผลเป็นการประเมินคร่าวๆ`;
+  if(tr.rule !== 'parts' || !(tr.parts || []).length){
+    const pass = overall >= P;
+    return { pass, trackName: tr.label, rule: 'total', passPct: P, overall, isFull, note, parts: [],
+      reason: pass ? `ผ่านเกณฑ์คะแนนรวม (${overall}% ≥ ${P}%)` : `คะแนนรวมไม่ถึงเกณฑ์ (${overall}% ต้อง ≥ ${P}%)` };
+  }
+  const parts = tr.parts.map(pt => {
+    let T = 0, C = 0;
+    pt.cats.forEach(c => { if(byCat[c]){ T += byCat[c].t; C += byCat[c].c; } });
+    const pct = T ? Math.round(C / T * 100) : 0;
+    return { name: pt.name, cats: pt.cats, T, C, pct, pass: T > 0 && pct >= P };
+  });
+  const missing = parts.filter(x => !x.T);
+  if(missing.length){
+    const pass = overall >= P;
+    return { pass, trackName: tr.label, rule: 'parts', passPct: P, overall, isFull, parts,
+      reason: pass ? `ผ่านเฉพาะส่วนที่ทำ (${overall}%)` : `ต่ำกว่าเกณฑ์ (${overall}%)`,
+      note: `ยังไม่ได้ทำ ${missing.map(x => x.name).join(', ')} · สายนี้ต้องผ่านทุกภาค` };
+  }
+  const fail = parts.filter(x => !x.pass), pass = !fail.length;
+  return { pass, trackName: tr.label, rule: 'parts', passPct: P, overall, isFull, note, parts,
+    reason: pass ? `ผ่านทุกภาค (${parts.map(x => x.pct + '%').join(' · ')})` : `ไม่ผ่าน ${fail.map(x => `${x.name.split(' ').slice(0,2).join(' ')} (${x.pct}%)`).join(', ')}` };
+}
 
 const $  = (s,r=document)=>r.querySelector(s);
 const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
@@ -2173,6 +1903,7 @@ function fresh(){
     cats:['ความสามารถทั่วไป','ภาษาไทย','คอมพิวเตอร์','งานสารบรรณ','กฎหมาย','ภาษาอังกฤษ','ความรู้ทั่วไป'],
     catIcons:{},
     catTones:{},
+    tracks:clone(DEFAULT_TRACKS),
     questions:[],
     cards:[],
     results:[],
@@ -2320,10 +2051,10 @@ function updateSidebarProfile(){
     }
   }
 
-  const currentTrackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
-  const trackInfo = POLICE_TRACKS[currentTrackKey];
+  const currentTrackKey = curTrackKey();
+  const trackInfo = getTrack(currentTrackKey);
   const hpTrack = $('#hpTrackName');
-  if(hpTrack) hpTrack.textContent = `สาย${trackInfo.name}`;
+  if(hpTrack) hpTrack.textContent = `สาย${trackInfo.label}`;
 
   icons();
 }
@@ -2719,6 +2450,10 @@ document.addEventListener('pointerdown', e => {
   if(b && !b.disabled && !b.classList.contains('opt')) playTone('tap');
 }, {passive:true});
 
+function speakCard(){
+  const el = document.querySelector('#fc .card-word');
+  if(el) speakWord(el.textContent.trim());
+}
 function speakWord(text) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
@@ -2950,8 +2685,8 @@ async function go(p){
   
   const topBlock = $('#topTitleBlock');
   if(p === 'home'){
-    const currentTrackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
-    const trackInfo = POLICE_TRACKS[currentTrackKey];
+    const currentTrackKey = curTrackKey();
+    const trackInfo = getTrack(currentTrackKey);
     const name = (S.settings.name || '').trim() || 'P-exam';
     const avatar = S.settings.avatar || '';
 
@@ -2965,7 +2700,7 @@ async function go(p){
             <b id="hpUserName">${esc(name)}</b>
             <i data-lucide="chevron-right"></i>
           </div>
-          <small class="hp-track-badge" id="hpTrackName">สาย${trackInfo.name}</small>
+          <small class="hp-track-badge" id="hpTrackName">สาย${trackInfo.label}</small>
         </div>
       </div>
     `;
@@ -2996,17 +2731,6 @@ function syncChrome(){
   else if(PAGE==='cards'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มบัตร';fab.onclick=()=>{playTone('tap');cForm();};}
   else fab.hidden=true;
   icons();
-}
-
-function avg(){ 
-  const totalQuestions = S.questions.length;
-  if(!totalQuestions) return 0;
-  let okCount = 0;
-  for(const q of S.questions){
-    const st = S.qstat[q.id];
-    if(st && st.ok > 0) okCount++;
-  }
-  return Math.round((okCount / totalQuestions) * 100);
 }
 
 function streak(){
@@ -3060,15 +2784,8 @@ function getCountdownInfo(){
   };
 }
 
-function analyzeWeakness(trackKey = 'admin'){
-  const w = weakSubjects(trackKey)[0];
-  if(!w || w.pct >= 60) return { worstCat:null, maxBad:0 };
-  const bad = S.questions.filter(q => q.cat === w.c).reduce((n,q) => n + (S.qstat[q.id]?.bad || 0), 0);
-  return { worstCat:w.c, maxBad:bad };
-}
-
 function calculateReadinessAndMastery(trackKey = 'admin'){
-  const track = POLICE_TRACKS[trackKey] || POLICE_TRACKS.admin;
+  const track = getTrack(trackKey);
   const mastery = {};
   
   S.cats.forEach(c => {
@@ -3240,59 +2957,6 @@ function openDayBreakdownModal(dayItem){
   });
 }
 
-function evaluatePolicePassing(result, trackKey = 'admin'){
-  const track = POLICE_TRACKS[trackKey] || POLICE_TRACKS.admin;
-  const byCat = result.byCat;
-  const overallPct = Math.round(result.correct / result.total * 100);
-
-  if(trackKey === 'suppress'){
-    const pass = overallPct >= 60;
-    return {
-      pass,
-      trackName: track.name,
-      reason: pass ? `ผ่านเกณฑ์ปราบปราม (${overallPct}%)` : `ต่ำกว่าเกณฑ์ (${overallPct}%)`,
-      isComplete: true,
-      p1Pct: null,
-      p2Pct: null
-    };
-  }
-
-  let p1T = 0, p1C = 0, p2T = 0, p2C = 0;
-  for(const [c, v] of Object.entries(byCat)){
-    if(track.p1 && track.p1.includes(c)){ p1T += v.t; p1C += v.c; }
-    else if(track.p2 && track.p2.includes(c)){ p2T += v.t; p2C += v.c; }
-  }
-
-  const p1Pct = p1T ? Math.round(p1C / p1T * 100) : 0;
-  const p2Pct = p2T ? Math.round(p2C / p2T * 100) : 0;
-
-  if(p1T === 0 || p2T === 0){
-    const pass = overallPct >= 60;
-    return {
-      pass,
-      trackName: track.name,
-      reason: pass ? `ผ่านเฉพาะหมวด (${overallPct}%)` : `ต่ำกว่าเกณฑ์ (${overallPct}%)`,
-      isComplete: false,
-      note: 'สายอำนวยการต้องทำทั้ง 2 ภาค (≥ 60% ทั้งคู่)',
-      p1Pct, p2Pct, p1T, p1C, p2T, p2C
-    };
-  }
-
-  const passP1 = p1Pct >= 60;
-  const passP2 = p2Pct >= 60;
-  const pass = passP1 && passP2 && (overallPct >= 60);
-
-  let reason = '';
-  if(pass) reason = `ผ่านเกณฑ์อำนวยการ (ภาค 1: ${p1Pct}%, ภาค 2: ${p2Pct}%)`;
-  else if(!passP1 && !passP2) reason = `ไม่ผ่านทั้ง 2 ภาค (ภาค 1: ${p1Pct}%, ภาค 2: ${p2Pct}%)`;
-  else if(!passP1) reason = `ตกภาค 1 (${p1Pct}%) ต้องได้ ≥ 60%`;
-  else reason = `ตกภาค 2 (${p2Pct}%) ต้องได้ ≥ 60%`;
-
-  return { pass, trackName: track.name, reason, isComplete: true, p1Pct, p2Pct, p1T, p1C, p2T, p2C };
-}
-
-let bannerTimer = null;
-let bannerIdx = 0;
 
 // ===== ตัวช่วยกลาง (ใช้เกณฑ์เดียวกันทั้งแอป) =====
 // เป้าต่อวัน: ตั้งเอง หรือ 0 = อัตโนมัติจากข้อที่ยังไม่ทำ ÷ วันที่เหลือก่อนสอบ
@@ -3330,13 +2994,12 @@ function startTodayNew(){
 }
 
 function renderHome(){
-  clearInterval(bannerTimer);
   const t=day(), goal=dailyGoal(), rawPct=goal>0?Math.round(t.answered/goal*100):0;
   const pct=clamp(rawPct,0,100);
   const C=2*Math.PI*42;
   const h=new Date().getHours();
   const hi = h < 11 ? 'สวัสดีตอนเช้า' : h < 16 ? 'สวัสดีตอนบ่าย' : h < 19 ? 'สวัสดีตอนเย็น' : 'สวัสดีตอนค่ำ';
-  const trackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
+  const trackKey = curTrackKey();
   const cd = getCountdownInfo();
   const rStats = calculateReadinessAndMastery(trackKey);
   const weak = weakSubjects(trackKey);
@@ -3429,41 +3092,6 @@ function renderHome(){
   icons();
 }
 
-function initCarousel(totalSlides){
-  clearInterval(bannerTimer);
-  if(totalSlides <= 1) return;
-
-  const track = $('#bannerTrack');
-  const dots = $$('#bannerDots .b-dot');
-  bannerIdx = 0;
-
-  function updateSlide(idx){
-    bannerIdx = (idx + totalSlides) % totalSlides;
-    if(track) track.style.transform = `translateX(-${bannerIdx * 100}%)`;
-    dots.forEach((d, i)=>d.classList.toggle('on', i === bannerIdx));
-  }
-
-  bannerTimer = setInterval(()=>updateSlide(bannerIdx + 1), 4000);
-
-  const slider = $('#bannerSlider');
-  if(!slider) return;
-
-  let startX = 0;
-  slider.ontouchstart = e => {
-    clearInterval(bannerTimer);
-    startX = e.touches[0].clientX;
-  };
-  slider.ontouchend = e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    if(Math.abs(diff) > 40){
-      playTone('tap');
-      updateSlide(diff > 0 ? bannerIdx + 1 : bannerIdx - 1);
-    }
-    bannerTimer = setInterval(()=>updateSlide(bannerIdx + 1), 4000);
-  };
-}
-
 let QF={cat:'ทั้งหมด',term:'',sort:'new',star:false,limit:25};
 let searchDebounce = null;
 
@@ -3493,7 +3121,7 @@ function highlightMatch(text, term) {
 }
 
 function qFiltered(){
-  let L = S.questions;
+  let L = S.questions.slice(); // สำเนา: การเรียงจะไม่ไปสลับลำดับข้อมูลจริง
   if(QF.cat !== 'ทั้งหมด') L = L.filter(q => q.cat === QF.cat);
   if(QF.star) L = L.filter(q => q.star);
   if (QF.sort === 'unseen') {
@@ -3509,7 +3137,9 @@ function qFiltered(){
     });
   }
 
-  if (QF.sort === 'smart') {
+  if (QF.sort === 'new') {
+    L.reverse();
+  } else if (QF.sort === 'smart') {
     const diffScore = { 'ยาก': 3, 'ปานกลาง': 2, 'ง่าย': 1 };
     L.sort((a, b) => {
       const sa = S.qstat[a.id] || { bad: 0, seen: 0 };
@@ -3741,6 +3371,7 @@ function renderQuiz(){
   $('#btnSort').onclick=()=>{ openPicker({
     title: 'จัดเรียง',
     options: [
+      { val: 'new',    label: 'เพิ่มล่าสุด' },
       { val: 'smart',  label: 'แนะนำ' },
       { val: 'order',  label: 'ตามลำดับข้อ' },
       { val: 'unseen', label: 'ยังไม่เคยทำ' },
@@ -3862,20 +3493,7 @@ function renderQuiz(){
     };
   });
 
-  $$('[data-dropcat]').forEach(b=>b.onclick=async()=>{
-    const c=b.dataset.dropcat;
-    const n=S.questions.filter(q=>q.cat===c).length;
-    if(await ask('ลบหมวดนี้?', n ? `จะลบข้อสอบ "${c}" ทั้งหมด ${n} ข้อ` : `ลบหมวด "${c}"`, 'ลบ')){
-      S.questions = S.questions.filter(q=>q.cat!==c);
-      S.cats = S.cats.filter(x=>x!==c);
-      if(S.catIcons) delete S.catIcons[c];
-      if(S.catTones) delete S.catTones[c];
-      save();
-      renderQuiz();
-      syncChrome();
-      toast('ลบแล้ว','ok');
-    }
-  });
+  $$('[data-dropcat]').forEach(b => b.onclick = () => deleteCategory(b.dataset.dropcat));
 
   $$('[data-seticon]').forEach(b => {
     b.onclick = () => {
@@ -3886,11 +3504,10 @@ function renderQuiz(){
 
   $$('[data-drop]').forEach(b=>b.onclick=async()=>{
     if(await ask('ลบข้อนี้?','ข้อสอบจะถูกลบถาวร','ลบ')){
-      S.questions=S.questions.filter(x=>x.id!==b.dataset.drop);
-      save();
+      removeQuestions(x=>x.id===b.dataset.drop, 'ลบข้อสอบ 1 ข้อ');
       renderQuiz();
       syncChrome();
-      toast('ลบแล้ว','ok');
+      undoToast('ลบข้อสอบแล้ว');
     }
   });
 
@@ -4211,6 +3828,7 @@ function qForm(q, onSavedCallback = null){
         cImgW: curCW,
         eImgW: curEW
       };
+      sanitizeQuestion(o);
       if(q) Object.assign(q, o); 
       else S.questions.push({id: uid(), star: false, ...o});
       
@@ -4233,7 +3851,7 @@ function bulkForm(){
   $('#bkGo').onclick=()=>{
     playTone('tap');
     const lines=$('#bk').value.split('\n').map(x=>x.trim()).filter(Boolean);
-    let n=0,skip=0;
+    let n=0,skip=0; const added=[], newCats=[];
     lines.forEach(ln=>{
       const p=ln.split('|').map(x=>x.trim());
       if(p.length<6){skip++;return;}
@@ -4244,10 +3862,11 @@ function bulkForm(){
       const formattedChoices = p.slice(1,5).map(c => c.replace(/\\n/g, '\n').replace(/<br\s*\/?>/gi, '\n'));
       const formattedExp = (p[7]||'').replace(/\\n/g, '\n').replace(/<br\s*\/?>/gi, '\n');
 
-      let cat=p[6]||S.cats[0];
-      if(!S.cats.includes(cat))S.cats.push(cat);
-      S.questions.push({
-        id: uid(),
+      let cat=(p[6]||S.cats[0]).replace(/[<>"'`]/g,'');
+      if(!S.cats.includes(cat)){S.cats.push(cat);newCats.push(cat);}
+      const nid=uid(); added.push(nid);
+      S.questions.push(sanitizeQuestion({
+        id: nid,
         star: false,
         q: formattedQ,
         c: formattedChoices,
@@ -4260,11 +3879,12 @@ function bulkForm(){
         qImgs: [],
         eImgs: [],
         cType: 'vertical'
-      });
+      }));
       n++;
     });
+    if(n) pushUndo(`นำเข้า ${n} ข้อ`, { addQ: added, addCats: newCats });
     save();closeModal();renderQuiz();syncChrome();
-    n?toast(`นำเข้า ${n} ข้อแล้ว`,'ok'):toast('รูปแบบไม่ถูกต้อง','err');
+    n?undoToast(`นำเข้า ${n} ข้อแล้ว${skip?` (ข้าม ${skip} บรรทัดที่รูปแบบผิด)`:''}`):toast('รูปแบบไม่ถูกต้อง','err');
   };
 }
 
@@ -4289,17 +3909,19 @@ function bulkCardForm(){
   $('#bkcGo').onclick = () => {
     playTone('tap');
     const lines = $('#bkc').value.split('\n').map(x => x.trim()).filter(Boolean);
-    let n = 0, skip = 0;
+    let n = 0, skip = 0; const added = [], newCats = [];
     lines.forEach(ln => {
       const p = ln.split('|').map(x => x.trim());
       if(p.length < 2 || !p[0] || !p[1]){ skip++; return; }
-      let cat = p[2] || S.cats[0];
-      if(!S.cats.includes(cat)) S.cards.push(cat);
-      S.cards.unshift({ id: uid(), f: p[0], b: p[1], fImg: '', bImg: '', fPos: 'bottom', bPos: 'bottom', cat, box: 3, due: 0 });
+      let cat = (p[2] || S.cats[0]).replace(/[<>"'`]/g,'');
+      if(!S.cats.includes(cat)){ S.cats.push(cat); newCats.push(cat); }
+      const nid = uid(); added.push(nid);
+      S.cards.unshift(sanitizeCard({ id: nid, f: p[0], b: p[1], fImg: '', bImg: '', fPos: 'bottom', bPos: 'bottom', cat, box: 0, due: 0 }));
       n++;
     });
+    if(n) pushUndo(`นำเข้าบัตร ${n} ใบ`, { addC: added, addCats: newCats });
     save(); closeModal(); renderCards(); syncChrome();
-    n ? toast(`นำเข้า ${n} ใบแล้ว`, 'ok') : toast('รูปแบบไม่ถูกต้อง', 'err');
+    n ? undoToast(`นำเข้า ${n} ใบแล้ว${skip?` (ข้าม ${skip} บรรทัด)`:''}`) : toast('รูปแบบไม่ถูกต้อง', 'err');
   };
 }
 
@@ -4360,15 +3982,16 @@ function renderCards(){
             <div class="card-header-row">
               <span class="tag b">${esc(c.cat)}</span>
               ${isEnglish ? `
-                <button type="button" class="btn-tts" onclick="event.stopPropagation();speakWord('${esc(c.f)}')" title="ฟังเสียงอ่าน">
+                <button type="button" class="btn-tts" onclick="event.stopPropagation();speakCard()" title="ฟังเสียงอ่าน">
                   <i data-lucide="volume-2" style="width:18px;height:18px"></i>
                 </button>
               ` : '<span></span>'}
             </div>
 
             <div class="card-body-wrap">
+              ${c.fImg && c.fPos !== 'top' ? `<img src="${c.fImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.fImg}'], 0)">` : ''}
               <div class="card-word">${c.f}</div>
-              ${c.fImg ? `<img src="${c.fImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.fImg}'], 0)">` : ''}
+              ${c.fImg && c.fPos === 'top' ? `<img src="${c.fImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.fImg}'], 0)">` : ''}
             </div>
 
             <div class="card-hint-row">
@@ -4385,8 +4008,9 @@ function renderCards(){
             </div>
 
             <div class="card-body-wrap">
+              ${c.bImg && c.bPos !== 'top' ? `<img src="${c.bImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.bImg}'], 0)">` : ''}
               <div class="card-def">${c.b}</div>
-              ${c.bImg ? `<img src="${c.bImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.bImg}'], 0)">` : ''}
+              ${c.bImg && c.bPos === 'top' ? `<img src="${c.bImg}" class="card-img-preview" onclick="event.stopPropagation();openLightboxGallery(['${c.bImg}'], 0)">` : ''}
             </div>
 
             <div class="card-hint-row">
@@ -4422,8 +4046,8 @@ function renderCards(){
     const boxLabels = ['ลืม', 'พอได้', 'ดี', 'แม่นยำ'];
     const boxTagCls = ['r', 'o', 'b', 'g'];
     return L.map(x=>`<div class="qrow"><div class="no">${(x.box||0)+1}</div>
-      <div class="body"><div class="qt">${esc(x.f)}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px;white-space:pre-wrap">${esc(x.b)}</div>
+      <div class="body"><div class="qt">${x.f}</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;white-space:pre-wrap">${x.b}</div>
         <div class="meta"><span class="tag b">${esc(x.cat)}</span>
           <span class="tag ${boxTagCls[x.box]||'g'}">${boxLabels[x.box]||'แม่นยำ'}</span></div></div>
       <div class="side"><button class="ib sm" data-cedit="${x.id}"><i data-lucide="pencil"></i></button>
@@ -4494,13 +4118,12 @@ function renderCards(){
         $('#mDelCurCat').onclick = async () => {
           closeModal();
           if(await ask(`ลบบัตรหมวด "${curCat}"?`, `จะลบบัตรคำในหมวดนี้ทั้งหมด ${catCardCount} ใบ`, 'ลบ')){
-            S.cards = S.cards.filter(x => x.cat !== curCat);
-            save();
+            removeCards(x => x.cat === curCat, `ลบบัตรหมวด ${curCat}`);
             CFF.cat = 'ทั้งหมด';
             CFF.i = 0;
             renderCards();
             syncChrome();
-            toast(`ลบบัตรหมวด "${curCat}" แล้ว`, 'ok');
+            undoToast(`ลบบัตรหมวด "${curCat}" แล้ว`);
           }
         };
       }
@@ -4519,13 +4142,12 @@ function renderCards(){
             const count = S.cards.filter(x => x.cat === selectedCat).length;
             if(!count) return toast('หมวดนี้ไม่มีบัตรคำ', 'err');
             if(await ask(`ลบบัตรหมวด "${selectedCat}"?`, `จะลบบัตรคำในหมวดนี้ทั้งหมด ${count} ใบ`, 'ลบ')){
-              S.cards = S.cards.filter(x => x.cat !== selectedCat);
-              save();
+              removeCards(x => x.cat === selectedCat, `ลบบัตรหมวด ${selectedCat}`);
               CFF.cat = 'ทั้งหมด';
               CFF.i = 0;
               renderCards();
               syncChrome();
-              toast(`ลบบัตรหมวด "${selectedCat}" แล้ว`, 'ok');
+              undoToast(`ลบบัตรหมวด "${selectedCat}" แล้ว`);
             }
           }
         });
@@ -4534,13 +4156,12 @@ function renderCards(){
       $('#mDelAll').onclick = async () => {
         closeModal();
         if(await ask('ลบบัตรจำทั้งหมด?', `จะลบบัตรคำทุกหมวดวิชาทั้งหมด ${S.cards.length} ใบอย่างถาวร`, 'ลบทั้งหมด')){
-          S.cards = [];
-          save();
+          removeCards(() => true, 'ลบบัตรจำทั้งหมด');
           CFF.cat = 'ทั้งหมด';
           CFF.i = 0;
           renderCards();
           syncChrome();
-          toast('ลบบัตรคำทั้งหมดแล้ว', 'ok');
+          undoToast('ลบบัตรคำทั้งหมดแล้ว');
         }
       };
     };
@@ -4549,11 +4170,10 @@ function renderCards(){
   $$('[data-cedit]').forEach(b=>b.onclick=()=>{ playTone('tap'); cForm(S.cards.find(x=>x.id===b.dataset.cedit)); });$$
 ('[data-cdrop]').forEach(b=>b.onclick=async()=>{
     if(await ask('ลบบัตรนี้?','บัตรจะถูกลบถาวร','ลบ')){
-      S.cards=S.cards.filter(x=>x.id!==b.dataset.cdrop);
-      save();
+      removeCards(x=>x.id===b.dataset.cdrop, 'ลบบัตร 1 ใบ');
       renderCards();
       syncChrome();
-      toast('ลบแล้ว','ok');
+      undoToast('ลบบัตรแล้ว');
     }
   });
 
@@ -4574,11 +4194,10 @@ function renderCards(){
     if($('#cEdit')) $('#cEdit').onclick = () => cForm(c);
     if($('#cDrop')) $('#cDrop').onclick = async () => {
       if(await ask('ลบบัตรนี้?', 'บัตรจะถูกลบถาวร', 'ลบ')){
-        S.cards = S.cards.filter(x => x.id !== c.id);
-        save();
+        removeCards(x => x.id === c.id, 'ลบบัตร 1 ใบ');
         renderCards();
         syncChrome();
-        toast('ลบแล้ว', 'ok');
+        undoToast('ลบบัตรแล้ว');
       }
     };
   }
@@ -4725,7 +4344,7 @@ function cForm(card){
   });
 
   $('#k_save').onclick=()=>{
-    const f=$('#k_f').value.trim(),b=$('#k_b').value.trim();
+    const f=sanitizeHTML($('#k_f').value.trim()),b=sanitizeHTML($('#k_b').value.trim());
     if(!f&&!curFImg)return toast('ใส่คำถามหรือรูปด้านหน้าก่อน','err');
     if(!b&&!curBImg)return toast('ใส่คำตอบหรือรูปด้านหลังก่อน','err');
     playTone('tap');
@@ -4741,20 +4360,132 @@ function cForm(card){
     }, 40);
   };
 }
-let CFG={cats:[],count:20,minutes:30,mode:'exam',onlyStar:false,track:'admin'};
-const poolOf=(cats,onlyStar)=>S.questions.filter(q=>(!cats.length||cats.includes(q.cat))&&(!onlyStar||q.star));
+let CFG={cats:[],count:20,minutes:30,mode:'exam',onlyStar:false,diff:''};
+const poolOf=(cats,onlyStar,diff)=>S.questions.filter(q=>(!cats.length||cats.includes(q.cat))&&(!onlyStar||q.star)&&(!diff||q.d===diff));
+
+// เลือกสายสอบ (ค่าเดียวทั้งแอป)
+function pickTrack(after){
+  const opts = Object.keys(S.tracks).map(k => { const t = getTrack(k); return { val: k, label: `${t.label} · ${t.ruleDesc}` }; });
+  opts.push({ val: '__edit', label: '⚙️ แก้เกณฑ์ / เพิ่มสายใหม่…' });
+  openPicker({ title: 'เลือกสายสอบ', options: opts, value: curTrackKey(), onSelect: v => {
+    if(v === '__edit') return setTimeout(() => openTrackEditor(curTrackKey()), 80);
+    S.settings.track = v; save(); syncChrome(); after && after();
+    toast(`เลือกสาย${getTrack(v).label}แล้ว`, 'ok');
+  }});
+}
+
+// ตัวแก้เกณฑ์สาย: ชื่อ ปี เกณฑ์ผ่าน เวลา จำนวนข้อแต่ละวิชา และวิชาในแต่ละภาค
+function openTrackEditor(key){
+  const t = clone(S.tracks[key] || DEFAULT_TRACKS.admin);
+  t.parts = (t.parts && t.parts.length) ? t.parts : [{ name: 'ภาค 1', cats: [] }, { name: 'ภาค 2', cats: [] }];
+  const subjects = [...new Set([...S.cats, ...Object.keys(t.quota || {})])];
+  const partOf = c => t.parts.findIndex(pt => pt.cats.includes(c));
+  const body = `
+    <div class="tre">
+      <div class="grid g2" style="gap:10px">
+        <div class="field"><label>ชื่อสาย</label><input class="inp" id="tr_name" value="${esc(t.name)}"></div>
+        <div class="field"><label>ปี / รุ่น</label><input class="inp" id="tr_year" value="${esc(t.year || '')}" placeholder="เช่น 2570"></div>
+      </div>
+      <div class="field"><label>เกณฑ์ผ่าน</label>
+        <div class="chips" id="tr_rule">
+          <button type="button" class="chip ${t.rule==='parts'?'on':''}" data-rule="parts">ต้องผ่านทุกภาค</button>
+          <button type="button" class="chip ${t.rule!=='parts'?'on':''}" data-rule="total">ดูคะแนนรวม</button>
+        </div>
+      </div>
+      <div class="grid g2" style="gap:10px">
+        <div class="field"><label>คะแนนผ่าน (%)</label><input class="inp" id="tr_pass" type="number" min="1" max="100" value="${t.passPct}"></div>
+        <div class="field"><label>เวลาสอบ (นาที)</label><input class="inp" id="tr_min" type="number" min="0" value="${t.minutes || 0}"></div>
+      </div>
+      <div class="tr-parts" ${t.rule==='parts'?'':'hidden'}>
+        <div class="grid g2" style="gap:10px">
+          ${t.parts.map((pt, i) => `<div class="field"><label>ชื่อภาค ${i+1}</label><input class="inp" data-pname="${i}" value="${esc(pt.name)}"></div>`).join('')}
+        </div>
+      </div>
+      <label class="tr-lbl">จำนวนข้อแต่ละวิชา <span id="tr_total"></span></label>
+      <div class="tr-rows">
+        ${subjects.map(c => `<div class="tr-row" data-sub="${esc(c)}">
+          <div class="hm-grow"><b>${esc(c)}</b>${S.cats.includes(c) ? '' : '<small class="tag o">ยังไม่มีหมวดนี้</small>'}</div>
+          <select class="inp tr-part" ${t.rule==='parts'?'':'hidden'}>
+            <option value="-1">ไม่นับภาค</option>
+            ${t.parts.map((pt, i) => `<option value="${i}" ${partOf(c)===i?'selected':''}>ภาค ${i+1}</option>`).join('')}
+          </select>
+          <input class="inp tr-n" type="number" min="0" value="${(t.quota || {})[c] || 0}">
+        </div>`).join('')}
+      </div>
+      <div class="row" style="gap:8px;margin-top:10px">
+        <input class="inp" id="tr_newsub" placeholder="เพิ่มวิชาที่ยังไม่มี เช่น สังคม" style="flex:1">
+        <button class="btn ghost sm" id="tr_addsub"><i data-lucide="plus"></i>เพิ่ม</button>
+      </div>
+      <div class="row" style="gap:8px;margin-top:16px;flex-wrap:wrap">
+        <button class="btn ghost sm" id="tr_copy"><i data-lucide="copy"></i>ทำสำเนาเป็นปีใหม่</button>
+        ${DEFAULT_TRACKS[key] ? `<button class="btn ghost sm" id="tr_reset"><i data-lucide="rotate-ccw"></i>คืนค่าเริ่มต้น</button>` : ''}
+        ${Object.keys(S.tracks).length > 1 ? `<button class="btn ghost sm" id="tr_del" style="color:var(--red)"><i data-lucide="trash-2"></i>ลบสายนี้</button>` : ''}
+      </div>
+    </div>`;
+  openModal(`แก้เกณฑ์: ${esc(getTrack(key).label)}`, body, `<button class="btn ghost" data-close>ยกเลิก</button><button class="btn" id="tr_save"><i data-lucide="save"></i>บันทึก</button>`);
+  const m = $('#modal');
+  const total = () => { $('#tr_total').textContent = `· รวม ${$$('.tr-n', m).reduce((a, i) => a + (+i.value || 0), 0)} ข้อ`; };
+  total(); m.addEventListener('input', e => { if(e.target.classList.contains('tr-n')) total(); });
+  $$('[data-rule]', m).forEach(b => b.onclick = () => {
+    t.rule = b.dataset.rule;
+    $$('[data-rule]', m).forEach(x => x.classList.toggle('on', x === b));
+    $('.tr-parts', m).hidden = t.rule !== 'parts';
+    $$('.tr-part', m).forEach(x => x.hidden = t.rule !== 'parts');
+  });
+  $('#tr_addsub').onclick = () => {
+    const v = $('#tr_newsub').value.trim();
+    if(!v || $$('.tr-row', m).some(r => r.dataset.sub === v)) return toast(v ? 'มีวิชานี้แล้ว' : 'พิมพ์ชื่อวิชาก่อน', 'err');
+    const row = $$('.tr-row', m)[0].cloneNode(true);
+    row.dataset.sub = v;
+    row.querySelector('b').textContent = v;
+    const sm = row.querySelector('small'); if(sm) sm.remove();
+    row.querySelector('.hm-grow').insertAdjacentHTML('beforeend', S.cats.includes(v) ? '' : '<small class="tag o">ยังไม่มีหมวดนี้</small>');
+    row.querySelector('.tr-n').value = 0; row.querySelector('.tr-part').value = '-1';
+    $('.tr-rows', m).appendChild(row); $('#tr_newsub').value = ''; total();
+  };
+  const collect = () => {
+    const out = { ...t, name: $('#tr_name').value.trim() || t.name, year: $('#tr_year').value.trim(),
+      passPct: clamp(+$('#tr_pass').value || 60, 1, 100), minutes: Math.max(0, +$('#tr_min').value || 0), quota: {} };
+    out.parts = t.parts.map((pt, i) => ({ name: ($(`[data-pname="${i}"]`, m).value || '').trim() || `ภาค ${i+1}`, cats: [] }));
+    $$('.tr-row', m).forEach(r => {
+      const n = +r.querySelector('.tr-n').value || 0, c = r.dataset.sub, pi = +r.querySelector('.tr-part').value;
+      if(n > 0) out.quota[c] = n;
+      if(pi >= 0) out.parts[pi].cats.push(c);
+    });
+    if(out.rule !== 'parts') out.parts = [];
+    return out;
+  };
+  $('#tr_save').onclick = () => { S.tracks[key] = collect(); save(); closeModal(); syncChrome(); refreshPage(); toast('บันทึกเกณฑ์แล้ว', 'ok'); };
+  $('#tr_copy').onclick = () => {
+    const nk = 't' + uid(), c = collect();
+    c.year = c.year && /^\d+$/.test(c.year) ? String(+c.year + 1) : (c.year ? c.year + ' (ใหม่)' : 'ใหม่');
+    S.tracks[nk] = c; S.settings.track = nk; save(); closeModal(); syncChrome(); refreshPage();
+    toast(`สร้างสาย${getTrack(nk).label}แล้ว แก้จำนวนข้อได้เลย`, 'ok');
+    setTimeout(() => openTrackEditor(nk), 300);
+  };
+  if($('#tr_reset')) $('#tr_reset').onclick = () => { S.tracks[key] = clone(DEFAULT_TRACKS[key]); save(); closeModal(); refreshPage(); toast('คืนค่าเริ่มต้นแล้ว', 'ok'); };
+  if($('#tr_del')) $('#tr_del').onclick = async () => {
+    const lb = getTrack(key).label;
+    if(!(await ask('ลบสายนี้?', `ลบสาย ${lb} (ผลสอบเก่ายังอยู่)`, 'ลบ'))) return;
+    delete S.tracks[key]; if(S.settings.track === key) S.settings.track = Object.keys(S.tracks)[0];
+    save(); syncChrome(); refreshPage(); toast('ลบสายแล้ว', 'ok');
+  };
+}
+function refreshPage(){ if(RENDER[PAGE] && PAGE !== 'run') RENDER[PAGE](); }
 
 function renderExam(){
-  const avail=poolOf(CFG.cats,CFG.onlyStar).length;
+  const avail=poolOf(CFG.cats,CFG.onlyStar,CFG.diff).length;
   const use=Math.min(avail,CFG.count);
-  const track = POLICE_TRACKS[CFG.track] || POLICE_TRACKS.admin;
+  const track = getTrack(curTrackKey());
+  const have = c => S.questions.filter(q => q.cat === c).length;
+  const short = Object.entries(track.quota).filter(([c, n]) => have(c) < n);
 
   $('#view').innerHTML=`
   <div class="card">
     <div class="sec" style="margin-top:0"><i data-lucide="shield" style="color:var(--violet)"></i>สายสอบ</div>
     <div style="margin-bottom:12px">
       <button class="c-select block" id="btnPickExamTrack" style="width:100%">
-        <span><b>${esc(track.name)}</b> <small style="color:var(--muted)">(${esc(track.short)})</small></span>
+        <span><b>${esc(track.label)}</b> <small style="color:var(--muted)">(${esc(track.ruleDesc)})</small></span>
         <i data-lucide="chevron-down"></i>
       </button>
     </div>
@@ -4781,6 +4512,9 @@ function renderExam(){
       <button class="chip ${CFG.onlyStar?'on':''}" data-star="1"><i data-lucide="star" style="width:13px;height:13px;vertical-align:middle"></i> ดาว</button>
     </div>
 
+    <div class="sec"><i data-lucide="gauge" style="color:var(--red)"></i>ความยาก</div>
+    <div class="chips">${[['','ทุกระดับ'],...DIFFS.map(d=>[d,d])].map(([v,l])=>`<button class="chip ${CFG.diff===v?'on':''}" data-ed="${v}">${l} ·${v?S.questions.filter(q=>q.d===v&&(!CFG.cats.length||CFG.cats.includes(q.cat))).length:''}</button>`).join('')}</div>
+
     <div class="grid g3 keep" style="margin-top:20px">
       <div class="mini"><b>${avail.toLocaleString()}</b><span>ในคลัง</span></div>
       <div class="mini"><b style="color:var(--blue)">${use.toLocaleString()}</b><span>ใช้สอบ</span></div>
@@ -4790,29 +4524,29 @@ function renderExam(){
       <i data-lucide="play"></i>${avail?'เริ่มสอบ':'ไม่มีข้อสอบ'}</button>
   </div>
 
-  <div class="sec"><i data-lucide="bookmark-check" style="color:var(--blue)"></i>ชุดแนะนำ</div>
-  <div class="grid g3">
+  <div class="sec"><i data-lucide="trophy" style="color:var(--orange)"></i>จำลองสนามจริงตามสาย</div>
+  <button class="card hm-full" id="btnFullSim">
+    <div class="hm-ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="trophy"></i></div>
+    <div class="hm-grow"><b>สาย${esc(track.label)}</b>
+      <small>${track.quotaTotal} ข้อ · ${track.minutes || '∞'} นาที · ${esc(track.ruleDesc)}</small>
+      ${short.length ? `<small style="color:var(--orange)">ข้อในคลังไม่พอ: ${short.map(([c,n])=>`${esc(c)} ${have(c)}/${n}`).join(', ')}</small>` : ''}</div>
+    <i data-lucide="play" class="hm-chev"></i>
+  </button>
+
+  <div class="sec"><i data-lucide="bookmark-check" style="color:var(--blue)"></i>ชุดฝึกด่วน</div>
+  <div class="grid g2">
     ${[['ฝึกเร็ว','25 ข้อ · 30 น.',25,30,'zap','var(--blue-2)','var(--blue)'],
-       ['มาตรฐาน','50 ข้อ · 60 น.',50,60,'target','var(--green-2)','var(--green)'],
-       ['สนามจริง','150 ข้อ · 180 น.',150,180,'trophy','var(--orange-2)','var(--orange)']]
+       ['มาตรฐาน','50 ข้อ · 60 น.',50,60,'target','var(--green-2)','var(--green)']]
       .map(([t,s,n,m,ic,bg,fg])=>`<button class="quick" data-preset="${n}|${m}">
         <div class="ic" style="background:${bg};color:${fg}"><i data-lucide="${ic}"></i></div>${t}<small>${s}</small></button>`).join('')}
   </div>`;
 
-  $('#btnPickExamTrack').onclick=()=>{
-    openPicker({
-      title:'เลือกสายสอบ',
-      options: [
-        { val: 'admin', label: 'อำนวยการ' },
-        { val: 'suppress', label: 'ปราบปราม' }
-      ],
-      value: CFG.track,
-      onSelect: (val)=>{ CFG.track = val; renderExam(); }
-    });
-  };
+  $('#btnPickExamTrack').onclick = () => pickTrack(renderExam);
+  $('#btnFullSim').onclick = () => startExam({ full: true, mode: 'exam', minutes: track.minutes, label: `สนามจริง ${track.label}` });
+  $$('[data-ed]').forEach(b => b.onclick = () => { CFG.diff = b.dataset.ed; renderExam(); });
 
   function updateExamSummary(){
-    const avail = poolOf(CFG.cats, CFG.onlyStar).length;
+    const avail = poolOf(CFG.cats, CFG.onlyStar, CFG.diff).length;
     const use = Math.min(avail, CFG.count);
     const minis = $$('.grid.g3.keep .mini b');
     if(minis.length >= 3){
@@ -4907,34 +4641,26 @@ let autoNextTimer = null;
 function startExam(cfg){
   if(!cfg)return;
   let qs = [];
-  const track = POLICE_TRACKS[cfg.track || S.settings.track || 'admin'];
+  const track = getTrack(curTrackKey());
 
-  if(cfg.count === 150 && track && track.quota && (!cfg.cats || !cfg.cats.length)){
+  if(cfg.full){
+    const lack = [];
     Object.entries(track.quota).forEach(([catName, needCount]) => {
-      let catPool = S.questions.filter(q => q.cat === catName && (!cfg.onlyStar || q.star));
+      let catPool = S.questions.filter(q => q.cat === catName);
       if(S.settings.shuffleQ) catPool = shuffle(catPool);
+      if(catPool.length < needCount) lack.push(`${catName} ${catPool.length}/${needCount}`);
       qs.push(...catPool.slice(0, needCount));
     });
+    if(lack.length && qs.length) toast(`ข้อไม่พอ: ${lack.join(', ')}`, 'err');
   } else {
     let rawPool = cfg.ids ? cfg.ids.map(id=>S.questions.find(q=>q.id===id)).filter(Boolean)
-                          : poolOf(cfg.cats||[],cfg.onlyStar);
-    
-    const grouped = {};
-    rawPool.forEach(q => {
-      grouped[q.cat] = grouped[q.cat] || [];
-      grouped[q.cat].push(q);
-    });
-
-    for(const cat of S.cats){
-      if(grouped[cat]){
-        let subPool = grouped[cat];
-        if(S.settings.shuffleQ) subPool = shuffle(subPool);
-        qs.push(...subPool);
-      }
-    }
-
-    const want = cfg.count || qs.length;
-    if(want < qs.length) qs = qs.slice(0, want);
+                          : poolOf(cfg.cats||[],cfg.onlyStar,cfg.diff);
+    // เลือกข้อจากทุกหมวดก่อน แล้วค่อยเรียงตามลำดับหมวด (เดิมตัดเอาแต่หมวดแรก)
+    if(S.settings.shuffleQ) rawPool = shuffle(rawPool);
+    const want = cfg.count || rawPool.length;
+    rawPool = rawPool.slice(0, want);
+    const order = c => { const i = S.cats.indexOf(c); return i < 0 ? 999 : i; };
+    qs = rawPool.map((q, i) => [q, i]).sort((a, b) => order(a[0].cat) - order(b[0].cat) || a[1] - b[1]).map(x => x[0]);
   }
 
   if(!qs.length)return toast('ไม่มีข้อสอบ','err');
@@ -5347,8 +5073,8 @@ function submitExam(timeup){
   const blank=EX.ans.filter(a=>a===null).length;
   if(EX.mode!=='practice'){ d.answered+=total-blank; d.correct+=correct; }
   
-  const trackKey = (EX.cfg && EX.cfg.track) || S.settings.track || 'admin';
-  const evalResult = evaluatePolicePassing({correct, total, byCat}, trackKey);
+  const trackKey = curTrackKey();
+  const evalResult = evaluateTrack({correct, total, byCat}, trackKey);
 
   S.results.unshift({
     id:uid(),date:new Date().toISOString(),label:EX.label,mode:EX.mode,
@@ -5397,10 +5123,6 @@ document.addEventListener('keydown',e=>{
 });
 
 
-function pruneExpiredResults(hours = 24) {
-  return;
-}
-
 function getSmartExamLabel(x) {
   if (x.mode === 'wrong' || (x.label && x.label.includes('ข้อผิด'))) {
     return `ทบทวนข้อผิด (${x.total} ข้อ)`;
@@ -5426,89 +5148,31 @@ function renderResult(){
   }
   const pct=Math.round(r.correct/r.total*100);
   const C=2*Math.PI*82;
-  const trackKey = r.trackKey || S.settings.track || 'admin';
-  const ev = r.evalResult || evaluatePolicePassing(r, trackKey);
-
-  let scoreSectionHtml = '';
-  if(trackKey === 'admin'){
-    const p1Cats = Object.keys(r.byCat).filter(c => POLICE_TRACKS.admin.p1.includes(c));
-    const p2Cats = Object.keys(r.byCat).filter(c => POLICE_TRACKS.admin.p2.includes(c));
-    const otherCats = Object.keys(r.byCat).filter(c => !POLICE_TRACKS.admin.p1.includes(c) && !POLICE_TRACKS.admin.p2.includes(c));
-
-    const p1T = ev.p1T || 0;
-    const p1C = ev.p1C || 0;
-    const p1Pct = ev.p1Pct || 0;
-
-    const p2T = ev.p2T || 0;
-    const p2C = ev.p2C || 0;
-    const p2Pct = ev.p2Pct || 0;
-
-    scoreSectionHtml = `
-      <div class="card">
-        <div class="part-header">
-          <span>ภาค 1 (ทั่วไป/ไทย)</span>
-          <span style="color:${p1Pct>=60?'var(--green)':'var(--red)'}">${p1C}/${p1T} (${p1Pct}%)</span>
-        </div>
-        ${p1Cats.length ? p1Cats.map(c=>{
-          const v = r.byCat[c];
-          const p = Math.round(v.c/v.t*100);
-          const cc = p>=60 ? 'var(--green)' : 'var(--red)';
-          return `
-            <div class="crow">
-              <div class="lb">${esc(c)}</div>
-              <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
-              <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div>
-            </div>
-          `;
-        }).join('') : '<div style="font-size:12px;color:var(--muted);padding:4px 0">ไม่มีวิชาในภาคนี้</div>'}
-
-        <div class="part-header p2">
-          <span>ภาค 2 (เฉพาะตำแหน่ง)</span>
-          <span style="color:${p2Pct>=60?'var(--green)':'var(--red)'}">${p2C}/${p2T} (${p2Pct}%)</span>
-        </div>
-        ${p2Cats.length ? p2Cats.map(c=>{
-          const v = r.byCat[c];
-          const p = Math.round(v.c/v.t*100);
-          const cc = p>=60 ? 'var(--green)' : 'var(--red)';
-          return `
-            <div class="crow">
-              <div class="lb">${esc(c)}</div>
-              <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
-              <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div>
-            </div>
-          `;
-        }).join('') : '<div style="font-size:12px;color:var(--muted);padding:4px 0">ไม่มีวิชาในภาคนี้</div>'}
-
-        ${otherCats.length ? `
-          <div class="part-header p2">
-            <span>วิชาอื่นๆ</span>
-          </div>
-          ${otherCats.map(c=>{
-            const v = r.byCat[c];
-            const p = Math.round(v.c/v.t*100);
-            const cc = p>=60 ? 'var(--green)' : 'var(--red)';
-            return `
-              <div class="crow">
-                <div class="lb">${esc(c)}</div>
-                <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
-                <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div>
-              </div>
-            `;
-          }).join('')}
-        ` : ''}
-      </div>
-    `;
+  const trackKey = r.trackKey || curTrackKey();
+  const ev = evaluateTrack(r, trackKey);
+  const tr = getTrack(trackKey);
+  const catRow = c => {
+    const v = r.byCat[c]; const p = Math.round(v.c / v.t * 100), cc = p >= ev.passPct ? 'var(--green)' : 'var(--red)';
+    const q = tr.quota[c];
+    return `<div class="crow"><div class="lb">${esc(c)}${q && v.t < q ? ` <small style="color:var(--muted)">(${v.t}/${q})</small>` : ''}</div>
+      <div class="bar" style="height:10px"><i style="width:${p}%;background:${cc}"></i></div>
+      <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div></div>`;
+  };
+  let scoreSectionHtml;
+  if(ev.rule === 'parts'){
+    const inParts = new Set(ev.parts.flatMap(x => x.cats));
+    const others = Object.keys(r.byCat).filter(c => !inParts.has(c));
+    scoreSectionHtml = `<div class="card">${ev.parts.map((pt, i) => `
+      <div class="part-header ${i ? 'p2' : ''}"><span>${esc(pt.name)}</span>
+        <span style="color:${pt.T ? (pt.pass ? 'var(--green)' : 'var(--red)') : 'var(--muted)'}">${pt.T ? `${pt.C}/${pt.T} (${pt.pct}%)` : 'ยังไม่ได้ทำ'}</span></div>
+      ${pt.cats.filter(c => r.byCat[c]).map(catRow).join('') || '<div style="font-size:12px;color:var(--muted);padding:4px 0">ไม่มีวิชาในภาคนี้ในชุดนี้</div>'}`).join('')}
+      ${others.length ? `<div class="part-header p2"><span>วิชาที่ไม่นับภาค</span></div>${others.map(catRow).join('')}` : ''}
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">เกณฑ์สาย${esc(tr.label)}: ${esc(tr.ruleDesc)}</div></div>`;
   } else {
-    scoreSectionHtml = `
-      <div class="card">
-        ${Object.entries(r.byCat).map(([c,v])=>{
-          const p=Math.round(v.c/v.t*100), cc=p>=60?'var(--green)':'var(--red)';
-          return `<div class="crow"><div class="lb">${esc(c)}</div>
-            <div class="bar" style="height:11px"><i style="width:${p}%;background:${cc}"></i></div>
-            <div class="vl" style="color:${cc}">${v.c}/${v.t} (${p}%)</div></div>`;
-        }).join('')}
-      </div>
-    `;
+    scoreSectionHtml = `<div class="card">
+      <div class="part-header"><span>คะแนนรวม</span><span style="color:${ev.pass ? 'var(--green)' : 'var(--red)'}">${r.correct}/${r.total} (${ev.overall}%)</span></div>
+      ${Object.keys(r.byCat).map(catRow).join('')}
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">เกณฑ์สาย${esc(tr.label)}: ${esc(tr.ruleDesc)} · รายวิชาเป็นข้อมูลประกอบ</div></div>`;
   }
 
   $('#view').innerHTML=`
@@ -5615,12 +5279,13 @@ ${S.results.length > 5 ? `
   });
 
   if($('#clrHist'))$('#clrHist').onclick=async()=>{
-    if(await ask('ล้างประวัติ?','ผลสอบย้อนหลังจะถูกลบ','ล้าง')){
+    if(await ask('ล้างประวัติ?','ผลสอบย้อนหลังจะถูกลบ (ย้อนกลับได้)','ล้าง')){
+      snapshotUndo('ล้างประวัติผลสอบ');
       S.results=[];
       save();
       renderResult();
       syncChrome();
-      toast('ล้างแล้ว','ok');
+      undoToast('ล้างประวัติแล้ว');
     }
   };
   icons();
@@ -5636,7 +5301,7 @@ function openRoundDetail(resultId, selectedCat = null){
   if(!res) return;
 
   const pct = Math.round(res.correct / res.total * 100);
-  const ev = res.evalResult || evaluatePolicePassing(res, res.trackKey || 'admin');
+  const ev = res.evalResult || evaluateTrack(res, res.trackKey || 'admin');
 
   // ==========================================
   // VIEW 2: หน้ารายละเอียดข้อผิด (Full Screen Sheet)
@@ -5757,6 +5422,8 @@ function openRoundDetail(resultId, selectedCat = null){
           <div class="q-media-box" style="margin-top:10px">
             ${q.eImgs.map((img, i) => `<img src="${img}" class="q-media-img" style="--img-w:${ew}" onclick="openLightboxGallery(${eImgsJson}, ${i})">`).join('')}
           </div>` : ''}
+        <button class="btn sm ghost" data-mkcard="${q.id}" style="margin-top:12px" ${S.cards.some(c => c.srcQ === q.id) ? 'disabled' : ''}>
+          <i data-lucide="layers"></i>${S.cards.some(c => c.srcQ === q.id) ? 'มีบัตรจำข้อนี้แล้ว' : 'สร้างบัตรจำจากข้อนี้'}</button>
       </div>
     `;}).join('') : `
       <div style="text-align:center;padding:70px 16px;color:var(--muted)">
@@ -5820,6 +5487,14 @@ function openRoundDetail(resultId, selectedCat = null){
     };
 
     $('#btnFsClose').onclick = closeFs;
+    $$('[data-mkcard]', fsWrap).forEach(btn => btn.onclick = () => {
+      const q = S.questions.find(x => x.id === btn.dataset.mkcard); if(!q) return;
+      const id = uid();
+      S.cards.unshift({ id, srcQ: q.id, f: q.q, b: `${LB[q.a]}. ${q.c[q.a]}${q.e ? '\n\n' + q.e : ''}`, fImg: q.qImgs?.[0] || '', bImg: '', fPos: 'bottom', bPos: 'bottom', cat: q.cat, box: 0, due: 0 });
+      pushUndo('สร้างบัตรจำจากข้อผิด', { addC: [id] }); save(); syncChrome();
+      btn.disabled = true; btn.innerHTML = 'สร้างบัตรจำแล้ว';
+      undoToast('สร้างบัตรจำแล้ว (ดูได้ในหน้าบัตรจำ)');
+    });
     $('#btnFsBack').onclick = closeFs;
 
     if($('#btnFsReplay')){
@@ -6066,18 +5741,19 @@ function openFontManagerModal() {
 
 function renderSetting(){
   const st=S.settings;
-  const currentTrackKey = st.track === 'suppress' ? 'suppress' : 'admin';
-  const currentTrack = POLICE_TRACKS[currentTrackKey];
+  const currentTrackKey = curTrackKey();
+  const currentTrack = getTrack(currentTrackKey);
   const curPos = st.heroPos || 'center';
 
   $('#view').innerHTML=`
   <div class="card">
     <div class="srow"><div class="ic" style="background:var(--navy);color:#fff"><i data-lucide="shield"></i></div>
-      <div style="flex:1"><b>สายสอบ</b><small>${esc(currentTrack.ruleDesc)}</small></div>
+      <div style="flex:1"><b>สายสอบ</b><small>${esc(currentTrack.ruleDesc)} · ${currentTrack.quotaTotal} ข้อ</small></div>
       <button class="c-select" id="btnSettingTrack">
-        <span>${esc(currentTrack.name)}</span>
+        <span>${esc(currentTrack.label)}</span>
         <i data-lucide="chevron-down"></i>
       </button>
+      <button class="ib sm" id="btnEditTrack" title="แก้เกณฑ์และจำนวนข้อ"><i data-lucide="sliders-horizontal"></i></button>
     </div>
 
     <div class="srow"><div class="ic" style="background:var(--red-2);color:var(--red)"><i data-lucide="calendar"></i></div>
@@ -6168,14 +5844,18 @@ function renderSetting(){
       <button class="btn red" id="d_reset"><i data-lucide="rotate-ccw"></i>ล้างสถิติ</button>
     </div>
     <input type="file" id="d_file" accept="application/json" hidden>
-    <div class="srow" style="margin-top:8px;border-top:1px solid var(--line)"><div class="ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="bug"></i></div>
+    <div class="srow" style="margin-top:8px;border-top:1px solid var(--line)"><div class="ic" style="background:var(--blue-2);color:var(--blue)"><i data-lucide="undo-2"></i></div>
+      <div style="flex:1"><b>ย้อนกลับการเปลี่ยนแปลง</b><small>นำเข้า ลบ หรือล้างข้อมูลล่าสุด</small></div>
+      <button class="c-select" id="btnUndoList">${UNDO.length ? `ดู (${UNDO.length})` : 'ไม่มี'}</button>
+    </div>
+    <div class="srow"><div class="ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="bug"></i></div>
       <div style="flex:1"><b>บันทึกข้อผิดพลาด</b><small>เก็บปัญหาที่เกิดในเครื่องนี้ไว้ส่งให้ช่วยแก้</small></div>
       <button class="c-select" id="btnErrLog">${readErrLog().length ? `ดู (${readErrLog().length})` : 'ไม่มี'}</button>
     </div>
   </div>
 
   <div class="card" style="margin-top:14px;text-align:center;color:var(--muted);font-size:12.5px">
-    <b style="color:var(--text)">P-exam</b><br>ออฟไลน์ 100%
+    <b style="color:var(--text)">P-exam</b><br>ใช้ได้แม้ไม่มีเน็ต เมื่อเปิดครั้งแรกแล้ว · ติดตั้งเป็นแอปได้จากเมนูเบราว์เซอร์
   </div>`;
 
   $('#btnManageFont').onclick = () => {
@@ -6203,23 +5883,8 @@ function renderSetting(){
     });
   };
   
-  $('#btnSettingTrack').onclick=()=>{
-    openPicker({
-      title:'สายสอบ',
-      options: [
-        { val: 'admin', label: 'อำนวยการ' },
-        { val: 'suppress', label: 'ปราบปราม' }
-      ],
-      value: currentTrackKey,
-      onSelect: (val)=>{
-        S.settings.track = val;
-        CFG.track = val;
-        save();
-        renderSetting();
-        toast(`เลือกสาย${POLICE_TRACKS[val].name}แล้ว`,'ok');
-      }
-    });
-  };
+  $('#btnSettingTrack').onclick = () => pickTrack(renderSetting);
+  $('#btnEditTrack').onclick = () => openTrackEditor(curTrackKey());
 
   $('#btnGoal').onclick=()=>{
     openPicker({
@@ -6295,21 +5960,11 @@ function renderSetting(){
   };
   $('#newcat').onkeydown=e=>{if(e.key==='Enter')$('#addcat').click();};
 
-  $$('[data-catdrop]').forEach(b=>b.onclick=async()=>{
-    const c=b.dataset.catdrop;
-    if(S.cats.length<=1)return toast('ต้องมีอย่างน้อย 1 หมวด','err');
-    const n=S.questions.filter(q=>q.cat===c).length+S.cards.filter(x=>x.cat===c).length;
-    if(await ask('ลบหมวดนี้?',n?`ข้อมูล ${n} รายการจะย้ายไปหมวดอื่น`:'ลบหมวดนี้','ลบ')){
-      const to=S.cats.find(x=>x!==c);
-      S.questions.forEach(q=>{if(q.cat===c)q.cat=to;});
-      S.cards.forEach(x=>{if(x.cat===c)x.cat=to;});
-      S.cats=S.cats.filter(x=>x!==c);
-      save();renderSetting();syncChrome();toast('ลบแล้ว','ok');
-    }
-  });
+  $$('[data-catdrop]').forEach(b => b.onclick = () => deleteCategory(b.dataset.catdrop));
 
   $('#d_out').onclick=()=>{ playTone('tap'); exportBackup(); renderSetting(); };
   $('#btnErrLog').onclick = () => openErrLog();
+  $('#btnUndoList').onclick = () => openUndoList();
   
   $('#d_in').onclick=()=>{ playTone('tap'); $('#d_file').click(); };
   $('#d_file').onchange=e=>{
@@ -6318,24 +5973,30 @@ function renderSetting(){
     rd.onload=()=>{try{
       const d=JSON.parse(rd.result);
       if(!d||!Array.isArray(d.questions))throw 0;
-      S=Object.assign(fresh(),d);
-      S.questions.forEach(q => { if(!DIFFS.includes(q.d)) q.d = 'ง่าย'; });
-      day(); save(); theme(); go('home'); toast('นำเข้าแล้ว','ok');
+      ask('นำเข้าไฟล์สำรอง?', `ข้อมูลในเครื่องทั้งหมดจะถูกแทนที่ด้วยไฟล์นี้ (ข้อสอบ ${d.questions.length} ข้อ) · ย้อนกลับได้`, 'นำเข้า', false).then(ok => {
+        if(!ok) return;
+        snapshotUndo('นำเข้าไฟล์สำรอง');
+        S=sanitizeState(Object.assign(fresh(),d));
+        if(!S.tracks) S.tracks = clone(DEFAULT_TRACKS);
+        day(); save(); theme(); go('home'); undoToast('นำเข้าไฟล์สำรองแล้ว');
+      });
     }catch(x){toast('ไฟล์ไม่ถูกต้อง','err');}};
     rd.readAsText(f); e.target.value='';
   };
 
   $('#d_clearall').onclick=async()=>{
-    if(await ask('ล้างข้อมูลทั้งหมด?','ข้อมูลทั้งหมดจะถูกรีเซ็ตเป็น 0','ล้างทั้งหมด')){
+    if(await ask('ล้างข้อมูลทั้งหมด?','ข้อมูลทั้งหมดจะถูกรีเซ็ตเป็น 0 (ย้อนกลับได้จนกว่าจะล้างข้อมูลเบราว์เซอร์)','ล้างทั้งหมด')){
+      snapshotUndo('ล้างข้อมูลทั้งหมด');
       S=fresh();
       await dbSet('state',S);
       day();theme();renderSetting();syncChrome();
-      toast('ล้างหมดแล้ว','ok');
+      undoToast('ล้างหมดแล้ว');
     }
   };
 
     $('#d_reset').onclick=async()=>{
-    if(await ask('ล้างสถิติ?','ประวัติการสอบจะถูกรีเซ็ต ยกเว้น เวลาสะสม','ล้างสถิติ')){
+    if(await ask('ล้างสถิติ?','ประวัติการสอบจะถูกรีเซ็ต ยกเว้น เวลาสะสม (ย้อนกลับได้)','ล้างสถิติ')){
+      snapshotUndo('ล้างสถิติ');
       S.results = [];
       S.qstat = {};
       S.stats.days = {}; // ล้างเฉพาะประวัติรายวัน แต่คง S.stats.minutes (เวลาสะสม) ไว้
@@ -6346,7 +6007,7 @@ function renderSetting(){
       save();
       renderSetting();
       syncChrome();
-      toast('ล้างสถิติแล้ว','ok');
+      undoToast('ล้างสถิติแล้ว');
     }
   };
   icons();
@@ -6402,6 +6063,173 @@ function openErrLog(){
   };
 }
 
+
+// ==========================================
+// กันโค้ดแฝง: ข้อความรูปแบบ (จัดฟอนต์) อนุญาตเฉพาะแท็กจัดรูปแบบ
+// ==========================================
+const SAFE_TAGS = new Set(['B','STRONG','I','EM','U','S','STRIKE','SUP','SUB','BR','SPAN','FONT','DIV','P','SMALL','BIG','MARK']);
+const SAFE_STYLE = /^(color|background-color|font-size|font-weight|font-style|text-decoration|text-align)$/i;
+function sanitizeHTML(html){
+  if(typeof html !== 'string' || !/[<&]/.test(html)) return html ?? '';
+  const tpl = document.createElement('template');
+  tpl.innerHTML = html;
+  const walk = node => {
+    [...node.childNodes].forEach(n => {
+      if(n.nodeType === 1){
+        if(!SAFE_TAGS.has(n.tagName)){
+          if(/^(SCRIPT|STYLE|IFRAME|OBJECT|EMBED|SVG|MATH|LINK|META|TEMPLATE)$/.test(n.tagName)) return n.remove();
+          walk(n); n.replaceWith(...n.childNodes); return; // แท็กอื่น: เก็บแค่ข้อความ
+        }
+        [...n.attributes].forEach(a => {
+          const k = a.name.toLowerCase();
+          if(k === 'style'){
+            const keep = a.value.split(';').map(x => x.trim()).filter(x => { const [pr, v=''] = x.split(':'); return SAFE_STYLE.test((pr||'').trim()) && !/url\(|expression|javascript:/i.test(v); });
+            keep.length ? n.setAttribute('style', keep.join(';')) : n.removeAttribute('style');
+          } else if(k === 'class'){ if(a.value !== 'math-frac') n.removeAttribute('class'); }
+          else if(!(n.tagName === 'FONT' && (k === 'color' || k === 'size'))) n.removeAttribute(a.name);
+        });
+        walk(n);
+      } else if(n.nodeType !== 3) n.remove();
+    });
+  };
+  walk(tpl.content);
+  return tpl.innerHTML;
+}
+const safeImg = u => (typeof u === 'string' && /^data:image\/[a-z+]+;base64,[A-Za-z0-9+/=]+$/.test(u)) ? u : '';
+function sanitizeQuestion(q){
+  q.q = sanitizeHTML(q.q); q.e = sanitizeHTML(q.e);
+  q.c = (Array.isArray(q.c) ? q.c : ['','','','']).map(sanitizeHTML);
+  q.cExps = (Array.isArray(q.cExps) ? q.cExps : []).map(sanitizeHTML);
+  q.qImgs = (q.qImgs || []).map(safeImg).filter(Boolean);
+  q.eImgs = (q.eImgs || []).map(safeImg).filter(Boolean);
+  q.cImgs = (q.cImgs || ['','','','']).map(safeImg);
+  q.a = clamp(+q.a || 0, 0, 3);
+  if(!DIFFS.includes(q.d)) q.d = 'ง่าย';
+  if(q.id != null) q.id = String(q.id).replace(/[^\w-]/g, '') || uid();
+  return q;
+}
+function sanitizeCard(c){
+  c.f = sanitizeHTML(c.f); c.b = sanitizeHTML(c.b);
+  c.fImg = safeImg(c.fImg); c.bImg = safeImg(c.bImg);
+  if(c.id != null) c.id = String(c.id).replace(/[^\w-]/g, '') || uid();
+  return c;
+}
+function sanitizeState(st){
+  (st.questions || []).forEach(sanitizeQuestion);
+  (st.cards || []).forEach(sanitizeCard);
+  st.cats = (st.cats || []).map(c => String(c).replace(/[<>"'`]/g, ''));
+  st.settings = st.settings || {};
+  st.settings.avatar = safeImg(st.settings.avatar); st.settings.heroBg = safeImg(st.settings.heroBg);
+  return st;
+}
+
+// ==========================================
+// ระบบย้อนกลับ (Undo): จำการเพิ่ม/ลบ/ย้ายล่าสุด 15 รายการ (เก็บในเครื่อง)
+// ==========================================
+let UNDO = [];
+const saveUndo = () => dbSet('undo', UNDO);
+function pushUndo(label, rec){
+  UNDO.unshift({ label, t: Date.now(), ...rec });
+  let full = 0;
+  UNDO = UNDO.filter(u => !u.full || ++full <= 2).slice(0, 15); // สำเนาทั้งระบบเก็บแค่ 2 อันล่าสุด (ไฟล์ใหญ่)
+  saveUndo();
+}
+const withIdx = (arr, pred) => arr.map((obj, i) => ({ i, obj })).filter(x => pred(x.obj));
+function removeQuestions(pred, label){
+  const del = withIdx(S.questions, pred);
+  if(!del.length) return 0;
+  S.questions = S.questions.filter(q => !pred(q));
+  pushUndo(label, { delQ: del }); save(); return del.length;
+}
+function removeCards(pred, label){
+  const del = withIdx(S.cards, pred);
+  if(!del.length) return 0;
+  S.cards = S.cards.filter(c => !pred(c));
+  pushUndo(label, { delC: del }); save(); return del.length;
+}
+function snapshotUndo(label){ pushUndo(label, { full: clone(S) }); }
+function applyUndo(idx = 0){
+  const r = UNDO[idx]; if(!r) return;
+  if(r.full){ S = r.full; }
+  else {
+    const restore = (arr, list) => { const ids = new Set(arr.map(x => x.id)); [...list].sort((a,b) => a.i - b.i).forEach(({ i, obj }) => { if(!ids.has(obj.id)) arr.splice(Math.min(i, arr.length), 0, obj); }); };
+    if(r.addQ){ const s2 = new Set(r.addQ); S.questions = S.questions.filter(q => !s2.has(q.id)); }
+    if(r.addC){ const s2 = new Set(r.addC); S.cards = S.cards.filter(c => !s2.has(c.id)); }
+    if(r.delQ) restore(S.questions, r.delQ);
+    if(r.delC) restore(S.cards, r.delC);
+    (r.moveQ || []).forEach(m => { const q = S.questions.find(x => x.id === m.id); if(q) q.cat = m.cat; });
+    (r.moveC || []).forEach(m => { const c = S.cards.find(x => x.id === m.id); if(c) c.cat = m.cat; });
+    (r.delCats || []).forEach(dc => {
+      if(!S.cats.includes(dc.name)) S.cats.splice(Math.min(dc.i, S.cats.length), 0, dc.name);
+      if(dc.icon) (S.catIcons = S.catIcons || {})[dc.name] = dc.icon;
+      if(dc.tone) (S.catTones = S.catTones || {})[dc.name] = dc.tone;
+    });
+    (r.addCats || []).forEach(c => { if(!S.questions.some(q => q.cat === c) && !S.cards.some(x => x.cat === c)) S.cats = S.cats.filter(x => x !== c); });
+  }
+  UNDO.splice(idx, 1); saveUndo();
+  day(); save(); theme(); syncChrome(); refreshPage();
+  toast(`ย้อนกลับแล้ว: ${r.label}`, 'ok');
+}
+function undoToast(msg){
+  const el = document.createElement('div');
+  el.className = 'toast ok toast-undo';
+  el.innerHTML = `<i data-lucide="check-circle-2"></i><span>${esc(msg)}</span><button>ย้อนกลับ</button>`;
+  el.querySelector('button').onclick = () => { el.remove(); applyUndo(0); };
+  $('#toasts').appendChild(el); icons(el);
+  setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 280); }, 6000);
+}
+function openUndoList(){
+  const fmt = t => new Date(t).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  openModal('ย้อนกลับการเปลี่ยนแปลง', UNDO.length ? UNDO.map((u, i) => `
+    <div class="hrow" style="cursor:default"><div style="flex:1;min-width:0">
+      <div style="font-size:14px;font-weight:600">${esc(u.label)}</div>
+      <div style="font-size:11.5px;color:var(--muted)">${fmt(u.t)}${u.full ? ' · คืนข้อมูลทั้งระบบ' : ''}</div></div>
+      <button class="btn sm ghost" data-undo="${i}"><i data-lucide="undo-2"></i>ย้อนกลับ</button></div>`).join('')
+    : '<div class="empty" style="padding:24px"><div>ยังไม่มีรายการที่ย้อนกลับได้</div></div>',
+    `<button class="btn ghost block" data-close>ปิด</button>`);
+  $$('[data-undo]').forEach(b => b.onclick = async () => {
+    const u = UNDO[+b.dataset.undo];
+    if(u.full && !(await ask('คืนข้อมูลทั้งระบบ?', `ข้อมูลทั้งหมดจะกลับไปเป็นก่อน "${u.label}" สิ่งที่ทำหลังจากนั้นจะหายไป`, 'คืนข้อมูล'))) return;
+    closeModal(); applyUndo(UNDO.indexOf(u));
+  });
+}
+
+// ลบหมวด: ที่เดียวทั้งแอป ให้เลือกว่าจะย้ายข้อมูลหรือลบทิ้ง
+function deleteCategory(c){
+  const qn = S.questions.filter(q => q.cat === c).length, cn = S.cards.filter(x => x.cat === c).length;
+  if(S.cats.length <= 1) return toast('ต้องมีอย่างน้อย 1 หมวด', 'err');
+  const others = S.cats.filter(x => x !== c);
+  const meta = { name: c, i: S.cats.indexOf(c), icon: S.catIcons?.[c], tone: S.catTones?.[c] };
+  const finish = rec => {
+    S.cats = S.cats.filter(x => x !== c);
+    if(S.catIcons) delete S.catIcons[c]; if(S.catTones) delete S.catTones[c];
+    pushUndo(`ลบหมวด ${c}`, { ...rec, delCats: [meta] });
+    save(); closeModal(); syncChrome(); refreshPage(); undoToast(`ลบหมวด ${c} แล้ว`);
+  };
+  openModal(`ลบหมวด "${esc(c)}"`, `
+    <p style="color:var(--text2);line-height:1.6;margin-bottom:14px">หมวดนี้มีข้อสอบ <b>${qn}</b> ข้อ และบัตรจำ <b>${cn}</b> ใบ</p>
+    ${qn + cn ? `<div class="field"><label>ย้ายข้อมูลไปหมวด</label>
+      <select class="inp" id="dc_to">${others.map(x => `<option>${esc(x)}</option>`).join('')}</select></div>
+      <button class="btn block" id="dc_move"><i data-lucide="folder-input"></i>ย้ายแล้วลบหมวด</button>
+      <button class="btn red block" id="dc_all" style="margin-top:8px"><i data-lucide="trash-2"></i>ลบหมวดพร้อมข้อสอบและบัตรทั้งหมด</button>`
+    : `<button class="btn red block" id="dc_all"><i data-lucide="trash-2"></i>ลบหมวด</button>`}
+    <p style="font-size:12px;color:var(--muted);margin-top:10px">ย้อนกลับได้ภายหลังจากตั้งค่า → ย้อนกลับการเปลี่ยนแปลง</p>`,
+    `<button class="btn ghost block" data-close>ยกเลิก</button>`);
+  if($('#dc_move')) $('#dc_move').onclick = () => {
+    const to = $('#dc_to').value;
+    const moveQ = S.questions.filter(q => q.cat === c).map(q => ({ id: q.id, cat: c }));
+    const moveC = S.cards.filter(x => x.cat === c).map(x => ({ id: x.id, cat: c }));
+    S.questions.forEach(q => { if(q.cat === c) q.cat = to; });
+    S.cards.forEach(x => { if(x.cat === c) x.cat = to; });
+    finish({ moveQ, moveC });
+  };
+  $('#dc_all').onclick = () => {
+    const delQ = withIdx(S.questions, q => q.cat === c), delC = withIdx(S.cards, x => x.cat === c);
+    S.questions = S.questions.filter(q => q.cat !== c); S.cards = S.cards.filter(x => x.cat !== c);
+    finish({ delQ, delC });
+  };
+}
+
 function theme(){
   document.documentElement.dataset.theme=S.settings.dark?'dark':'light';
   $('#btnTheme').innerHTML=`<i data-lucide="${S.settings.dark?'sun':'moon'}"></i>`;
@@ -6438,8 +6266,12 @@ $('#btnSearch').onclick=()=>{
   run();
 };
 
+let lastActiveAt = Date.now();
+['pointerdown','keydown','wheel','touchmove'].forEach(ev => document.addEventListener(ev, () => { lastActiveAt = Date.now(); }, {passive:true, capture:true}));
 setInterval(()=>{
   if(document.hidden)return;
+  const active = (EX.live && !EX.paused) || Date.now() - lastActiveAt < 120000;
+  if(!active) return;
   S.stats.minutes++; day().minutes++; save();
 
 },60000);
@@ -6455,12 +6287,43 @@ window.addEventListener('pagehide', onAppHide);
 window.addEventListener('beforeunload', onAppHide);
 document.addEventListener('visibilitychange', ()=>{ if(document.hidden) onAppHide(); });
 
+
+// ==========================================
+// ปุ่มย้อนกลับ (Android / ปัดย้อน): ปิดสิ่งที่เปิดอยู่ก่อน → กลับหน้าแรก → ออก
+// ==========================================
+let backExitArmed = false;
+function handleBack(){
+  const on = sel => { const el = $(sel); return el && el.classList.contains('on'); };
+  if($('#chunkUploadOverlay')) return true;            // กำลังอัปโหลด ห้ามปิด
+  if(on('#lightbox')){ closeLightbox(); return true; }
+  if(on('#imgEditorMask')){ closeImageEditor(); return true; }
+  if(on('#rteMask')){ closeRichTextEditor(); return true; }
+  if(on('#mask')){ closeModal(); return true; }
+  if(on('#neoCal')){ $('#neoCal [data-cal="close"]').click(); return true; }
+  const fs = $('#fsReviewWrap'); if(fs){ fs.remove(); return true; }
+  if(PAGE !== 'home'){ go('home'); return true; }
+  return false;
+}
+if(history.state?.pexam !== 'trap'){
+  history.replaceState({ pexam: 'base' }, '');
+  history.pushState({ pexam: 'trap' }, '');
+}
+window.addEventListener('popstate', () => {
+  if(handleBack()){ backExitArmed = false; history.pushState({ pexam: 'trap' }, ''); return; }
+  if(!backExitArmed){ backExitArmed = true; toast('กดย้อนกลับอีกครั้งเพื่อออก'); history.pushState({ pexam: 'trap' }, ''); setTimeout(() => backExitArmed = false, 2000); return; }
+  history.back();
+});
+if('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(e => logErr('ลงทะเบียนโหมดออฟไลน์ไม่สำเร็จ: ' + e.message, 'sw'));
+
 (async function initApp(){
   try{
     await initDB();
     const stored = await dbGet('state');
     if(stored && Array.isArray(stored.questions)){
       S = stored;
+      if(!S.tracks) S.tracks = clone(DEFAULT_TRACKS);
+      sanitizeState(S);
+      UNDO = (await dbGet('undo')) || [];
       S.questions.forEach(q => { if(!DIFFS.includes(q.d)) q.d = 'ง่าย'; });
     }else{
       S = fresh();
@@ -6630,32 +6493,28 @@ window.downloadCloudFile = async (fileId, subName) => {
     });
     const data = await res.json();
     if (data.questions && data.questions.length) {
-      if (data.catIcons) {
-        S.catIcons = Object.assign(S.catIcons || {}, data.catIcons);
-      }
-      if (data.catTones) {
-        S.catTones = Object.assign(S.catTones || {}, data.catTones);
-      }
-
-      data.questions.forEach(q => {
-        if (q.cat && !S.cats.includes(q.cat)) {
-          S.cats.push(q.cat);
-        }
-      });
-
-      if (subName === 'รวมทุกวิชา') {
-        S.questions = data.questions;
-      } else {
-        S.questions = [...S.questions.filter(q => q.cat !== subName), ...data.questions];
-      }
-
-      save();
-      syncChrome();
-      if (typeof renderQuiz === 'function' && PAGE === 'quiz') renderQuiz();
-      if (typeof renderHome === 'function' && PAGE === 'home') renderHome();
-
-      toast('นำเข้าวิชา "' + subName + '" สำเร็จ (' + data.questions.length + ' ข้อ)', 'ok');
+      const incoming = data.questions.map(q => sanitizeQuestion({ ...q }));
+      const isAll = subName === 'รวมทุกวิชา';
+      const mine = isAll ? S.questions.length : S.questions.filter(q => q.cat === subName).length;
       closeModal();
+      setTimeout(() => openModal(`นำเข้า "${esc(subName)}"`, `
+        <p style="color:var(--text2);line-height:1.6">ไฟล์นี้มี <b>${incoming.length}</b> ข้อ · ในเครื่องคุณมี${isAll ? 'ทั้งหมด' : 'วิชานี้'} <b>${mine}</b> ข้อ</p>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:8px">เลือก "เพิ่มต่อท้าย" เพื่อเก็บของเดิมไว้ หรือ "แทนที่" เพื่อลบของเดิม${isAll ? 'ทั้งหมด' : 'วิชานี้'}ก่อน · ย้อนกลับได้ทั้งสองแบบ</p>`,
+        `<button class="btn ghost" id="cl_add"><i data-lucide="plus"></i>เพิ่มต่อท้าย</button><button class="btn red" id="cl_rep" ${mine ? '' : 'disabled'}><i data-lucide="replace"></i>แทนที่</button>`), 120);
+      const apply = replace => {
+        const have = new Set(S.questions.map(q => q.id));
+        incoming.forEach(q => { if(have.has(q.id)) q.id = uid(); });
+        const newCats = [];
+        incoming.forEach(q => { q.cat = String(q.cat || S.cats[0]).replace(/[<>"'`]/g, ''); if(!S.cats.includes(q.cat)){ S.cats.push(q.cat); newCats.push(q.cat); } });
+        if(data.catIcons) Object.entries(data.catIcons).forEach(([k, v]) => { if(!S.catIcons[k] && ICON_POOL.includes(v)) S.catIcons[k] = v; });
+        const delQ = replace ? withIdx(S.questions, q => isAll || q.cat === subName) : [];
+        if(replace) S.questions = S.questions.filter(q => !(isAll || q.cat === subName));
+        S.questions.push(...incoming);
+        pushUndo(`${replace ? 'แทนที่' : 'เพิ่ม'}จากคลังออนไลน์: ${subName}`, { addQ: incoming.map(q => q.id), delQ, addCats: newCats });
+        save(); syncChrome(); closeModal(); refreshPage();
+        undoToast(`${replace ? 'แทนที่' : 'เพิ่ม'} "${subName}" ${incoming.length} ข้อแล้ว`);
+      };
+      setTimeout(() => { $('#cl_add').onclick = () => apply(false); $('#cl_rep').onclick = () => apply(true); }, 160);
     }
   } catch(e) {
     toast('ดาวน์โหลดล้มเหลว ตรวจสอบอินเทอร์เน็ต', 'err');
@@ -6953,17 +6812,6 @@ window.triggerUploadPicker = function() {
     for(const k in S.stats.days){if(!k.startsWith(pre))continue;const x=S.stats.days[k];a+=x.answered||0;c+=x.correct||0;min+=x.minutes||0;if(x.answered>0)d++;}
     return {a,c,min,d};
   };
-  const weekExtra=()=>{
-    const n=new Date(),s=monthSum(n.getFullYear(),n.getMonth());
-    const start=new Date(n);start.setDate(n.getDate()-((n.getDay()+6)%7)-28);
-    let sq='';
-    for(let i=0;i<35;i++){const d=new Date(start);d.setDate(start.getDate()+i);sq+=`<i class="h${d>n?'x':heat(dayData(dkey(d)).answered)}"></i>`;}
-    return `<div class="neo-week-sum">
-      <div><small>เดือน${TH_M[n.getMonth()]}</small><b>${s.a.toLocaleString()} ข้อ</b><span>${s.d} วัน · ${hmin(s.min)}</span></div>
-      <div class="neo-week-heat">${sq}</div>
-    </div>
-    <button class="btn block neo-cal-btn"><i data-lucide="calendar-days"></i>เปิดปฏิทินย้อนหลัง</button>`;
-  };
   const cal={y:0,m:0,sel:'',mode:'month'};
   let calSwiped=false;
   const calEl=()=>{
@@ -7064,112 +6912,6 @@ window.triggerUploadPicker = function() {
   const closeCal=()=>{calEl().classList.remove('on');document.body.classList.remove('neo-cal-open');};
 
   // กองการ์ดหน้าแรก: ปัดซ้าย/ขวาเพื่อสลับการ์ด
-  const initDeck=()=>{
-    const deck=document.querySelector('.neo-deck');
-    if(!deck||deck.dataset.ready)return;
-    deck.dataset.ready='1';
-    // ย้ายทุกส่วนที่อยู่ใต้กองการ์ด เข้ามาเป็นการ์ดในกอง (ย้าย node เดิม ปุ่มยังทำงานเหมือนเดิม)
-    const dotsEl=document.querySelector('.neo-deck-dots');
-    const wk=view.querySelector('.week-card');
-    for(let el=dotsEl.nextElementSibling;el;){const nx=el.nextElementSibling;el.remove();el=nx;}
-    dotsEl.insertAdjacentHTML('afterend',`<div class="neo-actions">
-      <button class="neo-act neo-act-main" data-act="start"><i data-lucide="play"></i><span>เริ่มทำ</span></button>
-      <button class="neo-act" data-act="cal"><i data-lucide="calendar-days"></i><span>ปฏิทิน</span></button>
-      <button class="neo-act" data-act="exam"><i data-lucide="timer"></i><span>จำลองสอบ</span></button>
-      <button class="neo-act" data-act="cloud"><i data-lucide="cloud-download"></i><span>ออนไลน์</span></button>
-    </div>`);
-    dotsEl.nextElementSibling.addEventListener('click',e=>{
-      const a=e.target.closest('[data-act]');if(!a)return;
-      const k=a.dataset.act;
-      if(k==='start')deck.querySelector('.hero [data-q="practice"]').click();
-      else if(k==='cal'){if(typeof playTone==='function')playTone('tap');openNeoCal();}
-      else if(k==='exam')go('exam');
-      else openCloudHubModal();
-    });
-    if(typeof icons==='function')icons();
-    if(wk){
-      const w=document.createElement('div');w.className='neo-dcard neo-extra neo-week';
-      w.appendChild(wk);w.insertAdjacentHTML('beforeend',weekExtra());deck.appendChild(w);
-      w.addEventListener('click',e=>{if(!e.target.closest('[data-dayclick]')&&!calEl().classList.contains('on'))openNeoCal();});
-      deck.addEventListener('contextmenu',e=>e.preventDefault());
-      if(typeof icons==='function')icons();
-    }
-    const cards=[...deck.children];
-    dotsEl.innerHTML=cards.map(()=>'<i></i>').join('');
-    const dots=[...dotsEl.children];
-    // ขยายกองการ์ดให้พอดีพื้นที่ที่เหลือบนจอ (ไม่ต้องเลื่อนหน้า)
-    const fit=()=>{
-      if(!deck.isConnected)return window.removeEventListener('resize',onRs);
-      const nav=document.querySelector('.bottomnav');
-      const navH=nav&&getComputedStyle(nav).display!=='none'?nav.offsetHeight+16:0;
-      // ใช้ตำแหน่งเทียบเอกสาร + 100svh (ไม่เปลี่ยนตามแถบเบราว์เซอร์/การเลื่อน) กันการ์ดกระตุก/ตกขอบ
-      const top=deck.getBoundingClientRect().top+(document.scrollingElement.scrollTop||0)+(view.closest('.main').scrollTop||0);
-      // วัดความสูงจอครั้งเดียวตอนแถบเบราว์เซอร์ยังแสดง แล้วจำกัดไม่ให้การ์ดยาวเกินไป
-      const vh=Math.min(innerHeight,window.visualViewport?visualViewport.height:innerHeight);
-      const below=dotsEl.offsetHeight+dotsEl.nextElementSibling.offsetHeight+28;
-      deck.style.height=Math.round(clamp(vh-top-navH-below,280,560))+'px';
-    };
-    let fw=innerWidth;
-    const onRs=()=>{if(innerWidth!==fw){fw=innerWidth;fit();}};
-    fit();if(document.fonts)document.fonts.ready.then(fit);window.addEventListener('resize',onRs);
-    let order=cards.map((_,i)=>i), sx=0, sy=0, dx=0, drag=false, lock=null, swiped=false;
-    const paint=()=>{
-      order.forEach((ci,pos)=>{cards[ci].dataset.pos=pos;cards[ci].style.transform='';});
-      dots.forEach((d,i)=>d.classList.toggle('on',i===order[0]));
-    };
-    const next=dir=>{
-      const top=cards[order[0]];
-      if(typeof playTone==='function')playTone('tap');
-      top.style.transition='transform .3s ease-in,opacity .3s';
-      top.style.transform=`translateX(${dir*120}%) rotate(${dir*14}deg)`;
-      top.style.opacity='0';
-      setTimeout(()=>{
-        top.style.transition='none';order.push(order.shift());paint();
-        top.style.opacity='';void top.offsetWidth;top.style.transition='';
-      },280);
-    };
-    const prev=()=>{
-      if(typeof playTone==='function')playTone('tap');
-      order.unshift(order.pop());
-      const top=cards[order[0]];
-      top.style.transition='none';top.style.transform='translateX(-120%) rotate(-14deg)';top.style.opacity='0';
-      void top.offsetWidth;
-      top.style.transition='';top.style.opacity='';
-      paint();
-    };
-    dots.forEach((d,i)=>d.onclick=()=>{while(order[0]!==i)order.push(order.shift());paint();});
-    deck.addEventListener('pointerdown',e=>{
-      if(!e.target.closest('[data-pos="0"]'))return;
-      sx=e.clientX;sy=e.clientY;dx=0;drag=true;lock=null;
-    });
-    deck.addEventListener('pointermove',e=>{
-      if(!drag)return;
-      dx=e.clientX-sx;
-      const dy=e.clientY-sy;
-      if(lock===null&&Math.abs(dx)+Math.abs(dy)>14){
-        lock=Math.abs(dx)>Math.abs(dy)?'x':'y';
-        if(lock==='x')deck.setPointerCapture(e.pointerId);
-      }
-      if(lock!=='x')return;
-      const top=cards[order[0]];
-      top.style.transition='none';
-      top.style.transform=`translateX(${dx}px) rotate(${dx/22}deg)`;
-    });
-    const end=()=>{
-      if(!drag)return;
-      drag=false;
-      const top=cards[order[0]];
-      if(lock==='x'&&Math.abs(dx)>70){swiped=true;dx<0?next(-1):prev();}
-      else{top.style.transition='';top.style.transform='';}
-    };
-    deck.addEventListener('pointerup',end);
-    deck.addEventListener('pointercancel',end);
-    // ปัดแล้วไม่ให้นับเป็นการกดปุ่มในการ์ด
-    deck.addEventListener('click',e=>{if(swiped){swiped=false;e.stopPropagation();e.preventDefault();}},true);
-    paint();
-  };
-  if(view)new MutationObserver(()=>{document.body.classList.toggle('neo-home',!!view.querySelector('.neo-deck'));initDeck();}).observe(view,{childList:true});
-  initDeck();
 
   // เอียง 3D การ์ด hero ตามเมาส์ (เฉพาะจอที่มีเมาส์)
   if(matchMedia('(hover:hover)').matches&&!reduce){
