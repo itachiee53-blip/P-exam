@@ -19,7 +19,7 @@ function U(course, lv, t, text){
     const [en, th, ex] = line.split('|').map(s => (s || '').trim());
     return { en, th, ex: ex || '' };
   }).filter(w => w.en && w.th));
-  COURSES[course].units.push({ t, lv, ls });
+  const C = COURSES[course]; C.units.push({ t, lv, ls }); (C.def = C.def || []).push(t); // def = ลำดับที่เขียน (ใช้ย้ายความคืบหน้าแบบเก่า)
 }
 
 // ===== สอบตำรวจ =====
@@ -323,3 +323,189 @@ probably | น่าจะ | He will probably come.
 however | อย่างไรก็ตาม | However, I am not sure.
 because | เพราะว่า | I am late because of traffic.
 `);
+
+// ===== เพิ่มเติม (ชุดที่ 2) =====
+U('police', 1, 'รูปพรรณสัณฐาน', `
+tall | สูง | The man is tall.
+short | เตี้ย/สั้น | She has short hair.
+thin | ผอม | He is very thin.
+fat | อ้วน | The suspect is a bit fat.
+hair | ผม | He has black hair.
+glasses | แว่นตา | She wears glasses.
+---
+scar | แผลเป็น | He has a scar on his face.
+tattoo | รอยสัก | He has a tattoo on his arm.
+beard | เครา | The man has a beard.
+wear | สวม | He wears a red shirt.
+old | แก่/เก่า | He is about fifty years old.
+young | หนุ่ม/สาว | She is young.
+`);
+U('police', 2, 'สถานที่ในเมือง', `
+bank | ธนาคาร | The bank opens at nine.
+market | ตลาด | I buy food at the market.
+hospital | โรงพยาบาล | Take him to the hospital.
+school | โรงเรียน | The school is closed today.
+temple | วัด | The temple is very old.
+bridge | สะพาน | Cross the bridge.
+---
+corner | หัวมุม | The shop is on the corner.
+crossroad | สี่แยก | Turn left at the crossroad.
+parking lot | ลานจอดรถ | The car is in the parking lot.
+alley | ซอย/ตรอก | He ran into an alley.
+building | อาคาร | The building has ten floors.
+entrance | ทางเข้า | Wait at the entrance.
+`);
+U('police', 3, 'อาชญากรรมออนไลน์', `
+online | ออนไลน์ | Don't share your password online.
+scam | การหลอกลวง | It is a phone scam.
+hacker | แฮกเกอร์ | A hacker stole the data.
+password | รหัสผ่าน | Change your password often.
+account | บัญชี | Someone used my bank account.
+transfer | โอน (เงิน) | Don't transfer money to strangers.
+---
+fake | ปลอม | This is a fake website.
+identity | ตัวตน | They stole his identity.
+victim | เหยื่อ | Many victims lost money.
+gamble | เล่นการพนัน | Online gambling is illegal.
+data | ข้อมูล | Protect your personal data.
+link | ลิงก์ | Don't click this link.
+`);
+U('police', 4, 'การสอบสวน', `
+interrogate | สอบปากคำ | They interrogated the suspect.
+statement | คำให้การ | He gave a statement.
+alibi | ข้อแก้ตัวว่าอยู่ที่อื่น | He has a strong alibi.
+motive | แรงจูงใจ | What was the motive?
+deny | ปฏิเสธ | She denied everything.
+admit | ยอมรับ | He admitted his mistake.
+---
+fingerprint | ลายนิ้วมือ | They found his fingerprint.
+footage | ภาพจากกล้อง | We checked the CCTV footage.
+clue | เบาะแส | The police found a clue.
+crime scene | ที่เกิดเหตุ | Don't touch the crime scene.
+prove | พิสูจน์ | Can you prove it?
+solve | คลี่คลาย (คดี) | They solved the case.
+`);
+U('daily', 1, 'เวลาและกิจวัตร', `
+wake up | ตื่นนอน | I wake up at six.
+shower | อาบน้ำ | I take a shower every morning.
+brush | แปรง | Brush your teeth.
+go to work | ไปทำงาน | I go to work by bus.
+hour | ชั่วโมง | It takes one hour.
+minute | นาที | Wait five minutes.
+---
+early | เช้า/ก่อนเวลา | I came early.
+late | สาย | Don't be late.
+always | เสมอ | I always drink coffee.
+sometimes | บางครั้ง | I sometimes cook.
+never | ไม่เคย | I never smoke.
+usually | ปกติ | I usually sleep at ten.
+`);
+U('daily', 2, 'สภาพอากาศ', `
+weather | สภาพอากาศ | How is the weather?
+rain | ฝน | It will rain today.
+sunny | แดดออก | It is sunny today.
+cloudy | มีเมฆมาก | The sky is cloudy.
+hot | ร้อน | It is very hot.
+cold | หนาว/เย็น | It is cold at night.
+---
+wind | ลม | The wind is strong.
+storm | พายุ | A storm is coming.
+flood | น้ำท่วม | The road is flooded.
+umbrella | ร่ม | Take an umbrella.
+season | ฤดู | Rainy season is long.
+wet | เปียก | My shoes are wet.
+`);
+U('daily', 3, 'โทรทัศน์และข่าว', `
+news | ข่าว | Did you watch the news?
+watch | ดู | I watch TV at night.
+show | รายการ | This show is funny.
+famous | มีชื่อเสียง | He is a famous singer.
+popular | เป็นที่นิยม | This song is popular.
+story | เรื่องราว | Tell me a story.
+---
+event | เหตุการณ์ | It was a big event.
+happen | เกิดขึ้น | What happened?
+announce | ประกาศ | They announced the result.
+public | ประชาชน | The public was angry.
+interview | สัมภาษณ์ | He gave an interview.
+article | บทความ | I read an article about it.
+`);
+U('daily', 4, 'สังคมและสิ่งแวดล้อม', `
+environment | สิ่งแวดล้อม | Protect the environment.
+pollution | มลพิษ | Air pollution is bad.
+recycle | รีไซเคิล | We recycle bottles.
+government | รัฐบาล | The government made a plan.
+economy | เศรษฐกิจ | The economy is growing.
+community | ชุมชน | We help our community.
+---
+election | การเลือกตั้ง | The election is next month.
+vote | ลงคะแนน | Everyone should vote.
+volunteer | อาสาสมัคร | She is a volunteer.
+poverty | ความยากจน | Poverty is a big problem.
+population | ประชากร | The population is growing.
+improve | พัฒนา | We want to improve the city.
+`);
+U('talk', 1, 'คำถามพื้นฐาน', `
+what | อะไร | What is your name?
+where | ที่ไหน | Where do you live?
+when | เมื่อไหร่ | When is the test?
+who | ใคร | Who is that man?
+why | ทำไม | Why are you late?
+how | อย่างไร | How do you go to work?
+---
+how much | ราคาเท่าไหร่ | How much is this?
+how many | กี่ (จำนวน) | How many people are there?
+which | อันไหน | Which one do you want?
+whose | ของใคร | Whose bag is this?
+how long | นานแค่ไหน | How long does it take?
+what time | กี่โมง | What time is it?
+`);
+U('talk', 2, 'นัดหมายและเชิญชวน', `
+invite | เชิญ | I invite you to my party.
+free | ว่าง | Are you free tonight?
+join | ร่วม | Can I join you?
+meet | พบ | Let's meet at noon.
+plan | แผน | What is your plan?
+later | ทีหลัง | See you later.
+---
+sure | ได้เลย | Sure, I can come.
+maybe | อาจจะ | Maybe next time.
+postpone | เลื่อน | Let's postpone the meeting.
+remind | เตือนความจำ | Please remind me.
+promise | สัญญา | I promise to come.
+on time | ตรงเวลา | Please be on time.
+`);
+U('talk', 3, 'ปัญหาและการแก้ไข', `
+problem | ปัญหา | What is the problem?
+solve | แก้ไข | We can solve it.
+mistake | ความผิดพลาด | It was my mistake.
+fix | ซ่อม/แก้ | Can you fix it?
+apologize | ขอโทษ | I apologize for the delay.
+complain | ร้องเรียน | He complained to the manager.
+---
+broken | เสีย/พัง | My phone is broken.
+wrong | ผิด | Something is wrong.
+check | ตรวจสอบ | Please check again.
+support | สนับสนุน | Thank you for your support.
+solution | ทางแก้ | We found a solution.
+patient | อดทน | Please be patient.
+`);
+U('talk', 4, 'สัมภาษณ์งาน', `
+apply | สมัคร | I want to apply for this job.
+interview | สัมภาษณ์ | The interview is tomorrow.
+strength | จุดแข็ง | My strength is teamwork.
+weakness | จุดอ่อน | What is your weakness?
+goal | เป้าหมาย | My goal is to be a police officer.
+qualified | มีคุณสมบัติ | He is qualified for the job.
+---
+confident | มั่นใจ | Be confident.
+hardworking | ขยัน | She is hardworking.
+achievement | ความสำเร็จ | Tell me about your achievement.
+career | อาชีพการงาน | I want a career in the police.
+challenge | ความท้าทาย | I like a challenge.
+opportunity | โอกาส | Thank you for this opportunity.
+`);
+
+// เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
+Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
+

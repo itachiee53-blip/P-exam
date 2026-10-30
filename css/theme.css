@@ -918,3 +918,25 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-res div{padding:14px 6px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
 .ls-res b{display:block;font-size:22px}
 .ls-res small{color:var(--muted);font-size:12px}
+/* ภาษาอังกฤษ: ลูกเล่นเพิ่ม */
+.eng-unit{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.eng-uprog{flex:none;min-width:44px;height:30px;padding:0 10px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.22);font-size:13px;font-weight:800}
+.eng-uprog svg{width:17px;height:17px}
+.eng-unit.full .eng-uprog{background:#facc15;color:#713f12}
+.eng-mis{display:flex;align-items:center;gap:12px;width:100%;max-width:560px;margin:10px auto 0;padding:12px 14px;border-radius:18px;border:1px solid color-mix(in srgb,var(--red) 30%,var(--line));
+  background:color-mix(in srgb,var(--red) 7%,var(--surface));color:var(--text);font:inherit;text-align:left;cursor:pointer}
+.eng-mis>svg:first-child{width:22px;height:22px;color:var(--red)}
+.eng-mis span{flex:1}.eng-mis b{display:block;font-size:14.5px}.eng-mis small{color:var(--muted);font-size:12px}
+.eng-mis>svg:last-child{width:17px;height:17px;color:var(--muted)}
+.eng-node.done{animation:engShine 3s ease-in-out infinite}
+@keyframes engShine{0%,85%,100%{filter:none}92%{filter:brightness(1.18)}}
+.ls-combo{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;background:#fff3e0;color:#ea580c;font-size:13px;font-weight:800;animation:lsPop .35s cubic-bezier(.3,1.6,.5,1)}
+.ls-combo svg{width:15px;height:15px}
+.ls-fb .ls-combo{margin-left:auto}
+.ls-stars span{display:inline-block;color:var(--line)}
+.ls-stars span.on{color:#eab308;animation:lsPop .45s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes lsPop{from{transform:scale(0) rotate(-30deg);opacity:0}}
+.ls-opt.ok,.ls-tile.ok{animation:lsPop2 .3s}
+@keyframes lsPop2{50%{transform:scale(1.04)}}
+.eng-conf{position:fixed;width:8px;height:12px;border-radius:2px;pointer-events:none;z-index:300;animation:engConf .95s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes engConf{to{transform:translate(var(--dx),calc(var(--dy) + 150px)) rotate(var(--r));opacity:0}}
