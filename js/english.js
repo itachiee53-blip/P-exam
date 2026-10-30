@@ -68,7 +68,10 @@ function renderEngPath(){
     const nd = u.ls.filter((_, li) => E.done[`${E.course}:${u.t}:${li}`]).length;
     html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${uc}"><i data-lucide="${C.gram ? 'spell-check' : C.ic}" class="eng-uic"></i>
       <div><small>ระดับ ${u.lv} · ${ENG_LEVELS[u.lv]}</small><b>${esc(u.t)}</b></div>
-      <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="trophy"></i>' : `${nd}/${u.ls.length}`}</span></div><div class="eng-nodes">`;
+      <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="trophy"></i>' : `${nd}/${u.ls.length}`}</span>
+      ${(E.ut || {})[`${E.course}:${u.t}`] ? '<span class="eng-utest done"><i data-lucide="medal"></i>ผ่านแล้ว</span>'
+        : nd === u.ls.length ? `<button class="eng-utest" data-ut="${ui}"><i data-lucide="medal"></i>ทดสอบท้ายหน่วย</button>`
+        : !engOpen(F, i) ? `<button class="eng-utest" data-ut="${ui}" data-skip="1"><i data-lucide="fast-forward"></i>ทดสอบข้ามหน่วย</button>` : ''}</div><div class="eng-nodes">`;
     u.ls.forEach(() => {
       const x = F[i], st = E.done[x.key] || 0, open = engOpen(F, i), now = i === cur;
       html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px;--d:${Math.min(i, 14) * 35}ms">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
@@ -88,6 +91,7 @@ function renderEngPath(){
     options: [10, 20, 30, 50, 80].map(n => ({ val: n, label: `${n} XP` })), onSelect: v => { E.goal = +v; save(); renderCards(); } });
   $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(E.course, k) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
   if($('#engGo')) $('#engGo').onclick = () => lessonStart(E.course, cur);
+  $$('[data-ut]').forEach(b => b.onclick = () => testStart(E.course, +b.dataset.ut, !!b.dataset.skip));
   $$('[data-q]').forEach(b => b.onclick = () => {
     const q = b.dataset.q;
     if(q === 'miss') return lessonStart(E.course, -1, shuf(engMiss()).slice(0, 6));
@@ -170,15 +174,34 @@ function engEx(t, w, pool){
   }
   return { t, w, opts: engOpts(w, pool, t === 'mean' ? 'th' : 'en') };
 }
+// แบบฝึกของคอร์สแบบข้อเลือก: ไวยากรณ์ (กฎ → เติมคำ → เรียงประโยค) / บทสนทนา / อ่านจับใจความ (เรื่อง → คำถาม)
+function engGramItems(c, ws, items, u, test){
+  const kind = COURSES[c].kind, ch = g => ({ w: g, opts: shuf([g.a, ...g.w]) });
+  if(kind === 'read'){ items.push({ t: 'passage', w: ws[0] }); ws.forEach(g => items.push({ t: 'read', ...ch(g) })); return; }
+  if(kind === 'dialog'){ shuf(ws).forEach(g => items.push({ t: 'dlg', ...ch(g) })); return; }
+  if(!test) items.push({ t: 'rule', u });
+  shuf(ws).forEach(g => items.push({ t: 'gram', ...ch(g) }));
+  if(!test) shuf(ws).slice(0, 2).forEach(g => items.push(engEx('order', { en: g.a, th: '', ex: g.q.replace('___', g.a), tr: g.tr }, [])));
+}
+// ทดสอบท้ายหน่วย / ทดสอบข้ามหน่วย: ไม่มีข้อซ้ำ ผ่าน 80%
+function testStart(c, ui, skip){
+  const C = COURSES[c], u = C.units[ui], items = [];
+  if(C.gram){
+    const ws = C.kind === 'read' ? u.ls[Math.floor(Math.random() * u.ls.length)] : shuf(u.ls.flat()).slice(0, 8);
+    engGramItems(c, ws, items, u, true);
+  }else{
+    const pool = engPool(c);
+    shuf(u.ls.flat()).slice(0, 10).forEach((w, k) => items.push(engEx(k % 2 ? 'word' : 'mean', w, pool)));
+  }
+  LS = { c, i: -1, key: null, ws: [], gram: true, test: { ui, skip }, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
+  renderCards();
+}
 // คำที่ตอบผิดล่าสุด (ระดับความจำ 0) จากคลังทบทวน
 const engMiss = () => S.cards.filter(c => c.seen && !(c.box > 0)).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '' })).filter(w => w.en && w.th);
 function lessonStart(c, i, custom){
   const E = engState(), x = custom ? { key: null, ws: custom } : engFlat(c)[i], ws = x.ws, pool = engPool(c).concat(custom || []), items = [];
   if(COURSES[c].gram){
-    // ไวยากรณ์: การ์ดกฎ → ข้อเติมคำ (มีเหตุผล) → เรียงประโยค 2 ข้อ
-    items.push({ t: 'rule', u: x.u });
-    shuf(ws).forEach(g => items.push({ t: 'gram', w: g, opts: shuf([g.a, ...g.w]) }));
-    shuf(ws).slice(0, 2).forEach(g => items.push(engEx('order', { en: g.a, th: '', ex: g.q.replace('___', g.a), tr: g.tr }, [])));
+    engGramItems(c, ws, items, x.u);
     LS = { c, i, key: x.key, ws, gram: true, items, k: 0, ok: 0, bad: 0, combo: 0, maxC: 0, t0: Date.now(), redo: new Set(), miss: new Set(), st: null };
     return renderCards();
   }
@@ -195,7 +218,8 @@ function lessonStart(c, i, custom){
 }
 const ENG_KIND = { intro: ['คำใหม่', '#0f9d76', 'sparkles'], mean: ['คำนี้แปลว่าอะไร', '#2f6fb5', 'languages'], word: ['ภาษาอังกฤษคือคำไหน', '#8b5cf6', 'type'],
   listen: ['ฟังแล้วเลือกคำที่ได้ยิน', '#e8590c', 'headphones'], blank: ['เติมคำในช่องว่าง', '#1098ad', 'text-cursor-input'], order: ['เรียงเป็นประโยค', '#d6336c', 'list-ordered'],
-  match: ['จับคู่คำกับคำแปล', '#ca8a04', 'puzzle'], rule: ['กฎไวยากรณ์', '#4f46e5', 'book-open'], gram: ['เลือกคำที่ถูกต้อง', '#e8590c', 'spell-check'] };
+  match: ['จับคู่คำกับคำแปล', '#ca8a04', 'puzzle'], rule: ['กฎไวยากรณ์', '#4f46e5', 'book-open'], gram: ['เลือกคำที่ถูกต้อง', '#e8590c', 'spell-check'],
+  dlg: ['เลือกประโยคตอบให้เหมาะสม', '#0ea5e9', 'message-circle'], passage: ['อ่านเรื่อง', '#16a34a', 'book-open-text'], read: ['ตอบคำถามจากเรื่อง', '#16a34a', 'circle-help'] };
 const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
   const L = LS;
@@ -207,6 +231,12 @@ function renderLesson(){
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
       <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${esc(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
   if(it.t === 'rule') body = `<div class="ls-rule"><b>${esc(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${esc(r.trim())}</span>`).join('')}</div>`;
+  if(it.t === 'dlg') body = `<div class="ls-chat">${w.lines.map(l => { const m = l.match(/^([AB]):\s*(.*)$/) || [0, 'A', l], me = m[1] === 'B';
+      return `<div class="ls-bub ${me ? 'me' : ''}"><em>${m[1]}</em><span>${m[2] === '___' ? '<i class="ls-dots"><b></b><b></b><b></b></i>' : esc(m[2])}</span></div>`; }).join('')}</div><div class="ls-opts">${opts}</div>`;
+  if(it.t === 'passage' || it.t === 'read') body = `<div class="ls-pass ${it.t === 'read' ? 'mini' : ''}"><b>${esc(w.title)}</b>
+      <button class="ls-say" data-readp><i data-lucide="volume-2"></i></button><p>${esc(w.text)}</p>
+      ${it.t === 'passage' ? `<button class="ls-trbtn" id="lsTr"><i data-lucide="languages"></i>ดูคำแปล</button><p class="ls-ptr" hidden>${esc(w.ptr)}</p>` : ''}</div>
+      ${it.t === 'read' ? `<p class="ls-q">${esc(w.q)}</p><div class="ls-opts">${opts}</div>` : ''}`;
   if(it.t === 'gram') body = `<p class="ls-sent">${esc(w.q).replace('___', '<u>_____</u>')}</p><div class="ls-opts">${opts}</div>`;
   if(it.t === 'mean') body = `<h2 class="ls-word">${esc(w.en)} ${say}</h2><div class="ls-opts">${opts}</div>`;
   if(it.t === 'word') body = `<h2 class="ls-word th">${esc(w.th)}</h2><div class="ls-opts">${opts}</div>`;
@@ -225,11 +255,13 @@ function renderLesson(){
     <div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
       <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div></div>
     <div class="ls-body"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
-    <div id="lsFb">${it.t === 'intro' || it.t === 'rule' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
+    <div id="lsFb">${it.t === 'intro' || it.t === 'rule' || it.t === 'passage' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
   $$('[data-slow]').forEach(b => b.onclick = () => engSay(w.en, true));
   if(it.t === 'listen' || it.t === 'intro') setTimeout(() => engSay(w.en), 250);
-  const ans = it.t === 'mean' ? w && w.th : it.t === 'gram' ? w.a : w && w.en;
+  const ans = it.t === 'mean' ? w && w.th : ['gram', 'dlg', 'read'].includes(it.t) ? w.a : w && w.en;
+  if($('[data-readp]')) $('[data-readp]').onclick = () => speakWord(w.text);
+  if($('#lsTr')) $('#lsTr').onclick = () => { const t = $('.ls-ptr'); t.hidden = !t.hidden; $('#lsTr').lastChild.textContent = t.hidden ? 'ดูคำแปล' : 'ซ่อนคำแปล'; };
   $$('[data-o]').forEach(b => b.onclick = () => {
     if(L.st !== null) return;
     const ok = it.opts[+b.dataset.o] === ans;
@@ -260,13 +292,13 @@ function lessonFb(ok, ans, noRedo){
   if(ok){ L.ok++; L.combo++; L.maxC = Math.max(L.maxC, L.combo); }
   else{
     L.bad++; L.combo = 0;
-    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(it.t === 'gram' ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
+    if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.test && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : 'คำตอบที่ถูก'}</b>
     ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
   // ประโยคเต็ม + คำแปล + อ่านให้ฟัง (เติมคำ / เรียงประโยค / ไวยากรณ์)
-  const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
+  const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : it.t === 'dlg' ? it.w.a : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
   if(full){
     $('#lsFb').insertAdjacentHTML('beforeend', `<div class="ls-full">${it.t === 'gram' && it.w.why ? `<small class="ls-why"><i data-lucide="lightbulb"></i>${esc(it.w.why)}</small>` : ''}
       <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-sayslow title="ฟังช้า"><i data-lucide="snail"></i></button><div><b>${esc(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
@@ -275,6 +307,7 @@ function lessonFb(ok, ans, noRedo){
     setTimeout(() => speakWord(full), 350);
   }
   icons($('#lsFb'));
+  requestAnimationFrame(() => $('#lsNext') && $('#lsNext').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
   if(ok){ const r = $('#lsFb').getBoundingClientRect(); engConfetti(L.combo >= 3 ? 22 : 12, r.left + 40, r.top + 20); }
   $('#lsNext').onclick = () => { L.k++; L.st = null; renderLesson(); };
 }
@@ -285,6 +318,10 @@ function lessonEnd(){
     const stars = acc >= 90 ? 3 : acc >= 70 ? 2 : 1, bonus = L.maxC >= 5 ? 5 : 0, xp = 10 + Math.round(acc / 10) + bonus;
     const before = engToday();
     if(L.key) E.done[L.key] = Math.max(E.done[L.key] || 0, stars);
+    if(L.test){
+      const u = COURSES[L.c].units[L.test.ui]; L.pass = acc >= 80;
+      if(L.pass){ E.ut = E.ut || {}; E.ut[`${L.c}:${u.t}`] = 1; if(L.test.skip) u.ls.forEach((_, li) => { const k = `${L.c}:${u.t}:${li}`; E.done[k] = Math.max(E.done[k] || 0, 1); }); }
+    }
     E.xp = (E.xp || 0) + xp; E.days[dkey()] = before + xp;
     L.goal = before < E.goal && before + xp >= E.goal;
     // คำในบทเข้าคลัง "ทบทวน" (ระบบทวนตามรอบวัน)
@@ -299,17 +336,21 @@ function lessonEnd(){
     save(); syncChrome(); playTone('submit');
   }
   const r = L.res;
-  $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic"><i data-lucide="trophy"></i></span><b>จบบทเรียน</b>
+  const T = L.test;
+  $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic ${T && !L.pass ? 'fail' : ''}"><i data-lucide="${T ? (L.pass ? 'medal' : 'rotate-ccw') : 'trophy'}"></i></span>
+    <b>${T ? (L.pass ? (T.skip ? 'ผ่าน! ข้ามหน่วยนี้ได้' : 'ผ่านการทดสอบ!') : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ลองอีกครั้งนะ</p>' : ''}
     <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.15 + k * .18}s">★</span>`).join('')}</div>
     ${r.bonus ? `<span class="ls-combo"><i data-lucide="flame"></i>คอมโบ ${LS.maxC} ติด +${r.bonus} XP</span>` : ''}
     <div class="ls-res"><div><b id="lsXp">+0</b><small>XP</small></div><div><b>${r.acc}%</b><small>แม่นยำ</small></div><div><b>${mmss(r.sec)}</b><small>เวลา</small></div></div>
+    ${T && !L.pass ? '<button class="btn ghost lg block" id="lsRetry" style="margin-bottom:8px"><i data-lucide="rotate-ccw"></i>ลองใหม่</button>' : ''}
     <button class="btn lg block" id="lsDone">ต่อไป</button></div>`;
   $('#lsDone').onclick = () => { LS = null; renderCards(); };
+  if($('#lsRetry')) $('#lsRetry').onclick = () => testStart(L.c, T.ui, T.skip);
   icons();
   // XP วิ่งขึ้น + พลุ (ได้ 3 ดาว หรือถึงเป้าวันนี้)
   const t0 = performance.now(), tick = t => { const p = Math.min(1, (t - t0) / 700); const e = $('#lsXp'); if(!e) return; e.textContent = '+' + Math.round(r.xp * (1 - Math.pow(1 - p, 3))); if(p < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
-  if(r.stars === 3 || L.goal) setTimeout(() => engConfetti(40, innerWidth / 2, innerHeight / 3), 350);
+  if(r.stars === 3 || L.goal || L.pass) setTimeout(() => engConfetti(40, innerWidth / 2, innerHeight / 3), 350);
   if(L.goal){ L.goal = false; setTimeout(() => toast('ถึงเป้าวันนี้แล้ว!', 'ok'), 700); }
 }
 // พลุกระดาษเล็กๆ
