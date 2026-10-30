@@ -2894,7 +2894,7 @@ function openSetPicker(catName, allQs, title){
                 <div style="font-size:12px;color:var(--muted);margin-top:2px">ทั้งหมด ${allQs.length} ข้อ · แบ่ง ${totalBatches} ชุด</div>
               </div>
               <button class="btn sm" id="btnQuickRandom20" style="border-radius:12px;padding:6px 12px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);color:var(--text)">
-                <i data-lucide="shuffle" style="width:14px;height:14px"></i>สุ่มด่วน (20)
+                <i data-lucide="shuffle" style="width:14px;height:14px"></i>สุ่มทำ<i data-lucide="chevron-down" style="width:13px;height:13px"></i>
               </button>
             </div>
 
@@ -2958,9 +2958,10 @@ function openSetPicker(catName, allQs, title){
       };
 
       $('#btnQuickRandom20').onclick = () => {
-        const noTime = chk?.checked;
-        closeModal();
-        startExam({ ids: allQs.map(q => q.id), count: 20, minutes: noTime ? 0 : 20, mode: 'practice', label: `สุ่ม ${title || catName} 20 ข้อ` });
+        const noTime = chk?.checked, N = allQs.length;
+        const opts = [10, 20, 30, 50, 100].filter(n => n < N).map(n => ({ val: n, label: `${n} ข้อ` })).concat({ val: N, label: `ทั้งหมด ${N} ข้อ` });
+        openPicker({ title: 'สุ่มทำกี่ข้อ', options: opts, value: '', onSelect: n => { n = +n; setTimeout(() =>
+          startExam({ ids: allQs.map(q => q.id), count: n, minutes: noTime ? 0 : n, mode: 'practice', label: `สุ่ม ${title || catName} ${n} ข้อ` }), 150); } });
       };
 
       $$('[data-batchidx]').forEach(btn => {
@@ -3028,10 +3029,8 @@ function renderShelfTop(){
             ${loose ? '' : `<button class="hb-act" data-editbook="${it.b.id}" title="ชื่อ ปก ลบ"><i data-lucide="settings-2"></i></button>`}</div></div>
       </div>`;
     }).join('')}
-      <button class="book book-new" id="btnNewBook"><span><i data-lucide="plus"></i></span><b>สร้างหนังสือสถาบัน</b></button>
     </div>`;
   $('#btnBulk').onclick = () => bulkForm();
-  $('#btnNewBook').onclick = () => createBook();
   $$('[data-book]').forEach(b => b.onclick = () => openBookAnim(b, () => { QF.book = b.dataset.book; QF.cat = 'ทั้งหมด'; QF.term = ''; QF.limit = 25; QF.off = 0; renderQuiz(); $('.main').scrollTo(0, 0); }));
   $$('[data-editbook]').forEach(b => b.onclick = () => editBook(b.dataset.editbook));
   initShelfDrag();
@@ -3324,7 +3323,7 @@ function syncChrome(){
   $('#pillQ').textContent=S.questions.length.toLocaleString();
   $('#pillC').textContent=S.cards.length.toLocaleString();
   const fab=$('#fab');
-  if(PAGE==='quiz'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มข้อ';fab.onclick=()=>{playTone('tap');qForm();};}
+  if(PAGE==='quiz') setQuizFab();
   else if(PAGE==='cards'){fab.hidden=false;fab.innerHTML='<i data-lucide="plus"></i>เพิ่มบัตร';fab.onclick=()=>{playTone('tap');cForm();};}
   else fab.hidden=true;
   icons();
@@ -3764,7 +3763,13 @@ function qFiltered(){
   return L;
 }
 
+function setQuizFab(){
+  const fab = $('#fab'); if(!fab || PAGE !== 'quiz') return; fab.hidden = false;
+  fab.innerHTML = QF.book ? '<i data-lucide="plus"></i>เพิ่มข้อ' : '<i data-lucide="book-plus"></i>สร้างหนังสือ'; icons(fab);
+  fab.onclick = () => { playTone('tap'); QF.book ? qForm() : createBook(); };
+}
 function renderQuiz(){
+  setQuizFab();
   if(!QF.book || !bookOrLoose(QF.book)){ QF.book = null; return renderShelfTop(); }
   const BK = bookOrLoose(QF.book);
   let L = qFiltered();
