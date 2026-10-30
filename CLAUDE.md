@@ -1,0 +1,25 @@
+# P-exam — แผนที่ไฟล์
+
+แอปเว็บไฟล์เดียวแยกเป็นหลายไฟล์ (vanilla JS, ไม่มี build) โหลดตามลำดับใน `index.html`
+ทุกไฟล์ใน `js/` เป็น classic script ใช้ตัวแปรร่วมกัน (global) — ห้ามเรียกฟังก์ชันจากไฟล์ที่โหลดทีหลังตอนโหลดไฟล์ (top-level)
+
+| ไฟล์ | เนื้อหา |
+|---|---|
+| `css/base.css` | สไตล์พื้นฐาน |
+| `css/theme.css` | ธีม neo (ทับ base) |
+| `js/core.js` | error log, เส้นทางสอบ (tracks), IndexedDB, state `S`, `save()`, `$`/`icons()` |
+| `js/media.js` | รูป, lightbox, ตัดต่อรูป, rich text editor |
+| `js/ui.js` | เสียง, toast, modal, picker, ปกหนังสือ |
+| `js/books.js` | อนิเมชันเปิดหนังสือ, ลากเรียงชั้น, ชุด 50 ข้อ, หนังสือสถาบัน |
+| `js/home.js` | ไอคอนวิชา, `ask`, `go`, `syncChrome`, หน้าแรก, `QF` |
+| `js/quiz.js` | คลังข้อ, ฟอร์มข้อสอบ, นำเข้าชุด |
+| `js/cards.js` | บัตรจำ, แก้เส้นทางสอบ |
+| `js/exam.js` | จำลองสอบ, หน้าทำข้อสอบ, ส่งคำตอบ, ผลลัพธ์ |
+| `js/settings.js` | รายละเอียดรอบสอบ, ฟอนต์, ตั้งค่า, สำรองข้อมูล |
+| `js/system.js` | sanitize, ย้อนกลับ (undo), ลบหมวด, ธีมสี, ปุ่ม back |
+| `js/cloud.js` | คลังออนไลน์ |
+| `js/fx.js` | เอฟเฟกต์, แป้นพิมพ์มือถือ, ปฏิทิน |
+| `js/boot.js` | `RENDER` และเริ่มแอป (ต้องโหลดท้ายสุด) |
+| `vendor/lucide.min.js` | ไอคอน (v1.65.0) |
+
+เพิ่มไฟล์ js/css ใหม่ → เพิ่มใน `index.html` และรายการ `CODE` ใน `sw.js` ด้วย
