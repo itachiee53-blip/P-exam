@@ -1747,6 +1747,72 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   .rtop .timer{padding:8px 12px}
   .rtop .tag{display:none}
 }
+/* ===== หน้าแรกแบบใหม่: โปร่ง เลื่อนได้ แบ่งเป็นการ์ดเรียบ ===== */
+.hm{display:flex;flex-direction:column;gap:14px;max-width:720px;margin:0 auto;padding-bottom:8px}
+.hm-hello{font-size:15px;font-weight:600;color:var(--text)}
+.hm-hello span{color:var(--muted);font-weight:500}
+.hm-today{border-radius:26px;padding:20px;color:#fff;background:linear-gradient(150deg,#6aa6da,#3b82c4 75%);
+  display:grid;grid-template-columns:96px 1fr;gap:16px 18px;align-items:center;box-shadow:0 20px 36px -24px rgba(59,130,196,.8)}
+.hm-ring{position:relative;width:96px;height:96px}
+.hm-ring svg{width:96px;height:96px;transform:rotate(-90deg)}
+.hm-ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.hm-ring .bgc{stroke:rgba(255,255,255,.25)}
+.hm-ring .fgc{stroke:#fff;transition:stroke-dashoffset .8s ease-out}
+.hm-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hm-ring-txt b{font-size:22px;line-height:1;letter-spacing:-.03em}
+.hm-ring-txt span{font-size:11px;opacity:.85;margin-top:3px}
+.hm-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.hm-pills span{background:rgba(255,255,255,.22);font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px}
+.hm-pills .cd{background:#000;color:#e1e5ac}.hm-pills .cd.soon{background:#ef3e4a;color:#fff}
+.hm-today h2{font-size:24px;line-height:1.15;letter-spacing:-.03em}
+.hm-today p{font-size:12.5px;opacity:.9;margin-top:4px}
+.hm-start{grid-column:1/-1;height:50px;border-radius:16px;background:#fff;color:#3b82c4;font-weight:700;font-size:15.5px;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.hm-start svg{width:18px;height:18px;fill:currentColor}
+.hm-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.hm-quick button{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 4px 12px;
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;font-size:12.5px;font-weight:600}
+.hm-quick em{position:absolute;top:8px;right:10px;font-style:normal;font-size:10.5px;font-weight:700;background:var(--red);color:#fff;
+  min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
+.hm-ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none}
+.hm-ic svg{width:20px;height:20px}
+.hm-ic.sm{width:34px;height:34px;border-radius:11px}.hm-ic.sm svg{width:16px;height:16px}
+.hm-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:12px;text-align:left;width:100%}
+.hm-resume{flex-direction:row;align-items:center;gap:12px}
+.hm-grow{flex:1;min-width:0}
+.hm-resume small{display:block;font-size:11.5px;color:var(--muted)}
+.hm-resume b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-resume .hm-bar{margin-top:6px}
+.hm-go{display:flex;align-items:center;gap:2px;font-size:12.5px;font-weight:700;color:var(--blue)}
+.hm-go svg{width:16px;height:16px}
+.hm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hm-stats div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 10px;text-align:center;min-width:0}
+.hm-stats b{display:block;font-size:17px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-stats span{font-size:11.5px;color:var(--muted)}
+.hm-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hm-head b{font-size:15px}
+.hm-link{font-size:12.5px;font-weight:600;color:var(--blue)}
+.hm-link.center{align-self:center}
+.hm-week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.hm-week button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;border-radius:14px;background:var(--surface2)}
+.hm-week span{font-size:11px;color:var(--muted);font-weight:600}
+.hm-week b{font-size:13px;color:var(--muted)}
+.hm-week .done{background:var(--blue-2)}.hm-week .done b{color:var(--blue)}
+.hm-week .today{box-shadow:inset 0 0 0 1.5px var(--text)}
+.hm-prob{font-size:22px;font-weight:700;letter-spacing:-.03em}
+.hm-bar{height:6px;border-radius:9px;background:var(--surface3);overflow:hidden}
+.hm-bar i{display:block;height:100%;border-radius:9px;background:var(--blue);transition:width .4s}
+.hm-bar.lg{height:10px}
+.hm-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+.hm-fix{display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:14px;background:var(--red-2);color:var(--red);font-size:13px;text-align:left}
+.hm-fix span{flex:1}.hm-fix svg{width:16px;height:16px;flex:none}
+.hm-ms-list{display:flex;flex-direction:column;gap:10px}
+.hm-ms,#hmMsMore{display:flex;gap:10px;align-items:center}
+#hmMsMore{flex-direction:column;align-items:stretch}
+.hm-ms-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.hm-ms-top b{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-ms-top span{font-weight:700}
+@media(min-width:981px){.hm-today{grid-template-columns:120px 1fr 220px}.hm-start{grid-column:auto}.hm-ring,.hm-ring svg{width:120px;height:120px}}
 /* ข้อ 5: นับถอยหลังวันสอบบนการ์ดหน้าแรก */
 .neo-hero-pills{display:flex;gap:6px;flex-wrap:wrap;align-items:center;order:1}
 .neo-hero-pills p{margin:0!important;order:0!important}
@@ -2557,6 +2623,7 @@ $('#rteSave').onclick = () => {
 // เสียงปุ่ม: โหลดไฟล์ใน sounds/ เข้า Web Audio (เล่นทันที ไม่หน่วง) ถ้าไม่ได้ใช้ <audio> แทน
 const SFX_FILES = {tap:'sounds/tap.mp3', pick:'sounds/pick.mp3', ok:'sounds/correct.mp3', wrong:'sounds/wrong.mp3', submit:'sounds/done.mp3'};
 const sfxEl = {}, sfxBuf = {};
+const SFX_VOLUME = 0.45;
 let audioCtx = null, lastTapAt = 0;
 Object.entries(SFX_FILES).forEach(([k, src]) => { const a = new Audio(src); a.preload = 'auto'; sfxEl[k] = a; });
 try{
@@ -2582,10 +2649,11 @@ function playTone(type='tap'){
       if(audioCtx.state === 'suspended') audioCtx.resume();
       const src = audioCtx.createBufferSource();
       src.buffer = sfxBuf[type];
-      src.connect(audioCtx.destination);
+      const g = audioCtx.createGain(); g.gain.value = SFX_VOLUME;
+      src.connect(g).connect(audioCtx.destination);
       src.start(0);
     } else if(sfxEl[type]){
-      const a = sfxEl[type]; a.currentTime = 0; a.play().catch(()=>{});
+      const a = sfxEl[type]; a.volume = SFX_VOLUME; a.currentTime = 0; a.play().catch(()=>{});
     }
   }catch(e){}
 }
@@ -3191,321 +3259,105 @@ let bannerTimer = null;
 let bannerIdx = 0;
 
 function renderHome(){
+  clearInterval(bannerTimer);
   const t=day(), goal=S.settings.goal, rawPct=goal>0?Math.round(t.answered/goal*100):0;
   const pct=clamp(rawPct,0,100);
-  const C=2*Math.PI*57;
-  
+  const C=2*Math.PI*42;
   const h=new Date().getHours();
   const hi = h < 11 ? 'สวัสดีตอนเช้า' : h < 16 ? 'สวัสดีตอนบ่าย' : h < 19 ? 'สวัสดีตอนเย็น' : 'สวัสดีตอนค่ำ';
-  const name=(S.settings.name||'').trim();
   const due=S.cards.filter(c=>(c.due||0)<=Date.now()).length;
   const L=S.session||S.last;
-
-  const currentTrackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
-  const trackInfo = POLICE_TRACKS[currentTrackKey];
-  const weak = analyzeWeakness(currentTrackKey);
+  const trackKey = S.settings.track === 'suppress' ? 'suppress' : 'admin';
+  const trackInfo = POLICE_TRACKS[trackKey];
+  const weak = analyzeWeakness(trackKey);
   const cd = getCountdownInfo();
-  const rStats = calculateReadinessAndMastery(currentTrackKey);
-
-  const pool = NATURAL_MESSAGES[currentTrackKey] || NATURAL_MESSAGES.admin;
-  const coach = pool[Math.floor(Math.random() * pool.length)];
-
-  const slides = [];
-  if(cd){
-    slides.push(`
-      <div class="coach-box" style="border-left:4px solid var(--red)">
-        <div class="ic" style="background:var(--red-2);color:var(--red)"><i data-lucide="calendar"></i></div>
-        <div style="flex:1">
-          <b>สอบจริง: ${esc(cd.examDateStr)}</b>
-          <small>เหลือ ${cd.daysLeft} วัน (${esc(trackInfo.name)})</small>
-        </div>
-        <span class="tag ${cd.daysLeft<=14?'r':cd.daysLeft<=30?'o':'b'}" style="font-size:13px;font-weight:700;padding:4px 10px">
-          ${cd.isToday ? 'สอบวันนี้!' : cd.isPassed ? 'สอบแล้ว' : `อีก ${cd.daysLeft} วัน`}
-        </span>
-      </div>
-    `);
-  }
-
-  if(weak.worstCat){
-    slides.push(`
-      <div class="coach-box" style="border-left:4px solid var(--red)">
-        <div class="ic" style="background:var(--red-2);color:var(--red)"><i data-lucide="alert-triangle"></i></div>
-        <div style="flex:1">
-          <b>ควรเน้น: ${esc(weak.worstCat)}</b>
-          <small>${weak.maxBad > 0 ? 'ผิด '+weak.maxBad+' ครั้ง' : 'ควรทวนเพิ่ม'}</small>
-        </div>
-        <button class="btn sm red" id="btnFixWeak"><i data-lucide="zap"></i>ซ่อมด่วน</button>
-      </div>
-    `);
-  }
-
-  slides.push(`
-    <div class="coach-box" style="border-left:4px solid var(--green)">
-      <div class="ic" style="background:var(--green-2);color:var(--green)"><i data-lucide="sparkles"></i></div>
-      <div style="flex:1">
-        <b>${esc(coach.title)}</b>
-        <small>${esc(coach.sub)}</small>
-      </div>
-    </div>
-  `);
-
-  const curPos = S.settings.heroPos || 'center';
-  const heroStyle = S.settings.heroBg 
-    ? `style="background: linear-gradient(rgba(10,25,50,0.3), rgba(10,25,50,0.45)), url('${S.settings.heroBg}') ${curPos}/cover no-repeat;"` 
-    : '';
-
+  const rStats = calculateReadinessAndMastery(trackKey);
   const weekData = getMonToSunWeek();
+  const left = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0)).length;
+  const pace = cd && !cd.isPassed && !cd.isToday && left ? Math.ceil(left/cd.daysLeft) : 0;
+  const heroBg = S.settings.heroBg
+    ? `style="background:linear-gradient(rgba(20,40,70,.35),rgba(20,40,70,.55)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
 
-  let resumePct = 0;
-  let resumeDone = 0;
-  let resumeTotal = 0;
-  let isOngoing = !!S.session;
-  if(S.session){
-    resumeTotal = S.session.ids.length;
-    resumeDone = S.session.ans.filter(a => a !== null).length;
-    resumePct = resumeTotal ? Math.round((resumeDone / resumeTotal) * 100) : 0;
+  let resumeHtml = '';
+  if(L){
+    const on = !!S.session;
+    const tot = on ? S.session.ids.length : 0, done = on ? S.session.ans.filter(a=>a!==null).length : 0;
+    resumeHtml = `<button class="hm-card hm-resume" id="btnResume">
+      <div class="hm-ic" style="background:var(--blue-2);color:var(--blue)"><i data-lucide="${on?'file-clock':'rotate-ccw'}"></i></div>
+      <div class="hm-grow"><small>${on?'ทำค้างไว้':'ชุดล่าสุด'}</small><b>${esc(L.label||'ชุดล่าสุด')}</b>
+        ${on?`<div class="hm-bar"><i style="width:${tot?Math.round(done/tot*100):0}%"></i></div>`:''}</div>
+      <span class="hm-go">${on?`${done}/${tot}`:'ฝึกซ้ำ'}<i data-lucide="chevron-right"></i></span>
+    </button>`;
   }
 
-  const greetingText = name ? `${hi} ${name}` : `${hi}`;
-
-  $('#view').innerHTML=`
-  <div class="neo-greet"><b>${esc(greetingText)},</b> <span>พร้อมลุยต่อไหม?</span></div>
-  <div class="chips sc neo-chips">
-    <button class="chip on" data-go="quiz">ข้อสอบ <i>${S.questions.length.toLocaleString()}</i></button>
-    <button class="chip" data-go="cards">บัตรจำถึงรอบ <i>${due}</i></button>
-    <button class="chip" data-go="result">ต่อเนื่อง <i>${streak()} วัน</i></button>
-  </div>
-
-  <div class="neo-deck">
-  <div class="hero neo-dcard" ${heroStyle}>
-    <div style="flex:1;position:relative;z-index:1">
-      <div class="neo-hero-pills"><p>สาย${esc(trackInfo.name)}</p>${cd && !cd.isPassed ? `<span class="neo-hero-cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday?'สอบวันนี้!':`อีก ${cd.daysLeft} วันสอบ`}</span>` : ''}</div>
-      <h2>เป้าหมายวันนี้<br>ทำ ${goal} ข้อ</h2>
-      ${(()=>{ if(!cd || cd.isPassed || cd.isToday) return '';
-        const left = S.questions.filter(q => !(S.qstat[q.id]?.seen > 0)).length;
-        return left ? `<small class="neo-hero-hint">เหลือ ${left.toLocaleString()} ข้อที่ยังไม่ทำ · ควรทำวันละ ~${Math.ceil(left/cd.daysLeft)} ข้อ</small>` : ''; })()}
-      <div class="cta">
-        <button class="btn w" data-q="practice"><i data-lucide="play"></i>เริ่มทำ</button>
-       <button class="btn" id="btnCloudHub"><i data-lucide="cloud-download"></i>แชร์ออนไลน์</button>
-        <button class="btn" data-q="exam"><i data-lucide="timer"></i>จำลองสอบ</button>
-      </div>
-    </div>
-    <div class="ringbox">
-      <svg viewBox="0 0 138 138">
-        <circle class="bgc" cx="69" cy="69" r="57"/>
-        <circle class="fgc" id="gr" cx="69" cy="69" r="57" stroke="#38bdf8" stroke-dasharray="${C}" stroke-dashoffset="${C}"/>
-      </svg>
-      <div class="txt">
-        <b id="ringTxt">${rawPct}%</b>
-        <span>${t.answered}/${goal} ข้อ</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="neo-dcard neo-stat-card">
-    <div class="neo-dc-head"><span class="neo-pill">สถานะของคุณ</span><i data-lucide="activity"></i></div>
-    <div class="neo-time"><small>เวลาสะสมทั้งหมด</small><b>${hmin(S.stats.minutes)}</b></div>
-    <div class="neo-mini-grid">
-      <div><b>${t.answered}</b><span>ทำวันนี้</span></div>
-      <div><b>${avg()}%</b><span>เฉลี่ยรวม</span></div>
-      <div><b>${streak()}</b><span>วันต่อเนื่อง</span></div>
-    </div>
-  </div>
-  <div class="neo-dcard neo-prob-card">
-    <div class="neo-dc-head"><span class="neo-pill">โอกาสสอบติด</span>${cd ? `<span class="neo-pill ghost">${cd.isToday ? 'สอบวันนี้!' : cd.isPassed ? 'สอบแล้ว' : `อีก ${cd.daysLeft} วัน`}</span>` : ''}</div>
-    <div class="neo-big">${rStats.passProb}<small>%</small></div>
-    <h3>${esc(rStats.statusText)}</h3>
-    <p>วิเคราะห์จากสถิติตามเกณฑ์สาย${esc(trackInfo.name)}</p>
-  </div>
-  </div>
-  <div class="neo-deck-dots"><i class="on"></i><i></i><i></i></div>
-
-  <div class="banner-slider" id="bannerSlider" style="margin-top:14px">
-    <div class="banner-track" id="bannerTrack">
-      ${slides.map(s=>`<div class="banner-slide">${s}</div>`).join('')}
-    </div>
-    ${slides.length > 1 ? `
-      <div class="banner-dots" id="bannerDots">
-        ${slides.map((_,i)=>`<span class="b-dot ${i===0?'on':''}"></span>`).join('')}
-      </div>` : ''}
-  </div>
-
-  <div class="mastery-card">
-    <div class="prob-header">
-      <div class="prob-gauge-wrap">
-        <div class="prob-gauge" style="background:${rStats.bgGrad}">
-          ${rStats.passProb}%
-        </div>
-        <div class="prob-info">
-          <b>โอกาสสอบติด: <span style="color:${rStats.badgeColor}">${esc(rStats.statusText)}</span></b>
-          <small>วิเคราะห์จากสถิติตามเกณฑ์สาย${esc(trackInfo.name)}</small>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="row" style="justify-content:space-between;margin-bottom:10px">
-        <b style="font-size:13.5px;color:var(--text2)">ความพร้อมแยกตามวิชา</b>
-        <small style="color:var(--muted)">เกณฑ์ผ่าน ≥ 60%</small>
-      </div>
-                 <div class="mastery-grid">
-        ${S.cats.map(c => {
-          const m = rStats.mastery[c];
-          const [catBg, catColor] = tone(c);
-          const iconName = cicon(c);
-          
-          const isPass = m.pct >= 60;
-          const isWarning = m.pct >= 40 && m.pct < 60;
-          const barColor = isPass ? 'var(--green)' : isWarning ? 'var(--orange)' : 'var(--red)';
-
-          let accText = 'ยังไม่เริ่ม';
-          let accStyle = 'background:var(--surface3); color:var(--muted);';
-
-                    if (m.seenQ > 0) {
-            if (m.accuracy >= 80) {
-              accText = '★ แม่นยำสูง';
-              accStyle = 'background:var(--green-2); color:var(--green);';
-            } else if (m.accuracy >= 60) {
-              accText = '◆ เชี่ยวชาญ';
-              accStyle = 'background:var(--blue-2); color:var(--blue);';
-            } else if (m.accuracy >= 40) {
-              accText = '▲ ปานกลาง';
-              accStyle = 'background:var(--orange-2); color:var(--orange);';
-            } else {
-              accText = '▼ ซ่อมด่วน';
-              accStyle = 'background:var(--red-2); color:var(--red);';
-            }
-          }
-
-          return `
-            <div class="mastery-item-v2">
-              <div style="display:flex; justify-content:space-between; align-items:center">
-                <div style="display:flex; align-items:center; gap:10px">
-                  <div class="mastery-icon-pill" style="background:${catBg}; color:${catColor}">
-                    <i data-lucide="${iconName}"></i>
-                  </div>
-                  <div>
-                    <b style="font-size:15px; color:var(--text); line-height:1.2; display:block">${esc(c)}</b>
-                    <small style="font-size:11.5px; color:var(--muted)">ทำแล้ว ${m.seenQ}/${m.totalQ} ข้อ</small>
-                  </div>
-                </div>
-
-                <div style="display:flex; align-items:baseline; gap:2px">
-                  <span style="font-size:20px; font-weight:850; color:${barColor}; line-height:1">${m.pct}</span>
-                  <span style="font-size:11px; font-weight:700; color:${barColor}">%</span>
-                </div>
-              </div>
-
-              <div class="m-bar-v2">
-                <i style="width:${m.pct}%; background:${barColor}"></i>
-              </div>
-
-              <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px">
-                <span class="acc-badge" style="${accStyle}">${accText}</span>
-                <span style="font-weight:600; color:${isPass ? 'var(--green)' : 'var(--muted)'}">
-                  ${isPass ? '● ผ่านเกณฑ์' : '○ ไม่ผ่าน (60%)'}
-                </span>
-              </div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    </div>
-  </div>
-
-
-  <div class="grid g2" style="margin-top:22px;align-items:stretch">
-    <div>
-      <div class="sec" style="margin-top:0"><i data-lucide="play-circle"></i>ทำต่อ</div>
-      ${L ? `
-        <div class="resume-card">
-          <div>
-            <div class="top">
-              <div class="ic"><i data-lucide="${isOngoing ? 'file-clock' : 'rotate-ccw'}"></i></div>
-              <div style="flex:1;min-width:0">
-                <div class="row" style="gap:6px;margin-bottom:4px">
-                  <span class="tag ${isOngoing ? 'o' : 'b'}">${isOngoing ? 'ค้างอยู่' : 'ล่าสุด'}</span>
-                  ${L.mode ? `<span class="tag">${L.mode==='exam'?'สอบจริง':'โหมดฝึก'}</span>` : ''}
-                </div>
-                <b style="font-size:15px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(L.label || 'ชุดล่าสุด')}</b>
-              </div>
-            </div>
-            ${isOngoing ? `
-              <div style="margin-top:14px">
-                <div class="row" style="justify-content:space-between;font-size:12px;margin-bottom:5px">
-                  <span style="color:var(--muted)">ความคืบหน้า</span>
-                  <b>${resumeDone} / ${resumeTotal} ข้อ (${resumePct}%)</b>
-                </div>
-                <div class="bar"><i style="width:${resumePct}%"></i></div>
-              </div>` : `
-              <p style="font-size:12.5px;color:var(--muted);margin-top:10px">กดเพื่อฝึกซ้ำทวนความจำ</p>`}
-          </div>
-          <button class="btn ${isOngoing ? 'green' : 'primary'} block" id="btnResume" style="margin-top:12px">
-            <i data-lucide="${isOngoing ? 'play' : 'refresh-cw'}"></i>${isOngoing ? 'ทำต่อ' : 'ฝึกซ้ำ'}
-          </button>
-        </div>` : `
-        <div class="card empty" style="min-height:190px;display:flex;flex-direction:column;justify-content:center">
-          <i data-lucide="coffee"></i><div>ยังไม่มีประวัติ</div>
-        </div>`}
-    </div>
-
-    <div>
-      <div class="week-card">
-        <div class="row" style="justify-content:space-between;align-items:center">
-          <b style="font-size:15px">สถิติสัปดาห์นี้</b>
-          <span class="tag o" style="font-weight:700;padding:5px 12px;border-radius:20px">🔥 ต่อเนื่อง ${streak()} วัน</span>
-        </div>
-        <div class="streak-row">
-          ${weekData.map((x, idx) => {
-            const isDone = x.n > 0;
-            const content = isDone ? '✓' : (x.today ? x.n || '0' : '-');
-            return `
-              <div class="streak-day-item ${x.today ? 'is-today' : ''} ${isDone ? 'is-done' : ''}" data-dayclick="${idx}">
-                <div class="streak-circle">${content}</div>
-                <span class="day-lbl">${x.lb}</span>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    </div>         
-  </div>
-  `;
-
-  setTimeout(()=>{const g=$('#gr'); if(g) g.style.strokeDashoffset=C-C*pct/100;},60);
-  
-  if($('#btnFixWeak')){
-    $('#btnFixWeak').onclick=()=>{
-      playTone('tap');
-      startExam({cats:[weak.worstCat],count:15,minutes:15,mode:'practice',label:'ซ่อม '+weak.worstCat});
-    };
-  }
-
-  const r=$('#btnResume'); 
-  if(r) r.onclick=()=>{
-    playTone('tap');
-    S.session?resumeExam():startExam(S.last);
+  const ms = S.cats.map(c => ({c, ...rStats.mastery[c]})).filter(m => m.totalQ > 0).sort((a,b) => a.pct - b.pct);
+  const msRow = m => {
+    const col = m.pct >= 60 ? 'var(--green)' : m.pct >= 40 ? 'var(--orange)' : 'var(--red)';
+    const [bg, fg] = tone(m.c);
+    return `<div class="hm-ms"><div class="hm-ic sm" style="background:${bg};color:${fg}"><i data-lucide="${cicon(m.c)}"></i></div>
+      <div class="hm-grow"><div class="hm-ms-top"><b>${esc(m.c)}</b><span style="color:${col}">${m.pct}%</span></div>
+      <div class="hm-bar"><i style="width:${m.pct}%;background:${col}"></i></div></div></div>`;
   };
 
-  $$('[data-dayclick]').forEach(b => {
-    b.onclick = () => {
-      playTone('tap');
-      const idx = +b.dataset.dayclick;
-      openDayBreakdownModal(weekData[idx]);
-    };
-  });
+  $('#view').innerHTML = `<div class="hm">
+  <div class="hm-hello">${hi} · <span>พร้อมลุยต่อไหม?</span></div>
 
-  if ($('#btnCloudHub')) {
-    $('#btnCloudHub').onclick = () => openCloudHubModal();
-  }
+  <section class="hm-today" ${heroBg}>
+    <div class="hm-ring">
+      <svg viewBox="0 0 100 100"><circle class="bgc" cx="50" cy="50" r="42"/>
+        <circle class="fgc" id="gr" cx="50" cy="50" r="42" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg>
+      <div class="hm-ring-txt"><b id="ringTxt">${rawPct}%</b><span>${t.answered}/${goal}</span></div>
+    </div>
+    <div class="hm-today-body">
+      <div class="hm-pills"><span>สาย${esc(trackInfo.name)}</span>${cd && !cd.isPassed ? `<span class="cd ${cd.daysLeft<=14?'soon':''}">${cd.isToday?'สอบวันนี้!':`อีก ${cd.daysLeft} วันสอบ`}</span>`:''}</div>
+      <h2>วันนี้ ${t.answered}/${goal} ข้อ</h2>
+      <p>${pace ? `เหลือ ${left.toLocaleString()} ข้อ · ควรทำวันละ ~${pace} ข้อ` : t.answered >= goal ? 'ถึงเป้าแล้ว เก่งมาก!' : `อีก ${goal - t.answered} ข้อถึงเป้า`}</p>
+    </div>
+    <button class="hm-start" id="hmStart"><i data-lucide="play"></i>เริ่มทำตามเป้า</button>
+  </section>
 
-  $$('[data-q]').forEach(b => b.onclick = () => {
-    if(b.dataset.q === 'exam') return go('exam');
-    playTone('tap');
-    startExam({cats:[],count:S.settings.goal,minutes:0,mode:'practice',label:'ฝึกตามเป้าวันนี้'});
-  });
+  <div class="hm-quick">
+    <button data-go="exam"><div class="hm-ic" style="background:var(--violet-2);color:var(--violet)"><i data-lucide="timer"></i></div>จำลองสอบ</button>
+    <button data-go="cards"><div class="hm-ic" style="background:var(--orange-2);color:var(--orange)"><i data-lucide="layers"></i></div>บัตรจำ${due?`<em>${due}</em>`:''}</button>
+    <button id="hmCal"><div class="hm-ic" style="background:var(--green-2);color:var(--green)"><i data-lucide="calendar-days"></i></div>ปฏิทิน</button>
+    <button id="btnCloudHub"><div class="hm-ic" style="background:var(--cyan-2);color:var(--cyan)"><i data-lucide="cloud-download"></i></div>ออนไลน์</button>
+  </div>
 
-  initCarousel(slides.length);
+  ${resumeHtml}
+
+  <div class="hm-stats">
+    <div><b>🔥 ${streak()}</b><span>วันต่อเนื่อง</span></div>
+    <div><b>${avg()}%</b><span>ทำถูกแล้ว</span></div>
+    <div><b>${hmin(S.stats.minutes)}</b><span>เวลาสะสม</span></div>
+  </div>
+
+  <section class="hm-card">
+    <div class="hm-head"><b>สัปดาห์นี้</b><button class="hm-link" id="hmCal2">ดูปฏิทิน</button></div>
+    <div class="hm-week">${weekData.map((x,i)=>`<button data-dayclick="${i}" class="${x.n>0?'done':''} ${x.today?'today':''}"><span>${x.lb}</span><b>${x.n>0?x.n:'·'}</b></button>`).join('')}</div>
+  </section>
+
+  <section class="hm-card">
+    <div class="hm-head"><b>โอกาสสอบติด</b><span class="hm-prob" style="color:${rStats.badgeColor}">${rStats.passProb}%</span></div>
+    <div class="hm-bar lg"><i style="width:${rStats.passProb}%;background:${rStats.badgeColor}"></i></div>
+    <small class="hm-sub">${esc(rStats.statusText)} · เกณฑ์ผ่าน 60% ต่อวิชา</small>
+    ${weak.worstCat ? `<button class="hm-fix" id="btnFixWeak"><i data-lucide="zap"></i><span>ควรเน้น <b>${esc(weak.worstCat)}</b> · ผิด ${weak.maxBad} ครั้ง</span><i data-lucide="chevron-right"></i></button>` : ''}
+    ${ms.length ? `<div class="hm-ms-list">${ms.slice(0,3).map(msRow).join('')}
+      <div id="hmMsMore" hidden>${ms.slice(3).map(msRow).join('')}</div></div>
+      ${ms.length>3?`<button class="hm-link center" id="hmMsToggle">ดูทุกวิชา (${ms.length})</button>`:''}` : '<small class="hm-sub">เพิ่มข้อสอบในหน้าข้อสอบเพื่อเริ่มวิเคราะห์</small>'}
+  </section>
+  </div>`;
+
+  setTimeout(()=>{const g=$('#gr'); if(g) g.style.strokeDashoffset=C-C*pct/100;},60);
+  $('#hmStart').onclick = () => startExam({cats:[],count:goal,minutes:0,mode:'practice',label:'ฝึกตามเป้าวันนี้'});
+  $('#hmCal').onclick = $('#hmCal2').onclick = () => window.openNeoCal && openNeoCal();
+  $('#btnCloudHub').onclick = () => openCloudHubModal();
+  if($('#btnFixWeak')) $('#btnFixWeak').onclick = () => startExam({cats:[weak.worstCat],count:15,minutes:15,mode:'practice',label:'ซ่อม '+weak.worstCat});
+  if($('#btnResume')) $('#btnResume').onclick = () => S.session ? resumeExam() : startExam(S.last);
+  if($('#hmMsToggle')) $('#hmMsToggle').onclick = e => {
+    const m = $('#hmMsMore'); m.hidden = !m.hidden;
+    e.currentTarget.textContent = m.hidden ? `ดูทุกวิชา (${ms.length})` : 'ย่อ';
+  };
+  $$('[data-dayclick]').forEach(b => b.onclick = () => openDayBreakdownModal(weekData[+b.dataset.dayclick]));
   icons();
 }
 
@@ -7121,7 +6973,7 @@ window.triggerUploadPicker = function() {
       <button class="btn ghost block" data-cal="today" style="margin-top:14px"><i data-lucide="calendar-check"></i>กลับมาวันนี้</button>`;
     if(typeof icons==='function')icons();
   };
-  const openNeoCal=()=>{
+  const openNeoCal=window.openNeoCal=()=>{
     const n=new Date();Object.assign(cal,{y:n.getFullYear(),m:n.getMonth(),sel:dkey(n),mode:'month'});
     renderCal();document.body.classList.add('neo-cal-open');requestAnimationFrame(()=>calEl().classList.add('on'));
   };
