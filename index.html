@@ -1620,6 +1620,32 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .pal-sw i{flex:1}
 .rte-color-palette{gap:10px}
 .rte-dot{width:30px;height:30px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+
+/* ===== ชั้นหนังสือ (หน้าข้อสอบ) ===== */
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:20px 14px}
+@media(min-width:600px){.shelf{grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:24px 18px}}
+.book{min-width:0}
+.book-cover{position:relative;display:block;width:100%;aspect-ratio:3/4;border-radius:5px 16px 16px 5px;overflow:hidden;text-align:left;color:#fff;
+  background:radial-gradient(90% 60% at 100% 0%,color-mix(in srgb,var(--bk) 55%,#fff) 0%,transparent 70%),linear-gradient(160deg,var(--bk),color-mix(in srgb,var(--bk) 55%,#0b0f17));
+  box-shadow:inset 7px 0 0 rgba(0,0,0,.14),inset 9px 0 0 rgba(255,255,255,.14),0 16px 28px -16px color-mix(in srgb,var(--bk) 60%,#000),0 2px 5px rgba(0,0,0,.08);
+  transition:transform .25s var(--spring),box-shadow .25s}
+@media(hover:hover){.book-cover:hover{transform:translateY(-4px) rotate(-1deg)}}
+.book-cover:active{transform:scale(.97)}
+.book-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.book-cover::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,.18) 0,rgba(255,255,255,.12) 3%,transparent 7%)}
+.book-art{position:absolute;right:-14%;top:6%;opacity:.2;color:#fff}
+.book-art svg{width:120px;height:120px;stroke-width:1.3}
+.book-shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.58))}
+.book-cover:not(.has-img) .book-shade{background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.28))}
+.book-title{position:absolute;left:16px;right:12px;bottom:20px;display:flex;flex-direction:column;gap:2px}
+.book-title b{font-size:17px;line-height:1.22;letter-spacing:-.01em;text-wrap:balance;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.book-title small{font-size:11px;font-weight:600;opacity:.85}
+.book-prog{position:absolute;left:16px;right:12px;bottom:10px;height:4px;border-radius:9px;background:rgba(255,255,255,.28);overflow:hidden}
+.book-prog i{display:block;height:100%;border-radius:9px;background:#fff}
+.book-meta{display:flex;align-items:center;gap:6px;margin-top:9px;font-size:12px;font-weight:600;color:var(--muted)}
+.book-meta span{flex:1;min-width:0}
+.book-meta .ib.sm{width:30px;height:30px}
 </style>
 </head>
 <body>
@@ -2644,9 +2670,23 @@ function openIconPicker(catName){
   let selectedIcon = curIcon;
   let selectedBg = curTone[0];
   let selectedFg = curTone[1];
+  let selectedCover = (S.catCovers || {})[catName] || '';
+  const coverHtml = () => `<div class="book-cover ${selectedCover ? 'has-img' : ''}" style="--bk:${selectedFg};width:120px;flex:none">
+      ${selectedCover ? `<img src="${selectedCover}" alt="">` : `<span class="book-art"><i data-lucide="${selectedIcon}"></i></span>`}
+      <span class="book-shade"></span><span class="book-title"><b>${esc(catName)}</b></span></div>`;
 
   const body = `
     <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="row" style="gap:14px;align-items:flex-end">
+        <div id="coverPrev">${coverHtml()}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
+          <label style="font-size:12.5px;color:var(--muted);font-weight:600">รูปปกหนังสือ</label>
+          <button type="button" class="btn sm ghost" id="btnCover"><i data-lucide="image-plus"></i>เลือกรูปปก</button>
+          <button type="button" class="btn sm ghost" id="btnCoverDel" ${selectedCover ? '' : 'hidden'}><i data-lucide="trash-2"></i>ใช้ปกสีแทน</button>
+          <small style="color:var(--muted);font-size:11.5px">รูปแนวตั้ง 3:4 สวยที่สุด</small>
+          <input type="file" id="coverFile" accept="image/*" hidden>
+        </div>
+      </div>
       <div>
         <label style="font-size:12.5px;color:var(--muted);font-weight:600;display:block;margin-bottom:8px">เลือกไอคอน (36 แบบ)</label>
         <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-height:220px;overflow-y:auto;padding:3px" id="iconPoolGrid">
@@ -2699,8 +2739,21 @@ function openIconPicker(catName){
     };
   });
 
+  const paintCover = () => { $('#coverPrev').innerHTML = coverHtml(); $('#btnCoverDel').hidden = !selectedCover; icons($('#coverPrev')); };
+  $('#btnCover').onclick = () => $('#coverFile').click();
+  $('#coverFile').onchange = async e => {
+    const f = e.target.files[0]; if(!f) return;
+    const img = await optimizeImage(f, 720, 0.82);
+    if(img) openImageEditor(img, res => { selectedCover = res; paintCover(); });
+    e.target.value = '';
+  };
+  $('#btnCoverDel').onclick = () => { selectedCover = ''; paintCover(); };
+  modalEl.addEventListener('click', e => { if(e.target.closest('[data-setic],[data-setcolbg]')) setTimeout(paintCover, 0); });
+
   $('#saveCatStyle').onclick=()=>{
     playTone('tap');
+    S.catCovers = S.catCovers || {};
+    if(selectedCover) S.catCovers[catName] = selectedCover; else delete S.catCovers[catName];
     S.catIcons = S.catIcons || {};
     S.catTones = S.catTones || {};
     S.catIcons[catName] = selectedIcon;
@@ -3251,83 +3304,28 @@ function renderQuiz(){
   </div>
 
       ${showCategorySection ? `
-    <div class="sec"><i data-lucide="folder"></i>หมวดวิชา</div>
-    <div class="grid auto">
-      ${S.cats.map((c, idx)=>{
-        const qInCat = S.questions.filter(q=>q.cat===c);
+    <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะปกเพื่อเริ่ม</span></div>
+    <div class="shelf">
+      ${S.cats.map(c => {
+        const qInCat = S.questions.filter(q => q.cat === c);
         const total = qInCat.length;
-        const BATCH_SIZE = 50;
-        const totalBatches = total ? Math.ceil(total / BATCH_SIZE) : 0;
-        const doneCount = qInCat.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
-        const pct = total ? Math.round((doneCount / total) * 100) : 0;
-        const batchNumStr = String(idx + 1).padStart(2, '0');
-        const iconName = cicon(c);
-
-        // โทนสีมาตรฐานหลายเลเยอร์
-        const PALETTES = [
-          { bg: '#f0fdf4', title: '#0f172a', numTag: '#16a34a', badge: '#0284c7', bar: 'linear-gradient(90deg, #22c55e, #10b981)', btnText: '#15803d', iconColor: '#16a34a' },
-          { bg: '#f0f7ff', title: '#0f172a', numTag: '#2563eb', badge: '#7c3aed', bar: 'linear-gradient(90deg, #3b82f6, #6366f1)', btnText: '#1d4ed8', iconColor: '#2563eb' },
-          { bg: '#fff1f2', title: '#0f172a', numTag: '#e11d48', badge: '#ea580c', bar: 'linear-gradient(90deg, #f43f5e, #fb7185)', btnText: '#be123c', iconColor: '#e11d48' },
-          { bg: '#fefce8', title: '#0f172a', numTag: '#d97706', badge: '#059669', bar: 'linear-gradient(90deg, #eab308, #f59e0b)', btnText: '#b45309', iconColor: '#d97706' },
-          { bg: '#faf5ff', title: '#0f172a', numTag: '#9333ea', badge: '#0284c7', bar: 'linear-gradient(90deg, #a855f7, #c084fc)', btnText: '#7e22ce', iconColor: '#9333ea' },
-          { bg: '#f0fdfa', title: '#0f172a', numTag: '#0d9488', badge: '#e11d48', bar: 'linear-gradient(90deg, #14b8a6, #2dd4bf)', btnText: '#0f766e', iconColor: '#0d9488' }
-        ];
-
-        const pal = PALETTES[idx % PALETTES.length];
-
-        // ถ้าผู้ใช้เคยเลือกสีเองในป๊อปอัป ให้ใช้สีนั้นเป็นสีหลัก
-        const hasCustomTone = S.catTones && S.catTones[c];
-        const cardBg = hasCustomTone ? S.catTones[c][0] : pal.bg;
-        const iconColor = hasCustomTone ? S.catTones[c][1] : pal.iconColor;
-        const barColor = hasCustomTone ? S.catTones[c][1] : pal.bar;
-        const btnTextColor = hasCustomTone ? S.catTones[c][1] : pal.btnText;
-
-        return `
-          <div class="course-card" style="background:${cardBg};">
-            <div class="course-card-notch"></div>
-            
-            <div class="course-top-row">
-              <div class="course-meta-tag">
-                <span class="c-num" style="color:${iconColor}">${total.toLocaleString()} ข้อ</span>
-                <span class="c-sub">lectures</span>
-              </div>
-              <div class="course-batch-badge">
-                <b style="color:${pal.badge}">${batchNumStr} ชุด</b>
-                <small>Course</small>
-              </div>
-            </div>
-
-            <div class="course-title-row" style="display:flex;align-items:center;gap:8px;">
-              <div class="course-icon-badge" style="color:${iconColor}">
-                <i data-lucide="${iconName}"></i>
-              </div>
-              <b style="color:${pal.title};flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c)}</b>
-            </div>
-
-            <div>
-              <div class="course-progress-track">
-                <div class="course-progress-fill" style="width:${pct}\%; background:${barColor}"></div>
-              </div>
-              <div class="course-prog-info">
-                <span>ความคืบหน้า</span>
-                <span style="color:${iconColor}">${pct}%</span>
-              </div>
-            </div>
-
-            <div class="course-actions">
-              <button class="btn sm course-btn-play" data-play="${esc(c)}" style="color:${btnTextColor}" ${total?'':'disabled'}>
-                <i data-lucide="play" style="width:13px;height:13px;fill:${btnTextColor}"></i>
-                <span>เริ่ม</span>
-              </button>
-              <button class="ib sm course-icon-btn" data-seticon="${esc(c)}" title="เปลี่ยนสี/ไอคอน" style="color:#64748b">
-                <i data-lucide="palette" style="width:14px;height:14px"></i>
-              </button>
-              <button class="ib sm course-icon-btn" data-dropcat="${esc(c)}" title="ลบ" style="color:#ef4444">
-                <i data-lucide="trash-2" style="width:14px;height:14px"></i>
-              </button>
-            </div>
+        const done = qInCat.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
+        const pct = total ? Math.round(done / total * 100) : 0;
+        const sets = total ? Math.ceil(total / 50) : 0;
+        const cover = (S.catCovers || {})[c];
+        const fg = tone(c)[1];
+        return `<div class="book">
+          <button class="book-cover ${cover ? 'has-img' : ''}" data-play="${esc(c)}" style="--bk:${fg}" aria-label="เริ่มทำ ${esc(c)}">
+            ${cover ? `<img src="${cover}" alt="">` : `<span class="book-art"><i data-lucide="${cicon(c)}"></i></span>`}
+            <span class="book-shade"></span>
+            <span class="book-title"><small>${total.toLocaleString()} ข้อ · ${sets} ชุด</small><b>${esc(c)}</b></span>
+            <span class="book-prog"><i style="width:${pct}%"></i></span>
+          </button>
+          <div class="book-meta"><span>${total ? `ทำแล้ว ${pct}%` : 'ยังไม่มีข้อสอบ'}</span>
+            <button class="ib sm" data-seticon="${esc(c)}" title="เปลี่ยนปก สี ไอคอน"><i data-lucide="image"></i></button>
+            <button class="ib sm" data-dropcat="${esc(c)}" title="ลบหมวด"><i data-lucide="trash-2"></i></button>
           </div>
-        `;
+        </div>`;
       }).join('')}
     </div>
   ` : ''}
@@ -6186,6 +6184,7 @@ function sanitizeState(st){
   st.cats = (st.cats || []).map(c => String(c).replace(/[<>"'`]/g, ''));
   st.settings = st.settings || {};
   st.settings.avatar = safeImg(st.settings.avatar); st.settings.heroBg = safeImg(st.settings.heroBg);
+  if(st.catCovers) Object.keys(st.catCovers).forEach(k => { st.catCovers[k] = safeImg(st.catCovers[k]); if(!st.catCovers[k]) delete st.catCovers[k]; });
   return st;
 }
 
@@ -6229,6 +6228,7 @@ function applyUndo(idx = 0){
       if(!S.cats.includes(dc.name)) S.cats.splice(Math.min(dc.i, S.cats.length), 0, dc.name);
       if(dc.icon) (S.catIcons = S.catIcons || {})[dc.name] = dc.icon;
       if(dc.tone) (S.catTones = S.catTones || {})[dc.name] = dc.tone;
+      if(dc.cover) (S.catCovers = S.catCovers || {})[dc.name] = dc.cover;
     });
     (r.addCats || []).forEach(c => { if(!S.questions.some(q => q.cat === c) && !S.cards.some(x => x.cat === c)) S.cats = S.cats.filter(x => x !== c); });
   }
@@ -6265,10 +6265,10 @@ function deleteCategory(c){
   const qn = S.questions.filter(q => q.cat === c).length, cn = S.cards.filter(x => x.cat === c).length;
   if(S.cats.length <= 1) return toast('ต้องมีอย่างน้อย 1 หมวด', 'err');
   const others = S.cats.filter(x => x !== c);
-  const meta = { name: c, i: S.cats.indexOf(c), icon: S.catIcons?.[c], tone: S.catTones?.[c] };
+  const meta = { name: c, i: S.cats.indexOf(c), icon: S.catIcons?.[c], tone: S.catTones?.[c], cover: S.catCovers?.[c] };
   const finish = rec => {
     S.cats = S.cats.filter(x => x !== c);
-    if(S.catIcons) delete S.catIcons[c]; if(S.catTones) delete S.catTones[c];
+    if(S.catIcons) delete S.catIcons[c]; if(S.catTones) delete S.catTones[c]; if(S.catCovers) delete S.catCovers[c];
     pushUndo(`ลบหมวด ${c}`, { ...rec, delCats: [meta] });
     save(); closeModal(); syncChrome(); refreshPage(); undoToast(`ลบหมวด ${c} แล้ว`);
   };
