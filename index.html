@@ -1646,6 +1646,52 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .book-meta{display:flex;align-items:center;gap:6px;margin-top:9px;font-size:12px;font-weight:600;color:var(--muted)}
 .book-meta span{flex:1;min-width:0}
 .book-meta .ib.sm{width:30px;height:30px}
+
+/* ===== หนังสือปกแข็ง (แทนปกเดิม) ===== */
+.shelf{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:26px 16px;padding:4px 2px 8px}
+@media(min-width:600px){.shelf{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:30px 20px}}
+.hb{position:relative;display:block;width:100%;padding:0 0 12px;text-align:center;transition:transform .3s var(--spring)}
+@media(hover:hover){.hb:hover{transform:translateY(-5px)}}
+.hb:active{transform:scale(.97)}
+.hb-face{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:space-between;aspect-ratio:3/4;
+  padding:14% 10% 15%;border-radius:4px 12px 12px 4px;overflow:hidden;color:#fff;
+  background:radial-gradient(80% 55% at 85% 8%,color-mix(in srgb,var(--bk) 45%,#fff) 0%,transparent 70%),linear-gradient(165deg,var(--bk),color-mix(in srgb,var(--bk) 62%,#0b0f17));
+  box-shadow:inset 6px 0 0 rgba(0,0,0,.16),inset 8px 0 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(0,0,0,.06)}
+.hb-face.has-img{padding:0}
+.hb-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hb-face::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(90deg,rgba(0,0,0,.2) 0,rgba(255,255,255,.16) 3.5%,transparent 8%),linear-gradient(180deg,rgba(255,255,255,.1),transparent 30%)}
+.hb-kicker{font-size:9.5px;font-weight:700;letter-spacing:.32em;opacity:.8}
+.hb-emblem{width:44%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.55);box-shadow:0 0 0 5px rgba(255,255,255,.1)}
+.hb-emblem svg{width:52%;height:52%;stroke-width:1.6}
+.hb-name{font-size:clamp(14px,4vw,17px);font-weight:700;line-height:1.2;letter-spacing:-.01em;text-wrap:balance;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+/* ขอบกระดาษ + ปกหลังด้านล่าง */
+.hb-pages{position:absolute;z-index:1;left:5px;right:0;bottom:0;height:24px;border-radius:0 0 12px 7px;
+  background:color-mix(in srgb,var(--bk) 70%,#0b0f17);box-shadow:0 12px 18px -12px color-mix(in srgb,var(--bk) 55%,#000)}
+.hb-pages::before{content:"";position:absolute;left:3px;right:6px;bottom:5px;height:9px;border-radius:0 0 7px 3px;
+  background:repeating-linear-gradient(180deg,#fffdf7 0 2px,#e7e1d3 2px 3px)}
+/* ริบบิ้นที่คั่นหน้า */
+.hb-ribbon{position:absolute;z-index:3;right:17%;bottom:-4px;width:15px;height:30px;background:var(--cf);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+.hb-info{display:flex;flex-direction:column;gap:2px;margin-top:12px;min-width:0;padding:0 2px}
+.hb-info b{font-size:14px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb-info small{font-size:12px;font-weight:600;color:var(--blue)}
+.hb-row{display:flex;align-items:center;gap:6px;margin-top:5px}
+.hb-bar{flex:1;height:4px;border-radius:9px;background:var(--surface3);overflow:hidden}
+.hb-bar i{display:block;height:100%;border-radius:9px;background:var(--blue)}
+.hb-row em{font-style:normal;font-size:11px;font-weight:700;color:var(--muted);min-width:28px}
+.hb-act{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:var(--muted)}
+.hb-act svg{width:15px;height:15px}
+.hb-act:hover{background:var(--surface2);color:var(--text)}
+
+/* ===== คลังข้อ: การ์ดข้อสอบเรียบขึ้น ===== */
+.search{border:0;box-shadow:var(--hm-soft);border-radius:18px}
+.qrow{border:0;border-radius:20px;padding:16px 16px 14px;box-shadow:var(--hm-soft);gap:10px}
+.qrow .no{width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--blue) 14%,var(--surface));color:var(--blue);font-size:12px}
+.qrow .qt{font-size:15px;font-weight:600;color:var(--text)}
+.qrow .ansline{margin-top:10px;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--green) 10%,var(--surface));font-size:13.5px}
+.qrow .side .ib.sm{width:30px;height:30px;border:0;background:var(--surface2)}
+.qrow .meta .tag{padding:3px 10px}
 </style>
 </head>
 <body>
@@ -2664,6 +2710,11 @@ function openThaiDatePicker(currentVal, onSave){
   };
 }
 
+// หน้าปกหนังสือ: ใช้รูปที่ตั้งไว้ หรือสร้างปกจากสีและไอคอนของวิชา
+function bookFace(name, cover, fg, icon){
+  return `<span class="hb-face ${cover ? 'has-img' : ''}" style="--bk:${fg}">${cover ? `<img src="${cover}" alt="">` :
+    `<span class="hb-kicker">P-EXAM</span><span class="hb-emblem"><i data-lucide="${icon || cicon(name)}"></i></span><span class="hb-name">${esc(name)}</span>`}</span>`;
+}
 function openIconPicker(catName){
   const curIcon = cicon(catName);
   const curTone = tone(catName);
@@ -2671,9 +2722,7 @@ function openIconPicker(catName){
   let selectedBg = curTone[0];
   let selectedFg = curTone[1];
   let selectedCover = (S.catCovers || {})[catName] || '';
-  const coverHtml = () => `<div class="book-cover ${selectedCover ? 'has-img' : ''}" style="--bk:${selectedFg};width:120px;flex:none">
-      ${selectedCover ? `<img src="${selectedCover}" alt="">` : `<span class="book-art"><i data-lucide="${selectedIcon}"></i></span>`}
-      <span class="book-shade"></span><span class="book-title"><b>${esc(catName)}</b></span></div>`;
+  const coverHtml = () => `<div class="hb" style="--bk:${selectedFg};width:118px;flex:none">${bookFace(catName, selectedCover, selectedFg, selectedIcon)}<span class="hb-pages"></span><span class="hb-ribbon"></span></div>`;
 
   const body = `
     <div style="display:flex;flex-direction:column;gap:16px">
@@ -3315,15 +3364,16 @@ function renderQuiz(){
         const cover = (S.catCovers || {})[c];
         const fg = tone(c)[1];
         return `<div class="book">
-          <button class="book-cover ${cover ? 'has-img' : ''}" data-play="${esc(c)}" style="--bk:${fg}" aria-label="เริ่มทำ ${esc(c)}">
-            ${cover ? `<img src="${cover}" alt="">` : `<span class="book-art"><i data-lucide="${cicon(c)}"></i></span>`}
-            <span class="book-shade"></span>
-            <span class="book-title"><small>${total.toLocaleString()} ข้อ · ${sets} ชุด</small><b>${esc(c)}</b></span>
-            <span class="book-prog"><i style="width:${pct}%"></i></span>
+          <button class="hb" data-play="${esc(c)}" style="--bk:${fg}" aria-label="เริ่มทำ ${esc(c)}">
+            ${bookFace(c, cover, fg)}
+            <span class="hb-pages"></span><span class="hb-ribbon"></span>
           </button>
-          <div class="book-meta"><span>${total ? `ทำแล้ว ${pct}%` : 'ยังไม่มีข้อสอบ'}</span>
-            <button class="ib sm" data-seticon="${esc(c)}" title="เปลี่ยนปก สี ไอคอน"><i data-lucide="image"></i></button>
-            <button class="ib sm" data-dropcat="${esc(c)}" title="ลบหมวด"><i data-lucide="trash-2"></i></button>
+          <div class="hb-info">
+            <b>${esc(c)}</b>
+            <small>${total ? `${total.toLocaleString()} ข้อ · ${sets} ชุด` : 'ยังไม่มีข้อสอบ'}</small>
+            <div class="hb-row"><span class="hb-bar"><i style="width:${pct}%"></i></span><em>${pct}%</em>
+              <button class="hb-act" data-seticon="${esc(c)}" title="เปลี่ยนปก สี ไอคอน"><i data-lucide="image"></i></button>
+              <button class="hb-act" data-dropcat="${esc(c)}" title="ลบหมวด"><i data-lucide="trash-2"></i></button></div>
           </div>
         </div>`;
       }).join('')}
