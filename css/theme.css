@@ -752,3 +752,8 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 /* การ์ดวันนี้: ข้อความยาว (ค้างอยู่: ...) ห้ามดันปุ่มล้นขอบ */
 .hm-today>*{min-width:0}
 .hm-start{max-width:100%;box-sizing:border-box}
+/* มือถือแนวตั้ง: แถบวิชาเต็มความกว้าง ปุ่มดาว/เรียงลงบรรทัดถัดไป */
+@media (max-width:600px) and (orientation:portrait){
+  .qbar>.chips{flex:1 1 100%!important}
+  .qbar>.ib{margin-left:auto}
+}
