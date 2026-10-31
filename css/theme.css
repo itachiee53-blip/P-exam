@@ -1298,29 +1298,44 @@ body:has(.ls-wrap) :is(.topbar,.bottomnav){display:none!important}
 }
 @media (prefers-reduced-motion:reduce){.em-book,.em-book::before,.em-sign,.em-prop,.em-badge,.em-stars{animation:none!important}}
 /* น้องไฟ (mascot.js) */
-.masc{position:relative;flex:none;width:58px;height:65px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.masc{position:relative;flex:none;width:56px;height:64px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .masc svg{width:100%;height:100%;overflow:visible;display:block}
-.masc .m-body{transform-box:view-box;transform-origin:50% 100%;animation:mFlick 2.2s ease-in-out infinite}
-.masc .m-eyes{transform-box:view-box;transform-origin:50% 62px;animation:mBlink 4.2s infinite}
+.masc .m-body{transform-box:view-box;transform-origin:50% 100%;animation:mBreath 2.6s ease-in-out infinite}
+.masc .m-fl{transform-box:view-box;transform-origin:50% 100%;animation:mFlick 1.3s ease-in-out infinite alternate}
+.masc .m-sh{transform-box:fill-box;transform-origin:center;animation:mShadow 2.6s ease-in-out infinite}
+.masc .m-eyes{transform-box:view-box;transform-origin:50% 86px;animation:mBlink 4.2s infinite}
 .masc .m-pup{transform:translate(var(--px,0),var(--py,0));transition:transform .25s}
 .masc.bump{animation:mPop .45s cubic-bezier(.3,1.6,.5,1)}
-.masc.m-joy.bump,.masc.m-gusto.bump{animation:mJump .55s cubic-bezier(.3,1.6,.5,1)}
+.masc.m-joy .m-body,.masc.m-gusto .m-body{animation:mJump .7s cubic-bezier(.3,1.5,.5,1) infinite}
+.masc.m-gusto .m-fl{animation-duration:.45s}
+.masc.m-confused svg{rotate:-7deg;transition:rotate .3s}
 .masc.m-confused.bump{animation:mTilt .5s ease-in-out}
-.masc.m-confused svg{rotate:-6deg}
-.masc.m-upset .m-body{animation:none;scale:1 .9}
-.masc.m-gusto .m-body{scale:1.08}
-.masc.m-walk{animation:mHop .9s ease-in-out infinite}
-@keyframes mFlick{50%{transform:scale(.97,1.04) skewX(-2deg)}}
+.masc.m-upset .m-body{animation:mSad 3s ease-in-out infinite}
+.masc.m-upset .m-fl{animation:none}
+.masc.m-sly .m-body{animation:mSway 1.8s ease-in-out infinite}
+.masc.m-walk .m-body{animation:mWalk .8s ease-in-out infinite}
+@keyframes mBreath{50%{transform:scale(1.03,.97)}}
+@keyframes mFlick{from{transform:skewX(-2.5deg) scaleY(1)}to{transform:skewX(2.5deg) scaleY(1.03)}}
+@keyframes mShadow{50%{transform:scaleX(1.06)}}
 @keyframes mBlink{0%,93%,100%{transform:none}96%{transform:scaleY(.1)}}
 @keyframes mPop{40%{scale:1.15 .88}}
-@keyframes mJump{35%{translate:0 -16px;scale:.92 1.1}70%{translate:0;scale:1.1 .92}}
-@keyframes mTilt{25%{rotate:-10deg}60%{rotate:8deg}}
-@keyframes mHop{50%{translate:0 -6px}}
-.masc-say{position:absolute;bottom:100%;left:50%;translate:-50% -4px;white-space:nowrap;padding:6px 10px;border-radius:12px;background:#fff;color:#ff5a36;font-size:13px;font-weight:800;box-shadow:0 6px 16px -6px rgba(15,23,42,.25);animation:lsUp .2s both;pointer-events:none;z-index:5}
+@keyframes mJump{0%,100%{transform:none}30%{transform:scale(1.06,.92)}60%{transform:translateY(-10px) scale(.95,1.06)}}
+@keyframes mTilt{25%{rotate:-14deg}60%{rotate:6deg}}
+@keyframes mSad{50%{transform:scale(1.02,.96) translateY(2px)}}
+@keyframes mSway{50%{transform:rotate(4deg)}}
+@keyframes mWalk{0%,100%{transform:rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+.masc-say{position:absolute;top:100%;left:0;translate:0 6px;display:flex;flex-direction:column;align-items:center;gap:6px;white-space:nowrap;padding:8px 10px;border-radius:14px;background:#fff;color:#6a5cff;font-size:13px;font-weight:800;box-shadow:0 6px 16px -6px rgba(15,23,42,.3);animation:lsUp .2s both;z-index:20;cursor:default}
+.masc-say>span{display:flex;gap:6px}
+.masc-say i{width:22px;height:22px;border-radius:50%;cursor:pointer;box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(15,23,42,.12);transition:transform .15s}
+.masc-say i.on{box-shadow:0 0 0 2px #fff,0 0 0 4px #6a5cff}
+.masc-say i:active{transform:scale(.85)}
 .ls-head{display:flex;align-items:flex-end;gap:10px}
-.ls-head .masc{width:50px;height:56px}
-.masc.big{width:96px;height:108px}
-.em-masc{position:absolute;top:58px;width:48px;height:54px;z-index:3}
+.ls-head .masc{width:48px;height:55px}
+.masc.big{width:92px;height:106px}
+.em-masc{position:absolute;top:56px;width:46px;height:53px;z-index:3}
+.em-masc .masc-say{left:auto;right:-20px}
+.masc.big .masc-say{left:50%;translate:-50% 6px}
 .em-row.l .em-masc{left:calc(27% + 52px)}
-.em-row.r .em-masc{left:calc(73% - 100px)}
+.em-row.r .em-masc{left:calc(73% - 98px)}
+.em-row:has(.em-masc){z-index:4}
 @media (prefers-reduced-motion:reduce){.masc,.masc *{animation:none!important}}
