@@ -9092,6 +9092,127 @@ bear in mind | จำไว้/คำนึง | Bear in mind that it's dangerou
 do well | ทำได้ดี | You did well in the exam. | คุณสอบได้ดี
 `);
 
+U('daily', 4, 'สื่อและวงการข่าว', `
+anchor | ผู้ประกาศข่าว/สมอเรือ | The news anchor smiled. | ผู้ประกาศข่าวยิ้ม
+correspondent | ผู้สื่อข่าว (ประจำพื้นที่) | Our correspondent is in Bangkok. | ผู้สื่อข่าวของเราอยู่ที่กรุงเทพฯ
+bulletin | ข่าวสั้น/ประกาศ | Here is a news bulletin. | นี่คือข่าวสั้น
+exclusive | เฉพาะ/พิเศษ (ข่าว) | It's an exclusive interview. | เป็นการสัมภาษณ์พิเศษ
+scoop | ข่าวเด็ด/ตัก | The reporter got a scoop. | นักข่าวได้ข่าวเด็ด
+viewer | ผู้ชม | Millions of viewers watched it. | ผู้ชมหลายล้านคนดู
+---
+circulation | ยอดจำหน่าย/การไหลเวียน | The newspaper has a big circulation. | หนังสือพิมพ์มียอดขายสูง
+columnist | คอลัมนิสต์ | She is a famous columnist. | เธอเป็นคอลัมนิสต์ชื่อดัง
+editorial | บทบรรณาธิการ | Read today's editorial. | อ่านบทบรรณาธิการวันนี้
+tabloid | หนังสือพิมพ์ซุบซิบ | Don't believe the tabloids. | อย่าเชื่อหนังสือพิมพ์ซุบซิบ
+paparazzi | ช่างภาพตามติดดารา | The paparazzi followed her. | ปาปารัสซีตามเธอ
+newsroom | ห้องข่าว | The newsroom was busy. | ห้องข่าวยุ่งมาก
+`);
+U('daily', 4, 'เศรษฐกิจและการแข่งขันทางธุรกิจ', `
+deflation | ภาวะเงินฝืด | Deflation can hurt the economy. | ภาวะเงินฝืดทำร้ายเศรษฐกิจได้
+layoff | การเลิกจ้าง | There were mass layoffs. | มีการเลิกจ้างจำนวนมาก
+boom | การเติบโตอย่างรวดเร็ว | There is a tourism boom. | การท่องเที่ยวบูมมาก
+slump | การตกต่ำ | Sales are in a slump. | ยอดขายตกต่ำ
+growth | การเติบโต | Economic growth is slow. | การเติบโตทางเศรษฐกิจช้า
+investor | นักลงทุน | Investors are worried. | นักลงทุนกังวล
+---
+acquisition | การเข้าซื้อกิจการ | The acquisition cost billions. | การซื้อกิจการใช้เงินหลายพันล้าน
+supplier | ผู้จัดจำหน่าย | Call the supplier. | โทรหาซัพพลายเออร์
+manufacturer | ผู้ผลิต | Contact the manufacturer. | ติดต่อผู้ผลิต
+monopoly | การผูกขาด | The company has a monopoly. | บริษัทผูกขาดตลาด
+competitor | คู่แข่ง | Our competitor lowered prices. | คู่แข่งลดราคา
+market share | ส่วนแบ่งตลาด | They gained market share. | พวกเขาได้ส่วนแบ่งตลาดเพิ่ม
+`);
+U('daily', 3, 'รักษ์โลกและพลังงานสะอาด', `
+recycling | การรีไซเคิล | Recycling reduces waste. | การรีไซเคิลช่วยลดขยะ
+compost | ปุ๋ยหมัก | Make compost from food waste. | ทำปุ๋ยหมักจากเศษอาหาร
+landfill | หลุมฝังกลบขยะ | The landfill is full. | หลุมฝังกลบเต็มแล้ว
+biodiversity | ความหลากหลายทางชีวภาพ | Forests protect biodiversity. | ป่าปกป้องความหลากหลายทางชีวภาพ
+solar | พลังงานแสงอาทิตย์ | We use solar energy. | เราใช้พลังงานแสงอาทิตย์
+turbine | กังหัน | Wind turbines make electricity. | กังหันลมผลิตไฟฟ้า
+---
+greenhouse | เรือนกระจก | Greenhouse gases warm the planet. | ก๊าซเรือนกระจกทำให้โลกร้อน
+wildfire | ไฟป่า | A wildfire burned the hills. | ไฟป่าเผาภูเขา
+haze | หมอกควัน | The haze is bad in March. | หมอกควันหนักในเดือนมีนาคม
+sea level | ระดับน้ำทะเล | Sea levels are rising. | ระดับน้ำทะเลกำลังสูงขึ้น
+plastic waste | ขยะพลาสติก | Reduce plastic waste. | ลดขยะพลาสติก
+eco-friendly | เป็นมิตรกับสิ่งแวดล้อม | Use eco-friendly bags. | ใช้ถุงที่เป็นมิตรกับสิ่งแวดล้อม
+`);
+U('daily', 3, 'โภชนาการและฟิตเนส', `
+nutrition | โภชนาการ | Good nutrition is important. | โภชนาการที่ดีสำคัญ
+protein | โปรตีน | Eggs are high in protein. | ไข่มีโปรตีนสูง
+carbohydrate | คาร์โบไฮเดรต | Rice is a carbohydrate. | ข้าวเป็นคาร์โบไฮเดรต
+mineral | แร่ธาตุ | Drink mineral water. | ดื่มน้ำแร่
+hydration | การได้รับน้ำเพียงพอ | Hydration is key in hot weather. | การดื่มน้ำให้พอสำคัญมากในอากาศร้อน
+workout | การออกกำลังกาย | I do a workout every morning. | ฉันออกกำลังกายทุกเช้า
+---
+cardio | การออกกำลังกายแบบคาร์ดิโอ | Running is good cardio. | การวิ่งเป็นคาร์ดิโอที่ดี
+stretching | การยืดเหยียด | Do some stretching first. | ยืดเหยียดก่อน
+posture | ท่าทาง (การนั่งยืน) | Sit with good posture. | นั่งให้หลังตรง
+meditation | การทำสมาธิ | Meditation reduces stress. | การทำสมาธิช่วยลดความเครียด
+wellness | สุขภาวะ | The hotel has a wellness center. | โรงแรมมีศูนย์สุขภาพ
+immunity | ภูมิคุ้มกัน | Vitamin C boosts immunity. | วิตามินซีเสริมภูมิคุ้มกัน
+`);
+U('daily', 2, 'ชิ้นส่วนรถยนต์ ชุด 1', `
+accelerator | คันเร่ง | Press the accelerator gently. | เหยียบคันเร่งเบาๆ
+airbag | ถุงลมนิรภัย | The airbag saved his life. | ถุงลมนิรภัยช่วยชีวิตเขา
+axle | เพลารถ | The axle is broken. | เพลารถหัก
+bonnet | ฝากระโปรงหน้ารถ | Open the bonnet. | เปิดฝากระโปรงรถ
+boot | ท้ายรถ/รองเท้าบูท | Put the bags in the boot. | ใส่กระเป๋าท้ายรถ
+bumper | กันชน | The bumper was damaged. | กันชนเสียหาย
+---
+dashboard | แผงหน้าปัด | A light came on on the dashboard. | มีไฟขึ้นที่หน้าปัด
+gearbox | กระปุกเกียร์ | The gearbox needs repair. | เกียร์ต้องซ่อม
+hood | ฝากระโปรงรถ/ฮู้ด | Check under the hood. | ตรวจใต้ฝากระโปรง
+ignition | สวิตช์สตาร์ท | Turn off the ignition. | ดับเครื่องยนต์
+indicator | ไฟเลี้ยว/ตัวบ่งชี้ | Use your indicator. | เปิดไฟเลี้ยว
+mileage | ระยะทางที่ขับ/อัตราสิ้นเปลือง | The car has low mileage. | รถวิ่งมาน้อย
+`);
+U('daily', 2, 'ชิ้นส่วนรถยนต์ ชุด 2', `
+muffler | ท่อไอเสีย/ผ้าพันคอ | The muffler is too loud. | ท่อไอเสียเสียงดังเกินไป
+odometer | มาตรวัดระยะทาง | Check the odometer. | ดูเลขไมล์
+seatbelt | เข็มขัดนิรภัย | Wear your seatbelt. | คาดเข็มขัดนิรภัย
+steering wheel | พวงมาลัย | Hold the steering wheel. | จับพวงมาลัย
+wiper | ที่ปัดน้ำฝน | The wipers don't work. | ที่ปัดน้ำฝนไม่ทำงาน
+diesel | ดีเซล | This truck uses diesel. | รถบรรทุกนี้ใช้ดีเซล
+---
+petrol | น้ำมันเบนซิน | We need petrol. | เราต้องเติมน้ำมัน
+gasoline | น้ำมันเบนซิน | Gasoline prices went up. | ราคาน้ำมันขึ้น
+tow | ลากรถ | They towed my car. | พวกเขาลากรถฉันไป
+puncture | รูรั่ว (ยาง) | I have a puncture. | ยางฉันรั่ว
+spare tire | ยางอะไหล่ | Change to the spare tire. | เปลี่ยนเป็นยางอะไหล่
+jumper cables | สายพ่วงแบตเตอรี่ | Do you have jumper cables? | คุณมีสายพ่วงแบตไหม
+`);
+U('daily', 3, 'อุปกรณ์ฉุกเฉินและเครื่องมือช่าง', `
+defibrillator | เครื่องกระตุกหัวใจ | Use the defibrillator. | ใช้เครื่องกระตุกหัวใจ
+fire extinguisher | ถังดับเพลิง | Where is the fire extinguisher? | ถังดับเพลิงอยู่ไหน
+hazard | อันตราย/สิ่งที่เป็นอันตราย | Wet floors are a hazard. | พื้นเปียกเป็นอันตราย
+sprinkler | สปริงเกลอร์ (ดับเพลิง/รดน้ำ) | The sprinklers came on. | สปริงเกลอร์ทำงาน
+tourniquet | สายรัดห้ามเลือด | Put a tourniquet on his leg. | รัดห้ามเลือดที่ขาเขา
+first aid kit | ชุดปฐมพยาบาล | Get the first aid kit. | ไปเอาชุดปฐมพยาบาลมา
+---
+plank | แผ่นไม้กระดาน | Nail the planks together. | ตอกแผ่นไม้ติดกัน
+plaster | ปูนฉาบ/พลาสเตอร์ | Put a plaster on the cut. | ปิดพลาสเตอร์บนแผล
+spanner | ประแจ | Pass me the spanner. | ส่งประแจให้หน่อย
+wrench | ประแจ/บิด | Use a wrench to fix it. | ใช้ประแจซ่อม
+toolbox | กล่องเครื่องมือ | Bring the toolbox. | เอากล่องเครื่องมือมา
+tape measure | ตลับเมตร | Use a tape measure. | ใช้ตลับเมตรวัด
+`);
+U('daily', 3, 'ช่างในบ้านและการย้ายถิ่น', `
+sandpaper | กระดาษทราย | Smooth it with sandpaper. | ขัดด้วยกระดาษทราย
+bolt | สลักเกลียว/กลอน | Tighten the bolt. | ขันสลักให้แน่น
+hinge | บานพับ | The door hinge is broken. | บานพับประตูเสีย
+padlock | กุญแจคล้อง | Lock the gate with a padlock. | ล็อกประตูด้วยกุญแจคล้อง
+fuse box | กล่องฟิวส์ | Check the fuse box. | ตรวจกล่องฟิวส์
+power cut | ไฟดับ | There was a power cut last night. | เมื่อคืนไฟดับ
+---
+refugee | ผู้ลี้ภัย | Refugees crossed the border. | ผู้ลี้ภัยข้ามพรมแดน
+migrant | ผู้อพยพ/แรงงานข้ามชาติ | Migrant workers need protection. | แรงงานข้ามชาติต้องได้รับการคุ้มครอง
+checkup | การตรวจสุขภาพ | I have a checkup tomorrow. | พรุ่งนี้ฉันไปตรวจสุขภาพ
+doorknob | ลูกบิดประตู | Turn the doorknob. | หมุนลูกบิดประตู
+circuit breaker | เบรกเกอร์ | The circuit breaker tripped. | เบรกเกอร์ตัด
+leak detector | เครื่องตรวจรอยรั่ว | Use a gas leak detector. | ใช้เครื่องตรวจแก๊สรั่ว
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
