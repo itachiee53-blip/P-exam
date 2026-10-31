@@ -880,8 +880,8 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-sent u{text-decoration:none;color:var(--c);letter-spacing:2px}
 .ls-wrap .vc-prog i{background:linear-gradient(90deg,var(--c),#facc15)}
 .ls-rule{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:24px;color:#fff;background:linear-gradient(150deg,#4f46e5,#7c3aed)}
-.ls-rule b{font-size:24px}
-.ls-rule span{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.16);font-size:15px;font-weight:600;line-height:1.5}
+.ls-rule > b{font-size:24px}
+.ls-rule > span{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.16);font-size:15px;font-weight:600;line-height:1.5}
 .ls-intro .tr{color:var(--muted);font-size:13.5px}
 .ls-full{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px;padding:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line);animation:lsUp .25s ease-out}
 .ls-full>div{flex:1;min-width:0}
@@ -994,7 +994,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-type.bad{border-color:var(--red);color:var(--red);background:var(--red-2);animation:lsShake .3s}
 .tw{cursor:pointer;border-radius:5px;transition:background .15s}
 .tw:hover,.tw.on{background:color-mix(in srgb,#facc15 40%,transparent)}
-.ls-sent .tw,.ls-pass .tw,.ls-bub .tw,.ls-full .tw,.ls-intro .tw{text-decoration:underline dotted 1px color-mix(in srgb,var(--muted) 45%,transparent);text-underline-offset:5px}
+.ls-sent .tw,.ls-pass .tw,.ls-rule .tw,.ls-bub .tw,.ls-full .tw,.ls-intro .tw{text-decoration:underline dotted 1px color-mix(in srgb,var(--muted) 45%,transparent);text-underline-offset:5px}
 .tw-tip{position:fixed;z-index:400;max-width:240px;padding:9px 13px;border-radius:14px;background:var(--text);color:var(--bg);box-shadow:0 12px 30px -10px rgba(0,0,0,.5);animation:lsPop .25s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
 .tw-tip b{display:block;font-size:13px;opacity:.75}
 .tw-tip span{font-size:15px;font-weight:700}
