@@ -1254,16 +1254,22 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .voc-w.n{background:transparent;border:1.5px dashed var(--line);color:var(--muted);cursor:default}
 .voc-w[hidden],.voc-l section[hidden]{display:none}
 /* หน้าทำบทเรียน: เนื้อหาอยู่กลางจอ (ระดับสายตา) ไม่ลอยชิดบน */
-.ls-wrap{display:flex;flex-direction:column;min-height:calc(100dvh - 190px)}
+.ls-wrap{display:flex;flex-direction:column;position:fixed;inset:0;z-index:20;overflow-y:auto;overscroll-behavior:contain;padding:max(12px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));margin:0 auto}
+body:has(.ls-wrap){overflow:hidden}
+body:has(.ls-wrap) :is(.topbar,.bottomnav,.sidebar){display:none!important}
 .ls-wrap>.ls-top{width:100%}
 .ls-wrap>.ls-body{width:100%;order:2}
 .ls-wrap>#lsFb{width:100%;min-height:86px;order:3}
-.ls-wrap::before,.ls-wrap::after{content:"";flex:1 1 0;max-height:22vh;order:1}.ls-wrap::after{flex-grow:2.2;max-height:none;order:4}
+.ls-wrap::before,.ls-wrap::after{content:"";flex:1 1 0;order:1}.ls-wrap::after{order:4}
 @media (orientation:portrait) and (max-width:600px){
-  .ls-wrap{min-height:calc(100dvh - 40px)}
   .ls-wrap .ls-opt{min-height:64px;font-size:18px}
   .ls-wrap .ls-sent{font-size:26px}
   .ls-wrap .ls-tile{padding:12px 16px;font-size:18px}
   .ls-wrap .ls-body{gap:16px}
 }
 .voc-e{text-align:center;color:var(--muted);padding:18px 0;margin:0}
+/* คลังคำทั้งเลเวล: เรนเดอร์เฉพาะส่วนที่เห็น (รองรับคำจำนวนมาก) · ยังไม่เจอ = เทา + กุญแจ */
+.voc-l section{content-visibility:auto;contain-intrinsic-size:auto 200px}
+.voc-w.n{position:relative;background:color-mix(in srgb,#94a3b8 10%,var(--surface));border:1.5px solid color-mix(in srgb,#94a3b8 25%,transparent);padding-right:28px}
+.voc-w.n::after{content:"";position:absolute;top:50%;right:9px;width:14px;height:14px;margin-top:-7px;background:#94a3b8;-webkit-mask:var(--lock) center/contain no-repeat;mask:var(--lock) center/contain no-repeat;
+  --lock:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E")}
