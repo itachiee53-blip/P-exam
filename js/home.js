@@ -453,7 +453,7 @@ function renderHome(){
   const ses = S.session;
   const sesDone = ses ? ses.ans.filter(a=>a!==null).length : 0;
   const heroBg = S.settings.heroBg
-    ? `style="background:linear-gradient(rgba(20,40,70,.35),rgba(20,40,70,.55)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
+    ? `style="background:linear-gradient(rgba(10,20,35,.5),rgba(10,20,35,.72)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
   const newDone = t.answered >= goal;
 
   const todo = [
@@ -476,7 +476,7 @@ function renderHome(){
     <h2>${hi}</h2>
   </header>
 
-  <section class="hm-today" ${heroBg}>
+  <section class="hm-today${heroBg?' has-bg':''}" ${heroBg}>
     <div class="hm-ring">
       <svg viewBox="0 0 100 100"><circle class="bgc" cx="50" cy="50" r="42"/>
         <circle class="fgc" id="gr" cx="50" cy="50" r="42" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg>

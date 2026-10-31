@@ -1193,3 +1193,11 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 }
 .tr-ic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:none;border:0;color:var(--muted);padding:0}.tr-ic svg{width:17px;height:17px}.tr-ic[data-trdel]:active{color:var(--red)}
 @media(max-width:520px){.tr-row{gap:5px;padding:8px}#modal .tr-row .tr-part{width:80px;font-size:12.5px!important;padding:6px 4px!important}#modal .tr-row .tr-n{width:50px;padding:6px 2px!important}.tr-ic{width:24px}.tr-row .hm-grow{min-width:0}}
+/* การ์ดวันนี้มีรูปพื้นหลัง: ตัวอักษรขาว อ่านง่าย */
+.hm-today.has-bg{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.hm-today.has-bg small,.hm-today.has-bg p{opacity:.92}
+.hm-today.has-bg .hm-tstats,.hm-today.has-bg .hm-ses{background:rgba(0,0,0,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hm-today.has-bg .hm-tstats div+div{border-left-color:rgba(255,255,255,.25)}
+.hm-today.has-bg .hm-ring .bgc{stroke:rgba(255,255,255,.3)}
+.hm-today.has-bg .hm-ring .fgc{stroke:#fff}
+.hm-today.has-bg .hm-start{text-shadow:none}
