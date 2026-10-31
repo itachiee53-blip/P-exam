@@ -337,10 +337,11 @@ function renderLesson(){
   $('#view').innerHTML = `<div class="ls-wrap" style="--c:${col}">
     <div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
       <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div>${L.deadline ? '<span class="ls-time" id="lsTime"></span>' : ''}</div>
-    <div class="ls-body ${fresh ? 'in' : ''}"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
+    <div class="ls-body ${fresh ? 'in' : ''}"><div class="ls-head">${mascot(L.deadline ? 'sly' : 'watch', 'lsMasc')}<span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span></div>${body}</div>
     <div id="lsFb">${it.t === 'intro' || it.t === 'rule' || it.t === 'passage' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
   if(it.opts && $('.ls-opts') && it.opts.every(x => String(x).length <= 24)) $('.ls-opts').classList.add('short'); // ตัวเลือกสั้น → แนวนอนแบ่ง 2 คอลัมน์
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
+  $('.ls-wrap').addEventListener('pointerdown', e => e.target.closest('.masc') || mascLook($('#lsMasc'), e));
   $$('[data-slow]').forEach(b => b.onclick = () => engSay(w.en, true));
   if(it.t === 'listen' || it.t === 'intro') setTimeout(() => engSay(w.en), 250);
   const ans = it.t === 'mean' ? w && w.th : ['gram', 'dlg', 'read'].includes(it.t) ? w.a : w && w.en;
@@ -401,6 +402,7 @@ function lessonFb(ok, ans, noRedo){
     if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.exam && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
+  mascSet($('#lsMasc'), ok ? (L.combo >= 5 ? 'gusto' : 'joy') : 'confused');
   if(ok && S.settings.sound && navigator.vibrate) try { navigator.vibrate(12); } catch(e){} // ตอบผิดไม่สั่นเครื่อง
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : it.t === 'order' ? 'ประโยคที่ถูกอยู่ด้านล่าง' : 'คำตอบที่ถูก'}</b>
     ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo ${[3, 5, 10, 15, 20, 30].includes(L.combo) ? 'big' : ''}" data-t="${L.combo >= 10 ? 3 : L.combo >= 5 ? 2 : 1}"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
@@ -445,7 +447,7 @@ function lessonEnd(){
   }
   const r = L.res;
   const T = L.exam;
-  $('#view').innerHTML = `<div class="vc-done"><span class="vc-done-ic ${T && !L.pass ? 'fail' : ''}"><i data-lucide="${T ? (L.pass ? 'award' : 'rotate-ccw') : 'trophy'}"></i></span>
+  $('#view').innerHTML = `<div class="vc-done">${mascot(T && !L.pass ? 'upset' : 'joy', '', 'big')}
     <b>${T ? (L.pass ? `ผ่าน Lv.${T.L}!` : 'ยังไม่ผ่าน') : 'จบบทเรียน'}</b>${T && !L.pass ? '<p>ต้องได้ 80% ขึ้นไป ทวนบทที่ยังอ่อนแล้วลองใหม่นะ</p>' : ''}
     ${T && L.pass ? `<div class="eng-cert" style="--c:${L.col}"><small>ใบประกาศ</small><b>Lv.${T.L} ${ENG_LEVELS[T.L]}</b><span>${r.acc}% · ${dkey()}</span>${T.L + 1 < ENG_LV_N ? `<em>ปลดล็อก Lv.${T.L + 1} แล้ว</em>` : ''}</div>` : ''}
     <div class="ls-stars">${[0, 1, 2].map(k => `<span class="${k < r.stars ? 'on' : ''}" style="animation-delay:${.1 + k * .12}s">★</span>`).join('')}</div>
