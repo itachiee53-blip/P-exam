@@ -6739,6 +6739,262 @@ log | ท่อนซุง/บันทึก | Sit on the log. | นั่ง�
 coffin | โลงศพ | They carried the coffin. | พวกเขาแบกโลงศพ
 `);
 
+U('daily', 2, 'กริยาท่าทางและการทำความสะอาด', `
+blink | กะพริบตา | Don't blink! | อย่ากะพริบตา!
+clap | ปรบมือ | Everyone clapped. | ทุกคนปรบมือ
+sigh | ถอนหายใจ | She sighed sadly. | เธอถอนหายใจเศร้าๆ
+sip | จิบ | Sip your tea slowly. | จิบชาช้าๆ
+stare | จ้อง | Don't stare at people. | อย่าจ้องคนอื่น
+glance | เหลือบมอง | He glanced at his watch. | เขาเหลือบดูนาฬิกา
+---
+yell | ตะโกน | Don't yell at me. | อย่าตะโกนใส่ฉัน
+wipe | เช็ด | Wipe the table. | เช็ดโต๊ะ
+wrap | ห่อ | Wrap the gift. | ห่อของขวัญ
+rinse | ล้าง (ด้วยน้ำ) | Rinse your mouth. | บ้วนปาก
+scrub | ขัด | Scrub the floor. | ขัดพื้น
+soak | แช่ | Soak the beans overnight. | แช่ถั่วไว้ข้ามคืน
+`);
+U('daily', 2, 'กริยาในชีวิตประจำวัน: ชุดเสริม 3', `
+decorate | ตกแต่ง | We decorated the room. | เราตกแต่งห้อง
+entertain | ให้ความบันเทิง | He entertained the guests. | เขาสร้างความบันเทิงให้แขก
+congratulate | แสดงความยินดี | I congratulated her. | ฉันแสดงความยินดีกับเธอ
+memorize | ท่องจำ | Memorize ten words a day. | ท่องจำวันละสิบคำ
+edit | แก้ไข | Edit the video. | ตัดต่อวิดีโอ
+erase | ลบ | Erase the board. | ลบกระดาน
+---
+browse | เลือกดู/ท่องเว็บ | I'm just browsing. | ฉันแค่ดูๆ
+swap | สลับ/แลก | Let's swap seats. | สลับที่นั่งกันเถอะ
+slip | ลื่น | I slipped on the wet floor. | ฉันลื่นบนพื้นเปียก
+spoil | ทำให้เสีย/ตามใจ | Don't spoil the ending. | อย่าสปอยล์ตอนจบ
+panic | ตื่นตระหนก | Don't panic. | อย่าตื่นตกใจ
+wander | เดินเตร็ดเตร่ | We wandered around the market. | เราเดินเล่นรอบตลาด
+`);
+U('daily', 2, 'กริยาการปะทะและการเคลื่อนไหวเร็ว', `
+bump | ชน/กระแทก | I bumped my head. | ฉันหัวชน
+smash | ทุบแตก | He smashed the window. | เขาทุบหน้าต่างแตก
+slam | กระแทก (ปิดแรง) | Don't slam the door. | อย่าปิดประตูแรง
+slap | ตบ | She slapped his face. | เธอตบหน้าเขา
+shove | ผลัก | He shoved me. | เขาผลักฉัน
+snatch | ฉก/กระชาก | A man snatched her bag. | ชายคนหนึ่งกระชากกระเป๋าเธอ
+---
+sneak | แอบ/ย่อง | He sneaked out at night. | เขาแอบออกไปตอนกลางคืน
+sniff | ดม/สูดจมูก | The dog sniffed the bag. | สุนัขดมกระเป๋า
+shiver | ตัวสั่น (หนาว) | I'm shivering with cold. | ฉันหนาวจนตัวสั่น
+tremble | สั่น (กลัว) | Her hands were trembling. | มือเธอสั่น
+gasp | อ้าปากค้าง/หายใจหอบ | She gasped in surprise. | เธออ้าปากค้างด้วยความตกใจ
+sob | สะอื้น | The child sobbed. | เด็กสะอื้นไห้
+`);
+U('daily', 3, 'กริยาทำอาหาร งานฝีมือ และการเดิน', `
+carve | แกะสลัก/หั่น | He carved a statue. | เขาแกะสลักรูปปั้น
+brew | ชง/ต้ม (กาแฟ เบียร์) | Brew some coffee. | ชงกาแฟหน่อย
+blend | ปั่นผสม | Blend the fruit. | ปั่นผลไม้
+sprinkle | โรย | Sprinkle some salt. | โรยเกลือนิดหน่อย
+stain | คราบ/ทำเปื้อน | There's a stain on your shirt. | เสื้อคุณมีคราบ
+polish | ขัดเงา | Polish your shoes. | ขัดรองเท้า
+---
+fetch | ไปเอามา | Fetch some water. | ไปเอาน้ำมาหน่อย
+hike | เดินป่า | We hiked up the hill. | เราเดินขึ้นเขา
+roam | ท่องไป | Dogs roam the streets. | สุนัขเดินเพ่นพ่านบนถนน
+juggle | โยนรับ/จัดการหลายอย่าง | I juggle work and study. | ฉันจัดการทั้งงานและเรียน
+march | เดินแถว | Soldiers marched past. | ทหารเดินแถวผ่าน
+stroll | เดินเล่น | We strolled along the beach. | เราเดินเล่นริมหาด
+`);
+U('daily', 3, 'กริยาความรู้สึก', `
+cherish | ทะนุถนอม/รักษา | Cherish every moment. | ทะนุถนอมทุกช่วงเวลา
+envy | อิจฉา | I envy your skills. | ฉันอิจฉาฝีมือคุณ
+resent | ขุ่นเคือง | He resented his boss. | เขาขุ่นเคืองหัวหน้า
+despise | ดูถูก/เกลียดชัง | She despises liars. | เธอเกลียดคนโกหก
+crave | อยากมาก | I'm craving pizza. | ฉันอยากกินพิซซ่ามาก
+mourn | ไว้ทุกข์ | The nation mourned the king. | ทั้งประเทศไว้ทุกข์ให้กษัตริย์
+---
+grieve | โศกเศร้า | She is grieving for her father. | เธอโศกเศร้าถึงพ่อ
+rejoice | ยินดี/ปลื้มปีติ | People rejoiced at the news. | ผู้คนยินดีกับข่าวนั้น
+marvel | ทึ่ง/ประหลาดใจ | We marveled at the view. | เราทึ่งกับวิว
+reassure | ทำให้มั่นใจ/ปลอบ | The officer reassured the child. | เจ้าหน้าที่ปลอบเด็ก
+soothe | ปลอบโยน/บรรเทา | Music soothes me. | ดนตรีทำให้ฉันสงบ
+console | ปลอบใจ | She consoled her friend. | เธอปลอบใจเพื่อน
+`);
+U('daily', 3, 'กริยาการล้อเลียนและการกลั่นแกล้ง', `
+tease | แซว/ล้อ | Don't tease your sister. | อย่าแซวน้อง
+mock | ล้อเลียน | They mocked his accent. | พวกเขาล้อเลียนสำเนียงเขา
+flatter | ยกยอ | Don't flatter me. | อย่ายกยอฉัน
+scold | ดุ | Mom scolded me. | แม่ดุฉัน
+nag | บ่นจู้จี้ | Stop nagging me. | เลิกบ่นฉันได้แล้ว
+pester | รบเร้า/กวนใจ | Kids pestered him for candy. | เด็กๆ รบเร้าขอลูกอม
+---
+irritate | ทำให้หงุดหงิด/ระคายเคือง | Smoke irritates my eyes. | ควันทำให้ตาฉันระคายเคือง
+embarrass | ทำให้อับอาย | Don't embarrass me. | อย่าทำให้ฉันอาย
+humiliate | ทำให้ขายหน้า | He humiliated her in public. | เขาทำให้เธอขายหน้าต่อหน้าคน
+intimidate | ข่มขู่ | Don't try to intimidate the witness. | อย่าข่มขู่พยาน
+harass | คุกคาม | He harassed her online. | เขาคุกคามเธอทางออนไลน์
+bully | รังแก | Stop bullying him. | เลิกรังแกเขา
+`);
+U('daily', 3, 'กริยาการเรียนและการสื่อสาร', `
+clarify | ชี้แจง/ทำให้ชัด | Please clarify your answer. | กรุณาชี้แจงคำตอบ
+summarize | สรุป | Summarize the story. | สรุปเรื่อง
+outline | ร่างโครง | Outline your plan. | ร่างโครงแผนของคุณ
+recite | ท่อง | Recite the poem. | ท่องบทกวี
+rehearse | ซ้อม | We rehearsed the speech. | เราซ้อมสุนทรพจน์
+revise | ทบทวน/แก้ไข | Revise for the exam. | ทบทวนบทเรียนก่อนสอบ
+---
+interpret | ตีความ/แปล | Can you interpret for me? | ช่วยแปลให้ฉันได้ไหม
+comprehend | เข้าใจ | I can't comprehend it. | ฉันเข้าใจไม่ได้
+distinguish | แยกแยะ | Distinguish right from wrong. | แยกแยะถูกผิด
+compose | แต่ง (เพลง/ข้อความ) | He composed a song. | เขาแต่งเพลง
+cite | อ้างอิง | Cite your sources. | อ้างอิงแหล่งที่มา
+infer | อนุมาน | What can you infer from this? | คุณอนุมานอะไรได้จากสิ่งนี้
+`);
+U('daily', 4, 'กริยาการปกปิดและการหลบหนี', `
+conceal | ซ่อน/ปกปิด | He concealed a knife. | เขาซ่อนมีด
+disguise | ปลอมตัว | He disguised himself as a monk. | เขาปลอมตัวเป็นพระ
+deceive | หลอกลวง | Don't deceive the public. | อย่าหลอกลวงประชาชน
+lure | ล่อ | They lured victims online. | พวกเขาล่อเหยื่อทางออนไลน์
+manipulate | ชักใย/บงการ | He manipulated his friends. | เขาบงการเพื่อน
+exploit | เอาเปรียบ/ใช้ประโยชน์ | They exploited workers. | พวกเขาเอาเปรียบแรงงาน
+---
+flee | หนี | The suspect fled the country. | ผู้ต้องสงสัยหนีออกนอกประเทศ
+retreat | ถอย | The enemy retreated. | ศัตรูถอยทัพ
+vanish | หายไป | The man vanished. | ชายคนนั้นหายตัวไป
+overlook | มองข้าม/มองเห็นวิว | Don't overlook small details. | อย่ามองข้ามรายละเอียดเล็กๆ
+overhear | ได้ยินโดยบังเอิญ | I overheard their plan. | ฉันได้ยินแผนของพวกเขาโดยบังเอิญ
+intercept | สกัดกั้น/ดักฟัง | Police intercepted the call. | ตำรวจดักฟังโทรศัพท์
+`);
+U('daily', 4, 'กริยาการสร้างและการเปลี่ยนสภาพ', `
+demolish | รื้อถอน | They demolished the building. | พวกเขารื้ออาคาร
+dismantle | แยกชิ้นส่วน/ทลาย | Police dismantled the gang. | ตำรวจทลายแก๊ง
+erect | สร้าง/ตั้ง | They erected a statue. | พวกเขาสร้างรูปปั้น
+assemble | ประกอบ/ชุมนุม | Assemble the bed. | ประกอบเตียง
+compress | บีบอัด | Compress the file. | บีบอัดไฟล์
+extract | สกัด/ดึงออก | The dentist extracted a tooth. | หมอฟันถอนฟัน
+---
+dissolve | ละลาย/ยุบ | Sugar dissolves in water. | น้ำตาลละลายในน้ำ
+evaporate | ระเหย | The water evaporated. | น้ำระเหยไป
+ignite | จุดติด | The gas ignited. | แก๊สติดไฟ
+emit | ปล่อย (แสง/ก๊าซ) | Cars emit smoke. | รถยนต์ปล่อยควัน
+transmit | ส่ง/แพร่ | The disease is transmitted by mosquitoes. | โรคนี้แพร่ผ่านยุง
+rotate | หมุน/สลับ | Rotate the tires. | สลับยาง
+`);
+U('daily', 4, 'กริยาการเพิ่มลดและเริ่มหยุด', `
+diminish | ลดลง | The pain diminished. | ความเจ็บปวดลดลง
+enlarge | ขยาย | Enlarge the photo. | ขยายรูป
+intensify | ทวีความรุนแรง | The storm intensified. | พายุทวีความรุนแรง
+inflate | สูบลม/พองตัว | Inflate the tires. | สูบลมยาง
+shrink | หด | My shirt shrank. | เสื้อฉันหด
+swell | บวม | My ankle swelled up. | ข้อเท้าฉันบวม
+---
+fluctuate | ขึ้นลง | Prices fluctuate. | ราคาขึ้นๆ ลงๆ
+prolong | ยืดเวลา | Don't prolong the meeting. | อย่ายืดการประชุม
+terminate | ยุติ/สิ้นสุด | The contract was terminated. | สัญญาถูกยกเลิก
+cease | หยุด/ยุติ | The fighting ceased. | การสู้รบยุติลง
+commence | เริ่ม | The ceremony will commence at nine. | พิธีจะเริ่มเก้าโมง
+halt | หยุด | Halt! Who goes there? | หยุด! นั่นใคร?
+`);
+U('daily', 4, 'กริยาทางการแพทย์และสุขภาพ', `
+diagnose | วินิจฉัย | The doctor diagnosed flu. | แพทย์วินิจฉัยว่าเป็นไข้หวัด
+prescribe | สั่งยา | The doctor prescribed medicine. | แพทย์สั่งยา
+inject | ฉีด | The nurse injected the drug. | พยาบาลฉีดยา
+infect | ติดเชื้อ | The wound is infected. | แผลติดเชื้อ
+inhale | หายใจเข้า | Inhale deeply. | หายใจเข้าลึกๆ
+exhale | หายใจออก | Now exhale slowly. | ตอนนี้หายใจออกช้าๆ
+---
+digest | ย่อย | Milk is hard to digest. | นมย่อยยาก
+nourish | บำรุง | Good food nourishes the body. | อาหารดีบำรุงร่างกาย
+purify | ทำให้บริสุทธิ์/กรอง | Purify the water. | กรองน้ำให้สะอาด
+remedy | วิธีแก้/ยารักษา | Honey is a good remedy for coughs. | น้ำผึ้งแก้ไอได้ดี
+relieve | บรรเทา | This pill relieves pain. | ยานี้บรรเทาอาการปวด
+refresh | ทำให้สดชื่น/รีเฟรช | Refresh the page. | รีเฟรชหน้าเว็บ
+`);
+U('daily', 5, 'กริยาการทำลายและขัดขวาง', `
+deteriorate | แย่ลง/เสื่อม | His health deteriorated. | สุขภาพของเขาแย่ลง
+devastate | ทำลายล้าง | The flood devastated the town. | น้ำท่วมทำลายเมือง
+endanger | ทำให้ตกอยู่ในอันตราย | Speeding endangers lives. | การขับเร็วเป็นอันตรายต่อชีวิต
+impair | ทำให้เสื่อม/บกพร่อง | Alcohol impairs judgment. | แอลกอฮอล์ทำให้การตัดสินใจบกพร่อง
+hinder | ขัดขวาง | Rain hindered the search. | ฝนขัดขวางการค้นหา
+hamper | เป็นอุปสรรค | Traffic hampered the rescue. | การจราจรเป็นอุปสรรคต่อการช่วยเหลือ
+---
+obstruct | กีดขวาง | Don't obstruct the road. | อย่ากีดขวางถนน
+disrupt | ทำให้หยุดชะงัก | The storm disrupted flights. | พายุทำให้เที่ยวบินหยุดชะงัก
+distort | บิดเบือน | He distorted the facts. | เขาบิดเบือนข้อเท็จจริง
+distract | ทำให้ไขว้เขว | Phones distract drivers. | โทรศัพท์ทำให้คนขับเสียสมาธิ
+discourage | ทำให้ท้อ/ห้ามปราม | Don't discourage him. | อย่าทำให้เขาท้อ
+deprive | พรากไป/ทำให้ขาด | Lack of sleep deprives the brain. | การอดนอนทำให้สมองขาดการพักผ่อน
+`);
+U('daily', 5, 'กริยากฎหมายและการประกาศ', `
+abolish | ยกเลิก (กฎหมาย) | They abolished the death penalty. | พวกเขายกเลิกโทษประหาร
+amend | แก้ไข (กฎหมาย) | The law was amended. | กฎหมายถูกแก้ไข
+authorize | อนุมัติ/ให้อำนาจ | Who authorized this? | ใครอนุมัติเรื่องนี้
+impose | กำหนด/บังคับใช้ | They imposed a curfew. | พวกเขาประกาศเคอร์ฟิว
+levy | เรียกเก็บ (ภาษี) | The government levied a new tax. | รัฐบาลเรียกเก็บภาษีใหม่
+administer | บริหาร/ให้ (ยา) | The nurse administered the drug. | พยาบาลให้ยา
+---
+condemn | ประณาม | We condemn violence. | เราประณามความรุนแรง
+denounce | ประณาม/กล่าวโทษ | He denounced corruption. | เขาประณามการทุจริต
+proclaim | ประกาศ | The king proclaimed a holiday. | กษัตริย์ประกาศวันหยุด
+pledge | ให้คำมั่น | They pledged support. | พวกเขาให้คำมั่นว่าจะสนับสนุน
+vow | สาบาน/ปฏิญาณ | He vowed to find the killer. | เขาสาบานว่าจะหาฆาตกร
+preside | เป็นประธาน | The judge presided over the trial. | ผู้พิพากษาเป็นประธานการพิจารณาคดี
+`);
+U('daily', 5, 'กริยาความเพียรและความสำเร็จ', `
+compensate | ชดเชย | They compensated the victims. | พวกเขาชดเชยผู้เสียหาย
+deduct | หักออก | Tax is deducted from salary. | ภาษีถูกหักจากเงินเดือน
+invest | ลงทุน | Invest in education. | ลงทุนในการศึกษา
+prosper | เจริญรุ่งเรือง | The town prospered. | เมืองเจริญรุ่งเรือง
+flourish | เฟื่องฟู | Tourism flourished. | การท่องเที่ยวเฟื่องฟู
+thrive | เติบโตได้ดี | Plants thrive in the sun. | พืชเติบโตดีในแดด
+---
+strive | พยายามอย่างหนัก | Strive to do your best. | พยายามทำให้ดีที่สุด
+persevere | อดทนพากเพียร | Persevere and you will win. | อดทนแล้วคุณจะชนะ
+persist | ยืนหยัด/ดำเนินต่อ | The rain persisted all day. | ฝนตกต่อเนื่องทั้งวัน
+endure | อดทน | She endured the pain. | เธออดทนต่อความเจ็บปวด
+withstand | ทนทาน/ต้านทาน | The house withstood the storm. | บ้านทนพายุได้
+triumph | ชัยชนะ/ได้ชัย | Good triumphs over evil. | ความดีชนะความชั่ว
+`);
+U('daily', 6, 'กริยาการคิดขั้นสูง', `
+contemplate | ไตร่ตรอง | He contemplated quitting. | เขาไตร่ตรองว่าจะลาออก
+deliberate | ไตร่ตรอง/จงใจ | It was a deliberate act. | เป็นการกระทำโดยจงใจ
+ponder | ครุ่นคิด | She pondered the question. | เธอครุ่นคิดถึงคำถาม
+presume | สันนิษฐาน | I presume you are tired. | ฉันคิดว่าคุณคงเหนื่อย
+perceive | รับรู้/มองว่า | How do people perceive the police? | ประชาชนมองตำรวจอย่างไร
+foresee | คาดการณ์ล่วงหน้า | Nobody foresaw the crisis. | ไม่มีใครคาดการณ์วิกฤตได้
+---
+reckon | คิดว่า/คาดว่า | I reckon he's right. | ฉันคิดว่าเขาพูดถูก
+conceive | คิด/ตั้งครรภ์ | He conceived a new plan. | เขาคิดแผนใหม่ขึ้นมา
+formulate | กำหนด/คิดค้น | Formulate a strategy. | กำหนดกลยุทธ์
+innovate | สร้างนวัตกรรม | Companies must innovate. | บริษัทต้องสร้างนวัตกรรม
+improvise | ด้นสด/แก้สถานการณ์เฉพาะหน้า | We had to improvise. | เราต้องแก้สถานการณ์เฉพาะหน้า
+orchestrate | วางแผนจัดการ (เบื้องหลัง) | He orchestrated the robbery. | เขาวางแผนการปล้น
+`);
+U('daily', 6, 'กริยาอำนาจและการต่อต้าน', `
+liberate | ปลดปล่อย | Soldiers liberated the city. | ทหารปลดปล่อยเมือง
+oppress | กดขี่ | The king oppressed the people. | กษัตริย์กดขี่ประชาชน
+conquer | พิชิต | They conquered the land. | พวกเขาพิชิตดินแดน
+overthrow | โค่นล้ม | They overthrew the government. | พวกเขาโค่นล้มรัฐบาล
+rebel | กบฏ/ต่อต้าน | Teenagers often rebel. | วัยรุ่นมักต่อต้าน
+revolt | ก่อจลาจล/ลุกฮือ | The people revolted. | ประชาชนลุกฮือ
+---
+retaliate | ตอบโต้ | Don't retaliate. | อย่าตอบโต้
+provoke | ยั่วยุ | Don't provoke him. | อย่ายั่วยุเขา
+inflict | ทำให้ได้รับ (ความเสียหาย) | The storm inflicted heavy damage. | พายุสร้างความเสียหายหนัก
+torment | ทรมาน | Guilt tormented him. | ความรู้สึกผิดทรมานเขา
+exile | เนรเทศ | He was exiled. | เขาถูกเนรเทศ
+imprison | จำคุก | He was imprisoned for ten years. | เขาถูกจำคุกสิบปี
+`);
+U('daily', 6, 'กริยาสิทธิและการบุกเบิก', `
+conform | ปฏิบัติตาม (กฎ/สังคม) | You must conform to the rules. | คุณต้องปฏิบัติตามกฎ
+adhere | ยึดถือ/ปฏิบัติตาม | Adhere to the procedure. | ยึดถือขั้นตอน
+oblige | บังคับ/ช่วยเหลือ | The law obliges you to stop. | กฎหมายบังคับให้คุณหยุด
+entitle | ให้สิทธิ | You are entitled to a lawyer. | คุณมีสิทธิมีทนาย
+empower | ให้อำนาจ | Education empowers women. | การศึกษาให้พลังแก่ผู้หญิง
+embark | เริ่มต้น/ขึ้นเรือ | She embarked on a new career. | เธอเริ่มอาชีพใหม่
+---
+endeavor | พยายาม | We endeavor to help. | เราพยายามช่วยเหลือ
+venture | เสี่ยง/กิจการ | He ventured into the forest. | เขาเสี่ยงเข้าไปในป่า
+surpass | เหนือกว่า/แซง | She surpassed her goal. | เธอทำได้เกินเป้า
+prevail | ชนะ/แพร่หลาย | Justice will prevail. | ความยุติธรรมจะชนะ
+withdraw from | ถอนตัวจาก | He withdrew from the race. | เขาถอนตัวจากการแข่งขัน
+summon | เรียกตัว | He was summoned to court. | เขาถูกเรียกตัวไปศาล
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
