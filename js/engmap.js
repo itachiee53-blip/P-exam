@@ -1,5 +1,53 @@
+// ฉากใหญ่ต่อธีม: sky = หัวแผนที่ (400×110), a/b = แถบคั่นทุก 8 บท (400×150, เว้นกลางให้ถนน), ov = ของที่อยู่บนถนน (สะพาน 120×150), bits = ของเล็กโปรย (30×20)
+const EM_CLOUD = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})" fill="#fff" opacity=".95"><ellipse cx="0" cy="0" rx="22" ry="9"/><circle cx="-8" cy="-5" r="9"/><circle cx="7" cy="-8" r="11"/></g>`;
+const EM_BIRD = (x, y) => `<path d="M${x} ${y}q4-4 8 0q4-4 8 0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+const EM_BRIDGE = (deck, rail) => `<rect x="38" y="30" width="44" height="90" fill="${deck}"/><path d="M38 42h44M38 54h44M38 66h44M38 78h44M38 90h44M38 102h44" stroke="${rail}" stroke-width="1.5" opacity=".5"/><path d="M36 26v98M84 26v98" stroke="${rail}" stroke-width="4"/><path d="M33 30h6M33 60h6M33 90h6M33 120h6M81 30h6M81 60h6M81 90h6M81 120h6" stroke="${rail}" stroke-width="5" stroke-linecap="round"/>`;
+const EM_RIVER = (c1, c2) => `<path d="M0 50q50-12 100 0t100 0 100 0 100 0v52q-50 12-100 0t-100 0-100 0-100 0z" fill="${c1}"/><path d="M20 70q10-5 20 0t20 0M260 66q10-5 20 0t20 0M110 86q10-5 20 0t20 0M320 88q10-5 20 0" stroke="${c2}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+const EM_SCENES = [
+  { sky: `${EM_CLOUD(70, 50, 1.1)}${EM_CLOUD(250, 34, .8)}${EM_CLOUD(350, 70, .9)}<circle cx="330" cy="30" r="16" fill="#fde047"/><circle cx="330" cy="30" r="24" fill="#fde047" opacity=".25"/>${EM_BIRD(150, 40)}${EM_BIRD(170, 30)}<path d="M0 110q60-30 130-8t140 0 130-6v14H0z" fill="#c4e6b5"/>`,
+    a: `${EM_RIVER('#8fd3f4', '#d6f1fc')}<ellipse cx="60" cy="88" rx="9" ry="4" fill="#4caf50"/><ellipse cx="330" cy="60" rx="10" ry="4" fill="#4caf50"/><circle cx="333" cy="58" r="3" fill="#ff7aa8"/><ellipse cx="290" cy="80" rx="8" ry="5" fill="#ffd23f"/><circle cx="297" cy="75" r="4" fill="#ffd23f"/><path d="M300 75l4 1-4 1z" fill="#ff8c2a"/>`,
+    ov: EM_BRIDGE('#c8925f', '#8b5a3c'),
+    b: `<ellipse cx="60" cy="150" rx="120" ry="70" fill="#b5dca4"/><ellipse cx="350" cy="150" rx="110" ry="60" fill="#a8d496"/><g transform="translate(70 40)"><path d="M-8 80l4-60h8l4 60z" fill="#f1f5f9"/><path d="M-8 20h16l-8-12z" fill="#e5484d"/><g stroke="#94a3b8" stroke-width="5" stroke-linecap="round"><path d="M0 14l-26-14M0 14l26 14M0 14l14-26M0 14l-14 26"/></g><circle cx="0" cy="14" r="4" fill="#64748b"/></g><path d="M280 96h100M280 110h100M290 90v26M310 90v26M330 90v26M350 90v26M370 90v26" stroke="#c8925f" stroke-width="3"/><g fill="#fff"><circle cx="300" cy="72" r="8"/><circle cx="310" cy="69" r="9"/><circle cx="320" cy="73" r="8"/></g><circle cx="326" cy="68" r="4.5" fill="#334155"/><path d="M302 80v6M318 80v6" stroke="#334155" stroke-width="2"/>`,
+    bits: [`<path d="M8 20q-2-10 2-16M14 20q0-12 4-18M20 20q2-9 6-12" stroke="#5cb85c" stroke-width="2" fill="none" stroke-linecap="round"/>`, `<circle cx="15" cy="10" r="4" fill="#fff"/><circle cx="15" cy="10" r="1.8" fill="#fbbf24"/><path d="M15 14v6" stroke="#5cb85c" stroke-width="1.5"/>`, `<ellipse cx="15" cy="15" rx="7" ry="4" fill="#cbd5c0"/><ellipse cx="22" cy="17" rx="4" ry="2.5" fill="#b8c4ad"/>`] },
+  { sky: `<circle cx="80" cy="40" r="18" fill="#fde047"/><circle cx="80" cy="40" r="27" fill="#fde047" opacity=".25"/>${EM_CLOUD(220, 40, 1)}${EM_CLOUD(340, 58, .8)}${EM_BIRD(150, 60)}${EM_BIRD(280, 30)}<path d="M0 82q50-8 100 0t100 0 100 0 100 0v28H0z" fill="#7fd3f2"/><path d="M0 92q50-8 100 0t100 0 100 0 100 0" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>`,
+    a: `<rect y="40" width="400" height="70" fill="#7fd3f2"/><path d="M0 40q25-8 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0M0 110q25 8 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0" stroke="#fff" stroke-width="4" fill="none"/><path d="M40 70q8-5 16 0M300 82q8-5 16 0M90 92q8-5 16 0" stroke="#e0f7ff" stroke-width="3" fill="none"/><path d="M300 60h40l-6 10h-28z" fill="#f97316"/><path d="M320 60V36l14 20h-14z" fill="#fff"/>`,
+    ov: EM_BRIDGE('#d9a66b', '#9a6b3f'),
+    b: `<g transform="translate(60 18)"><path d="M-12 120l5-90h14l5 90z" fill="#fff"/><path d="M-10 90h20l1 12h-22zM-8 56h16l1 12h-18z" fill="#ef4444"/><rect x="-11" y="18" width="22" height="14" rx="3" fill="#fde047"/><path d="M-14 18h28l-14-12z" fill="#ef4444"/></g><ellipse cx="40" cy="146" rx="70" ry="20" fill="#94a3b8"/><ellipse cx="90" cy="140" rx="30" ry="14" fill="#a8b3c4"/><path d="M330 150Q326 110 338 78" stroke="#b07a4f" stroke-width="7" fill="none"/><path d="M338 78q-18-12-36 2q20-6 36 3zM338 78q20-14 38 2q-18-6-38 3zM338 78q-6-20-22-22q14 8 21 23z" fill="#34b26b"/>`,
+    bits: [`<path d="M6 18q9-14 18 0z" fill="#fda4af"/><path d="M10 18l5-10 5 10" stroke="#fff" stroke-width="1"/>`, `<ellipse cx="15" cy="14" rx="6" ry="3.5" fill="#e7d3b0"/>`, `<path d="M15 4l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3-5.5 3 1.5-6-4.5-4 6-.5z" fill="#fb923c"/>`] },
+  { sky: `<circle cx="320" cy="40" r="18" fill="#fdba74"/><circle cx="320" cy="40" r="28" fill="#fdba74" opacity=".25"/>${EM_CLOUD(90, 40, 1)}${EM_CLOUD(200, 64, .7)}<ellipse cx="160" cy="30" rx="5" ry="2.5" fill="#f97316" transform="rotate(30 160 30)"/><ellipse cx="240" cy="44" rx="5" ry="2.5" fill="#dc2626" transform="rotate(-20 240 44)"/><path d="M0 108q70-34 150-10t150-4 100-4v20H0z" fill="#f2cf85"/>`,
+    a: `${EM_RIVER('#8ccbe8', '#d4eef9')}<ellipse cx="80" cy="72" rx="6" ry="3" fill="#f97316" transform="rotate(20 80 72)"/><ellipse cx="300" cy="84" rx="6" ry="3" fill="#dc2626" transform="rotate(-30 300 84)"/><ellipse cx="350" cy="66" rx="6" ry="3" fill="#fbbf24"/>`,
+    ov: EM_BRIDGE('#b7794a', '#7c4a2a'),
+    b: `<ellipse cx="70" cy="150" rx="130" ry="64" fill="#efc46e"/><ellipse cx="340" cy="150" rx="120" ry="56" fill="#e8b85a"/><g transform="translate(36 40)"><rect x="-3" y="30" width="6" height="30" fill="#8b5a3c"/><circle cx="0" cy="20" r="18" fill="#f97316"/></g><g transform="translate(96 54)"><rect x="-3" y="22" width="6" height="26" fill="#8b5a3c"/><circle cx="0" cy="14" r="15" fill="#fbbf24"/></g><g transform="translate(300 70)"><rect x="-22" y="0" width="44" height="30" rx="8" fill="#f3d27a"/><path d="M-22 10h44M-22 20h44" stroke="#d9b45a" stroke-width="2"/></g><g transform="translate(360 52)"><rect x="-3" y="24" width="6" height="28" fill="#8b5a3c"/><circle cx="0" cy="14" r="16" fill="#dc2626" opacity=".85"/></g>`,
+    bits: [`<ellipse cx="15" cy="12" rx="8" ry="3.5" fill="#f97316" transform="rotate(-20 15 12)"/>`, `<ellipse cx="15" cy="13" rx="4" ry="5" fill="#a0673d"/><path d="M10 9h10" stroke="#6b4423" stroke-width="3" stroke-linecap="round"/>`, `<ellipse cx="15" cy="12" rx="8" ry="3.5" fill="#dc2626" transform="rotate(25 15 12)"/>`] },
+  { sky: `${EM_CLOUD(60, 40, .9)}${EM_CLOUD(300, 30, 1.1)}<path d="M170 40l26-4 4 2-26 6zM186 36l-4-8h3l7 7z" fill="#94a3b8"/><circle cx="360" cy="70" r="14" fill="#fde047" opacity=".9"/><g fill="#c7d7ee"><rect x="0" y="66" width="30" height="44"/><rect x="34" y="52" width="24" height="58"/><rect x="62" y="74" width="28" height="36"/><rect x="250" y="60" width="26" height="50"/><rect x="280" y="76" width="34" height="34"/><rect x="318" y="58" width="22" height="52"/><rect x="344" y="80" width="56" height="30"/><rect x="100" y="84" width="40" height="26"/><rect x="200" y="78" width="40" height="32"/></g>`,
+    a: `<rect y="56" width="400" height="44" fill="#cbd5e1"/><path d="M0 68h400M0 88h400" stroke="#64748b" stroke-width="3"/><path d="M10 64v28M30 64v28M50 64v28M70 64v28M90 64v28M110 64v28M130 64v28M270 64v28M290 64v28M310 64v28M330 64v28M350 64v28M370 64v28M390 64v28" stroke="#a16207" stroke-width="4" opacity=".6"/><path d="M140 40v20" stroke="#64748b" stroke-width="3"/><path d="M140 44l-36 0" stroke="#ef4444" stroke-width="5"/><path d="M128 44h-8M112 44h-8" stroke="#fff" stroke-width="5"/><circle cx="140" cy="36" r="5" fill="#ef4444"/>`,
+    ov: `<path d="M36 68h48M36 88h48" stroke="#64748b" stroke-width="3"/>`,
+    b: `<g fill="#93c5fd"><rect x="4" y="40" width="40" height="110" rx="3"/><rect x="300" y="30" width="38" height="120" rx="3"/></g><g fill="#5eead4"><rect x="48" y="66" width="36" height="84" rx="3"/><rect x="342" y="58" width="52" height="92" rx="3"/></g><rect x="88" y="90" width="44" height="60" rx="3" fill="#fdba74"/><rect x="262" y="80" width="34" height="70" rx="3" fill="#fca5a5"/><path d="M12 52h8m8 0h8M12 66h8m8 0h8M12 80h8m8 0h8M12 94h8m8 0h8M308 42h8m8 0h8M308 56h8m8 0h8M308 70h8m8 0h8M308 84h8m8 0h8M56 78h8m8 0h8M56 92h8m8 0h8M350 70h8m10 0h8M350 84h8m10 0h8M96 102h8m10 0h8M270 92h6m6 0h6" stroke="#fff" stroke-width="6" opacity=".8"/>`,
+    bits: [`<circle cx="15" cy="12" r="7" fill="#22c55e"/><circle cx="11" cy="14" r="4" fill="#16a34a"/>`, `<rect x="11" y="6" width="8" height="12" rx="3" fill="#ef4444"/><rect x="9" y="9" width="12" height="3" rx="1.5" fill="#dc2626"/>`, `<ellipse cx="15" cy="14" rx="8" ry="3.5" fill="#94a3b8"/><ellipse cx="15" cy="13" rx="6" ry="2" fill="#64748b"/>`] },
+  { sky: `${EM_CLOUD(100, 36, 1)}${EM_CLOUD(320, 50, .9)}<circle cx="230" cy="34" r="13" fill="#fef9c3"/><g fill="#fff"><circle cx="40" cy="80" r="2.5"/><circle cx="170" cy="60" r="2"/><circle cx="270" cy="84" r="2.5"/><circle cx="380" cy="30" r="2"/><circle cx="140" cy="20" r="2"/></g><path d="M0 110l60-46 40 26 50-40 60 50 50-34 60 30 40-20 40 34z" fill="#c4dbf3"/><path d="M150 50l-12 10 8 2 6-5 6 4 5-4zM260 76l-10 8 6 1 5-4 5 3z" fill="#fff"/>`,
+    a: `<path d="M0 50q50-14 100 0t100 0 100 0 100 0v54q-50 12-100 0t-100 0-100 0-100 0z" fill="#dbeefe"/><path d="M30 60l20 14 14-6M300 70l18 10 20-4M90 90l16-8" stroke="#fff" stroke-width="3" fill="none"/><g transform="translate(320 70)"><circle r="7" fill="#fff" stroke="#cbd5e1"/><circle cy="-10" r="5" fill="#fff" stroke="#cbd5e1"/></g>`,
+    ov: EM_BRIDGE('#b7794a', '#7c4a2a'),
+    b: `<path d="M-10 150L70 30l60 80 30-30 20 70zM240 150l50-90 30 40 40-70 50 120z" fill="#a5c8ea"/><path d="M70 30l-16 24 10 4 6-6 8 5 8-6zM360 40l-14 20 8 3 6-5 6 4 6-5z" fill="#fff"/><g transform="translate(140 96)"><path d="M0 0l-12 22h24z" fill="#2f9e72"/><path d="M0 12l-14 26h28z" fill="#279164"/></g><g transform="translate(270 100)"><path d="M0 0l-12 22h24z" fill="#2f9e72"/><path d="M0 12l-14 26h28z" fill="#279164"/></g>`,
+    bits: [`<path d="M15 4v14M8 7l14 8M22 7L8 15" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round"/>`, `<ellipse cx="15" cy="15" rx="8" ry="4" fill="#94a3b8"/><ellipse cx="15" cy="12" rx="7" ry="3" fill="#fff"/>`, `<path d="M15 4l-6 12h12z" fill="#2f9e72"/><path d="M15 4l-3 5h6z" fill="#fff"/>`] },
+  { sky: `<circle cx="200" cy="96" r="30" fill="#fdba74" opacity=".9"/><circle cx="200" cy="96" r="44" fill="#fdba74" opacity=".25"/>${EM_CLOUD(70, 40, 1)}${EM_CLOUD(330, 34, .9)}<ellipse cx="130" cy="60" rx="4" ry="2.5" fill="#f9a8d4"/><ellipse cx="270" cy="50" rx="4" ry="2.5" fill="#f472b6"/><ellipse cx="300" cy="80" rx="4" ry="2.5" fill="#fbcfe8"/><path d="M0 110q80-26 160-6t160-4 80-4v14H0z" fill="#f7c9dc"/>`,
+    a: `${EM_RIVER('#93d5f2', '#d6f1fc')}<path d="M60 74q10-6 18 0q-8 6-18 0zM78 74l5-3v6z" fill="#fb923c"/><path d="M310 84q10-6 18 0q-8 6-18 0zM328 84l5-3v6z" fill="#f8fafc" stroke="#fb923c"/><ellipse cx="350" cy="62" rx="10" ry="4" fill="#4ade80"/><circle cx="352" cy="60" r="3" fill="#f472b6"/>`,
+    ov: `<path d="M30 120Q60 30 90 120" stroke="#ef4444" stroke-width="8" fill="none"/><path d="M36 26v98M84 26v98" stroke="#ef4444" stroke-width="4"/><path d="M33 34h6M33 60h6M33 90h6M33 116h6M81 34h6M81 60h6M81 90h6M81 116h6" stroke="#b91c1c" stroke-width="5" stroke-linecap="round"/>`,
+    b: `<g transform="translate(60 30)"><rect x="-14" y="70" width="28" height="50" fill="#fecaca"/><path d="M-30 74h60l-10-14h-40zM-26 50h52l-10-14h-32zM-20 26h40l-10-14h-20z" fill="#b91c1c"/><rect x="-10" y="40" width="20" height="10" fill="#fecaca"/><rect x="-8" y="62" width="16" height="12" fill="#fecaca"/><path d="M0 12V0" stroke="#b91c1c" stroke-width="3"/></g><g transform="translate(340 40)"><path d="M-30 110V20M30 110V20" stroke="#ef4444" stroke-width="9"/><path d="M-46 14h92l-6 10h-80z" fill="#ef4444"/><rect x="-36" y="32" width="72" height="6" fill="#f87171"/></g><circle cx="130" cy="120" r="18" fill="#f9a8d4"/><circle cx="270" cy="124" r="16" fill="#fbcfe8"/>`,
+    bits: [`<ellipse cx="15" cy="12" rx="5" ry="3" fill="#f9a8d4" transform="rotate(30 15 12)"/>`, `<circle cx="15" cy="10" r="4" fill="#f472b6"/><circle cx="15" cy="10" r="1.6" fill="#fde047"/><path d="M15 14v6" stroke="#22c55e" stroke-width="1.5"/>`, `<path d="M8 20q-2-10 2-16M14 20q0-12 4-18M20 20q2-9 6-12" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round"/>`] },
+  { sky: `<circle cx="80" cy="40" r="16" fill="#fde047"/><circle cx="80" cy="40" r="25" fill="#fde047" opacity=".25"/>${EM_CLOUD(250, 40, 1)}${EM_CLOUD(360, 64, .7)}<path d="M120 20q140 30 280 0" stroke="#94a3b8" stroke-width="1.2" fill="none"/><path d="M150 26l6 10 6-8zM200 32l6 10 6-9zM250 34l6 10 6-10zM300 32l6 10 6-9zM350 26l6 10 6-8z" fill="#ef4444"/><path d="M175 30l6 10 6-9zM225 34l6 10 6-10zM275 34l6 10 6-10zM325 30l6 10 6-9z" fill="#2563eb"/><path d="M0 110q100-24 200-8t200-2v10H0z" fill="#cfe0f8"/>`,
+    a: `<rect y="40" width="400" height="76" rx="8" fill="#a7d99b"/><path d="M0 52h400M0 104h400" stroke="#fff" stroke-width="3" opacity=".8"/><g stroke="#94a3b8" stroke-width="2"><path d="M30 104V60M70 104V60M110 104V60M290 104V60M330 104V60M370 104V60"/></g><g><rect x="31" y="60" width="16" height="10" fill="#ef4444"/><rect x="71" y="60" width="16" height="10" fill="#1e3a8a"/><rect x="111" y="60" width="16" height="10" fill="#ef4444"/><rect x="291" y="60" width="16" height="10" fill="#1e3a8a"/><rect x="331" y="60" width="16" height="10" fill="#ef4444"/><rect x="371" y="60" width="16" height="10" fill="#1e3a8a"/></g>`,
+    ov: '',
+    b: `<g transform="translate(70 26)"><path d="M-60 40L0 6l60 34z" fill="#3b82f6"/><rect x="-56" y="40" width="112" height="8" fill="#dbeafe"/><path d="M-44 48v64M-22 48v64M0 48v64M22 48v64M44 48v64" stroke="#fff" stroke-width="8"/><rect x="-62" y="112" width="124" height="12" fill="#cbd5e1"/><circle cx="0" cy="26" r="6" fill="#fbbf24"/></g><g transform="translate(330 26)"><path d="M-60 40L0 6l60 34z" fill="#3b82f6"/><rect x="-56" y="40" width="112" height="8" fill="#dbeafe"/><path d="M-44 48v64M-22 48v64M0 48v64M22 48v64M44 48v64" stroke="#fff" stroke-width="8"/><rect x="-62" y="112" width="124" height="12" fill="#cbd5e1"/><circle cx="0" cy="26" r="6" fill="#fbbf24"/></g>`,
+    bits: [`<path d="M8 20q-2-10 2-16M14 20q0-12 4-18M20 20q2-9 6-12" stroke="#4caf50" stroke-width="2" fill="none" stroke-linecap="round"/>`, `<path d="M15 3l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L6 10l6-1z" fill="#fbbf24"/>`, `<ellipse cx="15" cy="15" rx="7" ry="4" fill="#cbd5e1"/>`] }
+];
+// ไอคอนบนปกหนังสือ: วนตามหมวด ไม่ให้ซ้ำกันทุกเล่ม
+const EM_ICONS = { sprout: ['sprout', 'pencil', 'lightbulb', 'book-a', 'star', 'sparkles'], home: ['house', 'coffee', 'utensils', 'bus', 'heart', 'phone'],
+  shield: ['shield', 'siren', 'badge-check', 'fingerprint', 'gavel', 'car', 'search'], 'message-circle': ['message-circle', 'smile', 'handshake', 'quote', 'megaphone'],
+  'spell-check': ['spell-check', 'puzzle', 'layers', 'type', 'whole-word', 'brain'], 'messages-square': ['messages-square', 'users', 'phone', 'handshake', 'coffee'],
+  'book-open-text': ['book-open-text', 'newspaper', 'scroll', 'glasses', 'library'] };
+
 // ---------- แผนที่บทเรียนแบบมีฉาก: แท็บ Lv.0–6, ถนนคดเคี้ยว, บทเป็นหนังสือ, ของประดับตามธีม (SVG นิ่ง ไม่วนอนิเมชัน) ----------
-const EM_H = 132; // ความสูงต่อแถว (ต้องตรงกับ .em-row)
+const EM_H = 132, EM_BH = 150; // ความสูงแถวบท / แถบฉาก (ต้องตรงกับ .em-row / .em-band)
 const EM_SH = '<ellipse cx="50" cy="77" rx="30" ry="3.5" fill="#0f172a" opacity=".07"/>';
 const EM_THEMES = [
   { n: 'ทุ่งหญ้า', bg: '#d9f0cf', bl: '#c8e8bb', road: '#ade09f', edge: '#90cc82', dash: '#f4fbef', tx: '#2f7a3a', props: {
@@ -54,44 +102,57 @@ const EM_THEMES = [
 ];
 
 function renderEngPath(L){
-  const E = engState(), { units, F } = engLevel(L), col = ENG_LV_C[L], T = EM_THEMES[L] || EM_THEMES[0], P = Object.keys(T.props);
+  const E = engState(), { units, F } = engLevel(L), col = ENG_LV_C[L], T = EM_THEMES[L] || EM_THEMES[0], S = EM_SCENES[L] || EM_SCENES[0], P = Object.keys(T.props);
   const cur = F.findIndex((x, k) => engOpen(F, k) && !E.done[x.key]), d = F.filter(x => E.done[x.key]).length, due = engDue().length, N = F.length;
   const tabs = Array.from({ length: ENG_LV_N }, (_, l) => { const open = engLvOpen(l), t = EM_THEMES[l] || T;
     return `<button class="em-tab ${l === L ? 'on' : ''} ${open ? '' : 'lock'}" data-emlv="${l}" style="--tb:${t.bg};--tt:${t.tx}"><b>${open ? '' : '<i data-lucide="lock"></i>'}Lv.${l}</b><small>${engLevel(l).F.length} บท</small></button>`; }).join('');
-  // ถนน: เส้นโค้งผ่านกลางหนังสือทุกเล่ม (สลับซ้าย 27% / ขวา 73%)
-  const X = k => k % 2 ? 73 : 27, Y = k => k * EM_H + EM_H / 2;
-  let road = `M${X(0)} ${Y(0)}`;
-  for(let k = 1; k < N; k++) road += `C${X(k - 1)} ${Y(k - 1) + EM_H / 2} ${X(k)} ${Y(k) - EM_H / 2} ${X(k)} ${Y(k)}`;
-  road += `C${X(N - 1)} ${Y(N - 1) + EM_H / 2} 50 ${N * EM_H} 50 ${N * EM_H + 40}`;
-  const svgRoad = `<svg class="em-road" viewBox="0 0 100 ${N * EM_H + 40}" preserveAspectRatio="none" style="height:${N * EM_H + 40}px">
+  const rnd = n => { const x = Math.sin(n * 12.9898 + L * 78.233) * 43758.5453; return x - Math.floor(x); }; // สุ่มแบบคงที่ (เปิดใหม่ได้ภาพเดิม)
+  // ลำดับแถว: หนังสือทุกบท + แถบฉากคั่นทุก 8 บท (สลับแบบ a/b)
+  const seq = []; let y = 0, nb = 0;
+  for(let k = 0; k < N; k++){ seq.push({ k, y, h: EM_H, x: k % 2 ? 73 : 27 }); y += EM_H; if((k + 1) % 8 === 0 && k < N - 1){ seq.push({ band: nb++ % 2 ? 'b' : 'a', y, h: EM_BH, x: 50 }); y += EM_BH; } }
+  const cy = s => s.y + s.h / 2;
+  let road = `M${seq[0].x} ${cy(seq[0])}`;
+  for(let k = 1; k < seq.length; k++){ const a = seq[k - 1], b = seq[k], m = (cy(b) - cy(a)) / 2; road += `C${a.x} ${cy(a) + m} ${b.x} ${cy(b) - m} ${b.x} ${cy(b)}`; }
+  const last = seq[seq.length - 1]; road += `C${last.x} ${cy(last) + 50} 50 ${y} 50 ${y + 40}`;
+  const svgRoad = `<svg class="em-road" viewBox="0 0 100 ${y + 40}" preserveAspectRatio="none" style="height:${y + 40}px">
     <path d="${road}" stroke="${T.edge}" stroke-width="46" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
     <path d="${road}" stroke="${T.road}" stroke-width="38" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
     <path d="${road}" stroke="${T.dash}" stroke-width="3" fill="none" stroke-dasharray="10 12" vector-effect="non-scaling-stroke"/></svg>`;
-  let i = 0, rows = '';
-  units.forEach(x => {
-    const C = COURSES[x.c], u = x.u;
-    u.ls.forEach((_, li) => {
-      const y = F[i], st = E.done[y.key] || 0, open = engOpen(F, i), now = i === cur, side = i % 2 ? 'r' : 'l';
-      const deco = li === 0
-        ? `<div class="em-sign" style="--c:${C.color}"><i data-lucide="${C.ic}"></i><span><small>${ENG_CAT[x.c]}</small><b>${esc(u.t)}</b></span></div>`
-        : `<svg class="em-prop" viewBox="0 0 100 80" style="--j:${(i * 37) % 9}%;--s:${[1, .86, 1.12][i % 3]}"><use href="#emp-${P[(i * 3 + 1) % P.length]}"/></svg>`;
-      rows += `<div class="em-row ${side}">${deco}
-        <button class="em-book ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--cc:${C.color}">
-          ${now ? '<span class="em-bub">เริ่ม</span>' : ''}<small>${ENG_CAT[x.c]}</small><i data-lucide="${C.ic}"></i><em>บท ${i + 1}</em>
-          ${st ? '<span class="em-badge ok"><i data-lucide="check"></i></span>' : open ? '' : '<span class="em-badge"><i data-lucide="lock"></i></span>'}
-          ${st ? `<span class="em-stars">${'★'.repeat(st)}<u>${'★'.repeat(3 - st)}</u></span>` : ''}</button></div>`;
-      i++;
-    });
+  const unitOf = []; units.forEach(x => x.u.ls.forEach((_, li) => unitOf.push({ C: COURSES[x.c], c: x.c, u: x.u, li })));
+  let under = '', rows = '', prev = -1;
+  seq.forEach(s => {
+    if(s.band){
+      under += `<svg class="em-bandbg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" style="top:${s.y}px"><use href="#emb-${s.band}"/></svg>`;
+      rows += `<div class="em-band">${s.band === 'a' && S.ov ? '<svg class="em-ov" viewBox="0 0 120 150"><use href="#emb-ov"/></svg>' : ''}</div>`;
+      return;
+    }
+    const i = s.k, { C, c, u, li } = unitOf[i], y0 = F[i], st = E.done[y0.key] || 0, open = engOpen(F, i), now = i === cur, side = i % 2 ? 'r' : 'l';
+    let pi = Math.floor(rnd(i) * P.length); if(pi === prev) pi = (pi + 1) % P.length; prev = pi;
+    const deco = li === 0
+      ? `<div class="em-sign" style="--c:${C.color}"><i data-lucide="${C.ic}"></i><span><small>${ENG_CAT[c]}</small><b>${esc(u.t)}</b></span></div>`
+      : `<svg class="em-prop" viewBox="0 0 100 80" style="--j:${Math.floor(rnd(i + 7) * 12)}%;--s:${(0.8 + rnd(i + 3) * 0.4).toFixed(2)};--f:${rnd(i + 5) < .5 ? -1 : 1}"><use href="#emp-${P[pi]}"/></svg>`;
+    // ของเล็กโปรย 2 ชิ้นต่อแถว ตำแหน่งสุ่มคงที่ (เลี่ยงกลางถนน)
+    const bits = [0, 1].map(n => { const r = rnd(i * 3 + n), xx = side === 'l' ? (n ? 6 + r * 14 : 48 + r * 10) : (n ? 80 + r * 14 : 38 + r * 10);
+      return `<svg class="em-bit" viewBox="0 0 30 20" style="left:${xx.toFixed(1)}%;top:${Math.floor(8 + rnd(i * 5 + n) * 96)}px"><use href="#emt-${Math.floor(rnd(i * 7 + n) * 3)}"/></svg>`; }).join('');
+    const ics = EM_ICONS[C.ic] || [C.ic];
+    rows += `<div class="em-row ${side}">${bits}${deco}
+      <button class="em-book pt${i % 4} ${i % 5 === 2 ? 'rib' : ''} ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--cc:${C.color};--rt:${[-2, 1.5, 0, -1, 2][i % 5]}deg">
+        ${now ? '<span class="em-bub">เริ่ม</span>' : ''}<small>${ENG_CAT[c]}</small><i data-lucide="${ics[li % ics.length]}"></i><em>บท ${i + 1}</em>
+        ${st ? '<span class="em-badge ok"><i data-lucide="check"></i></span>' : open ? '' : '<span class="em-badge"><i data-lucide="lock"></i></span>'}
+        ${st ? `<span class="em-stars">${'★'.repeat(st)}<u>${'★'.repeat(3 - st)}</u></span>` : ''}</button></div>`;
   });
   const ready = d === N, pass = E.lvPass[L];
+  const defs = P.map(k => `<symbol id="emp-${k}" viewBox="0 0 100 80">${T.props[k]}</symbol>`).join('') + S.bits.map((b, k) => `<symbol id="emt-${k}" viewBox="0 0 30 20">${b}</symbol>`).join('')
+    + `<symbol id="emb-a" viewBox="0 0 400 150">${S.a}</symbol><symbol id="emb-b" viewBox="0 0 400 150">${S.b}</symbol><symbol id="emb-ov" viewBox="0 0 120 150">${S.ov}</symbol>`;
   $('#view').innerHTML = `<div class="eng-lvhead" style="--c:${col}">
     <button class="ib" id="engBack"><i data-lucide="arrow-left"></i></button>
     <div><small>Lv.${L} · ${T.n}</small><b>${ENG_LEVELS[L]}</b></div><span class="eng-uprog">${d}/${N}</span></div>
     ${due >= 4 ? `<button class="eng-review" id="engRev"><i data-lucide="refresh-cw"></i><span><b>บททวนอัตโนมัติ</b><small>${due} คำใกล้ลืม</small></span><i data-lucide="chevron-right"></i></button>` : ''}
     <div class="em-tabs">${tabs}</div>
     <div class="em-map" style="--bg:${T.bg};--bl:${T.bl};--tx:${T.tx}">
-      <svg width="0" height="0" style="position:absolute"><defs>${P.map(k => `<symbol id="emp-${k}" viewBox="0 0 100 80">${T.props[k]}</symbol>`).join('')}</defs></svg>
-      ${svgRoad}<div class="em-rows">${rows}</div>
+      <svg width="0" height="0" style="position:absolute"><defs>${defs}</defs></svg>
+      <svg class="em-sky" viewBox="0 0 400 110" preserveAspectRatio="xMidYMax slice">${S.sky}</svg>
+      <div class="em-track"><div class="em-under">${under}</div>${svgRoad}<div class="em-rows">${rows}</div></div>
       <div class="eng-exam em-exam ${ready || pass ? '' : 'lock'} ${pass ? 'pass' : ''}" style="--c:${col}">
         <i data-lucide="${pass ? 'award' : 'trophy'}"></i><b>${pass ? `ผ่าน Lv.${L} แล้ว` : `สอบวัดผล Lv.${L}`}</b>
         <small>${pass ? `ผ่านเมื่อ ${pass}` : ready ? '30 ข้อ จับเวลา · ต้องได้ 80%' : `เรียนให้ครบ ${N} บทก่อน`}</small>
