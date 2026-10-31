@@ -7251,6 +7251,277 @@ budge | ขยับ | The door won't budge. | ประตูไม่ขยั
 weave | ทอ/สาน | She weaves silk. | เธอทอผ้าไหม
 `);
 
+U('daily', 1, 'คุณศัพท์พื้นฐานที่ใช้บ่อย', `
+clever | ฉลาด | She is very clever. | เธอฉลาดมาก
+friendly | เป็นมิตร | The people here are friendly. | คนที่นี่เป็นมิตร
+handsome | หล่อ | He is tall and handsome. | เขาสูงและหล่อ
+ugly | น่าเกลียด | It's an ugly building. | เป็นตึกที่น่าเกลียด
+tiny | เล็กมาก | The kitten is tiny. | ลูกแมวตัวเล็กมาก
+noisy | เสียงดัง | The street is noisy. | ถนนเสียงดัง
+---
+silly | โง่/ไร้สาระ | Don't be silly. | อย่าทำตัวไร้สาระ
+lucky | โชคดี | You are so lucky! | คุณโชคดีมาก!
+tasty | อร่อย | This soup is tasty. | ซุปนี้อร่อย
+yummy | อร่อย (ภาษาเด็ก) | Yummy cake! | เค้กอร่อย!
+strange | แปลก | I heard a strange noise. | ฉันได้ยินเสียงแปลกๆ
+scary | น่ากลัว | That movie was scary. | หนังเรื่องนั้นน่ากลัว
+`);
+U('daily', 1, 'คุณศัพท์บรรยายสิ่งของ', `
+shiny | เป็นเงา | He has a shiny new car. | เขามีรถใหม่เงาวับ
+sticky | เหนียว | My hands are sticky. | มือฉันเหนียว
+fluffy | ฟู/นุ่ม | The cat is fluffy. | แมวขนฟู
+dusty | เต็มไปด้วยฝุ่น | The room is dusty. | ห้องฝุ่นเยอะ
+muddy | เปื้อนโคลน | My shoes are muddy. | รองเท้าฉันเปื้อนโคลน
+smelly | เหม็น | The trash is smelly. | ขยะเหม็น
+---
+juicy | ฉ่ำ | The mango is juicy. | มะม่วงฉ่ำ
+crunchy | กรอบ | I like crunchy chips. | ฉันชอบมันฝรั่งกรอบ
+slippery | ลื่น | The floor is slippery. | พื้นลื่น
+steep | ชัน | The hill is steep. | เนินชัน
+icy | เย็นจัด/เป็นน้ำแข็ง | The road is icy. | ถนนเป็นน้ำแข็ง
+stormy | มีพายุ | It's a stormy night. | เป็นคืนที่มีพายุ
+`);
+U('daily', 2, 'คุณศัพท์บุคลิกภาพเชิงบวก', `
+charming | มีเสน่ห์ | He is a charming man. | เขาเป็นผู้ชายที่มีเสน่ห์
+talented | มีพรสวรรค์ | She is a talented singer. | เธอเป็นนักร้องที่มีพรสวรรค์
+intelligent | ฉลาด | Dolphins are intelligent. | โลมาฉลาด
+energetic | กระฉับกระเฉง | Kids are energetic. | เด็กๆ กระฉับกระเฉง
+playful | ขี้เล่น | The puppy is playful. | ลูกหมาขี้เล่น
+thoughtful | ใส่ใจผู้อื่น | That's very thoughtful of you. | คุณช่างใส่ใจ
+---
+wise | ฉลาดรอบรู้ | My grandfather is wise. | ปู่ของฉันฉลาดรอบรู้
+witty | มีไหวพริบ/คมคาย | She gave a witty answer. | เธอตอบอย่างมีไหวพริบ
+punctual | ตรงต่อเวลา | Police must be punctual. | ตำรวจต้องตรงต่อเวลา
+faithful | ซื่อสัตย์/ภักดี | He is a faithful husband. | เขาเป็นสามีที่ซื่อสัตย์
+thankful | รู้สึกขอบคุณ | I'm thankful for your help. | ฉันขอบคุณสำหรับความช่วยเหลือ
+trustworthy | น่าไว้วางใจ | He is trustworthy. | เขาน่าไว้วางใจ
+`);
+U('daily', 2, 'คุณศัพท์บุคลิกภาพเชิงลบ', `
+grumpy | ขี้หงุดหงิด | He is grumpy in the morning. | เขาขี้หงุดหงิดตอนเช้า
+naughty | ซน | The boy is naughty. | เด็กชายซน
+foolish | โง่เขลา | That was a foolish mistake. | นั่นเป็นความผิดพลาดที่โง่เขลา
+forgetful | ขี้ลืม | My grandma is forgetful. | ยายฉันขี้ลืม
+sneaky | ลับๆ ล่อๆ | That was a sneaky trick. | นั่นเป็นกลอุบายที่แยบยล
+stingy | ขี้เหนียว | Don't be stingy. | อย่าขี้เหนียว
+---
+nasty | น่ารังเกียจ/ร้ายกาจ | He said nasty things. | เขาพูดจาร้ายกาจ
+vain | หลงตัวเอง/ไร้ผล | He is vain about his looks. | เขาหลงรูปตัวเอง
+timid | ขี้อาย/ขี้กลัว | The timid boy hid. | เด็กขี้อายแอบซ่อน
+gullible | หลงเชื่อง่าย | Don't be so gullible. | อย่าหลงเชื่อง่ายนัก
+restless | กระสับกระส่าย | I feel restless. | ฉันรู้สึกกระวนกระวาย
+cranky | อารมณ์ไม่ดี | The baby is cranky. | ทารกงอแง
+`);
+U('daily', 2, 'คุณศัพท์ความรู้สึก', `
+joyful | สนุกสนาน/เปี่ยมสุข | It was a joyful day. | เป็นวันที่มีความสุข
+overjoyed | ดีใจมาก | She was overjoyed. | เธอดีใจมาก
+puzzled | งุนงง | He looked puzzled. | เขาดูงุนงง
+miserable | ทุกข์ใจ | I feel miserable. | ฉันรู้สึกเป็นทุกข์
+gloomy | หม่นหมอง | It's a gloomy day. | เป็นวันที่หม่นหมอง
+uneasy | ไม่สบายใจ | I felt uneasy. | ฉันรู้สึกไม่สบายใจ
+---
+helpless | ช่วยตัวเองไม่ได้ | The victim felt helpless. | ผู้เสียหายรู้สึกสิ้นหวัง
+hopeless | สิ้นหวัง | The situation is hopeless. | สถานการณ์สิ้นหวัง
+desperate | สิ้นหวัง/ร้อนรน | He was desperate for money. | เขาร้อนเงินมาก
+envious | อิจฉา | She was envious of her sister. | เธออิจฉาพี่สาว
+drowsy | ง่วงซึม | This medicine makes you drowsy. | ยานี้ทำให้ง่วง
+numb | ชา | My fingers are numb. | นิ้วฉันชา
+`);
+U('daily', 2, 'คุณศัพท์รูปร่างหน้าตา', `
+chubby | จ้ำม่ำ | The baby is chubby. | ทารกจ้ำม่ำ
+plump | อวบ | She is a bit plump. | เธออวบนิดหน่อย
+skinny | ผอมมาก | He is very skinny. | เขาผอมมาก
+slender | เพรียว | She has slender legs. | เธอมีขาเรียว
+gorgeous | สวยมาก | You look gorgeous. | คุณดูสวยมาก
+pale | ซีด | You look pale. | คุณดูหน้าซีด
+---
+scrawny | ผอมแห้ง | A scrawny dog followed us. | สุนัขผอมแห้งเดินตามเรา
+hideous | น่าเกลียดมาก | It was a hideous mask. | เป็นหน้ากากที่น่าเกลียดมาก
+elegant | สง่างาม | She wore an elegant dress. | เธอสวมชุดสง่างาม
+graceful | อ่อนช้อย | She is a graceful dancer. | เธอเป็นนักเต้นที่อ่อนช้อย
+crooked | คดงอ | He has crooked teeth. | เขาฟันเก
+shabby | เก่าโทรม | He wore shabby clothes. | เขาใส่เสื้อผ้าเก่าโทรม
+`);
+U('daily', 3, 'คุณศัพท์ยอดเยี่ยมและน่าทึ่ง', `
+incredible | เหลือเชื่อ | The view is incredible. | วิวเหลือเชื่อ
+remarkable | โดดเด่น/น่าทึ่ง | She made remarkable progress. | เธอพัฒนาอย่างน่าทึ่ง
+outstanding | ยอดเยี่ยม | He is an outstanding officer. | เขาเป็นเจ้าหน้าที่ดีเด่น
+magnificent | งดงามยิ่งใหญ่ | The palace is magnificent. | พระราชวังงดงามยิ่งใหญ่
+splendid | งดงาม/ยอดเยี่ยม | What a splendid idea! | ช่างเป็นความคิดที่ยอดเยี่ยม!
+superb | ดีเลิศ | The food was superb. | อาหารดีเลิศ
+---
+terrific | ยอดเยี่ยม | You did a terrific job. | คุณทำได้ยอดเยี่ยม
+wonderful | วิเศษ | We had a wonderful time. | เรามีช่วงเวลาที่วิเศษ
+marvelous | น่าอัศจรรย์ | It was a marvelous show. | เป็นการแสดงที่น่าอัศจรรย์
+stunning | สวยตะลึง | The sunset was stunning. | พระอาทิตย์ตกสวยตะลึง
+breathtaking | สวยจนลืมหายใจ | The scenery is breathtaking. | ทิวทัศน์สวยจนลืมหายใจ
+impressive | น่าประทับใจ | Your English is impressive. | ภาษาอังกฤษของคุณน่าประทับใจ
+`);
+U('daily', 3, 'คุณศัพท์ขนาดและพลัง', `
+gigantic | มหึมา | It was a gigantic wave. | เป็นคลื่นมหึมา
+immense | มหาศาล | The project was immense. | โครงการใหญ่โตมหาศาล
+massive | ใหญ่มาก | There was a massive fire. | เกิดไฟไหม้ใหญ่
+vast | กว้างใหญ่ | The ocean is vast. | มหาสมุทรกว้างใหญ่
+tremendous | มหาศาล | It made a tremendous noise. | มันส่งเสียงดังมาก
+mighty | ทรงพลัง | The mighty river flows fast. | แม่น้ำอันทรงพลังไหลเชี่ยว
+---
+sturdy | แข็งแรงทนทาน | It's a sturdy table. | เป็นโต๊ะที่แข็งแรง
+robust | แข็งแกร่ง | We need a robust system. | เราต้องการระบบที่แข็งแกร่ง
+fragile | เปราะบาง | Handle with care, it's fragile. | ระวัง ของแตกง่าย
+feeble | อ่อนแอ | He gave a feeble excuse. | เขาให้ข้ออ้างที่ฟังไม่ขึ้น
+bulky | เทอะทะ | The box is bulky. | กล่องเทอะทะ
+dense | หนาแน่น/ทึบ | The forest is dense. | ป่าทึบ
+`);
+U('daily', 3, 'คุณศัพท์บรรยายสถานที่และบรรยากาศ', `
+cozy | อบอุ่นน่าอยู่ | The café is cozy. | คาเฟ่อบอุ่นน่านั่ง
+picturesque | งดงามราวภาพวาด | It's a picturesque village. | เป็นหมู่บ้านที่งดงามราวภาพวาด
+tranquil | เงียบสงบ | It's a tranquil lake. | เป็นทะเลสาบที่เงียบสงบ
+serene | สงบเยือกเย็น | She has a serene face. | เธอมีใบหน้าสงบเยือกเย็น
+lively | มีชีวิตชีวา | The market is lively. | ตลาดคึกคัก
+vibrant | มีชีวิตชีวา/สีสด | Bangkok is a vibrant city. | กรุงเทพฯ เป็นเมืองที่มีชีวิตชีวา
+---
+exotic | แปลกตา/ต่างถิ่น | We ate exotic fruit. | เรากินผลไม้แปลกตา
+secluded | สันโดษ/ห่างไกลผู้คน | We found a secluded beach. | เราเจอชายหาดที่เงียบสงบห่างผู้คน
+barren | แห้งแล้ง | The land is barren. | ดินแดนแห้งแล้ง
+bleak | หดหู่/มืดมน | The future looks bleak. | อนาคตดูมืดมน
+hazy | มีหมอกควัน/เลือนราง | The sky is hazy. | ท้องฟ้ามีหมอกควัน
+spotless | สะอาดเอี่ยม | The kitchen is spotless. | ครัวสะอาดเอี่ยม
+`);
+U('daily', 3, 'คุณศัพท์ความแปลกและไร้สาระ', `
+odd | แปลก | That's odd. | แปลกจัง
+peculiar | ประหลาด | There's a peculiar smell. | มีกลิ่นประหลาด
+bizarre | พิสดาร | It was a bizarre story. | เป็นเรื่องพิสดาร
+absurd | ไร้สาระ/ไม่สมเหตุสมผล | That's absurd! | ไร้สาระสิ้นดี!
+quirky | แปลกแหวกแนว | She has a quirky style. | เธอมีสไตล์แหวกแนว
+mysterious | ลึกลับ | A mysterious man called. | ชายลึกลับโทรมา
+---
+unusual | ผิดปกติ/ไม่ธรรมดา | It's unusual for him to be late. | ผิดปกติที่เขามาสาย
+unique | เป็นหนึ่งเดียว | Everyone is unique. | ทุกคนมีเอกลักษณ์
+trivial | เล็กน้อย/ไม่สำคัญ | It's a trivial problem. | เป็นปัญหาเล็กน้อย
+useless | ไร้ประโยชน์ | This old phone is useless. | โทรศัพท์เก่านี้ไร้ประโยชน์
+worthless | ไร้ค่า | The fake ring is worthless. | แหวนปลอมไม่มีค่า
+tedious | น่าเบื่อหน่าย | Paperwork is tedious. | งานเอกสารน่าเบื่อ
+`);
+U('daily', 3, 'คุณศัพท์อันตรายและความโหดร้าย', `
+lethal | ถึงตาย | It's a lethal weapon. | เป็นอาวุธร้ายแรงถึงชีวิต
+vicious | ดุร้าย/โหดเหี้ยม | It was a vicious attack. | เป็นการโจมตีที่โหดเหี้ยม
+ruthless | ไร้ความปรานี | He is a ruthless criminal. | เขาเป็นอาชญากรที่ไร้ความปรานี
+savage | ป่าเถื่อน | It was a savage crime. | เป็นอาชญากรรมที่ป่าเถื่อน
+wicked | ชั่วร้าย | The wicked witch laughed. | แม่มดชั่วร้ายหัวเราะ
+cunning | เจ้าเล่ห์ | The fox is cunning. | สุนัขจิ้งจอกเจ้าเล่ห์
+---
+menacing | น่ากลัว/คุกคาม | He gave me a menacing look. | เขามองฉันอย่างคุกคาม
+outrageous | อุกอาจ/เกินไป | The price is outrageous. | ราคาสูงเกินไปมาก
+disgusting | น่าขยะแขยง | The smell is disgusting. | กลิ่นน่าขยะแขยง
+filthy | สกปรกมาก | The toilet was filthy. | ห้องน้ำสกปรกมาก
+rotten | เน่า | The eggs are rotten. | ไข่เน่า
+grim | น่าสยดสยอง/เคร่งเครียด | The news is grim. | ข่าวน่าหดหู่
+`);
+U('daily', 4, 'คุณศัพท์ความระมัดระวังและความกล้า', `
+cautious | ระมัดระวัง | Be cautious at night. | ระมัดระวังในตอนกลางคืน
+wary | ระแวง | Be wary of strangers. | ระวังคนแปลกหน้า
+vigilant | ตื่นตัว/เฝ้าระวัง | Officers must be vigilant. | เจ้าหน้าที่ต้องตื่นตัว
+prudent | รอบคอบ | It's prudent to save money. | การออมเงินเป็นเรื่องรอบคอบ
+fearless | ไม่เกรงกลัว | She is a fearless reporter. | เธอเป็นนักข่าวที่ไม่กลัวอะไร
+daring | กล้าบ้าบิ่น | It was a daring rescue. | เป็นการช่วยเหลือที่กล้าหาญ
+---
+valiant | กล้าหาญ | He made a valiant effort. | เขาพยายามอย่างกล้าหาญ
+adventurous | ชอบผจญภัย | She is adventurous. | เธอชอบผจญภัย
+hasty | รีบร้อน | Don't make a hasty decision. | อย่าตัดสินใจรีบร้อน
+frantic | ร้อนรน/วุ่นวาย | She made a frantic call. | เธอโทรมาอย่างร้อนรน
+hysterical | ตื่นตระหนกสุดขีด | The woman was hysterical. | ผู้หญิงคนนั้นตื่นตระหนกสุดขีด
+defiant | ท้าทาย/ขัดขืน | He was defiant in court. | เขาแสดงท่าทีท้าทายในศาล
+`);
+U('daily', 4, 'คุณศัพท์คุณค่าและความหรูหรา', `
+precious | ล้ำค่า | Time is precious. | เวลามีค่า
+valuable | มีค่า | Keep your valuables safe. | เก็บของมีค่าให้ปลอดภัย
+luxurious | หรูหรา | It's a luxurious hotel. | เป็นโรงแรมหรูหรา
+lavish | ฟุ่มเฟือย/อลังการ | They had a lavish wedding. | พวกเขาจัดงานแต่งอลังการ
+wealthy | ร่ำรวย | He is a wealthy businessman. | เขาเป็นนักธุรกิจที่ร่ำรวย
+affordable | ราคาไม่แพง | The rent is affordable. | ค่าเช่าราคาไม่แพง
+---
+frugal | ประหยัด/มัธยัสถ์ | She lives a frugal life. | เธอใช้ชีวิตอย่างประหยัด
+thrifty | ประหยัด | My mom is thrifty. | แม่ฉันประหยัด
+scarce | ขาดแคลน | Water is scarce in summer. | น้ำขาดแคลนในหน้าร้อน
+ample | เพียงพอ/มากมาย | There is ample parking. | มีที่จอดรถเพียงพอ
+authentic | แท้ | This is authentic Thai food. | นี่คืออาหารไทยแท้
+exquisite | ประณีตงดงาม | The silk is exquisite. | ผ้าไหมประณีตงดงาม
+`);
+U('daily', 4, 'คุณศัพท์ความรู้สึกและท่าที', `
+affectionate | รักใคร่/แสดงความรัก | The cat is affectionate. | แมวขี้อ้อน
+tender | อ่อนโยน/นุ่ม | The meat is tender. | เนื้อนุ่ม
+intimate | ใกล้ชิดสนิทสนม | They are intimate friends. | พวกเขาเป็นเพื่อนสนิท
+devoted | ทุ่มเท/ซื่อสัตย์ | She is a devoted mother. | เธอเป็นแม่ที่ทุ่มเท
+earnest | จริงจัง/จริงใจ | He made an earnest request. | เขาขอร้องอย่างจริงจัง
+candid | ตรงไปตรงมา | She gave a candid answer. | เธอตอบอย่างตรงไปตรงมา
+---
+solemn | เคร่งขรึม | It was a solemn ceremony. | เป็นพิธีที่เคร่งขรึม
+sullen | บึ้งตึง | He was sullen all day. | เขาหน้าบึ้งทั้งวัน
+weary | เหนื่อยล้า | She looked weary. | เธอดูเหนื่อยล้า
+troubled | มีปัญหา/กังวลใจ | He has a troubled past. | เขามีอดีตที่มีปัญหา
+spiteful | มุ่งร้าย | It was a spiteful comment. | เป็นความเห็นที่มุ่งร้าย
+petty | เล็กน้อย/ใจแคบ | Don't be petty. | อย่าใจแคบ
+`);
+U('daily', 4, 'คุณศัพท์การกระทำและความเร็ว', `
+swift | รวดเร็ว | Police took swift action. | ตำรวจดำเนินการอย่างรวดเร็ว
+brisk | กระฉับกระเฉง/สดชื่น | We took a brisk walk. | เราเดินเร็วๆ
+agile | คล่องแคล่ว | Cats are agile. | แมวคล่องแคล่ว
+abrupt | กะทันหัน/ห้วน | The bus made an abrupt stop. | รถเมล์เบรกกะทันหัน
+idle | ว่าง/เกียจคร้าน | Don't leave the engine idle. | อย่าติดเครื่องทิ้งไว้
+persistent | ไม่ลดละ/เรื้อรัง | He has a persistent cough. | เขาไอเรื้อรัง
+---
+vigorous | แข็งขัน/กระฉับกระเฉง | Do vigorous exercise. | ออกกำลังกายหนักๆ
+intense | เข้มข้น/รุนแรง | The heat was intense. | ความร้อนรุนแรง
+rigid | แข็งทื่อ/เคร่งครัด | The rules are too rigid. | กฎเคร่งครัดเกินไป
+flawless | ไร้ที่ติ | Her English is flawless. | ภาษาอังกฤษของเธอไร้ที่ติ
+vivid | ชัดเจน/สดใส | I have a vivid memory of it. | ฉันจำได้อย่างชัดเจน
+subtle | แนบเนียน/ละเอียดอ่อน | There is a subtle difference. | มีความต่างเล็กน้อย
+`);
+U('daily', 5, 'คุณศัพท์ขั้นสูง: นิสัยและสถานะ', `
+naive | ไร้เดียงสา | Don't be naive. | อย่าไร้เดียงสานัก
+ignorant | ไม่รู้/โง่เขลา | He is ignorant of the law. | เขาไม่รู้กฎหมาย
+shrewd | หลักแหลม | She is a shrewd businesswoman. | เธอเป็นนักธุรกิจที่หลักแหลม
+pompous | วางท่า/โอ้อวด | He is a pompous man. | เขาเป็นคนวางท่า
+obnoxious | น่ารังเกียจ | His behavior was obnoxious. | พฤติกรรมเขาน่ารังเกียจ
+vulgar | หยาบคาย | Don't use vulgar language. | อย่าใช้ภาษาหยาบคาย
+---
+noble | สูงส่ง/มีเกียรติ | It's a noble cause. | เป็นจุดมุ่งหมายอันสูงส่ง
+honorable | มีเกียรติ | He is an honorable man. | เขาเป็นคนมีเกียรติ
+merciful | เมตตา | Be merciful. | จงมีเมตตา
+obedient | เชื่อฟัง | The dog is obedient. | สุนัขเชื่อฟัง
+meek | อ่อนน้อม/ว่านอนสอนง่าย | She is meek and quiet. | เธออ่อนน้อมและเงียบ
+zealous | กระตือรือร้นมาก | He is a zealous supporter. | เขาเป็นผู้สนับสนุนที่แรงกล้า
+`);
+U('daily', 5, 'คุณศัพท์ขั้นสูง: คุณภาพ', `
+superior | เหนือกว่า/ผู้บังคับบัญชา | Report to your superior. | รายงานผู้บังคับบัญชา
+dependable | พึ่งพาได้ | He is a dependable officer. | เขาเป็นเจ้าหน้าที่ที่พึ่งพาได้
+gifted | มีพรสวรรค์ | She is a gifted child. | เธอเป็นเด็กมีพรสวรรค์
+inventive | ช่างคิดค้น | He is very inventive. | เขาช่างคิดค้นมาก
+keen | กระตือรือร้น/แหลมคม | She is keen to learn. | เธอกระตือรือร้นที่จะเรียน
+glorious | รุ่งโรจน์/งดงาม | It was a glorious day. | เป็นวันที่งดงาม
+---
+majestic | สง่างามยิ่งใหญ่ | The mountains are majestic. | ภูเขาสง่างามยิ่งใหญ่
+radiant | เปล่งปลั่ง | She looked radiant. | เธอดูเปล่งปลั่ง
+mellow | นุ่มนวล/ผ่อนคลาย | The music is mellow. | ดนตรีนุ่มนวล
+quaint | น่ารักแบบเก่าๆ | It's a quaint little town. | เป็นเมืองเล็กๆ น่ารักแบบโบราณ
+harmless | ไม่มีอันตราย | The snake is harmless. | งูไม่มีพิษ
+tame | เชื่อง | The bird is tame. | นกเชื่อง
+`);
+U('daily', 5, 'คุณศัพท์ขั้นสูง: ความรู้สึกเชิงลบ', `
+wretched | น่าสังเวช | They live in wretched conditions. | พวกเขาอยู่ในสภาพน่าสังเวช
+tragic | น่าเศร้า | It was a tragic accident. | เป็นอุบัติเหตุที่น่าเศร้า
+painful | เจ็บปวด | It's a painful memory. | เป็นความทรงจำที่เจ็บปวด
+sore | เจ็บ (ระบม) | My muscles are sore. | กล้ามเนื้อฉันระบม
+hollow | กลวง | The tree trunk is hollow. | ลำต้นกลวง
+dim | สลัว | The light is dim. | ไฟสลัว
+---
+dull | น่าเบื่อ/ทื่อ | The meeting was dull. | การประชุมน่าเบื่อ
+bland | จืดชืด | The food is bland. | อาหารจืดชืด
+coarse | หยาบ | The fabric is coarse. | ผ้าหยาบ
+greasy | มันเยิ้ม | Greasy food is unhealthy. | อาหารมันๆ ไม่ดีต่อสุขภาพ
+soggy | แฉะ/เปียกแฉะ | The bread is soggy. | ขนมปังแฉะ
+moist | ชุ่มชื้น | The cake is moist. | เค้กนุ่มชุ่มชื่น
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
