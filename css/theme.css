@@ -939,10 +939,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .eng-jump svg{width:17px;height:17px}
 @media(min-width:981px){.eng-jump{bottom:28px;right:28px}}
 /* บทเรียน: เข้ามาแบบสไลด์ ตัวเลือกไล่กันขึ้น */
-.ls-body{animation:lsIn .35s cubic-bezier(.2,.9,.3,1)}
+.ls-body.in{animation:lsIn .35s cubic-bezier(.2,.9,.3,1)}
 @keyframes lsIn{from{transform:translateX(26px);opacity:0}}
-.ls-opts .ls-opt{animation:lsUp .35s both}
-.ls-opts .ls-opt:nth-child(2){animation-delay:.05s}.ls-opts .ls-opt:nth-child(3){animation-delay:.1s}.ls-opts .ls-opt:nth-child(4){animation-delay:.15s}
+.ls-body.in .ls-opts .ls-opt{animation:lsUp .35s both}
+.ls-body.in .ls-opts .ls-opt:nth-child(2){animation-delay:.05s}.ls-opts .ls-opt:nth-child(3){animation-delay:.1s}.ls-opts .ls-opt:nth-child(4){animation-delay:.15s}
 .ls-opt.ok{animation:lsPop2 .35s!important}
 .ls-say.slow{color:#16a34a;background:color-mix(in srgb,#16a34a 12%,var(--surface))}
 .ls-listen{display:flex;justify-content:center;align-items:flex-end;gap:14px}
@@ -1161,4 +1161,33 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 /* มือถือแนวตั้ง: ซูมออกหน้าหลัก 3 หน้า (หน้าแรก, ข้อสอบ, แผนที่อังกฤษ — ไม่รวมหน้าทำบทเรียน) ให้โล่งขึ้น */
 @media (orientation:portrait) and (max-width:600px){
   body:is([data-page=home],[data-page=quiz],[data-page=cards]) #view:not(:has(.ls-wrap)){zoom:.86}
+}
+/* ---------- ลูกเล่นบทเรียน ---------- */
+.ls-opt.ok em,.ls-opt.bad em{animation:lsFlip .42s cubic-bezier(.3,1.4,.5,1)}
+@keyframes lsFlip{from{transform:rotateY(180deg) scale(.6)}}
+.ls-ans .ls-tile.pop{animation:lsTile .22s cubic-bezier(.34,1.56,.64,1)}
+@keyframes lsTile{from{transform:scale(.7);opacity:0}}
+.ls-tile.win{border-color:var(--green);color:var(--green);background:color-mix(in srgb,var(--green) 10%,var(--surface));animation:lsWave .45s both;animation-delay:calc(var(--i) * 60ms)}
+@keyframes lsWave{40%{transform:translateY(-7px)}}
+.ls-combo{position:relative}
+.ls-combo[data-t="2"]{background:#ffe4e6;color:#e11d48}
+.ls-combo[data-t="3"]{background:#fef3c7;color:#b45309}
+.ls-combo.big::after{content:'';position:absolute;inset:0;border-radius:inherit;border:2px solid currentColor;animation:lsRing .6s ease-out forwards;pointer-events:none}
+@keyframes lsRing{to{transform:scale(1.8);opacity:0}}
+.em-map{animation:emFade .28s ease-out}
+@keyframes emFade{from{opacity:0;transform:translateY(10px)}}
+.em-book.now{animation:emNow .55s cubic-bezier(.34,1.56,.64,1) .2s both}
+@keyframes emNow{from{transform:rotate(var(--rt)) scale(.8)}}
+/* แท็บเล็ตแนวนอน: บทเรียนกว้างขึ้น ตัวเลือกสั้นแบ่ง 2 คอลัมน์ บทอ่านแยกซ้าย-ขวา */
+@media (min-width:900px) and (orientation:landscape){
+  .ls-wrap,.ls-top,.ls-body,#lsFb{max-width:680px}
+  .ls-opts.short{grid-template-columns:1fr 1fr}
+  .ls-body:has(.ls-pass.mini){display:grid;grid-template-columns:1.15fr 1fr;align-items:start;column-gap:18px;row-gap:14px}
+  .ls-body:has(.ls-pass.mini)>.ls-kind{grid-column:1/-1;justify-self:start}
+  .ls-body:has(.ls-pass.mini)>.ls-pass{grid-row:2/span 2;margin:0}
+}
+/* มือถือแนวตั้ง: ปุ่มตัวเลือกกระชับขึ้น */
+@media (orientation:portrait) and (max-width:600px){
+  .ls-opt{min-height:52px;padding:10px 14px}
+  .ls-tile{padding:9px 12px}
 }
