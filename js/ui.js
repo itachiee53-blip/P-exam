@@ -44,12 +44,12 @@ function playTone(type='tap'){
   }catch(e){}
 }
 // เสียงกดปุ่มทุกปุ่ม (รวมปุ่มที่ไม่ได้เรียก playTone เอง) + ปลดล็อกเสียงบน iPhone ด้วยการแตะครั้งแรก
-document.addEventListener('pointerdown', e => {
-  if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-  if(e.button > 0) return;
+// แตะลง: แค่ปลดล็อกเสียง · เสียง pop เล่นตอน "กดจริง" (click) เท่านั้น ไม่ดังตอนนิ้วแตะเพื่อเลื่อนจอ
+document.addEventListener('pointerdown', () => { if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); }, {passive:true});
+document.addEventListener('click', e => {
   const b = e.target.closest && e.target.closest('button,.chip,.picker-item,.streak-day-item,.neo-cd,.neo-cm,[data-go],.sw');
   if(b && !b.disabled && !b.classList.contains('opt')) playTone('tap');
-}, {passive:true});
+}, true);
 
 // เสียงอ่าน: เลือกเสียงภาษาอังกฤษของเครื่อง (ไม่ให้ใช้เสียงไทยอ่านคำอังกฤษ), slow = อ่านช้า
 let enVoice = null;
