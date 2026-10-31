@@ -155,7 +155,22 @@ function startExam(cfg){
     // เลือกข้อจากทุกหมวดก่อน แล้วค่อยเรียงตามลำดับหมวด (เดิมตัดเอาแต่หมวดแรก)
     if(S.settings.shuffleQ) rawPool = shuffle(rawPool);
     const want = cfg.count || rawPool.length;
-    rawPool = rawPool.slice(0, want);
+    const quota = Object.entries(track.quota || {}).filter(([, n]) => n > 0);
+    if(!cfg.ids && !(cfg.cats||[]).length && cfg.mode === 'exam' && quota.length){
+      // สอบจริง ทุกหมวด: แบ่งข้อตามโควตาวิชาของสายสอบ (ย่อ/ขยายตามจำนวนข้อที่เลือก)
+      const tot = quota.reduce((a, [, n]) => a + n, 0);
+      const need = quota.map(([c, n]) => [c, Math.floor(n * want / tot), n * want / tot % 1]);
+      let rest = want - need.reduce((a, x) => a + x[1], 0);
+      [...need].sort((a, b) => b[2] - a[2]).forEach(x => { if(rest > 0){ x[1]++; rest--; } });
+      const pick = [], lack = [];
+      need.forEach(([c, n]) => {
+        const cp = rawPool.filter(q => q.cat === c);
+        if(cp.length < n) lack.push(`${c} ${cp.length}/${n}`);
+        pick.push(...cp.slice(0, n));
+      });
+      if(lack.length && pick.length) toast(`ข้อไม่พอ: ${lack.join(', ')}`, 'err');
+      rawPool = pick;
+    } else rawPool = rawPool.slice(0, want);
     const order = c => { const i = S.cats.indexOf(c); return i < 0 ? 999 : i; };
     qs = rawPool.map((q, i) => [q, i]).sort((a, b) => order(a[0].cat) - order(b[0].cat) || a[1] - b[1]).map(x => x[0]);
   }
