@@ -1,11 +1,12 @@
 "use strict";
-function openIconPicker(catName){
+function openIconPicker(catName, bookId){
+  const covKey = bookId ? bookId + '::' + catName : catName; // ปกวิชาในหนังสือสถาบันแยกของใครของมัน
   const curIcon = cicon(catName);
   const curTone = tone(catName);
   let selectedIcon = curIcon;
   let selectedBg = curTone[0];
   let selectedFg = curTone[1];
-  let selectedCover = (S.catCovers || {})[catName] || '';
+  let selectedCover = (S.catCovers || {})[covKey] || (S.catCovers || {})[catName] || '';
   const coverHtml = () => `<div class="hb" style="--bk:${selectedFg};width:118px;flex:none">${bookFace(catName, selectedCover, selectedFg, selectedIcon)}<span class="hb-pages"></span><span class="hb-ribbon"></span></div>`;
 
   const body = `
@@ -86,7 +87,7 @@ function openIconPicker(catName){
   $('#saveCatStyle').onclick=()=>{
     playTone('tap');
     S.catCovers = S.catCovers || {};
-    if(selectedCover) S.catCovers[catName] = selectedCover; else delete S.catCovers[catName];
+    if(selectedCover) S.catCovers[covKey] = selectedCover; else delete S.catCovers[covKey];
     S.catIcons = S.catIcons || {};
     S.catTones = S.catTones || {};
     S.catIcons[catName] = selectedIcon;

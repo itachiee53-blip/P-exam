@@ -106,7 +106,7 @@ function renderQuiz(){
         const total = qs.length, done = qs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length;
         const pct = total ? Math.round(done / total * 100) : 0;
         const name = it.b ? it.b.name : it.c;
-        const cover = it.b ? (S.bookCovers || {})[it.b.id] : (S.catCovers || {})[it.c];
+        const cover = it.b ? (S.bookCovers || {})[it.b.id] : ((S.catCovers || {})[QF.book + '::' + it.c] || (S.catCovers || {})[it.c]);
         const fg = it.b ? 'var(--cf-deep)' : tone(it.c)[1];
         const sub = it.b ? `${new Set(qs.map(q => q.cat)).size} วิชา · ${total.toLocaleString()} ข้อ` : (total ? `${total.toLocaleString()} ข้อ · ${Math.ceil(total / 50)} ชุด` : 'ยังไม่มีข้อสอบ');
         return `<div class="book" data-key="${it.key}" ${it.c ? `data-cat="${esc(it.c)}"` : ''}>
@@ -252,7 +252,7 @@ function renderQuiz(){
   $$('[data-seticon]').forEach(b => {
     b.onclick = () => {
       playTone('tap');
-      openIconPicker(b.dataset.seticon);
+      openIconPicker(b.dataset.seticon, QF.book);
     };
   });
 
