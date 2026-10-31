@@ -8654,6 +8654,112 @@ ice pop | ไอติมแท่ง | I bought an ice pop. | ฉันซื�
 pudding cup | พุดดิ้งถ้วย | A pudding cup for dessert. | พุดดิ้งถ้วยเป็นของหวาน
 `);
 
+U('daily', 2, 'ภาษาแชตในเกม', `
+GG | เกมดี (good game) | GG, nice match everyone! | จีจี เกมดีทุกคน!
+AFK | ไม่อยู่หน้าจอ (away from keyboard) | Sorry, I was afk. | ขอโทษ ฉันไม่อยู่หน้าจอ
+noob | มือใหม่ (ล้อเลียน) | Don't call him a noob. | อย่าเรียกเขาว่ามือใหม่
+OP | เก่งเกินไป (overpowered) | This gun is so op. | ปืนนี้โกงเกินไป
+meta | แนวทางเล่นที่ดีที่สุดตอนนี้ | This hero is the meta now. | ฮีโร่ตัวนี้เป็นเมต้าตอนนี้
+clutch | พลิกเกมในวินาทีสุดท้าย | What a clutch play! | พลิกเกมได้สุดยอด!
+---
+comeback | การกลับมาพลิกชนะ | We made a huge comeback. | เรากลับมาพลิกชนะได้
+rage quit | โมโหแล้วออกจากเกม | He rage quit after losing. | เขาโมโหแล้วออกจากเกมหลังแพ้
+team up | รวมทีม | Let's team up. | มารวมทีมกัน
+camp | ดักรอ (ในเกม)/ตั้งแคมป์ | He likes to camp in the corner. | เขาชอบดักรออยู่ที่มุม
+rush | บุกเร็ว/รีบ | Let's rush the enemy base. | บุกฐานศัตรูเร็วๆ เลย
+healer | ตัวฮีล (ผู้รักษา) | We need a healer. | เราต้องการตัวฮีล
+`);
+U('daily', 2, 'คำศัพท์ในเกม: การต่อสู้และรางวัล', `
+headshot | ยิงเข้าหัว | Nice headshot! | ยิงเข้าหัวสวย!
+spawn kill | ฆ่าตอนเกิด | Spawn killing is not fair. | การฆ่าตอนเกิดไม่ยุติธรรม
+loadout | ชุดอุปกรณ์ที่เลือก | Change your loadout. | เปลี่ยนชุดอุปกรณ์
+battle pass | แบทเทิลพาส | I bought the battle pass. | ฉันซื้อแบทเทิลพาส
+grinding | การฟาร์ม/เล่นซ้ำเพื่อเก็บของ | I spent hours grinding for gold. | ฉันฟาร์มทองเป็นชั่วโมง
+speedrun | การเล่นจบให้เร็วที่สุด | He did a speedrun in one hour. | เขาเล่นจบในหนึ่งชั่วโมง
+---
+boss fight | การสู้บอส | The boss fight was hard. | สู้บอสยากมาก
+final boss | บอสตัวสุดท้าย | We beat the final boss! | เราชนะบอสตัวสุดท้ายแล้ว!
+game over | เกมจบ/แพ้ | Game over. Try again? | เกมจบแล้ว เล่นใหม่ไหม
+high score | คะแนนสูงสุด | I beat my high score. | ฉันทำลายคะแนนสูงสุดของตัวเอง
+power-up | ไอเทมเพิ่มพลัง | Grab the power-up! | เก็บไอเทมเพิ่มพลัง!
+extra life | ชีวิตพิเศษ | You got an extra life. | คุณได้ชีวิตพิเศษ
+`);
+U('daily', 2, 'คำศัพท์ในเกม: ระบบและแผนที่', `
+easter egg | ความลับที่ซ่อนไว้ในเกม | I found an easter egg in the game. | ฉันเจอความลับที่ซ่อนไว้ในเกม
+save point | จุดเซฟ | Go back to the save point. | กลับไปที่จุดเซฟ
+side mission | ภารกิจรอง | This side mission is fun. | ภารกิจรองนี้สนุก
+open world | โลกเปิด | I love open world games. | ฉันชอบเกมโลกเปิด
+fast travel | วาร์ป/เดินทางด่วน | Use fast travel to the city. | วาร์ปไปที่เมือง
+skill tree | แผนผังสกิล | Unlock the skill tree. | ปลดล็อกแผนผังสกิล
+---
+level up | เลเวลอัป/เลื่อนระดับ | I leveled up! | ฉันเลเวลอัปแล้ว!
+XP | ค่าประสบการณ์ | You gain XP for each quest. | ได้ค่าประสบการณ์ทุกเควส
+HP | พลังชีวิต | My HP is low. | เลือดฉันเหลือน้อย
+NPC | ตัวละครที่ไม่ใช่ผู้เล่น | Talk to the NPC. | คุยกับ NPC
+PvP | ผู้เล่นสู้ผู้เล่น | I prefer PvP mode. | ฉันชอบโหมดผู้เล่นสู้กัน
+lag spike | อาการแลคกระตุก | A lag spike killed me. | แลคกระตุกจนตาย
+`);
+U('talk', 4, 'สำนวนที่ใช้บ่อย ชุด A', `
+a dime a dozen | ของหาง่าย/ไม่มีค่า | Cheap phones are a dime a dozen. | โทรศัพท์ราคาถูกหาได้ทั่วไป
+bite the bullet | กัดฟันทำ | I bit the bullet and went to the dentist. | ฉันกัดฟันไปหาหมอฟัน
+break the ice | ทำลายความเงียบ/ความเกร็ง | He told a joke to break the ice. | เขาเล่ามุกเพื่อละลายพฤติกรรม
+easier said than done | พูดง่ายแต่ทำยาก | Quitting smoking is easier said than done. | เลิกบุหรี่พูดง่ายแต่ทำยาก
+hit the nail on the head | พูดถูกเผง | You hit the nail on the head. | คุณพูดถูกเผง
+in the same boat | ชะตากรรมเดียวกัน | We are all in the same boat. | เราอยู่ในสถานการณ์เดียวกัน
+---
+it's not rocket science | ไม่ได้ยากขนาดนั้น | Relax, it's not rocket science. | ใจเย็น มันไม่ได้ยากขนาดนั้น
+keep an eye on | คอยจับตาดู | Keep an eye on my bag. | ช่วยดูกระเป๋าให้หน่อย
+miss the boat | พลาดโอกาส | Apply now or you'll miss the boat. | สมัครตอนนี้ ไม่งั้นจะพลาดโอกาส
+no pain no gain | ไม่ลำบากก็ไม่ได้ผล | Train hard. No pain, no gain. | ฝึกหนักไว้ ไม่ลำบากก็ไม่ได้ผล
+on the fence | ยังลังเล/ยังไม่ตัดสินใจ | I'm still on the fence. | ฉันยังตัดสินใจไม่ได้
+pull someone's leg | แกล้งล้อเล่น | Are you pulling my leg? | คุณล้อเล่นใช่ไหม
+`);
+U('talk', 4, 'สำนวนที่ใช้บ่อย ชุด B', `
+the best of both worlds | ได้ทั้งสองอย่าง | Working from home is the best of both worlds. | ทำงานที่บ้านได้ทั้งสองอย่าง
+time flies | เวลาผ่านไปเร็ว | Time flies when you're having fun. | เวลาผ่านไปเร็วเวลาสนุก
+wrap your head around | ทำความเข้าใจ | I can't wrap my head around it. | ฉันยังเข้าใจเรื่องนี้ไม่ได้
+hit the sack | เข้านอน | I'm tired. Time to hit the sack. | เหนื่อยแล้ว ไปนอนดีกว่า
+cry over spilled milk | เสียใจกับเรื่องที่แก้ไม่ได้ | Don't cry over spilled milk. | อย่าเสียใจกับเรื่องที่ผ่านไปแล้ว
+add fuel to the fire | ราดน้ำมันใส่กองไฟ | Don't add fuel to the fire. | อย่าทำให้เรื่องแย่ลง
+---
+actions speak louder than words | การกระทำสำคัญกว่าคำพูด | Actions speak louder than words. | การกระทำสำคัญกว่าคำพูด
+bark up the wrong tree | เข้าใจผิดคน/หาผิดที่ | You're barking up the wrong tree. | คุณมาผิดคนแล้ว
+burn the midnight oil | ทำงานดึกดื่น | I burned the midnight oil for the exam. | ฉันอ่านหนังสือดึกเพื่อสอบ
+go back to the drawing board | เริ่มคิดใหม่ตั้งแต่ต้น | The plan failed. Back to the drawing board. | แผนล้มเหลว ต้องเริ่มใหม่
+jump on the bandwagon | ทำตามกระแส | Everyone jumped on the bandwagon. | ทุกคนทำตามกระแส
+kill two birds with one stone | ยิงปืนนัดเดียวได้นกสองตัว | I killed two birds with one stone. | ฉันได้สองอย่างในคราวเดียว
+`);
+U('talk', 5, 'สำนวนที่ใช้บ่อย ชุด C', `
+let sleeping dogs lie | อย่าไปฟื้นฝอยหาตะเข็บ | Let sleeping dogs lie. | อย่าไปรื้อฟื้นเลย
+not my cup of tea | ไม่ใช่สไตล์ฉัน | Horror films are not my cup of tea. | หนังผีไม่ใช่แนวฉัน
+on cloud nine | มีความสุขสุดๆ | She was on cloud nine after passing. | เธอมีความสุขสุดๆ หลังสอบผ่าน
+out of the woods | พ้นขีดอันตราย | He's not out of the woods yet. | เขายังไม่พ้นขีดอันตราย
+spill the beans | เผยความลับ | Come on, spill the beans! | เร็วเข้า เล่ามาเลย!
+take it with a grain of salt | อย่าเชื่อทั้งหมด | Take his advice with a grain of salt. | ฟังคำแนะนำเขาแต่อย่าเชื่อทั้งหมด
+---
+throw in the towel | ยอมแพ้ | Don't throw in the towel yet. | อย่าเพิ่งยอมแพ้
+when pigs fly | ไม่มีวันเกิดขึ้น | He'll be on time when pigs fly. | ชาตินี้เขาไม่มีวันมาตรงเวลา
+you can say that again | เห็นด้วยสุดๆ | It's hot! — You can say that again. | ร้อนจัง! — ใช่เลย
+over the moon | ดีใจมาก | I'm over the moon about the news. | ฉันดีใจมากกับข่าวนี้
+down to earth | ติดดิน | He's rich but down to earth. | เขารวยแต่ติดดิน
+get cold feet | ใจฝ่อ/เปลี่ยนใจเพราะกลัว | He got cold feet before the wedding. | เขาใจฝ่อก่อนงานแต่ง
+`);
+U('talk', 5, 'สำนวนที่ใช้บ่อย ชุด D', `
+keep your chin up | ร่าเริงไว้/อย่าท้อ | Keep your chin up. You'll pass next time. | อย่าท้อ ครั้งหน้าผ่านแน่
+face the music | ยอมรับผลการกระทำ | He had to face the music. | เขาต้องยอมรับผลที่ตามมา
+break the bank | แพงจนกระเป๋าฉีก | A coffee won't break the bank. | กาแฟแก้วเดียวไม่ทำให้จนหรอก
+draw the line | ขีดเส้น/กำหนดขอบเขต | I draw the line at lying. | ฉันยอมไม่ได้เรื่องโกหก
+get a kick out of | สนุกกับ | I get a kick out of solving puzzles. | ฉันสนุกกับการไขปริศนา
+give someone the benefit of the doubt | เชื่อไว้ก่อน/ให้โอกาส | Let's give him the benefit of the doubt. | ให้โอกาสเขาก่อนเถอะ
+---
+keep me posted | อัปเดตให้ฉันรู้ด้วย | Keep me posted on the case. | อัปเดตคดีให้ฉันรู้ด้วย
+learn the ropes | เรียนรู้งาน | New officers need to learn the ropes. | เจ้าหน้าที่ใหม่ต้องเรียนรู้งาน
+ring a bell | คุ้นๆ | Does the name ring a bell? | ชื่อนี้คุ้นไหม
+rule of thumb | หลักทั่วไป/หลักง่ายๆ | As a rule of thumb, save 10%. | หลักง่ายๆ คือเก็บเงิน 10%
+steal the show | โดดเด่นที่สุด | The kids stole the show. | เด็กๆ เด่นที่สุดในงาน
+word of mouth | ปากต่อปาก | The shop grew by word of mouth. | ร้านโตจากการบอกต่อปากต่อปาก
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
