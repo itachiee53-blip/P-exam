@@ -8941,6 +8941,157 @@ contrast | ความแตกต่าง | There's a big contrast between th
 converse | ตรงกันข้าม/สนทนา | The converse is also true. | ในทางกลับกันก็จริงเช่นกัน
 `);
 
+U('talk', 2, 'คำที่ใช้คู่กัน: make ชุด 1', `
+make a mistake | ทำผิดพลาด | Everyone makes mistakes. | ทุกคนทำผิดพลาดได้
+make an effort | พยายาม | Make an effort to speak English. | พยายามพูดภาษาอังกฤษ
+make money | หาเงิน | He makes money online. | เขาหาเงินทางออนไลน์
+make friends | ผูกมิตร/หาเพื่อน | It's easy to make friends here. | ที่นี่หาเพื่อนง่าย
+make a promise | ให้สัญญา | Don't make a promise you can't keep. | อย่าให้สัญญาที่ทำไม่ได้
+make a phone call | โทรศัพท์ | I need to make a phone call. | ฉันต้องโทรศัพท์
+---
+make an appointment | นัดหมาย | Make an appointment with the doctor. | นัดหมอ
+make a complaint | ร้องเรียน | I want to make a complaint. | ฉันต้องการร้องเรียน
+make a difference | สร้างความเปลี่ยนแปลง | You can make a difference. | คุณสร้างความเปลี่ยนแปลงได้
+make a mess | ทำเลอะเทอะ | The kids made a mess. | เด็กๆ ทำเลอะเทอะ
+make a noise | ทำเสียงดัง | Don't make a noise. | อย่าทำเสียงดัง
+make an excuse | หาข้ออ้าง | Stop making excuses. | เลิกหาข้ออ้าง
+`);
+U('talk', 2, 'คำที่ใช้คู่กัน: make ชุด 2 และ do', `
+make a choice | เลือก/ตัดสินใจเลือก | You have to make a choice. | คุณต้องเลือก
+make a plan | วางแผน | Let's make a plan. | มาวางแผนกัน
+make up your mind | ตัดสินใจ | Make up your mind! | ตัดสินใจได้แล้ว!
+make a living | หาเลี้ยงชีพ | He makes a living as a driver. | เขาหาเลี้ยงชีพด้วยการขับรถ
+make a reservation | จอง | I'd like to make a reservation. | ฉันขอจอง
+do homework | ทำการบ้าน | I do my homework after dinner. | ฉันทำการบ้านหลังมื้อเย็น
+---
+do the shopping | ไปซื้อของ | I do the shopping on Saturday. | ฉันไปซื้อของวันเสาร์
+do business | ทำธุรกิจ | They do business in China. | พวกเขาทำธุรกิจในจีน
+do a favor | ช่วยเหลือ | Can you do me a favor? | ช่วยอะไรหน่อยได้ไหม
+do exercise | ออกกำลังกาย | Do exercise every day. | ออกกำลังกายทุกวัน
+do research | ทำวิจัย/ค้นคว้า | Do some research first. | ค้นคว้าก่อน
+do the cooking | ทำอาหาร | My dad does the cooking. | พ่อเป็นคนทำอาหาร
+`);
+U('talk', 2, 'คำที่ใช้คู่กัน: take', `
+take a photo | ถ่ายรูป | Can you take a photo of us? | ช่วยถ่ายรูปให้เราหน่อย
+take a seat | นั่ง | Please take a seat. | เชิญนั่ง
+take notes | จดบันทึก | Take notes during the class. | จดบันทึกระหว่างเรียน
+take a risk | เสี่ยง | Don't take a risk. | อย่าเสี่ยง
+take part | มีส่วนร่วม | Everyone can take part. | ทุกคนมีส่วนร่วมได้
+take place | เกิดขึ้น/จัดขึ้น | The event takes place in May. | งานจัดขึ้นเดือนพฤษภาคม
+---
+take a shower | อาบน้ำ (ฝักบัว) | I take a shower every morning. | ฉันอาบน้ำทุกเช้า
+take a look | ดู | Let me take a look. | ขอดูหน่อย
+take a nap | งีบ | I'll take a nap after lunch. | ฉันจะงีบหลังมื้อกลางวัน
+take advice | ทำตามคำแนะนำ | Take my advice and rest. | ทำตามที่ฉันแนะนำแล้วพักผ่อน
+take turns | ผลัดกัน | Let's take turns driving. | ผลัดกันขับนะ
+take medicine | กินยา | Take your medicine after meals. | กินยาหลังอาหาร
+`);
+U('talk', 2, 'คำที่ใช้คู่กัน: have', `
+have a good time | มีช่วงเวลาที่ดี | Have a good time at the party! | ขอให้สนุกกับงานปาร์ตี้!
+have a look | ดู | Have a look at this. | ดูนี่สิ
+have a rest | พักผ่อน | You should have a rest. | คุณควรพักผ่อน
+have a party | จัดงานปาร์ตี้ | We're having a party on Friday. | เราจะจัดปาร์ตี้วันศุกร์
+have a problem | มีปัญหา | I have a problem with my phone. | โทรศัพท์ฉันมีปัญหา
+have a baby | มีลูก | She's going to have a baby. | เธอกำลังจะมีลูก
+---
+have breakfast | กินอาหารเช้า | I have breakfast at seven. | ฉันกินข้าวเช้าตอนเจ็ดโมง
+have an argument | ทะเลาะกัน | They had an argument about money. | พวกเขาทะเลาะกันเรื่องเงิน
+have a chat | คุยเล่น | Let's have a chat over coffee. | มาคุยกันระหว่างดื่มกาแฟ
+have a drink | ดื่ม | Let's have a drink after work. | ไปดื่มกันหลังเลิกงาน
+take time | ใช้เวลา | Learning a language takes time. | การเรียนภาษาต้องใช้เวลา
+take a test | สอบ | I'll take the test next week. | ฉันจะสอบสัปดาห์หน้า
+`);
+U('talk', 2, 'คำที่ใช้คู่กัน: get ชุด 1', `
+get married | แต่งงาน | They got married last year. | พวกเขาแต่งงานปีที่แล้ว
+get divorced | หย่า | They got divorced. | พวกเขาหย่ากัน
+get lost | หลงทาง/ไปให้พ้น | We got lost in Bangkok. | เราหลงทางในกรุงเทพฯ
+get angry | โกรธ | Don't get angry. | อย่าโกรธ
+get ready | เตรียมตัว | Get ready for the exam. | เตรียมตัวสอบ
+get dressed | แต่งตัว | Get dressed quickly. | แต่งตัวเร็วๆ
+---
+get better | ดีขึ้น | I hope you get better soon. | หวังว่าคุณจะดีขึ้นเร็วๆ
+get worse | แย่ลง | The traffic got worse. | การจราจรแย่ลง
+get home | ถึงบ้าน | Call me when you get home. | ถึงบ้านแล้วโทรหาฉัน
+get a job | ได้งาน | She got a job at the bank. | เธอได้งานที่ธนาคาร
+get in trouble | เดือดร้อน/โดนดุ | You'll get in trouble. | คุณจะเดือดร้อน
+get started | เริ่ม | Let's get started. | เริ่มกันเลย
+`);
+U('talk', 3, 'คำที่ใช้คู่กัน: get ชุด 2, pay และ keep', `
+get tired | เหนื่อย | I get tired easily. | ฉันเหนื่อยง่าย
+get wet | เปียก | Don't get wet in the rain. | อย่าตากฝนจนเปียก
+get the message | เข้าใจ (ที่สื่อ) | Okay, I get the message. | โอเค ฉันเข้าใจแล้ว
+pay a visit | ไปเยี่ยม | Let's pay a visit to grandma. | ไปเยี่ยมยายกัน
+pay a fine | จ่ายค่าปรับ | You must pay a fine. | คุณต้องจ่ายค่าปรับ
+pay the bill | จ่ายบิล | I'll pay the bill. | ฉันจ่ายบิลเอง
+---
+pay a compliment | ชม | He paid me a compliment. | เขาชมฉัน
+keep a secret | เก็บความลับ | Can you keep a secret? | คุณเก็บความลับได้ไหม
+keep in touch | ติดต่อกันไว้ | Let's keep in touch. | ติดต่อกันไว้นะ
+keep quiet | เงียบไว้ | Keep quiet in the library. | เงียบในห้องสมุด
+keep fit | รักษาหุ่น/แข็งแรง | I run to keep fit. | ฉันวิ่งเพื่อให้แข็งแรง
+do damage | สร้างความเสียหาย | The storm did a lot of damage. | พายุสร้างความเสียหายมาก
+`);
+U('talk', 3, 'คำที่ใช้คู่กัน: break, catch, come, go', `
+break a promise | ผิดสัญญา | Never break a promise. | อย่าผิดสัญญา
+break a record | ทำลายสถิติ | She broke the world record. | เธอทำลายสถิติโลก
+break the rules | ฝ่าฝืนกฎ | Don't break the rules. | อย่าฝ่าฝืนกฎ
+catch a cold | เป็นหวัด | I caught a cold. | ฉันเป็นหวัด
+catch a bus | ขึ้นรถเมล์ | I need to catch a bus. | ฉันต้องไปขึ้นรถเมล์
+catch fire | ติดไฟ | The car caught fire. | รถติดไฟ
+---
+come to an end | สิ้นสุด | The war came to an end. | สงครามสิ้นสุด
+come true | เป็นจริง | My dream came true. | ความฝันของฉันเป็นจริง
+come first | มาก่อน/สำคัญที่สุด | Safety comes first. | ความปลอดภัยต้องมาก่อน
+go missing | หายตัวไป | A child went missing. | เด็กคนหนึ่งหายตัวไป
+go bankrupt | ล้มละลาย | The company went bankrupt. | บริษัทล้มละลาย
+go wrong | ผิดพลาด | What went wrong? | อะไรผิดพลาด
+`);
+U('talk', 3, 'คำที่ใช้คู่กัน: save, tell, raise', `
+save time | ประหยัดเวลา | Take the subway to save time. | นั่งรถไฟใต้ดินจะประหยัดเวลา
+save money | เก็บเงิน/ประหยัดเงิน | I'm saving money for a car. | ฉันเก็บเงินซื้อรถ
+save energy | ประหยัดพลังงาน | Turn off lights to save energy. | ปิดไฟเพื่อประหยัดพลังงาน
+save a life | ช่วยชีวิต | CPR can save a life. | การทำ CPR ช่วยชีวิตได้
+tell the truth | พูดความจริง | Always tell the truth. | พูดความจริงเสมอ
+tell a lie | โกหก | Don't tell a lie. | อย่าโกหก
+---
+tell a story | เล่าเรื่อง | Tell me a story. | เล่าเรื่องให้ฟังหน่อย
+tell the difference | บอกความแตกต่าง | Can you tell the difference? | คุณบอกความแตกต่างได้ไหม
+raise money | ระดมทุน | They raised money for victims. | พวกเขาระดมทุนช่วยผู้ประสบภัย
+raise awareness | สร้างความตระหนัก | We want to raise awareness of scams. | เราต้องการให้คนตระหนักเรื่องมิจฉาชีพ
+raise a question | ตั้งคำถาม | This raises a question. | เรื่องนี้ทำให้เกิดคำถาม
+do harm | ทำอันตราย | A little rest won't do any harm. | พักนิดหน่อยไม่เสียหาย
+`);
+U('talk', 3, 'คำที่ใช้คู่กัน: run, lose, gain, set', `
+run a business | ดำเนินธุรกิจ | She runs a small business. | เธอทำธุรกิจเล็กๆ
+run late | สาย/ช้ากว่ากำหนด | The meeting is running late. | การประชุมเลยเวลา
+run a risk | เสี่ยง | You run a risk of losing money. | คุณเสี่ยงที่จะเสียเงิน
+run out of time | หมดเวลา | We ran out of time. | เราหมดเวลา
+lose weight | ลดน้ำหนัก | I want to lose weight. | ฉันอยากลดน้ำหนัก
+lose your temper | โมโห | Don't lose your temper. | อย่าโมโห
+---
+lose control | ควบคุมไม่ได้ | He lost control of the car. | เขาควบคุมรถไม่ได้
+lose touch | ขาดการติดต่อ | We lost touch after school. | เราขาดการติดต่อหลังเรียนจบ
+gain weight | น้ำหนักขึ้น | I gained weight on holiday. | น้ำหนักฉันขึ้นตอนเที่ยว
+set an example | เป็นแบบอย่าง | Officers must set an example. | เจ้าหน้าที่ต้องเป็นแบบอย่าง
+set a goal | ตั้งเป้าหมาย | Set a goal for this year. | ตั้งเป้าหมายสำหรับปีนี้
+set a record | สร้างสถิติ | He set a new record. | เขาสร้างสถิติใหม่
+`);
+U('talk', 4, 'คำที่ใช้คู่กันในงานตำรวจและกฎหมาย', `
+file a complaint | ยื่นเรื่องร้องเรียน | She filed a complaint with the police. | เธอยื่นเรื่องร้องเรียนกับตำรวจ
+press charges | แจ้งความดำเนินคดี | Do you want to press charges? | คุณต้องการแจ้งความดำเนินคดีไหม
+plead guilty | รับสารภาพ | He pleaded guilty. | เขารับสารภาพ
+serve a sentence | รับโทษ | He is serving a ten-year sentence. | เขากำลังรับโทษสิบปี
+issue a warning | ออกคำเตือน | Police issued a warning. | ตำรวจออกคำเตือน
+launch an investigation | เปิดการสืบสวน | Police launched an investigation. | ตำรวจเปิดการสืบสวน
+---
+conduct a search | ทำการตรวจค้น | Officers conducted a search. | เจ้าหน้าที่ทำการตรวจค้น
+obtain a warrant | ขอหมาย (ค้น/จับ) | We need to obtain a warrant. | เราต้องขอหมายค้น
+reach an agreement | บรรลุข้อตกลง | Both sides reached an agreement. | ทั้งสองฝ่ายบรรลุข้อตกลง
+reach a decision | ได้ข้อสรุป | The jury reached a decision. | คณะลูกขุนได้ข้อสรุป
+bear in mind | จำไว้/คำนึง | Bear in mind that it's dangerous. | จำไว้ว่ามันอันตราย
+do well | ทำได้ดี | You did well in the exam. | คุณสอบได้ดี
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
