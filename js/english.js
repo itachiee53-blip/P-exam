@@ -102,46 +102,7 @@ function renderEngLevels(){
 }
 
 // ---------- หน้าเลเวล: บทเรียนเรียงตามลำดับ + สอบวัดผลท้ายเลเวล ----------
-function renderEngPath(L){
-  const E = engState(), { units, F } = engLevel(L), col = ENG_LV_C[L];
-  const cur = F.findIndex((x, k) => engOpen(F, k) && !E.done[x.key]), d = F.filter(x => E.done[x.key]).length, due = engDue().length;
-  let i = 0, html = `<div class="eng-lvhead" style="--c:${col}">
-    <button class="ib" id="engBack"><i data-lucide="arrow-left"></i></button>
-    <div><small>Lv.${L}</small><b>${ENG_LEVELS[L]}</b></div><span class="eng-uprog">${d}/${F.length}</span></div>
-    ${due >= 4 ? `<button class="eng-review" id="engRev"><i data-lucide="refresh-cw"></i><span><b>บททวนอัตโนมัติ</b><small>${due} คำใกล้ลืม</small></span><i data-lucide="chevron-right"></i></button>` : ''}`;
-  units.forEach(x => {
-    const C = COURSES[x.c], u = x.u, nd = u.ls.filter((_, li) => E.done[`${x.c}:${u.t}:${li}`]).length;
-    html += `<div class="eng-unit ${nd === u.ls.length ? 'full' : ''}" style="--c:${C.color}"><i data-lucide="${C.ic}" class="eng-uic"></i>
-      <div><small>${ENG_CAT[x.c]}</small><b>${esc(u.t)}</b></div>
-      <span class="eng-uprog">${nd === u.ls.length ? '<i data-lucide="check"></i>' : `${nd}/${u.ls.length}`}</span></div><div class="eng-nodes">`;
-    u.ls.forEach(() => {
-      const y = F[i], st = E.done[y.key] || 0, open = engOpen(F, i), now = i === cur;
-      html += `<div class="eng-nw" style="--o:${[0, 56, 0, -56][i % 4]}px;--d:${Math.min(i, 14) * 35}ms">${now ? '<span class="eng-bub">เริ่ม</span>' : ''}
-        <button class="eng-node ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--c:${C.color}">
-          <i data-lucide="${st ? 'check' : !open ? 'lock' : now ? 'play' : 'book-open'}"></i></button>
-        ${st ? `<span class="eng-stars">${'★'.repeat(st)}<em>${'★'.repeat(3 - st)}</em></span>` : ''}</div>`;
-      i++;
-    });
-    html += '</div>';
-  });
-  const ready = d === F.length, pass = E.lvPass[L];
-  html += `<div class="eng-exam ${ready || pass ? '' : 'lock'} ${pass ? 'pass' : ''}" style="--c:${col}">
-    <i data-lucide="${pass ? 'award' : 'trophy'}"></i><b>${pass ? `ผ่าน Lv.${L} แล้ว` : `สอบวัดผล Lv.${L}`}</b>
-    <small>${pass ? `ผ่านเมื่อ ${pass}` : ready ? '30 ข้อ จับเวลา · ต้องได้ 80%' : `เรียนให้ครบ ${F.length} บทก่อน`}</small>
-    ${ready || pass ? `<button class="eng-cta" id="engExam">${pass ? 'สอบอีกครั้ง' : 'เริ่มสอบ'}</button>` : ''}</div>
-    <button class="eng-jump" id="engJump" hidden><i data-lucide="locate-fixed"></i>บทปัจจุบัน</button>`;
-  $('#view').innerHTML = html;
-  $('#engBack').onclick = () => { ENG_LV = null; renderCards(); };
-  if($('#engRev')) $('#engRev').onclick = engReview;
-  if($('#engExam')) $('#engExam').onclick = () => levelExam(L);
-  $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(F[k].c, F[k].ci) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
-  icons();
-  const nn = $('.eng-node.now'), j = $('#engJump');
-  if(nn && j && 'IntersectionObserver' in window){
-    new IntersectionObserver(([e]) => { if(j.isConnected) j.hidden = e.isIntersecting; }).observe(nn);
-    j.onclick = () => nn.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  }
-}
+// แผนที่บทเรียน (renderEngPath) อยู่ใน js/engmap.js
 
 // ---------- สอบวัดผลท้ายเลเวล: ปนทุกหมวด จับเวลา ผ่าน 80% ----------
 function levelExam(L){
