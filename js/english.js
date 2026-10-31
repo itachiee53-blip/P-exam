@@ -249,6 +249,23 @@ function engEx(t, w, pool){
   if(t === 'type') return { t, w };
   return { t, w, opts: engOpts(w, pool, t === 'mean' ? 'th' : 'en') };
 }
+// การ์ดกฎไวยากรณ์แบบมือใหม่: กฎแต่ละข้อมีตัวอย่างจริง + คำแปล และอธิบายศัพท์ (ประธาน, V1 ...)
+const ENG_GLOSS = [['ประธาน', 'ผู้ทำ เช่น I, you, he, Tom'], ['V1', 'กริยาปกติ เช่น go, eat'], ['V2', 'กริยาอดีต เช่น went, ate'], ['V3', 'กริยาช่อง 3 เช่น gone, eaten'],
+  ['V-ing', 'กริยาเติม ing เช่น going'], ['V-s', 'กริยาเติม s เช่น goes, works'], ['be', 'is / am / are'], ['เอกพจน์', 'อันเดียว/คนเดียว'], ['พหูพจน์', 'หลายอัน/หลายคน'],
+  ['นาม', 'คน สัตว์ สิ่งของ เช่น car, dog'], ['adj', 'คำบอกลักษณะ เช่น big, hot']];
+function engRuleCard(u){
+  const all = u.ls.flat(), used = new Set(), low = x => x.toLowerCase();
+  const exHtml = g => `<div class="ex">${esc(g.q).replace('___', `<mark>${esc(g.a)}</mark>`)}<small>${esc(g.tr)}</small></div>`;
+  const parts = u.rule.split('·').map(r => r.trim()).filter(Boolean).map(r => {
+    const g = all.find(g => !used.has(g) && new RegExp(`(^|[^a-z])${low(g.a).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^a-z]|$)`).test(low(r)));
+    if(g) used.add(g);
+    return `<span>${engTw(r)}${g ? exHtml(g) : ''}</span>`;
+  });
+  const more = used.size < 2 ? all.filter(g => !used.has(g)).slice(0, 2 - used.size) : [];
+  const gl = ENG_GLOSS.filter(([k]) => new RegExp(`(^|[^A-Za-z-])${k.replace('-', '\\-')}([^A-Za-z0-9]|$)`).test(u.rule)).slice(0, 4);
+  return `<div class="ls-rule"><b>${engTw(u.t)}</b>${parts.join('')}${more.length ? `<span class="exs">ตัวอย่าง${more.map(exHtml).join('')}</span>` : ''}
+    ${gl.length ? `<div class="gl">${gl.map(([k, v]) => `<p><b>${k}</b> = ${v}</p>`).join('')}</div>` : ''}</div>`;
+}
 // แบบฝึกของคอร์สแบบข้อเลือก: ไวยากรณ์ (กฎ → เติมคำ → เรียงประโยค) / บทสนทนา / อ่านจับใจความ (เรื่อง → คำถาม)
 function engGramItems(c, ws, items, u, test){
   const kind = COURSES[c].kind, ch = g => ({ w: g, opts: shuf([g.a, ...g.w]) });
@@ -292,7 +309,7 @@ function renderLesson(){
   let body = '';
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2><div class="ls-says">${say}</div>
       <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${engTw(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
-  if(it.t === 'rule') body = `<div class="ls-rule"><b>${engTw(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${engTw(r.trim())}</span>`).join('')}</div>`;
+  if(it.t === 'rule') body = engRuleCard(it.u);
   if(it.t === 'dlg') body = `<div class="ls-chat">${w.lines.map(l => { const m = l.match(/^([AB]):\s*(.*)$/) || [0, 'A', l], me = m[1] === 'B';
       return `<div class="ls-bub ${me ? 'me' : ''}"><em>${m[1]}</em><span>${m[2] === '___' ? '<i class="ls-dots"><b></b><b></b><b></b></i>' : engTw(m[2])}</span></div>`; }).join('')}</div><div class="ls-opts">${opts}</div>`;
   if(it.t === 'passage' || it.t === 'read') body = `<div class="ls-pass ${it.t === 'read' ? 'mini' : ''}"><b>${esc(w.title)}</b>
