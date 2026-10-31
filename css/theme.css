@@ -1220,3 +1220,36 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
   #lsFb{margin-top:10px}
 }
 .ls-says{display:flex;gap:10px;justify-content:center}
+/* การ์ดคำศัพท์ในเลเวล (engmap.js vocCard/vocSheet) */
+.eng-voc{display:flex;align-items:center;gap:12px;width:100%;max-width:560px;margin:10px auto 0;padding:11px 14px;border-radius:20px;border:2px solid color-mix(in srgb,var(--c) 28%,var(--line));
+  background:linear-gradient(135deg,color-mix(in srgb,var(--c) 10%,var(--surface)),var(--surface));color:var(--text);font:inherit;text-align:left;cursor:pointer;animation:engIn .4s both;transition:transform .15s}
+.eng-voc:active{transform:scale(.98)}
+.ev-ring{position:relative;width:46px;height:46px;flex:none;display:grid;place-items:center}
+.ev-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ev-ring circle{fill:none;stroke-width:4.5;stroke:color-mix(in srgb,var(--c) 16%,transparent)}
+.ev-ring circle+circle{stroke:var(--c);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--p));animation:evRing 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes evRing{from{stroke-dashoffset:100}}
+.ev-ring>svg:last-child{position:static;transform:none;width:19px;height:19px;color:var(--c)}
+.ev-t{flex:1;min-width:0}.ev-t b{display:block;font-size:14.5px}.ev-t small{color:var(--muted);font-size:12px}.ev-t em{font-style:normal;font-weight:700;color:var(--c)}
+.ev-n{font-weight:800;font-size:15px;color:var(--c)}
+.eng-voc>svg:last-child{width:17px;height:17px;color:var(--muted)}
+.voc-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.voc-sum div{padding:10px 4px;border-radius:14px;background:color-mix(in srgb,var(--c) 8%,var(--surface))}
+.voc-sum div:nth-child(2){background:color-mix(in srgb,#94a3b8 12%,var(--surface))}
+.voc-sum b{display:block;font-size:20px;color:var(--c)}.voc-sum div:nth-child(2) b{color:var(--muted)}.voc-sum small{font-size:11.5px;color:var(--muted)}
+.voc-bar{height:8px;margin:12px 0;border-radius:9px;background:color-mix(in srgb,var(--c) 14%,transparent);overflow:hidden}
+.voc-bar i{display:block;height:100%;width:var(--p);border-radius:9px;background:var(--c);animation:vocBar 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vocBar{from{width:0}}
+.voc-f{display:flex;gap:6px;margin-bottom:10px}
+.voc-f button{flex:1;padding:8px 0;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;transition:.2s}
+.voc-f button.on{background:var(--c);border-color:var(--c);color:#fff;font-weight:700}
+.voc-l section{margin-bottom:12px;animation:engIn .35s var(--d) both}
+.voc-l h4{display:flex;justify-content:space-between;margin:0 0 6px;font-size:13px;color:var(--text)}.voc-l h4 span{color:var(--muted);font-weight:500}
+.voc-l section>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
+.voc-w{display:flex;flex-direction:column;align-items:flex-start;padding:8px 10px;border-radius:12px;border:1.5px solid transparent;font:inherit;text-align:left;cursor:pointer;min-width:0}
+.voc-w b,.voc-w small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.voc-w b{font-size:13.5px}.voc-w small{font-size:11.5px;color:var(--muted)}
+.voc-w.y{background:color-mix(in srgb,var(--c) 10%,var(--surface));border-color:color-mix(in srgb,var(--c) 30%,transparent);color:var(--text)}
+.voc-w.y:active{transform:scale(.96)}
+.voc-w.n{background:transparent;border:1.5px dashed var(--line);color:var(--muted);cursor:default}
+.voc-w[hidden],.voc-l section[hidden]{display:none}

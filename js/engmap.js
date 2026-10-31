@@ -147,7 +147,7 @@ function renderEngPath(L){
   $('#view').innerHTML = `<div class="eng-lvhead" style="--c:${col}">
     <button class="ib" id="engBack"><i data-lucide="arrow-left"></i></button>
     <div><small>Lv.${L} · ${T.n}</small><b>${ENG_LEVELS[L]}</b></div><span class="eng-uprog">${d}/${N}</span></div>
-    ${due >= 4 ? `<button class="eng-review" id="engRev"><i data-lucide="refresh-cw"></i><span><b>บททวนอัตโนมัติ</b><small>${due} คำใกล้ลืม</small></span><i data-lucide="chevron-right"></i></button>` : ''}
+    ${vocCard(L, F, col)}
     <div class="em-tabs">${tabs}</div>
     <div class="em-map" style="--bg:${T.bg};--bl:${T.bl};--tx:${T.tx}">
       <svg width="0" height="0" style="position:absolute"><defs>${defs}</defs></svg>
@@ -159,7 +159,7 @@ function renderEngPath(L){
         ${ready || pass ? `<button class="eng-cta" id="engExam">${pass ? 'สอบอีกครั้ง' : 'เริ่มสอบ'}</button>` : ''}</div></div>
     <button class="eng-jump" id="engJump" hidden><i data-lucide="locate-fixed"></i>บทปัจจุบัน</button>`;
   $('#engBack').onclick = () => { ENG_LV = null; renderCards(); };
-  if($('#engRev')) $('#engRev').onclick = engReview;
+  $('#engVoc').onclick = () => vocSheet(L, F, col);
   if($('#engExam')) $('#engExam').onclick = () => levelExam(L);
   $$('[data-emlv]').forEach(b => b.onclick = () => { const l = +b.dataset.emlv; if(l === L) return; if(!engLvOpen(l)) return toast(`ผ่าน Lv.${l - 1} ก่อน`, 'err'); ENG_LV = l; renderCards(); });
   $$('[data-les]').forEach(b => b.onclick = () => { const k = +b.dataset.les; engOpen(F, k) ? lessonStart(F[k].c, F[k].ci) : toast('ผ่านบทก่อนหน้าก่อน', 'err'); });
@@ -170,4 +170,31 @@ function renderEngPath(L){
     new IntersectionObserver(([e]) => { if(j.isConnected) j.hidden = e.isIntersecting; }).observe(nn);
     j.onclick = () => nn.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
+}
+
+// คำศัพท์ในเลเวล: เจอแล้ว/ยังไม่เจอ (เจอ = ผ่านหน้าคำใหม่แล้ว E.known)
+function vocWords(F){
+  const seen = new Set();
+  return F.map((x, i) => ({ n: i + 1, ws: COURSES[x.c].gram ? [] : x.ws.filter(w => w.en && !seen.has(w.en) && seen.add(w.en)) })).filter(g => g.ws.length);
+}
+function vocCard(L, F, col){
+  const E = engState(), all = vocWords(F).flatMap(g => g.ws), n = all.length, k = all.filter(w => E.known[w.en]).length, p = n ? k / n : 0;
+  return `<button class="eng-voc" id="engVoc" style="--c:${col};--p:${(p * 100).toFixed(1)}">
+    <span class="ev-ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/><circle cx="22" cy="22" r="18" pathLength="100"/></svg><i data-lucide="book-a"></i></span>
+    <span class="ev-t"><b>คำศัพท์ Lv.${L}</b><small>เจอแล้ว <em>${k}</em> · เหลือ ${n - k} คำ</small></span>
+    <span class="ev-n">${Math.round(p * 100)}%</span><i data-lucide="chevron-right"></i></button>`;
+}
+function vocSheet(L, F, col){
+  const E = engState(), G = vocWords(F), all = G.flatMap(g => g.ws), k = all.filter(w => E.known[w.en]).length, due = engDue().length;
+  const body = `<div class="voc-s" style="--c:${col}">
+    <div class="voc-sum"><div><b>${k}</b><small>เจอแล้ว</small></div><div><b>${all.length - k}</b><small>ยังไม่เจอ</small></div><div><b>${all.length}</b><small>ทั้งหมด</small></div></div>
+    <div class="voc-bar"><i style="--p:${all.length ? k / all.length * 100 : 0}%"></i></div>
+    <div class="voc-f"><button class="on" data-vf="">ทั้งหมด</button><button data-vf="y">เจอแล้ว</button><button data-vf="n">ยังไม่เจอ</button></div>
+    <div class="voc-l">${G.map((g, gi) => `<section style="--d:${Math.min(gi, 12) * 35}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
+      const y = !!E.known[w.en]; return `<button class="voc-w ${y ? 'y' : 'n'}" data-say="${esc(w.en)}"><b>${esc(w.en)}</b><small>${y ? esc(w.th) : '?'}</small></button>`; }).join('')}</div></section>`).join('')}</div></div>`;
+  openModal(`คำศัพท์ Lv.${L}`, body, due >= 4 ? `<button class="btn" id="vocRev"><i data-lucide="refresh-cw"></i>ทวนคำใกล้ลืม ${due} คำ</button>` : '');
+  $$('[data-vf]').forEach(b => b.onclick = () => { $$('[data-vf]').forEach(x => x.classList.toggle('on', x === b)); const f = b.dataset.vf;
+    $$('.voc-l section').forEach(s => { let c = 0; s.querySelectorAll('.voc-w').forEach(w => { const h = f && !w.classList.contains(f); w.hidden = h; c += !h; }); s.hidden = !c; }); });
+  $$('.voc-w.y').forEach(b => b.onclick = () => speakWord(b.dataset.say));
+  if($('#vocRev')) $('#vocRev').onclick = () => { closeModal(); engReview(); };
 }
