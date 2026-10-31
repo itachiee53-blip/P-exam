@@ -139,7 +139,7 @@ function renderEngPath(L){
       <button class="em-book pt${i % 4} ${i % 5 === 2 ? 'rib' : ''} ${st ? 'done' : ''} ${now ? 'now' : ''} ${open ? '' : 'lock'}" data-les="${i}" style="--cc:${C.color};--rt:${[-2, 1.5, 0, -1, 2][i % 5]}deg">
         ${now ? '<span class="em-bub">เริ่ม</span>' : ''}<small>${ENG_CAT[c]}</small><i data-lucide="${ics[li % ics.length]}"></i><em>บท ${i + 1}</em>
         ${st ? '<span class="em-badge ok"><i data-lucide="check"></i></span>' : open ? '' : '<span class="em-badge"><i data-lucide="lock"></i></span>'}
-        ${st ? `<span class="em-stars">${'★'.repeat(st)}<u>${'★'.repeat(3 - st)}</u></span>` : ''}</button></div>`;
+        ${st ? `<span class="em-stars">${'★'.repeat(st)}<u>${'★'.repeat(3 - st)}</u></span>` : ''}</button>${now ? mascot('walk', '', 'em-masc') : ''}</div>`;
   });
   const ready = d === N, pass = E.lvPass[L];
   const defs = P.map(k => `<symbol id="emp-${k}" viewBox="0 0 100 80">${T.props[k]}</symbol>`).join('') + S.bits.map((b, k) => `<symbol id="emt-${k}" viewBox="0 0 30 20">${b}</symbol>`).join('')
