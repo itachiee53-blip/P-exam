@@ -5986,6 +5986,262 @@ get back together | กลับมาคบกัน | They got back together. 
 move in together | ย้ายมาอยู่ด้วยกัน | We moved in together last year. | เราย้ายมาอยู่ด้วยกันเมื่อปีที่แล้ว
 `);
 
+U('basic', 0, 'ธรรมชาติรอบตัว', `
+snow | หิมะ | I want to see snow. | ฉันอยากเห็นหิมะ
+lake | ทะเลสาบ | The lake is very big. | ทะเลสาบใหญ่มาก
+leaf | ใบไม้ | A leaf fell on my head. | ใบไม้ร่วงใส่หัวฉัน
+grass | หญ้า | The grass is green. | หญ้าสีเขียว
+sand | ทราย | The sand is hot. | ทรายร้อน
+earth | โลก/ดิน | The Earth is round. | โลกกลม
+---
+ocean | มหาสมุทร | Fish live in the ocean. | ปลาอาศัยอยู่ในมหาสมุทร
+planet | ดาวเคราะห์ | Earth is our planet. | โลกเป็นดาวเคราะห์ของเรา
+field | ทุ่ง/สนาม | Cows eat in the field. | วัวกินหญ้าในทุ่ง
+valley | หุบเขา | The village is in a valley. | หมู่บ้านอยู่ในหุบเขา
+jungle | ป่าดงดิบ | Tigers live in the jungle. | เสืออาศัยอยู่ในป่า
+pond | บ่อน้ำ | There are fish in the pond. | ในบ่อมีปลา
+`);
+U('basic', 0, 'อารมณ์และการกระทำง่ายๆ', `
+laugh | หัวเราะ | Don't laugh at me. | อย่าหัวเราะเยาะฉัน
+cry | ร้องไห้ | The baby is crying. | ทารกกำลังร้องไห้
+kiss | จูบ/หอม | She kissed her son. | เธอหอมลูกชาย
+hug | กอด | Give me a hug. | กอดฉันหน่อย
+joke | มุกตลก | Tell me a joke. | เล่ามุกให้ฟังหน่อย
+gift | ของขวัญ | Thank you for the gift. | ขอบคุณสำหรับของขวัญ
+---
+kick | เตะ | Kick the ball. | เตะลูกบอล
+dig | ขุด | The dog is digging a hole. | สุนัขกำลังขุดหลุม
+bite | กัด | Does your dog bite? | สุนัขของคุณกัดไหม
+chew | เคี้ยว | Chew your food well. | เคี้ยวอาหารให้ละเอียด
+nod | พยักหน้า | He nodded and smiled. | เขาพยักหน้าและยิ้ม
+joy | ความสุข/ความยินดี | She cried with joy. | เธอร้องไห้ด้วยความดีใจ
+`);
+U('basic', 0, 'ของในบ้านของฉัน', `
+bath | อ่างอาบน้ำ/การอาบน้ำ | I take a bath at night. | ฉันอาบน้ำตอนกลางคืน
+bell | กระดิ่ง | Ring the bell. | กดกริ่ง
+card | การ์ด/บัตร | I made a birthday card. | ฉันทำการ์ดวันเกิด
+carpet | พรม | The carpet is soft. | พรมนุ่ม
+ceiling | เพดาน | There is a spider on the ceiling. | มีแมงมุมบนเพดาน
+couch | โซฟา | He is sleeping on the couch. | เขานอนอยู่บนโซฟา
+---
+cupboard | ตู้ (เก็บของ) | The cups are in the cupboard. | แก้วอยู่ในตู้
+curtain | ผ้าม่าน | Close the curtains. | ปิดผ้าม่าน
+cushion | เบาะ/หมอนอิง | Sit on the cushion. | นั่งบนเบาะ
+drawer | ลิ้นชัก | The key is in the drawer. | กุญแจอยู่ในลิ้นชัก
+sink | อ่างล้างจาน | Put the dishes in the sink. | วางจานในอ่างล้างจาน
+toy | ของเล่น | The kids love this toy. | เด็กๆ ชอบของเล่นนี้
+`);
+U('daily', 1, 'สัตว์น่ารู้ 1', `
+lion | สิงโต | The lion is the king of the jungle. | สิงโตเป็นราชาแห่งป่า
+wolf | หมาป่า | The wolf howled at night. | หมาป่าหอนตอนกลางคืน
+fox | สุนัขจิ้งจอก | A fox is very clever. | สุนัขจิ้งจอกฉลาดมาก
+deer | กวาง | We saw a deer in the forest. | เราเห็นกวางในป่า
+goat | แพะ | The goat eats grass. | แพะกินหญ้า
+sheep | แกะ | The farmer has fifty sheep. | ชาวนามีแกะห้าสิบตัว
+---
+owl | นกฮูก | Owls hunt at night. | นกฮูกล่าเหยื่อตอนกลางคืน
+eagle | นกอินทรี | An eagle flew over the mountain. | นกอินทรีบินผ่านภูเขา
+parrot | นกแก้ว | The parrot can talk. | นกแก้วพูดได้
+pigeon | นกพิราบ | Pigeons are everywhere in the city. | ในเมืองมีนกพิราบทุกที่
+swan | หงส์ | Swans swim on the lake. | หงส์ว่ายน้ำในทะเลสาบ
+goose | ห่าน | The goose chased me. | ห่านไล่ฉัน
+`);
+U('daily', 1, 'สัตว์น่ารู้ 2', `
+dolphin | โลมา | Dolphins are smart. | โลมาฉลาด
+shark | ฉลาม | I saw a shark! | ฉันเห็นฉลาม!
+crab | ปู | I love crab curry. | ฉันชอบแกงปู
+lobster | กุ้งมังกร | Lobster is expensive. | กุ้งมังกรแพง
+oyster | หอยนางรม | We ate fresh oysters. | เรากินหอยนางรมสด
+penguin | เพนกวิน | Penguins can't fly. | เพนกวินบินไม่ได้
+---
+rat | หนู (ตัวใหญ่) | There is a rat in the kitchen. | มีหนูในครัว
+snail | หอยทาก | The snail is very slow. | หอยทากช้ามาก
+spider | แมงมุม | I'm scared of spiders. | ฉันกลัวแมงมุม
+wasp | ตัวต่อ | A wasp stung me. | ตัวต่อต่อยฉัน
+worm | หนอน/ไส้เดือน | The bird ate a worm. | นกกินหนอน
+insect | แมลง | Ants are insects. | มดเป็นแมลง
+`);
+U('daily', 1, 'ผลไม้และผักเพิ่มเติม', `
+grape | องุ่น | I bought some grapes. | ฉันซื้อองุ่นมา
+lemon | มะนาวเหลือง (เลมอน) | Add some lemon juice. | เติมน้ำเลมอน
+lime | มะนาว | Thai food uses a lot of lime. | อาหารไทยใช้มะนาวเยอะ
+peach | ลูกพีช | The peach is sweet. | ลูกพีชหวาน
+pear | ลูกแพร์ | I like pears. | ฉันชอบลูกแพร์
+plum | ลูกพลัม | This plum is sour. | ลูกพลัมลูกนี้เปรี้ยว
+---
+strawberry | สตรอว์เบอร์รี | I love strawberry ice cream. | ฉันชอบไอศกรีมสตรอว์เบอร์รี
+melon | แตงไทย/เมลอน | Cut the melon into pieces. | หั่นเมลอนเป็นชิ้น
+olive | มะกอก | Use olive oil. | ใช้น้ำมันมะกอก
+pea | ถั่วลันเตา | Add some peas to the rice. | ใส่ถั่วลันเตาลงในข้าว
+pumpkin | ฟักทอง | Pumpkin soup is delicious. | ซุปฟักทองอร่อย
+spinach | ผักโขม | Spinach is good for you. | ผักโขมดีต่อสุขภาพ
+`);
+U('daily', 1, 'อาหารและของกินเพิ่มเติม', `
+cheese | ชีส | I want extra cheese. | ฉันขอชีสเพิ่ม
+butter | เนย | Put butter on the bread. | ทาเนยบนขนมปัง
+honey | น้ำผึ้ง | Tea with honey, please. | ขอชาใส่น้ำผึ้ง
+biscuit | บิสกิต | Have a biscuit. | กินบิสกิตสิ
+pancake | แพนเค้ก | I had pancakes for breakfast. | ฉันกินแพนเค้กเป็นมื้อเช้า
+sausage | ไส้กรอก | Kids love sausages. | เด็กๆ ชอบไส้กรอก
+---
+salad | สลัด | I'll have a salad. | ฉันขอสลัด
+steak | สเต๊ก | How do you like your steak? | คุณชอบสเต๊กแบบไหน
+stew | สตู | Beef stew is warm and tasty. | สตูเนื้ออุ่นและอร่อย
+toast | ขนมปังปิ้ง | I eat toast every morning. | ฉันกินขนมปังปิ้งทุกเช้า
+pie | พาย | Mom made an apple pie. | แม่ทำพายแอปเปิล
+noodle | เส้นก๋วยเตี๋ยว | These noodles are spicy. | ก๋วยเตี๋ยวนี้เผ็ด
+`);
+U('daily', 2, 'เสื้อผ้าและเครื่องประดับ', `
+coat | เสื้อโค้ท | Wear a warm coat. | ใส่เสื้อโค้ทอุ่นๆ
+suit | ชุดสูท | He wore a black suit. | เขาใส่ชุดสูทสีดำ
+sock | ถุงเท้า | I lost a sock. | ถุงเท้าหายไปข้างหนึ่ง
+glove | ถุงมือ | Wear gloves at the crime scene. | สวมถุงมือที่ที่เกิดเหตุ
+button | กระดุม/ปุ่ม | Press the red button. | กดปุ่มสีแดง
+collar | ปกเสื้อ/ปลอกคอ | The dog has a red collar. | สุนัขใส่ปลอกคอสีแดง
+---
+sleeve | แขนเสื้อ | Roll up your sleeves. | พับแขนเสื้อขึ้น
+trousers | กางเกงขายาว | He wore gray trousers. | เขาใส่กางเกงขายาวสีเทา
+blouse | เสื้อผู้หญิง | She wore a white blouse. | เธอใส่เสื้อเชิ้ตสีขาว
+ribbon | ริบบิ้น | Tie it with a ribbon. | ผูกด้วยริบบิ้น
+diamond | เพชร | The ring has a diamond. | แหวนมีเพชร
+jewel | อัญมณี | The jewels were stolen. | อัญมณีถูกขโมย
+`);
+U('daily', 2, 'เครื่องมือและของใช้', `
+scissors | กรรไกร | Pass me the scissors. | ส่งกรรไกรให้หน่อย
+glue | กาว | Use glue to fix it. | ใช้กาวซ่อม
+rope | เชือก | Tie the boat with a rope. | ผูกเรือด้วยเชือก
+nail | ตะปู/เล็บ | Hammer the nail in. | ตอกตะปูลงไป
+screw | สกรู/ขันสกรู | Tighten the screw. | ขันสกรูให้แน่น
+needle | เข็ม | I need a needle and thread. | ฉันต้องการเข็มกับด้าย
+---
+thread | ด้าย/กระทู้ | The thread is too short. | ด้ายสั้นไป
+ruler | ไม้บรรทัด | Draw a line with a ruler. | ใช้ไม้บรรทัดลากเส้น
+eraser | ยางลบ | Can I borrow your eraser? | ขอยืมยางลบหน่อย
+shovel | พลั่ว | Dig with a shovel. | ขุดด้วยพลั่ว
+magnet | แม่เหล็ก | The magnet holds the note. | แม่เหล็กติดโน้ตไว้
+torch | ไฟฉาย/คบเพลิง | Take a torch. It's dark. | เอาไฟฉายไป มืดนะ
+`);
+U('daily', 2, 'อวัยวะและส่วนต่างๆ ของร่างกาย', `
+brain | สมอง | Use your brain. | ใช้สมองหน่อย
+bone | กระดูก | He broke a bone. | เขากระดูกหัก
+cheek | แก้ม | She has red cheeks. | เธอแก้มแดง
+chin | คาง | He has a beard on his chin. | เขามีเคราที่คาง
+forehead | หน้าผาก | He has a scar on his forehead. | เขามีแผลเป็นที่หน้าผาก
+jaw | กราม/ขากรรไกร | He was hit on the jaw. | เขาถูกต่อยที่กราม
+---
+throat | ลำคอ | My throat hurts. | ฉันเจ็บคอ
+thumb | นิ้วโป้ง | He gave a thumbs up. | เขายกนิ้วโป้ง
+waist | เอว | The belt is around my waist. | เข็มขัดคาดเอวฉัน
+lung | ปอด | Smoking hurts your lungs. | การสูบบุหรี่ทำร้ายปอด
+liver | ตับ | Alcohol damages the liver. | แอลกอฮอล์ทำลายตับ
+kidney | ไต | Drink water for your kidneys. | ดื่มน้ำเพื่อไต
+`);
+U('daily', 2, 'สถานที่ในเมืองเพิ่มเติม', `
+church | โบสถ์ | There is a church near the school. | มีโบสถ์ใกล้โรงเรียน
+cinema | โรงภาพยนตร์ | Let's go to the cinema. | ไปดูหนังกันเถอะ
+garage | โรงรถ/อู่ | The car is in the garage. | รถอยู่ในโรงรถ
+mall | ห้างสรรพสินค้า | Meet me at the mall. | เจอกันที่ห้าง
+pub | ผับ | They met at a pub. | พวกเขาเจอกันที่ผับ
+tower | หอคอย/ตึกสูง | The tower is 300 meters tall. | หอคอยสูง 300 เมตร
+---
+castle | ปราสาท | The king lived in a castle. | กษัตริย์อาศัยในปราสาท
+cottage | กระท่อม/บ้านในชนบท | They have a cottage by the lake. | พวกเขามีบ้านพักริมทะเลสาบ
+tunnel | อุโมงค์ | The train went into a tunnel. | รถไฟเข้าอุโมงค์
+path | ทางเดิน | Follow the path. | เดินตามทาง
+yard | สนามหน้าบ้าน | The kids play in the yard. | เด็กๆ เล่นในสนามหน้าบ้าน
+fountain | น้ำพุ | Meet me at the fountain. | เจอกันที่น้ำพุ
+`);
+U('daily', 2, 'เรือและการเดินทางทางน้ำ', `
+ship | เรือใหญ่ | The ship left the port. | เรือออกจากท่า
+ferry | เรือข้ามฟาก | Take the ferry to the island. | นั่งเรือข้ามฟากไปเกาะ
+raft | แพ | They floated on a raft. | พวกเขาลอยบนแพ
+sail | ใบเรือ/แล่นเรือ | We sailed to the island. | เราแล่นเรือไปที่เกาะ
+deck | ดาดฟ้าเรือ | Let's go up on deck. | ขึ้นไปบนดาดฟ้าเรือกัน
+crew | ลูกเรือ/ทีมงาน | The crew helped the passengers. | ลูกเรือช่วยผู้โดยสาร
+---
+captain | กัปตัน | The captain spoke to us. | กัปตันพูดกับเรา
+rocket | จรวด | The rocket went to space. | จรวดขึ้นสู่อวกาศ
+tractor | รถแทรกเตอร์ | The farmer drives a tractor. | ชาวนาขับรถแทรกเตอร์
+wagon | เกวียน/รถพ่วง | The horse pulled the wagon. | ม้าลากเกวียน
+pedal | แป้นเหยียบ/ปั่น | Push the pedal. | เหยียบแป้น
+rail | ราง/ราวจับ | Hold the rail. | จับราวไว้
+`);
+U('daily', 2, 'กริยาท่าทางร่างกาย', `
+bend | ก้ม/งอ | Bend your knees. | งอเข่า
+bounce | กระเด้ง | The ball bounced high. | ลูกบอลเด้งสูง
+crawl | คลาน | The baby can crawl. | ทารกคลานได้แล้ว
+drag | ลาก | Don't drag your bag. | อย่าลากกระเป๋า
+kneel | คุกเข่า | Kneel down, please. | กรุณาคุกเข่าลง
+knock | เคาะ | Knock before you enter. | เคาะก่อนเข้า
+---
+shrug | ยักไหล่ | He just shrugged. | เขาแค่ยักไหล่
+grin | ยิ้มกว้าง | She grinned at me. | เธอยิ้มกว้างให้ฉัน
+frown | ขมวดคิ้ว | Why are you frowning? | ทำไมขมวดคิ้วล่ะ
+squeeze | บีบ | Squeeze the lemon. | บีบเลมอน
+swing | แกว่ง/ชิงช้า | The kids are on the swing. | เด็กๆ เล่นชิงช้า
+slide | ลื่นไถล/สไลเดอร์ | The car slid on the wet road. | รถลื่นไถลบนถนนเปียก
+`);
+U('daily', 3, 'วัสดุต่างๆ', `
+metal | โลหะ | The box is made of metal. | กล่องทำจากโลหะ
+steel | เหล็กกล้า | The bridge is made of steel. | สะพานทำจากเหล็กกล้า
+cotton | ผ้าฝ้าย | This shirt is 100% cotton. | เสื้อนี้ผ้าฝ้าย 100%
+wool | ขนแกะ/ผ้าวูล | Wool keeps you warm. | ผ้าวูลช่วยให้อบอุ่น
+rubber | ยาง | The tires are made of rubber. | ยางรถทำจากยาง
+fabric | ผ้า | Choose the fabric. | เลือกผ้า
+---
+brick | อิฐ | The wall is made of brick. | กำแพงก่อด้วยอิฐ
+clay | ดินเหนียว | She makes pots from clay. | เธอปั้นหม้อจากดินเหนียว
+wax | ขี้ผึ้ง | Candles are made of wax. | เทียนทำจากขี้ผึ้ง
+ivory | งาช้าง | Selling ivory is illegal. | การขายงาช้างผิดกฎหมาย
+feather | ขนนก | It's as light as a feather. | เบาเหมือนขนนก
+fur | ขนสัตว์ | The cat has soft fur. | แมวมีขนนุ่ม
+`);
+U('daily', 3, 'คำบรรยายลักษณะ', `
+asleep | หลับอยู่ | The baby is asleep. | ทารกหลับอยู่
+awake | ตื่นอยู่ | Are you still awake? | คุณยังตื่นอยู่ไหม
+bare | เปล่า/เปลือย | Don't walk in bare feet. | อย่าเดินเท้าเปล่า
+comfortable | สบาย | These shoes are comfortable. | รองเท้าคู่นี้ใส่สบาย
+damp | ชื้น | The room is damp. | ห้องชื้น
+flat | แบน/ห้องชุด | I have a flat tire. | ยางรถฉันแบน
+---
+neat | เรียบร้อย/เจ๋ง | Your writing is neat. | ลายมือคุณเรียบร้อย
+ripe | สุก (ผลไม้) | The mangoes are ripe. | มะม่วงสุกแล้ว
+greedy | โลภ | Don't be greedy. | อย่าโลภ
+evil | ชั่วร้าย | The villain is evil. | ตัวร้ายชั่วร้าย
+deaf | หูหนวก | He is deaf in one ear. | เขาหูหนวกข้างหนึ่ง
+disabled | พิการ | This toilet is for disabled people. | ห้องน้ำนี้สำหรับผู้พิการ
+`);
+U('daily', 3, 'การเกษตรและชนบท', `
+crop | พืชผล | The crops need rain. | พืชผลต้องการฝน
+harvest | การเก็บเกี่ยว | Rice harvest is in November. | การเก็บเกี่ยวข้าวคือเดือนพฤศจิกายน
+wheat | ข้าวสาลี | Bread is made from wheat. | ขนมปังทำจากข้าวสาลี
+grain | เมล็ดพืช/ธัญพืช | Eat whole grains. | กินธัญพืชไม่ขัดสี
+hay | ฟาง | The horse eats hay. | ม้ากินฟาง
+cattle | วัวควาย | The farmer has fifty cattle. | ชาวนามีวัวห้าสิบตัว
+---
+seed | เมล็ด | Plant the seeds in spring. | ปลูกเมล็ดในฤดูใบไม้ผลิ
+soil | ดิน | The soil is rich. | ดินอุดมสมบูรณ์
+root | ราก | The tree has deep roots. | ต้นไม้มีรากลึก
+fence | รั้ว | Jump over the fence. | กระโดดข้ามรั้ว
+mud | โคลน | My shoes are covered in mud. | รองเท้าฉันเปื้อนโคลน
+meadow | ทุ่งหญ้า | Sheep graze in the meadow. | แกะเล็มหญ้าในทุ่ง
+`);
+U('daily', 3, 'แฟนตาซีและนิทาน', `
+dragon | มังกร | The dragon breathed fire. | มังกรพ่นไฟ
+fairy | นางฟ้า | The fairy granted a wish. | นางฟ้าให้พร
+witch | แม่มด | The witch has a black cat. | แม่มดมีแมวดำ
+wand | ไม้กายสิทธิ์ | He waved his magic wand. | เขาโบกไม้กายสิทธิ์
+magic | เวทมนตร์ | Do you believe in magic? | คุณเชื่อเรื่องเวทมนตร์ไหม
+prince | เจ้าชาย | The prince saved the princess. | เจ้าชายช่วยเจ้าหญิง
+---
+princess | เจ้าหญิง | The princess lived in a castle. | เจ้าหญิงอาศัยในปราสาท
+kingdom | อาณาจักร | The kingdom was at peace. | อาณาจักรสงบสุข
+throne | บัลลังก์ | The king sat on his throne. | กษัตริย์นั่งบนบัลลังก์
+sword | ดาบ | He drew his sword. | เขาชักดาบออกมา
+treasure | สมบัติ | They found hidden treasure. | พวกเขาพบสมบัติที่ซ่อนไว้
+pirate | โจรสลัด | Pirates attacked the ship. | โจรสลัดโจมตีเรือ
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
