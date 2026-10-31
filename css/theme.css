@@ -1158,3 +1158,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .em-sign b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13px;line-height:1.35;color:#334155}
 .em-exam{position:relative;margin:26px 16px 0}
 .em-map,.em-tabs{max-width:560px;margin-left:auto;margin-right:auto}
+/* มือถือแนวตั้ง: ซูมออกหน้าหลัก 3 หน้า (หน้าแรก, ข้อสอบ, แผนที่อังกฤษ — ไม่รวมหน้าทำบทเรียน) ให้โล่งขึ้น */
+@media (orientation:portrait) and (max-width:600px){
+  body:is([data-page=home],[data-page=quiz],[data-page=cards]) #view:not(:has(.ls-wrap)){zoom:.86}
+}
