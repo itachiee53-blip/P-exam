@@ -290,7 +290,7 @@ function renderLesson(){
   const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button>`;
   const opts = (it.opts || []).map((o, k) => `<button class="ls-opt" data-o="${k}" style="--b:${ENG_OC[k % 4]}"><em>${'ABCD'[k]}</em>${esc(o)}</button>`).join('');
   let body = '';
-  if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
+  if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2><div class="ls-says">${say}</div>
       <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${engTw(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
   if(it.t === 'rule') body = `<div class="ls-rule"><b>${engTw(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${engTw(r.trim())}</span>`).join('')}</div>`;
   if(it.t === 'dlg') body = `<div class="ls-chat">${w.lines.map(l => { const m = l.match(/^([AB]):\s*(.*)$/) || [0, 'A', l], me = m[1] === 'B';
@@ -384,7 +384,7 @@ function lessonFb(ok, ans, noRedo){
     if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.exam && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
-  if(S.settings.sound && navigator.vibrate) try { navigator.vibrate(ok ? 12 : [18, 50, 18]); } catch(e){} // สั่นสั้นๆ (Android)
+  if(ok && S.settings.sound && navigator.vibrate) try { navigator.vibrate(12); } catch(e){} // ตอบผิดไม่สั่นเครื่อง
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : it.t === 'order' ? 'ประโยคที่ถูกอยู่ด้านล่าง' : 'คำตอบที่ถูก'}</b>
     ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo ${[3, 5, 10, 15, 20, 30].includes(L.combo) ? 'big' : ''}" data-t="${L.combo >= 10 ? 3 : L.combo >= 5 ? 2 : 1}"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
   // ประโยคเต็ม + คำแปล + อ่านให้ฟัง (เติมคำ / เรียงประโยค / ไวยากรณ์)
@@ -394,8 +394,9 @@ function lessonFb(ok, ans, noRedo){
       <button class="ls-say" data-sayfull><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-sayslow title="ฟังช้า"><i data-lucide="snail"></i></button><div><b>${engTw(full)}</b>${it.w.tr ? `<small>${esc(it.w.tr)}</small>` : ''}</div></div>`);
     $('[data-sayfull]').onclick = () => speakWord(full);
     $('[data-sayslow]').onclick = () => speakWord(full, true);
-    setTimeout(() => speakWord(full), 350);
   }
+  // ตอบถูกเท่านั้นถึงอ่านออกเสียง (ประโยคเต็ม หรือคำศัพท์)
+  if(ok) setTimeout(() => full ? speakWord(full) : it.w && it.w.en && engSay(it.w.en), 350);
   icons($('#lsFb'));
   requestAnimationFrame(() => $('#lsNext') && $('#lsNext').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
   if(ok){ const r = $('#lsFb').getBoundingClientRect(); engConfetti(L.combo >= 3 ? 22 : 12, r.left + 40, r.top + 20); }
