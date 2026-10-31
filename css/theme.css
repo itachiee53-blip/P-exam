@@ -1101,3 +1101,7 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 #lsFb{margin-top:12px}
 .ls-ans{min-height:52px}
 .ls-tiles:not(:has(.ls-tile:not(.used))){display:none}
+.ls-struct{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,#f59e0b 9%,var(--surface));border:1px dashed color-mix(in srgb,#f59e0b 45%,var(--line));font-size:13px;font-weight:700;color:#b45309}
+.ls-struct svg{width:16px;height:16px;flex:none}
+.ls-struct span{padding:3px 9px;border-radius:999px;background:var(--surface);border:1px solid color-mix(in srgb,#f59e0b 30%,var(--line))}
+.ls-struct em{font-style:normal;color:var(--muted)}

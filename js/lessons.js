@@ -1386,12 +1386,12 @@ beautiful | สวย | The temple is beautiful. | วัดสวยมาก
 happy | มีความสุข | I am happy. | ฉันมีความสุข
 `);
 G(0, 'This / That / These / Those', 'this = นี่ (ใกล้, อันเดียว) · that = นั่น (ไกล, อันเดียว) · these = เหล่านี้ · those = เหล่านั้น', `
-___ is my pen. (ใกล้ตัว) | This | These, Those, They | ใกล้ + อันเดียวใช้ This | นี่คือปากกาของฉัน
-___ are my friends. (ใกล้ตัว) | These | This, That, It | ใกล้ + หลายคนใช้ These | เหล่านี้คือเพื่อนของฉัน
+___ is my pen. | This | These, Those, They | ใกล้ + อันเดียวใช้ This | นี่คือปากกาของฉัน
+___ are my friends. | These | This, That, It | ใกล้ + หลายคนใช้ These | เหล่านี้คือเพื่อนของฉัน
 Look at ___ car over there. | that | this, these, those | ไกล + อันเดียวใช้ that | ดูรถคันนั้นทางโน้นสิ
 ___ books on the shelf are old. | Those | That, This, It | ไกล + หลายอันใช้ Those | หนังสือพวกนั้นบนชั้นเก่าแล้ว
-Is ___ your bag? (ถืออยู่) | this | these, those, they | ใกล้ + อันเดียว | นี่กระเป๋าของคุณใช่ไหม
-Are ___ your shoes? (อยู่ไกล) | those | that, this, it | ไกล + หลายอัน | นั่นรองเท้าของคุณใช่ไหม
+Is ___ your bag? | this | these, those, they | ใกล้ + อันเดียว | นี่กระเป๋าของคุณใช่ไหม
+Are ___ your shoes? | those | that, this, it | ไกล + หลายอัน | นั่นรองเท้าของคุณใช่ไหม
 `);
 G(0, 'Have / Has', 'I / You / We / They + have · He / She / It + has', `
 I ___ a car. | have | has, am, is | I ใช้ have | ฉันมีรถ

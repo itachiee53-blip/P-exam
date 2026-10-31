@@ -177,6 +177,102 @@ function engClock(){
 // ---------- บทเรียน ----------
 // ตัวคำของประโยค (ตัดจุด/ตัวพิมพ์ใหญ่คำแรก ไม่ให้เดาลำดับจากรูปคำ)
 const engToks = ex => ex.replace(/[.!?,]/g, '').split(/\s+/).filter(Boolean).map((s, k) => k || s === 'I' ? s : s[0].toLowerCase() + s.slice(1));
+// โครงสร้างประโยคสำหรับคำใบ้ข้อเรียงประโยค (เดาจากชนิดคำ ถ้าไม่มั่นใจคืน null)
+const ENG_W = (o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, new Set(v.split(' '))])))({
+  wh: 'what where when who whom whose why how which', be: 'am is are was were', aux: 'do does did can could will would shall should may might must',
+  sub: 'i you he she we they it there people everyone everybody someone somebody nobody nothing everything something police children', obj: 'me him us them', det: 'the a an my your his her its our their this that these those some any every each no all many much one two three four five six seven eight nine ten both several few',
+  prep: 'in on at to from with for of about by under over near after before into behind between during without around across through up down off out',
+  conj: 'and but because so if when or while although though unless until', freq: 'always usually often sometimes never rarely seldom just already also still',
+  link: 'look looks looked feel feels felt seem seems seemed become became sound sounds smell smells taste tastes',
+  time: 'today tomorrow yesterday tonight now soon later here there everyday', toV: 'going want wants wanted need needs needed like likes love hate try tries tried plan plans hope hopes decide decided going learn agree refuse forget remember would'
+});
+function engStruct(ex){
+  ex = ex.trim();
+  if(/[;:]|[.!?]\s+\S/.test(ex)) return null;
+  let m = ex.match(/^(.*\S),\s*please([.!?]?)$/i);
+  if(m){ const r = engStruct(m[1] + m[2]); return r && r.concat('please'); }
+  m = ex.match(/^([^,]+),\s*(.+)$/);
+  if(m && m[1].split(/\s+/).length <= 2 && !/,/.test(m[2])){ const r = engStruct(m[2]); return r && ['คำขึ้นต้น', ...r]; }
+  const raw = ex.replace(/[.!?,]/g, '').split(/\s+/).filter(Boolean), T = raw.map(s => s.toLowerCase()), n = T.length, is = (k, t) => t !== undefined && ENG_W[k].has(t);
+  const neg = t => /n't$/.test(t), beC = t => /^(i'm|you're|we're|they're|he's|she's|it's|that's|there's|what's|where's|who's|how's)$/.test(t);
+  const verbish = t => /(ed|s)$/.test(t) && !/(ss|us|is)$/.test(t);
+  const out = []; let i = 0, bad = false;
+  const np = q => { // ประธานเป็นกลุ่มคำนาม: ตัวกำหนด + คำ… ถึงคำที่ดูเป็นกริยา
+    if(is('sub', T[i])){ i++; return true; }
+    if(/^[A-Z]/.test(raw[i]) && i){ i++; while(i < n && /^[A-Z]/.test(raw[i]) && !is('sub', T[i])) i++; return true; }
+    if(!is('det', T[i])) return false;
+    const b = T.findIndex((t, k) => k > i && (is('be', t) || is('aux', t) || neg(t))), c = T.findIndex((t, k) => k > i && is('conj', t));
+    if(b > 0 && (c < 0 || c > b)){ i = b; return true; }
+    let j = i + 1;
+    while(j < n){
+      if(T[j] === 'of'){ j += is('det', T[j + 1]) ? 2 : 1; continue; }
+      if(is('prep', T[j]) || is('det', T[j]) || is('obj', T[j]) || is('conj', T[j]) || j > i + 1 && !q && (verbish(T[j]) || is('prep', T[j + 1]) || is('det', T[j + 1]) || is('obj', T[j + 1]))) break;
+      j++;
+    }
+    i = j;
+    return true;
+  };
+  const rest = afterBe => { // ส่วนท้าย: กรรม/ส่วนเติม/บุพบทวลี/เวลา
+    let first = true;
+    while(i < n){
+      const t = T[i];
+      if(is('conj', t) && !(t === 'so' && !is('sub', T[i + 1]))){ out.push('คำเชื่อม + อีกประโยค'); return; }
+      if(t === 'not'){ out.push('not'); i++; continue; }
+      if(t === 'to' && is('toV', T[i - 1])){ out.push('to + กริยา'); i += 2; afterBe = false; continue; }
+      if(is('prep', t) && (i === n - 1 || is('prep', T[i + 1]))){ i++; continue; }
+      if(is('prep', t)){ out.push('บุพบท + คำนาม'); i++; while(i < n && !is('prep', T[i]) && !is('conj', T[i]) && !is('time', T[i])) i++; first = false; continue; }
+      if(is('time', t) || /^(every|last|next)$/.test(t) && i + 1 < n){ out.push('เวลา'); i += is('time', t) ? 1 : 2; first = false; continue; }
+      if(/ly$/.test(t) && !is('det', T[i - 1])){ out.push('คำขยาย'); i++; first = false; continue; }
+      const lab = /^\d/.test(t) && !afterBe ? 'ตัวเลข' : afterBe ? (/ing$/.test(t) ? 'กริยา + ing' : is('det', t) || is('obj', t) || /^[A-Z0-9]/.test(raw[i]) ? 'คำนาม' : 'คุณศัพท์') : 'กรรม';
+      out.push(lab); i++;
+      while(i < n && !is('prep', T[i]) && !is('conj', T[i]) && !is('time', T[i]) && !(/ly$/.test(T[i]) && i === n - 1 && !is('det', T[i - 1]))) i++;
+      first = false; afterBe = false;
+    }
+  };
+  const pred = () => { // หลังประธาน
+    if(is('freq', T[i])){ out.push('คำบอกความถี่'); i++; }
+    if(is('be', T[i]) || neg(T[i]) && /^(is|are|was|were)/.test(T[i])){ out.push('Verb to be'); if(neg(T[i])) out.push('not'); i++; if(T[i] === 'not'){ out.push('not'); i++; } return rest(true); }
+    if(is('aux', T[i]) || neg(T[i])){ out.push('กริยาช่วย'); if(neg(T[i])) out.push('not'); i++; if(T[i] === 'not'){ out.push('not'); i++; } if(is('freq', T[i])) i++; if(T[i] === 'be'){ out.push('be'); i++; return rest(true); } }
+    if(i >= n) return;
+    if(is('conj', T[i]) || is('prep', T[i]) || is('det', T[i])) return bad = true;
+    out.push('กริยา'); i++; rest(is('link', T[i - 1]));
+  };
+  if(is('wh', T[0]) || /^(what|where|who|how)'s$/.test(T[0])){
+    if(!raw[n - 1] || !/\?\s*$/.test(ex)) return null;
+    out.push('คำถาม'); i = 1;
+    if(beC(T[0])){ out.push('Verb to be'); if(i < n){ np() || i++; out.push('ประธาน'); } rest(true); return out; }
+    if(/^(much|many|old|long|far|often|time|kind|day|color|colour)$/.test(T[1])) i = 2;
+    if(is('be', T[i]) || is('aux', T[i]) || neg(T[i])){
+      const be = is('be', T[i]); out.push(be ? 'Verb to be' : 'กริยาช่วย'); i++;
+      if(i < n){ const s = i; if(!np(be)) i = s + 1; out.push('ประธาน'); }
+      if(be) rest(true); else if(i < n){ out.push('กริยา'); i++; rest(false); }
+      return out;
+    }
+    out.push('กริยา'); i++; rest(false); return out;
+  }
+  if(is('be', T[0]) || is('aux', T[0])){
+    if(!/\?\s*$/.test(ex)) return null;
+    const be = is('be', T[0]); out.push(be ? 'Verb to be' : 'กริยาช่วย'); i = 1;
+    if(!np(be)) i++; else if(i >= n && n > 2) i = n - 1; out.push('ประธาน');
+    if(be) rest(true); else if(i < n){ out.push('กริยา'); i++; rest(false); }
+    return out;
+  }
+  if(beC(T[0])){ out.push('ประธาน', 'Verb to be'); i = 1; if(T[1] === 'not'){ out.push('not'); i = 2; } rest(true); return out; }
+  const ctr = T[0].match(/^(i|you|he|she|we|they|it|that|there)'(ll|d|ve)$/);
+  if(ctr){ out.push('ประธาน', 'กริยาช่วย'); i = 1; if(T[1] === 'not'){ out.push('not'); i = 2; } if(T[i] === 'be'){ out.push('be'); i++; return rest(true), out; } if(i < n){ out.push('กริยา'); i++; rest(is('link', T[i - 1])); } return out; }
+  if(T[0] === 'please' || T[0] === "don't" || T[0] === "let's"){ out.push(T[0] === 'please' ? 'Please' : raw[0]); i = 1; }
+  else if(/,/.test(ex)) return null;
+  else if(np()){ out.push('ประธาน'); pred(); return out.length > 1 && !bad ? out : null; }
+  else { // ไม่มีตัวกำหนด: ประธานเป็นคำนาม (เจอ be/กริยาช่วยภายใน 3 คำ หรือคำนามพหูพจน์ตามด้วยกริยา) ไม่งั้นเป็นประโยคคำสั่ง
+    const b = T.findIndex(t => is('be', t) || is('aux', t) || neg(t));
+    if(b > 0 && b <= 3 && !T.slice(0, b).some(t => /ly$/.test(t))){ i = b; out.push('ประธาน'); pred(); return bad ? null : out; }
+    if(/[^s]s$/.test(T[0]) && !is('det', T[1]) && !is('prep', T[1]) || verbish(T[1]) && (!/s$/.test(T[1]) || /ing$/.test(T[0]))){ i = 1; out.push('ประธาน'); pred(); return bad ? null : out; }
+  }
+  if(i >= n) return null;
+  if(T[i] === 'be'){ out.push('be'); i++; rest(true); return out; }
+  out.push(out.length ? 'กริยา' : 'กริยา (คำสั่ง)'); i++; rest(is('link', T[i - 1]));
+  return out.length > 1 ? out : null;
+}
 function engEx(t, w, pool){
   if(t === 'blank'){
     const re = new RegExp('\\b' + w.en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*', 'i');
@@ -249,6 +345,7 @@ function renderLesson(){
       ${L.st === null ? '<button class="btn lg block" id="lsCheckT">ตรวจ</button>' : ''}`;
   if(it.t === 'blank') body = `<p class="ls-sent">${engTw(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
   if(it.t === 'order') body = `<small class="ls-hint">${w.tr ? esc(w.tr) : `ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}`}</small>
+      ${it.st ? `<div class="ls-struct"><i data-lucide="lightbulb"></i>${it.st.map(x => `<span>${esc(x)}</span>`).join('<em>+</em>')}</div>` : ''}
       <div class="ls-ans">${it.pick.map(k => `<button class="ls-tile" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
       <div class="ls-tiles">${it.toks.map((s, k) => `<button class="ls-tile ${it.pick.includes(k) ? 'used' : ''}" data-tok="${k}">${esc(s)}</button>`).join('')}</div>
       ${L.st === null ? `<div class="ls-help"><button class="ls-help-btn" id="lsHint"><i data-lucide="lightbulb"></i>คำใบ้</button><button class="ls-help-btn" id="lsShow"><i data-lucide="eye"></i>ดูเฉลย</button></div>
@@ -280,8 +377,9 @@ function renderLesson(){
   $$('[data-back]').forEach(b => b.onclick = () => { if(L.st !== null) return; it.pick = it.pick.filter(k => k !== +b.dataset.back); renderLesson(); });
   // คำใบ้: วางคำถัดไปที่ถูกให้ (ตัดคำที่วางผิดออกก่อน) · ดูเฉลย: วางให้ครบ แล้วนับว่าผิด (ข้อจะวนกลับมาให้ทำเอง)
   const engFix = n => { const T = engToks(w.ex), used = []; it.pick = it.pick.filter((k, p) => p < T.length && it.toks[k] === T[p] && (used.push(k), true) && it.pick.slice(0, p).every((q, j) => it.toks[q] === T[j]));
-    for(let p = it.pick.length; p < Math.min(T.length, it.pick.length + n); p++){ const k = it.toks.findIndex((x, i) => x === T[p] && !it.pick.includes(i)); if(k < 0) break; it.pick.push(k); } };
-  if($('#lsHint')) $('#lsHint').onclick = () => { engFix(1); it.hinted = true; renderLesson(); };
+    for(let p = it.pick.length, e = Math.min(T.length, p + n); p < e; p++){ const k = it.toks.findIndex((x, i) => x === T[p] && !it.pick.includes(i)); if(k < 0) break; it.pick.push(k); } };
+  // ครั้งแรกบอกโครงสร้างประโยค ครั้งต่อไปวางคำให้ทีละคำ
+  if($('#lsHint')) $('#lsHint').onclick = () => { if(!it.st && (it.st = engStruct(w.ex))); else engFix(1); it.hinted = true; renderLesson(); };
   if($('#lsShow')) $('#lsShow').onclick = () => { engFix(99); renderLesson(); $('#lsCheck') && $('#lsCheck').remove(); $('.ls-help') && $('.ls-help').remove(); lessonFb(false, w.ex); };
   if($('#lsCheck')) $('#lsCheck').onclick = () => {
     const norm = s => s.toLowerCase().replace(/[^a-z0-9' ]/g, '').replace(/\s+/g, ' ').trim();
