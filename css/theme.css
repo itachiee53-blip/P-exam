@@ -975,9 +975,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-pass{position:relative;text-align:left;padding:18px 18px 16px;border-radius:22px;background:var(--surface);border:2px solid color-mix(in srgb,#16a34a 25%,var(--line))}
 .ls-pass>b{display:block;font-size:18px;color:#16a34a;margin:0 50px 8px 0}
 .ls-pass .ls-say{position:absolute;top:12px;right:12px;--c:#16a34a}
-.ls-pass p{font-size:16px;line-height:1.75}
+.ls-pass p{font-size:16px;line-height:1.75;color:var(--text)}
 .ls-pass.mini{max-height:30vh;overflow:auto}
-.ls-pass.mini p{font-size:14px;line-height:1.6;color:var(--text2,var(--muted))}
+.ls-pass.mini p{font-size:14px;line-height:1.6;color:var(--text);font-weight:500}
+.ls-pass.mini .tw{font-size:inherit;color:inherit}
 .ls-trbtn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 12px;border-radius:999px;border:0;background:color-mix(in srgb,#16a34a 12%,var(--surface));color:#16a34a;font:inherit;font-weight:700;font-size:13px;cursor:pointer}
 .ls-trbtn svg{width:15px;height:15px}
 .ls-ptr{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-size:14.5px!important}
