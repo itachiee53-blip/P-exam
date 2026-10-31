@@ -55,7 +55,7 @@ function engNext(){
   return null;
 }
 // คำที่ถึงรอบทวน (เรียนแล้ว ใกล้ลืม)
-const engDue = () => S.cards.filter(c => c.seen && (c.due || 0) <= Date.now()).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '', tr: '' })).filter(w => w.en && w.th);
+const engDue = () => { const K = engState().known; return S.cards.filter(c => c.seen && (c.due || 0) <= Date.now() && K[vcText(c.f)]).map(c => ({ en: vcText(c.f), th: vcText(c.b), ex: c.ex || '', tr: '' })).filter(w => w.en && w.th); };
 const engReview = () => lessonStart('daily', -1, shuf(engDue()).slice(0, 6));
 function engGo(n){ if(!n) return; n.exam ? levelExam(n.L) : lessonStart(n.x.c, n.x.ci); }
 

@@ -1256,6 +1256,14 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 /* หน้าทำบทเรียน: เนื้อหาอยู่กลางจอ (ระดับสายตา) ไม่ลอยชิดบน */
 .ls-wrap{display:flex;flex-direction:column;min-height:calc(100dvh - 190px)}
 .ls-wrap>.ls-top{width:100%}
-.ls-wrap>.ls-body{margin-top:auto;width:100%}
-.ls-wrap>#lsFb{width:100%;min-height:86px;margin-bottom:auto;padding-bottom:4vh}
-@media (orientation:portrait) and (max-width:600px){.ls-wrap{min-height:calc(100dvh - 26px)}}
+.ls-wrap>.ls-body{width:100%;order:2}
+.ls-wrap>#lsFb{width:100%;min-height:86px;order:3}
+.ls-wrap::before,.ls-wrap::after{content:"";flex:1 1 0;max-height:22vh;order:1}.ls-wrap::after{flex-grow:2.2;max-height:none;order:4}
+@media (orientation:portrait) and (max-width:600px){
+  .ls-wrap{min-height:calc(100dvh - 40px)}
+  .ls-wrap .ls-opt{min-height:64px;font-size:18px}
+  .ls-wrap .ls-sent{font-size:26px}
+  .ls-wrap .ls-tile{padding:12px 16px;font-size:18px}
+  .ls-wrap .ls-body{gap:16px}
+}
+.voc-e{text-align:center;color:var(--muted);padding:18px 0;margin:0}
