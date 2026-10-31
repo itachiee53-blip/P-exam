@@ -8020,6 +8020,232 @@ regime | ระบอบการปกครอง | The old regime fell. | ร
 constituent | ผู้มีสิทธิเลือกตั้งในเขต | The MP met his constituents. | ส.ส. พบประชาชนในเขต
 `);
 
+U('daily', 3, 'นามธรรม: ความรู้สึกเชิงบวก', `
+gratitude | ความกตัญญู/ความขอบคุณ | I want to show my gratitude. | ฉันอยากแสดงความขอบคุณ
+kindness | ความเมตตา | Thank you for your kindness. | ขอบคุณสำหรับความกรุณา
+laughter | เสียงหัวเราะ | The room was full of laughter. | ห้องเต็มไปด้วยเสียงหัวเราะ
+warmth | ความอบอุ่น | I felt the warmth of the sun. | ฉันรู้สึกถึงความอบอุ่นของแดด
+optimism | การมองโลกในแง่ดี | She is full of optimism. | เธอมองโลกในแง่ดีมาก
+pleasure | ความยินดี | It's a pleasure to meet you. | ยินดีที่ได้รู้จัก
+---
+patience | ความอดทน | Teaching needs patience. | การสอนต้องใช้ความอดทน
+passion | ความหลงใหล | He has a passion for music. | เขาหลงใหลดนตรี
+harmony | ความกลมกลืน | They live in harmony. | พวกเขาอยู่ร่วมกันอย่างกลมกลืน
+unity | ความสามัคคี | Unity is strength. | ความสามัคคีคือพลัง
+generosity | ความใจกว้าง | Thank you for your generosity. | ขอบคุณสำหรับน้ำใจ
+humility | ความถ่อมตน | Great leaders show humility. | ผู้นำที่ดีแสดงความถ่อมตน
+`);
+U('daily', 3, 'นามธรรม: ความรู้สึกเชิงลบ', `
+grief | ความโศกเศร้า | She was overcome by grief. | เธอจมอยู่กับความโศกเศร้า
+guilt | ความรู้สึกผิด | He felt guilt for lying. | เขารู้สึกผิดที่โกหก
+hatred | ความเกลียดชัง | Hatred leads to violence. | ความเกลียดชังนำไปสู่ความรุนแรง
+rage | ความโกรธเกรี้ยว | He shouted in rage. | เขาตะโกนด้วยความโกรธ
+misery | ความทุกข์ยาก | The war brought misery. | สงครามนำความทุกข์ยากมา
+sorrow | ความเศร้าโศก | We share your sorrow. | เราร่วมเสียใจกับคุณ
+---
+frustration | ความหงุดหงิดคับข้องใจ | I understand your frustration. | ฉันเข้าใจความหงุดหงิดของคุณ
+resentment | ความขุ่นเคือง | There was resentment between them. | มีความขุ่นเคืองระหว่างพวกเขา
+revenge | การแก้แค้น | He wanted revenge. | เขาต้องการแก้แค้น
+terror | ความหวาดกลัว | They ran in terror. | พวกเขาวิ่งหนีด้วยความหวาดกลัว
+nightmare | ฝันร้าย | I had a nightmare. | ฉันฝันร้าย
+temper | อารมณ์ (โมโห) | He lost his temper. | เขาโมโหหัวเสีย
+`);
+U('daily', 3, 'นามธรรม: ชีวิตและสังคม', `
+lifestyle | วิถีชีวิต | Live a healthy lifestyle. | ใช้ชีวิตอย่างมีสุขภาพดี
+leisure | เวลาว่าง/การพักผ่อน | What do you do in your leisure time? | คุณทำอะไรในเวลาว่าง
+retirement | การเกษียณ | He is saving for retirement. | เขาเก็บเงินไว้ใช้ตอนเกษียณ
+youth | วัยหนุ่มสาว/เยาวชน | In his youth, he was a soldier. | ตอนหนุ่มเขาเป็นทหาร
+luxury | ความหรูหรา | A car is a luxury for some. | รถยนต์เป็นของฟุ่มเฟือยสำหรับบางคน
+hygiene | สุขอนามัย | Good hygiene prevents disease. | สุขอนามัยที่ดีป้องกันโรค
+---
+literacy | การรู้หนังสือ | Literacy rates are rising. | อัตราการรู้หนังสือสูงขึ้น
+immigration | การเข้าเมือง | Go to the immigration office. | ไปที่สำนักงานตรวจคนเข้าเมือง
+independence | อิสรภาพ/การพึ่งตนเอง | Teenagers want independence. | วัยรุ่นต้องการอิสระ
+privilege | สิทธิพิเศษ | It's a privilege to serve. | เป็นเกียรติที่ได้รับใช้
+famine | ความอดอยาก | The famine killed thousands. | ความอดอยากคร่าชีวิตคนนับพัน
+shortage | การขาดแคลน | There is a water shortage. | มีการขาดแคลนน้ำ
+`);
+U('daily', 3, 'นามธรรม: ความคิดและจิตใจ', `
+imagination | จินตนาการ | Use your imagination. | ใช้จินตนาการของคุณ
+inspiration | แรงบันดาลใจ | She is my inspiration. | เธอคือแรงบันดาลใจของฉัน
+instinct | สัญชาตญาณ | Trust your instincts. | เชื่อสัญชาตญาณของคุณ
+intuition | ลางสังหรณ์/สัญชาตญาณ | My intuition was right. | ลางสังหรณ์ของฉันถูก
+insight | ความเข้าใจลึกซึ้ง | The book gives great insight. | หนังสือให้มุมมองที่ลึกซึ้ง
+intention | ความตั้งใจ | I had no intention of hurting you. | ฉันไม่ได้ตั้งใจทำร้ายคุณ
+---
+illusion | ภาพลวงตา | It was just an illusion. | มันเป็นแค่ภาพลวงตา
+notion | ความคิด/แนวคิด | I have no notion of time. | ฉันไม่รู้เวลาเลย
+nostalgia | ความคิดถึงอดีต | The song filled me with nostalgia. | เพลงทำให้ฉันคิดถึงอดีต
+obsession | ความหมกมุ่น | He has an obsession with games. | เขาหมกมุ่นกับเกม
+solitude | ความสันโดษ | She enjoys solitude. | เธอชอบอยู่ตามลำพัง
+sanity | ความมีสติ | I'm losing my sanity. | ฉันจะบ้าแล้ว
+`);
+U('daily', 4, 'นามธรรม: คุณสมบัติของบุคคล', `
+genius | อัจฉริยะ | Einstein was a genius. | ไอน์สไตน์เป็นอัจฉริยะ
+intellect | สติปัญญา | She has a sharp intellect. | เธอมีสติปัญญาเฉียบแหลม
+loyalty | ความภักดี | Loyalty is important in a team. | ความภักดีสำคัญในทีม
+maturity | ความเป็นผู้ใหญ่ | He showed great maturity. | เขาแสดงความเป็นผู้ใหญ่มาก
+modesty | ความถ่อมตัว | She spoke with modesty. | เธอพูดอย่างถ่อมตัว
+sincerity | ความจริงใจ | I don't doubt his sincerity. | ฉันไม่สงสัยในความจริงใจของเขา
+---
+trait | ลักษณะนิสัย | Honesty is his best trait. | ความซื่อสัตย์คือนิสัยที่ดีที่สุดของเขา
+vanity | ความหลงตัวเอง | His vanity is annoying. | ความหลงตัวเองของเขาน่ารำคาญ
+wit | ไหวพริบ | She is known for her wit. | เธอขึ้นชื่อเรื่องไหวพริบ
+zeal | ความกระตือรือร้น | He worked with great zeal. | เขาทำงานอย่างกระตือรือร้นมาก
+vigor | ความแข็งแรงกระฉับกระเฉง | He is full of vigor. | เขากระฉับกระเฉงมาก
+vitality | ความมีชีวิตชีวา | Exercise improves vitality. | การออกกำลังกายเพิ่มความกระปรี้กระเปร่า
+`);
+U('daily', 4, 'นามธรรม: องค์กรและโครงสร้าง', `
+facility | สิ่งอำนวยความสะดวก | The hotel has good facilities. | โรงแรมมีสิ่งอำนวยความสะดวกดี
+faculty | คณะ (มหาวิทยาลัย) | He studies at the Faculty of Law. | เขาเรียนคณะนิติศาสตร์
+federation | สหพันธ์ | The football federation made a rule. | สหพันธ์ฟุตบอลออกกฎ
+foundation | มูลนิธิ/รากฐาน | The foundation helps children. | มูลนิธิช่วยเหลือเด็ก
+framework | กรอบงาน | We need a legal framework. | เราต้องการกรอบทางกฎหมาย
+hierarchy | ลำดับชั้น | The police have a strict hierarchy. | ตำรวจมีลำดับชั้นที่เข้มงวด
+---
+institution | สถาบัน | The bank is a financial institution. | ธนาคารเป็นสถาบันการเงิน
+mechanism | กลไก | The lock has a simple mechanism. | กุญแจมีกลไกเรียบง่าย
+sector | ภาคส่วน | He works in the private sector. | เขาทำงานภาคเอกชน
+segment | ส่วน/ตอน | Watch the next segment. | ดูช่วงต่อไป
+structure | โครงสร้าง | The building's structure is strong. | โครงสร้างอาคารแข็งแรง
+layout | ผังการจัดวาง | I like the layout of the house. | ฉันชอบผังของบ้าน
+`);
+U('daily', 4, 'นามธรรม: ผลลัพธ์และแนวโน้ม', `
+outcome | ผลลัพธ์ | We are waiting for the outcome. | เรากำลังรอผล
+outlook | มุมมอง/แนวโน้ม | She has a positive outlook. | เธอมีมุมมองเชิงบวก
+output | ผลผลิต | Factory output rose. | ผลผลิตของโรงงานเพิ่มขึ้น
+prospect | โอกาส/ความหวัง | The job has good prospects. | งานนี้มีอนาคตดี
+probability | ความน่าจะเป็น | The probability of rain is high. | โอกาสฝนตกสูง
+likelihood | ความเป็นไปได้ | There's a likelihood of delays. | มีโอกาสที่จะล่าช้า
+---
+tendency | แนวโน้ม | He has a tendency to be late. | เขามีแนวโน้มมาสาย
+odds | โอกาส/ความน่าจะเป็น | The odds are against us. | โอกาสไม่เข้าข้างเรา
+scenario | สถานการณ์ (สมมติ) | Imagine the worst scenario. | ลองนึกถึงสถานการณ์ที่แย่ที่สุด
+uncertainty | ความไม่แน่นอน | There is uncertainty about the future. | อนาคตยังไม่แน่นอน
+stability | ความมั่นคง | We need political stability. | เราต้องการเสถียรภาพทางการเมือง
+transition | การเปลี่ยนผ่าน | The transition was smooth. | การเปลี่ยนผ่านราบรื่น
+`);
+U('daily', 4, 'นามธรรม: การกระทำและปฏิกิริยา', `
+reaction | ปฏิกิริยา | What was his reaction? | เขามีปฏิกิริยาอย่างไร
+reflection | ภาพสะท้อน/การไตร่ตรอง | I saw my reflection in the water. | ฉันเห็นเงาสะท้อนในน้ำ
+intervention | การแทรกแซง | Police intervention stopped the fight. | ตำรวจเข้าแทรกแซงหยุดการต่อสู้
+rehabilitation | การฟื้นฟู/บำบัด | He went to drug rehabilitation. | เขาเข้ารับการบำบัดยาเสพติด
+restraint | การยับยั้งชั่งใจ | Officers showed restraint. | เจ้าหน้าที่ใช้ความยับยั้งชั่งใจ
+precaution | การป้องกันไว้ก่อน | Take precautions against theft. | ป้องกันการโจรกรรมไว้ก่อน
+---
+incentive | สิ่งจูงใจ | Bonuses are a good incentive. | โบนัสเป็นแรงจูงใจที่ดี
+stimulus | สิ่งเร้า/สิ่งกระตุ้น | The economy needs a stimulus. | เศรษฐกิจต้องการการกระตุ้น
+tactic | กลยุทธ์ | It's a common scam tactic. | เป็นกลอุบายหลอกลวงทั่วไป
+temptation | สิ่งยั่วยุ/การล่อใจ | Resist the temptation. | ต้านทานสิ่งยั่วยุ
+mischief | ความซุกซน/การก่อกวน | The kids got into mischief. | เด็กๆ ซุกซน
+formation | การก่อตัว/รูปขบวน | The soldiers stood in formation. | ทหารยืนเป็นแถว
+`);
+U('daily', 4, 'นามธรรม: ปริมาณและการวัด', `
+fraction | เศษส่วน/ส่วนน้อย | Only a fraction of people came. | มีคนมาเพียงส่วนน้อย
+frequency | ความถี่ | Tune to this frequency. | ปรับไปที่คลื่นความถี่นี้
+interval | ช่วงห่าง | Take the pill at regular intervals. | กินยาเป็นช่วงเวลาสม่ำเสมอ
+index | ดัชนี | The price index rose. | ดัชนีราคาสูงขึ้น
+proportion | สัดส่วน | A large proportion are students. | ส่วนใหญ่เป็นนักเรียน
+quota | โควตา | Each officer has a quota. | เจ้าหน้าที่แต่ละคนมีโควตา
+---
+surplus | ส่วนเกิน | There is a surplus of rice. | มีข้าวส่วนเกิน
+threshold | ธรณีประตู/เกณฑ์ | The pass threshold is 60%. | เกณฑ์ผ่านคือ 60%
+velocity | ความเร็ว | The bullet's velocity is high. | ความเร็วกระสุนสูง
+intensity | ความเข้มข้น | The intensity of the storm grew. | ความรุนแรงของพายุเพิ่มขึ้น
+scope | ขอบเขต | That is beyond our scope. | นั่นเกินขอบเขตของเรา
+spectrum | สเปกตรัม/ช่วงกว้าง | A wide spectrum of opinions. | ความเห็นที่หลากหลาย
+`);
+U('daily', 5, 'นามธรรม: แนวคิดและปรัชญา', `
+ideology | อุดมการณ์ | They share the same ideology. | พวกเขามีอุดมการณ์เดียวกัน
+philosophy | ปรัชญา | My philosophy is to stay positive. | หลักคิดของฉันคือคิดบวก
+psychology | จิตวิทยา | She studies psychology. | เธอเรียนจิตวิทยา
+logic | ตรรกะ | There's no logic in his story. | เรื่องของเขาไม่มีเหตุผล
+myth | ตำนาน/ความเชื่อผิดๆ | That's just a myth. | นั่นเป็นแค่ความเชื่อผิดๆ
+metaphor | อุปมาอุปไมย | Life is a journey is a metaphor. | ชีวิตคือการเดินทางเป็นอุปมา
+---
+irony | ความย้อนแย้ง/เหน็บแนม | The irony is he's a fire officer. | ที่ย้อนแย้งคือเขาเป็นพนักงานดับเพลิง
+theme | แก่นเรื่อง/ธีม | The theme of the party is red. | ธีมงานคือสีแดง
+norm | บรรทัดฐาน | Working from home is now the norm. | การทำงานที่บ้านกลายเป็นเรื่องปกติ
+superstition | ความเชื่อโชคลาง | It's just a superstition. | มันเป็นแค่ความเชื่อโชคลาง
+humanity | มนุษยชาติ/ความเป็นมนุษย์ | It's a crime against humanity. | เป็นอาชญากรรมต่อมนุษยชาติ
+mankind | มนุษยชาติ | It's a giant leap for mankind. | ก้าวกระโดดครั้งใหญ่ของมนุษยชาติ
+`);
+U('daily', 5, 'นามธรรม: ความขัดแย้งและความตึงเครียด', `
+friction | การเสียดสี/ความขัดแย้ง | There is friction in the team. | มีความขัดแย้งในทีม
+hostility | ความเป็นศัตรู | There was open hostility. | มีความเป็นปรปักษ์อย่างเปิดเผย
+rebellion | การกบฏ | The rebellion failed. | การกบฏล้มเหลว
+revolution | การปฏิวัติ | The revolution changed the country. | การปฏิวัติเปลี่ยนประเทศ
+turmoil | ความวุ่นวาย | The country is in turmoil. | ประเทศอยู่ในความวุ่นวาย
+tension | ความตึงเครียด | There is tension in the room. | ในห้องมีความตึงเครียด
+---
+strain | ความเครียด/แรงตึง | Work puts strain on him. | งานทำให้เขาเครียด
+suspicion | ความสงสัย | He was arrested on suspicion of theft. | เขาถูกจับเพราะต้องสงสัยลักทรัพย์
+isolation | การแยกตัว/การกักตัว | He was kept in isolation. | เขาถูกแยกขัง
+nuisance | สิ่งน่ารำคาญ | The noise is a nuisance. | เสียงดังน่ารำคาญ
+urgency | ความเร่งด่วน | This matter needs urgency. | เรื่องนี้ต้องรีบดำเนินการ
+fatigue | ความเหนื่อยล้า | Driver fatigue causes accidents. | ความเหนื่อยล้าของคนขับทำให้เกิดอุบัติเหตุ
+`);
+U('daily', 5, 'นามธรรม: ชื่อเสียงและความสำเร็จ', `
+reputation | ชื่อเสียง | The shop has a good reputation. | ร้านมีชื่อเสียงดี
+prestige | เกียรติภูมิ | The job brings prestige. | งานนี้มีเกียรติ
+publicity | การประชาสัมพันธ์ | The event got a lot of publicity. | งานได้รับการประชาสัมพันธ์มาก
+merit | คุณความดี/ความดีความชอบ | Promotion is based on merit. | การเลื่อนตำแหน่งขึ้นกับผลงาน
+legacy | มรดก/สิ่งที่ทิ้งไว้ | His legacy lives on. | สิ่งที่เขาทิ้งไว้ยังคงอยู่
+milestone | ก้าวสำคัญ | It's a big milestone. | เป็นก้าวสำคัญ
+---
+feat | ความสำเร็จอันยิ่งใหญ่ | It was an amazing feat. | เป็นความสำเร็จที่น่าทึ่ง
+highlight | ไฮไลต์/จุดเด่น | The highlight was the fireworks. | ไฮไลต์คือดอกไม้ไฟ
+summit | ยอดเขา/การประชุมสุดยอด | We reached the summit. | เราถึงยอดเขา
+frontier | พรมแดน/แนวหน้า | AI is a new frontier. | AI เป็นพรมแดนใหม่
+momentum | โมเมนตัม/แรงส่ง | The team gained momentum. | ทีมได้แรงส่ง
+prosperity | ความเจริญรุ่งเรือง | Peace brings prosperity. | สันติภาพนำความรุ่งเรือง
+`);
+U('daily', 5, 'นามธรรม: ลักษณะของสิ่งต่างๆ', `
+texture | เนื้อสัมผัส | The cake has a soft texture. | เค้กมีเนื้อสัมผัสนุ่ม
+fiber | เส้นใย/ใยอาหาร | Vegetables have fiber. | ผักมีใยอาหาร
+substance | สาร | Police found an illegal substance. | ตำรวจพบสารต้องห้าม
+format | รูปแบบ | Save it in PDF format. | บันทึกเป็นรูปแบบ PDF
+version | เวอร์ชัน/ฉบับ | Update to the latest version. | อัปเดตเป็นเวอร์ชันล่าสุด
+variety | ความหลากหลาย | The market has a variety of food. | ตลาดมีอาหารหลากหลาย
+---
+simplicity | ความเรียบง่าย | I love the simplicity of village life. | ฉันชอบความเรียบง่ายของชีวิตชนบท
+flexibility | ความยืดหยุ่น | The job offers flexibility. | งานนี้ยืดหยุ่น
+mobility | ความคล่องตัว | Exercise improves mobility. | การออกกำลังกายช่วยให้เคลื่อนไหวคล่อง
+utility | สาธารณูปโภค/ประโยชน์ | Pay the utility bills. | จ่ายค่าสาธารณูปโภค
+relevance | ความเกี่ยวข้อง | What is the relevance of this? | สิ่งนี้เกี่ยวข้องอย่างไร
+significance | ความสำคัญ | The day has great significance. | วันนี้มีความสำคัญมาก
+`);
+U('daily', 5, 'นามธรรม: ความรู้สึกและความเชื่อขั้นสูง', `
+sentiment | ความรู้สึก/ความคิดเห็น | Public sentiment is changing. | ความรู้สึกของประชาชนกำลังเปลี่ยน
+sensation | ความรู้สึก (ทางกาย)/สิ่งที่ฮือฮา | I have a burning sensation. | ฉันรู้สึกแสบร้อน
+spirit | จิตวิญญาณ/กำลังใจ | Keep your spirits up. | รักษากำลังใจไว้
+vision | วิสัยทัศน์/การมองเห็น | He has a clear vision. | เขามีวิสัยทัศน์ชัดเจน
+ritual | พิธีกรรม | It's a morning ritual. | เป็นกิจวัตรตอนเช้า
+solidarity | ความเป็นน้ำหนึ่งใจเดียว | We stand in solidarity. | เรายืนหยัดร่วมกัน
+---
+reluctance | ความไม่เต็มใจ | He showed reluctance to talk. | เขาไม่เต็มใจจะพูด
+resemblance | ความคล้ายคลึง | There's a strong resemblance. | หน้าตาคล้ายกันมาก
+perseverance | ความพากเพียร | Success needs perseverance. | ความสำเร็จต้องใช้ความพากเพียร
+responsibility | ความรับผิดชอบ | It's your responsibility. | มันเป็นความรับผิดชอบของคุณ
+presence | การปรากฏตัว/การมีอยู่ | Police presence makes people feel safe. | การมีตำรวจทำให้ผู้คนรู้สึกปลอดภัย
+necessity | ความจำเป็น | Water is a necessity. | น้ำเป็นสิ่งจำเป็น
+`);
+U('daily', 6, 'คำนามวิชาการขั้นสูง', `
+overview | ภาพรวม | Give me an overview. | ให้ภาพรวมกับฉัน
+parallel | ความคล้ายคลึง/ขนาน | There are parallels between the cases. | สองคดีมีความคล้ายกัน
+pattern | รูปแบบ/แบบแผน | We found a pattern in the crimes. | เราพบรูปแบบในคดีอาชญากรรม
+orientation | การปฐมนิเทศ/แนวทาง | New officers attend orientation. | เจ้าหน้าที่ใหม่เข้าปฐมนิเทศ
+speculation | การคาดเดา | It's only speculation. | เป็นแค่การคาดเดา
+sphere | ทรงกลม/ขอบเขต | It's outside my sphere. | อยู่นอกขอบเขตของฉัน
+---
+stake | ส่วนได้เสีย/เดิมพัน | Lives are at stake. | ชีวิตคนกำลังเป็นเดิมพัน
+syndrome | กลุ่มอาการ | He has a rare syndrome. | เขามีกลุ่มอาการหายาก
+mortality | อัตราการตาย | Infant mortality has fallen. | อัตราการตายของทารกลดลง
+offspring | ลูกหลาน | The lion protects its offspring. | สิงโตปกป้องลูกของมัน
+flaw | ข้อบกพร่อง | There is a flaw in the plan. | แผนมีข้อบกพร่อง
+guideline | แนวทาง | Follow the guidelines. | ปฏิบัติตามแนวทาง
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
