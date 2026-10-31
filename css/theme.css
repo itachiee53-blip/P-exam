@@ -1202,3 +1202,21 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .hm-today.has-bg .hm-ring .bgc{stroke:rgba(255,255,255,.3)}
 .hm-today.has-bg .hm-ring .fgc{stroke:#fff}
 .hm-today.has-bg .hm-start{text-shadow:none}
+/* ตอบผิด: ปุ่มสั่น (ทับอนิเมชันเข้า) */
+.ls-opts .ls-opt.bad{animation:lsShake .4s!important}
+@keyframes lsShake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+/* มือถือแนวตั้ง: หน้าทำบทเรียนพอดีจอ — ซ่อนหัวเพจ/แถบล่าง กระชับระยะ */
+@media (orientation:portrait) and (max-width:600px){
+  body:has(.ls-wrap) .topbar,body:has(.ls-wrap) .bottomnav{display:none!important}
+  body:has(.ls-wrap) #view{padding-top:10px!important;padding-bottom:16px!important}
+  .ls-top{margin-bottom:10px}
+  .ls-body{gap:10px}
+  .ls-intro{padding:18px 16px;gap:6px}
+  .ls-intro h2{font-size:clamp(30px,8vw,40px)}
+  .ls-intro .ls-say,.ls-word .ls-say{width:40px;height:40px}
+  .ls-opts{gap:8px}
+  .ls-opt{min-height:48px;padding:8px 14px}
+  .ls-fb{padding:12px 14px}
+  #lsFb{margin-top:10px}
+}
+.ls-says{display:flex;gap:10px;justify-content:center}
