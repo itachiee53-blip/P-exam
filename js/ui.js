@@ -60,7 +60,7 @@ function speakWord(text, slow){
   if(!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
   if(!enVoice) pickVoice();
-  const say = (t, rate) => { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if(enVoice) u.voice = enVoice; u.rate = rate; u.volume = IS_PHONE ? 1 : 0.7; speechSynthesis.speak(u); };
+  const say = (t, rate) => { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if(enVoice) u.voice = enVoice; u.rate = rate; u.volume = IS_PHONE ? 1 : 0.35; speechSynthesis.speak(u); };
   // ช้า: บางเครื่องแทบไม่เปลี่ยนความเร็ว จึงอ่านทีละคำ (มีช่วงหยุดระหว่างคำ) และลดความเร็วลงมาก
   if(slow){ const ws = String(text).split(/\s+/).filter(Boolean); ws.length > 1 ? ws.forEach(w => say(w, 0.6)) : say(text, 0.4); }
   else say(text, 0.9);
