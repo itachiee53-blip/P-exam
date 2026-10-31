@@ -453,7 +453,7 @@ function renderHome(){
   const ses = S.session;
   const sesDone = ses ? ses.ans.filter(a=>a!==null).length : 0;
   const heroBg = S.settings.heroBg
-    ? `style="background:linear-gradient(rgba(10,20,35,.5),rgba(10,20,35,.72)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
+    ? `style="background:linear-gradient(rgba(10,20,35,.28),rgba(10,20,35,.55)),url('${S.settings.heroBg}') ${S.settings.heroPos||'center'}/cover no-repeat"` : '';
   const newDone = t.answered >= goal;
 
   const todo = [
