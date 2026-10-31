@@ -172,35 +172,31 @@ function renderEngPath(L){
   }
 }
 
-// คำศัพท์ในหน่วยที่กำลังเรียน (บทคำศัพท์ถัดไป ทั้ง 2 บทของหน่วย) · เจอ = เรียนบทนั้นจบแล้ว (E.known)
-function vocUnit(F, cur){
-  const E = engState(), V = i => i >= 0 && F[i] && !COURSES[F[i].c].gram;
-  // บทปัจจุบันเป็นคำศัพท์ → หน่วยนั้น · ไม่ใช่ → หน่วยของบทคำศัพท์ล่าสุดที่เรียนจบ · ยังไม่เคยเรียน → บทคำศัพท์แรก
-  let k = V(cur) ? cur : F.map((x, i) => V(i) && !!E.done[x.key]).lastIndexOf(true);
-  if(k < 0) k = F.findIndex((x, i) => V(i));
-  if(k < 0) return null;
-  const u = F[k], G = F.map((x, i) => ({ x, n: i + 1 })).filter(g => g.x.c === u.c && g.x.ui === u.ui).map(g => ({ n: g.n, ws: g.x.ws.filter(w => w.en) }));
-  return { t: u.u.t, G, all: G.flatMap(g => g.ws) };
+// คำศัพท์ทั้งเลเวล (ทุกบทคำศัพท์ใน F) · เจอ = เรียนบทนั้นจบแล้ว (E.known) · รองรับคำเพิ่มในอนาคตอัตโนมัติ
+function vocLevel(F){
+  const seen = new Set(), G = [];
+  F.forEach((x, i) => { if(COURSES[x.c].gram) return;
+    const ws = (x.ws || []).filter(w => w.en && !seen.has(w.en) && seen.add(w.en));
+    if(ws.length) G.push({ n: i + 1, ws }); });
+  return G.length ? { G, all: G.flatMap(g => g.ws) } : null;
 }
 function vocCard(L, F, col, cur){
-  const V = vocUnit(F, cur); if(!V) return '';
+  const V = vocLevel(F); if(!V) return '';
   const E = engState(), n = V.all.length, k = V.all.filter(w => E.known[w.en]).length, p = n ? k / n : 0;
   return `<button class="eng-voc" id="engVoc" style="--c:${col};--p:${(p * 100).toFixed(1)}">
     <span class="ev-ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/><circle cx="22" cy="22" r="18" pathLength="100"/></svg><i data-lucide="book-a"></i></span>
-    <span class="ev-t"><b>${esc(V.t)}</b><small>เจอแล้ว <em>${k}</em> · เหลือ ${n - k} คำ</small></span>
+    <span class="ev-t"><b>คำศัพท์ Lv.${L}</b><small>เจอแล้ว <em>${k}</em> · เหลือ ${n - k} คำ</small></span>
     <span class="ev-n">${k}/${n}</span><i data-lucide="chevron-right"></i></button>`;
 }
 function vocSheet(L, F, col, cur){
-  const E = engState(), V = vocUnit(F, cur), G = V.G, all = V.all, k = all.filter(w => E.known[w.en]).length, due = engDue().length;
+  const E = engState(), V = vocLevel(F), G = V.G, all = V.all, k = all.filter(w => E.known[w.en]).length, due = engDue().length;
   const body = `<div class="voc-s" style="--c:${col}">
     <div class="voc-sum"><div><b>${k}</b><small>เจอแล้ว</small></div><div><b>${all.length - k}</b><small>ยังไม่เจอ</small></div><div><b>${all.length}</b><small>ทั้งหมด</small></div></div>
     <div class="voc-bar"><i style="--p:${all.length ? k / all.length * 100 : 0}%"></i></div>
-    <div class="voc-f"><button class="on" data-vf="">ทั้งหมด</button><button data-vf="y">เจอแล้ว</button><button data-vf="n">ยังไม่เจอ</button></div>
-    <p class="voc-e" hidden>ไม่มีคำ</p><div class="voc-l">${G.map((g, gi) => `<section style="--d:${gi * 60}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
-      const y = !!E.known[w.en]; return `<button class="voc-w ${y ? 'y' : 'n'}" data-say="${esc(w.en)}"><b>${esc(w.en)}</b><small>${y ? esc(w.th) : '?'}</small></button>`; }).join('')}</div></section>`).join('')}</div></div>`;
-  openModal(esc(V.t), body, due >= 4 ? `<button class="btn" id="vocRev"><i data-lucide="refresh-cw"></i>ทวนคำใกล้ลืม ${due} คำ</button>` : '');
-  $$('[data-vf]').forEach(b => b.onclick = () => { $$('[data-vf]').forEach(x => x.classList.toggle('on', x === b)); const f = b.dataset.vf;
-    $$('.voc-l section').forEach(s => { let c = 0; s.querySelectorAll('.voc-w').forEach(w => { const h = f && !w.classList.contains(f); w.hidden = h; c += !h; }); s.hidden = !c; }); $('.voc-e').hidden = !!$('.voc-l section:not([hidden])'); });
-  $$('.voc-w.y').forEach(b => b.onclick = () => speakWord(b.dataset.say));
+    <div class="voc-l">${G.map((g, gi) => `<section style="--d:${Math.min(gi, 8) * 50}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
+      const y = !!E.known[w.en]; return `<button class="voc-w ${y ? 'y' : 'n'}" data-say="${esc(w.en)}"><b>${esc(w.en)}</b><small>${y ? esc(w.th) : 'ยังไม่เจอ'}</small></button>`; }).join('')}</div></section>`).join('')}</div></div>`;
+  openModal(`คำศัพท์ Lv.${L}`, body, due >= 4 ? `<button class="btn" id="vocRev"><i data-lucide="refresh-cw"></i>ทวนคำใกล้ลืม ${due} คำ</button>` : '');
+  const cu = $('.voc-l section:has(.voc-w.n)'); if(cu && cu.previousElementSibling) cu.scrollIntoView({ block: 'start' }); // เลื่อนไปบทที่ยังเรียนไม่ครบ
+  $('.voc-l').onclick = e => { const b = e.target.closest('.voc-w.y'); if(b) speakWord(b.dataset.say); };
   if($('#vocRev')) $('#vocRev').onclick = () => { closeModal(); engReview(); };
 }
