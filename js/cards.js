@@ -35,7 +35,9 @@ function pickTrack(after){
 function openTrackEditor(key){
   const t = clone(S.tracks[key] || DEFAULT_TRACKS.admin);
   t.parts = (t.parts && t.parts.length) ? t.parts : [{ name: 'ภาค 1', cats: [] }, { name: 'ภาค 2', cats: [] }];
-  const subjects = [...new Set([...S.cats, ...Object.keys(t.quota || {})])];
+  // แสดงเฉพาะวิชาในเกณฑ์ (ลำดับแถว = ลำดับวิชาในข้อสอบจริง) · วิชาอื่นเพิ่มจากช่องด้านล่าง
+  const qk = Object.keys(t.quota || {});
+  const subjects = qk.length ? qk : S.cats.slice();
   const partOf = c => t.parts.findIndex(pt => pt.cats.includes(c));
   const body = `
     <div class="tre">
@@ -67,10 +69,13 @@ function openTrackEditor(key){
             ${t.parts.map((pt, i) => `<option value="${i}" ${partOf(c)===i?'selected':''}>ภาค ${i+1}</option>`).join('')}
           </select>
           <input class="inp tr-n" type="number" min="0" value="${(t.quota || {})[c] || 0}">
+          <button type="button" class="tr-ic" data-trup title="เลื่อนขึ้น"><i data-lucide="chevron-up"></i></button>
+          <button type="button" class="tr-ic" data-trdel title="ลบวิชา"><i data-lucide="x"></i></button>
         </div>`).join('')}
       </div>
       <div class="row" style="gap:8px;margin-top:10px">
-        <input class="inp" id="tr_newsub" placeholder="เพิ่มวิชาที่ยังไม่มี เช่น สังคม" style="flex:1">
+        <input class="inp" id="tr_newsub" list="tr_cats" placeholder="เพิ่มวิชา เช่น สังคม" style="flex:1">
+        <datalist id="tr_cats">${S.cats.filter(c => !subjects.includes(c)).map(c => `<option value="${esc(c)}">`).join('')}</datalist>
         <button class="btn ghost sm" id="tr_addsub"><i data-lucide="plus"></i>เพิ่ม</button>
       </div>
       <div class="row" style="gap:8px;margin-top:16px;flex-wrap:wrap">
@@ -88,6 +93,11 @@ function openTrackEditor(key){
     $$('[data-rule]', m).forEach(x => x.classList.toggle('on', x === b));
     $('.tr-parts', m).hidden = t.rule !== 'parts';
     $$('.tr-part', m).forEach(x => x.hidden = t.rule !== 'parts');
+  });
+  m.addEventListener('click', e => {
+    const r = e.target.closest('.tr-row'); if(!r) return;
+    if(e.target.closest('[data-trdel]')){ if($$('.tr-row', m).length < 2) return toast('ต้องมีอย่างน้อย 1 วิชา', 'err'); r.remove(); total(); }
+    else if(e.target.closest('[data-trup]') && r.previousElementSibling) r.parentNode.insertBefore(r, r.previousElementSibling);
   });
   $('#tr_addsub').onclick = () => {
     const v = $('#tr_newsub').value.trim();

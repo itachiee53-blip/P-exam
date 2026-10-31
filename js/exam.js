@@ -22,7 +22,7 @@ function renderExam(){
 
     <div class="sec"><i data-lucide="hash" style="color:var(--orange)"></i>จำนวนข้อ</div>
     <div class="chips">
-      ${[10, 20, 50, 100, 150].map(n => `<button class="chip ${CFG.count === n ? 'on' : ''}" data-en="${n}">${n} ข้อ</button>`).join('')}
+      ${[...new Set([10, 20, 50, 100, 150, track.quotaTotal].filter(Boolean))].sort((a, b) => a - b).map(n => `<button class="chip ${CFG.count === n ? 'on' : ''}" data-en="${n}">${n} ข้อ</button>`).join('')}
     </div>
 
     <div class="sec"><i data-lucide="clock" style="color:var(--green)"></i>เวลา</div>
@@ -171,7 +171,9 @@ function startExam(cfg){
       if(lack.length && pick.length) toast(`ข้อไม่พอ: ${lack.join(', ')}`, 'err');
       rawPool = pick;
     } else rawPool = rawPool.slice(0, want);
-    const order = c => { const i = S.cats.indexOf(c); return i < 0 ? 999 : i; };
+    // เรียงวิชาตามลำดับในเกณฑ์สายสอบ (เหมือนสนามจริง) วิชานอกเกณฑ์ต่อท้ายตามลำดับหมวด
+    const qo = quota.map(x => x[0]);
+    const order = c => { const i = qo.indexOf(c); if(i >= 0) return i; const j = S.cats.indexOf(c); return j < 0 ? 999 : 100 + j; };
     qs = rawPool.map((q, i) => [q, i]).sort((a, b) => order(a[0].cat) - order(b[0].cat) || a[1] - b[1]).map(x => x[0]);
   }
 
