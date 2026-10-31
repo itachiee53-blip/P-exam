@@ -4703,6 +4703,248 @@ best wishes | ด้วยความปรารถนาดี | Best wishes 
 see you soon | แล้วพบกันใหม่ | See you soon, friend. | แล้วพบกันใหม่เพื่อน
 `);
 
+// ===== ศัพท์ออกสอบ (เพิ่มรอบอัตโนมัติ) =====
+U('daily', 2, 'ศัพท์ออกสอบ: กริยา 1', `
+borrow | ยืม | Can I borrow your pen? | ฉันขอยืมปากกาคุณได้ไหม
+lend | ให้ยืม | I can lend you some money. | ฉันให้คุณยืมเงินได้
+hide | ซ่อน | The thief hid in the alley. | ขโมยซ่อนอยู่ในซอย
+climb | ปีน | We climbed the mountain. | เราปีนภูเขา
+hate | เกลียด | I hate waiting. | ฉันเกลียดการรอ
+hope | หวัง | I hope you pass the exam. | ฉันหวังว่าคุณจะสอบผ่าน
+---
+enter | เข้า | Please enter through the front door. | กรุณาเข้าทางประตูหน้า
+gather | รวบรวม/รวมตัว | People gathered outside. | ผู้คนรวมตัวกันข้างนอก
+fail | ล้มเหลว/สอบตก | Don't be afraid to fail. | อย่ากลัวความล้มเหลว
+earn | หา (เงิน)/ได้รับ | He earns 15,000 baht a month. | เขาหาเงินได้เดือนละ 15,000 บาท
+owe | ติดหนี้ | I owe you 100 baht. | ฉันติดเงินคุณ 100 บาท
+guess | เดา | Guess the answer. | เดาคำตอบดู
+`);
+U('daily', 2, 'ศัพท์ออกสอบ: กริยา 2', `
+celebrate | ฉลอง | We celebrated his birthday. | เราฉลองวันเกิดของเขา
+deliver | ส่ง (ของ) | They deliver food to your door. | พวกเขาส่งอาหารถึงหน้าประตู
+discover | ค้นพบ | They discovered the truth. | พวกเขาค้นพบความจริง
+destroy | ทำลาย | The fire destroyed the house. | ไฟทำลายบ้านหลังนั้น
+expect | คาดหวัง/คาดว่า | I expect him at nine. | ฉันคาดว่าเขาจะมาเก้าโมง
+invent | ประดิษฐ์ | Who invented the telephone? | ใครประดิษฐ์โทรศัพท์
+---
+prepare | เตรียม | Prepare your documents. | เตรียมเอกสารของคุณ
+mention | กล่าวถึง | He didn't mention the money. | เขาไม่ได้พูดถึงเรื่องเงิน
+notice | สังเกตเห็น | Did you notice anything strange? | คุณสังเกตเห็นอะไรแปลกๆ ไหม
+remove | เอาออก | Remove your shoes, please. | กรุณาถอดรองเท้า
+replace | แทนที่/เปลี่ยนใหม่ | Replace the old battery. | เปลี่ยนแบตเตอรี่ก้อนเก่า
+share | แบ่งปัน | Share the information with the team. | แบ่งปันข้อมูลกับทีม
+`);
+U('daily', 2, 'ศัพท์ออกสอบ: คุณศัพท์ 1', `
+alone | คนเดียว/ลำพัง | She lives alone. | เธออยู่คนเดียว
+afraid | กลัว | I'm afraid of dogs. | ฉันกลัวสุนัข
+alive | ยังมีชีวิตอยู่ | The victim is still alive. | ผู้เสียหายยังมีชีวิตอยู่
+awful | แย่มาก | The weather is awful today. | วันนี้อากาศแย่มาก
+basic | พื้นฐาน | Learn basic English first. | เรียนภาษาอังกฤษพื้นฐานก่อน
+common | ทั่วไป/พบบ่อย | Theft is a common crime. | การลักทรัพย์เป็นอาชญากรรมที่พบบ่อย
+---
+terrible | แย่มาก/น่ากลัว | It was a terrible accident. | มันเป็นอุบัติเหตุที่ร้ายแรงมาก
+excellent | ยอดเยี่ยม | Your English is excellent. | ภาษาอังกฤษของคุณยอดเยี่ยม
+familiar | คุ้นเคย | His face looks familiar. | หน้าเขาดูคุ้นๆ
+ordinary | ธรรมดา | It was an ordinary day. | มันเป็นวันธรรมดา
+similar | คล้ายกัน | The two cars are similar. | รถสองคันนั้นคล้ายกัน
+rare | หายาก | This bird is rare. | นกชนิดนี้หายาก
+`);
+U('daily', 2, 'ศัพท์ออกสอบ: คำนาม 1', `
+advice | คำแนะนำ | Thank you for your advice. | ขอบคุณสำหรับคำแนะนำ
+choice | ทางเลือก | You have no choice. | คุณไม่มีทางเลือก
+amount | จำนวน | A large amount of money was stolen. | เงินจำนวนมากถูกขโมย
+ability | ความสามารถ | She has the ability to lead. | เธอมีความสามารถในการเป็นผู้นำ
+adult | ผู้ใหญ่ | Tickets are 100 baht for adults. | ตั๋วผู้ใหญ่ราคา 100 บาท
+distance | ระยะทาง | Keep a safe distance. | รักษาระยะห่างที่ปลอดภัย
+---
+effort | ความพยายาม | Thank you for your effort. | ขอบคุณสำหรับความพยายามของคุณ
+emotion | อารมณ์ | Control your emotions. | ควบคุมอารมณ์ของคุณ
+enemy | ศัตรู | He has no enemies. | เขาไม่มีศัตรู
+fear | ความกลัว | He has a fear of heights. | เขากลัวความสูง
+fault | ความผิด | It's not your fault. | ไม่ใช่ความผิดของคุณ
+pride | ความภูมิใจ | She spoke with pride. | เธอพูดด้วยความภูมิใจ
+`);
+U('daily', 3, 'ศัพท์ออกสอบ: กริยา 3', `
+admire | ชื่นชม | I admire your courage. | ฉันชื่นชมความกล้าหาญของคุณ
+adopt | รับเลี้ยง/นำมาใช้ | They adopted a new system. | พวกเขานำระบบใหม่มาใช้
+appear | ปรากฏ/ดูเหมือน | He appeared at the door. | เขาปรากฏตัวที่ประตู
+arrange | จัดเตรียม/นัด | I'll arrange a meeting. | ฉันจะนัดประชุมให้
+attend | เข้าร่วม | All officers must attend. | เจ้าหน้าที่ทุกคนต้องเข้าร่วม
+attract | ดึงดูด | The festival attracts tourists. | เทศกาลดึงดูดนักท่องเที่ยว
+---
+belong | เป็นของ | This bag belongs to me. | กระเป๋าใบนี้เป็นของฉัน
+blame | ตำหนิ/โทษ | Don't blame others. | อย่าโทษคนอื่น
+bother | รบกวน | Sorry to bother you. | ขอโทษที่รบกวน
+compare | เปรียบเทียบ | Compare the two photos. | เปรียบเทียบรูปสองรูป
+compete | แข่งขัน | Thousands compete for the job. | คนนับพันแข่งขันกันเพื่องานนี้
+complete | ทำให้เสร็จ/ครบ | Complete the form. | กรอกแบบฟอร์มให้ครบ
+`);
+U('daily', 3, 'ศัพท์ออกสอบ: กริยา 4', `
+concentrate | ตั้งสมาธิ | I can't concentrate. | ฉันตั้งสมาธิไม่ได้
+consider | พิจารณา | Please consider my request. | กรุณาพิจารณาคำขอของฉัน
+continue | ทำต่อ | Continue straight ahead. | ตรงไปข้างหน้าต่อ
+create | สร้าง | They created a new app. | พวกเขาสร้างแอปใหม่
+declare | ประกาศ/สำแดง | Do you have anything to declare? | คุณมีอะไรต้องสำแดงไหม
+defend | ป้องกัน/แก้ต่าง | He defended himself. | เขาป้องกันตัวเอง
+---
+depend | ขึ้นอยู่กับ | It depends on the weather. | ขึ้นอยู่กับสภาพอากาศ
+deserve | สมควรได้รับ | You deserve a rest. | คุณสมควรได้พัก
+design | ออกแบบ | She designed the uniform. | เธอออกแบบเครื่องแบบ
+develop | พัฒนา | Develop your skills. | พัฒนาทักษะของคุณ
+divide | แบ่ง | Divide the class into groups. | แบ่งชั้นเรียนเป็นกลุ่ม
+donate | บริจาค | They donated blood. | พวกเขาบริจาคเลือด
+`);
+U('daily', 3, 'ศัพท์ออกสอบ: คุณศัพท์ 2', `
+anxious | กังวล | I feel anxious before exams. | ฉันรู้สึกกังวลก่อนสอบ
+aware | ตระหนัก/รู้ตัว | Are you aware of the risk? | คุณรู้ถึงความเสี่ยงไหม
+brief | สั้น/กระชับ | Give a brief answer. | ตอบสั้นๆ
+capable | มีความสามารถ | She is a capable officer. | เธอเป็นเจ้าหน้าที่ที่มีความสามารถ
+certain | แน่ใจ/บางอย่าง | Are you certain? | คุณแน่ใจไหม
+convenient | สะดวก | Is Monday convenient for you? | วันจันทร์สะดวกสำหรับคุณไหม
+---
+cruel | โหดร้าย | It was a cruel crime. | มันเป็นอาชญากรรมที่โหดร้าย
+decent | ดี/เหมาะสม | He has a decent job. | เขามีงานที่ดี
+eager | กระตือรือร้น | She is eager to learn. | เธอกระตือรือร้นที่จะเรียน
+entire | ทั้งหมด | They searched the entire building. | พวกเขาค้นทั้งอาคาร
+equal | เท่ากัน | Everyone is equal under the law. | ทุกคนเท่าเทียมกันภายใต้กฎหมาย
+exact | แน่นอน/ตรง | What is the exact time? | เวลาที่แน่นอนคือกี่โมง
+`);
+U('daily', 3, 'ศัพท์ออกสอบ: คำนาม 2', `
+adventure | การผจญภัย | The trip was an adventure. | การเดินทางเป็นการผจญภัย
+ambition | ความทะเยอทะยาน | His ambition is to be a police officer. | ความใฝ่ฝันของเขาคือเป็นตำรวจ
+attitude | ทัศนคติ | She has a positive attitude. | เธอมีทัศนคติเชิงบวก
+belief | ความเชื่อ | Respect other people's beliefs. | เคารพความเชื่อของผู้อื่น
+charity | การกุศล | They gave money to charity. | พวกเขาบริจาคเงินเพื่อการกุศล
+comfort | ความสบาย/ปลอบใจ | She tried to comfort the victim. | เธอพยายามปลอบผู้เสียหาย
+---
+courage | ความกล้าหาญ | It takes courage to tell the truth. | ต้องใช้ความกล้าในการพูดความจริง
+decade | ทศวรรษ (10 ปี) | Crime fell over the last decade. | อาชญากรรมลดลงในทศวรรษที่ผ่านมา
+disease | โรค | Heart disease is common. | โรคหัวใจพบได้บ่อย
+faith | ศรัทธา/ความเชื่อมั่น | I have faith in you. | ฉันเชื่อมั่นในตัวคุณ
+fortune | โชคลาภ/ทรัพย์สมบัติ | He made a fortune. | เขาร่ำรวยมาก
+liberty | เสรีภาพ | Liberty must be protected. | เสรีภาพต้องได้รับการปกป้อง
+`);
+U('daily', 4, 'ศัพท์ออกสอบ: กริยา 5', `
+abandon | ละทิ้ง | They abandoned the car. | พวกเขาทิ้งรถไว้
+absorb | ดูดซับ | Plants absorb water. | พืชดูดซับน้ำ
+accompany | ไปด้วย/ติดตาม | An officer will accompany you. | เจ้าหน้าที่จะไปกับคุณ
+accomplish | ทำสำเร็จ | We accomplished our goal. | เราทำเป้าหมายสำเร็จ
+adjust | ปรับ | Adjust your mirror. | ปรับกระจกของคุณ
+alter | เปลี่ยนแปลง/แก้ไข | Don't alter the document. | อย่าแก้ไขเอกสาร
+---
+approve | อนุมัติ/เห็นชอบ | The chief approved the plan. | หัวหน้าอนุมัติแผน
+assume | สันนิษฐาน/คิดเอาเอง | Don't assume he is guilty. | อย่าคิดเอาเองว่าเขาผิด
+betray | ทรยศ | He betrayed his friend. | เขาทรยศเพื่อน
+boast | คุยโว | He boasted about his car. | เขาคุยโวเรื่องรถของเขา
+calculate | คำนวณ | Calculate the total cost. | คำนวณค่าใช้จ่ายทั้งหมด
+capture | จับกุม/จับได้ | Police captured the fugitive. | ตำรวจจับผู้หลบหนีได้
+`);
+U('daily', 4, 'ศัพท์ออกสอบ: กริยา 6', `
+combine | รวมกัน | Combine the two reports. | รวมรายงานสองฉบับ
+confront | เผชิญหน้า | She confronted the thief. | เธอเผชิญหน้ากับขโมย
+consult | ปรึกษา | Consult a doctor. | ปรึกษาแพทย์
+consume | บริโภค/ใช้ | Cars consume a lot of fuel. | รถยนต์ใช้น้ำมันมาก
+contain | บรรจุ/มี | The bag contained drugs. | กระเป๋ามียาเสพติดอยู่
+cope | รับมือ | How do you cope with stress? | คุณรับมือกับความเครียดอย่างไร
+---
+detect | ตรวจพบ | The dog detected drugs. | สุนัขตรวจพบยาเสพติด
+distribute | แจกจ่าย | They distributed food to victims. | พวกเขาแจกอาหารให้ผู้ประสบภัย
+disturb | รบกวน | Do not disturb. | ห้ามรบกวน
+eliminate | กำจัด/ตัดออก | We eliminated two suspects. | เราตัดผู้ต้องสงสัยออกสองคน
+encourage | สนับสนุน/ให้กำลังใจ | My father encouraged me. | พ่อให้กำลังใจฉัน
+ensure | ทำให้แน่ใจ | Ensure the door is locked. | ตรวจให้แน่ใจว่าประตูล็อกแล้ว
+`);
+U('daily', 4, 'ศัพท์ออกสอบ: คุณศัพท์ 3', `
+aggressive | ก้าวร้าว | The man became aggressive. | ชายคนนั้นเริ่มก้าวร้าว
+alternative | ทางเลือกอื่น | Is there an alternative route? | มีเส้นทางอื่นไหม
+ancient | โบราณ | Ayutthaya is an ancient city. | อยุธยาเป็นเมืองโบราณ
+apparent | ชัดเจน/ดูเหมือน | There was no apparent reason. | ไม่มีเหตุผลที่ชัดเจน
+brilliant | ยอดเยี่ยม/ฉลาดมาก | That's a brilliant idea. | นั่นเป็นความคิดที่ยอดเยี่ยม
+casual | ลำลอง/สบายๆ | Wear casual clothes. | ใส่ชุดลำลอง
+---
+delicate | บอบบาง/ละเอียดอ่อน | It's a delicate matter. | มันเป็นเรื่องละเอียดอ่อน
+dramatic | อย่างมาก/น่าตื่นเต้น | There was a dramatic increase. | มีการเพิ่มขึ้นอย่างมาก
+enormous | ใหญ่มหาศาล | The damage was enormous. | ความเสียหายมหาศาล
+flexible | ยืดหยุ่น | My schedule is flexible. | ตารางของฉันยืดหยุ่น
+formal | เป็นทางการ | Use formal language. | ใช้ภาษาทางการ
+gradual | ค่อยเป็นค่อยไป | There was a gradual change. | มีการเปลี่ยนแปลงทีละน้อย
+`);
+U('daily', 4, 'ศัพท์ออกสอบ: คำนาม 3', `
+access | การเข้าถึง | Only staff have access. | เฉพาะพนักงานเท่านั้นที่เข้าถึงได้
+aspect | แง่มุม | Consider every aspect. | พิจารณาทุกแง่มุม
+barrier | สิ่งกีดขวาง/อุปสรรค | Language is a barrier. | ภาษาเป็นอุปสรรค
+burden | ภาระ | Debt is a heavy burden. | หนี้เป็นภาระหนัก
+capacity | ความจุ/ขีดความสามารถ | The stadium has a capacity of 50,000. | สนามจุคนได้ 50,000 คน
+chaos | ความวุ่นวาย | The crowd caused chaos. | ฝูงชนก่อความวุ่นวาย
+---
+element | องค์ประกอบ | Trust is a key element. | ความไว้วางใจเป็นองค์ประกอบสำคัญ
+feature | ลักษณะเด่น/คุณสมบัติ | The phone has a new feature. | โทรศัพท์มีฟีเจอร์ใหม่
+function | หน้าที่/การทำงาน | What is the function of this button? | ปุ่มนี้มีหน้าที่อะไร
+influence | อิทธิพล | Media has a strong influence. | สื่อมีอิทธิพลมาก
+margin | ส่วนต่าง/ขอบ | He won by a small margin. | เขาชนะด้วยคะแนนห่างเล็กน้อย
+phase | ระยะ/ขั้นตอน | The first phase is complete. | ระยะแรกเสร็จแล้ว
+`);
+U('daily', 5, 'ศัพท์ออกสอบ: กริยา 7', `
+exceed | เกิน | Don't exceed the speed limit. | อย่าขับเกินความเร็วที่กำหนด
+exclude | ไม่รวม/กันออก | Tax is excluded. | ไม่รวมภาษี
+expand | ขยาย | The company expanded abroad. | บริษัทขยายไปต่างประเทศ
+explode | ระเบิด | The bomb exploded at noon. | ระเบิดตอนเที่ยง
+expose | เปิดเผย/เปิดโปง | The report exposed corruption. | รายงานเปิดโปงการทุจริต
+extend | ขยาย/ต่อเวลา | Can I extend my visa? | ฉันต่อวีซ่าได้ไหม
+---
+forbid | ห้าม | Smoking is forbidden here. | ห้ามสูบบุหรี่ที่นี่
+frustrate | ทำให้หงุดหงิด | Slow internet frustrates me. | อินเทอร์เน็ตช้าทำให้ฉันหงุดหงิด
+fulfill | ทำให้สำเร็จ/ทำตาม | He fulfilled his promise. | เขาทำตามสัญญา
+guarantee | รับประกัน | We can't guarantee success. | เรารับประกันความสำเร็จไม่ได้
+hesitate | ลังเล | Don't hesitate to call us. | อย่าลังเลที่จะโทรหาเรา
+imply | สื่อเป็นนัย | What are you implying? | คุณหมายความว่าอะไร
+`);
+U('daily', 5, 'ศัพท์ออกสอบ: กริยา 8', `
+interfere | แทรกแซง/ยุ่ง | Don't interfere with the investigation. | อย่าแทรกแซงการสืบสวน
+interrupt | ขัดจังหวะ | Sorry to interrupt. | ขอโทษที่ขัดจังหวะ
+invade | บุกรุก/รุกราน | They invaded his privacy. | พวกเขาบุกรุกความเป็นส่วนตัวของเขา
+isolate | แยกออก/กักตัว | Isolate the area. | แยกพื้นที่ออก
+neglect | ละเลย | Don't neglect your health. | อย่าละเลยสุขภาพ
+occupy | ครอบครอง/ใช้ (พื้นที่) | The seat is occupied. | ที่นั่งมีคนนั่งแล้ว
+---
+overcome | เอาชนะ | She overcame her fear. | เธอเอาชนะความกลัวได้
+participate | มีส่วนร่วม | Everyone can participate. | ทุกคนมีส่วนร่วมได้
+possess | ครอบครอง | He possessed illegal drugs. | เขาครอบครองยาเสพติด
+preserve | อนุรักษ์/รักษา | Preserve the crime scene. | รักษาสภาพที่เกิดเหตุ
+pretend | แกล้งทำ | He pretended to be sick. | เขาแกล้งป่วย
+restrict | จำกัด | Access is restricted. | การเข้าถึงถูกจำกัด
+`);
+U('daily', 5, 'ศัพท์ออกสอบ: คุณศัพท์ 4', `
+abundant | อุดมสมบูรณ์/มากมาย | Water is abundant here. | ที่นี่มีน้ำมากมาย
+adequate | เพียงพอ | Get adequate sleep. | นอนให้เพียงพอ
+harsh | รุนแรง/เข้มงวด | The punishment was harsh. | บทลงโทษรุนแรง
+fierce | ดุร้าย/ดุเดือด | It was a fierce fight. | เป็นการต่อสู้ที่ดุเดือด
+modest | ถ่อมตัว/พอประมาณ | He is modest about his success. | เขาถ่อมตัวเรื่องความสำเร็จ
+permanent | ถาวร | Is this job permanent? | งานนี้เป็นงานประจำไหม
+---
+precise | แม่นยำ/ชัดเจน | Give precise details. | ให้รายละเอียดที่ชัดเจน
+rapid | รวดเร็ว | There was a rapid response. | มีการตอบสนองอย่างรวดเร็ว
+relevant | เกี่ยวข้อง | Is this information relevant? | ข้อมูลนี้เกี่ยวข้องไหม
+sincere | จริงใจ | Please accept my sincere apology. | โปรดรับคำขอโทษอย่างจริงใจ
+sufficient | เพียงพอ | There is sufficient evidence. | มีหลักฐานเพียงพอ
+vague | คลุมเครือ | His answer was vague. | คำตอบของเขาคลุมเครือ
+`);
+U('daily', 6, 'ศัพท์ออกสอบ: กริยาขั้นสูง', `
+sacrifice | เสียสละ | He sacrificed his life. | เขาเสียสละชีวิต
+sustain | รักษาไว้/ได้รับ (บาดเจ็บ) | He sustained serious injuries. | เขาได้รับบาดเจ็บสาหัส
+tolerate | อดทน/ยอมรับ | We will not tolerate violence. | เราจะไม่ยอมรับความรุนแรง
+transform | เปลี่ยนแปลงอย่างมาก | Technology transformed policing. | เทคโนโลยีเปลี่ยนงานตำรวจอย่างมาก
+yield | ให้ทาง/ให้ผล | Yield to pedestrians. | ให้ทางคนเดินเท้า
+tackle | จัดการ/รับมือ | We must tackle corruption. | เราต้องจัดการกับการทุจริต
+---
+classify | จำแนก/จัดเป็นความลับ | The files are classified. | แฟ้มถูกจัดเป็นความลับ
+manufacture | ผลิต | They manufacture fake goods. | พวกเขาผลิตสินค้าปลอม
+restore | ฟื้นฟู/คืนสู่สภาพเดิม | Police restored order. | ตำรวจฟื้นฟูความสงบ
+reveal | เปิดเผย | The test revealed the truth. | การตรวจเปิดเผยความจริง
+unite | รวมเป็นหนึ่ง | We must unite against crime. | เราต้องร่วมมือกันต่อต้านอาชญากรรม
+swear | สาบาน | Do you swear to tell the truth? | คุณสาบานว่าจะพูดความจริงไหม
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
