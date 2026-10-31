@@ -9,7 +9,7 @@ function renderExam(){
     <div class="sec" style="margin-top:0"><i data-lucide="shield" style="color:var(--violet)"></i>สายสอบ</div>
     <div style="margin-bottom:12px">
       <button class="c-select block" id="btnPickExamTrack" style="width:100%">
-        <span><b>${esc(track.label)}</b> <small style="color:var(--muted)">(${esc(track.ruleDesc)})</small></span>
+        <span><b>${esc(track.label)}</b></span>
         <i data-lucide="chevron-down"></i>
       </button>
     </div>
