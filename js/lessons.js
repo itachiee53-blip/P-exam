@@ -8473,6 +8473,187 @@ supervisor | หัวหน้างาน | Ask your supervisor. | ถาม�
 coworking space | พื้นที่ทำงานร่วม | I work at a coworking space. | ฉันทำงานที่โคเวิร์กกิงสเปซ
 `);
 
+U('daily', 1, 'วิชาเรียนและห้องเรียน', `
+geography | ภูมิศาสตร์ | I like geography. | ฉันชอบวิชาภูมิศาสตร์
+history | ประวัติศาสตร์ | Thai history is interesting. | ประวัติศาสตร์ไทยน่าสนใจ
+physics | ฟิสิกส์ | Physics is hard for me. | ฟิสิกส์ยากสำหรับฉัน
+literature | วรรณคดี | She studies English literature. | เธอเรียนวรรณคดีอังกฤษ
+algebra | พีชคณิต | We learn algebra in math class. | เราเรียนพีชคณิตในวิชาคณิต
+geometry | เรขาคณิต | Geometry is about shapes. | เรขาคณิตเกี่ยวกับรูปทรง
+---
+classroom | ห้องเรียน | The classroom is noisy. | ห้องเรียนเสียงดัง
+blackboard | กระดานดำ | Write it on the blackboard. | เขียนบนกระดานดำ
+whiteboard | ไวต์บอร์ด | The teacher wrote on the whiteboard. | ครูเขียนบนไวต์บอร์ด
+textbook | หนังสือเรียน | Open your textbook. | เปิดหนังสือเรียน
+calculator | เครื่องคิดเลข | Can I use a calculator? | ใช้เครื่องคิดเลขได้ไหม
+sharpener | กบเหลาดินสอ | I need a pencil sharpener. | ฉันต้องการกบเหลาดินสอ
+`);
+U('daily', 2, 'ชีวิตในโรงเรียน', `
+term | ภาคเรียน/คำศัพท์ | The new term starts in May. | เทอมใหม่เริ่มเดือนพฤษภาคม
+essay | เรียงความ | Write an essay about your family. | เขียนเรียงความเกี่ยวกับครอบครัว
+quiz | แบบทดสอบสั้น | We have a quiz today. | วันนี้มีควิซ
+thesis | วิทยานิพนธ์ | She is writing her thesis. | เธอกำลังเขียนวิทยานิพนธ์
+headmaster | ครูใหญ่ | The headmaster called my parents. | ครูใหญ่เรียกพ่อแม่ฉัน
+locker | ตู้ล็อกเกอร์ | Put your bag in the locker. | ใส่กระเป๋าไว้ในล็อกเกอร์
+---
+recess | เวลาพัก | The kids play at recess. | เด็กๆ เล่นตอนพัก
+cafeteria | โรงอาหาร | Let's eat in the cafeteria. | ไปกินที่โรงอาหารกัน
+highlighter | ปากกาเน้นข้อความ | Use a highlighter. | ใช้ปากกาไฮไลต์
+report card | สมุดพก/ใบรายงานผล | Show me your report card. | ให้ฉันดูสมุดพก
+school bus | รถโรงเรียน | I take the school bus. | ฉันนั่งรถโรงเรียน
+timetable | ตารางเรียน/ตารางเวลา | Check the timetable. | ดูตารางเวลา
+`);
+U('daily', 1, 'แมลงต่างๆ', `
+bee | ผึ้ง | A bee stung me. | ผึ้งต่อยฉัน
+beetle | ด้วง | A beetle is on the leaf. | ด้วงอยู่บนใบไม้
+butterfly | ผีเสื้อ | The butterfly is beautiful. | ผีเสื้อสวย
+caterpillar | หนอนผีเสื้อ | A caterpillar becomes a butterfly. | หนอนกลายเป็นผีเสื้อ
+cricket | จิ้งหรีด/คริกเก็ต | I hear crickets at night. | ฉันได้ยินเสียงจิ้งหรีดตอนกลางคืน
+dragonfly | แมลงปอ | A dragonfly flew over the pond. | แมลงปอบินเหนือบ่อน้ำ
+---
+firefly | หิ่งห้อย | Fireflies glow at night. | หิ่งห้อยเรืองแสงตอนกลางคืน
+flea | หมัด | The dog has fleas. | สุนัขมีหมัด
+fly | แมลงวัน/บิน | There is a fly in my soup. | มีแมลงวันในซุปฉัน
+grasshopper | ตั๊กแตน | A grasshopper jumped on me. | ตั๊กแตนกระโดดใส่ฉัน
+ladybug | แมลงเต่าทอง | A ladybug is red with dots. | แมลงเต่าทองสีแดงมีจุด
+scorpion | แมงป่อง | Watch out for scorpions. | ระวังแมงป่อง
+`);
+U('daily', 1, 'สัตว์ป่า ชุด 1', `
+bat | ค้างคาว/ไม้ตี | Bats fly at night. | ค้างคาวบินตอนกลางคืน
+buffalo | ควาย | The farmer has a buffalo. | ชาวนามีควาย
+chimpanzee | ชิมแปนซี | Chimpanzees are clever. | ชิมแปนซีฉลาด
+cheetah | เสือชีตาห์ | The cheetah is very fast. | เสือชีตาห์เร็วมาก
+gorilla | กอริลลา | The gorilla is strong. | กอริลลาแข็งแรง
+hippo | ฮิปโป | Hippos live in rivers. | ฮิปโปอาศัยในแม่น้ำ
+---
+kangaroo | จิงโจ้ | Kangaroos live in Australia. | จิงโจ้อาศัยในออสเตรเลีย
+koala | หมีโคอาลา | The koala sleeps in a tree. | โคอาลานอนบนต้นไม้
+leopard | เสือดาว | A leopard has spots. | เสือดาวมีจุด
+panda | แพนด้า | Pandas eat bamboo. | แพนด้ากินไผ่
+rhino | แรด | The rhino has a horn. | แรดมีนอ
+polar bear | หมีขั้วโลก | Polar bears live in the Arctic. | หมีขั้วโลกอาศัยในอาร์กติก
+`);
+U('daily', 2, 'สัตว์ป่า ชุด 2', `
+elk | กวางเอลก์ | We saw an elk in the forest. | เราเห็นกวางเอลก์ในป่า
+moose | กวางมูส | A moose crossed the road. | กวางมูสเดินข้ามถนน
+mole | ตัวตุ่น/ไฝ | He has a mole on his cheek. | เขามีไฝที่แก้ม
+otter | นาก | Otters play in the river. | นากเล่นในแม่น้ำ
+peacock | นกยูง | The peacock has beautiful feathers. | นกยูงมีขนสวย
+porcupine | เม่น | A porcupine has sharp spines. | เม่นมีขนแหลม
+---
+raccoon | แรคคูน | A raccoon ate our trash. | แรคคูนคุ้ยขยะของเรา
+reindeer | กวางเรนเดียร์ | Santa has reindeer. | ซานตามีกวางเรนเดียร์
+sloth | สลอธ/ความเกียจคร้าน | The sloth moves slowly. | สลอธเคลื่อนไหวช้า
+woodpecker | นกหัวขวาน | A woodpecker is knocking on the tree. | นกหัวขวานเจาะต้นไม้
+termite | ปลวก | Termites ate the wood. | ปลวกกินไม้
+tick | เห็บ/ทำเครื่องหมายถูก | Check your dog for ticks. | ตรวจหาเห็บในสุนัข
+`);
+U('daily', 1, 'สัตว์ทะเล', `
+whale | วาฬ | The whale is huge. | วาฬตัวใหญ่มาก
+octopus | ปลาหมึกยักษ์ | An octopus has eight arms. | ปลาหมึกยักษ์มีแปดหนวด
+squid | ปลาหมึก | I like grilled squid. | ฉันชอบปลาหมึกย่าง
+starfish | ปลาดาว | We found a starfish on the beach. | เราเจอปลาดาวที่ชายหาด
+stingray | ปลากระเบน | Watch out for stingrays. | ระวังปลากระเบน
+walrus | วอลรัส | The walrus has long teeth. | วอลรัสมีเขี้ยวยาว
+---
+seahorse | ม้าน้ำ | A seahorse is a small fish. | ม้าน้ำเป็นปลาตัวเล็ก
+eel | ปลาไหล | The eel is slippery. | ปลาไหลลื่น
+clam | หอยลาย/หอยกาบ | We ate clam soup. | เรากินซุปหอย
+prawn | กุ้ง (ตัวใหญ่) | Grilled prawns, please. | ขอกุ้งเผา
+sea turtle | เต่าทะเล | Sea turtles lay eggs on the beach. | เต่าทะเลวางไข่บนชายหาด
+sea lion | สิงโตทะเล | The sea lion is playing. | สิงโตทะเลกำลังเล่น
+`);
+U('daily', 1, 'ผลไม้ไทยและผลไม้ต่างประเทศ', `
+avocado | อะโวคาโด | I eat avocado on toast. | ฉันกินอะโวคาโดกับขนมปัง
+apricot | แอปริคอต | Dried apricots are sweet. | แอปริคอตแห้งหวาน
+berry | ผลเบอร์รี | Berries are healthy. | เบอร์รีดีต่อสุขภาพ
+blueberry | บลูเบอร์รี | I like blueberry muffins. | ฉันชอบมัฟฟินบลูเบอร์รี
+cherry | เชอร์รี | Put a cherry on top. | วางเชอร์รีไว้ข้างบน
+durian | ทุเรียน | Durian smells strong. | ทุเรียนกลิ่นแรง
+---
+fig | มะเดื่อ | Figs are sweet. | มะเดื่อหวาน
+guava | ฝรั่ง | Guava with chili salt is tasty. | ฝรั่งจิ้มพริกเกลืออร่อย
+kiwi | กีวี | Kiwi is green inside. | กีวีข้างในสีเขียว
+lychee | ลิ้นจี่ | Lychees are juicy. | ลิ้นจี่ฉ่ำ
+mangosteen | มังคุด | Mangosteen is the queen of fruits. | มังคุดคือราชินีแห่งผลไม้
+papaya | มะละกอ | Ripe papaya is sweet. | มะละกอสุกหวาน
+`);
+U('daily', 1, 'ผลไม้เมืองร้อนและผักใบเขียว', `
+pineapple | สับปะรด | Pineapple fried rice is delicious. | ข้าวผัดสับปะรดอร่อย
+pomegranate | ทับทิม | Pomegranate juice is red. | น้ำทับทิมสีแดง
+rambutan | เงาะ | Rambutans are hairy. | เงาะมีขน
+raspberry | ราสป์เบอร์รี | I like raspberry jam. | ฉันชอบแยมราสป์เบอร์รี
+tangerine | ส้มเขียวหวาน | Peel the tangerine. | ปอกส้มเขียวหวาน
+asparagus | หน่อไม้ฝรั่ง | Grill the asparagus. | ย่างหน่อไม้ฝรั่ง
+---
+broccoli | บรอกโคลี | Eat your broccoli. | กินบรอกโคลีด้วย
+cauliflower | กะหล่ำดอก | Fry the cauliflower. | ผัดกะหล่ำดอก
+celery | ขึ้นฉ่าย | Add some celery to the soup. | ใส่ขึ้นฉ่ายในซุป
+eggplant | มะเขือยาว | Green curry with eggplant is good. | แกงเขียวหวานใส่มะเขืออร่อย
+lettuce | ผักกาดหอม | Wash the lettuce. | ล้างผักกาด
+chili | พริก | This chili is very hot. | พริกนี้เผ็ดมาก
+`);
+U('daily', 2, 'ผักและสมุนไพรไทย', `
+beetroot | บีทรูท | Beetroot is red. | บีทรูทสีแดง
+leek | ต้นกระเทียม | Chop the leek. | หั่นต้นกระเทียม
+okra | กระเจี๊ยบเขียว | Okra is good for you. | กระเจี๊ยบดีต่อสุขภาพ
+parsley | พาร์สลีย์ | Sprinkle some parsley. | โรยพาร์สลีย์
+radish | หัวไชเท้า | Radish soup is light. | ซุปหัวไชเท้ารสอ่อน
+shallot | หอมแดง | Slice the shallots. | ซอยหอมแดง
+---
+zucchini | ซูกินี | Grill the zucchini. | ย่างซูกินี
+coriander | ผักชี | Add coriander on top. | โรยผักชีข้างบน
+lemongrass | ตะไคร้ | Tom yum has lemongrass. | ต้มยำใส่ตะไคร้
+mint | สะระแหน่ | Mint tea is refreshing. | ชาสะระแหน่สดชื่น
+kaffir lime | มะกรูด | Add kaffir lime leaves. | ใส่ใบมะกรูด
+galangal | ข่า | Tom kha needs galangal. | ต้มข่าต้องใส่ข่า
+`);
+U('daily', 1, 'อาหารเช้าและเครื่องดื่ม', `
+bagel | เบเกิล | I'll have a bagel with cream cheese. | ฉันขอเบเกิลกับครีมชีส
+bun | ขนมปังก้อน/ซาลาเปา | I bought pork buns. | ฉันซื้อซาลาเปาไส้หมู
+croissant | ครัวซองต์ | A croissant and coffee, please. | ขอครัวซองต์กับกาแฟ
+muffin | มัฟฟิน | She baked muffins. | เธออบมัฟฟิน
+waffle | วาฟเฟิล | Waffles with honey are good. | วาฟเฟิลกับน้ำผึ้งอร่อย
+omelet | ไข่เจียว/ออมเล็ต | I'll make an omelet. | ฉันจะทำไข่เจียว
+---
+porridge | ข้าวต้ม/โจ๊ก | Rice porridge is good when you're sick. | โจ๊กเหมาะเวลาไม่สบาย
+cereal | ซีเรียล | Kids eat cereal with milk. | เด็กๆ กินซีเรียลกับนม
+yogurt | โยเกิร์ต | Yogurt is healthy. | โยเกิร์ตดีต่อสุขภาพ
+milkshake | มิลค์เชค | A chocolate milkshake, please. | ขอมิลค์เชคช็อกโกแลต
+lemonade | น้ำมะนาว | Cold lemonade is refreshing. | น้ำมะนาวเย็นสดชื่น
+broth | น้ำซุป | Chicken broth is good for colds. | น้ำซุปไก่ดีตอนเป็นหวัด
+`);
+U('daily', 1, 'อาหารยอดนิยมทั่วโลก', `
+dumpling | เกี๊ยว | I love steamed dumplings. | ฉันชอบเกี๊ยวนึ่ง
+sushi | ซูชิ | Let's eat sushi tonight. | คืนนี้กินซูชิกัน
+tofu | เต้าหู้ | Tofu is made from soybeans. | เต้าหู้ทำจากถั่วเหลือง
+kebab | เคบับ | He bought a kebab. | เขาซื้อเคบับ
+burger | เบอร์เกอร์ | A cheeseburger, please. | ขอชีสเบอร์เกอร์
+fries | เฟรนช์ฟราย | Do you want fries? | เอาเฟรนช์ฟรายไหม
+---
+hotdog | ฮอทดอก | Kids love hotdogs. | เด็กๆ ชอบฮอทดอก
+sandwich | แซนด์วิช | I made a tuna sandwich. | ฉันทำแซนด์วิชทูน่า
+spaghetti | สปาเกตตี | Spaghetti is my favorite. | สปาเกตตีเป็นอาหารที่ฉันชอบ
+lasagna | ลาซานญ่า | Mom made lasagna. | แม่ทำลาซานญ่า
+popcorn | ป๊อปคอร์น | Let's get popcorn at the cinema. | ซื้อป๊อปคอร์นที่โรงหนังกัน
+pretzel | เพรตเซล | I bought a salty pretzel. | ฉันซื้อเพรตเซลรสเค็ม
+`);
+U('daily', 1, 'ขนมหวานและของหวาน', `
+cupcake | คัพเค้ก | She made chocolate cupcakes. | เธอทำคัพเค้กช็อกโกแลต
+brownie | บราวนี | This brownie is rich. | บราวนีชิ้นนี้เข้มข้น
+custard | คัสตาร์ด/สังขยา | Bread with custard is a Thai snack. | ขนมปังสังขยาเป็นของว่างไทย
+doughnut | โดนัท | I ate two doughnuts. | ฉันกินโดนัทสองชิ้น
+tart | ทาร์ต | Egg tarts are delicious. | ทาร์ตไข่อร่อย
+marshmallow | มาร์ชเมลโลว์ | Roast marshmallows on the fire. | ปิ้งมาร์ชเมลโลว์บนไฟ
+---
+mango sticky rice | ข้าวเหนียวมะม่วง | Mango sticky rice is famous. | ข้าวเหนียวมะม่วงมีชื่อเสียง
+coconut milk | กะทิ | Curry needs coconut milk. | แกงต้องใช้กะทิ
+cotton candy | สายไหม | Kids love cotton candy. | เด็กๆ ชอบสายไหม
+jelly bean | เยลลี่บีน | He loves jelly beans. | เขาชอบเยลลี่บีน
+ice pop | ไอติมแท่ง | I bought an ice pop. | ฉันซื้อไอติมแท่ง
+pudding cup | พุดดิ้งถ้วย | A pudding cup for dessert. | พุดดิ้งถ้วยเป็นของหวาน
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
