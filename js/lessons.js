@@ -5729,6 +5729,263 @@ goodbye kiss | จูบลา | It was our goodbye kiss. | มันคือ�
 yearn | โหยหา | I yearn for your touch. | ฉันโหยหาสัมผัสของเธอ
 `);
 
+U('daily', 2, 'งานบ้านและธุระประจำวัน', `
+groceries | ของชำ/ของใช้ในบ้าน | I buy groceries every Sunday. | ฉันซื้อของเข้าบ้านทุกวันอาทิตย์
+dishes | จานชาม | It's your turn to wash the dishes. | ถึงตาคุณล้างจานแล้ว
+chores | งานบ้าน | I do my chores in the morning. | ฉันทำงานบ้านตอนเช้า
+errand | ธุระ | I have to run some errands. | ฉันต้องไปทำธุระ
+rent | ค่าเช่า/เช่า | The rent is 6,000 baht a month. | ค่าเช่าเดือนละ 6,000 บาท
+roommate | เพื่อนร่วมห้อง | My roommate is very tidy. | เพื่อนร่วมห้องฉันเรียบร้อยมาก
+---
+condo | คอนโด | She lives in a condo. | เธออยู่คอนโด
+appliance | เครื่องใช้ไฟฟ้า | The kitchen has new appliances. | ครัวมีเครื่องใช้ไฟฟ้าใหม่
+mold | เชื้อรา | There is mold on the wall. | มีเชื้อราบนผนัง
+pest | สัตว์รบกวน | We need pest control. | เราต้องกำจัดสัตว์รบกวน
+leftovers | อาหารที่เหลือ | Eat the leftovers for lunch. | กินอาหารเหลือเป็นมื้อกลางวัน
+takeout | อาหารสั่งกลับบ้าน | Let's get takeout tonight. | คืนนี้สั่งอาหารกลับบ้านกันเถอะ
+`);
+U('daily', 2, 'ทำอาหารในครัว', `
+ingredient | ส่วนผสม/วัตถุดิบ | Buy fresh ingredients. | ซื้อวัตถุดิบสด
+bake | อบ | I baked a cake. | ฉันอบเค้ก
+steam | นึ่ง/ไอน้ำ | Steam the fish for ten minutes. | นึ่งปลาสิบนาที
+chop | สับ/หั่น | Chop the onions. | สับหัวหอม
+slice | หั่นเป็นแผ่น/ชิ้น | Slice the bread. | หั่นขนมปังเป็นแผ่น
+stir | คน | Stir the soup slowly. | คนซุปช้าๆ
+---
+flavor | รสชาติ | This soup has a strong flavor. | ซุปนี้รสเข้มข้น
+peel | ปอกเปลือก | Peel the potatoes. | ปอกมันฝรั่ง
+grate | ขูด | Grate some cheese. | ขูดชีส
+dough | แป้งโด | Knead the dough. | นวดแป้ง
+simmer | เคี่ยว (ไฟอ่อน) | Let it simmer for an hour. | เคี่ยวไว้หนึ่งชั่วโมง
+marinate | หมัก | Marinate the chicken overnight. | หมักไก่ไว้ข้ามคืน
+`);
+U('daily', 3, 'ชีวิตการทำงาน', `
+bonus | โบนัส | We got a bonus this year. | ปีนี้เราได้โบนัส
+presentation | การนำเสนอ | I have a presentation tomorrow. | พรุ่งนี้ฉันต้องนำเสนองาน
+invoice | ใบแจ้งหนี้ | Send me the invoice. | ส่งใบแจ้งหนี้มาให้ฉัน
+subscription | การสมัครสมาชิก (รายเดือน) | Cancel the subscription. | ยกเลิกการสมัครสมาชิก
+delivery | การจัดส่ง | Delivery is free. | ส่งฟรี
+paycheck | เงินเดือน (ที่ได้แต่ละงวด) | I'm waiting for my paycheck. | ฉันรอเงินเดือนออก
+---
+payroll | ระบบเงินเดือน/บัญชีเงินเดือน | Ask the payroll department. | ถามแผนกเงินเดือน
+coworker | เพื่อนร่วมงาน | My coworker helped me. | เพื่อนร่วมงานช่วยฉัน
+intern | นักศึกษาฝึกงาน | She is an intern here. | เธอเป็นนักศึกษาฝึกงานที่นี่
+freelance | ฟรีแลนซ์ | He works freelance. | เขาทำงานฟรีแลนซ์
+workplace | ที่ทำงาน | Safety in the workplace is important. | ความปลอดภัยในที่ทำงานสำคัญ
+cubicle | โต๊ะทำงานแบบกั้นห้อง | My cubicle is near the window. | โต๊ะทำงานของฉันอยู่ใกล้หน้าต่าง
+`);
+U('daily', 3, 'ข่าวและสื่อออนไลน์', `
+reporter | นักข่าว | The reporter asked a question. | นักข่าวถามคำถาม
+editor | บรรณาธิการ | The editor checked the story. | บรรณาธิการตรวจข่าว
+press | สื่อมวลชน | The police spoke to the press. | ตำรวจให้สัมภาษณ์สื่อ
+breaking news | ข่าวด่วน | Here is some breaking news. | นี่คือข่าวด่วน
+trending | กำลังเป็นกระแส | This topic is trending. | หัวข้อนี้กำลังเป็นกระแส
+hashtag | แฮชแท็ก | Use the hashtag in your post. | ใช้แฮชแท็กในโพสต์ของคุณ
+---
+follower | ผู้ติดตาม | She has a million followers. | เธอมีผู้ติดตามหนึ่งล้านคน
+influencer | อินฟลูเอนเซอร์ | He is a food influencer. | เขาเป็นอินฟลูเอนเซอร์สายอาหาร
+post | โพสต์ | Don't post your address online. | อย่าโพสต์ที่อยู่ของคุณทางออนไลน์
+subscribe | กดติดตาม/สมัครรับ | Subscribe to my channel. | กดติดตามช่องของฉัน
+livestream | ไลฟ์สด | She sells clothes on livestream. | เธอไลฟ์ขายเสื้อผ้า
+meme | มีม | That meme is so funny. | มีมนั้นตลกมาก
+`);
+U('daily', 3, 'โซเชียลมีเดีย', `
+caption | แคปชัน/คำบรรยายภาพ | Write a funny caption. | เขียนแคปชันตลกๆ
+feed | ฟีด (หน้ารวมโพสต์) | I saw it on my feed. | ฉันเห็นมันในฟีด
+reel | คลิปสั้น (รีล) | She makes cooking reels. | เธอทำคลิปสั้นสอนทำอาหาร
+tag | แท็ก | Tag your friends in the photo. | แท็กเพื่อนในรูป
+unfollow | เลิกติดตาม | I unfollowed that account. | ฉันเลิกติดตามบัญชีนั้น
+selfie | เซลฟี่ | Let's take a selfie. | ถ่ายเซลฟี่กัน
+---
+filter | ฟิลเตอร์/ตัวกรอง | She always uses a filter. | เธอใช้ฟิลเตอร์ตลอด
+emoji | อีโมจิ | He replied with an emoji. | เขาตอบกลับด้วยอีโมจิ
+repost | รีโพสต์/แชร์ต่อ | Don't repost fake news. | อย่าแชร์ข่าวปลอมต่อ
+direct message | ข้อความส่วนตัว (DM) | Send me a direct message. | ส่งข้อความส่วนตัวมาหาฉัน
+go live | ไลฟ์สด | I'll go live at eight. | ฉันจะไลฟ์ตอนสองทุ่ม
+screen time | เวลาที่ใช้หน้าจอ | Reduce your screen time. | ลดเวลาเล่นหน้าจอ
+`);
+U('talk', 2, 'คำพูดแบบเพื่อนคุยกัน', `
+weird | แปลก | That's so weird. | แปลกมาก
+gross | น่าขยะแขยง | Ew, that's gross! | อี๋ น่าขยะแขยง!
+creepy | น่าขนลุก | That house is creepy. | บ้านหลังนั้นน่าขนลุก
+cute | น่ารัก | Your puppy is so cute. | ลูกหมาของคุณน่ารักมาก
+adorable | น่ารักมาก | The baby is adorable. | ทารกน่ารักมาก
+awkward | อึดอัด/เก้อ | That was an awkward moment. | เป็นช่วงที่อึดอัดมาก
+---
+hilarious | ตลกมาก | The movie was hilarious. | หนังตลกมาก
+ridiculous | ไร้สาระ/บ้าบอ | That price is ridiculous. | ราคานั้นบ้ามาก
+legit | ของจริง/เชื่อถือได้ | Is this website legit? | เว็บนี้ของจริงไหม
+sketchy | น่าสงสัย/ไม่น่าไว้ใจ | That guy looks sketchy. | หมอนั่นดูไม่น่าไว้ใจ
+shady | ไม่โปร่งใส/มีลับลมคมใน | It's a shady business. | เป็นธุรกิจที่มีลับลมคมใน
+lame | น่าเบื่อ/ห่วย | That joke was lame. | มุกนั้นแป้ก
+`);
+U('talk', 3, 'ภาษาพูดในหนังและซีรีส์', `
+epic | สุดยอด/ยิ่งใหญ่ | That was an epic battle. | เป็นการต่อสู้ที่สุดยอด
+insane | บ้า/สุดๆ | The ending was insane! | ตอนจบสุดยอดมาก!
+dude | เพื่อน/ไอ้หนุ่ม | Hey dude, what's up? | ว่าไงเพื่อน
+bro | พี่ชาย/เพื่อน (ชาย) | Thanks, bro. | ขอบใจนะเพื่อน
+buddy | เพื่อนสนิท | He's my buddy from school. | เขาเป็นเพื่อนสนิทสมัยเรียน
+folks | ผู้คน/ทุกคน | That's all, folks! | แค่นี้แหละทุกคน!
+---
+yeah | ใช่/อือ | Yeah, I know. | อือ ฉันรู้
+nope | ไม่ (ภาษาพูด) | Nope, not today. | ไม่ ไม่ใช่วันนี้
+yep | ใช่ (ภาษาพูด) | Yep, that's him. | ใช่ นั่นแหละเขา
+alright | โอเค/ได้ | Alright, let's go. | โอเค ไปกัน
+whatever | อะไรก็ได้/ช่างมัน | Whatever, I don't care. | ช่างมัน ฉันไม่สน
+literally | อย่างแท้จริง/แบบจริงๆ | I literally ran all the way. | ฉันวิ่งมาตลอดทางจริงๆ
+`);
+U('talk', 3, 'คำพูดย่อและคำเสริมในภาษาพูด', `
+y'all | พวกคุณทุกคน (you all) | Thank y'all for coming. | ขอบคุณทุกคนที่มา
+ain't | ไม่ (am not/isn't) | That ain't right. | แบบนั้นไม่ถูก
+lotta | เยอะ (a lot of) | That's a lotta money. | เงินเยอะมาก
+dunno | ไม่รู้ (don't know) | I dunno where he is. | ไม่รู้ว่าเขาอยู่ไหน
+lemme | ขอ/ให้ฉัน (let me) | Lemme see that. | ขอดูหน่อย
+gimme | ให้ฉัน (give me) | Gimme a second. | ขอเวลาแป๊บนึง
+---
+basically | โดยพื้นฐาน/สรุปคือ | Basically, he lied. | สรุปคือเขาโกหก
+honestly | พูดตรงๆ | Honestly, I'm tired. | พูดตรงๆ ฉันเหนื่อย
+totally | โดยสิ้นเชิง/สุดๆ | You're totally right. | คุณพูดถูกที่สุด
+obviously | แน่นอน/เห็นได้ชัด | Obviously, he was nervous. | เห็นได้ชัดว่าเขาประหม่า
+outta | ออกไปจาก (out of) | Get outta here! | ออกไปจากที่นี่!
+sorta | ประมาณว่า (sort of) | It's sorta weird. | มันแปลกๆ นะ
+`);
+U('talk', 4, 'สแลงที่ได้ยินบ่อย', `
+mess up | ทำพัง/ทำพลาด | I messed up the test. | ฉันทำข้อสอบพัง
+screw up | ทำพลาดครั้งใหญ่ | Don't screw this up. | อย่าทำพังล่ะ
+blow it | ทำเสียโอกาส | I had one chance and I blew it. | ฉันมีโอกาสเดียวแต่ทำพลาด
+nailed it | ทำได้เป๊ะ/ทำได้ดีมาก | You nailed it! | ทำได้เป๊ะเลย!
+for real | จริงเหรอ/จริงจัง | For real? You passed? | จริงเหรอ สอบผ่านแล้ว?
+you bet | แน่นอนอยู่แล้ว | You bet I'll be there. | แน่นอนว่าฉันจะไป
+---
+catch you later | แล้วเจอกัน | Catch you later, bro. | แล้วเจอกันนะเพื่อน
+see ya | บาย/แล้วเจอกัน | See ya tomorrow! | เจอกันพรุ่งนี้!
+hit me up | ทักมานะ/ติดต่อมา | Hit me up if you're free. | ว่างเมื่อไหร่ทักมานะ
+hang tight | รอแป๊บ/อดทนไว้ | Hang tight, help is coming. | รอก่อนนะ ความช่วยเหลือกำลังมา
+keep it real | เป็นตัวของตัวเอง/จริงใจ | Just keep it real. | แค่เป็นตัวของตัวเอง
+no biggie | ไม่เป็นไร/เรื่องเล็ก | Thanks! — No biggie. | ขอบคุณ! — ไม่เป็นไร
+`);
+
+U('daily', 2, 'เที่ยวทะเลและธรรมชาติ', `
+resort | รีสอร์ต | We stayed at a beach resort. | เราพักที่รีสอร์ตริมทะเล
+cliff | หน้าผา | Don't stand near the cliff. | อย่ายืนใกล้หน้าผา
+tent | เต็นท์ | We slept in a tent. | เรานอนในเต็นท์
+sunscreen | ครีมกันแดด | Put on sunscreen. | ทาครีมกันแดด
+sunburn | ผิวไหม้แดด | I got a bad sunburn. | ฉันผิวไหม้แดดหนักมาก
+jellyfish | แมงกะพรุน | Watch out for jellyfish. | ระวังแมงกะพรุน
+---
+snorkel | ดำน้ำตื้น | We snorkeled near the island. | เราดำน้ำตื้นใกล้เกาะ
+dive | ดำน้ำ/กระโดดลงน้ำ | He dived into the pool. | เขากระโดดลงสระ
+surf | โต้คลื่น | I want to learn to surf. | ฉันอยากหัดโต้คลื่น
+kayak | เรือคายัก | Let's rent a kayak. | เช่าเรือคายักกันเถอะ
+shore | ชายฝั่ง | The boat came to shore. | เรือเข้าฝั่ง
+harbor | ท่าเรือ | The ship is in the harbor. | เรือจอดอยู่ในท่าเรือ
+`);
+U('daily', 3, 'วิวและการเดินทางไกล', `
+layover | การแวะต่อเครื่อง | I have a layover in Dubai. | ฉันต้องแวะต่อเครื่องที่ดูไบ
+hostel | โฮสเทล | Hostels are cheap. | โฮสเทลราคาถูก
+scenery | ทิวทัศน์ | The scenery is beautiful. | ทิวทัศน์สวยงาม
+landscape | ภูมิทัศน์ | The landscape is green. | ภูมิทัศน์เขียวขจี
+skyline | เส้นขอบฟ้า (ตึกในเมือง) | The city skyline at night is amazing. | วิวตึกในเมืองตอนกลางคืนสวยมาก
+sunset | พระอาทิตย์ตก | Let's watch the sunset. | ไปดูพระอาทิตย์ตกกัน
+---
+sunrise | พระอาทิตย์ขึ้น | We woke up for the sunrise. | เราตื่นมาดูพระอาทิตย์ขึ้น
+horizon | ขอบฟ้า | A ship appeared on the horizon. | มีเรือโผล่ที่ขอบฟ้า
+tide | น้ำขึ้นน้ำลง | The tide is coming in. | น้ำกำลังขึ้น
+wave | คลื่น/โบกมือ | The waves are big today. | วันนี้คลื่นแรง
+canoe | เรือแคนู | They paddled a canoe. | พวกเขาพายเรือแคนู
+boarding gate | ประตูขึ้นเครื่อง | Go to the boarding gate. | ไปที่ประตูขึ้นเครื่อง
+`);
+U('daily', 2, 'ญาติและเหตุการณ์ในครอบครัว', `
+niece | หลานสาว | My niece is three years old. | หลานสาวฉันอายุสามขวบ
+twin | ฝาแฝด | She has a twin brother. | เธอมีพี่น้องฝาแฝดชาย
+in-law | ญาติฝ่ายสามี/ภรรยา | My in-laws live in Chiang Mai. | ญาติฝ่ายภรรยาฉันอยู่เชียงใหม่
+stepmother | แม่เลี้ยง | His stepmother is kind. | แม่เลี้ยงของเขาใจดี
+stepfather | พ่อเลี้ยง | My stepfather raised me. | พ่อเลี้ยงเลี้ยงฉันมา
+orphan | เด็กกำพร้า | He grew up as an orphan. | เขาโตมาเป็นเด็กกำพร้า
+---
+widow | หญิงม่าย | She became a widow at forty. | เธอเป็นม่ายตอนอายุสี่สิบ
+fiance | คู่หมั้น (ชาย) | Her fiance is a soldier. | คู่หมั้นของเธอเป็นทหาร
+bride | เจ้าสาว | The bride looks beautiful. | เจ้าสาวสวยมาก
+groom | เจ้าบ่าว | The groom is nervous. | เจ้าบ่าวตื่นเต้น
+anniversary | วันครบรอบ | Today is our wedding anniversary. | วันนี้วันครบรอบแต่งงานของเรา
+engagement | การหมั้น | They announced their engagement. | พวกเขาประกาศหมั้น
+`);
+U('daily', 3, 'บุคลิกภาพและนิสัย', `
+introvert | คนเก็บตัว | I'm an introvert. | ฉันเป็นคนเก็บตัว
+extrovert | คนชอบเข้าสังคม | She is a real extrovert. | เธอเป็นคนชอบเข้าสังคมมาก
+arrogant | หยิ่ง/อวดดี | He is rude and arrogant. | เขาหยาบคายและหยิ่ง
+moody | อารมณ์แปรปรวน | She is moody in the morning. | เธออารมณ์ไม่ดีตอนเช้า
+careless | สะเพร่า | That was a careless mistake. | นั่นเป็นความผิดพลาดจากความสะเพร่า
+clumsy | ซุ่มซ่าม | I'm so clumsy. | ฉันซุ่มซ่ามมาก
+---
+talkative | ช่างพูด | My sister is talkative. | น้องสาวฉันช่างพูด
+bossy | ชอบสั่ง | Don't be so bossy. | อย่าชอบสั่งนักเลย
+childish | ทำตัวเป็นเด็ก | Stop being childish. | เลิกทำตัวเป็นเด็กได้แล้ว
+easygoing | สบายๆ ไม่คิดมาก | He is very easygoing. | เขาเป็นคนสบายๆ
+picky | เลือกมาก/จู้จี้ | She is a picky eater. | เธอเลือกกินมาก
+nosy | ชอบสอดรู้สอดเห็น | My neighbor is nosy. | เพื่อนบ้านฉันชอบสอดรู้
+`);
+U('daily', 2, 'ร่างกายและอาการเล็กน้อย', `
+pimple | สิว | I have a pimple on my nose. | ฉันมีสิวที่จมูก
+wrinkle | ริ้วรอย | Sunscreen prevents wrinkles. | ครีมกันแดดช่วยป้องกันริ้วรอย
+freckle | กระ | She has freckles on her face. | เธอมีกระบนใบหน้า
+sweat | เหงื่อ | I'm covered in sweat. | ฉันเหงื่อท่วมตัว
+blister | ตุ่มพอง | New shoes gave me blisters. | รองเท้าใหม่ทำให้เท้าพอง
+rash | ผื่น | He has a rash on his arm. | เขามีผื่นที่แขน
+---
+cramp | ตะคริว | I got a cramp in my leg. | ฉันเป็นตะคริวที่ขา
+yawn | หาว | Stop yawning in class. | เลิกหาวในห้องเรียน
+hiccup | สะอึก | I have the hiccups. | ฉันสะอึก
+snore | กรน | My father snores loudly. | พ่อฉันกรนดัง
+sprain | แพลง | I sprained my ankle. | ข้อเท้าฉันแพลง
+fracture | กระดูกร้าว/หัก | The X-ray shows a fracture. | เอกซเรย์พบกระดูกร้าว
+`);
+U('daily', 2, 'ซื้อของในซูเปอร์มาร์เก็ต', `
+grocery store | ร้านขายของชำ | The grocery store is open 24 hours. | ร้านของชำเปิด 24 ชั่วโมง
+aisle | ทางเดินระหว่างชั้นวาง | Milk is in aisle five. | นมอยู่ช่องทางเดินที่ห้า
+barcode | บาร์โค้ด | Scan the barcode. | สแกนบาร์โค้ด
+trolley | รถเข็น | Get a trolley. | หยิบรถเข็นมา
+basket | ตะกร้า | Put it in the basket. | ใส่ในตะกร้า
+label | ฉลาก | Read the label carefully. | อ่านฉลากให้ดี
+---
+expiry date | วันหมดอายุ | Check the expiry date. | ตรวจวันหมดอายุ
+haggle | ต่อราคา | You can haggle at the market. | ที่ตลาดต่อราคาได้
+wholesale | ขายส่ง | They sell at wholesale prices. | พวกเขาขายราคาส่ง
+retail | ขายปลีก | The retail price is 199 baht. | ราคาขายปลีก 199 บาท
+self-checkout | จ่ายเงินด้วยตัวเอง | Use the self-checkout. | ใช้เครื่องจ่ายเงินด้วยตัวเอง
+loyalty card | บัตรสะสมแต้ม | Do you have a loyalty card? | คุณมีบัตรสะสมแต้มไหม
+`);
+U('daily', 1, 'เสื้อผ้าและอากาศหนาวฝน', `
+raincoat | เสื้อกันฝน | Wear a raincoat today. | วันนี้ใส่เสื้อกันฝน
+scarf | ผ้าพันคอ | It's cold, take a scarf. | หนาวนะ เอาผ้าพันคอไปด้วย
+sweater | เสื้อกันหนาว (ไหมพรม) | She wears a red sweater. | เธอใส่เสื้อไหมพรมสีแดง
+slippers | รองเท้าแตะในบ้าน | Wear slippers in the house. | ใส่รองเท้าแตะในบ้าน
+heels | รองเท้าส้นสูง | She can't walk in heels. | เธอใส่ส้นสูงเดินไม่ได้
+mittens | ถุงมือ (แบบไม่แยกนิ้ว) | The kids wore mittens. | เด็กๆ ใส่ถุงมือ
+---
+thunderstorm | พายุฝนฟ้าคะนอง | A thunderstorm is coming. | พายุฝนฟ้าคะนองกำลังมา
+drizzle | ฝนปรอยๆ | It's only a drizzle. | แค่ฝนปรอยๆ
+frost | น้ำค้างแข็ง | There was frost on the car. | มีน้ำค้างแข็งเกาะบนรถ
+chilly | หนาวเย็น | It's a bit chilly tonight. | คืนนี้หนาวนิดหน่อย
+freezing | หนาวจัด | It's freezing outside! | ข้างนอกหนาวจัด!
+mild | อบอุ่นพอดี/อ่อนๆ | The weather is mild today. | วันนี้อากาศกำลังดี
+`);
+U('talk', 3, 'ความรักและการออกเดต', `
+dating | การออกเดต | Are they dating? | พวกเขาคบกันอยู่เหรอ
+ex | แฟนเก่า | I saw my ex today. | วันนี้ฉันเจอแฟนเก่า
+first date | เดตแรก | I'm nervous about our first date. | ฉันตื่นเต้นกับเดตแรกของเรา
+blind date | การนัดบอด | My friend set me up on a blind date. | เพื่อนจัดนัดบอดให้ฉัน
+pop the question | ขอแต่งงาน (สำนวน) | He popped the question on the beach. | เขาขอแต่งงานที่ชายหาด
+honeymoon | ฮันนีมูน | They went to Bali for their honeymoon. | พวกเขาไปฮันนีมูนที่บาหลี
+---
+flirt | จีบ/หยอด | Stop flirting with her. | เลิกจีบเธอได้แล้ว
+dump | บอกเลิก/ทิ้ง | She dumped him last week. | เธอบอกเลิกเขาสัปดาห์ที่แล้ว
+long-distance | ทางไกล | We have a long-distance relationship. | เราคบกันแบบทางไกล
+commitment | ความผูกพัน/คำมั่น | He is afraid of commitment. | เขากลัวการผูกมัด
+get back together | กลับมาคบกัน | They got back together. | พวกเขากลับมาคบกันแล้ว
+move in together | ย้ายมาอยู่ด้วยกัน | We moved in together last year. | เราย้ายมาอยู่ด้วยกันเมื่อปีที่แล้ว
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
