@@ -5518,6 +5518,217 @@ exhausting | เหนื่อยมาก (สิ่งนั้น) | The tra
 thrilling | น่าตื่นเต้นมาก | It was a thrilling chase. | เป็นการไล่ล่าที่ตื่นเต้นมาก
 `);
 
+U('daily', 1, 'เกม: เมนูและการตั้งค่า', `
+level | ด่าน/ระดับ | I finished level five. | ฉันผ่านด่านห้าแล้ว
+load | โหลด (เกมที่เซฟไว้) | Load your last save. | โหลดเซฟล่าสุด
+quit | ออก/เลิก | Are you sure you want to quit? | แน่ใจว่าจะออกไหม
+volume | ระดับเสียง | Turn down the volume. | ลดเสียงลง
+language | ภาษา | Change the language to English. | เปลี่ยนภาษาเป็นอังกฤษ
+controller | จอยเกม | Connect your controller. | เชื่อมต่อจอยของคุณ
+---
+keyboard | คีย์บอร์ด | Press any key on the keyboard. | กดปุ่มใดก็ได้บนคีย์บอร์ด
+mouse | เมาส์/หนู | Click with the left mouse button. | คลิกเมาส์ซ้าย
+subtitles | คำบรรยาย (ซับ) | Turn on English subtitles. | เปิดซับภาษาอังกฤษ
+graphics | กราฟิก | The graphics are amazing. | กราฟิกสวยมาก
+brightness | ความสว่าง | Adjust the brightness. | ปรับความสว่าง
+resolution | ความละเอียด (จอ) | Set the resolution to 1080p. | ตั้งความละเอียดเป็น 1080p
+`);
+U('daily', 2, 'เกม: ตัวละครและสถานะ', `
+health | พลังชีวิต/สุขภาพ | Your health is low. | พลังชีวิตของคุณเหลือน้อย
+stamina | ความอึด/พลังกาย | Running uses stamina. | การวิ่งใช้พลังกาย
+mana | พลังเวท (มานา) | You need more mana. | คุณต้องการมานาเพิ่ม
+armor | เกราะ | Buy better armor. | ซื้อเกราะที่ดีกว่านี้
+shield | โล่ | Raise your shield. | ยกโล่ขึ้น
+potion | ยา (ในเกม) | Drink a health potion. | ดื่มยาเพิ่มเลือด
+---
+avatar | ตัวละครแทนตัว/รูปโปรไฟล์ | Choose your avatar. | เลือกตัวละครของคุณ
+customize | ปรับแต่ง | Customize your character. | ปรับแต่งตัวละครของคุณ
+gear | อุปกรณ์/ไอเทมสวมใส่ | Upgrade your gear. | อัปเกรดอุปกรณ์ของคุณ
+equip | สวมใส่ (อุปกรณ์) | Equip the new sword. | สวมดาบเล่มใหม่
+slot | ช่อง (เก็บของ/เซฟ) | Choose a save slot. | เลือกช่องเซฟ
+upgrade | อัปเกรด | Upgrade your weapon. | อัปเกรดอาวุธของคุณ
+`);
+U('daily', 2, 'เกม: การเล่นและการควบคุม', `
+jump | กระโดด | Press A to jump. | กด A เพื่อกระโดด
+dodge | หลบ | Dodge the attack! | หลบการโจมตี!
+aim | เล็ง/เป้าหมาย | Aim for the head. | เล็งที่หัว
+reload | บรรจุกระสุนใหม่ | Reload your gun. | บรรจุกระสุนใหม่
+ammo | กระสุน | I'm out of ammo. | กระสุนฉันหมดแล้ว
+sprint | วิ่งเร็ว | Hold Shift to sprint. | กด Shift ค้างไว้เพื่อวิ่งเร็ว
+---
+crouch | ย่อตัว | Crouch behind the wall. | ย่อตัวหลังกำแพง
+respawn | เกิดใหม่ (ในเกม) | You will respawn in five seconds. | คุณจะเกิดใหม่ในห้าวินาที
+revive | ชุบชีวิต/ช่วยให้ฟื้น | Revive your teammate. | ช่วยชุบเพื่อนร่วมทีม
+spawn | เกิด (ศัตรู/ไอเทมปรากฏ) | Enemies spawn here. | ศัตรูเกิดตรงนี้
+cooldown | เวลาคูลดาวน์ | The skill has a long cooldown. | สกิลนี้คูลดาวน์นาน
+stealth | การลอบเร้น | Use stealth to pass the guards. | ลอบผ่านยามไป
+`);
+U('daily', 3, 'เกม: ภารกิจและเนื้อเรื่อง', `
+quest | ภารกิจ (เควส) | Accept the quest. | รับเควส
+side quest | ภารกิจรอง | This side quest gives good loot. | เควสรองนี้ได้ของดี
+main quest | ภารกิจหลัก | Follow the main quest. | ทำภารกิจหลักต่อ
+tutorial | บทสอนเล่น | Skip the tutorial. | ข้ามบทสอนเล่น
+cutscene | ฉากคัตซีน | Watch the cutscene. | ดูฉากคัตซีน
+dialogue | บทสนทนา | Choose a dialogue option. | เลือกตัวเลือกบทสนทนา
+---
+ending | ตอนจบ | This game has three endings. | เกมนี้มีสามฉากจบ
+hint | คำใบ้ | Need a hint? | ต้องการคำใบ้ไหม
+puzzle | ปริศนา | Solve the puzzle to open the door. | ไขปริศนาเพื่อเปิดประตู
+unlock | ปลดล็อก | You unlocked a new map. | คุณปลดล็อกแผนที่ใหม่
+loot | ของที่เก็บได้ (ไอเทม) | Collect the loot. | เก็บไอเทม
+craft | สร้าง/คราฟต์ | Craft a new sword. | คราฟต์ดาบเล่มใหม่
+`);
+U('daily', 3, 'เกม: ออนไลน์และทีม', `
+multiplayer | โหมดหลายผู้เล่น | Let's play multiplayer. | มาเล่นโหมดหลายคนกัน
+co-op | เล่นร่วมกัน (ร่วมทีม) | This game has co-op mode. | เกมนี้มีโหมดเล่นร่วมกัน
+lobby | ห้องรอ (ล็อบบี้) | Wait in the lobby. | รอในล็อบบี้
+matchmaking | การหาคู่แข่ง/จับคู่ | Matchmaking takes a minute. | การจับคู่ใช้เวลาหนึ่งนาที
+lag | อาการแลค/หน่วง | The game is lagging. | เกมแลค
+ping | ค่าปิง (ความหน่วงเน็ต) | My ping is too high. | ปิงของฉันสูงเกินไป
+---
+teammate | เพื่อนร่วมทีม | Help your teammate. | ช่วยเพื่อนร่วมทีม
+opponent | คู่ต่อสู้ | Your opponent is strong. | คู่ต่อสู้ของคุณเก่ง
+guild | กิลด์ | Join a guild. | เข้ากิลด์
+clan | แคลน/กลุ่ม | Our clan won the war. | แคลนของเราชนะสงคราม
+ranked | โหมดจัดอันดับ | I only play ranked. | ฉันเล่นแต่โหมดแรงก์
+leaderboard | ตารางอันดับ | You are top of the leaderboard. | คุณอยู่อันดับหนึ่งในตาราง
+`);
+U('daily', 4, 'เกม: อัปเดตและแนวเกม', `
+patch | แพตช์ (การอัปเดตแก้ไข) | The new patch fixed the bug. | แพตช์ใหม่แก้บั๊กแล้ว
+bug | บั๊ก/แมลง | I found a bug. | ฉันเจอบั๊ก
+glitch | ความผิดพลาดชั่วคราว | A glitch froze the game. | เกมค้างเพราะความผิดพลาด
+buff | ทำให้เก่งขึ้น (บัฟ) | They buffed my favorite hero. | พวกเขาบัฟฮีโร่ที่ฉันชอบ
+nerf | ทำให้อ่อนลง (เนิร์ฟ) | The sword was nerfed. | ดาบถูกเนิร์ฟ
+difficulty | ระดับความยาก | Choose a difficulty: easy, normal or hard. | เลือกความยาก ง่าย ปกติ หรือยาก
+---
+coins | เหรียญ | Collect 100 coins. | เก็บเหรียญ 100 เหรียญ
+gems | อัญมณี (เงินในเกม) | Spend gems to buy skins. | ใช้เพชรซื้อสกิน
+survival | การเอาชีวิตรอด | I love survival games. | ฉันชอบเกมเอาชีวิตรอด
+shooter | เกมยิง | It's a first-person shooter. | เป็นเกมยิงมุมมองบุคคลที่หนึ่ง
+racing | การแข่งรถ | Let's play a racing game. | มาเล่นเกมแข่งรถกัน
+simulator | เกมจำลอง | He plays a farming simulator. | เขาเล่นเกมจำลองการทำฟาร์ม
+`);
+U('daily', 2, 'หนังและซีรีส์: พื้นฐาน', `
+episode | ตอน | I watched three episodes. | ฉันดูไปสามตอน
+series | ซีรีส์ | This series has two seasons. | ซีรีส์นี้มีสองซีซั่น
+actor | นักแสดงชาย | He is my favorite actor. | เขาเป็นนักแสดงที่ฉันชอบ
+actress | นักแสดงหญิง | She is a famous actress. | เธอเป็นนักแสดงหญิงที่มีชื่อเสียง
+comedy | หนังตลก | Let's watch a comedy. | ดูหนังตลกกันเถอะ
+drama | ละคร/ดราม่า | It's a police drama. | เป็นละครแนวตำรวจ
+---
+horror | สยองขวัญ | I don't like horror movies. | ฉันไม่ชอบหนังสยองขวัญ
+romance | โรแมนติก | It's a romance movie. | เป็นหนังโรแมนติก
+animation | แอนิเมชัน | Kids love animation. | เด็กๆ ชอบแอนิเมชัน
+hero | ฮีโร่/พระเอก | The hero saved the city. | ฮีโร่ช่วยเมืองไว้
+villain | ตัวร้าย | The villain was scary. | ตัวร้ายน่ากลัว
+trailer | ตัวอย่างหนัง | Did you see the trailer? | คุณดูตัวอย่างหนังหรือยัง
+`);
+U('daily', 3, 'หนังและซีรีส์: เนื้อเรื่อง', `
+scene | ฉาก/ที่เกิดเหตุ | That scene was so sad. | ฉากนั้นเศร้ามาก
+spoiler | การสปอยล์ | No spoilers, please! | ห้ามสปอยล์นะ!
+twist | จุดหักมุม | The ending had a big twist. | ตอนจบหักมุมมาก
+cliffhanger | ตอนจบค้างให้ลุ้น | The episode ended on a cliffhanger. | ตอนนี้จบแบบค้างให้ลุ้น
+flashback | ฉากย้อนอดีต | The story starts with a flashback. | เรื่องเริ่มด้วยฉากย้อนอดีต
+protagonist | ตัวเอก | The protagonist is a young detective. | ตัวเอกเป็นนักสืบหนุ่ม
+---
+heroine | นางเอก | The heroine is brave. | นางเอกกล้าหาญ
+sidekick | ผู้ช่วยคู่หู | Every hero needs a sidekick. | ฮีโร่ทุกคนต้องมีคู่หู
+sequel | ภาคต่อ | The sequel comes out next year. | ภาคต่อจะออกปีหน้า
+prequel | ภาคก่อนหน้า (เล่าเรื่องก่อน) | The prequel explains his past. | ภาคก่อนหน้าเล่าอดีตของเขา
+remake | การสร้างใหม่ (รีเมก) | It's a remake of an old film. | เป็นหนังรีเมกจากเรื่องเก่า
+franchise | แฟรนไชส์ (หนังชุด) | It's a huge movie franchise. | เป็นหนังชุดที่ยิ่งใหญ่
+`);
+U('daily', 3, 'หนังและซีรีส์: การดู', `
+dubbed | พากย์ (เสียง) | I prefer the original, not dubbed. | ฉันชอบเสียงต้นฉบับมากกว่าพากย์
+stream | สตรีม/ดูออนไลน์ | You can stream it on Netflix. | ดูออนไลน์ได้ที่ Netflix
+streaming | บริการสตรีมมิง | Streaming is cheaper than cinema. | สตรีมมิงถูกกว่าโรงหนัง
+binge | ดูรวดเดียว | I binged the whole series. | ฉันดูซีรีส์รวดเดียวจบ
+genre | แนว (หนัง/เพลง) | What genre do you like? | คุณชอบแนวไหน
+thriller | หนังระทึกขวัญ | It's a crime thriller. | เป็นหนังระทึกขวัญแนวอาชญากรรม
+---
+rating | คะแนน/เรต | The movie has a high rating. | หนังได้คะแนนสูง
+critic | นักวิจารณ์ | Critics loved the movie. | นักวิจารณ์ชอบหนังเรื่องนี้
+cast | นักแสดงทั้งหมด | The cast is amazing. | นักแสดงทั้งหมดยอดเยี่ยม
+role | บทบาท | He played the role of a cop. | เขารับบทตำรวจ
+costume | เครื่องแต่งกาย | The costumes are beautiful. | ชุดสวยมาก
+stunt | ฉากผาดโผน | He did his own stunts. | เขาแสดงฉากผาดโผนเอง
+`);
+U('daily', 4, 'หนังและซีรีส์: เบื้องหลัง', `
+producer | ผู้อำนวยการสร้าง | The producer paid for the film. | ผู้อำนวยการสร้างออกทุนทำหนัง
+script | บท | The actor read the script. | นักแสดงอ่านบท
+screenplay | บทภาพยนตร์ | She wrote the screenplay. | เธอเขียนบทภาพยนตร์
+special effects | เทคนิคพิเศษ | The special effects are great. | เทคนิคพิเศษยอดเยี่ยม
+box office | รายได้หนัง/บ็อกซ์ออฟฟิศ | The film was a box office hit. | หนังทำรายได้ถล่มทลาย
+blockbuster | หนังฟอร์มยักษ์ | It's a summer blockbuster. | เป็นหนังฟอร์มยักษ์ช่วงซัมเมอร์
+---
+nominee | ผู้ได้รับการเสนอชื่อ | She was an Oscar nominee. | เธอได้รับการเสนอชื่อเข้าชิงออสการ์
+narrator | ผู้บรรยาย | The narrator has a calm voice. | ผู้บรรยายเสียงนุ่ม
+fiction | เรื่องแต่ง | This is a work of fiction. | นี่คือเรื่องแต่ง
+nonfiction | สารคดี/เรื่องจริง | I read nonfiction books. | ฉันอ่านหนังสือเรื่องจริง
+chapter | บท/ตอน | Read chapter one. | อ่านบทที่หนึ่ง
+fandom | กลุ่มแฟนคลับ | The fandom is huge online. | แฟนคลับในออนไลน์เยอะมาก
+`);
+U('daily', 1, 'เพลง: พื้นฐาน', `
+singer | นักร้อง | She is a great singer. | เธอเป็นนักร้องเก่ง
+band | วงดนตรี | My favorite band is from Korea. | วงที่ฉันชอบมาจากเกาหลี
+album | อัลบั้ม | Their new album is out. | อัลบั้มใหม่ของพวกเขาออกแล้ว
+piano | เปียโน | I can play the piano. | ฉันเล่นเปียโนได้
+drum | กลอง | He plays the drums. | เขาเล่นกลอง
+violin | ไวโอลิน | She plays the violin. | เธอเล่นไวโอลิน
+---
+love | รัก/ความรัก | This song is about love. | เพลงนี้เกี่ยวกับความรัก
+heart | หัวใจ | You broke my heart. | คุณทำให้ใจฉันสลาย
+miss | คิดถึง/พลาด | I miss you so much. | ฉันคิดถึงคุณมาก
+crazy | บ้า/คลั่ง | I'm crazy about you. | ฉันหลงคุณมาก
+wild | ป่า/อิสระ/สุดเหวี่ยง | Let's go wild tonight. | คืนนี้มาสุดเหวี่ยงกัน
+tears | น้ำตา | She sang with tears in her eyes. | เธอร้องเพลงทั้งน้ำตา
+`);
+U('daily', 2, 'เพลง: ส่วนประกอบของเพลง', `
+lyrics | เนื้อเพลง | I love the lyrics of this song. | ฉันชอบเนื้อเพลงนี้
+chorus | ท่อนฮุก/ท่อนร้องซ้ำ | Sing the chorus with me. | ร้องท่อนฮุกกับฉัน
+verse | ท่อนเพลง (ท่อนเล่าเรื่อง) | The second verse is sad. | ท่อนที่สองเศร้า
+melody | ทำนอง | The melody is beautiful. | ทำนองไพเราะ
+rhythm | จังหวะ | Dance to the rhythm. | เต้นตามจังหวะ
+tune | ทำนอง/เพลง | I can't get this tune out of my head. | เพลงนี้ติดหูไม่หาย
+---
+track | เพลง (ในอัลบั้ม)/ติดตาม | Track three is my favorite. | เพลงที่สามเป็นเพลงโปรด
+playlist | รายการเพลง | Add it to my playlist. | เพิ่มลงในเพลย์ลิสต์ของฉัน
+duet | เพลงคู่ | They sang a duet. | พวกเขาร้องเพลงคู่
+remix | รีมิกซ์ | I like the remix better. | ฉันชอบเวอร์ชันรีมิกซ์มากกว่า
+acoustic | อะคูสติก (เครื่องดนตรีไม่เสียบไฟ) | She played an acoustic version. | เธอเล่นเวอร์ชันอะคูสติก
+vocal | เสียงร้อง | Her vocals are powerful. | เสียงร้องของเธอทรงพลัง
+`);
+U('daily', 3, 'เพลง: แนวเพลงและคำในเพลง', `
+pop | เพลงป๊อป | I listen to pop music. | ฉันฟังเพลงป๊อป
+rock | เพลงร็อก/หิน | He loves rock music. | เขาชอบเพลงร็อก
+jazz | แจ๊ส | We went to a jazz bar. | เราไปบาร์แจ๊ส
+rap | แร็พ | He can rap very fast. | เขาแร็พได้เร็วมาก
+rapper | แร็พเปอร์ | She is a famous rapper. | เธอเป็นแร็พเปอร์ชื่อดัง
+songwriter | นักแต่งเพลง | He is a singer and songwriter. | เขาเป็นทั้งนักร้องและนักแต่งเพลง
+---
+stage | เวที | The band is on stage. | วงอยู่บนเวที
+soul | จิตวิญญาณ/เพลงโซล | She sings from her soul. | เธอร้องเพลงจากใจ
+forever | ตลอดไป | I will love you forever. | ฉันจะรักเธอตลอดไป
+darling | ที่รัก | Goodnight, darling. | ราตรีสวัสดิ์นะที่รัก
+shine | ส่องแสง/เปล่งประกาย | Let your light shine. | ปล่อยให้แสงของเธอเปล่งประกาย
+fade | จางหาย | The memories will never fade. | ความทรงจำจะไม่มีวันจางหาย
+`);
+U('daily', 3, 'เพลง: ความรักในเนื้อเพลง', `
+crush | คนที่แอบชอบ | I have a crush on her. | ฉันแอบชอบเธอ
+breakup | การเลิกรา | This is a breakup song. | นี่คือเพลงอกหัก
+heartbreak | ความอกหัก | Heartbreak takes time to heal. | อาการอกหักต้องใช้เวลารักษา
+fall in love | ตกหลุมรัก | I fell in love with you. | ฉันตกหลุมรักเธอ
+let go | ปล่อยวาง/ปล่อยมือ | It's time to let go. | ถึงเวลาปล่อยวางแล้ว
+heartbeat | จังหวะหัวใจ | I can hear your heartbeat. | ฉันได้ยินเสียงหัวใจเธอ
+---
+soulmate | เนื้อคู่ | You are my soulmate. | เธอคือเนื้อคู่ของฉัน
+sweetheart | ที่รัก/คนรัก | Hello, sweetheart. | สวัสดีจ้ะที่รัก
+lover | คนรัก | They were lovers. | พวกเขาเคยเป็นคนรักกัน
+memories | ความทรงจำ | We made so many memories. | เราสร้างความทรงจำมากมาย
+goodbye kiss | จูบลา | It was our goodbye kiss. | มันคือจูบลาของเรา
+yearn | โหยหา | I yearn for your touch. | ฉันโหยหาสัมผัสของเธอ
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
