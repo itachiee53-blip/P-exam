@@ -9213,6 +9213,247 @@ circuit breaker | เบรกเกอร์ | The circuit breaker tripped. | �
 leak detector | เครื่องตรวจรอยรั่ว | Use a gas leak detector. | ใช้เครื่องตรวจแก๊สรั่ว
 `);
 
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 8', `
+act up | ทำตัวไม่ดี/เสีย | My car is acting up again. | รถฉันมีปัญหาอีกแล้ว
+add up | สมเหตุสมผล/รวมกัน | His story doesn't add up. | เรื่องเขาไม่สมเหตุสมผล
+ask around | ถามไปทั่ว | I'll ask around for you. | ฉันจะถามคนอื่นให้
+ask out | ชวนออกเดต | He asked her out. | เขาชวนเธอไปเดต
+back off | ถอยออกไป | Back off! Give him space. | ถอยไป! ให้ที่เขาหน่อย
+bail out | ช่วยให้รอด/ประกันตัว | His father bailed him out. | พ่อของเขาช่วยประกันตัว
+---
+beat up | ทำร้ายร่างกาย/ซ้อม | Two men beat him up. | ชายสองคนรุมทำร้ายเขา
+black out | หมดสติ/ไฟดับ | He blacked out from the heat. | เขาหมดสติเพราะความร้อน
+blow away | ทำให้ทึ่งมาก/ปลิวไป | The show blew me away. | การแสดงทำให้ฉันทึ่งมาก
+boil down to | สรุปแล้วคือ | It boils down to money. | สรุปแล้วเป็นเรื่องเงิน
+bounce back | ฟื้นตัว | She bounced back quickly. | เธอฟื้นตัวเร็ว
+branch out | ขยายไปทำสิ่งใหม่ | The shop branched out into online sales. | ร้านขยายไปขายออนไลน์
+`);
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 9', `
+break away | แยกตัวออก/หลุด | He broke away from the police. | เขาสะบัดหลุดจากตำรวจ
+break even | คุ้มทุน | We finally broke even. | ในที่สุดเราก็คุ้มทุน
+brush up on | ทบทวน | Brush up on your English. | ทบทวนภาษาอังกฤษของคุณ
+bump into | บังเอิญเจอ | I bumped into my teacher. | ฉันบังเอิญเจอครู
+burn out | หมดไฟ | Don't work too hard or you'll burn out. | อย่าทำงานหนักเกินไปเดี๋ยวหมดไฟ
+butt in | พูดแทรก | Sorry to butt in. | ขอโทษที่พูดแทรก
+---
+call in | โทรแจ้ง/เรียกตัว | He called in sick. | เขาโทรลาป่วย
+cash in | หาประโยชน์/แลกเป็นเงิน | Scammers cash in on fear. | มิจฉาชีพหาประโยชน์จากความกลัว
+chip in | ลงขัน/ช่วยกันออก | Let's all chip in for the gift. | มาลงขันซื้อของขวัญกัน
+clear up | (อากาศ) แจ่มใส/คลี่คลาย | The weather cleared up. | อากาศแจ่มใสขึ้น
+close down | ปิดกิจการ | The shop closed down. | ร้านปิดกิจการ
+come along | มาด้วย/คืบหน้า | Do you want to come along? | อยากมาด้วยไหม
+`);
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 10', `
+come apart | หลุดออกจากกัน | The book came apart. | หนังสือหลุดเป็นแผ่นๆ
+come around | เปลี่ยนใจ/ฟื้น | He'll come around eventually. | ในที่สุดเขาจะเปลี่ยนใจ
+come down with | ป่วยเป็น | I came down with the flu. | ฉันป่วยเป็นไข้หวัด
+come off | หลุดออก | The button came off. | กระดุมหลุด
+come out | ออกมา/เปิดตัว | The new phone comes out next week. | โทรศัพท์ใหม่ออกสัปดาห์หน้า
+come over | มาเยี่ยม (บ้าน) | Come over for dinner. | มากินข้าวที่บ้านสิ
+---
+come up | เกิดขึ้น/ถูกพูดถึง | Something came up. | มีธุระด่วน
+cool down | เย็นลง/ใจเย็นลง | Let the soup cool down. | รอให้ซุปเย็นลง
+cross out | ขีดฆ่า | Cross out the wrong answer. | ขีดฆ่าคำตอบที่ผิด
+cut back | ลด (การใช้จ่าย) | We need to cut back on costs. | เราต้องลดค่าใช้จ่าย
+cut in | แทรก/ตัดหน้า | A car cut in front of me. | รถคันหนึ่งตัดหน้าฉัน
+die down | สงบลง/เบาลง | The wind died down. | ลมสงบลง
+`);
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 11', `
+dig in | เริ่มกิน/ลงมือ | Dinner's ready. Dig in! | อาหารพร้อมแล้ว กินเลย!
+do over | ทำใหม่ | You have to do it over. | คุณต้องทำใหม่
+do without | อยู่ได้โดยไม่มี | I can't do without coffee. | ฉันขาดกาแฟไม่ได้
+doze off | เผลอหลับ | I dozed off on the bus. | ฉันเผลอหลับบนรถเมล์
+dress up | แต่งตัวเต็มที่ | We dressed up for the party. | เราแต่งตัวไปงานปาร์ตี้
+drift off | เคลิ้มหลับ | She drifted off to sleep. | เธอเคลิ้มหลับไป
+---
+drop by | แวะมา | Drop by anytime. | แวะมาได้ทุกเมื่อ
+drop in | แวะเยี่ยม | I'll drop in after work. | ฉันจะแวะหลังเลิกงาน
+dry up | แห้ง/หมดไป | The river dried up. | แม่น้ำแห้ง
+ease off | ผ่อนลง | The rain eased off. | ฝนซาลง
+eat in | กินที่บ้าน | Let's eat in tonight. | คืนนี้กินที่บ้านกัน
+eat out | กินข้าวนอกบ้าน | We eat out on weekends. | เรากินข้าวนอกบ้านวันหยุด
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 12', `
+fall for | หลงรัก/หลงเชื่อ | Don't fall for that trick. | อย่าหลงกลนั้น
+fall out | ทะเลาะกัน/หลุดร่วง | They fell out over money. | พวกเขาผิดใจกันเรื่องเงิน
+fall through | ล่ม/ไม่สำเร็จ | The deal fell through. | ดีลล่ม
+fit in | เข้ากับคนอื่นได้ | He fits in well here. | เขาเข้ากับที่นี่ได้ดี
+fix up | ซ่อมแซม/จัดการ | We fixed up the old house. | เราซ่อมบ้านเก่า
+get across | สื่อสารให้เข้าใจ | I couldn't get my point across. | ฉันสื่อความไม่สำเร็จ
+---
+get ahead | ก้าวหน้า | Hard work helps you get ahead. | การทำงานหนักช่วยให้ก้าวหน้า
+get around | เดินทางไปมา/หลีกเลี่ยง | It's easy to get around by train. | เดินทางด้วยรถไฟสะดวก
+get at | หมายถึง/เข้าถึง | What are you getting at? | คุณหมายความว่าอะไร
+get on with | ทำต่อ/เข้ากันได้ | Get on with your work. | ทำงานต่อไป
+get through | ผ่านพ้น/ติดต่อได้ | We'll get through this. | เราจะผ่านพ้นเรื่องนี้ไปได้
+give out | แจก/หมดแรง | They gave out free food. | พวกเขาแจกอาหารฟรี
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 13', `
+go after | ไล่ตาม | Police went after the thief. | ตำรวจไล่ตามขโมย
+go against | ขัดกับ | It goes against the rules. | มันขัดกับกฎ
+go along with | เห็นด้วย/คล้อยตาม | I'll go along with your plan. | ฉันจะทำตามแผนคุณ
+go down | ลดลง/ล่ม | Prices went down. | ราคาลดลง
+go for | เลือก/พยายาม | I'll go for the chicken. | ฉันเลือกไก่
+go off | ดัง/ระเบิด/เสีย (อาหาร) | The alarm went off at six. | นาฬิกาปลุกดังตอนหกโมง
+---
+go out with | คบหา (แฟน) | She's going out with Tom. | เธอคบกับทอม
+go under | ล้มละลาย/จม | The company went under. | บริษัทเจ๊ง
+go without | อดทนโดยไม่มี | They went without food for days. | พวกเขาอดอาหารหลายวัน
+grow apart | ห่างเหินกัน | We grew apart after school. | เราห่างกันหลังเรียนจบ
+hand out | แจกจ่าย | Hand out the papers. | แจกกระดาษ
+hang around | เตร็ดเตร่/รออยู่แถวนี้ | Don't hang around here. | อย่ามาเตร็ดเตร่แถวนี้
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 14', `
+head off | ออกเดินทาง/สกัดกั้น | We headed off at dawn. | เราออกเดินทางตอนเช้ามืด
+hear from | ได้รับข่าวจาก | Have you heard from him? | คุณได้ข่าวจากเขาไหม
+hold off | เลื่อนออกไป | Hold off on the decision. | เลื่อนการตัดสินใจไปก่อน
+iron out | แก้ไขให้เรียบร้อย | We need to iron out the problems. | เราต้องแก้ปัญหาให้เรียบร้อย
+join in | เข้าร่วม | Can I join in? | ขอร่วมด้วยได้ไหม
+jot down | จดสั้นๆ | Jot down the number. | จดเบอร์ไว้
+---
+keep away | อยู่ห่างๆ | Keep away from the fire. | อยู่ห่างจากไฟ
+keep on | ทำต่อไป | Keep on trying. | พยายามต่อไป
+kick out | ไล่ออก | He was kicked out of the bar. | เขาถูกไล่ออกจากบาร์
+knock down | ชนล้ม/รื้อ | A car knocked him down. | รถชนเขาล้ม
+lay down | วางลง/กำหนด (กฎ) | Lay down your weapon! | วางอาวุธลง!
+lead up to | นำไปสู่ | The events leading up to the crash. | เหตุการณ์ที่นำไปสู่การชน
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 15', `
+leave behind | ทิ้งไว้ข้างหลัง | I left my wallet behind. | ฉันลืมกระเป๋าตังค์ไว้
+let in | ให้เข้ามา | Let the dog in. | ให้หมาเข้ามา
+let off | ปล่อยตัว (ไม่ลงโทษ) | The officer let him off with a warning. | เจ้าหน้าที่ปล่อยตัวเขาแค่ตักเตือน
+let out | ปล่อยออก | Let the cat out. | ปล่อยแมวออกไป
+lie down | นอนลง | Lie down and rest. | นอนพักเถอะ
+light up | สว่างขึ้น/จุด | Her face lit up. | หน้าเธอสดใสขึ้น
+---
+line up | เข้าแถว | Line up here, please. | กรุณาเข้าแถวตรงนี้
+live on | ดำรงชีวิตด้วย | They live on rice and fish. | พวกเขากินข้าวกับปลาเป็นหลัก
+live up to | ทำได้ตามที่คาด | The movie lived up to the hype. | หนังดีสมคำร่ำลือ
+lock out | ล็อกตัวเองอยู่ข้างนอก | I locked myself out. | ฉันล็อกตัวเองไว้นอกบ้าน
+log off | ออกจากระบบ | Log off before you leave. | ออกจากระบบก่อนออกไป
+look ahead | มองไปข้างหน้า | Look ahead to the future. | มองไปที่อนาคต
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 16', `
+look around | มองรอบๆ/เดินดู | Can I look around? | ขอเดินดูรอบๆ ได้ไหม
+look back | มองย้อนกลับ | Don't look back. | อย่ามองย้อนกลับไป
+look over | ตรวจดูคร่าวๆ | Please look over my report. | ช่วยตรวจรายงานฉันหน่อย
+look through | ค้นดู/อ่านผ่านๆ | Look through these photos. | ดูรูปเหล่านี้
+make for | มุ่งหน้าไป | The thief made for the exit. | ขโมยมุ่งไปที่ทางออก
+make off with | ขโมยแล้วหนี | He made off with my phone. | เขาฉกโทรศัพท์ฉันแล้วหนีไป
+---
+miss out | พลาดโอกาส | Don't miss out on the sale. | อย่าพลาดโปรโมชัน
+mix with | คบหา/ผสม | He mixes with bad people. | เขาคบคนไม่ดี
+narrow down | จำกัดให้แคบลง | We narrowed down the suspects. | เราจำกัดวงผู้ต้องสงสัย
+nod off | สัปหงก | I nodded off in class. | ฉันสัปหงกในห้องเรียน
+open up | เปิดใจ | She finally opened up to me. | ในที่สุดเธอก็เปิดใจกับฉัน
+opt out | เลือกไม่เข้าร่วม | You can opt out anytime. | คุณเลือกออกได้ทุกเมื่อ
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 17', `
+pack up | เก็บของ | Pack up your things. | เก็บของของคุณ
+pass by | ผ่านไป | I pass by the station every day. | ฉันผ่านสถานีทุกวัน
+pass on | ส่งต่อ | Please pass on the message. | ช่วยส่งต่อข้อความ
+pay off | ได้ผล/ชำระหนี้หมด | Hard work pays off. | การทำงานหนักให้ผล
+phase out | ยกเลิกทีละขั้น | They are phasing out plastic bags. | พวกเขากำลังเลิกใช้ถุงพลาสติกทีละขั้น
+pick on | รังแก | Stop picking on him. | เลิกรังแกเขา
+---
+pile up | กองสุมขึ้น | Work is piling up. | งานกองพะเนิน
+play down | ลดความสำคัญ | He played down the problem. | เขาทำให้ปัญหาดูเล็ก
+plug in | เสียบปลั๊ก | Plug in the charger. | เสียบที่ชาร์จ
+point to | ชี้ไปที่/บ่งชี้ | The evidence points to him. | หลักฐานชี้ไปที่เขา
+pop up | โผล่ขึ้นมา | Ads keep popping up. | โฆษณาเด้งขึ้นมาเรื่อยๆ
+pull through | รอดชีวิต/ผ่านพ้น | The doctors think he'll pull through. | หมอคิดว่าเขาจะรอด
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 18', `
+pull up | จอด (รถ) | A car pulled up outside. | รถคันหนึ่งจอดข้างนอก
+put aside | เก็บไว้/พักไว้ | Put aside some money. | เก็บเงินไว้บ้าง
+put down | วางลง/ดูถูก | Put down the gun! | วางปืนลง!
+put forward | เสนอ | She put forward a plan. | เธอเสนอแผน
+put in | ใส่/ลงแรง | He put in a lot of effort. | เขาทุ่มเทแรงไปมาก
+put together | ประกอบ/รวบรวม | Put together a team. | รวมทีม
+---
+put up | ติดตั้ง/ให้พัก | Put up a sign. | ติดป้าย
+reach out | ติดต่อ/ยื่นมือช่วย | Reach out if you need help. | ติดต่อมาถ้าต้องการความช่วยเหลือ
+read out | อ่านออกเสียง | Read out the names. | อ่านรายชื่อออกเสียง
+rip off | โก่งราคา/หลอกเงิน | That taxi ripped me off. | แท็กซี่คันนั้นโก่งราคาฉัน
+run across | พบโดยบังเอิญ | I ran across an old photo. | ฉันเจอรูปเก่าโดยบังเอิญ
+run after | วิ่งไล่ | The dog ran after the cat. | หมาวิ่งไล่แมว
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 19', `
+run over | ชน (คนหรือสัตว์)/ล้น | A car ran over the dog. | รถทับสุนัข
+run through | ซ้อม/ทบทวนเร็วๆ | Let's run through the plan. | ทบทวนแผนกันเร็วๆ
+save up | เก็บเงิน | I'm saving up for a phone. | ฉันเก็บเงินซื้อโทรศัพท์
+sell out | ขายหมด | The tickets sold out. | ตั๋วขายหมด
+send back | ส่งคืน | Send back the wrong item. | ส่งคืนของที่ผิด
+set aside | กันไว้ | Set aside time to study. | กันเวลาไว้อ่านหนังสือ
+---
+set back | ทำให้ล่าช้า | The rain set us back a day. | ฝนทำให้เราช้าไปหนึ่งวัน
+set in | เริ่ม (สิ่งไม่ดี) | Panic set in. | ความตื่นตระหนกเริ่มเกิดขึ้น
+settle in | ปรับตัวเข้าที่ | Are you settling in well? | ปรับตัวได้ดีไหม
+shop around | เปรียบเทียบราคา | Shop around before you buy. | เทียบราคาก่อนซื้อ
+show around | พาเดินดู | Let me show you around. | ให้ฉันพาเดินดูรอบๆ
+single out | เลือกเจาะจง | Why single me out? | ทำไมต้องเจาะจงที่ฉัน
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 20', `
+sink in | ซึมซับ/เริ่มเข้าใจ | The news hasn't sunk in yet. | ฉันยังทำใจกับข่าวไม่ได้
+sit back | นั่งพักผ่อน | Sit back and relax. | นั่งพักสบายๆ
+sit up | ลุกนั่ง/นั่งหลังตรง | Sit up straight. | นั่งหลังตรง
+sleep in | ตื่นสาย | I slept in on Sunday. | วันอาทิตย์ฉันตื่นสาย
+sleep over | ค้างคืน (บ้านคนอื่น) | Can I sleep over at your house? | ฉันขอค้างบ้านคุณได้ไหม
+slip up | ทำพลาด | Everyone slips up sometimes. | ทุกคนพลาดได้บ้าง
+---
+snap up | ซื้อไปอย่างรวดเร็ว | Shoppers snapped up the deals. | นักช้อปแย่งกันซื้อ
+speak out | พูดออกมา (ต่อต้าน) | Speak out against violence. | ออกมาพูดต่อต้านความรุนแรง
+spell out | อธิบายอย่างชัดเจน | Let me spell it out for you. | ให้ฉันอธิบายให้ชัด
+split up | เลิกกัน/แยกกัน | They split up last year. | พวกเขาเลิกกันปีที่แล้ว
+spread out | กระจายออก | Spread out and search. | กระจายกันค้นหา
+stand down | ถอนตัว/ลาออก | The officers were told to stand down. | เจ้าหน้าที่ได้รับคำสั่งให้ถอนกำลัง
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 21', `
+stay up | อยู่ดึก | I stayed up all night. | ฉันอยู่ดึกทั้งคืน
+step down | ลาออก (จากตำแหน่ง) | The minister stepped down. | รัฐมนตรีลาออก
+step up | เพิ่มความพยายาม | Police stepped up patrols. | ตำรวจเพิ่มการลาดตระเวน
+stick around | อยู่ต่อ | Stick around for dinner. | อยู่กินข้าวด้วยกัน
+stick out | ยื่นออกมา/เด่น | Your shirt is sticking out. | เสื้อคุณโผล่ออกมา
+stick to | ยึดมั่น | Stick to the plan. | ทำตามแผน
+---
+stock up | ตุนของ | Stock up on water. | ตุนน้ำไว้
+stop by | แวะ | Stop by the shop on your way. | แวะร้านระหว่างทาง
+stress out | เครียด | Don't stress out. | อย่าเครียด
+sum up | สรุป | To sum up, we did well. | สรุปคือเราทำได้ดี
+switch off | ปิด (สวิตช์) | Switch off the lights. | ปิดไฟ
+switch on | เปิด (สวิตช์) | Switch on the TV. | เปิดทีวี
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 22', `
+take apart | แยกชิ้นส่วน | He took the radio apart. | เขาแยกชิ้นส่วนวิทยุ
+take back | คืนของ/ถอนคำพูด | I take back what I said. | ฉันขอถอนคำพูด
+take in | เข้าใจ/รับเลี้ยง | It's a lot to take in. | มีเรื่องให้ทำความเข้าใจเยอะ
+take out | เอาออก/พาไปเลี้ยง | He took me out to dinner. | เขาพาฉันไปกินข้าว
+talk over | ปรึกษาหารือ | Let's talk it over. | มาคุยกันก่อน
+tell off | ดุ | The teacher told him off. | ครูดุเขา
+---
+think over | คิดทบทวน | Think it over carefully. | คิดให้ดีก่อน
+throw out | โยนทิ้ง/ไล่ออก | Throw out the old food. | ทิ้งอาหารเก่า
+throw up | อาเจียน | He threw up after drinking. | เขาอาเจียนหลังดื่ม
+tie up | มัด/ยุ่ง | The robbers tied him up. | โจรมัดเขาไว้
+tone down | ลดความรุนแรง | Tone down your language. | พูดให้สุภาพลง
+top up | เติม (เงิน/น้ำ) | Top up your phone credit. | เติมเงินมือถือ
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 23', `
+touch down | ลงจอด | The plane touched down safely. | เครื่องบินลงจอดอย่างปลอดภัย
+try out | ลองใช้ | Try out the new app. | ลองใช้แอปใหม่
+turn against | หันมาต่อต้าน | His friends turned against him. | เพื่อนหันมาต่อต้านเขา
+turn back | หันกลับ | We had to turn back. | เราต้องย้อนกลับ
+turn out | ปรากฏว่า/มาร่วม | It turned out to be true. | ปรากฏว่าเป็นเรื่องจริง
+use up | ใช้หมด | We used up all the milk. | เราใช้นมหมดแล้ว
+---
+vote for | ลงคะแนนให้ | Who did you vote for? | คุณเลือกใคร
+wait up | รอ (ไม่นอน) | Don't wait up for me. | ไม่ต้องรอฉันนะ
+walk out | เดินออกไป (ประท้วง) | Workers walked out. | คนงานผละงานประท้วง
+wear off | หมดฤทธิ์ | The painkiller wore off. | ยาแก้ปวดหมดฤทธิ์
+wind down | ผ่อนคลาย/ลดลง | I wind down with music. | ฉันผ่อนคลายด้วยดนตรี
+wind up | ลงเอย | We wound up at a bar. | เราลงเอยที่บาร์
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
