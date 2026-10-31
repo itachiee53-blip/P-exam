@@ -284,6 +284,7 @@ const ENG_KIND = { intro: ['คำใหม่', '#0f9d76', 'sparkles'], mean: [
 const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
   const L = LS; $$('.tw-tip').forEach(x => x.remove());
+  const fresh = L._k !== L.k; L._k = L.k; // อนิเมชันเข้าเฉพาะตอนเปลี่ยนข้อ (แตะคำเรียงประโยคไม่เล่นซ้ำ)
   if(L.k >= L.items.length) return lessonEnd();
   const it = L.items[L.k], w = it.w, col = L.col || COURSES[L.c].color;
   const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button>`;
@@ -307,7 +308,7 @@ function renderLesson(){
   if(it.t === 'blank') body = `<p class="ls-sent">${engTw(it.s)}</p><small class="ls-hint">${esc(w.th)}</small><div class="ls-opts">${opts}</div>`;
   if(it.t === 'order') body = `<small class="ls-hint">${w.tr ? esc(w.tr) : `ใช้คำว่า <b>${esc(w.en)}</b> = ${esc(w.th)}`}</small>
       ${it.st ? `<div class="ls-struct"><i data-lucide="lightbulb"></i>${it.st.map(x => `<span>${esc(x)}</span>`).join('<em>+</em>')}</div>` : ''}
-      <div class="ls-ans">${it.pick.map(k => `<button class="ls-tile" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
+      <div class="ls-ans">${it.pick.map((k, j) => `<button class="ls-tile ${it.pop && j === it.pick.length - 1 ? 'pop' : ''}" data-back="${k}">${esc(it.toks[k])}</button>`).join('')}</div>
       <div class="ls-tiles">${it.toks.map((s, k) => `<button class="ls-tile ${it.pick.includes(k) ? 'used' : ''}" data-tok="${k}">${esc(s)}</button>`).join('')}</div>
       ${L.st === null ? `<div class="ls-help"><button class="ls-help-btn" id="lsHint"><i data-lucide="lightbulb"></i>คำใบ้</button><button class="ls-help-btn" id="lsShow"><i data-lucide="eye"></i>ดูเฉลย</button></div>
         <button class="btn lg block" id="lsCheck" ${it.pick.length ? '' : 'disabled'}>ตรวจ</button>` : ''}`;
@@ -319,8 +320,9 @@ function renderLesson(){
   $('#view').innerHTML = `<div class="ls-wrap" style="--c:${col}">
     <div class="ls-top"><button class="ib" id="lsX"><i data-lucide="x"></i></button>
       <div class="vc-prog"><i style="width:${L.k / L.items.length * 100}%"></i></div>${L.deadline ? '<span class="ls-time" id="lsTime"></span>' : ''}</div>
-    <div class="ls-body"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
+    <div class="ls-body ${fresh ? 'in' : ''}"><span class="ls-kind" style="--k:${ENG_KIND[it.t][1]}"><i data-lucide="${ENG_KIND[it.t][2]}"></i>${ENG_KIND[it.t][0]}</span>${body}</div>
     <div id="lsFb">${it.t === 'intro' || it.t === 'rule' || it.t === 'passage' ? '<button class="btn lg block" id="lsNext">ต่อไป</button>' : ''}</div></div>`;
+  if(it.opts && $('.ls-opts') && it.opts.every(x => String(x).length <= 24)) $('.ls-opts').classList.add('short'); // ตัวเลือกสั้น → แนวนอนแบ่ง 2 คอลัมน์
   $$('[data-say]').forEach(b => b.onclick = () => engSay(w.en));
   $$('[data-slow]').forEach(b => b.onclick = () => engSay(w.en, true));
   if(it.t === 'listen' || it.t === 'intro') setTimeout(() => engSay(w.en), 250);
@@ -334,17 +336,18 @@ function renderLesson(){
     if(!ok) b.classList.add('bad');
     lessonFb(ok, ans);
   });
-  $$('[data-tok]').forEach(b => b.onclick = () => { const k = +b.dataset.tok; if(L.st !== null || it.pick.includes(k)) return; it.pick.push(k); renderLesson(); });
-  $$('[data-back]').forEach(b => b.onclick = () => { if(L.st !== null) return; it.pick = it.pick.filter(k => k !== +b.dataset.back); renderLesson(); });
+  $$('[data-tok]').forEach(b => b.onclick = () => { const k = +b.dataset.tok; if(L.st !== null || it.pick.includes(k)) return; it.pick.push(k); it.pop = true; renderLesson(); });
+  $$('[data-back]').forEach(b => b.onclick = () => { if(L.st !== null) return; it.pick = it.pick.filter(k => k !== +b.dataset.back); it.pop = false; renderLesson(); });
   // คำใบ้: วางคำถัดไปที่ถูกให้ (ตัดคำที่วางผิดออกก่อน) · ดูเฉลย: วางให้ครบ แล้วนับว่าผิด (ข้อจะวนกลับมาให้ทำเอง)
   const engFix = n => { const T = engToks(w.ex), used = []; it.pick = it.pick.filter((k, p) => p < T.length && it.toks[k] === T[p] && (used.push(k), true) && it.pick.slice(0, p).every((q, j) => it.toks[q] === T[j]));
     for(let p = it.pick.length, e = Math.min(T.length, p + n); p < e; p++){ const k = it.toks.findIndex((x, i) => x === T[p] && !it.pick.includes(i)); if(k < 0) break; it.pick.push(k); } };
   // ครั้งแรกบอกโครงสร้างประโยค ครั้งต่อไปวางคำให้ทีละคำ
-  if($('#lsHint')) $('#lsHint').onclick = () => { if(!it.st && (it.st = engStruct(w.ex))); else engFix(1); it.hinted = true; renderLesson(); };
+  if($('#lsHint')) $('#lsHint').onclick = () => { if(!it.st && (it.st = engStruct(w.ex))); else engFix(1); it.hinted = true; it.pop = false; renderLesson(); };
   if($('#lsShow')) $('#lsShow').onclick = () => { engFix(99); renderLesson(); $('#lsCheck') && $('#lsCheck').remove(); $('.ls-help') && $('.ls-help').remove(); lessonFb(false, w.ex); };
   if($('#lsCheck')) $('#lsCheck').onclick = () => {
     const norm = s => s.toLowerCase().replace(/[^a-z0-9' ]/g, '').replace(/\s+/g, ' ').trim();
     const ok = norm(it.pick.map(k => it.toks[k]).join(' ')) === norm(w.ex);
+    if(ok) $$('.ls-ans .ls-tile').forEach((t, j) => { t.style.setProperty('--i', j); t.classList.add('win'); });
     $('#lsCheck').remove(); lessonFb(ok, w.ex);
   };
   if($('#lsCheckT')){
@@ -381,8 +384,9 @@ function lessonFb(ok, ans, noRedo){
     if(it.w){ L.miss.add(it.w.en); if(!noRedo && !L.exam && !L.redo.has(L.k)){ L.redo.add(L.items.length); L.items.push(['gram', 'dlg', 'read'].includes(it.t) ? { ...it, opts: shuf(it.opts) } : it.t === 'order' ? engEx('order', it.w, []) : engEx(it.t, it.w, engPool(L.c).concat(L.ws))); } }
   }
   playTone(ok ? 'ok' : 'wrong');
+  if(S.settings.sound && navigator.vibrate) try { navigator.vibrate(ok ? 12 : [18, 50, 18]); } catch(e){} // สั่นสั้นๆ (Android)
   $('#lsFb').innerHTML = `<div class="ls-fb ${ok ? 'ok' : 'bad'}"><div><b>${ok ? ENG_PRAISE[Math.floor(Math.random() * ENG_PRAISE.length)] : it.t === 'order' ? 'ประโยคที่ถูกอยู่ด้านล่าง' : 'คำตอบที่ถูก'}</b>
-    ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
+    ${!ok && ans && it.t !== 'order' ? `<span>${esc(ans)}</span>` : ''}</div>${ok && L.combo >= 3 ? `<span class="ls-combo ${[3, 5, 10, 15, 20, 30].includes(L.combo) ? 'big' : ''}" data-t="${L.combo >= 10 ? 3 : L.combo >= 5 ? 2 : 1}"><i data-lucide="flame"></i>${L.combo} ติด</span>` : ''}<button class="btn lg" id="lsNext">ต่อไป</button></div>`;
   // ประโยคเต็ม + คำแปล + อ่านให้ฟัง (เติมคำ / เรียงประโยค / ไวยากรณ์)
   const full = it.t === 'gram' ? it.w.q.replace('___', it.w.a) : it.t === 'dlg' ? it.w.a : (it.t === 'blank' || it.t === 'order') ? it.w.ex : '';
   if(full){
