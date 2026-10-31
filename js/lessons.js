@@ -9454,6 +9454,277 @@ wind down | ผ่อนคลาย/ลดลง | I wind down with music. | �
 wind up | ลงเอย | We wound up at a bar. | เราลงเอยที่บาร์
 `);
 
+U('daily', 1, 'ของใช้ส่วนตัวเพิ่มเติม', `
+handbag | กระเป๋าถือ | She lost her handbag. | เธอทำกระเป๋าถือหาย
+earring | ต่างหู | She wears gold earrings. | เธอใส่ต่างหูทอง
+sandal | รองเท้าแตะรัดส้น | I wear sandals in summer. | ฉันใส่รองเท้าแตะหน้าร้อน
+suitcase | กระเป๋าเดินทาง | Pack your suitcase. | จัดกระเป๋าเดินทาง
+headphones | หูฟัง (ครอบหู) | Put on your headphones. | ใส่หูฟัง
+hairbrush | แปรงหวีผม | Where is my hairbrush? | แปรงหวีผมฉันอยู่ไหน
+---
+lipstick | ลิปสติก | She wears red lipstick. | เธอทาลิปสติกสีแดง
+pajamas | ชุดนอน | Put on your pajamas. | ใส่ชุดนอน
+shoelace | เชือกรองเท้า | Your shoelace is untied. | เชือกรองเท้าคุณหลุด
+slipper | รองเท้าใส่ในบ้าน | One slipper is missing. | รองเท้าแตะหายไปข้างหนึ่ง
+zipper | ซิป | The zipper is stuck. | ซิปติด
+handkerchief | ผ้าเช็ดหน้า | Use a handkerchief. | ใช้ผ้าเช็ดหน้า
+`);
+U('daily', 1, 'เครื่องครัวเพิ่มเติม', `
+blender | เครื่องปั่น | Put the fruit in the blender. | ใส่ผลไม้ในเครื่องปั่น
+teapot | กาน้ำชา | The teapot is hot. | กาน้ำชาร้อน
+teaspoon | ช้อนชา | Add a teaspoon of sugar. | ใส่น้ำตาลหนึ่งช้อนชา
+saucepan | หม้อมีด้าม | Boil milk in a saucepan. | ต้มนมในหม้อ
+ladle | กระบวย | Use a ladle for the soup. | ใช้กระบวยตักซุป
+spatula | ตะหลิว | Flip it with a spatula. | พลิกด้วยตะหลิว
+---
+strainer | กระชอน/ที่กรอง | Drain the noodles with a strainer. | สะเด็ดน้ำเส้นด้วยกระชอน
+grater | ที่ขูด | Use a cheese grater. | ใช้ที่ขูดชีส
+jug | เหยือก | A jug of water, please. | ขอน้ำหนึ่งเหยือก
+wok | กระทะจีน | Stir-fry in a wok. | ผัดในกระทะจีน
+freezer | ช่องแช่แข็ง | Put the ice cream in the freezer. | ใส่ไอศกรีมในช่องแช่แข็ง
+refrigerator | ตู้เย็น | Keep it in the refrigerator. | เก็บไว้ในตู้เย็น
+`);
+U('daily', 1, 'อาหารและเครื่องปรุงเพิ่มเติม', `
+pasta | พาสต้า | I made pasta for dinner. | ฉันทำพาสต้าเป็นมื้อเย็น
+pizza | พิซซ่า | Let's order a pizza. | สั่งพิซซ่ากันเถอะ
+pastry | ขนมอบ | French pastries are delicious. | ขนมอบฝรั่งเศสอร่อย
+oatmeal | ข้าวโอ๊ต | I eat oatmeal for breakfast. | ฉันกินข้าวโอ๊ตเป็นมื้อเช้า
+cocoa | โกโก้ | A hot cocoa, please. | ขอโกโก้ร้อน
+cinnamon | อบเชย | Add a little cinnamon. | ใส่อบเชยนิดหน่อย
+---
+vinegar | น้ำส้มสายชู | Add vinegar to the sauce. | ใส่น้ำส้มสายชูในซอส
+cashew | เม็ดมะม่วงหิมพานต์ | Chicken with cashew nuts is popular. | ไก่ผัดเม็ดมะม่วงเป็นที่นิยม
+chestnut | เกาลัด | Roasted chestnuts are sweet. | เกาลัดคั่วหวาน
+fudge | ฟัดจ์ | Chocolate fudge is very sweet. | ฟัดจ์ช็อกโกแลตหวานมาก
+lollipop | อมยิ้ม | The child has a lollipop. | เด็กมีอมยิ้ม
+tortilla | แป้งตอร์ติญา | Wrap it in a tortilla. | ห่อด้วยแป้งตอร์ติญา
+`);
+U('daily', 1, 'สนามเด็กเล่นและของเล่น', `
+playground | สนามเด็กเล่น | The kids are at the playground. | เด็กๆ อยู่ที่สนามเด็กเล่น
+seesaw | กระดานหก | Let's play on the seesaw. | ไปเล่นกระดานหกกัน
+balloon | ลูกโป่ง | The balloon popped. | ลูกโป่งแตก
+crayon | สีเทียน | Draw with crayons. | วาดด้วยสีเทียน
+jigsaw | จิ๊กซอว์ | We did a jigsaw puzzle. | เราต่อจิ๊กซอว์
+skateboard | สเก็ตบอร์ด | He rides a skateboard. | เขาเล่นสเก็ตบอร์ด
+---
+tricycle | จักรยานสามล้อ | The boy rides a tricycle. | เด็กชายขี่สามล้อ
+trampoline | แทรมโพลีน | Kids jump on the trampoline. | เด็กๆ กระโดดแทรมโพลีน
+yoyo | โยโย่ | He plays with a yoyo. | เขาเล่นโยโย่
+snowman | ตุ๊กตาหิมะ | Let's build a snowman. | มาปั้นตุ๊กตาหิมะกัน
+sandcastle | ปราสาททราย | We built a sandcastle. | เราสร้างปราสาททราย
+teddy bear | ตุ๊กตาหมี | She sleeps with a teddy bear. | เธอนอนกอดตุ๊กตาหมี
+`);
+U('daily', 1, 'พืชและธรรมชาติใกล้ตัว', `
+puddle | แอ่งน้ำ | Don't jump in the puddle. | อย่ากระโดดลงแอ่งน้ำ
+slope | ทางลาด/เนิน | The car rolled down the slope. | รถไหลลงเนิน
+creek | ลำธาร | We crossed the creek. | เราข้ามลำธาร
+cactus | กระบองเพชร | A cactus needs little water. | กระบองเพชรต้องการน้ำน้อย
+bamboo | ไผ่ | Pandas eat bamboo. | แพนด้ากินไผ่
+lotus | ดอกบัว | The lotus is a Thai symbol. | ดอกบัวเป็นสัญลักษณ์ของไทย
+---
+daisy | ดอกเดซี่ | She picked a daisy. | เธอเด็ดดอกเดซี่
+lily | ดอกลิลลี่ | Lilies smell nice. | ลิลลี่กลิ่นหอม
+orchid | กล้วยไม้ | Thailand is famous for orchids. | ไทยมีชื่อเสียงเรื่องกล้วยไม้
+jasmine | มะลิ | Jasmine rice smells good. | ข้าวหอมมะลิกลิ่นหอม
+shrub | ไม้พุ่ม | Plant some shrubs. | ปลูกไม้พุ่ม
+sprout | หน่อ/งอก | Bean sprouts are in pad thai. | ถั่วงอกอยู่ในผัดไทย
+`);
+U('daily', 1, 'สัตว์เลี้ยงและส่วนของสัตว์', `
+hen | แม่ไก่ | The hen laid an egg. | แม่ไก่ออกไข่
+rooster | ไก่ตัวผู้ | The rooster crows at dawn. | ไก่ขันตอนเช้า
+calf | ลูกวัว/น่อง | The calf follows its mother. | ลูกวัวเดินตามแม่
+cub | ลูกสัตว์ (สิงโต/หมี) | The lion cub is playing. | ลูกสิงโตกำลังเล่น
+dove | นกพิราบขาว | The dove is a symbol of peace. | นกพิราบเป็นสัญลักษณ์ของสันติภาพ
+goldfish | ปลาทอง | I have two goldfish. | ฉันมีปลาทองสองตัว
+---
+hedgehog | เม่นแคระ | A hedgehog has spines. | เม่นแคระมีหนาม
+tadpole | ลูกอ๊อด | Tadpoles become frogs. | ลูกอ๊อดกลายเป็นกบ
+bunny | กระต่าย (ภาษาเด็ก) | Look at the cute bunny. | ดูกระต่ายน่ารักตัวนั้นสิ
+beak | จะงอยปาก | The bird has a yellow beak. | นกมีจะงอยปากสีเหลือง
+hoof | กีบ | The horse hurt its hoof. | ม้าเจ็บกีบ
+fang | เขี้ยว | The snake has sharp fangs. | งูมีเขี้ยวแหลม
+`);
+U('daily', 2, 'ร้านค้าและศาสนสถาน', `
+bakery | ร้านเบเกอรี่ | The bakery sells fresh bread. | ร้านเบเกอรี่ขายขนมปังสด
+cafe | คาเฟ่ | Let's meet at the cafe. | เจอกันที่คาเฟ่
+bookshop | ร้านหนังสือ | I bought it at a bookshop. | ฉันซื้อที่ร้านหนังสือ
+canteen | โรงอาหาร | We eat in the canteen. | เรากินที่โรงอาหาร
+motel | โมเต็ล | We stayed at a motel. | เราพักที่โมเต็ล
+kiosk | ซุ้ม/ตู้บริการ | Buy a ticket at the kiosk. | ซื้อตั๋วที่ตู้
+---
+mosque | มัสยิด | The mosque is near the market. | มัสยิดอยู่ใกล้ตลาด
+chapel | โบสถ์เล็ก | They married in a small chapel. | พวกเขาแต่งงานในโบสถ์เล็ก
+monastery | อาราม/วัด | Monks live in the monastery. | พระอาศัยในอาราม
+shrine | ศาลเจ้า | People pray at the shrine. | ผู้คนไหว้ที่ศาลเจ้า
+statue | รูปปั้น | There is a statue in the park. | มีรูปปั้นในสวน
+courtyard | ลานกลางบ้าน | Kids play in the courtyard. | เด็กๆ เล่นในลาน
+`);
+U('daily', 2, 'สิ่งก่อสร้างรอบเมือง', `
+cellar | ห้องใต้ดิน | Wine is kept in the cellar. | ไวน์เก็บไว้ในห้องใต้ดิน
+pantry | ห้องเก็บอาหาร | The rice is in the pantry. | ข้าวอยู่ในห้องเก็บอาหาร
+doorstep | หน้าประตู | The parcel is on the doorstep. | พัสดุอยู่หน้าประตู
+footpath | ทางเดินเท้า | Walk on the footpath. | เดินบนทางเท้า
+lamppost | เสาไฟ | He hit a lamppost. | เขาชนเสาไฟ
+hydrant | หัวดับเพลิง | Don't park near the hydrant. | อย่าจอดใกล้หัวดับเพลิง
+---
+sewer | ท่อระบายน้ำเสีย | The sewer smells bad. | ท่อระบายน้ำเหม็น
+pier | ท่าเรือ (ยื่นลงน้ำ) | Wait for the boat at the pier. | รอเรือที่ท่าเรือ
+dock | ท่าเทียบเรือ | The ship is at the dock. | เรือจอดที่ท่า
+canal | คลอง | Bangkok has many canals. | กรุงเทพฯ มีคลองมากมาย
+marina | ท่าจอดเรือยอชต์ | We walked around the marina. | เราเดินเล่นรอบท่าจอดเรือ
+lighthouse | ประภาคาร | The lighthouse guides ships. | ประภาคารนำทางเรือ
+`);
+U('daily', 2, 'เฟอร์นิเจอร์และของแต่งบ้าน', `
+armchair | เก้าอี้นวม | Grandpa sits in his armchair. | ปู่นั่งเก้าอี้นวม
+bookcase | ตู้หนังสือ | The bookcase is full. | ตู้หนังสือเต็ม
+cot | เตียงเด็ก/เตียงพับ | The baby sleeps in a cot. | ทารกนอนในเตียงเด็ก
+crib | เปลเด็ก | Put the baby in the crib. | วางทารกในเปล
+duvet | ผ้านวม | This duvet is warm. | ผ้านวมนี้อุ่น
+tablecloth | ผ้าปูโต๊ะ | The tablecloth is white. | ผ้าปูโต๊ะสีขาว
+---
+chandelier | โคมระย้า | The hotel has a big chandelier. | โรงแรมมีโคมระย้าใหญ่
+ornament | เครื่องประดับตกแต่ง | Hang the ornaments on the tree. | แขวนของตกแต่งบนต้นไม้
+decoration | การตกแต่ง | The party decorations are pretty. | การตกแต่งงานสวย
+wreath | พวงหรีด/พวงมาลัย | They laid a wreath. | พวกเขาวางพวงหรีด
+candlestick | เชิงเทียน | Put the candle in the candlestick. | ปักเทียนบนเชิงเทียน
+bin | ถังขยะ | Put it in the bin. | ทิ้งลงถังขยะ
+`);
+U('daily', 2, 'เครื่องมือช่างและทำสวน', `
+axe | ขวาน | He cut the wood with an axe. | เขาผ่าไม้ด้วยขวาน
+pliers | คีม | Use pliers to cut the wire. | ใช้คีมตัดลวด
+tweezers | แหนบ | Remove the splinter with tweezers. | ใช้แหนบดึงเสี้ยน
+hose | สายยาง | Water the garden with a hose. | รดน้ำต้นไม้ด้วยสายยาง
+wheelbarrow | รถเข็นปูน/รถเข็นดิน | Carry soil in a wheelbarrow. | ขนดินด้วยรถเข็น
+lawnmower | เครื่องตัดหญ้า | The lawnmower is noisy. | เครื่องตัดหญ้าเสียงดัง
+---
+shears | กรรไกรตัดกิ่ง | Trim the bush with shears. | ตัดพุ่มไม้ด้วยกรรไกร
+trowel | เกรียง/ช้อนปลูก | Dig a small hole with a trowel. | ขุดหลุมเล็กด้วยช้อนปลูก
+pickaxe | อีเต้อ/จอบขุด | The miner used a pickaxe. | คนงานเหมืองใช้อีเต้อ
+crowbar | ชะแลง | The thief used a crowbar. | ขโมยใช้ชะแลง
+funnel | กรวย | Pour oil through a funnel. | เทน้ำมันผ่านกรวย
+sieve | ตะแกรงร่อน | Sift the flour with a sieve. | ร่อนแป้งด้วยตะแกรง
+`);
+U('daily', 2, 'เครื่องดนตรีและศิลปะ', `
+cello | เชลโล | She plays the cello. | เธอเล่นเชลโล
+clarinet | คลาริเน็ต | He plays the clarinet in the band. | เขาเป่าคลาริเน็ตในวง
+harp | พิณ/ฮาร์ป | The harp sounds beautiful. | ฮาร์ปเสียงไพเราะ
+trumpet | ทรัมเป็ต | He played the trumpet. | เขาเป่าทรัมเป็ต
+harmonica | ฮาร์โมนิกา | My grandpa plays the harmonica. | ปู่ฉันเป่าฮาร์โมนิกา
+tambourine | แทมบูรีน | Shake the tambourine. | เขย่าแทมบูรีน
+---
+canvas | ผ้าใบวาดภาพ | She painted on canvas. | เธอวาดบนผ้าใบ
+easel | ขาตั้งภาพ | Put the canvas on the easel. | วางผ้าใบบนขาตั้ง
+palette | จานสี | Mix colors on the palette. | ผสมสีบนจานสี
+mural | ภาพจิตรกรรมฝาผนัง | The temple has old murals. | วัดมีจิตรกรรมฝาผนังเก่า
+pottery | เครื่องปั้นดินเผา | She makes pottery. | เธอทำเครื่องปั้นดินเผา
+mosaic | โมเสก | The floor has a mosaic. | พื้นปูโมเสก
+`);
+U('daily', 2, 'งานเฉลิมฉลองและความทรงจำ', `
+bonfire | กองไฟใหญ่ | We sat around the bonfire. | เรานั่งรอบกองไฟ
+campfire | กองไฟแคมป์ | We sang by the campfire. | เราร้องเพลงข้างกองไฟ
+confetti | กระดาษโปรย | They threw confetti. | พวกเขาโปรยกระดาษสี
+glitter | กากเพชร | The card has glitter on it. | การ์ดมีกากเพชร
+streamer | สายรุ้ง (กระดาษ) | Hang streamers on the wall. | แขวนสายรุ้งบนผนัง
+garland | พวงมาลัย | She made a jasmine garland. | เธอร้อยพวงมาลัยมะลิ
+---
+fairground | ลานงานรื่นเริง | We went to the fairground. | เราไปงานรื่นเริง
+mascot | มาสคอต | The team mascot is a tiger. | มาสคอตทีมเป็นเสือ
+autograph | ลายเซ็น (คนดัง) | Can I have your autograph? | ขอลายเซ็นหน่อยได้ไหม
+banner | ป้ายผ้า | They held a banner. | พวกเขาถือป้ายผ้า
+postcard | โปสการ์ด | Send me a postcard. | ส่งโปสการ์ดมาหาฉัน
+bouquet | ช่อดอกไม้ | He gave her a bouquet. | เขาให้ช่อดอกไม้เธอ
+`);
+U('daily', 3, 'อุปกรณ์วิทยาศาสตร์และเครื่องวัด', `
+microscope | กล้องจุลทรรศน์ | Look through the microscope. | มองผ่านกล้องจุลทรรศน์
+telescope | กล้องโทรทรรศน์ | We saw the moon with a telescope. | เราดูดวงจันทร์ด้วยกล้องโทรทรรศน์
+binoculars | กล้องส่องทางไกล | Use binoculars to watch birds. | ใช้กล้องส่องทางไกลดูนก
+lens | เลนส์ | Clean the camera lens. | ทำความสะอาดเลนส์กล้อง
+prism | ปริซึม | A prism splits light. | ปริซึมแยกแสง
+stethoscope | หูฟังแพทย์ | The doctor used a stethoscope. | แพทย์ใช้หูฟัง
+---
+stopwatch | นาฬิกาจับเวลา | Time the run with a stopwatch. | จับเวลาวิ่งด้วยนาฬิกาจับเวลา
+thermos | กระติกน้ำร้อน | I bring tea in a thermos. | ฉันใส่ชาในกระติก
+flask | ขวดน้ำ/ขวดทดลอง | Fill the flask with water. | เติมน้ำในขวด
+hourglass | นาฬิกาทราย | The hourglass is empty. | นาฬิกาทรายหมดแล้ว
+tripod | ขาตั้งกล้อง | Put the camera on a tripod. | วางกล้องบนขาตั้ง
+notepad | สมุดจด | Write it on the notepad. | จดในสมุด
+`);
+U('daily', 3, 'วัสดุและอัญมณีเพิ่มเติม', `
+marble | หินอ่อน/ลูกแก้ว | The floor is marble. | พื้นเป็นหินอ่อน
+granite | หินแกรนิต | The kitchen has granite counters. | ครัวมีเคาน์เตอร์หินแกรนิต
+limestone | หินปูน | The cave is made of limestone. | ถ้ำเป็นหินปูน
+copper | ทองแดง | Copper wire carries electricity. | ลวดทองแดงนำไฟฟ้า
+brass | ทองเหลือง | It's a brass bell. | เป็นระฆังทองเหลือง
+silk | ผ้าไหม | Thai silk is famous. | ผ้าไหมไทยมีชื่อเสียง
+---
+velvet | กำมะหยี่ | She wore a velvet dress. | เธอสวมชุดกำมะหยี่
+denim | ผ้ายีนส์ | He wore a denim jacket. | เขาใส่แจ็กเก็ตยีนส์
+fleece | ผ้าฟลีซ/ขนแกะ | A fleece jacket is warm. | เสื้อฟลีซอุ่น
+emerald | มรกต | The Emerald Buddha is in Bangkok. | พระแก้วมรกตอยู่ที่กรุงเทพฯ
+sapphire | ไพลิน | She has a sapphire ring. | เธอมีแหวนไพลิน
+jade | หยก | He wears a jade necklace. | เขาใส่สร้อยหยก
+`);
+U('daily', 2, 'ส่วนเล็กๆ ของร่างกาย', `
+eyebrow | คิ้ว | He raised his eyebrows. | เขาเลิกคิ้ว
+eyelash | ขนตา | She has long eyelashes. | เธอขนตายาว
+eyelid | เปลือกตา | My eyelid is swollen. | เปลือกตาฉันบวม
+knuckle | ข้อนิ้ว | He hurt his knuckles. | เขาเจ็บข้อนิ้ว
+nostril | รูจมูก | Breathe through your nostrils. | หายใจทางจมูก
+eardrum | แก้วหู | Loud music can hurt your eardrum. | เพลงดังทำร้ายแก้วหูได้
+---
+navel | สะดือ | The baby's navel is healing. | สะดือทารกกำลังหาย
+earlobe | ติ่งหู | She has a scar on her earlobe. | เธอมีแผลเป็นที่ติ่งหู
+fingernail | เล็บมือ | Cut your fingernails. | ตัดเล็บมือ
+toenail | เล็บเท้า | My toenail is broken. | เล็บเท้าฉันหัก
+armpit | รักแร้ | Use deodorant on your armpits. | ทาโรลออนที่รักแร้
+kneecap | กระดูกสะบ้า | He broke his kneecap. | เขากระดูกสะบ้าแตก
+`);
+U('daily', 3, 'ยานพาหนะและการเดินทางเพิ่มเติม', `
+cockpit | ห้องนักบิน | The pilot is in the cockpit. | นักบินอยู่ในห้องนักบิน
+propeller | ใบพัด | The propeller is spinning. | ใบพัดกำลังหมุน
+parachute | ร่มชูชีพ | He jumped with a parachute. | เขากระโดดร่มชูชีพ
+lifeboat | เรือชูชีพ | Get into the lifeboat! | ลงเรือชูชีพ!
+rowboat | เรือพาย | We rented a rowboat. | เราเช่าเรือพาย
+yacht | เรือยอชต์ | He owns a yacht. | เขามีเรือยอชต์
+---
+escalator | บันไดเลื่อน | Take the escalator up. | ขึ้นบันไดเลื่อน
+stroller | รถเข็นเด็ก | Push the stroller carefully. | เข็นรถเข็นเด็กระวังๆ
+compartment | ช่อง/ห้องโดยสาร | Put your bag in the overhead compartment. | ใส่กระเป๋าในช่องเก็บของด้านบน
+signpost | ป้ายบอกทาง | Follow the signposts. | ทำตามป้ายบอกทาง
+stopover | การแวะพัก | We had a stopover in Tokyo. | เราแวะพักที่โตเกียว
+carousel | สายพานรับกระเป๋า/ม้าหมุน | Wait at the baggage carousel. | รอที่สายพานรับกระเป๋า
+`);
+U('daily', 3, 'ของใช้และคนในชีวิตประจำวันอื่นๆ', `
+amateur | มือสมัครเล่น | He is an amateur boxer. | เขาเป็นนักมวยสมัครเล่น
+antique | ของเก่า/โบราณ | This vase is an antique. | แจกันนี้เป็นของเก่า
+advert | โฆษณา | I saw an advert on TV. | ฉันเห็นโฆษณาทางทีวี
+catalogue | แคตตาล็อก | Look at the catalogue. | ดูแคตตาล็อก
+crossword | ปริศนาอักษรไขว้ | Grandpa does the crossword. | ปู่เล่นปริศนาอักษรไขว้
+bedtime | เวลาเข้านอน | It's bedtime. | ถึงเวลานอนแล้ว
+---
+lullaby | เพลงกล่อมเด็ก | Mom sang a lullaby. | แม่ร้องเพลงกล่อม
+bookmark | ที่คั่นหนังสือ/บุ๊กมาร์ก | Use a bookmark. | ใช้ที่คั่นหนังสือ
+paperclip | คลิปหนีบกระดาษ | Hold the papers with a paperclip. | หนีบกระดาษด้วยคลิป
+thumbtack | หมุด | Pin it with a thumbtack. | ปักด้วยหมุด
+postman | บุรุษไปรษณีย์ | The postman brought a letter. | บุรุษไปรษณีย์นำจดหมายมา
+bodyguard | บอดี้การ์ด | The singer has a bodyguard. | นักร้องมีบอดี้การ์ด
+`);
+U('daily', 3, 'สิ่งในนิทานและประวัติศาสตร์', `
+dungeon | คุกใต้ดิน | The prisoner was kept in a dungeon. | นักโทษถูกขังในคุกใต้ดิน
+moat | คูน้ำรอบปราสาท | A moat surrounds the castle. | คูน้ำล้อมรอบปราสาท
+drawbridge | สะพานชัก | They raised the drawbridge. | พวกเขายกสะพานชักขึ้น
+labyrinth | เขาวงกต | We got lost in the labyrinth. | เราหลงในเขาวงกต
+igloo | อิกลู (บ้านน้ำแข็ง) | They built an igloo. | พวกเขาสร้างบ้านน้ำแข็ง
+oasis | โอเอซิส | They found an oasis in the desert. | พวกเขาพบโอเอซิสในทะเลทราย
+---
+mammoth | ช้างแมมมอธ | Mammoths lived long ago. | แมมมอธมีชีวิตอยู่นานมาแล้ว
+unicorn | ยูนิคอร์น | The girl loves unicorns. | เด็กหญิงชอบยูนิคอร์น
+mermaid | นางเงือก | The mermaid lives in the sea. | นางเงือกอาศัยในทะเล
+dwarf | คนแคระ | Snow White met seven dwarfs. | สโนว์ไวท์พบคนแคระเจ็ดคน
+scarecrow | หุ่นไล่กา | The scarecrow scares the birds. | หุ่นไล่กาไล่นก
+hermit | ฤๅษี/คนสันโดษ | The hermit lives alone in the forest. | ฤๅษีอาศัยอยู่คนเดียวในป่า
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
