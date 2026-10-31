@@ -8760,6 +8760,187 @@ steal the show | โดดเด่นที่สุด | The kids stole the sh
 word of mouth | ปากต่อปาก | The shop grew by word of mouth. | ร้านโตจากการบอกต่อปากต่อปาก
 `);
 
+U('daily', 4, 'คำวิชาการ: กริยา 1', `
+accumulate | สะสม | Dust accumulates quickly. | ฝุ่นสะสมเร็ว
+attain | บรรลุ/ได้มา | She attained her goal. | เธอบรรลุเป้าหมาย
+compile | รวบรวม | Compile a list of suspects. | รวบรวมรายชื่อผู้ต้องสงสัย
+comprise | ประกอบด้วย | The team comprises six officers. | ทีมประกอบด้วยเจ้าหน้าที่หกคน
+constitute | เป็น/ประกอบขึ้นเป็น | This act constitutes a crime. | การกระทำนี้ถือเป็นความผิด
+demonstrate | สาธิต/แสดงให้เห็น | Let me demonstrate. | ให้ฉันสาธิตให้ดู
+---
+differentiate | แยกความแตกต่าง | Differentiate fact from opinion. | แยกข้อเท็จจริงกับความเห็น
+equate | ถือว่าเท่ากัน | Don't equate money with happiness. | อย่าถือว่าเงินคือความสุข
+evolve | พัฒนา/วิวัฒน์ | The plan evolved over time. | แผนพัฒนาไปตามเวลา
+insert | ใส่/สอด | Insert your card. | สอดบัตรของคุณ
+maximize | เพิ่มให้มากที่สุด | Maximize your study time. | ใช้เวลาเรียนให้คุ้มที่สุด
+minimize | ลดให้น้อยที่สุด | Minimize the risk. | ลดความเสี่ยงให้น้อยที่สุด
+`);
+U('daily', 4, 'คำวิชาการ: กริยา 2', `
+refine | ปรับปรุงให้ดีขึ้น/กลั่น | Refine your answer. | ปรับปรุงคำตอบให้ดีขึ้น
+regulate | ควบคุม/กำกับ | The government regulates prices. | รัฐบาลควบคุมราคา
+simulate | จำลอง | We simulated a fire. | เราจำลองเหตุไฟไหม้
+specify | ระบุ | Please specify the date. | กรุณาระบุวันที่
+supplement | เสริม/อาหารเสริม | He takes vitamin supplements. | เขากินวิตามินเสริม
+survey | สำรวจ/แบบสำรวจ | Fill in the survey. | กรอกแบบสำรวจ
+---
+undertake | รับดำเนินการ | We will undertake the project. | เราจะรับดำเนินโครงการ
+utilize | ใช้ประโยชน์ | Utilize all resources. | ใช้ทรัพยากรทั้งหมด
+unify | รวมเป็นหนึ่ง | Sports unify people. | กีฬารวมผู้คนเป็นหนึ่ง
+migrate | อพยพ/ย้ายถิ่น | Birds migrate south. | นกอพยพลงใต้
+orient | ปรับตัว/หันไปทาง | New staff need time to orient. | พนักงานใหม่ต้องใช้เวลาปรับตัว
+restrain | ยับยั้ง/ควบคุมตัว | Officers restrained the man. | เจ้าหน้าที่ควบคุมตัวชายคนนั้น
+`);
+U('daily', 5, 'คำวิชาการ: กริยา 3', `
+coincide | เกิดพร้อมกัน/ตรงกัน | The holiday coincides with my birthday. | วันหยุดตรงกับวันเกิดฉัน
+confer | ปรึกษาหารือ/มอบ (ปริญญา) | The judges conferred. | คณะผู้ตัดสินหารือกัน
+convene | เรียกประชุม | The committee will convene tomorrow. | คณะกรรมการจะประชุมพรุ่งนี้
+deduce | อนุมาน/สรุป | What can you deduce from this? | คุณสรุปอะไรได้จากสิ่งนี้
+denote | หมายถึง/แสดง | Red denotes danger. | สีแดงหมายถึงอันตราย
+deviate | เบี่ยงเบน | Don't deviate from the plan. | อย่าออกนอกแผน
+---
+discriminate | เลือกปฏิบัติ | Don't discriminate against anyone. | อย่าเลือกปฏิบัติต่อใคร
+displace | ทำให้ต้องย้ายถิ่น | The flood displaced thousands. | น้ำท่วมทำให้คนนับพันต้องย้ายที่อยู่
+dispose | ทิ้ง/กำจัด | Dispose of the waste properly. | ทิ้งขยะอย่างถูกวิธี
+erode | กัดกร่อน | Trust can erode quickly. | ความไว้ใจถูกกัดกร่อนได้เร็ว
+induce | ชักนำ/ทำให้เกิด | This drug may induce sleep. | ยานี้อาจทำให้ง่วง
+inhibit | ยับยั้ง | Fear can inhibit learning. | ความกลัวยับยั้งการเรียนรู้
+`);
+U('daily', 5, 'คำวิชาการ: กริยา 4', `
+invoke | อ้าง (สิทธิ/กฎหมาย) | He invoked his right to silence. | เขาใช้สิทธิไม่ให้การ
+legislate | ออกกฎหมาย | Parliament legislates. | รัฐสภาออกกฎหมาย
+negate | ลบล้าง/ทำให้เป็นโมฆะ | One mistake negated his effort. | ความผิดพลาดครั้งเดียวลบล้างความพยายามของเขา
+offset | ชดเชย/หักล้าง | Plant trees to offset carbon. | ปลูกต้นไม้เพื่อชดเชยคาร์บอน
+overlap | ทับซ้อน | Our shifts overlap. | กะของเราทับซ้อนกัน
+pose | ก่อให้เกิด/โพสท่า | Drunk drivers pose a danger. | คนเมาขับรถก่อให้เกิดอันตราย
+---
+reverse | ถอยหลัง/กลับกัน | Reverse the car slowly. | ถอยรถช้าๆ
+underlie | เป็นสาเหตุเบื้องหลัง | Poverty underlies many crimes. | ความยากจนอยู่เบื้องหลังอาชญากรรมหลายอย่าง
+append | แนบท้าย | Append your signature. | ลงลายมือชื่อท้ายเอกสาร
+constrain | จำกัด/บีบบังคับ | Money constrains our plans. | เงินจำกัดแผนของเรา
+depress | ทำให้หดหู่/กด | Rainy days depress me. | วันฝนตกทำให้ฉันหดหู่
+incline | โน้มเอียง/ทางลาด | I'm inclined to agree. | ฉันค่อนข้างเห็นด้วย
+`);
+U('daily', 4, 'คำวิชาการ: คุณศัพท์ 1', `
+accessible | เข้าถึงได้ | The building is wheelchair accessible. | อาคารรองรับรถเข็น
+adjacent | ติดกัน | The room is adjacent to mine. | ห้องนั้นติดกับห้องฉัน
+arbitrary | ตามอำเภอใจ | It was an arbitrary arrest. | เป็นการจับกุมตามอำเภอใจ
+civil | พลเรือน/ทางแพ่ง | It's a civil case. | เป็นคดีแพ่ง
+coherent | สอดคล้อง/เป็นเหตุเป็นผล | Give a coherent answer. | ให้คำตอบที่เป็นเหตุเป็นผล
+compatible | เข้ากันได้ | Is it compatible with my phone? | เข้ากับโทรศัพท์ฉันได้ไหม
+---
+concurrent | เกิดพร้อมกัน | He is serving concurrent sentences. | เขารับโทษพร้อมกันหลายคดี
+considerable | มากพอสมควร | It cost a considerable amount. | ใช้เงินมากพอสมควร
+contemporary | ร่วมสมัย | I like contemporary art. | ฉันชอบศิลปะร่วมสมัย
+contrary | ตรงกันข้าม | Contrary to belief, he is kind. | ตรงข้ามกับที่คิด เขาใจดี
+cooperative | ให้ความร่วมมือ | The witness was cooperative. | พยานให้ความร่วมมือ
+definite | แน่นอน/ชัดเจน | I need a definite answer. | ฉันต้องการคำตอบที่แน่นอน
+`);
+U('daily', 5, 'คำวิชาการ: คุณศัพท์ 2', `
+discrete | แยกจากกัน | The test has three discrete parts. | ข้อสอบมีสามส่วนแยกกัน
+distinct | ชัดเจน/แตกต่าง | There is a distinct smell of gas. | มีกลิ่นแก๊สชัดเจน
+dynamic | มีพลวัต/คล่องแคล่ว | She is a dynamic leader. | เธอเป็นผู้นำที่กระฉับกระเฉง
+empirical | เชิงประจักษ์ | We need empirical evidence. | เราต้องการหลักฐานเชิงประจักษ์
+equivalent | เทียบเท่า | It's equivalent to 100 baht. | เทียบเท่า 100 บาท
+eventual | ในที่สุด | His eventual success surprised us. | ความสำเร็จในที่สุดของเขาทำให้เราแปลกใจ
+---
+evident | ชัดเจน | It was evident he was lying. | เห็นได้ชัดว่าเขาโกหก
+explicit | ชัดแจ้ง | Give explicit instructions. | ให้คำสั่งที่ชัดแจ้ง
+external | ภายนอก | For external use only. | ใช้ภายนอกเท่านั้น
+finite | มีจำกัด | Oil is a finite resource. | น้ำมันเป็นทรัพยากรที่มีจำกัด
+identical | เหมือนกันทุกประการ | The twins are identical. | ฝาแฝดเหมือนกันทุกอย่าง
+implicit | โดยนัย | There was an implicit threat. | มีการข่มขู่โดยนัย
+`);
+U('daily', 5, 'คำวิชาการ: คุณศัพท์ 3', `
+incompatible | เข้ากันไม่ได้ | The two systems are incompatible. | สองระบบเข้ากันไม่ได้
+inherent | มีอยู่ในตัว | Every job has inherent risks. | ทุกงานมีความเสี่ยงในตัว
+initial | เบื้องต้น | The initial report was wrong. | รายงานเบื้องต้นผิด
+integral | สำคัญ/เป็นส่วนสำคัญ | Trust is integral to teamwork. | ความไว้ใจเป็นหัวใจของงานทีม
+intermediate | ระดับกลาง | I'm an intermediate student. | ฉันเป็นนักเรียนระดับกลาง
+internal | ภายใน | It's an internal matter. | เป็นเรื่องภายใน
+---
+intrinsic | แท้จริงในตัว | Art has intrinsic value. | ศิลปะมีคุณค่าในตัวเอง
+liberal | เสรีนิยม/ใจกว้าง | She has liberal views. | เธอมีความคิดเสรีนิยม
+marginal | เล็กน้อย/ชายขอบ | There was a marginal increase. | เพิ่มขึ้นเล็กน้อย
+minimal | น้อยที่สุด | The damage was minimal. | ความเสียหายน้อยมาก
+neutral | เป็นกลาง | Stay neutral. | วางตัวเป็นกลาง
+nuclear | นิวเคลียร์ | Nuclear power is controversial. | พลังงานนิวเคลียร์เป็นที่ถกเถียง
+`);
+U('daily', 6, 'คำวิชาการ: คุณศัพท์ 4', `
+ongoing | ที่ยังดำเนินอยู่ | The case is ongoing. | คดียังดำเนินอยู่
+passive | เฉื่อยชา/ถูกกระทำ | Don't be passive. Speak up. | อย่าเฉย พูดออกมา
+positive | เชิงบวก/ผลบวก | Stay positive. | คิดบวกไว้
+predominant | เด่นที่สุด/ส่วนใหญ่ | Rice is the predominant crop. | ข้าวเป็นพืชหลัก
+preliminary | เบื้องต้น | This is a preliminary report. | นี่คือรายงานเบื้องต้น
+prime | สำคัญที่สุด/ชั้นเลิศ | He is the prime suspect. | เขาเป็นผู้ต้องสงสัยหลัก
+---
+professional | มืออาชีพ | Be professional at work. | ทำตัวเป็นมืออาชีพ
+qualitative | เชิงคุณภาพ | We did qualitative research. | เราทำวิจัยเชิงคุณภาพ
+radical | สุดโต่ง/ถึงรากถึงโคน | We need radical change. | เราต้องการการเปลี่ยนแปลงครั้งใหญ่
+random | สุ่ม | Police do random checks. | ตำรวจสุ่มตรวจ
+rational | มีเหตุผล | Make a rational decision. | ตัดสินใจอย่างมีเหตุผล
+sole | เพียงหนึ่งเดียว | He was the sole survivor. | เขาเป็นผู้รอดชีวิตคนเดียว
+`);
+U('daily', 6, 'คำวิชาการ: คุณศัพท์ 5', `
+straightforward | ตรงไปตรงมา/ง่าย | The process is straightforward. | ขั้นตอนไม่ซับซ้อน
+subordinate | ผู้ใต้บังคับบัญชา/รอง | Treat your subordinates fairly. | ปฏิบัติต่อลูกน้องอย่างยุติธรรม
+subsequent | ภายหลัง/ต่อมา | Subsequent tests were negative. | การตรวจครั้งต่อมาเป็นลบ
+technical | ทางเทคนิค | We have a technical problem. | เรามีปัญหาทางเทคนิค
+ultimate | สูงสุด/ท้ายที่สุด | Our ultimate goal is safety. | เป้าหมายสูงสุดคือความปลอดภัย
+virtual | เสมือน | We had a virtual meeting. | เราประชุมออนไลน์
+---
+visual | ทางการมองเห็น | Use visual aids. | ใช้สื่อภาพประกอบ
+voluntary | โดยสมัครใจ | Joining is voluntary. | การเข้าร่วมเป็นไปโดยสมัครใจ
+widespread | แพร่หลาย | Fake news is widespread. | ข่าวปลอมแพร่หลาย
+consequent | ที่เป็นผลตามมา | The storm and consequent flooding hurt many. | พายุและน้ำท่วมที่ตามมาทำร้ายคนมากมาย
+aggregate | รวม/ทั้งหมด | The aggregate score was 85. | คะแนนรวมคือ 85
+core | แกนกลาง/หลัก | Honesty is a core value. | ความซื่อสัตย์เป็นค่านิยมหลัก
+`);
+U('daily', 4, 'คำวิชาการ: คำนาม 1', `
+academy | สถาบัน/โรงเรียนเฉพาะทาง | He trained at the police academy. | เขาฝึกที่โรงเรียนนายร้อยตำรวจ
+analogy | การเปรียบเทียบ | He used a simple analogy. | เขาใช้การเปรียบเทียบง่ายๆ
+attribute | คุณลักษณะ/ระบุว่าเป็นของ | Patience is a good attribute. | ความอดทนเป็นคุณลักษณะที่ดี
+bulk | ปริมาณมาก/ส่วนใหญ่ | Buy rice in bulk. | ซื้อข้าวทีละมากๆ
+configuration | การตั้งค่า/รูปแบบ | Check the network configuration. | ตรวจการตั้งค่าเครือข่าย
+dimension | มิติ/ขนาด | What are the dimensions of the box? | กล่องมีขนาดเท่าไร
+---
+entity | หน่วยงาน/สิ่งที่มีอยู่ | The company is a separate legal entity. | บริษัทเป็นนิติบุคคลแยกต่างหาก
+estate | ที่ดิน/มรดก | He left his estate to his son. | เขาทิ้งมรดกให้ลูกชาย
+ethic | จรรยา/หลักจริยธรรม | He has a strong work ethic. | เขามีจรรยาบรรณในการทำงานสูง
+globe | ลูกโลก/โลก | He traveled across the globe. | เขาเดินทางรอบโลก
+ignorance | ความไม่รู้ | Ignorance of the law is no excuse. | การไม่รู้กฎหมายไม่ใช่ข้ออ้าง
+incidence | อุบัติการณ์/อัตราการเกิด | The incidence of crime fell. | อัตราการเกิดอาชญากรรมลดลง
+`);
+U('daily', 5, 'คำวิชาการ: คำนาม 2', `
+input | ข้อมูลเข้า/ความเห็น | Thanks for your input. | ขอบคุณสำหรับความเห็น
+instance | ตัวอย่าง/กรณี | In this instance, we must wait. | ในกรณีนี้ เราต้องรอ
+medium | สื่อ/ขนาดกลาง | English is the medium of teaching. | ภาษาอังกฤษเป็นสื่อการสอน
+mode | โหมด/รูปแบบ | Switch to silent mode. | เปลี่ยนเป็นโหมดเงียบ
+parameter | ขอบเขต/ตัวแปร | Work within these parameters. | ทำงานภายในขอบเขตนี้
+practitioner | ผู้ปฏิบัติ (วิชาชีพ) | She is a medical practitioner. | เธอเป็นแพทย์ผู้ปฏิบัติงาน
+---
+publication | สิ่งพิมพ์/การตีพิมพ์ | The book is ready for publication. | หนังสือพร้อมตีพิมพ์
+ratio | อัตราส่วน | The ratio of police to people is low. | อัตราส่วนตำรวจต่อประชาชนต่ำ
+scheme | แผนการ/โครงการ | It was a scheme to cheat people. | เป็นแผนโกงผู้คน
+section | ส่วน/มาตรา | Read section 3. | อ่านมาตรา 3
+sequence | ลำดับ | Put the events in sequence. | เรียงเหตุการณ์ตามลำดับ
+site | สถานที่/เว็บไซต์ | The building site is dangerous. | ไซต์ก่อสร้างอันตราย
+`);
+U('daily', 5, 'คำวิชาการ: คำนาม 3', `
+style | สไตล์/รูปแบบ | I like her style. | ฉันชอบสไตล์ของเธอ
+subsidy | เงินอุดหนุน | Farmers get a subsidy. | เกษตรกรได้รับเงินอุดหนุน
+successor | ผู้สืบทอด | Who is his successor? | ใครเป็นผู้สืบทอดตำแหน่งของเขา
+sum | ผลรวม/จำนวนเงิน | He paid a large sum. | เขาจ่ายเงินก้อนใหญ่
+symbol | สัญลักษณ์ | The elephant is a symbol of Thailand. | ช้างเป็นสัญลักษณ์ของไทย
+technique | เทคนิค | Learn this technique. | เรียนรู้เทคนิคนี้
+---
+topic | หัวข้อ | Change the topic. | เปลี่ยนหัวข้อ
+transit | การขนส่ง/การผ่าน | The package is in transit. | พัสดุอยู่ระหว่างขนส่ง
+process | กระบวนการ | The process takes a week. | กระบวนการใช้เวลาหนึ่งสัปดาห์
+route | เส้นทาง | Take the shortest route. | ใช้เส้นทางที่สั้นที่สุด
+contrast | ความแตกต่าง | There's a big contrast between them. | ทั้งสองต่างกันมาก
+converse | ตรงกันข้าม/สนทนา | The converse is also true. | ในทางกลับกันก็จริงเช่นกัน
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
