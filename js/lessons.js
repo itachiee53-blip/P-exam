@@ -5186,6 +5186,217 @@ grant | ทุน/อนุญาต | She received a study grant. | เธอ�
 alert | แจ้งเตือน/ตื่นตัว | Stay alert on patrol. | ตื่นตัวไว้ขณะลาดตระเวน
 `);
 
+U('police', 4, 'คดีอาชญากรรมรุนแรง', `
+homicide | การฆาตกรรม | The homicide unit is investigating. | หน่วยคดีฆาตกรรมกำลังสืบสวน
+manslaughter | การฆ่าคนโดยไม่เจตนา | He was charged with manslaughter. | เขาถูกตั้งข้อหาฆ่าคนโดยไม่เจตนา
+kidnapping | การลักพาตัว | The kidnapping happened at night. | การลักพาตัวเกิดขึ้นตอนกลางคืน
+abduction | การลักพาตัว/พาตัวไป | Report any child abduction at once. | แจ้งเหตุเด็กถูกพาตัวไปทันที
+ransom | ค่าไถ่ | They demanded a ransom. | พวกเขาเรียกค่าไถ่
+hijack | จี้ (ยานพาหนะ) | Men hijacked a truck. | คนร้ายจี้รถบรรทุก
+---
+extortion | การกรรโชกทรัพย์ | He was arrested for extortion. | เขาถูกจับข้อหากรรโชกทรัพย์
+blackmail | การแบล็กเมล์/ข่มขู่เอาเงิน | She was a victim of blackmail. | เธอตกเป็นเหยื่อการแบล็กเมล์
+stalking | การสะกดรอยตาม/คุกคาม | Stalking is a crime. | การสะกดรอยคุกคามเป็นความผิด
+mugging | การจี้ชิงทรัพย์ (บนถนน) | There was a mugging near the station. | มีการจี้ชิงทรัพย์ใกล้สถานี
+looting | การปล้นสะดม | Looting followed the riot. | การปล้นสะดมเกิดขึ้นหลังจลาจล
+sabotage | การก่อวินาศกรรม | The fire was sabotage. | ไฟไหม้ครั้งนี้เป็นการก่อวินาศกรรม
+`);
+U('police', 4, 'ตำแหน่งและบุคคลในกระบวนการยุติธรรม', `
+sergeant | จ่า/สิบตำรวจ | The sergeant gave the orders. | จ่าเป็นคนสั่งการ
+lieutenant | ร้อยตำรวจ | He was promoted to lieutenant. | เขาได้เลื่อนเป็นร้อยตำรวจ
+inspector | สารวัตร/ผู้ตรวจ | Talk to the inspector. | คุยกับสารวัตร
+commissioner | ผู้บัญชาการ | The commissioner held a press conference. | ผู้บัญชาการแถลงข่าว
+superintendent | ผู้กำกับการ | The superintendent visited the station. | ผู้กำกับการมาเยี่ยมสถานี
+constable | พลตำรวจ | A constable was on patrol. | พลตำรวจกำลังลาดตระเวน
+---
+rookie | มือใหม่ | He is a rookie officer. | เขาเป็นตำรวจมือใหม่
+investigator | ผู้สืบสวน | The investigator found a clue. | ผู้สืบสวนพบเบาะแส
+dispatcher | เจ้าหน้าที่สั่งการวิทยุ | The dispatcher sent two units. | เจ้าหน้าที่สั่งการส่งสองหน่วยไป
+bailiff | เจ้าหน้าที่ศาล | The bailiff opened the court. | เจ้าหน้าที่ศาลเปิดการพิจารณา
+magistrate | ผู้พิพากษา (ศาลแขวง) | He appeared before a magistrate. | เขาไปปรากฏตัวต่อหน้าผู้พิพากษา
+juror | ลูกขุน | Each juror heard the evidence. | ลูกขุนทุกคนฟังหลักฐาน
+`);
+U('police', 5, 'ขั้นตอนทางคดีอาญา', `
+arraignment | การนำตัวฟ้องและอ่านข้อหา | The arraignment is on Monday. | การอ่านฟ้องมีขึ้นวันจันทร์
+indictment | คำฟ้อง | The indictment lists five charges. | คำฟ้องระบุห้าข้อหา
+plea | คำให้การ (รับ/ปฏิเสธ) | He entered a plea of not guilty. | เขาให้การปฏิเสธ
+remand | คุมขังระหว่างพิจารณา | He was remanded in custody. | เขาถูกคุมขังระหว่างพิจารณาคดี
+subpoena | หมายเรียกพยาน | She received a subpoena. | เธอได้รับหมายเรียกพยาน
+affidavit | คำให้การเป็นลายลักษณ์อักษรที่สาบาน | Sign the affidavit. | ลงนามในคำให้การ
+---
+acquittal | การยกฟ้อง/พิพากษาว่าไม่ผิด | The trial ended in acquittal. | คดีจบลงด้วยการยกฟ้อง
+exonerate | พ้นผิด | DNA evidence exonerated him. | หลักฐานดีเอ็นเอทำให้เขาพ้นผิด
+sentencing | การพิพากษาโทษ | Sentencing is next week. | การพิพากษาโทษมีขึ้นสัปดาห์หน้า
+felony | ความผิดร้ายแรง | Robbery is a felony. | การปล้นเป็นความผิดร้ายแรง
+misdemeanor | ความผิดลหุโทษ | Littering is a misdemeanor. | การทิ้งขยะเป็นความผิดลหุโทษ
+allegation | ข้อกล่าวหา | He denied the allegations. | เขาปฏิเสธข้อกล่าวหา
+`);
+U('police', 5, 'ผู้กระทำผิดและเครือข่าย', `
+perpetrator | ผู้ก่อเหตุ | The perpetrator fled the scene. | ผู้ก่อเหตุหนีจากที่เกิดเหตุ
+culprit | ผู้กระทำผิด/ตัวการ | Police caught the culprit. | ตำรวจจับตัวการได้
+offender | ผู้กระทำความผิด | He is a repeat offender. | เขาเป็นผู้กระทำผิดซ้ำ
+felon | ผู้กระทำความผิดร้ายแรง | A felon cannot own a gun. | ผู้ต้องโทษคดีร้ายแรงมีปืนไม่ได้
+inmate | ผู้ต้องขัง | Two inmates escaped. | ผู้ต้องขังสองคนหลบหนี
+juvenile | เยาวชน | He was sent to a juvenile center. | เขาถูกส่งไปสถานพินิจเยาวชน
+---
+fraudster | นักต้มตุ๋น | The fraudster used a fake name. | นักต้มตุ๋นใช้ชื่อปลอม
+thug | อันธพาล | Thugs attacked the shop. | อันธพาลบุกทำร้ายร้าน
+vandal | ผู้ทำลายทรัพย์สิน | Vandals broke the windows. | คนร้ายทุบกระจกหน้าต่าง
+vigilante | ผู้ลงโทษเองนอกกฎหมาย | Don't act like a vigilante. | อย่าตัดสินลงโทษเองนอกกฎหมาย
+syndicate | ขบวนการ/เครือข่าย | Police broke a drug syndicate. | ตำรวจทลายขบวนการยาเสพติด
+cartel | กลุ่มค้า (ยา)/แก๊งค้ายา | The cartel smuggled drugs. | แก๊งค้ายาลักลอบขนยาเสพติด
+`);
+U('police', 5, 'อุปกรณ์และยุทธวิธีตำรวจ', `
+baton | กระบอง | The officer carried a baton. | เจ้าหน้าที่พกกระบอง
+handcuff | ใส่กุญแจมือ | Handcuff the suspect. | ใส่กุญแจมือผู้ต้องสงสัย
+bulletproof | กันกระสุน | Wear a bulletproof vest. | สวมเสื้อเกราะกันกระสุน
+bodycam | กล้องติดตัว | The bodycam recorded everything. | กล้องติดตัวบันทึกทุกอย่าง
+frisk | ตรวจค้นตัว | The officer frisked the man. | เจ้าหน้าที่ตรวจค้นตัวชายคนนั้น
+apprehend | จับกุม | They apprehended the suspect. | พวกเขาจับกุมผู้ต้องสงสัย
+---
+manhunt | การไล่ล่าตัว | A manhunt is under way. | กำลังมีการไล่ล่าตัวคนร้าย
+crackdown | การปราบปรามขั้นเด็ดขาด | There is a crackdown on drunk driving. | มีการปราบปรามเมาแล้วขับ
+precinct | เขตตำรวจ/สถานีในเขต | He works in the 5th precinct. | เขาทำงานที่สถานีเขต 5
+mugshot | ภาพถ่ายผู้ต้องหา | Police released his mugshot. | ตำรวจเผยแพร่ภาพผู้ต้องหา
+ballistics | การตรวจพิสูจน์อาวุธปืน | Ballistics matched the gun. | ผลตรวจพิสูจน์ปืนตรงกัน
+gunshot | เสียงปืน/บาดแผลกระสุน | Neighbors heard a gunshot. | เพื่อนบ้านได้ยินเสียงปืน
+`);
+U('police', 6, 'ความผิดเฉพาะทาง', `
+larceny | การลักทรัพย์ | He was charged with larceny. | เขาถูกตั้งข้อหาลักทรัพย์
+swindle | ฉ้อโกง | They swindled old people. | พวกเขาฉ้อโกงผู้สูงอายุ
+racketeering | การประกอบธุรกิจผิดกฎหมายเป็นขบวนการ | The gang faced racketeering charges. | แก๊งถูกตั้งข้อหาประกอบกิจการผิดกฎหมาย
+contraband | ของเถื่อน | Customs seized contraband. | ศุลกากรยึดของเถื่อน
+bootleg | ของปลอม/ของเถื่อน | They sold bootleg DVDs. | พวกเขาขายดีวีดีเถื่อน
+poaching | การลักลอบล่าสัตว์ | Poaching threatens wildlife. | การลักลอบล่าสัตว์คุกคามสัตว์ป่า
+---
+loitering | การเตร็ดเตร่ | No loitering here. | ห้ามเตร็ดเตร่บริเวณนี้
+truancy | การหนีเรียน | Truancy can lead to crime. | การหนีเรียนอาจนำไปสู่อาชญากรรม
+graffiti | การพ่นสีกำแพง | Graffiti covered the wall. | กำแพงเต็มไปด้วยภาพพ่นสี
+narcotics | ยาเสพติด | He works in the narcotics unit. | เขาทำงานในหน่วยปราบยาเสพติด
+deportation | การเนรเทศ | He faces deportation. | เขาอาจถูกเนรเทศ
+evict | ขับไล่ (ผู้เช่า) | The landlord evicted the tenant. | เจ้าของบ้านไล่ผู้เช่าออก
+`);
+U('police', 6, 'หลักกฎหมายอาญาขั้นสูง', `
+premeditated | ไตร่ตรองไว้ก่อน | It was a premeditated murder. | เป็นการฆาตกรรมโดยไตร่ตรองไว้ก่อน
+accessory | ผู้สนับสนุนการกระทำผิด | She was an accessory to the crime. | เธอเป็นผู้สนับสนุนการกระทำผิด
+abet | สนับสนุน (การกระทำผิด) | He aided and abetted the thief. | เขาช่วยเหลือและสนับสนุนขโมย
+entrapment | การล่อให้กระทำผิด | The defense claimed entrapment. | ฝ่ายจำเลยอ้างว่าถูกล่อให้กระทำผิด
+duress | การถูกบังคับข่มขู่ | He signed under duress. | เขาลงนามโดยถูกข่มขู่
+deterrent | สิ่งยับยั้ง | Cameras are a good deterrent. | กล้องเป็นเครื่องยับยั้งที่ดี
+---
+recidivism | การกระทำผิดซ้ำ | Education reduces recidivism. | การศึกษาช่วยลดการกระทำผิดซ้ำ
+coroner | เจ้าพนักงานชันสูตรศพ | The coroner examined the body. | เจ้าพนักงานชันสูตรตรวจศพ
+inquest | การไต่สวนการตาย | An inquest will be held. | จะมีการไต่สวนการตาย
+adjudicate | ตัดสินชี้ขาด | The court will adjudicate the case. | ศาลจะตัดสินชี้ขาดคดี
+enforcement | การบังคับใช้ | Law enforcement must be fair. | การบังคับใช้กฎหมายต้องยุติธรรม
+hearsay | คำบอกเล่า (ได้ยินมา) | Hearsay is weak evidence. | คำบอกเล่าเป็นหลักฐานที่อ่อน
+`);
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 1', `
+back up | สนับสนุน/สำรองข้อมูล | Back up your files. | สำรองไฟล์ของคุณ
+break up | เลิกกัน/สลาย | Police broke up the fight. | ตำรวจสลายการทะเลาะวิวาท
+call off | ยกเลิก | They called off the meeting. | พวกเขายกเลิกการประชุม
+carry on | ทำต่อไป | Carry on with your work. | ทำงานของคุณต่อไป
+check out | ลองดู/เช็กเอาต์ | Check out this new app. | ลองดูแอปใหม่นี้
+count on | พึ่งพา/ไว้ใจ | You can count on me. | คุณไว้ใจฉันได้
+---
+cut off | ตัดขาด | The flood cut off the village. | น้ำท่วมตัดขาดหมู่บ้าน
+drop off | ไปส่ง | I'll drop you off at the station. | ฉันจะไปส่งคุณที่สถานี
+fill out | กรอก (แบบฟอร์ม) | Fill out this form, please. | กรุณากรอกแบบฟอร์มนี้
+get back | กลับมา/ได้คืน | When did you get back? | คุณกลับมาเมื่อไร
+give away | แจกฟรี/เผยความลับ | They gave away free water. | พวกเขาแจกน้ำฟรี
+go on | ดำเนินต่อ/เกิดขึ้น | What's going on here? | เกิดอะไรขึ้นที่นี่
+`);
+U('talk', 3, 'กริยาวลีที่ใช้บ่อย 2', `
+grow up | เติบโต | I grew up in Khon Kaen. | ฉันโตที่ขอนแก่น
+hang on | รอสักครู่/จับไว้ | Hang on, I'll check. | รอเดี๋ยว ฉันจะเช็กให้
+keep up | ตามให้ทัน/ทำต่อไป | Keep up the good work. | ทำดีแบบนี้ต่อไป
+look out | ระวัง | Look out! A car is coming. | ระวัง! มีรถมา
+look up | ค้นหา (ข้อมูล) | Look up the word in a dictionary. | ค้นคำในพจนานุกรม
+move on | ไปต่อ/ก้าวผ่าน | It's time to move on. | ถึงเวลาก้าวต่อไปแล้ว
+---
+pass away | เสียชีวิต | His father passed away last year. | พ่อของเขาเสียชีวิตเมื่อปีที่แล้ว
+put away | เก็บเข้าที่ | Put away your phone. | เก็บโทรศัพท์ของคุณ
+sign up | สมัคร | Sign up for the course. | สมัครเรียนคอร์สนี้
+throw away | ทิ้ง | Don't throw away the receipt. | อย่าทิ้งใบเสร็จ
+warm up | อบอุ่นร่างกาย/อุ่น | Warm up before running. | วอร์มร่างกายก่อนวิ่ง
+write down | จดไว้ | Write down the plate number. | จดเลขทะเบียนไว้
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 3', `
+break out | ปะทุ/เกิดขึ้นกะทันหัน | A fire broke out last night. | เกิดไฟไหม้เมื่อคืน
+cut down on | ลดการ… | Cut down on sugar. | ลดการกินน้ำตาล
+fall apart | พังทลาย | My old shoes are falling apart. | รองเท้าเก่าของฉันกำลังจะพัง
+fall behind | ตามไม่ทัน/ล้าหลัง | Don't fall behind in class. | อย่าเรียนตามเพื่อนไม่ทัน
+get away | หนีไป | The thief got away. | ขโมยหนีไปได้
+get by | พอเอาตัวรอด | I can get by in English. | ฉันพอใช้ภาษาอังกฤษเอาตัวรอดได้
+---
+get over | หายจาก/ทำใจได้ | She got over her cold. | เธอหายหวัดแล้ว
+get rid of | กำจัด | Get rid of old files. | ลบไฟล์เก่าทิ้ง
+give in | ยอมแพ้/ยอมตาม | Don't give in to pressure. | อย่ายอมแพ้ต่อแรงกดดัน
+go over | ตรวจทาน/ทบทวน | Let's go over the plan. | มาทบทวนแผนกัน
+kick off | เริ่มต้น | The match kicks off at seven. | การแข่งขันเริ่มตอนหนึ่งทุ่ม
+knock out | ทำให้สลบ/น็อก | He was knocked out in the fight. | เขาถูกต่อยสลบในการต่อสู้
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 4', `
+lay off | เลิกจ้าง | The factory laid off 100 workers. | โรงงานเลิกจ้างคนงาน 100 คน
+leave out | ตัดออก/ไม่รวม | Don't leave out any details. | อย่าตัดรายละเอียดใดออก
+let down | ทำให้ผิดหวัง | I won't let you down. | ฉันจะไม่ทำให้คุณผิดหวัง
+look forward to | ตั้งตารอ | I look forward to meeting you. | ฉันตั้งตารอที่จะได้พบคุณ
+look up to | นับถือ | I look up to my father. | ฉันนับถือพ่อ
+look down on | ดูถูก | Don't look down on others. | อย่าดูถูกคนอื่น
+---
+make out | มองออก/เข้าใจ | I can't make out his face. | ฉันมองหน้าเขาไม่ออก
+mix up | สับสน/ปนกัน | I mixed up the two names. | ฉันจำชื่อสองชื่อสลับกัน
+pass out | เป็นลม | She passed out in the heat. | เธอเป็นลมเพราะความร้อน
+pay back | ใช้คืน | I'll pay you back tomorrow. | ฉันจะคืนเงินพรุ่งนี้
+put out | ดับ (ไฟ) | Firefighters put out the fire. | นักดับเพลิงดับไฟ
+run into | บังเอิญเจอ/ชน | I ran into an old friend. | ฉันบังเอิญเจอเพื่อนเก่า
+`);
+U('talk', 4, 'กริยาวลีที่ใช้บ่อย 5', `
+set off | ออกเดินทาง/ทำให้ดัง | The smoke set off the alarm. | ควันทำให้สัญญาณเตือนดัง
+settle down | สงบลง/ลงหลักปักฐาน | Please settle down, everyone. | ทุกคนสงบลงหน่อย
+show off | อวด | He likes to show off his car. | เขาชอบอวดรถ
+shut down | ปิดตัว/ปิดเครื่อง | Police shut down the illegal casino. | ตำรวจสั่งปิดบ่อนเถื่อน
+sort out | จัดการให้เรียบร้อย | We'll sort out the problem. | เราจะจัดการปัญหาให้เรียบร้อย
+stand by | เตรียมพร้อม/สนับสนุน | Stand by for orders. | เตรียมพร้อมรอคำสั่ง
+---
+stand out | โดดเด่น | Her answer stood out. | คำตอบของเธอโดดเด่น
+stand up for | ปกป้อง/ยืนหยัดเพื่อ | Stand up for what is right. | ยืนหยัดในสิ่งที่ถูกต้อง
+take after | หน้าตา/นิสัยเหมือน (พ่อแม่) | He takes after his father. | เขาเหมือนพ่อ
+take on | รับ (งาน/ความรับผิดชอบ) | She took on more work. | เธอรับงานเพิ่ม
+take up | เริ่ม (งานอดิเรก)/ใช้ (เวลา) | I took up running. | ฉันเริ่มวิ่ง
+turn up | ปรากฏตัว/เพิ่มเสียง | He didn't turn up for work. | เขาไม่มาทำงาน
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 6', `
+put up with | ทน | I can't put up with the noise. | ฉันทนเสียงดังไม่ได้
+tear down | รื้อถอน | They tore down the old building. | พวกเขารื้อตึกเก่า
+wear out | สึกหรอ/เหนื่อยล้า | The tires are worn out. | ยางสึกหมดแล้ว
+work out | ออกกำลังกาย/คิดออก | I work out at the gym. | ฉันออกกำลังกายที่ยิม
+back down | ยอมถอย | He refused to back down. | เขาไม่ยอมถอย
+blow up | ระเบิด/โมโห | The car blew up. | รถระเบิด
+---
+bring about | ทำให้เกิด | Technology brought about change. | เทคโนโลยีทำให้เกิดการเปลี่ยนแปลง
+cheer on | เชียร์ | Fans cheered on the team. | แฟนๆ เชียร์ทีม
+come forward | ออกมาแจ้ง/ให้ข้อมูล | Witnesses should come forward. | พยานควรออกมาให้ข้อมูล
+cover up | ปกปิด | They tried to cover up the crime. | พวกเขาพยายามปกปิดอาชญากรรม
+drop out | ลาออกกลางคัน | He dropped out of school. | เขาลาออกจากโรงเรียนกลางคัน
+hold back | กลั้น/ยับยั้ง | She held back her tears. | เธอกลั้นน้ำตา
+`);
+U('talk', 5, 'กริยาวลีที่ใช้บ่อย 7', `
+crack down on | ปราบปราม | Police are cracking down on gambling. | ตำรวจกำลังปราบปรามการพนัน
+get away with | ทำผิดแล้วรอดตัว | He won't get away with it. | เขาจะไม่รอดตัวไปได้
+lock up | ขัง/ล็อกให้เรียบร้อย | They locked up the thief. | พวกเขาขังขโมยไว้
+own up | ยอมรับ (ความผิด) | He owned up to his mistake. | เขายอมรับความผิดพลาด
+turn in | มอบตัว/ส่ง (งาน) | The suspect turned himself in. | ผู้ต้องสงสัยเข้ามอบตัว
+track down | ตามหาจนเจอ | Police tracked down the car. | ตำรวจตามหารถจนเจอ
+---
+rule out | ตัดออก (ความเป็นไปได้) | We can't rule out murder. | เรายังตัดความเป็นไปได้ว่าเป็นฆาตกรรมไม่ได้
+step in | เข้ามาช่วย/แทรกแซง | The officer stepped in to stop the fight. | เจ้าหน้าที่เข้าไปห้ามการต่อสู้
+take down | จดบันทึก/รื้อลง | Take down his statement. | จดคำให้การของเขาไว้
+tip off | แจ้งเบาะแส | Someone tipped off the police. | มีคนแจ้งเบาะแสตำรวจ
+weigh up | ชั่งน้ำหนัก (ข้อดีข้อเสีย) | Weigh up the risks. | ชั่งน้ำหนักความเสี่ยง
+wipe out | กวาดล้าง/ทำลายหมด | The flood wiped out the crops. | น้ำท่วมทำลายพืชผลหมด
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
