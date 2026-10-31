@@ -6242,6 +6242,262 @@ treasure | สมบัติ | They found hidden treasure. | พวกเขา
 pirate | โจรสลัด | Pirates attacked the ship. | โจรสลัดโจมตีเรือ
 `);
 
+U('basic', 0, 'สัตว์ในสวนสัตว์และฟาร์ม', `
+camel | อูฐ | Camels live in the desert. | อูฐอาศัยในทะเลทราย
+giraffe | ยีราฟ | The giraffe has a long neck. | ยีราฟคอยาว
+zebra | ม้าลาย | The zebra has stripes. | ม้าลายมีลายทาง
+donkey | ลา | The donkey carries bags. | ลาแบกกระเป๋า
+tortoise | เต่าบก | The tortoise is very old. | เต่าตัวนี้แก่มาก
+squirrel | กระรอก | A squirrel is in the tree. | กระรอกอยู่บนต้นไม้
+---
+ostrich | นกกระจอกเทศ | An ostrich can run fast. | นกกระจอกเทศวิ่งเร็ว
+lamb | ลูกแกะ | The lamb is white. | ลูกแกะสีขาว
+pony | ม้าแคระ | The kids rode a pony. | เด็กๆ ขี่ม้าแคระ
+ox | วัวตัวผู้ (ใช้งาน) | The ox pulls the cart. | วัวลากเกวียน
+toad | คางคก | A toad jumped out. | คางคกกระโดดออกมา
+turkey | ไก่งวง | We ate turkey. | เรากินไก่งวง
+`);
+U('daily', 1, 'ในครัวและบนโต๊ะอาหาร', `
+oven | เตาอบ | Put the cake in the oven. | ใส่เค้กในเตาอบ
+jar | ขวดโหล | Open the jar. | เปิดขวดโหล
+lid | ฝา | Put the lid on the pot. | ปิดฝาหม้อ
+mug | แก้วมัก | I drink coffee from a mug. | ฉันดื่มกาแฟจากแก้วมัก
+tray | ถาด | Put the cups on the tray. | วางแก้วบนถาด
+napkin | กระดาษเช็ดปาก | Can I have a napkin? | ขอกระดาษเช็ดปากหน่อย
+---
+saucer | จานรองแก้ว | Put the cup on the saucer. | วางแก้วบนจานรอง
+pepper | พริกไทย | Add salt and pepper. | ใส่เกลือและพริกไทย
+flour | แป้ง | We need flour to make bread. | ต้องใช้แป้งทำขนมปัง
+gravy | น้ำราด (เกรวี) | Pour gravy on the chicken. | ราดน้ำเกรวีบนไก่
+jelly | เยลลี่ | Kids love jelly. | เด็กๆ ชอบเยลลี่
+pudding | พุดดิ้ง | We had pudding for dessert. | เรากินพุดดิ้งเป็นของหวาน
+`);
+U('daily', 1, 'ห้องต่างๆ ในบ้านเพิ่มเติม', `
+wardrobe | ตู้เสื้อผ้า | Hang your clothes in the wardrobe. | แขวนเสื้อผ้าในตู้
+closet | ตู้ติดผนัง | The shoes are in the closet. | รองเท้าอยู่ในตู้
+rug | พรมผืนเล็ก | The rug is by the door. | พรมอยู่ข้างประตู
+mat | เสื่อ/พรมเช็ดเท้า | Wipe your feet on the mat. | เช็ดเท้าบนพรม
+sponge | ฟองน้ำ | Clean it with a sponge. | ทำความสะอาดด้วยฟองน้ำ
+tub | อ่าง | Fill the tub with water. | เติมน้ำในอ่าง
+---
+tap | ก๊อกน้ำ | Turn off the tap. | ปิดก๊อกน้ำ
+tile | กระเบื้อง | The floor tiles are cold. | กระเบื้องพื้นเย็น
+stair | บันได (ขั้น) | He fell down the stairs. | เขาตกบันได
+balcony | ระเบียง | I drink coffee on the balcony. | ฉันดื่มกาแฟที่ระเบียง
+basement | ห้องใต้ดิน | The box is in the basement. | กล่องอยู่ในห้องใต้ดิน
+porch | ชานบ้าน | Leave the parcel on the porch. | วางพัสดุไว้ที่ชานบ้าน
+`);
+U('daily', 1, 'ต้นไม้และดอกไม้', `
+branch | กิ่งไม้/สาขา | A bird sat on a branch. | นกเกาะกิ่งไม้
+bush | พุ่มไม้ | The thief hid behind a bush. | ขโมยซ่อนหลังพุ่มไม้
+oak | ต้นโอ๊ก | The oak tree is very old. | ต้นโอ๊กแก่มาก
+pine | ต้นสน | Pine trees grow on the mountain. | ต้นสนขึ้นบนภูเขา
+palm | ต้นปาล์ม/ฝ่ามือ | Palm trees grow by the sea. | ต้นปาล์มขึ้นริมทะเล
+rose | ดอกกุหลาบ | He gave her a red rose. | เขาให้กุหลาบแดงเธอ
+---
+tulip | ดอกทิวลิป | Tulips come from Holland. | ทิวลิปมาจากฮอลแลนด์
+petal | กลีบดอก | The petals are pink. | กลีบดอกสีชมพู
+stem | ลำต้น/ก้าน | Cut the stem. | ตัดก้าน
+thorn | หนาม | Roses have thorns. | กุหลาบมีหนาม
+vine | เถาวัลย์ | Vines covered the wall. | เถาวัลย์ปกคลุมกำแพง
+weed | วัชพืช | Pull out the weeds. | ถอนวัชพืช
+`);
+U('daily', 2, 'ธรรมชาติและพื้นดิน', `
+fog | หมอก | Drive slowly in the fog. | ขับช้าๆ ในหมอก
+mist | หมอกบาง | Mist covered the lake. | หมอกบางปกคลุมทะเลสาบ
+dew | น้ำค้าง | The grass is wet with dew. | หญ้าเปียกน้ำค้าง
+dawn | รุ่งอรุณ | We left at dawn. | เราออกเดินทางตอนรุ่งสาง
+flame | เปลวไฟ | The flames were very high. | เปลวไฟสูงมาก
+spark | ประกายไฟ | A spark started the fire. | ประกายไฟทำให้เกิดไฟไหม้
+---
+volcano | ภูเขาไฟ | The volcano erupted. | ภูเขาไฟระเบิด
+coast | ชายฝั่ง | We drove along the coast. | เราขับรถเลียบชายฝั่ง
+edge | ขอบ | Don't stand on the edge. | อย่ายืนที่ขอบ
+hole | หลุม/รู | There is a hole in my sock. | ถุงเท้าฉันมีรู
+ditch | คูน้ำ/ร่อง | The car fell into a ditch. | รถตกคูน้ำ
+dirt | ดิน/สิ่งสกปรก | His hands were covered in dirt. | มือเขาเปื้อนดิน
+`);
+U('daily', 2, 'ของเล่นและงานอดิเรก', `
+kite | ว่าว | Let's fly a kite. | ไปเล่นว่าวกัน
+dice | ลูกเต๋า | Roll the dice. | ทอยลูกเต๋า
+puppet | หุ่นมือ/หุ่นเชิด | The puppet show was fun. | การแสดงหุ่นสนุก
+robot | หุ่นยนต์ | The robot can clean. | หุ่นยนต์ทำความสะอาดได้
+comic | การ์ตูน/ตลก | I read comics. | ฉันอ่านการ์ตูน
+golf | กอล์ฟ | My boss plays golf. | หัวหน้าฉันเล่นกอล์ฟ
+---
+hockey | ฮอกกี้ | They play ice hockey. | พวกเขาเล่นฮอกกี้น้ำแข็ง
+ski | เล่นสกี | I want to learn to ski. | ฉันอยากหัดเล่นสกี
+sled | เลื่อนหิมะ | Kids rode a sled down the hill. | เด็กๆ นั่งเลื่อนลงเนิน
+knit | ถัก (ไหมพรม) | Grandma knitted a scarf. | ยายถักผ้าพันคอ
+sew | เย็บ | Can you sew a button? | คุณเย็บกระดุมเป็นไหม
+poem | บทกวี | She wrote a poem. | เธอเขียนบทกวี
+`);
+U('daily', 2, 'ดนตรีศิลปะและชื่อเสียง', `
+choir | คณะนักร้องประสานเสียง | She sings in a choir. | เธอร้องในคณะประสานเสียง
+orchestra | วงออร์เคสตรา | The orchestra played well. | วงออร์เคสตราเล่นได้ดี
+flute | ขลุ่ย | He plays the flute. | เขาเป่าขลุ่ย
+poet | กวี | He is a famous poet. | เขาเป็นกวีชื่อดัง
+frame | กรอบรูป | Put the photo in a frame. | ใส่รูปในกรอบ
+chalk | ชอล์ก | Write on the board with chalk. | เขียนกระดานด้วยชอล์ก
+---
+circus | ละครสัตว์ | We went to the circus. | เราไปดูละครสัตว์
+idol | ไอดอล/ดารา | She is my idol. | เธอเป็นไอดอลของฉัน
+fame | ชื่อเสียง | He wants fame and money. | เขาต้องการชื่อเสียงและเงิน
+fashion | แฟชั่น | She works in fashion. | เธอทำงานด้านแฟชั่น
+prize | รางวัล | He won first prize. | เขาได้รางวัลที่หนึ่ง
+diary | ไดอารี่ | I write in my diary every night. | ฉันเขียนไดอารี่ทุกคืน
+`);
+U('daily', 2, 'กริยาในชีวิตประจำวัน: ชุดเสริม 1', `
+bless | อวยพร | God bless you. | ขอพระเจ้าคุ้มครองคุณ
+bury | ฝัง | The dog buried a bone. | สุนัขฝังกระดูก
+dare | กล้า/ท้า | I dare you to try. | ฉันท้าให้คุณลอง
+dip | จุ่ม | Dip the bread in the soup. | จุ่มขนมปังในซุป
+drip | หยด | Water is dripping from the roof. | น้ำหยดจากหลังคา
+fasten | รัด/ติด | Fasten your seat belt. | คาดเข็มขัดนิรภัย
+---
+freeze | แช่แข็ง/หยุดนิ่ง | Freeze! Police! | หยุด! ตำรวจ!
+grind | บด | Grind the coffee beans. | บดเมล็ดกาแฟ
+growl | คำราม | The dog growled at me. | สุนัขคำรามใส่ฉัน
+hatch | ฟักออกจากไข่ | The eggs will hatch soon. | ไข่จะฟักเร็วๆ นี้
+scratch | ข่วน/เกา | The cat scratched me. | แมวข่วนฉัน
+spill | ทำหก | I spilled my coffee. | ฉันทำกาแฟหก
+`);
+U('daily', 2, 'กริยาในชีวิตประจำวัน: ชุดเสริม 2', `
+spit | ถุย/บ้วน | Don't spit on the street. | อย่าถ่มน้ำลายบนถนน
+sting | ต่อย (แมลง) | The bee stung my hand. | ผึ้งต่อยมือฉัน
+shave | โกน | He shaves every morning. | เขาโกนหนวดทุกเช้า
+roast | ย่าง/อบ | Roast the chicken. | อบไก่
+rot | เน่า | The fruit will rot. | ผลไม้จะเน่า
+trick | หลอก/กลอุบาย | He tricked me. | เขาหลอกฉัน
+---
+beg | ขอร้อง/ขอทาน | I beg you, please help. | ฉันขอร้อง ช่วยด้วย
+bark | เห่า | The dog barks at night. | สุนัขเห่าตอนกลางคืน
+bloom | บาน (ดอกไม้) | The flowers bloom in spring. | ดอกไม้บานในฤดูใบไม้ผลิ
+blow | พัด/เป่า | Blow out the candles. | เป่าเทียน
+bow | โค้ง/คำนับ | He bowed to the king. | เขาโค้งคำนับกษัตริย์
+crack | ร้าว/แตก | The glass cracked. | แก้วร้าว
+`);
+U('daily', 3, 'คำนามนามธรรมที่ใช้บ่อย', `
+anger | ความโกรธ | He couldn't control his anger. | เขาควบคุมความโกรธไม่ได้
+appetite | ความอยากอาหาร | I have no appetite. | ฉันไม่อยากอาหาร
+beauty | ความงาม | The beauty of nature is amazing. | ความงามของธรรมชาติน่าทึ่ง
+behavior | พฤติกรรม | His behavior was strange. | พฤติกรรมของเขาแปลก
+birth | การเกิด | What is your date of birth? | วันเกิดของคุณคือวันไหน
+breath | ลมหายใจ | Take a deep breath. | หายใจเข้าลึกๆ
+---
+freedom | อิสรภาพ | Freedom is precious. | อิสรภาพเป็นสิ่งล้ำค่า
+century | ศตวรรษ | The temple is a century old. | วัดนี้อายุหนึ่งร้อยปี
+gossip | การนินทา | Don't listen to gossip. | อย่าฟังคำนินทา
+chat | การคุยเล่น | We had a nice chat. | เราคุยกันสนุก
+journal | วารสาร/บันทึก | Keep a daily journal. | จดบันทึกประจำวัน
+mess | ความยุ่งเหยิง | Your room is a mess. | ห้องคุณรกมาก
+`);
+U('daily', 3, 'ของใช้รอบตัวเพิ่มเติม', `
+candle | เทียน | Light a candle. | จุดเทียน
+chain | โซ่ | Lock your bike with a chain. | ล็อกจักรยานด้วยโซ่
+cable | สายเคเบิล | Plug in the cable. | เสียบสาย
+cage | กรง | The bird is in a cage. | นกอยู่ในกรง
+clip | คลิป/ที่หนีบ | Use a clip to hold the papers. | ใช้ที่หนีบกระดาษ
+code | รหัส | Enter the code. | ใส่รหัส
+---
+string | เชือกเส้นเล็ก | Tie it with string. | ผูกด้วยเชือก
+stripe | ลายทาง | The shirt has blue stripes. | เสื้อมีลายทางสีน้ำเงิน
+knot | ปม | Tie a knot. | ผูกปม
+lace | เชือกผูกรองเท้า/ลูกไม้ | Tie your shoelaces. | ผูกเชือกรองเท้า
+yarn | ไหมพรม | She bought red yarn. | เธอซื้อไหมพรมสีแดง
+zip | ซิป/รูดซิป | Zip up your jacket. | รูดซิปเสื้อแจ็กเก็ต
+`);
+U('daily', 3, 'ส่วนต่างๆ ของสัตว์', `
+claw | กรงเล็บ | The cat has sharp claws. | แมวมีกรงเล็บคม
+paw | อุ้งเท้า | The dog hurt its paw. | สุนัขเจ็บอุ้งเท้า
+wing | ปีก | The bird broke its wing. | นกปีกหัก
+nest | รัง | Birds build nests. | นกสร้างรัง
+web | ใยแมงมุม/เว็บ | A spider made a web. | แมงมุมชักใย
+skeleton | โครงกระดูก | They found a skeleton. | พวกเขาพบโครงกระดูก
+---
+skull | กะโหลก | The skull was cracked. | กะโหลกร้าว
+spine | กระดูกสันหลัง | He hurt his spine. | เขาบาดเจ็บกระดูกสันหลัง
+shell | เปลือก/กระดอง | The turtle hid in its shell. | เต่าหลบในกระดอง
+hive | รังผึ้ง | Don't touch the hive. | อย่าแตะรังผึ้ง
+flock | ฝูง (นก/แกะ) | A flock of birds flew by. | ฝูงนกบินผ่าน
+creature | สิ่งมีชีวิต | It was a strange creature. | มันเป็นสิ่งมีชีวิตประหลาด
+`);
+U('daily', 3, 'สถานที่ในชนบท', `
+hut | กระท่อม | They live in a small hut. | พวกเขาอยู่ในกระท่อมเล็กๆ
+cabin | กระท่อมไม้/ห้องโดยสาร | We stayed in a cabin. | เราพักในกระท่อมไม้
+shed | เพิง/โรงเก็บของ | The tools are in the shed. | เครื่องมืออยู่ในโรงเก็บของ
+mill | โรงสี | The rice mill is busy. | โรงสีข้าวยุ่งมาก
+dam | เขื่อน | The dam holds back the water. | เขื่อนกักน้ำไว้
+mine | เหมือง/ของฉัน | He works in a gold mine. | เขาทำงานในเหมืองทอง
+---
+lawn | สนามหญ้า | Mow the lawn. | ตัดหญ้าในสนาม
+hedge | รั้วต้นไม้ | Trim the hedge. | ตัดแต่งรั้วต้นไม้
+trail | เส้นทางเดินป่า | Follow the trail. | เดินตามเส้นทาง
+pit | หลุม/บ่อ | He fell into a pit. | เขาตกหลุม
+pole | เสา | The flag is on a pole. | ธงอยู่บนเสา
+farmhouse | บ้านในไร่ | They live in an old farmhouse. | พวกเขาอยู่บ้านไร่หลังเก่า
+`);
+U('daily', 3, 'คำคุณศัพท์และคำวิเศษณ์เพิ่มเติม', `
+accidentally | โดยบังเอิญ/ไม่ได้ตั้งใจ | I accidentally deleted the file. | ฉันเผลอลบไฟล์
+apart | ห่างกัน/แยกกัน | They live apart. | พวกเขาอยู่แยกกัน
+attractive | น่าดึงดูด/หน้าตาดี | She is very attractive. | เธอดูดีมาก
+automatic | อัตโนมัติ | The door is automatic. | ประตูเป็นแบบอัตโนมัติ
+backward | ถอยหลัง | Take one step backward. | ถอยหลังหนึ่งก้าว
+blond | ผมบลอนด์ | She has blond hair. | เธอผมสีบลอนด์
+---
+fancy | หรูหรา | It's a fancy restaurant. | เป็นร้านอาหารหรู
+giant | ยักษ์/ใหญ่มาก | It was a giant wave. | เป็นคลื่นยักษ์
+ill | ป่วย | He is ill in bed. | เขาป่วยนอนอยู่บนเตียง
+kind | ใจดี/ชนิด | What kind of music do you like? | คุณชอบเพลงแนวไหน
+hardly | แทบจะไม่ | I can hardly hear you. | ฉันแทบไม่ได้ยินคุณ
+dear | ที่รัก/เรียน (จดหมาย) | Dear Sir, | เรียน ท่าน
+`);
+U('daily', 4, 'บุคคลในสังคมและประวัติศาสตร์', `
+lord | ท่านลอร์ด/เจ้านาย | The lord owned the land. | ท่านลอร์ดเป็นเจ้าของที่ดิน
+slave | ทาส | Slaves worked in the fields. | ทาสทำงานในไร่
+tribe | ชนเผ่า | The tribe lives in the forest. | ชนเผ่าอาศัยอยู่ในป่า
+navy | กองทัพเรือ | He joined the navy. | เขาเข้ากองทัพเรือ
+maid | แม่บ้าน | The maid cleaned the room. | แม่บ้านทำความสะอาดห้อง
+clerk | เสมียน/พนักงาน | Ask the clerk at the desk. | ถามพนักงานที่โต๊ะ
+---
+shepherd | คนเลี้ยงแกะ | The shepherd watched the sheep. | คนเลี้ยงแกะดูแลฝูงแกะ
+nun | แม่ชี | The nun teaches at the school. | แม่ชีสอนที่โรงเรียน
+pupil | นักเรียน/รูม่านตา | The school has 500 pupils. | โรงเรียนมีนักเรียน 500 คน
+mammal | สัตว์เลี้ยงลูกด้วยนม | Whales are mammals. | วาฬเป็นสัตว์เลี้ยงลูกด้วยนม
+dinosaur | ไดโนเสาร์ | Dinosaurs lived long ago. | ไดโนเสาร์มีชีวิตอยู่นานมาแล้ว
+giant panda | แพนด้ายักษ์ | The giant panda eats bamboo. | แพนด้ายักษ์กินไผ่
+`);
+U('daily', 4, 'สารและเครื่องจักร', `
+pill | ยาเม็ด | Take one pill a day. | กินยาวันละเม็ด
+poison | ยาพิษ | The rat poison is dangerous. | ยาเบื่อหนูอันตราย
+powder | ผง | It's a white powder. | เป็นผงสีขาว
+bomb | ระเบิด | Police found a bomb. | ตำรวจพบระเบิด
+cigarette | บุหรี่ | He lit a cigarette. | เขาจุดบุหรี่
+clinic | คลินิก | Go to the clinic. | ไปคลินิก
+---
+liquid | ของเหลว | No liquids on the plane. | ห้ามนำของเหลวขึ้นเครื่อง
+tube | หลอด/ท่อ | A tube of toothpaste. | ยาสีฟันหนึ่งหลอด
+tank | ถัง/รถถัง | Fill up the tank. | เติมน้ำมันให้เต็มถัง
+pump | ปั๊ม/สูบ | Pump up the tire. | สูบลมยาง
+motor | มอเตอร์ | The motor is broken. | มอเตอร์เสีย
+radar | เรดาร์ | Police use radar to check speed. | ตำรวจใช้เรดาร์ตรวจความเร็ว
+`);
+U('daily', 4, 'การวัดและปริมาณ', `
+inch | นิ้ว (หน่วยวัด) | It's six inches long. | ยาวหกนิ้ว
+pint | ไพนต์ (หน่วยตวง) | A pint of milk, please. | ขอนมหนึ่งไพนต์
+cent | เซนต์ | It costs ninety cents. | ราคาเก้าสิบเซนต์
+bunch | พวง/กลุ่ม | A bunch of bananas. | กล้วยหนึ่งหวี
+pile | กอง | A pile of clothes. | กองเสื้อผ้า
+lump | ก้อน | There is a lump on his head. | หัวเขามีก้อนบวม
+---
+loaf | ก้อน (ขนมปัง) | Buy a loaf of bread. | ซื้อขนมปังหนึ่งก้อน
+sack | กระสอบ | A sack of rice. | ข้าวหนึ่งกระสอบ
+layer | ชั้น | Add a layer of cheese. | ใส่ชีสอีกชั้น
+scale | ตาชั่ง/ขนาด | Weigh it on the scale. | ชั่งบนตาชั่ง
+gap | ช่องว่าง | Mind the gap. | ระวังช่องว่าง
+dot | จุด | Connect the dots. | ลากเส้นเชื่อมจุด
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
