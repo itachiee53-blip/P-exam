@@ -6498,6 +6498,247 @@ gap | ช่องว่าง | Mind the gap. | ระวังช่องว�
 dot | จุด | Connect the dots. | ลากเส้นเชื่อมจุด
 `);
 
+U('daily', 1, 'อาหารและวัตถุดิบเพิ่มเติม', `
+bean | ถั่ว | I like green beans. | ฉันชอบถั่วแขก
+corn | ข้าวโพด | Grilled corn is my favorite snack. | ข้าวโพดปิ้งเป็นของว่างที่ฉันชอบ
+cucumber | แตงกวา | Slice the cucumber. | หั่นแตงกวา
+mushroom | เห็ด | Add some mushrooms. | ใส่เห็ดหน่อย
+salmon | ปลาแซลมอน | I ordered grilled salmon. | ฉันสั่งแซลมอนย่าง
+pickle | ผักดอง | I don't like pickles. | ฉันไม่ชอบผักดอง
+---
+ginger | ขิง | Ginger tea is good for colds. | ชาขิงดีต่ออาการหวัด
+spice | เครื่องเทศ | Thai food uses many spices. | อาหารไทยใช้เครื่องเทศหลายอย่าง
+cream | ครีม | Coffee with cream, please. | ขอกาแฟใส่ครีม
+crumb | เศษ (ขนม) | There are crumbs on the table. | มีเศษขนมบนโต๊ะ
+nut | ถั่ว (เปลือกแข็ง) | He is allergic to nuts. | เขาแพ้ถั่ว
+dish | จาน/อาหาร (จานหนึ่ง) | Pad Thai is a famous dish. | ผัดไทยเป็นอาหารที่มีชื่อเสียง
+`);
+U('daily', 1, 'ของใช้ทั่วไปเพิ่มเติม', `
+bench | ม้านั่ง | Sit on the bench. | นั่งบนม้านั่ง
+stool | เก้าอี้ไม่มีพนัก | He sat on a stool. | เขานั่งบนเก้าอี้สตูล
+vase | แจกัน | Put the flowers in a vase. | ใส่ดอกไม้ในแจกัน
+net | ตาข่าย | The ball hit the net. | ลูกบอลโดนตาข่าย
+hook | ตะขอ | Hang your coat on the hook. | แขวนเสื้อบนตะขอ
+wig | วิก/ผมปลอม | The thief wore a wig. | ขโมยใส่วิก
+---
+rag | ผ้าขี้ริ้ว | Clean it with a rag. | เช็ดด้วยผ้าขี้ริ้ว
+mail | จดหมาย/ไปรษณีย์ | Did you check the mail? | คุณเช็กจดหมายหรือยัง
+lift | ลิฟต์/ยก | Take the lift to the fifth floor. | ขึ้นลิฟต์ไปชั้นห้า
+pool | สระว่ายน้ำ | The hotel has a pool. | โรงแรมมีสระว่ายน้ำ
+flag | ธง | The Thai flag has three colors. | ธงไทยมีสามสี
+gum | หมากฝรั่ง/เหงือก | Don't chew gum in class. | ห้ามเคี้ยวหมากฝรั่งในห้องเรียน
+`);
+U('daily', 2, 'คำทั่วไปที่ใช้บ่อย', `
+adore | รักมาก/ชื่นชอบมาก | I adore my grandmother. | ฉันรักยายมาก
+curl | ม้วน/ลอนผม | She has curls in her hair. | เธอมีผมลอน
+punch | ต่อย | He punched the wall. | เขาต่อยกำแพง
+race | การแข่ง/เชื้อชาติ | Who won the race? | ใครชนะการแข่ง
+match | การแข่งขัน/ไม้ขีดไฟ | The match starts at seven. | การแข่งขันเริ่มหนึ่งทุ่ม
+cross | ข้าม/กากบาท | Cross the road carefully. | ข้ามถนนอย่างระมัดระวัง
+---
+tear | ฉีก/น้ำตา | Don't tear the paper. | อย่าฉีกกระดาษ
+rust | สนิม | The old car is full of rust. | รถเก่าเต็มไปด้วยสนิม
+shadow | เงา | I saw a shadow at the window. | ฉันเห็นเงาที่หน้าต่าง
+flash | แสงวาบ/แฟลช | Turn off the flash. | ปิดแฟลช
+channel | ช่อง | Change the channel. | เปลี่ยนช่อง
+exam | การสอบ | The police exam is next month. | สอบตำรวจเดือนหน้า
+`);
+U('daily', 2, 'เครื่องมือและของโบราณ', `
+blade | ใบมีด | The blade is very sharp. | ใบมีดคมมาก
+saw | เลื่อย | Cut the wood with a saw. | ตัดไม้ด้วยเลื่อย
+spade | เสียม/จอบ | Dig with a spade. | ขุดด้วยเสียม
+rake | คราด | Use a rake to collect leaves. | ใช้คราดกวาดใบไม้
+rod | คันเบ็ด/แท่ง | He has a fishing rod. | เขามีคันเบ็ด
+whip | แส้ | The rider used a whip. | คนขี่ใช้แส้
+---
+spear | หอก | The hunter threw a spear. | นักล่าขว้างหอก
+saddle | อานม้า | Put the saddle on the horse. | วางอานบนหลังม้า
+paddle | ไม้พาย/พาย | Paddle the boat. | พายเรือ
+crane | ปั้นจั่น/นกกระเรียน | A crane lifted the car. | ปั้นจั่นยกรถขึ้น
+compass | เข็มทิศ | Use a compass to find north. | ใช้เข็มทิศหาทิศเหนือ
+crown | มงกุฎ | The queen wore a crown. | ราชินีสวมมงกุฎ
+`);
+U('daily', 2, 'คำนามหลากหลายในชีวิต', `
+allowance | ค่าขนม/เบี้ยเลี้ยง | My son gets a weekly allowance. | ลูกชายได้ค่าขนมรายสัปดาห์
+capital | เมืองหลวง/ทุน | Bangkok is the capital of Thailand. | กรุงเทพฯ เป็นเมืองหลวงของไทย
+chip | ชิ้นเล็ก/ชิป/มันฝรั่งทอด | A bag of potato chips. | มันฝรั่งทอดหนึ่งถุง
+coal | ถ่านหิน | Coal pollutes the air. | ถ่านหินก่อมลพิษทางอากาศ
+column | คอลัมน์/เสา | Read the first column. | อ่านคอลัมน์แรก
+cycle | วงจร/ปั่นจักรยาน | I cycle to work. | ฉันปั่นจักรยานไปทำงาน
+---
+dairy | ผลิตภัณฑ์นม | I can't eat dairy. | ฉันกินผลิตภัณฑ์นมไม่ได้
+drain | ท่อระบายน้ำ | The drain is blocked. | ท่อระบายน้ำตัน
+folk | พื้นบ้าน/ผู้คน | I like Thai folk music. | ฉันชอบเพลงพื้นบ้านไทย
+grave | หลุมศพ/ร้ายแรง | We visited his grave. | เราไปเยี่ยมหลุมศพของเขา
+jail | คุก | He spent a year in jail. | เขาติดคุกหนึ่งปี
+kid | เด็ก | The kids are playing outside. | เด็กๆ เล่นอยู่ข้างนอก
+`);
+U('daily', 3, 'อุปนิสัยและความรู้สึกเชิงนามธรรม', `
+confidence | ความมั่นใจ | Speak with confidence. | พูดอย่างมั่นใจ
+confusion | ความสับสน | There was confusion at the scene. | เกิดความสับสนที่ที่เกิดเหตุ
+courtesy | ความสุภาพ | Treat people with courtesy. | ปฏิบัติต่อผู้คนอย่างสุภาพ
+creativity | ความคิดสร้างสรรค์ | The job needs creativity. | งานนี้ต้องใช้ความคิดสร้างสรรค์
+curiosity | ความอยากรู้อยากเห็น | Children are full of curiosity. | เด็กเต็มไปด้วยความอยากรู้
+enthusiasm | ความกระตือรือร้น | She works with enthusiasm. | เธอทำงานอย่างกระตือรือร้น
+---
+apology | คำขอโทษ | Please accept my apology. | โปรดรับคำขอโทษของฉัน
+arrogance | ความหยิ่งยโส | His arrogance made people angry. | ความหยิ่งของเขาทำให้คนโกรธ
+destiny | โชคชะตา | It was his destiny. | มันคือโชคชะตาของเขา
+distinction | ความแตกต่าง/เกียรตินิยม | She graduated with distinction. | เธอจบเกียรตินิยม
+elegance | ความสง่างาม | She dresses with elegance. | เธอแต่งตัวสง่างาม
+exception | ข้อยกเว้น | There are no exceptions. | ไม่มีข้อยกเว้น
+`);
+U('daily', 3, 'การศึกษาและมหาวิทยาลัย', `
+campus | มหาวิทยาลัย (พื้นที่) | The campus is very big. | มหาวิทยาลัยกว้างมาก
+classmate | เพื่อนร่วมชั้น | He was my classmate. | เขาเคยเป็นเพื่อนร่วมชั้นของฉัน
+curriculum | หลักสูตร | The curriculum includes English. | หลักสูตรรวมภาษาอังกฤษ
+diploma | ประกาศนียบัตร | She got her diploma. | เธอได้รับประกาศนียบัตร
+dormitory | หอพัก | Students live in the dormitory. | นักศึกษาอาศัยในหอพัก
+biology | ชีววิทยา | I study biology. | ฉันเรียนชีววิทยา
+---
+chemistry | เคมี | Chemistry is hard. | เคมียาก
+attendance | การเข้าเรียน/เข้าร่วม | Attendance is important. | การเข้าเรียนสำคัญ
+admission | การรับเข้า/ค่าเข้า | Admission is free. | เข้าฟรี
+certificate | ใบรับรอง/ประกาศนียบัตร | Show your birth certificate. | แสดงสูติบัตรของคุณ
+biography | ชีวประวัติ | I read his biography. | ฉันอ่านชีวประวัติของเขา
+edition | ฉบับ/พิมพ์ครั้งที่ | This is the new edition. | นี่คือฉบับใหม่
+`);
+U('daily', 3, 'การเดินทางและสถานที่สำคัญ', `
+destination | จุดหมายปลายทาง | Phuket is a popular destination. | ภูเก็ตเป็นจุดหมายยอดนิยม
+avenue | ถนนใหญ่ | Walk down the avenue. | เดินไปตามถนนใหญ่
+bay | อ่าว | The boat is in the bay. | เรืออยู่ในอ่าว
+cathedral | มหาวิหาร | We visited an old cathedral. | เราไปเยี่ยมมหาวิหารเก่า
+cemetery | สุสาน | He was buried in the cemetery. | เขาถูกฝังที่สุสาน
+corridor | ทางเดิน (ในอาคาร) | Wait in the corridor. | รอที่ทางเดิน
+---
+baggage | สัมภาระ | Collect your baggage. | รับสัมภาระของคุณ
+aircraft | อากาศยาน | The aircraft landed safely. | เครื่องบินลงจอดอย่างปลอดภัย
+cargo | สินค้าบรรทุก | The ship carried cargo. | เรือบรรทุกสินค้า
+altitude | ความสูง (จากระดับน้ำทะเล) | We are flying at high altitude. | เรากำลังบินที่ระดับความสูง
+astronaut | นักบินอวกาศ | He wants to be an astronaut. | เขาอยากเป็นนักบินอวกาศ
+cyclist | คนปั่นจักรยาน | Watch out for cyclists. | ระวังคนปั่นจักรยาน
+`);
+U('daily', 3, 'ธุรกิจและการค้าเพิ่มเติม', `
+client | ลูกค้า | I have a meeting with a client. | ฉันมีนัดกับลูกค้า
+commerce | การค้า | Online commerce is growing. | การค้าออนไลน์กำลังเติบโต
+commodity | สินค้าโภคภัณฑ์ | Rice is an important commodity. | ข้าวเป็นสินค้าสำคัญ
+corporation | บริษัทใหญ่ | He works for a big corporation. | เขาทำงานให้บริษัทใหญ่
+auction | การประมูล | The car was sold at auction. | รถถูกขายทอดตลาด
+bankruptcy | การล้มละลาย | The company faced bankruptcy. | บริษัทเผชิญการล้มละลาย
+---
+deficit | การขาดดุล | The budget has a deficit. | งบประมาณขาดดุล
+dividend | เงินปันผล | Shareholders received a dividend. | ผู้ถือหุ้นได้รับเงินปันผล
+expenditure | รายจ่าย | Cut your expenditure. | ลดรายจ่าย
+expertise | ความเชี่ยวชาญ | We need your expertise. | เราต้องการความเชี่ยวชาญของคุณ
+brochure | แผ่นพับ | Take a brochure. | หยิบแผ่นพับไป
+bureau | สำนักงาน/กรม | The tourist bureau can help. | สำนักงานท่องเที่ยวช่วยได้
+`);
+U('daily', 4, 'วิทยาศาสตร์และธรรมชาติขั้นกลาง', `
+atmosphere | บรรยากาศ | The atmosphere was friendly. | บรรยากาศเป็นกันเอง
+bacteria | แบคทีเรีย | Wash your hands to kill bacteria. | ล้างมือเพื่อฆ่าเชื้อแบคทีเรีย
+carbon | คาร์บอน | Trees absorb carbon. | ต้นไม้ดูดซับคาร์บอน
+chemical | สารเคมี | Don't touch the chemicals. | อย่าแตะสารเคมี
+circuit | วงจร | The circuit is broken. | วงจรขาด
+density | ความหนาแน่น | Bangkok has a high population density. | กรุงเทพฯ มีความหนาแน่นประชากรสูง
+---
+ecology | นิเวศวิทยา | Pollution harms the ecology. | มลพิษทำร้ายระบบนิเวศ
+equation | สมการ | Solve the equation. | แก้สมการ
+evolution | วิวัฒนาการ | Darwin studied evolution. | ดาร์วินศึกษาวิวัฒนาการ
+extinction | การสูญพันธุ์ | Many species face extinction. | หลายสายพันธุ์เสี่ยงต่อการสูญพันธุ์
+epidemic | โรคระบาด | There was a flu epidemic. | มีการระบาดของไข้หวัด
+calcium | แคลเซียม | Milk has calcium. | นมมีแคลเซียม
+`);
+U('daily', 4, 'สังคมการเมืองและประวัติศาสตร์', `
+ambassador | เอกอัครราชทูต | The ambassador visited the school. | เอกอัครราชทูตมาเยี่ยมโรงเรียน
+ballot | บัตรเลือกตั้ง | Put your ballot in the box. | หย่อนบัตรเลือกตั้งลงหีบ
+boycott | คว่ำบาตร | They boycotted the shop. | พวกเขาคว่ำบาตรร้าน
+capitalism | ทุนนิยม | Capitalism is an economic system. | ทุนนิยมเป็นระบบเศรษฐกิจ
+colony | อาณานิคม | Thailand was never a colony. | ไทยไม่เคยเป็นอาณานิคม
+committee | คณะกรรมการ | The committee will decide. | คณะกรรมการจะตัดสินใจ
+---
+commission | คณะกรรมการ/ค่าคอมมิชชัน | He earns a commission on sales. | เขาได้ค่าคอมมิชชันจากยอดขาย
+conference | การประชุมใหญ่ | The conference is in Bangkok. | การประชุมจัดที่กรุงเทพฯ
+convention | การประชุมใหญ่/ธรรมเนียม | It's a convention to shake hands. | การจับมือเป็นธรรมเนียม
+civilization | อารยธรรม | Ancient civilizations were amazing. | อารยธรรมโบราณน่าทึ่ง
+dynasty | ราชวงศ์ | The dynasty ruled for 200 years. | ราชวงศ์ปกครอง 200 ปี
+empire | จักรวรรดิ | The Roman Empire was huge. | จักรวรรดิโรมันกว้างใหญ่
+`);
+U('daily', 4, 'การเปลี่ยนแปลงและคุณภาพงาน', `
+expansion | การขยายตัว | The city's expansion is fast. | เมืองขยายตัวเร็ว
+exploration | การสำรวจ | Space exploration is expensive. | การสำรวจอวกาศมีค่าใช้จ่ายสูง
+expedition | การสำรวจ (เดินทางไกล) | They went on an expedition. | พวกเขาออกเดินทางสำรวจ
+explosion | การระเบิด | We heard a loud explosion. | เราได้ยินเสียงระเบิดดัง
+exposure | การสัมผัส/การเปิดเผย | Avoid exposure to the sun. | หลีกเลี่ยงการตากแดด
+emergence | การเกิดขึ้น | The emergence of AI changed work. | การเกิดขึ้นของ AI เปลี่ยนการทำงาน
+---
+abundance | ความอุดมสมบูรณ์ | Fruit grows in abundance here. | ที่นี่ผลไม้อุดมสมบูรณ์
+accuracy | ความแม่นยำ | Check the accuracy of the data. | ตรวจความแม่นยำของข้อมูล
+efficiency | ประสิทธิภาพ | We must improve efficiency. | เราต้องปรับปรุงประสิทธิภาพ
+complexity | ความซับซ้อน | The complexity of the case is high. | คดีนี้ซับซ้อนมาก
+conservation | การอนุรักษ์ | Wildlife conservation is important. | การอนุรักษ์สัตว์ป่าสำคัญ
+duration | ระยะเวลา | The duration of the course is six weeks. | คอร์สนี้ใช้เวลาหกสัปดาห์
+`);
+U('daily', 3, 'ผู้คนและงานเลี้ยง', `
+banquet | งานเลี้ยงใหญ่ | The banquet starts at seven. | งานเลี้ยงเริ่มหนึ่งทุ่ม
+carnival | งานคาร์นิวัล | The carnival was colorful. | งานคาร์นิวัลมีสีสัน
+celebrity | คนดัง | She is a celebrity. | เธอเป็นคนดัง
+beverage | เครื่องดื่ม | Beverages are free. | เครื่องดื่มฟรี
+amusement | ความบันเทิง | We went to an amusement park. | เราไปสวนสนุก
+cartoon | การ์ตูน | Kids watch cartoons. | เด็กๆ ดูการ์ตูน
+---
+acquaintance | คนรู้จัก | He is just an acquaintance. | เขาเป็นแค่คนรู้จัก
+bachelor | ชายโสด/ปริญญาตรี | He has a bachelor's degree. | เขามีปริญญาตรี
+ancestor | บรรพบุรุษ | We respect our ancestors. | เราเคารพบรรพบุรุษ
+descendant | ลูกหลาน/ผู้สืบเชื้อสาย | He is a descendant of the king. | เขาเป็นผู้สืบเชื้อสายของกษัตริย์
+emperor | จักรพรรดิ | The emperor ruled China. | จักรพรรดิปกครองจีน
+beggar | ขอทาน | A beggar asked for money. | ขอทานขอเงิน
+`);
+U('daily', 3, 'คำนามทั่วไปขั้นกลาง', `
+advocate | ผู้สนับสนุน/ทนาย | She is an advocate for women's rights. | เธอเป็นผู้สนับสนุนสิทธิสตรี
+agriculture | เกษตรกรรม | Agriculture is important in Thailand. | เกษตรกรรมสำคัญในประเทศไทย
+architecture | สถาปัตยกรรม | I love Thai architecture. | ฉันชอบสถาปัตยกรรมไทย
+blueprint | พิมพ์เขียว | Look at the blueprint. | ดูพิมพ์เขียว
+boundary | เขตแดน/ขอบเขต | Set clear boundaries. | กำหนดขอบเขตให้ชัดเจน
+container | ภาชนะ/ตู้คอนเทนเนอร์ | Drugs were hidden in a container. | ยาเสพติดถูกซ่อนในตู้คอนเทนเนอร์
+---
+convenience | ความสะดวก | Call us at your convenience. | โทรหาเราเมื่อคุณสะดวก
+conversation | บทสนทนา | We had a long conversation. | เราคุยกันนาน
+circumstance | สถานการณ์/สภาพการณ์ | Under the circumstances, we waited. | ในสถานการณ์นั้น เรารอไว้ก่อน
+climate | ภูมิอากาศ | Thailand has a hot climate. | ไทยมีภูมิอากาศร้อน
+equipment | อุปกรณ์ | Check your equipment. | ตรวจอุปกรณ์ของคุณ
+era | ยุค | It was the end of an era. | มันคือจุดจบของยุคหนึ่ง
+`);
+U('daily', 4, 'คำนามน่ารู้ขั้นสูง', `
+artery | หลอดเลือดแดง | The bullet hit an artery. | กระสุนโดนหลอดเลือดแดง
+dosage | ขนาดยา | Follow the correct dosage. | ใช้ยาตามขนาดที่ถูกต้อง
+adolescence | วัยรุ่น | Adolescence is a hard time. | วัยรุ่นเป็นช่วงที่ยากลำบาก
+debris | เศษซาก | Debris covered the road. | เศษซากเต็มถนน
+decay | การผุพัง/เน่าเปื่อย | Sugar causes tooth decay. | น้ำตาลทำให้ฟันผุ
+dialect | ภาษาถิ่น | He speaks the northern dialect. | เขาพูดภาษาเหนือ
+---
+ethnic | ชาติพันธุ์ | Thailand has many ethnic groups. | ไทยมีหลายกลุ่มชาติพันธุ์
+donation | การบริจาค | Thank you for your donation. | ขอบคุณสำหรับการบริจาค
+autumn | ฤดูใบไม้ร่วง | Leaves fall in autumn. | ใบไม้ร่วงในฤดูใบไม้ร่วง
+blossom | ดอกไม้บาน | Cherry blossoms are pink. | ดอกซากุระสีชมพู
+basin | อ่าง/ลุ่มน้ำ | Wash your face in the basin. | ล้างหน้าในอ่าง
+chamber | ห้อง/สภา | The chamber was dark. | ห้องนั้นมืด
+`);
+U('daily', 2, 'อวกาศและสิ่งของน่ารู้', `
+orbit | วงโคจร | The moon orbits the Earth. | ดวงจันทร์โคจรรอบโลก
+galaxy | กาแล็กซี | Our galaxy is huge. | กาแล็กซีของเรากว้างใหญ่
+comet | ดาวหาง | We saw a comet. | เราเห็นดาวหาง
+meteor | ดาวตก | Make a wish on a meteor. | อธิษฐานกับดาวตก
+submarine | เรือดำน้ำ | The submarine went deep. | เรือดำน้ำดำลึก
+paradise | สวรรค์ | This island is a paradise. | เกาะนี้คือสวรรค์
+---
+veil | ผ้าคลุมหน้า | The bride wore a veil. | เจ้าสาวสวมผ้าคลุมหน้า
+twig | กิ่งไม้เล็ก | The bird carried a twig. | นกคาบกิ่งไม้
+pebble | ก้อนกรวด | He threw a pebble into the lake. | เขาโยนก้อนกรวดลงทะเลสาบ
+moth | ผีเสื้อกลางคืน | A moth flew to the light. | ผีเสื้อกลางคืนบินเข้าหาไฟ
+log | ท่อนซุง/บันทึก | Sit on the log. | นั่งบนท่อนซุง
+coffin | โลงศพ | They carried the coffin. | พวกเขาแบกโลงศพ
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
