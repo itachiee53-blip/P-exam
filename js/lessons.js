@@ -5397,6 +5397,127 @@ weigh up | ชั่งน้ำหนัก (ข้อดีข้อเสี�
 wipe out | กวาดล้าง/ทำลายหมด | The flood wiped out the crops. | น้ำท่วมทำลายพืชผลหมด
 `);
 
+U('daily', 1, 'คำคู่ตรงข้าม 1', `
+rich | รวย | He is very rich. | เขารวยมาก
+poor | จน/แย่ | They are poor but happy. | พวกเขาจนแต่มีความสุข
+strong | แข็งแรง | Police officers must be strong. | ตำรวจต้องแข็งแรง
+weak | อ่อนแอ | I feel weak today. | วันนี้ฉันรู้สึกอ่อนแรง
+deep | ลึก | The river is deep. | แม่น้ำลึก
+shallow | ตื้น | Swim in the shallow water. | ว่ายในน้ำตื้น
+---
+soft | นุ่ม/เบา | The bed is soft. | เตียงนุ่ม
+sharp | คม | Be careful, the knife is sharp. | ระวัง มีดคม
+smooth | เรียบ/ลื่น | The road is smooth. | ถนนเรียบ
+tidy | เรียบร้อย | Keep your room tidy. | จัดห้องให้เรียบร้อย
+modern | ทันสมัย | Bangkok is a modern city. | กรุงเทพฯ เป็นเมืองทันสมัย
+dangerous | อันตราย | Drunk driving is dangerous. | เมาแล้วขับอันตราย
+`);
+U('daily', 2, 'คุณศัพท์ -ed กับ -ing 1', `
+interested | สนใจ (คนรู้สึก) | I'm interested in English. | ฉันสนใจภาษาอังกฤษ
+interesting | น่าสนใจ (สิ่งนั้น) | This movie is interesting. | หนังเรื่องนี้น่าสนใจ
+boring | น่าเบื่อ (สิ่งนั้น) | The lesson was boring. | บทเรียนน่าเบื่อ
+tiring | น่าเหนื่อย (สิ่งนั้น) | The night shift is tiring. | กะดึกเหนื่อยมาก
+amazed | ทึ่ง (คนรู้สึก) | I was amazed by the view. | ฉันทึ่งกับวิว
+amazing | น่าทึ่ง (สิ่งนั้น) | The view is amazing. | วิวน่าทึ่งมาก
+---
+shocked | ตกใจ (คนรู้สึก) | We were shocked by the news. | เราตกใจกับข่าวนั้น
+shocking | น่าตกใจ (สิ่งนั้น) | The news was shocking. | ข่าวนั้นน่าตกใจ
+frightened | กลัว (คนรู้สึก) | The child was frightened. | เด็กกลัว
+frightening | น่ากลัว (สิ่งนั้น) | It was a frightening night. | เป็นคืนที่น่ากลัว
+confusing | น่าสับสน (สิ่งนั้น) | The map is confusing. | แผนที่ดูสับสน
+exciting | น่าตื่นเต้น (สิ่งนั้น) | The game was exciting. | เกมนั้นน่าตื่นเต้น
+`);
+U('daily', 3, 'คุณศัพท์ -ed กับ -ing 2', `
+satisfied | พอใจ (คนรู้สึก) | Are you satisfied with the service? | คุณพอใจกับบริการไหม
+satisfying | น่าพอใจ (สิ่งนั้น) | It was a satisfying meal. | เป็นมื้ออาหารที่น่าพอใจ
+annoyed | รำคาญ (คนรู้สึก) | I'm annoyed with my neighbor. | ฉันรำคาญเพื่อนบ้าน
+annoying | น่ารำคาญ (สิ่งนั้น) | That noise is annoying. | เสียงนั้นน่ารำคาญ
+relaxed | ผ่อนคลาย (คนรู้สึก) | I feel relaxed at the beach. | ฉันรู้สึกผ่อนคลายที่ชายหาด
+relaxing | ทำให้ผ่อนคลาย (สิ่งนั้น) | The music is relaxing. | เพลงนี้ฟังสบาย
+---
+terrified | หวาดกลัวมาก (คนรู้สึก) | She was terrified of the dark. | เธอกลัวความมืดมาก
+terrifying | น่าหวาดกลัว (สิ่งนั้น) | The storm was terrifying. | พายุน่ากลัวมาก
+fascinated | หลงใหล/ทึ่ง (คนรู้สึก) | He is fascinated by history. | เขาหลงใหลประวัติศาสตร์
+fascinating | น่าหลงใหล (สิ่งนั้น) | Space is fascinating. | อวกาศน่าทึ่งมาก
+embarrassing | น่าอาย (สิ่งนั้น) | It was an embarrassing mistake. | เป็นความผิดพลาดที่น่าอาย
+surprising | น่าประหลาดใจ (สิ่งนั้น) | The result was surprising. | ผลลัพธ์น่าประหลาดใจ
+`);
+U('daily', 2, 'คำที่สับสนบ่อย 1', `
+tell | บอก (tell + คน) | Tell me the truth. | บอกความจริงกับฉัน
+rob | ปล้น (rob + คน/สถานที่) | They robbed a bank. | พวกเขาปล้นธนาคาร
+raise | ยก (ต้องมีกรรม) | Raise your hand. | ยกมือขึ้น
+rise | ขึ้น (ไม่มีกรรม) | Prices rise every year. | ราคาขึ้นทุกปี
+lay | วาง (ต้องมีกรรม) | Lay the baby on the bed. | วางทารกบนเตียง
+quite | ค่อนข้าง (ต่างจาก quiet = เงียบ) | The test was quite easy. | ข้อสอบค่อนข้างง่าย
+---
+whether | ว่า…หรือไม่ (ต่างจาก weather) | I don't know whether he is home. | ฉันไม่รู้ว่าเขาอยู่บ้านหรือเปล่า
+fun | สนุก (ความสนุก) | The party was fun. | งานปาร์ตี้สนุก
+funny | ตลก | He is a funny man. | เขาเป็นคนตลก
+trip | ทริป/การเดินทางสั้นๆ | We took a trip to Phuket. | เราไปเที่ยวภูเก็ต
+fewer | น้อยกว่า (นับได้) | There are fewer accidents this year. | ปีนี้อุบัติเหตุน้อยลง
+less | น้อยกว่า (นับไม่ได้) | Drink less coffee. | ดื่มกาแฟให้น้อยลง
+`);
+U('daily', 3, 'คำที่สับสนบ่อย 2', `
+effect | ผล (คำนาม) | The medicine had no effect. | ยาไม่ได้ผล
+except | ยกเว้น (ต่างจาก accept) | Everyone came except Tom. | ทุกคนมายกเว้นทอม
+loose | หลวม (ต่างจาก lose) | These pants are loose. | กางเกงตัวนี้หลวม
+desert | ทะเลทราย/ทิ้ง (ต่างจาก dessert) | The Sahara is a desert. | ซาฮาราเป็นทะเลทราย
+besides | นอกจากนี้ | Besides English, he speaks Chinese. | นอกจากภาษาอังกฤษ เขายังพูดจีนได้
+beside | ข้างๆ | Sit beside me. | นั่งข้างฉัน
+---
+among | ท่ามกลาง (3 ขึ้นไป) | He hid among the crowd. | เขาซ่อนตัวอยู่ในฝูงชน
+farther | ไกลกว่า (ระยะทาง) | The station is farther than the bank. | สถานีอยู่ไกลกว่าธนาคาร
+further | เพิ่มเติม/ต่อไป | For further information, call us. | สอบถามข้อมูลเพิ่มเติมโทรหาเรา
+latter | อย่างหลัง | Of tea and coffee, I prefer the latter. | ระหว่างชากับกาแฟ ฉันชอบอย่างหลัง
+economic | เกี่ยวกับเศรษฐกิจ | There is an economic crisis. | มีวิกฤตเศรษฐกิจ
+economical | ประหยัด | This car is economical. | รถคันนี้ประหยัด
+`);
+U('daily', 4, 'คำที่สับสนบ่อย 3', `
+principal | ครูใหญ่/หลัก | The principal spoke to the students. | ครูใหญ่พูดกับนักเรียน
+altogether | โดยสิ้นเชิง/ทั้งหมด (ต่างจาก all together) | The plan failed altogether. | แผนล้มเหลวโดยสิ้นเชิง
+stationary | อยู่กับที่ | The car was stationary. | รถจอดนิ่งอยู่กับที่
+stationery | เครื่องเขียน | Buy stationery at the shop. | ซื้อเครื่องเขียนที่ร้าน
+complement | ส่วนเติมเต็ม/เข้ากัน | The wine complements the food. | ไวน์เข้ากับอาหาร
+compliment | คำชม | Thank you for the compliment. | ขอบคุณสำหรับคำชม
+---
+emigrate | ย้ายออกไปอยู่ต่างประเทศ | They emigrated to Australia. | พวกเขาย้ายไปอยู่ออสเตรเลีย
+immigrate | ย้ายเข้ามาอยู่ (ประเทศนี้) | Many people immigrate to Thailand. | หลายคนย้ายมาอยู่ไทย
+historic | สำคัญทางประวัติศาสตร์ | It was a historic day. | เป็นวันสำคัญทางประวัติศาสตร์
+historical | เกี่ยวกับประวัติศาสตร์ | I like historical movies. | ฉันชอบหนังอิงประวัติศาสตร์
+council | สภา/คณะกรรมการ | The city council met today. | สภาเมืองประชุมวันนี้
+counsel | คำปรึกษา/ทนาย | He sought legal counsel. | เขาปรึกษาทนาย
+`);
+U('daily', 4, 'คำที่สับสนบ่อย 4', `
+personal | ส่วนตัว | This is my personal phone. | นี่คือโทรศัพท์ส่วนตัวของฉัน
+personnel | บุคลากร | Only authorized personnel may enter. | เฉพาะเจ้าหน้าที่ที่ได้รับอนุญาตเท่านั้น
+insure | ทำประกัน | Insure your car. | ทำประกันรถของคุณ
+maximum | สูงสุด | The maximum speed is 90. | ความเร็วสูงสุดคือ 90
+minimum | ต่ำสุด | The minimum age is 18. | อายุขั้นต่ำคือ 18 ปี
+majority | ส่วนใหญ่ | The majority voted yes. | เสียงส่วนใหญ่โหวตเห็นด้วย
+---
+minority | ส่วนน้อย | Protect minority groups. | ปกป้องกลุ่มคนส่วนน้อย
+temporary | ชั่วคราว | This is a temporary job. | นี่เป็นงานชั่วคราว
+visible | มองเห็นได้ | The sign is clearly visible. | ป้ายมองเห็นได้ชัด
+invisible | มองไม่เห็น | The gas is invisible. | ก๊าซนั้นมองไม่เห็น
+victory | ชัยชนะ | It was a great victory. | เป็นชัยชนะที่ยิ่งใหญ่
+ally | พันธมิตร | Thailand is a close ally. | ไทยเป็นพันธมิตรใกล้ชิด
+`);
+U('daily', 3, 'คำตรงข้ามด้วยคำเติมหน้า', `
+dishonest | ไม่ซื่อสัตย์ | He is a dishonest man. | เขาเป็นคนไม่ซื่อสัตย์
+impatient | ใจร้อน | Don't be impatient. | อย่าใจร้อน
+impossible | เป็นไปไม่ได้ | Nothing is impossible. | ไม่มีอะไรเป็นไปไม่ได้
+irresponsible | ไม่รับผิดชอบ | That was irresponsible driving. | นั่นเป็นการขับรถที่ไม่รับผิดชอบ
+unlikely | ไม่น่าจะเป็นไปได้ | It's unlikely to rain. | ไม่น่าจะมีฝนตก
+brave | กล้าหาญ | The brave officer saved the child. | ตำรวจผู้กล้าช่วยเด็กไว้
+---
+cowardly | ขี้ขลาด | It was a cowardly attack. | เป็นการโจมตีที่ขี้ขลาด
+honest | ซื่อสัตย์ | Be honest with me. | ซื่อสัตย์กับฉัน
+blunt | ทื่อ/พูดตรงเกินไป | The knife is blunt. | มีดทื่อ
+worrying | น่ากังวล | The crime rate is worrying. | อัตราอาชญากรรมน่ากังวล
+exhausting | เหนื่อยมาก (สิ่งนั้น) | The training was exhausting. | การฝึกเหนื่อยมาก
+thrilling | น่าตื่นเต้นมาก | It was a thrilling chase. | เป็นการไล่ล่าที่ตื่นเต้นมาก
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
