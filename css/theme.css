@@ -1256,7 +1256,8 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 /* หน้าทำบทเรียน: เนื้อหาอยู่กลางจอ (ระดับสายตา) ไม่ลอยชิดบน */
 .ls-wrap{display:flex;flex-direction:column;position:fixed;inset:0;z-index:20;overflow-y:auto;overscroll-behavior:contain;padding:max(12px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));margin:0 auto}
 body:has(.ls-wrap){overflow:hidden}
-body:has(.ls-wrap) :is(.topbar,.bottomnav,.sidebar){display:none!important}
+body:has(.ls-wrap) :is(.topbar,.bottomnav){display:none!important}
+@media(min-width:981px){.ls-wrap{left:265px}} /* แท็บเล็ต/จอกว้าง: เห็นเมนูข้าง ไม่ทับ */
 .ls-wrap>.ls-top{width:100%}
 .ls-wrap>.ls-body{width:100%;order:2}
 .ls-wrap>#lsFb{width:100%;min-height:86px;order:3}
