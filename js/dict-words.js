@@ -50,6 +50,7 @@ another | อีกอันหนึ่ง
 any | ใดๆ
 anyone | ใครก็ได้
 anything | อะไรก็ได้
+anyway | อย่างไรก็ตาม/เอาเถอะ
 app | แอป
 application | แอป/ใบสมัคร
 approach | วิธีการ/เข้าใกล้
@@ -135,6 +136,7 @@ car | รถยนต์
 carbon | คาร์บอน
 card | บัตร
 care | ดูแล/ใส่ใจ
+carry-on | กระเป๋าถือขึ้นเครื่อง
 catch | จับ
 caught | จับได้ (อดีต)
 cause | สาเหตุ/ทำให้เกิด
@@ -147,6 +149,8 @@ chain | โซ่/ห่วงโซ่
 chamber | ห้อง
 channel | ช่องทาง
 chat | คุย
+check-out | เช็กเอาต์
+check-up | ตรวจสุขภาพ
 cheer | เชียร์ (cheer up = ร่าเริงหน่อย)
 chew | เคี้ยว
 chiang | เชียง (เชียงใหม่)
@@ -212,6 +216,7 @@ criminal | อาชญากร
 critical | วิกฤต/วิจารณ์
 critics | นักวิจารณ์
 cross | ข้าม
+cross-border | ข้ามพรมแดน
 crossborder | ข้ามพรมแดน
 crystal | คริสตัล (ยาไอซ์)
 cultural | ทางวัฒนธรรม
@@ -319,6 +324,7 @@ extent | ขอบเขต
 extradition | การส่งผู้ร้ายข้ามแดน
 facial | ใบหน้า
 fact | ข้อเท็จจริง
+fact-check | ตรวจสอบข้อเท็จจริง
 facto | (de facto = โดยพฤตินัย)
 factor | ปัจจัย
 fah | ฟ้า (ชื่อคน)
@@ -353,6 +359,7 @@ flow | การไหล
 flu | ไข้หวัด
 fly | บิน
 focus | เน้น/จดจ่อ
+follow-up | ติดตามผล
 fond | ชอบ
 for | สำหรับ/เป็นเวลา
 force | กำลัง/บังคับ
@@ -370,6 +377,7 @@ fright | ความกลัว (stage fright = ประหม่าบนเ
 from | จาก
 front | ด้านหน้า
 froze | ค้าง/แข็ง (อดีต)
+full-time | เต็มเวลา
 fully | อย่างเต็มที่
 fun | สนุก
 fund | กองทุน
@@ -415,6 +423,8 @@ has | มี
 hate | เกลียด
 have | มี
 he | เขา (ชาย)
+head-on | ประสานงา
+heads-up | การบอกล่วงหน้า
 health | สุขภาพ
 heart | หัวใจ
 heat | ความร้อน
@@ -432,6 +442,7 @@ highway | ทางหลวง
 him | เขา (กรรม)
 hindsight | มองย้อนหลัง
 his | ของเขา
+hit-and-run | ชนแล้วหนี
 hold | ถือ/จัด
 holiday | วันหยุด
 home | บ้าน
@@ -459,6 +470,7 @@ impaired | บกพร่อง
 impose | กำหนด/บังคับใช้
 impressed | ประทับใจ
 in | ใน
+in-laws | ญาติฝ่ายสามี/ภรรยา
 inasmuch | เนื่องจาก (inasmuch as)
 incident | เหตุการณ์
 inconvenience | ความไม่สะดวก
@@ -472,6 +484,7 @@ insider | คนใน
 insist | ยืนกราน
 insofar | เท่าที่ (insofar as)
 instance | ตัวอย่าง (for instance)
+instead | แทน
 instructions | คำแนะนำ
 insult | ดูถูก
 internal | ภายใน
@@ -593,6 +606,7 @@ members | สมาชิก
 men | ผู้ชาย (หลายคน)
 mental | ทางจิตใจ
 mention | กล่าวถึง
+merit-based | ตามความสามารถ
 met | พบ (อดีต)
 metal | โลหะ
 meters | เมตร
@@ -600,6 +614,7 @@ meth | ยาบ้า/ไอซ์
 method | วิธี
 mg | มิลลิกรัม
 middle | กลาง
+middle-aged | วัยกลางคน
 might | อาจจะ
 migrant | ผู้อพยพ
 mile | ไมล์
@@ -659,11 +674,13 @@ now | ตอนนี้
 nut | นัท (ชื่อคน)
 nutshell | สรุปสั้นๆ (in a nutshell)
 o | —
+o'clock | นาฬิกา (ตรง)
 object | วัตถุ
 obstacle | อุปสรรค
 occur | เกิดขึ้น
 of | ของ
 off | ปิด/ออก
+off-duty | นอกเวลาราชการ
 offenders | ผู้กระทำผิด
 offense | ความผิด
 often | บ่อย
@@ -672,6 +689,7 @@ okay | โอเค
 on | บน/ใน (วัน)
 once | ครั้งหนึ่ง/เมื่อ
 one | หนึ่ง
+one-way | เที่ยวเดียว
 ongoing | ที่ดำเนินอยู่
 only | เท่านั้น
 open-ended | ปลายเปิด
@@ -680,9 +698,11 @@ or | หรือ
 ordinary | ธรรมดา
 other | อื่น
 others | คนอื่น
+otherwise | ไม่อย่างนั้น
 our | ของเรา
 out | ออก
 outage | ไฟดับ/ระบบล่ม
+overall | โดยรวม
 owe | ติดหนี้
 own | ของตัวเอง
 ownership | ความเป็นเจ้าของ
@@ -694,6 +714,7 @@ papaya | มะละกอ
 parent | พ่อแม่
 park | สวนสาธารณะ/จอด
 part | ส่วน
+part-time | พาร์ทไทม์
 particularly | โดยเฉพาะ
 pass | ผ่าน/ส่งให้
 past | อดีต/ผ่าน
@@ -748,6 +769,7 @@ primarily | เป็นหลัก
 prime | นายก (prime minister)
 print | พิมพ์
 prisoner | นักโทษ
+problem-solving | การแก้ปัญหา
 process | กระบวนการ
 professional | มืออาชีพ
 program | โปรแกรม
@@ -759,6 +781,7 @@ pros | ข้อดี
 protection | การคุ้มครอง
 punish | ลงโทษ
 punishment | การลงโทษ
+push-ups | วิดพื้น
 qr | คิวอาร์
 quality | คุณภาพ
 quarter | หนึ่งในสี่/15 นาที
@@ -779,6 +802,7 @@ react | ตอบสนอง
 reader | ผู้อ่าน
 reality | ความเป็นจริง
 realize | ตระหนัก
+rear-ended | ชนท้าย
 recent | ล่าสุด
 recognition | การจดจำ
 reconsider | พิจารณาใหม่
@@ -845,6 +869,7 @@ seek | แสวงหา
 seem | ดูเหมือน
 seen | เห็น (V3)
 self-care | ดูแลตัวเอง
+self-esteem | ความนับถือตัวเอง
 sent | ส่ง (อดีต)
 september | กันยายน
 serial | หมายเลข (serial number)
@@ -874,6 +899,7 @@ simple | ง่าย
 sing | ร้องเพลง
 singer | นักร้อง
 sir | ท่าน (ชาย)
+sit-ups | ซิทอัพ
 situation | สถานการณ์
 situational | ตามสถานการณ์
 skid | ลื่นไถล
@@ -886,6 +912,7 @@ smoking | การสูบบุหรี่
 sniffer | ดมกลิ่น (สุนัขดมกลิ่น)
 snow | หิมะ
 so | ดังนั้น
+so-so | เฉยๆ
 sober | ไม่เมา
 social | สังคม
 society | สังคม
@@ -1005,6 +1032,7 @@ tide | กระแสน้ำ
 tidy | เรียบร้อย
 tight | แน่น
 time | เวลา/ครั้ง
+tip-off | การแจ้งเบาะแส
 to | ไปยัง/เพื่อ
 together | ด้วยกัน
 told | บอก (อดีต)
@@ -1022,6 +1050,7 @@ tow | ลาก
 town | เมือง
 track | ติดตาม/ราง
 tracking | ติดตาม
+trade-off | การได้อย่างเสียอย่าง
 traditional | ดั้งเดิม
 transaction | ธุรกรรม
 trash | ขยะ
@@ -1073,6 +1102,8 @@ way | ทาง/วิธี
 we | เรา
 website | เว็บไซต์
 well | ดี/เก่ง
+well-being | ความเป็นอยู่ที่ดี
+well-done | สุกมาก
 went | ไป (อดีต)
 were | เป็น/อยู่ (อดีต)
 what | อะไร
@@ -1087,6 +1118,7 @@ why | ทำไม
 wi-fi | ไวไฟ
 wifi | ไวไฟ
 will | จะ
+win-win | ได้ประโยชน์ทั้งสองฝ่าย
 wish | ปรารถนา/อวยพร
 with | กับ
 without | โดยไม่มี
