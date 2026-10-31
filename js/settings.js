@@ -451,7 +451,7 @@ function renderSetting(){
   $('#view').innerHTML=`
   <div class="card">
     <div class="srow"><div class="ic" style="background:var(--navy);color:#fff"><i data-lucide="shield"></i></div>
-      <div style="flex:1"><b>สายสอบ</b><small>${esc(currentTrack.ruleDesc)} · ${currentTrack.quotaTotal} ข้อ</small></div>
+      <div style="flex:1"><b>สายสอบ</b></div>
       <button class="c-select" id="btnSettingTrack">
         <span>${esc(currentTrack.label)}</span>
         <i data-lucide="chevron-down"></i>
@@ -522,22 +522,6 @@ function renderSetting(){
         </div>` : ''}
     </div>
     <input type="file" id="heroFileInput" accept="image/*" hidden>
-  </div>
-
-  <div class="sec"><i data-lucide="folder-tree"></i>จัดการหมวด</div>
-  <div class="card">
-    <div id="catbox">${S.cats.map(c=>{
-      const n=S.questions.filter(q=>q.cat===c).length, m=S.cards.filter(x=>x.cat===c).length;
-      const [bg,fg]=tone(c);
-      return `<div class="catrow">
-        <div class="ic" style="background:${bg};color:${fg}"><i data-lucide="${cicon(c)}"></i></div>
-        <div style="flex:1"><b style="font-size:14.5px">${esc(c)}</b>
-          <div style="font-size:12px;color:var(--muted)">${n.toLocaleString()} ข้อ · ${m.toLocaleString()} บัตร</div></div>
-        <button class="ib sm" data-seticon="${esc(c)}" title="เปลี่ยนสี/ไอคอน"><i data-lucide="palette"></i></button>
-        <button class="ib sm" data-catdrop="${esc(c)}" title="ลบ"><i data-lucide="trash-2"></i></button></div>`;}).join('')}</div>
-    <div class="row" style="gap:8px;margin-top:14px">
-      <input class="inp" id="newcat" placeholder="ชื่อหมวด" style="flex:1">
-      <button class="btn" id="addcat"><i data-lucide="plus"></i>เพิ่ม</button></div>
   </div>
 
   <div class="sec"><i data-lucide="database"></i>ฐานข้อมูล</div>
@@ -654,21 +638,6 @@ function renderSetting(){
     };
   }
 
-  $$('[data-seticon]').forEach(b=>b.onclick=()=>{ playTone('tap'); openIconPicker(b.dataset.seticon); });
-
-  $('#addcat').onclick=()=>{
-    playTone('tap');
-    const v=$('#newcat').value.trim();
-    if(!v)return toast('ใส่ชื่อหมวด','err');
-    if(S.cats.includes(v))return toast('มีหมวดนี้แล้ว','err');
-    S.cats.push(v);
-    save();
-    renderSetting();
-    toast('เพิ่มแล้ว','ok');
-  };
-  $('#newcat').onkeydown=e=>{if(e.key==='Enter')$('#addcat').click();};
-
-  $$('[data-catdrop]').forEach(b => b.onclick = () => deleteCategory(b.dataset.catdrop));
 
   $('#d_out').onclick=()=>{ playTone('tap'); exportBackup(); renderSetting(); };
   $('#btnErrLog').onclick = () => openErrLog();
