@@ -7748,6 +7748,278 @@ loosely | อย่างหลวมๆ | Tie it loosely. | ผูกหลว�
 fiercely | อย่างดุเดือด | They fought fiercely. | พวกเขาต่อสู้อย่างดุเดือด
 `);
 
+U('daily', 2, 'คอมพิวเตอร์และอุปกรณ์', `
+browser | เบราว์เซอร์ | Open your web browser. | เปิดเบราว์เซอร์
+cursor | เคอร์เซอร์ | Move the cursor here. | เลื่อนเคอร์เซอร์มาตรงนี้
+desktop | หน้าจอเดสก์ท็อป/คอมตั้งโต๊ะ | Save it on the desktop. | บันทึกไว้ที่หน้าจอ
+hardware | ฮาร์ดแวร์ | The hardware is old. | ฮาร์ดแวร์เก่าแล้ว
+software | ซอฟต์แวร์ | Install the new software. | ติดตั้งซอฟต์แวร์ใหม่
+icon | ไอคอน | Click the icon. | คลิกไอคอน
+---
+modem | โมเด็ม | Restart the modem. | รีสตาร์ทโมเด็ม
+router | เราเตอร์ | The router is in the living room. | เราเตอร์อยู่ในห้องนั่งเล่น
+webcam | เว็บแคม | Turn on your webcam. | เปิดเว็บแคม
+tablet | แท็บเล็ต/ยาเม็ด | I study on my tablet. | ฉันเรียนบนแท็บเล็ต
+touchscreen | จอสัมผัส | The phone has a touchscreen. | โทรศัพท์มีจอสัมผัส
+wireless | ไร้สาย | I use a wireless mouse. | ฉันใช้เมาส์ไร้สาย
+`);
+U('daily', 3, 'อินเทอร์เน็ตและโปรแกรม', `
+digital | ดิจิทัล | Keep a digital copy. | เก็บสำเนาดิจิทัลไว้
+interface | หน้าตาโปรแกรม/ส่วนต่อประสาน | The app has a simple interface. | แอปมีหน้าตาเรียบง่าย
+pixel | พิกเซล | The image has low pixels. | รูปภาพความละเอียดต่ำ
+processor | หน่วยประมวลผล | This laptop has a fast processor. | แล็ปท็อปนี้ประมวลผลเร็ว
+spreadsheet | ตารางคำนวณ | Put the data in a spreadsheet. | ใส่ข้อมูลในตารางคำนวณ
+virus | ไวรัส | My computer has a virus. | คอมพิวเตอร์ฉันติดไวรัส
+---
+bandwidth | แบนด์วิดท์ | Video uses a lot of bandwidth. | วิดีโอใช้แบนด์วิดท์มาก
+domain | โดเมน/ขอบเขต | Buy a domain name. | ซื้อชื่อโดเมน
+inbox | กล่องข้อความเข้า | Check your inbox. | ตรวจกล่องข้อความ
+spam | สแปม/ข้อความขยะ | The email went to spam. | อีเมลเข้าไปอยู่ในสแปม
+tab | แท็บ | Open a new tab. | เปิดแท็บใหม่
+template | แม่แบบ | Use this template. | ใช้แม่แบบนี้
+`);
+U('daily', 3, 'เทคโนโลยีใกล้ตัว', `
+gadget | อุปกรณ์ไฮเทค | He loves new gadgets. | เขาชอบอุปกรณ์ไฮเทคใหม่ๆ
+podcast | พอดแคสต์ | I listen to podcasts. | ฉันฟังพอดแคสต์
+program | โปรแกรม/รายการ | Install the program. | ติดตั้งโปรแกรม
+robotics | วิทยาการหุ่นยนต์ | She studies robotics. | เธอเรียนวิทยาการหุ่นยนต์
+smartwatch | นาฬิกาอัจฉริยะ | My smartwatch counts my steps. | นาฬิกาอัจฉริยะนับก้าวของฉัน
+thumbnail | ภาพย่อ | Click the thumbnail. | คลิกภาพย่อ
+---
+toolbar | แถบเครื่องมือ | The button is on the toolbar. | ปุ่มอยู่บนแถบเครื่องมือ
+widget | วิดเจ็ต | Add a weather widget. | เพิ่มวิดเจ็ตสภาพอากาศ
+firmware | เฟิร์มแวร์ | Update the firmware. | อัปเดตเฟิร์มแวร์
+earphones | หูฟัง | Use earphones on the bus. | ใช้หูฟังบนรถเมล์
+power bank | แบตสำรอง | Bring a power bank. | พกแบตสำรองไปด้วย
+hotspot | ฮอตสปอต | Turn on your hotspot. | เปิดฮอตสปอต
+`);
+U('daily', 2, 'อาการป่วยที่พบบ่อย', `
+ache | ปวด | I have a back ache. | ฉันปวดหลัง
+flu | ไข้หวัดใหญ่ | I have the flu. | ฉันเป็นไข้หวัดใหญ่
+germ | เชื้อโรค | Wash your hands to kill germs. | ล้างมือเพื่อฆ่าเชื้อโรค
+illness | ความเจ็บป่วย | He has a serious illness. | เขาป่วยหนัก
+injury | การบาดเจ็บ | He had a head injury. | เขาบาดเจ็บที่ศีรษะ
+nausea | อาการคลื่นไส้ | The medicine may cause nausea. | ยาอาจทำให้คลื่นไส้
+---
+dizziness | อาการเวียนหัว | Dizziness is a side effect. | อาการเวียนหัวเป็นผลข้างเคียง
+migraine | ไมเกรน | She has a migraine. | เธอเป็นไมเกรน
+asthma | หอบหืด | He has asthma. | เขาเป็นโรคหอบหืด
+vitamin | วิตามิน | Take your vitamins. | กินวิตามิน
+thermometer | ปรอทวัดไข้ | Use a thermometer. | ใช้ปรอทวัดไข้
+crutch | ไม้ค้ำยัน | He walks with crutches. | เขาเดินด้วยไม้ค้ำ
+`);
+U('daily', 4, 'โรคและการรักษาในโรงพยาบาล', `
+appendix | ไส้ติ่ง | He had his appendix removed. | เขาผ่าตัดไส้ติ่ง
+cancer | มะเร็ง | Smoking causes cancer. | การสูบบุหรี่ทำให้เป็นมะเร็ง
+insulin | อินซูลิน | Diabetics need insulin. | ผู้ป่วยเบาหวานต้องใช้อินซูลิน
+obesity | โรคอ้วน | Obesity is a health problem. | โรคอ้วนเป็นปัญหาสุขภาพ
+pneumonia | ปอดบวม | He has pneumonia. | เขาเป็นปอดบวม
+stroke | โรคหลอดเลือดสมอง | He had a stroke. | เขาเป็นโรคหลอดเลือดสมอง
+---
+tumor | เนื้องอก | Doctors found a tumor. | แพทย์พบเนื้องอก
+ulcer | แผลในกระเพาะ | He has a stomach ulcer. | เขาเป็นแผลในกระเพาะ
+syringe | เข็มฉีดยา | Police found a syringe. | ตำรวจพบเข็มฉีดยา
+stitch | เย็บแผล | He needed five stitches. | เขาต้องเย็บแผลห้าเข็ม
+ward | หอผู้ป่วย | She is in the children's ward. | เธออยู่หอผู้ป่วยเด็ก
+surgeon | ศัลยแพทย์ | The surgeon saved his life. | ศัลยแพทย์ช่วยชีวิตเขาไว้
+`);
+U('daily', 1, 'อาชีพ ชุด 1', `
+baker | คนทำขนมปัง | The baker makes bread. | คนทำขนมปังอบขนมปัง
+butcher | คนขายเนื้อ | Buy meat from the butcher. | ซื้อเนื้อจากร้านขายเนื้อ
+carpenter | ช่างไม้ | The carpenter made a table. | ช่างไม้ทำโต๊ะ
+cleaner | พนักงานทำความสะอาด | The cleaner comes every day. | พนักงานทำความสะอาดมาทุกวัน
+gardener | คนสวน | The gardener cuts the grass. | คนสวนตัดหญ้า
+fisherman | ชาวประมง | The fisherman caught a big fish. | ชาวประมงจับปลาตัวใหญ่ได้
+---
+florist | คนขายดอกไม้ | Buy roses from the florist. | ซื้อกุหลาบจากร้านดอกไม้
+hairdresser | ช่างทำผม | My hairdresser is very good. | ช่างทำผมของฉันเก่งมาก
+janitor | ภารโรง | The janitor cleaned the hall. | ภารโรงทำความสะอาดห้องโถง
+librarian | บรรณารักษ์ | Ask the librarian. | ถามบรรณารักษ์
+lifeguard | เจ้าหน้าที่ช่วยชีวิต | The lifeguard saved a child. | เจ้าหน้าที่ช่วยชีวิตช่วยเด็กไว้
+locksmith | ช่างกุญแจ | Call a locksmith. | เรียกช่างกุญแจ
+`);
+U('daily', 2, 'อาชีพ ชุด 2', `
+architect | สถาปนิก | The architect designed the house. | สถาปนิกออกแบบบ้าน
+designer | นักออกแบบ | She is a fashion designer. | เธอเป็นนักออกแบบแฟชั่น
+jeweler | ช่างอัญมณี | The jeweler fixed my ring. | ช่างอัญมณีซ่อมแหวนให้ฉัน
+miner | คนงานเหมือง | The miners were trapped. | คนงานเหมืองติดอยู่ข้างใน
+musician | นักดนตรี | He is a talented musician. | เขาเป็นนักดนตรีที่เก่ง
+nanny | พี่เลี้ยงเด็ก | The nanny looks after the kids. | พี่เลี้ยงดูแลเด็กๆ
+---
+pharmacist | เภสัชกร | Ask the pharmacist. | ถามเภสัชกร
+photographer | ช่างภาพ | The photographer took our picture. | ช่างภาพถ่ายรูปเรา
+receptionist | พนักงานต้อนรับ | The receptionist gave me a key. | พนักงานต้อนรับให้กุญแจฉัน
+sailor | กะลาสี | The sailor worked on the ship. | กะลาสีทำงานบนเรือ
+salesperson | พนักงานขาย | The salesperson was helpful. | พนักงานขายช่วยได้มาก
+secretary | เลขานุการ | Leave a message with my secretary. | ฝากข้อความไว้กับเลขาของฉัน
+`);
+U('daily', 3, 'อาชีพ ชุด 3', `
+economist | นักเศรษฐศาสตร์ | Economists expect growth. | นักเศรษฐศาสตร์คาดว่าจะเติบโต
+physicist | นักฟิสิกส์ | Einstein was a physicist. | ไอน์สไตน์เป็นนักฟิสิกส์
+politician | นักการเมือง | The politician gave a speech. | นักการเมืองกล่าวสุนทรพจน์
+professor | ศาสตราจารย์ | She is a law professor. | เธอเป็นศาสตราจารย์ด้านกฎหมาย
+programmer | โปรแกรมเมอร์ | He works as a programmer. | เขาทำงานเป็นโปรแกรมเมอร์
+psychologist | นักจิตวิทยา | Talk to a psychologist. | คุยกับนักจิตวิทยา
+---
+scientist | นักวิทยาศาสตร์ | Scientists study the virus. | นักวิทยาศาสตร์ศึกษาไวรัส
+technician | ช่างเทคนิค | A technician fixed the printer. | ช่างเทคนิคซ่อมเครื่องพิมพ์
+therapist | นักบำบัด | She sees a therapist. | เธอพบนักบำบัด
+translator | นักแปล | We need a translator. | เราต้องการนักแปล
+tutor | ครูสอนพิเศษ | I have an English tutor. | ฉันมีครูสอนพิเศษภาษาอังกฤษ
+veterinarian | สัตวแพทย์ | Take the dog to the veterinarian. | พาสุนัขไปหาสัตวแพทย์
+`);
+U('daily', 1, 'กีฬา ชุด 1', `
+badminton | แบดมินตัน | Let's play badminton. | มาเล่นแบดมินตันกัน
+baseball | เบสบอล | Baseball is popular in Japan. | เบสบอลเป็นที่นิยมในญี่ปุ่น
+basketball | บาสเกตบอล | He plays basketball. | เขาเล่นบาสเกตบอล
+boxing | มวย | Thai boxing is famous. | มวยไทยมีชื่อเสียง
+soccer | ฟุตบอล | Soccer is my favorite sport. | ฟุตบอลเป็นกีฬาที่ฉันชอบ
+tennis | เทนนิส | She plays tennis well. | เธอเล่นเทนนิสเก่ง
+---
+volleyball | วอลเลย์บอล | Thailand has a strong volleyball team. | ไทยมีทีมวอลเลย์บอลที่เก่ง
+swimming | ว่ายน้ำ | Swimming is good exercise. | การว่ายน้ำเป็นการออกกำลังกายที่ดี
+skating | สเก็ต | We went ice skating. | เราไปเล่นสเก็ตน้ำแข็ง
+diving | ดำน้ำ/กระโดดน้ำ | Diving in Phuket is amazing. | การดำน้ำที่ภูเก็ตยอดเยี่ยม
+jogging | วิ่งเหยาะๆ | I go jogging every morning. | ฉันวิ่งเหยาะๆ ทุกเช้า
+yoga | โยคะ | She does yoga to relax. | เธอเล่นโยคะเพื่อผ่อนคลาย
+`);
+U('daily', 2, 'กีฬา ชุด 2', `
+goalkeeper | ผู้รักษาประตู | The goalkeeper saved the ball. | ผู้รักษาประตูเซฟลูกได้
+hurdle | รั้วกระโดดข้าม/อุปสรรค | He jumped the hurdles. | เขากระโดดข้ามรั้ว
+league | ลีก | They won the league. | พวกเขาชนะลีก
+marathon | มาราธอน | She ran a marathon. | เธอวิ่งมาราธอน
+pitch | สนาม (ฟุตบอล) | The players are on the pitch. | ผู้เล่นอยู่ในสนาม
+player | ผู้เล่น | He is the best player. | เขาเป็นผู้เล่นที่ดีที่สุด
+---
+racket | ไม้แร็กเกต | I need a new racket. | ฉันต้องการไม้แร็กเกตใหม่
+score | คะแนน/ทำคะแนน | What's the score? | คะแนนเท่าไหร่
+trophy | ถ้วยรางวัล | They won the trophy. | พวกเขาได้ถ้วยรางวัล
+umpire | กรรมการ (เทนนิส/คริกเก็ต) | The umpire made a call. | กรรมการตัดสิน
+weightlifting | ยกน้ำหนัก | Thailand won gold in weightlifting. | ไทยได้เหรียญทองยกน้ำหนัก
+wrestling | มวยปล้ำ | He does wrestling. | เขาเล่นมวยปล้ำ
+`);
+
+U('daily', 1, 'ส่วนต่างๆ ของบ้าน', `
+attic | ห้องใต้หลังคา | Old boxes are in the attic. | กล่องเก่าอยู่ในห้องใต้หลังคา
+chimney | ปล่องไฟ | Smoke came out of the chimney. | ควันออกจากปล่องไฟ
+doorbell | กริ่งประตู | Someone rang the doorbell. | มีคนกดกริ่ง
+doormat | พรมเช็ดเท้า | The key is under the doormat. | กุญแจอยู่ใต้พรมเช็ดเท้า
+driveway | ทางรถเข้าบ้าน | Park in the driveway. | จอดรถที่ทางเข้าบ้าน
+fireplace | เตาผิง | Sit by the fireplace. | นั่งข้างเตาผิง
+---
+gutter | รางน้ำ | The gutter is full of leaves. | รางน้ำเต็มไปด้วยใบไม้
+hallway | ทางเดินในบ้าน | Wait in the hallway. | รอที่ทางเดิน
+mailbox | ตู้จดหมาย | Check the mailbox. | ดูตู้จดหมาย
+patio | ลานหลังบ้าน | We ate on the patio. | เรากินข้าวที่ลานหลังบ้าน
+staircase | บันได | The staircase is narrow. | บันไดแคบ
+shelf | ชั้นวาง | Put the book on the shelf. | วางหนังสือบนชั้น
+`);
+U('daily', 1, 'ของใช้ในบ้านเพิ่มเติม', `
+bunk | เตียงสองชั้น | The kids sleep in bunk beds. | เด็กๆ นอนเตียงสองชั้น
+faucet | ก๊อกน้ำ | The faucet is leaking. | ก๊อกน้ำรั่ว
+hammock | เปลญวน | He sleeps in a hammock. | เขานอนในเปลญวน
+heater | เครื่องทำความร้อน | Turn on the water heater. | เปิดเครื่องทำน้ำอุ่น
+lantern | ตะเกียง/โคม | We released lanterns. | เราปล่อยโคมลอย
+lightbulb | หลอดไฟ | Change the lightbulb. | เปลี่ยนหลอดไฟ
+---
+mattress | ฟูก | The mattress is too soft. | ฟูกนุ่มเกินไป
+pillowcase | ปลอกหมอน | Wash the pillowcases. | ซักปลอกหมอน
+quilt | ผ้านวม | Grandma made a quilt. | ยายทำผ้านวม
+radiator | หม้อน้ำ | The car's radiator is hot. | หม้อน้ำรถร้อน
+switch | สวิตช์/เปลี่ยน | Press the switch. | กดสวิตช์
+toaster | เครื่องปิ้งขนมปัง | Put the bread in the toaster. | ใส่ขนมปังในเครื่องปิ้ง
+`);
+U('daily', 2, 'ยานพาหนะเพิ่มเติม', `
+carriage | รถม้า/ตู้รถไฟ | The queen rode in a carriage. | ราชินีนั่งรถม้า
+convertible | รถเปิดประทุน | He drives a red convertible. | เขาขับรถเปิดประทุนสีแดง
+cruise | ล่องเรือ | We went on a cruise. | เราไปล่องเรือ
+helicopter | เฮลิคอปเตอร์ | A helicopter rescued them. | เฮลิคอปเตอร์ช่วยพวกเขาไว้
+jeep | รถจี๊ป | The soldiers drove a jeep. | ทหารขับรถจี๊ป
+limousine | รถลีมูซีน | A limousine picked them up. | รถลีมูซีนมารับพวกเขา
+---
+minivan | รถตู้ (ส่วนตัว) | We rented a minivan. | เราเช่ารถตู้
+rickshaw | รถลาก/สามล้อ | Take a rickshaw to the market. | นั่งสามล้อไปตลาด
+shuttle | รถรับส่ง | Take the airport shuttle. | ขึ้นรถรับส่งสนามบิน
+tram | รถราง | We took a tram downtown. | เรานั่งรถรางเข้าเมือง
+vessel | เรือ/ภาชนะ | The vessel sank. | เรือจม
+windshield | กระจกหน้ารถ | The windshield is cracked. | กระจกหน้ารถร้าว
+`);
+U('daily', 2, 'ถนนและสิ่งอำนวยความสะดวก', `
+freeway | ทางด่วน | Take the freeway. | ขึ้นทางด่วน
+highway | ทางหลวง | There was an accident on the highway. | เกิดอุบัติเหตุบนทางหลวง
+pavement | ทางเท้า | Walk on the pavement. | เดินบนทางเท้า
+railway | ทางรถไฟ | The railway station is near. | สถานีรถไฟอยู่ใกล้ๆ
+terminal | อาคารผู้โดยสาร | Go to Terminal 2. | ไปที่อาคาร 2
+speedometer | มาตรวัดความเร็ว | Check the speedometer. | ดูมาตรวัดความเร็ว
+---
+parking meter | เครื่องเก็บค่าจอดรถ | Put coins in the parking meter. | หยอดเหรียญในเครื่องเก็บค่าจอด
+trash can | ถังขยะ | Throw it in the trash can. | ทิ้งลงถังขยะ
+ventilation | การระบายอากาศ | The room has poor ventilation. | ห้องระบายอากาศไม่ดี
+toll booth | ด่านเก็บเงิน | Stop at the toll booth. | หยุดที่ด่านเก็บเงิน
+overpass | สะพานลอย/ทางยกระดับ | Use the overpass. | ใช้สะพานลอย
+roundabout | วงเวียน | Turn left at the roundabout. | เลี้ยวซ้ายที่วงเวียน
+`);
+U('daily', 3, 'ภูมิศาสตร์และธรรมชาติ', `
+canyon | หุบเขาลึก | The Grand Canyon is huge. | แกรนด์แคนยอนกว้างใหญ่
+coral | ปะการัง | Don't touch the coral. | อย่าแตะปะการัง
+current | กระแสน้ำ/ปัจจุบัน | The current is strong. | กระแสน้ำแรง
+equator | เส้นศูนย์สูตร | It's hot at the equator. | ที่เส้นศูนย์สูตรร้อน
+erosion | การกัดเซาะ | Erosion damaged the coast. | การกัดเซาะทำลายชายฝั่ง
+fossil | ฟอสซิล | They found a dinosaur fossil. | พวกเขาพบฟอสซิลไดโนเสาร์
+---
+glacier | ธารน้ำแข็ง | The glacier is melting. | ธารน้ำแข็งกำลังละลาย
+iceberg | ภูเขาน้ำแข็ง | The ship hit an iceberg. | เรือชนภูเขาน้ำแข็ง
+lagoon | ทะเลสาบน้ำเค็ม | The lagoon is calm. | ลากูนสงบ
+lava | ลาวา | Lava flowed down the hill. | ลาวาไหลลงเนิน
+peninsula | คาบสมุทร | Thailand is on a peninsula. | ไทยตั้งอยู่บนคาบสมุทร
+plateau | ที่ราบสูง | Korat is on a plateau. | โคราชอยู่บนที่ราบสูง
+`);
+U('daily', 3, 'ภัยธรรมชาติและระบบนิเวศ', `
+asteroid | ดาวเคราะห์น้อย | An asteroid hit the Earth. | ดาวเคราะห์น้อยพุ่งชนโลก
+avalanche | หิมะถล่ม | The avalanche buried the village. | หิมะถล่มทับหมู่บ้าน
+blizzard | พายุหิมะ | We got stuck in a blizzard. | เราติดอยู่ในพายุหิมะ
+hurricane | พายุเฮอริเคน | The hurricane hit Florida. | พายุเฮอริเคนพัดถล่มฟลอริดา
+tornado | พายุทอร์นาโด | A tornado destroyed the town. | ทอร์นาโดทำลายเมือง
+swamp | หนองน้ำ | Crocodiles live in the swamp. | จระเข้อาศัยในหนองน้ำ
+---
+prairie | ทุ่งหญ้าแพรรี | Bison live on the prairie. | ควายป่าอาศัยในทุ่งหญ้า
+rainforest | ป่าฝน | The Amazon is a rainforest. | แอมะซอนเป็นป่าฝน
+reef | แนวปะการัง | We dived at the reef. | เราดำน้ำที่แนวปะการัง
+savanna | ทุ่งหญ้าสะวันนา | Lions live on the savanna. | สิงโตอาศัยในทุ่งหญ้าสะวันนา
+sunflower | ดอกทานตะวัน | The sunflower field is beautiful. | ทุ่งทานตะวันสวย
+wilderness | ป่าดงดิบ/ที่รกร้าง | They got lost in the wilderness. | พวกเขาหลงในป่า
+`);
+U('daily', 4, 'การปกครองและผู้นำ', `
+anthem | เพลงชาติ | Stand for the national anthem. | ยืนตรงเคารพเพลงชาติ
+cabinet | คณะรัฐมนตรี/ตู้ | The cabinet met today. | คณะรัฐมนตรีประชุมวันนี้
+census | สำมะโนประชากร | The census counts people. | สำมะโนประชากรนับจำนวนคน
+citizenship | สัญชาติ/ความเป็นพลเมือง | He applied for citizenship. | เขายื่นขอสัญชาติ
+councilor | สมาชิกสภา | The councilor visited us. | สมาชิกสภามาเยี่ยมเรา
+dictator | ผู้เผด็จการ | The dictator ruled for years. | ผู้เผด็จการปกครองหลายปี
+---
+diplomat | นักการทูต | He is a diplomat. | เขาเป็นนักการทูต
+federal | ของรัฐบาลกลาง | The FBI is a federal agency. | FBI เป็นหน่วยงานของรัฐบาลกลาง
+governor | ผู้ว่าราชการ | The governor visited the flood area. | ผู้ว่าฯ ลงพื้นที่น้ำท่วม
+mayor | นายกเทศมนตรี | The mayor opened the park. | นายกเทศมนตรีเปิดสวนสาธารณะ
+monarchy | ระบอบกษัตริย์ | Thailand has a monarchy. | ไทยมีสถาบันพระมหากษัตริย์
+premier | นายกรัฐมนตรี/ยอดเยี่ยม | The premier spoke on TV. | นายกฯ พูดออกทีวี
+`);
+U('daily', 4, 'การเมืองและรัฐ', `
+president | ประธานาธิบดี/ประธาน | The president gave a speech. | ประธานาธิบดีกล่าวสุนทรพจน์
+republic | สาธารณรัฐ | France is a republic. | ฝรั่งเศสเป็นสาธารณรัฐ
+senate | วุฒิสภา | The senate passed the bill. | วุฒิสภาผ่านร่างกฎหมาย
+senator | สมาชิกวุฒิสภา | The senator voted no. | สว. โหวตไม่เห็นด้วย
+veto | ยับยั้ง/วีโต้ | The president vetoed the law. | ประธานาธิบดียับยั้งกฎหมาย
+ministry | กระทรวง | He works at the Ministry of Interior. | เขาทำงานที่กระทรวงมหาดไทย
+---
+legislature | ฝ่ายนิติบัญญัติ | The legislature makes laws. | ฝ่ายนิติบัญญัติออกกฎหมาย
+electorate | ผู้มีสิทธิเลือกตั้ง | The electorate wants change. | ผู้มีสิทธิเลือกตั้งต้องการการเปลี่ยนแปลง
+municipal | ของเทศบาล | Municipal workers cleaned the street. | พนักงานเทศบาลทำความสะอาดถนน
+province | จังหวัด | Chiang Mai is a northern province. | เชียงใหม่เป็นจังหวัดทางเหนือ
+regime | ระบอบการปกครอง | The old regime fell. | ระบอบเก่าล่มสลาย
+constituent | ผู้มีสิทธิเลือกตั้งในเขต | The MP met his constituents. | ส.ส. พบประชาชนในเขต
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
