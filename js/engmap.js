@@ -193,7 +193,7 @@ function vocSheet(L, F, col, cur){
   const body = `<div class="voc-s" style="--c:${col}">
     <div class="voc-sum"><div><b>${k}</b><small>เจอแล้ว</small></div><div><b>${all.length - k}</b><small>ยังไม่เจอ</small></div><div><b>${all.length}</b><small>ทั้งหมด</small></div></div>
     <div class="voc-bar"><i style="--p:${all.length ? k / all.length * 100 : 0}%"></i></div>
-    <div class="voc-l">${G.map((g, gi) => `<section style="--d:${Math.min(gi, 8) * 50}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
+    <div class="voc-l">${G.map((g, gi) => `<section style="--d:${Math.min(gi, 8) * 50}ms"><h4>ชุด ${gi + 1}<span>บท ${g.n} · ${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
       const y = !!E.known[w.en]; return `<button class="voc-w ${y ? 'y' : 'n'}" data-say="${esc(w.en)}"><b>${esc(w.en)}</b><small>${y ? esc(w.th) : 'ยังไม่เจอ'}</small></button>`; }).join('')}</div></section>`).join('')}</div></div>`;
   openModal(`คำศัพท์ Lv.${L}`, body, due >= 4 ? `<button class="btn" id="vocRev"><i data-lucide="refresh-cw"></i>ทวนคำใกล้ลืม ${due} คำ</button>` : '');
   const cu = $('.voc-l section:has(.voc-w.n)'); if(cu && cu.previousElementSibling) cu.scrollIntoView({ block: 'start' }); // เลื่อนไปบทที่ยังเรียนไม่ครบ
