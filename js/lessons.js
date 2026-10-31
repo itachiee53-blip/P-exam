@@ -8382,6 +8382,97 @@ good to see you | ดีใจที่ได้เจอ | Good to see you agai
 nice talking to you | ยินดีที่ได้คุยด้วย | Nice talking to you. Bye! | ยินดีที่ได้คุยด้วย บาย!
 `);
 
+U('daily', 2, 'เงินและการชำระเงิน', `
+cashback | เงินคืน | This card gives 5% cashback. | บัตรนี้ให้เงินคืน 5%
+cheque | เช็ค | Can I pay by cheque? | ฉันจ่ายด้วยเช็คได้ไหม
+credit | เครดิต/สินเชื่อ | I bought it on credit. | ฉันซื้อแบบผ่อน
+debit | เดบิต/หักบัญชี | Use your debit card. | ใช้บัตรเดบิตของคุณ
+payment | การชำระเงิน | Payment is due on Friday. | กำหนดชำระวันศุกร์
+wage | ค่าจ้าง | He earns a low wage. | เขาได้ค่าจ้างต่ำ
+---
+saving | การประหยัด/การออม | This is a big saving. | ประหยัดได้มาก
+spending | การใช้จ่าย | Cut your spending. | ลดการใช้จ่าย
+withdrawal | การถอนเงิน | Withdrawals are free at this ATM. | ถอนเงินที่ตู้นี้ฟรี
+overdraft | การเบิกเกินบัญชี | I have an overdraft. | ฉันเบิกเงินเกินบัญชี
+rebate | เงินคืน/ส่วนลดคืน | You can get a tax rebate. | คุณได้ภาษีคืน
+inheritance | มรดก | He spent his inheritance. | เขาใช้มรดกหมด
+`);
+U('daily', 3, 'การลงทุนและเอกสารการเงิน', `
+stock | หุ้น/สินค้าคงคลัง | He invests in stocks. | เขาลงทุนในหุ้น
+shares | หุ้น (ส่วนแบ่ง) | She bought shares in the company. | เธอซื้อหุ้นของบริษัท
+transaction | ธุรกรรม | Check every transaction. | ตรวจทุกธุรกรรม
+portfolio | พอร์ตการลงทุน/แฟ้มผลงาน | Show me your portfolio. | ขอดูแฟ้มผลงานของคุณ
+stock market | ตลาดหุ้น | The stock market fell today. | ตลาดหุ้นร่วงวันนี้
+savings account | บัญชีออมทรัพย์ | Open a savings account. | เปิดบัญชีออมทรัพย์
+---
+net worth | มูลค่าทรัพย์สินสุทธิ | His net worth is high. | ทรัพย์สินสุทธิของเขาสูง
+tax return | แบบแสดงรายการภาษี | File your tax return. | ยื่นแบบภาษี
+pay slip | สลิปเงินเดือน | Bring your pay slip. | นำสลิปเงินเดือนมา
+bank statement | รายการเดินบัญชี | Print your bank statement. | พิมพ์รายการเดินบัญชี
+credit limit | วงเงินบัตรเครดิต | I reached my credit limit. | ฉันใช้เต็มวงเงินแล้ว
+down payment | เงินดาวน์ | We paid a down payment on the car. | เราจ่ายเงินดาวน์รถแล้ว
+`);
+U('daily', 2, 'โรงแรมและที่พัก', `
+amenities | สิ่งอำนวยความสะดวก | The hotel has great amenities. | โรงแรมมีสิ่งอำนวยความสะดวกครบ
+bellboy | พนักงานยกกระเป๋า | The bellboy carried our bags. | พนักงานยกกระเป๋าให้เรา
+booking | การจอง | I have a booking for two nights. | ฉันจองไว้สองคืน
+check-in | การเช็กอิน | Check-in is at 2 p.m. | เช็กอินบ่ายสองโมง
+check-out | การเช็กเอาต์ | Check-out is at noon. | เช็กเอาต์เที่ยง
+concierge | พนักงานต้อนรับ/ผู้ช่วยแขก | Ask the concierge for a taxi. | ขอให้พนักงานเรียกแท็กซี่
+---
+deluxe | ห้องดีลักซ์/หรูหรา | We booked a deluxe room. | เราจองห้องดีลักซ์
+room key | กุญแจห้อง | I lost my room key. | ฉันทำกุญแจห้องหาย
+guest | แขก | Hotel guests can use the pool. | แขกของโรงแรมใช้สระได้
+housekeeping | แผนกแม่บ้าน | Call housekeeping for towels. | โทรหาแม่บ้านขอผ้าเช็ดตัว
+lounge | ห้องรับรอง | Wait in the lounge. | รอที่ห้องรับรอง
+minibar | ตู้เย็นเล็กในห้อง | Drinks in the minibar are expensive. | เครื่องดื่มในตู้เย็นห้องแพง
+`);
+U('daily', 2, 'โรงแรมและร้านอาหารเพิ่มเติม', `
+porter | พนักงานขนกระเป๋า | The porter took our luggage. | พนักงานขนกระเป๋าของเราไป
+suite | ห้องชุด | They stayed in a suite. | พวกเขาพักห้องชุด
+vacancy | ห้องว่าง/ตำแหน่งว่าง | No vacancy tonight. | คืนนี้ห้องเต็ม
+wake-up call | โทรปลุก | I'd like a wake-up call at six. | ขอโทรปลุกตอนหกโมง
+bartender | บาร์เทนเดอร์ | The bartender made a drink. | บาร์เทนเดอร์ผสมเครื่องดื่ม
+cocktail | ค็อกเทล | I'll have a cocktail. | ฉันขอค็อกเทล
+---
+cuisine | อาหาร (ประจำชาติ) | I love Thai cuisine. | ฉันชอบอาหารไทย
+cutlery | ช้อนส้อมมีด | Wash the cutlery. | ล้างช้อนส้อม
+diner | ร้านอาหารเล็กๆ/ลูกค้าร้านอาหาร | We ate at a small diner. | เรากินที่ร้านอาหารเล็กๆ
+entree | อาหารจานหลัก | What's the entree today? | วันนี้อาหารจานหลักคืออะไร
+starter | อาหารเรียกน้ำย่อย | I'll have soup as a starter. | ฉันขอซุปเป็นอาหารเรียกน้ำย่อย
+takeaway | อาหารกลับบ้าน | Is this for here or takeaway? | ทานที่นี่หรือกลับบ้าน
+`);
+U('daily', 2, 'ร้านค้าและการช้อปปิ้ง', `
+boutique | ร้านเสื้อผ้าเล็กๆ | She owns a boutique. | เธอเป็นเจ้าของร้านเสื้อผ้า
+changing room | ห้องลองเสื้อ | Where is the changing room? | ห้องลองเสื้ออยู่ไหน
+merchandise | สินค้า | All merchandise is 50% off. | สินค้าทุกชิ้นลด 50%
+outlet | เอาต์เล็ต/ร้านขายสินค้าลดราคา | We shopped at the outlet. | เราไปช้อปที่เอาต์เล็ต
+product | ผลิตภัณฑ์ | This product is new. | ผลิตภัณฑ์นี้ใหม่
+queue | คิว/ต่อแถว | Please join the queue. | กรุณาต่อคิว
+---
+retailer | ผู้ค้าปลีก | The retailer lowered prices. | ผู้ค้าปลีกลดราคา
+shopper | นักช้อป | The mall was full of shoppers. | ห้างเต็มไปด้วยนักช้อป
+store | ร้านค้า/เก็บ | The store opens at ten. | ร้านเปิดสิบโมง
+vendor | พ่อค้าแม่ค้า | Street vendors sell food. | แม่ค้าริมถนนขายอาหาร
+window shopping | เดินดูของ (ไม่ซื้อ) | We went window shopping. | เราไปเดินดูของ
+waitress | พนักงานเสิร์ฟหญิง | The waitress brought our food. | พนักงานเสิร์ฟนำอาหารมา
+`);
+U('daily', 2, 'สำนักงานและพนักงาน', `
+assistant | ผู้ช่วย | My assistant will call you. | ผู้ช่วยของฉันจะโทรหาคุณ
+attachment | ไฟล์แนบ | Open the attachment. | เปิดไฟล์แนบ
+briefcase | กระเป๋าเอกสาร | He carries a briefcase. | เขาถือกระเป๋าเอกสาร
+department | แผนก | Which department do you work in? | คุณทำงานแผนกไหน
+email | อีเมล | Send me an email. | ส่งอีเมลมาหาฉัน
+employee | ลูกจ้าง/พนักงาน | The company has 50 employees. | บริษัทมีพนักงาน 50 คน
+---
+employer | นายจ้าง | My employer is fair. | นายจ้างของฉันยุติธรรม
+minutes | บันทึกการประชุม/นาที | Who will take the minutes? | ใครจะจดบันทึกการประชุม
+photocopy | ถ่ายเอกสาร | Make a photocopy of your ID. | ถ่ายสำเนาบัตรประชาชน
+project | โครงการ | The project is almost done. | โครงการใกล้เสร็จแล้ว
+supervisor | หัวหน้างาน | Ask your supervisor. | ถามหัวหน้างานของคุณ
+coworking space | พื้นที่ทำงานร่วม | I work at a coworking space. | ฉันทำงานที่โคเวิร์กกิงสเปซ
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
