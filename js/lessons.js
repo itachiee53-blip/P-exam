@@ -6995,6 +6995,262 @@ withdraw from | ถอนตัวจาก | He withdrew from the race. | เ�
 summon | เรียกตัว | He was summoned to court. | เขาถูกเรียกตัวไปศาล
 `);
 
+U('daily', 2, 'กริยาการมองและแสง', `
+gaze | จ้องมอง (นานๆ) | She gazed at the stars. | เธอจ้องมองดวงดาว
+glare | จ้องเขม็ง/แสงจ้า | He glared at me. | เขาจ้องเขม็งใส่ฉัน
+glimpse | เห็นแวบหนึ่ง | I caught a glimpse of the thief. | ฉันเห็นขโมยแวบหนึ่ง
+glow | เรืองแสง | The lamp glows at night. | โคมเรืองแสงตอนกลางคืน
+gleam | ส่องแสงวาว | His eyes gleamed. | ดวงตาเขาเป็นประกาย
+sparkle | ระยิบระยับ | The sea sparkled in the sun. | ทะเลระยิบระยับในแสงแดด
+---
+glisten | เป็นมันวาว | Her face glistened with sweat. | ใบหน้าเธอเป็นมันด้วยเหงื่อ
+radiate | แผ่ (ความร้อน/ความสุข) | She radiates confidence. | เธอเปล่งความมั่นใจ
+illuminate | ส่องสว่าง | Lights illuminated the street. | ไฟส่องสว่างถนน
+brighten | ทำให้สว่าง/สดใส | Your smile brightens my day. | รอยยิ้มของคุณทำให้วันของฉันสดใส
+blush | หน้าแดง (อาย) | She blushed when he smiled. | เธอหน้าแดงตอนเขายิ้ม
+doze | งีบ | Grandpa dozed on the sofa. | ปู่งีบบนโซฟา
+`);
+U('daily', 2, 'กริยาเสียงพูดและเสียงร้อง', `
+mumble | พึมพำ | Don't mumble. Speak clearly. | อย่าพึมพำ พูดให้ชัด
+murmur | พูดเบาๆ | She murmured his name. | เธอพูดชื่อเขาเบาๆ
+mutter | บ่นพึมพำ | He muttered something angrily. | เขาบ่นพึมพำอย่างโกรธๆ
+groan | ครวญคราง | He groaned in pain. | เขาครางด้วยความเจ็บปวด
+grumble | บ่น | Stop grumbling. | เลิกบ่นได้แล้ว
+whine | ร้องโอดครวญ/งอแง | The child whined all day. | เด็กงอแงทั้งวัน
+---
+wail | ร้องคร่ำครวญ | The mother wailed loudly. | แม่ร้องคร่ำครวญเสียงดัง
+weep | ร่ำไห้ | She wept at the funeral. | เธอร่ำไห้ในงานศพ
+shriek | กรีดร้อง | She shrieked in fear. | เธอกรีดร้องด้วยความกลัว
+squeal | ร้องเสียงแหลม | The kids squealed with joy. | เด็กๆ ร้องกรี๊ดด้วยความดีใจ
+roar | คำราม/โห่ร้อง | The crowd roared. | ฝูงชนโห่ร้อง
+howl | หอน | Wolves howl at the moon. | หมาป่าหอนใส่ดวงจันทร์
+`);
+U('daily', 2, 'กริยาการเคลื่อนไหวทั่วไป', `
+drift | ลอยไป | The boat drifted away. | เรือลอยไป
+glide | ร่อน | The bird glided through the air. | นกร่อนไปในอากาศ
+hover | ลอยนิ่ง/บินวน | The helicopter hovered above. | เฮลิคอปเตอร์ลอยอยู่ข้างบน
+soar | ทะยานขึ้น | Prices soared. | ราคาพุ่งสูง
+tumble | ล้มกลิ้ง | He tumbled down the stairs. | เขากลิ้งตกบันได
+stumble | สะดุด | I stumbled on a rock. | ฉันสะดุดหิน
+---
+stagger | เดินโซเซ | The drunk man staggered home. | ชายเมาเดินโซเซกลับบ้าน
+stride | ก้าวยาวๆ | He strode into the room. | เขาก้าวยาวๆ เข้าห้อง
+wade | ลุย (น้ำ) | We waded across the river. | เราลุยข้ามแม่น้ำ
+wobble | โยกเยก | The table wobbles. | โต๊ะโยกเยก
+sway | แกว่งไกว | The trees swayed in the wind. | ต้นไม้แกว่งไปตามลม
+tilt | เอียง | Tilt your head back. | เงยหน้าขึ้น
+`);
+U('daily', 3, 'กริยามือและการจับ', `
+grasp | จับแน่น/เข้าใจ | Grasp the rope. | จับเชือกไว้แน่น
+grip | กำแน่น | Grip the handle. | จับที่จับให้แน่น
+pinch | หยิก/บีบ | Don't pinch your brother. | อย่าหยิกน้อง
+fling | เหวี่ยง | He flung the bag away. | เขาเหวี่ยงกระเป๋าทิ้ง
+hurl | ขว้างแรง | Protesters hurled stones. | ผู้ประท้วงขว้างก้อนหิน
+flip | พลิก | Flip the pancake. | พลิกแพนเค้ก
+---
+flick | ดีด/สะบัด | Flick the switch. | ดีดสวิตช์
+fumble | งุ่มง่าม/คลำ | He fumbled for his keys. | เขาคลำหากุญแจ
+caress | ลูบไล้ | She caressed the cat. | เธอลูบแมว
+heave | ยก/ดึงอย่างแรง | They heaved the box up. | พวกเขายกกล่องขึ้น
+rummage | ค้นหา (รื้อ) | He rummaged through the drawer. | เขารื้อค้นลิ้นชัก
+whisk | ตี (ไข่)/พาไปเร็ว | Whisk the eggs. | ตีไข่
+`);
+U('daily', 3, 'กริยาอารมณ์และอาการ', `
+flinch | สะดุ้ง/ผงะ | He flinched at the noise. | เขาสะดุ้งกับเสียง
+startle | ทำให้ตกใจ | The noise startled me. | เสียงนั้นทำให้ฉันตกใจ
+shudder | สั่นสะท้าน | I shudder to think about it. | แค่คิดก็ขนลุก
+fidget | อยู่ไม่สุข | Stop fidgeting. | อยู่นิ่งๆ หน่อย
+stammer | พูดติดอ่าง | He stammered when nervous. | เขาพูดติดอ่างเวลาประหม่า
+gulp | กลืนอึก | He gulped his water. | เขากลืนน้ำอึกใหญ่
+---
+brag | คุยโว | Stop bragging. | เลิกคุยโวได้แล้ว
+gloat | สะใจ/ยิ้มเยาะ | Don't gloat over others' failure. | อย่าสะใจที่คนอื่นล้มเหลว
+loathe | เกลียดมาก | I loathe cold weather. | ฉันเกลียดอากาศหนาวมาก
+lament | คร่ำครวญ/เสียดาย | He lamented his lost youth. | เขาเสียดายวัยหนุ่ม
+relish | ชื่นชอบ/เพลิดเพลิน | She relished the challenge. | เธอสนุกกับความท้าทาย
+savor | ลิ้มรส/ดื่มด่ำ | Savor the moment. | ดื่มด่ำกับช่วงเวลานี้
+`);
+U('daily', 3, 'กริยาความสัมพันธ์กับผู้คน', `
+befriend | ผูกมิตร | He befriended the new student. | เขาผูกมิตรกับนักเรียนใหม่
+mingle | ปะปน/เข้าสังคม | Mingle with the guests. | พูดคุยกับแขก
+bond | ผูกพัน | The team bonded quickly. | ทีมสนิทกันเร็ว
+confide | ไว้ใจบอกความลับ | She confided in me. | เธอไว้ใจเล่าความลับให้ฉัน
+coax | เกลี้ยกล่อม | She coaxed the cat out. | เธอเกลี้ยกล่อมให้แมวออกมา
+charm | ทำให้หลงเสน่ห์ | He charmed everyone. | เขาทำให้ทุกคนหลงเสน่ห์
+---
+pamper | เอาใจ/ตามใจ | Pamper yourself today. | วันนี้ตามใจตัวเองหน่อย
+nurture | เลี้ยงดู/บ่มเพาะ | Parents nurture their children. | พ่อแม่เลี้ยงดูลูก
+foster | อุปถัมภ์/ส่งเสริม | Sports foster teamwork. | กีฬาส่งเสริมการทำงานเป็นทีม
+pardon | ให้อภัย/อภัยโทษ | Pardon me? | ขอโทษ ว่าอะไรนะ?
+plead | วิงวอน/ให้การ | She pleaded for help. | เธอวิงวอนขอความช่วยเหลือ
+tempt | ล่อใจ | Don't tempt me. | อย่ามายั่วฉัน
+`);
+U('daily', 3, 'กริยาการพูดและการแสดงออก', `
+exaggerate | พูดเกินจริง | Don't exaggerate. | อย่าพูดเกินจริง
+exclaim | อุทาน | "Wow!" she exclaimed. | "ว้าว!" เธออุทาน
+utter | เปล่ง (เสียง/คำพูด) | He didn't utter a word. | เขาไม่พูดสักคำ
+recount | เล่า | She recounted the story. | เธอเล่าเรื่องนั้น
+preach | สั่งสอน/เทศน์ | Don't preach to me. | อย่ามาสั่งสอนฉัน
+chant | ตะโกนพร้อมกัน/สวด | The crowd chanted his name. | ฝูงชนตะโกนชื่อเขาพร้อมกัน
+---
+portray | พรรณนา/แสดงเป็น | He portrayed a police officer. | เขารับบทเป็นตำรวจ
+imitate | เลียนแบบ | Kids imitate their parents. | เด็กเลียนแบบพ่อแม่
+mimic | ล้อเลียน/เลียนแบบ | Parrots can mimic voices. | นกแก้วเลียนเสียงได้
+echo | ก้อง/สะท้อน | His voice echoed in the cave. | เสียงเขาก้องในถ้ำ
+convey | ถ่ายทอด/สื่อ | Words can't convey my feelings. | คำพูดไม่อาจสื่อความรู้สึกฉันได้
+inquire | สอบถาม | I'd like to inquire about the job. | ฉันขอสอบถามเรื่องงาน
+`);
+U('daily', 4, 'กริยาการทำลายและความรุนแรง', `
+shatter | แตกละเอียด | The glass shattered. | แก้วแตกกระจาย
+wreck | ทำพัง | The storm wrecked the boat. | พายุทำเรือพัง
+crumble | ร่วน/พังทลาย | The old wall crumbled. | กำแพงเก่าพังทลาย
+topple | ล้มคว่ำ/โค่น | The tree toppled over. | ต้นไม้ล้มคว่ำ
+trample | เหยียบย่ำ | People were trampled in the crowd. | ผู้คนถูกเหยียบในฝูงชน
+slash | ฟัน/กรีด/ลดราคา | Someone slashed my tires. | มีคนกรีดยางรถฉัน
+---
+strangle | บีบคอ | He tried to strangle her. | เขาพยายามบีบคอเธอ
+slaughter | ฆ่าหมู่/ฆ่าสัตว์ | They slaughtered the pigs. | พวกเขาฆ่าหมู
+scorch | ไหม้เกรียม | The sun scorched the grass. | แดดเผาหญ้าเกรียม
+smear | ป้าย/ใส่ร้าย | Mud was smeared on the wall. | โคลนถูกป้ายบนกำแพง
+clash | ปะทะ | Police clashed with protesters. | ตำรวจปะทะกับผู้ประท้วง
+collide | ชนกัน | Two cars collided. | รถสองคันชนกัน
+`);
+U('daily', 4, 'กริยาการเคลื่อนที่และขับขี่', `
+steer | บังคับทิศทาง | Steer the car to the left. | หักรถไปทางซ้าย
+navigate | นำทาง | Use GPS to navigate. | ใช้จีพีเอสนำทาง
+propel | ขับเคลื่อน | The engine propels the boat. | เครื่องยนต์ขับเคลื่อนเรือ
+plunge | ดิ่ง/กระโจน | The car plunged into the river. | รถพุ่งลงแม่น้ำ
+descend | ลง | The plane began to descend. | เครื่องบินเริ่มลดระดับ
+elevate | ยกระดับ/ยกสูง | Elevate your leg. | ยกขาให้สูง
+---
+dash | พุ่งไป/รีบ | I have to dash. | ฉันต้องรีบไปแล้ว
+hustle | รีบเร่ง/ขยัน | We hustled to the station. | เรารีบไปสถานี
+linger | อ้อยอิ่ง/ค้างอยู่ | The smell lingered. | กลิ่นยังติดอยู่
+prowl | ด้อมๆ มองๆ | A man was prowling around the house. | ชายคนหนึ่งด้อมๆ มองๆ รอบบ้าน
+pounce | ตะครุบ | The cat pounced on the mouse. | แมวตะครุบหนู
+stoop | ก้มตัว | He stooped to pick it up. | เขาก้มลงเก็บ
+`);
+U('daily', 4, 'กริยาสภาพแวดล้อมและการอยู่อาศัย', `
+dwell | อาศัยอยู่/จมอยู่กับ | Don't dwell on the past. | อย่าจมอยู่กับอดีต
+reside | พำนัก | He resides in Bangkok. | เขาพำนักที่กรุงเทพฯ
+inhabit | อาศัยอยู่ (ในพื้นที่) | Tigers inhabit the forest. | เสืออาศัยอยู่ในป่า
+cultivate | เพาะปลูก/บ่มเพาะ | Farmers cultivate rice. | ชาวนาปลูกข้าว
+graze | เล็มหญ้า/ถลอก | Cows graze in the field. | วัวเล็มหญ้าในทุ่ง
+breed | ผสมพันธุ์/เพาะ | They breed dogs. | พวกเขาเพาะพันธุ์สุนัข
+---
+drench | เปียกโชก | I was drenched in the rain. | ฉันเปียกโชกเพราะฝน
+erupt | ปะทุ | The volcano erupted. | ภูเขาไฟปะทุ
+scatter | กระจาย | The crowd scattered. | ฝูงชนกระจายตัว
+swirl | หมุนวน | Leaves swirled in the wind. | ใบไม้หมุนวนในสายลม
+stink | ส่งกลิ่นเหม็น | The trash stinks. | ขยะเหม็น
+clog | อุดตัน | Hair clogged the drain. | ผมอุดท่อ
+`);
+U('daily', 4, 'กริยาการจัดการและปรับปรุง', `
+modify | ดัดแปลง/แก้ไข | He modified his car. | เขาดัดแปลงรถ
+moderate | ปรับให้พอดี/ดำเนินรายการ | Moderate your drinking. | ดื่มให้พอประมาณ
+substitute | แทนที่ | Substitute sugar with honey. | ใช้น้ำผึ้งแทนน้ำตาล
+subtract | ลบ (เลข) | Subtract 5 from 10. | เอา 10 ลบ 5
+integrate | รวมเข้าด้วยกัน | Integrate the two systems. | รวมสองระบบเข้าด้วยกัน
+incorporate | ผนวก/รวม | Incorporate exercise into your day. | ใส่การออกกำลังกายในชีวิตประจำวัน
+---
+rectify | แก้ไขให้ถูก | We will rectify the error. | เราจะแก้ไขข้อผิดพลาด
+renew | ต่ออายุ | Renew your license. | ต่ออายุใบขับขี่
+reinforce | เสริมกำลัง | Reinforce the wall. | เสริมกำแพงให้แข็งแรง
+regain | ได้คืน | He regained consciousness. | เขาฟื้นคืนสติ
+retrieve | กู้คืน/นำกลับมา | Retrieve the deleted files. | กู้ไฟล์ที่ลบไป
+reclaim | เรียกคืน | Reclaim your luggage here. | รับกระเป๋าคืนที่นี่
+`);
+U('daily', 4, 'กริยาการตรวจสอบและการลงมือ', `
+probe | สอบสวน/สำรวจ | Police are probing the case. | ตำรวจกำลังสอบสวนคดี
+penetrate | ทะลุ/แทรกซึม | The bullet penetrated the wall. | กระสุนทะลุกำแพง
+intervene | เข้าแทรกแซง | The police had to intervene. | ตำรวจต้องเข้าแทรกแซง
+intrude | บุกรุก/ล่วงล้ำ | Sorry to intrude. | ขอโทษที่รบกวน
+execute | ปฏิบัติ/ประหาร | Execute the plan. | ดำเนินการตามแผน
+exert | ใช้ (แรง/อิทธิพล) | Don't exert yourself. | อย่าหักโหม
+---
+prompt | กระตุ้น/ทันที | The news prompted panic. | ข่าวทำให้เกิดความตื่นตระหนก
+stimulate | กระตุ้น | Coffee stimulates the brain. | กาแฟกระตุ้นสมอง
+urge | เร่งเร้า/กระตุ้น | I urge you to stop. | ฉันขอเรียกร้องให้คุณหยุด
+suppress | ปราบปราม/กดไว้ | He suppressed a smile. | เขากลั้นยิ้ม
+suspend | ระงับ/แขวน | His license was suspended. | ใบขับขี่ของเขาถูกพัก
+stall | ดับ (เครื่อง)/ถ่วงเวลา | The car stalled. | รถดับ
+`);
+U('daily', 5, 'กริยาการแสดงและการเผยแพร่', `
+exhibit | จัดแสดง | The museum exhibits old coins. | พิพิธภัณฑ์จัดแสดงเหรียญเก่า
+unveil | เปิดตัว | They unveiled a new car. | พวกเขาเปิดตัวรถใหม่
+unfold | คลี่/เปิดเผย | The story unfolds slowly. | เรื่องราวค่อยๆ เผยออกมา
+commemorate | รำลึก | We commemorate the heroes. | เรารำลึกถึงวีรชน
+dedicate | อุทิศ | This song is dedicated to my mom. | เพลงนี้อุทิศให้แม่
+render | ทำให้/ให้บริการ | The news rendered him speechless. | ข่าวทำให้เขาพูดไม่ออก
+---
+derive | ได้มาจาก | The word is derived from Latin. | คำนี้มาจากภาษาละติน
+consist | ประกอบด้วย | The team consists of five officers. | ทีมประกอบด้วยเจ้าหน้าที่ห้าคน
+correspond | สอดคล้อง/ติดต่อทางจดหมาย | His story doesn't correspond with the facts. | เรื่องเขาไม่สอดคล้องกับข้อเท็จจริง
+convert | เปลี่ยน/แปลง | Convert baht to dollars. | แปลงบาทเป็นดอลลาร์
+condense | ย่อ/ควบแน่น | Condense the report. | ย่อรายงาน
+detach | แยกออก | Detach the form here. | ฉีกแบบฟอร์มตรงนี้
+`);
+U('daily', 5, 'กริยาการควบคุมและครอบงำ', `
+dominate | ครอบงำ/ครองตลาด | They dominate the market. | พวกเขาครองตลาด
+dictate | บงการ/บอกให้จด | Don't let fear dictate your life. | อย่าให้ความกลัวกำหนดชีวิต
+confine | กักขัง/จำกัด | He was confined to bed. | เขาต้องนอนติดเตียง
+enclose | ล้อมรอบ/แนบ | Please find the enclosed form. | โปรดดูแบบฟอร์มที่แนบมา
+expel | ไล่ออก | He was expelled from school. | เขาถูกไล่ออกจากโรงเรียน
+repel | ขับไล่ | This spray repels mosquitoes. | สเปรย์นี้ไล่ยุง
+---
+conspire | สมคบคิด | They conspired to rob the bank. | พวกเขาสมคบกันปล้นธนาคาร
+contend | แข่งขัน/ยืนยัน | Several teams contend for the title. | หลายทีมแข่งชิงแชมป์
+combat | ต่อสู้/ปราบ | We must combat drug abuse. | เราต้องปราบปรามยาเสพติด
+bombard | ระดม (ยิง/ถาม) | Reporters bombarded him with questions. | นักข่าวระดมถามเขา
+bolster | เสริม/หนุน | Good news bolstered confidence. | ข่าวดีเสริมความมั่นใจ
+reign | ครองราชย์/ครอบงำ | The king reigned for 70 years. | กษัตริย์ครองราชย์ 70 ปี
+`);
+U('daily', 5, 'กริยาคุณธรรมและศาสนา', `
+worship | บูชา | They worship at the temple. | พวกเขาไปไหว้พระที่วัด
+repent | สำนึกผิด | He repented his sins. | เขาสำนึกผิด
+redeem | ไถ่ถอน/แลก | Redeem your points. | แลกแต้มของคุณ
+refrain | งดเว้น | Please refrain from smoking. | กรุณางดสูบบุหรี่
+indulge | ปล่อยตัว/ตามใจ | Don't indulge in junk food. | อย่าตามใจตัวเองกินขยะ
+reproach | ตำหนิ | He reproached himself. | เขาตำหนิตัวเอง
+---
+perish | ตาย/สูญสิ้น | Many perished in the fire. | หลายคนเสียชีวิตในกองเพลิง
+starve | อดอาหาร/หิวมาก | I'm starving! | ฉันหิวจะตายแล้ว!
+quench | ดับ (กระหาย/ไฟ) | Water quenches thirst. | น้ำดับกระหาย
+hoard | กักตุน | Don't hoard food. | อย่ากักตุนอาหาร
+haunt | หลอกหลอน | The memory haunts him. | ความทรงจำหลอกหลอนเขา
+procrastinate | ผัดวันประกันพรุ่ง | Stop procrastinating. | เลิกผัดวันประกันพรุ่ง
+`);
+U('daily', 5, 'กริยาการทำงานของสิ่งต่างๆ', `
+immerse | จุ่ม/ดื่มด่ำ | Immerse yourself in English. | ทำให้ตัวเองอยู่กับภาษาอังกฤษ
+enrich | ทำให้สมบูรณ์ขึ้น | Reading enriches the mind. | การอ่านทำให้จิตใจสมบูรณ์
+enlighten | ให้ความรู้/ทำให้ตาสว่าง | The book enlightened me. | หนังสือทำให้ฉันตาสว่าง
+interact | มีปฏิสัมพันธ์ | Kids interact with each other. | เด็กๆ มีปฏิสัมพันธ์กัน
+replicate | ทำซ้ำ | Scientists replicated the test. | นักวิทยาศาสตร์ทำการทดลองซ้ำ
+nominate | เสนอชื่อ | She was nominated for an award. | เธอได้รับการเสนอชื่อเข้าชิงรางวัล
+---
+precede | มาก่อน | Lightning precedes thunder. | ฟ้าแลบมาก่อนฟ้าร้อง
+omit | ละเว้น | Don't omit any details. | อย่าละรายละเอียดใด
+object | คัดค้าน | I object to this plan. | ฉันคัดค้านแผนนี้
+straighten | ทำให้ตรง/จัดให้เรียบร้อย | Straighten your tie. | จัดเนกไทให้ตรง
+dangle | ห้อยต่องแต่ง | His legs dangled over the edge. | ขาเขาห้อยต่องแต่งที่ขอบ
+cling | เกาะแน่น/ยึดติด | The child clung to her mother. | เด็กเกาะแม่แน่น
+`);
+U('daily', 3, 'กริยาสนุกๆ และในครัว', `
+tickle | จั๊กจี้ | Stop tickling me! | เลิกจั๊กจี้ฉันได้แล้ว!
+wriggle | ดิ้นไปมา | The worm wriggled. | หนอนดิ้นไปมา
+wrestle | ปล้ำ | The boys wrestled on the grass. | เด็กชายปล้ำกันบนหญ้า
+feast | งานเลี้ยง/กินอย่างเต็มที่ | We feasted on seafood. | เรากินอาหารทะเลกันเต็มที่
+devour | กินอย่างตะกละ | The kids devoured the cake. | เด็กๆ กินเค้กหมดเกลี้ยง
+bathe | อาบน้ำ (ให้) | Bathe the baby. | อาบน้ำให้ทารก
+---
+batter | แป้งชุบทอด/ทุบตี | Dip the shrimp in batter. | ชุบกุ้งในแป้ง
+bloat | ท้องอืด/บวม | I feel bloated. | ฉันรู้สึกท้องอืด
+bundle | มัด/ห่อ | A bundle of cash. | เงินสดหนึ่งปึก
+buckle | หัวเข็มขัด/รัด | Buckle up! | คาดเข็มขัด!
+budge | ขยับ | The door won't budge. | ประตูไม่ขยับเลย
+weave | ทอ/สาน | She weaves silk. | เธอทอผ้าไหม
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
