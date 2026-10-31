@@ -1261,6 +1261,7 @@ body:has(.ls-wrap) :is(.topbar,.bottomnav){display:none!important}
 .ls-wrap>.ls-top{width:100%}
 .ls-wrap>.ls-body{width:100%;order:2}
 .ls-wrap>#lsFb{width:100%;min-height:86px;order:3}
+.ls-wrap>*{flex-shrink:0} /* กันเฉลยถูกบีบจนตกขอบ */
 .ls-wrap::before,.ls-wrap::after{content:"";flex:1 1 0;order:1}.ls-wrap::after{order:4}
 @media (orientation:portrait) and (max-width:600px){
   .ls-wrap .ls-opt{min-height:64px;font-size:18px}
@@ -1274,3 +1275,20 @@ body:has(.ls-wrap) :is(.topbar,.bottomnav){display:none!important}
 .voc-w.n{position:relative;background:color-mix(in srgb,#94a3b8 10%,var(--surface));border:1.5px solid color-mix(in srgb,#94a3b8 25%,transparent);padding-right:28px}
 .voc-w.n::after{content:"";position:absolute;top:50%;right:9px;width:14px;height:14px;margin-top:-7px;background:#94a3b8;-webkit-mask:var(--lock) center/contain no-repeat;mask:var(--lock) center/contain no-repeat;
   --lock:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E")}
+.ls-fb,.ls-full{scroll-margin-bottom:20px}
+/* แผนที่: อนิเมชันด่าน (transform/opacity เท่านั้น ลื่น) */
+.em-book.now{animation:emNow .55s cubic-bezier(.34,1.56,.64,1) .2s both,emFloat 2.4s ease-in-out .8s infinite}
+@keyframes emFloat{50%{translate:0 -6px}}
+.em-book.now::before{content:'';position:absolute;inset:-7px;border-radius:14px 18px 18px 14px;border:3px solid color-mix(in srgb,var(--cc) 60%,#fff);animation:emPulse 1.8s ease-out infinite;pointer-events:none}
+@keyframes emPulse{from{opacity:.9;scale:1}to{opacity:0;scale:1.22}}
+.em-badge.ok{animation:emPop .45s cubic-bezier(.34,1.56,.64,1) .35s both}
+.em-stars{animation:emPop .45s cubic-bezier(.34,1.56,.64,1) .5s both}
+@keyframes emPop{from{scale:0;opacity:0}}
+.em-book:not(.lock):active{scale:.94}
+@supports (animation-timeline:view()){
+  .em-book,.em-sign,.em-prop{animation:emIn linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+  .em-book.now{animation:emIn linear both,emFloat 2.4s ease-in-out infinite;animation-timeline:view(),auto;animation-range:entry 0% entry 70%,normal}
+  .em-badge.ok,.em-stars{animation:emPop linear both;animation-timeline:view();animation-range:entry 30% entry 100%}
+  @keyframes emIn{from{opacity:0;scale:.7;translate:0 24px}}
+}
+@media (prefers-reduced-motion:reduce){.em-book,.em-book::before,.em-sign,.em-prop,.em-badge,.em-stars{animation:none!important}}
