@@ -174,8 +174,10 @@ function renderEngPath(L){
 
 // คำศัพท์ในหน่วยที่กำลังเรียน (บทคำศัพท์ถัดไป ทั้ง 2 บทของหน่วย) · เจอ = เรียนบทนั้นจบแล้ว (E.known)
 function vocUnit(F, cur){
-  let k = F.findIndex((x, i) => i >= Math.max(cur, 0) && !COURSES[x.c].gram);
-  if(k < 0) k = F.map(x => !COURSES[x.c].gram).lastIndexOf(true);
+  const E = engState(), V = i => i >= 0 && F[i] && !COURSES[F[i].c].gram;
+  // บทปัจจุบันเป็นคำศัพท์ → หน่วยนั้น · ไม่ใช่ → หน่วยของบทคำศัพท์ล่าสุดที่เรียนจบ · ยังไม่เคยเรียน → บทคำศัพท์แรก
+  let k = V(cur) ? cur : F.map((x, i) => V(i) && !!E.done[x.key]).lastIndexOf(true);
+  if(k < 0) k = F.findIndex((x, i) => V(i));
   if(k < 0) return null;
   const u = F[k], G = F.map((x, i) => ({ x, n: i + 1 })).filter(g => g.x.c === u.c && g.x.ui === u.ui).map(g => ({ n: g.n, ws: g.x.ws.filter(w => w.en) }));
   return { t: u.u.t, G, all: G.flatMap(g => g.ws) };
@@ -194,11 +196,11 @@ function vocSheet(L, F, col, cur){
     <div class="voc-sum"><div><b>${k}</b><small>เจอแล้ว</small></div><div><b>${all.length - k}</b><small>ยังไม่เจอ</small></div><div><b>${all.length}</b><small>ทั้งหมด</small></div></div>
     <div class="voc-bar"><i style="--p:${all.length ? k / all.length * 100 : 0}%"></i></div>
     <div class="voc-f"><button class="on" data-vf="">ทั้งหมด</button><button data-vf="y">เจอแล้ว</button><button data-vf="n">ยังไม่เจอ</button></div>
-    <div class="voc-l">${G.map((g, gi) => `<section style="--d:${gi * 60}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
+    <p class="voc-e" hidden>ไม่มีคำ</p><div class="voc-l">${G.map((g, gi) => `<section style="--d:${gi * 60}ms"><h4>บท ${g.n}<span>${g.ws.filter(w => E.known[w.en]).length}/${g.ws.length}</span></h4><div>${g.ws.map(w => {
       const y = !!E.known[w.en]; return `<button class="voc-w ${y ? 'y' : 'n'}" data-say="${esc(w.en)}"><b>${esc(w.en)}</b><small>${y ? esc(w.th) : '?'}</small></button>`; }).join('')}</div></section>`).join('')}</div></div>`;
   openModal(esc(V.t), body, due >= 4 ? `<button class="btn" id="vocRev"><i data-lucide="refresh-cw"></i>ทวนคำใกล้ลืม ${due} คำ</button>` : '');
   $$('[data-vf]').forEach(b => b.onclick = () => { $$('[data-vf]').forEach(x => x.classList.toggle('on', x === b)); const f = b.dataset.vf;
-    $$('.voc-l section').forEach(s => { let c = 0; s.querySelectorAll('.voc-w').forEach(w => { const h = f && !w.classList.contains(f); w.hidden = h; c += !h; }); s.hidden = !c; }); });
+    $$('.voc-l section').forEach(s => { let c = 0; s.querySelectorAll('.voc-w').forEach(w => { const h = f && !w.classList.contains(f); w.hidden = h; c += !h; }); s.hidden = !c; }); $('.voc-e').hidden = !!$('.voc-l section:not([hidden])'); });
   $$('.voc-w.y').forEach(b => b.onclick = () => speakWord(b.dataset.say));
   if($('#vocRev')) $('#vocRev').onclick = () => { closeModal(); engReview(); };
 }
