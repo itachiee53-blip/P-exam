@@ -8246,6 +8246,142 @@ flaw | ข้อบกพร่อง | There is a flaw in the plan. | แผน
 guideline | แนวทาง | Follow the guidelines. | ปฏิบัติตามแนวทาง
 `);
 
+U('talk', 2, 'ประโยคในหนัง: ให้กำลังใจและยืนยัน', `
+I got this | ฉันจัดการได้ | Don't worry, I got this. | ไม่ต้องห่วง ฉันจัดการได้
+I'm on it | กำลังจัดการอยู่ | Find the car! — I'm on it. | หารถให้เจอ! — กำลังจัดการอยู่
+trust me | เชื่อฉันสิ | Trust me, it will work. | เชื่อฉันสิ มันได้ผลแน่
+I swear | สาบานเลย | I swear I didn't take it. | สาบานเลยว่าฉันไม่ได้เอาไป
+come on | เร็วเข้า/ไม่เอาน่า | Come on, we're late! | เร็วเข้า เราสายแล้ว!
+let's go | ไปกันเถอะ | Let's go, team! | ไปกันเลยทีม!
+---
+that's it | แค่นั้นแหละ/พอแล้ว | That's it! I'm leaving. | พอแล้ว! ฉันไปล่ะ
+I told you | บอกแล้วไง | I told you it was dangerous. | บอกแล้วไงว่ามันอันตราย
+I'm serious | ฉันพูดจริงนะ | I'm serious, call the police. | ฉันพูดจริง โทรเรียกตำรวจ
+I mean it | ฉันหมายความอย่างนั้นจริงๆ | Thank you. I mean it. | ขอบคุณนะ ฉันพูดจริงๆ
+believe me | เชื่อฉันเถอะ | Believe me, he's lying. | เชื่อฉันเถอะ เขาโกหก
+I'm in | ฉันเอาด้วย | A road trip? I'm in! | เที่ยวขับรถเหรอ ฉันเอาด้วย!
+`);
+U('talk', 2, 'ประโยคในหนัง: เตือนและสั่ง', `
+watch your back | ระวังตัวไว้ | Watch your back out there. | ระวังตัวด้วยนะข้างนอกนั่น
+get out of here | ออกไปจากที่นี่/ล้อเล่นน่า | Get out of here now! | ออกไปจากที่นี่เดี๋ยวนี้!
+leave me alone | ปล่อยฉันไว้คนเดียว | Please leave me alone. | ขอร้องปล่อยฉันไว้คนเดียว
+shut up | หุบปาก | Shut up and listen! | หุบปากแล้วฟัง!
+keep it down | เบาเสียงหน่อย | Keep it down, the baby's asleep. | เบาเสียงหน่อย ลูกหลับอยู่
+get a grip | ตั้งสติหน่อย | Get a grip! We need you. | ตั้งสติหน่อย! เราต้องการคุณ
+---
+stay out of this | อย่ายุ่งเรื่องนี้ | Stay out of this, it's dangerous. | อย่ายุ่งเรื่องนี้ มันอันตราย
+mind your own business | อย่ายุ่งเรื่องของคนอื่น | Mind your own business! | ไปยุ่งเรื่องของตัวเองไป!
+deal with it | ทำใจซะ/รับมือเอง | Life is hard. Deal with it. | ชีวิตมันยาก ทำใจซะ
+get over it | ทำใจได้แล้ว | It was a year ago. Get over it. | มันผ่านมาปีหนึ่งแล้ว ทำใจได้แล้ว
+give me a break | พอเถอะ/ขอพักหน่อย | Give me a break! I just got here. | พอเถอะ! ฉันเพิ่งมาถึง
+time's up | หมดเวลา | Time's up! Pens down. | หมดเวลา! วางปากกา
+`);
+U('talk', 3, 'ประโยคในหนัง: แสดงความรู้สึก', `
+what's going on | เกิดอะไรขึ้น | What's going on in there? | ในนั้นเกิดอะไรขึ้น
+it's over | จบแล้ว | It's over between us. | เราจบกันแล้ว
+we're good | เราโอเคกัน/ไม่มีอะไรติดค้าง | Sorry about yesterday. — We're good. | ขอโทษเรื่องเมื่อวาน — เราโอเคกัน
+what's wrong with you | เป็นอะไรของคุณ | What's wrong with you today? | วันนี้เป็นอะไรของคุณ
+you scared me | ทำฉันตกใจ | Oh, you scared me! | โอ้ ทำฉันตกใจหมด!
+what the heck | อะไรวะ/ช่างมัน | What the heck is that? | นั่นมันอะไรกัน
+---
+that's not fair | ไม่ยุติธรรม | That's not fair! He cheated. | ไม่ยุติธรรม! เขาโกง
+don't be ridiculous | อย่าบ้าน่า | Don't be ridiculous, I'm fine. | อย่าบ้าน่า ฉันสบายดี
+you've got to be kidding | ล้อเล่นใช่ไหม | You've got to be kidding me! | ล้อเล่นใช่ไหมเนี่ย!
+what a relief | โล่งอกไปที | You're safe. What a relief! | คุณปลอดภัย โล่งอกไปที!
+no wonder | ไม่น่าแปลกใจเลย | No wonder you're tired. | ไม่แปลกที่คุณเหนื่อย
+as if | อย่างกับว่า/ฝันไปเถอะ | As if I'd believe that! | ฝันไปเถอะว่าฉันจะเชื่อ!
+`);
+U('talk', 3, 'ประโยคในหนัง: ไม่สนใจและตัดสินใจ', `
+I'm done | ฉันพอแล้ว/เสร็จแล้ว | I'm done with this job. | ฉันพอแล้วกับงานนี้
+so what | แล้วไง | So what if I'm late? | แล้วไงถ้าฉันมาสาย?
+who cares | ใครจะไปสน | Who cares what they think? | ใครจะไปสนว่าพวกเขาคิดยังไง
+I don't care | ฉันไม่สน | I don't care what you say. | ฉันไม่สนว่าคุณจะพูดอะไร
+it's your call | แล้วแต่คุณตัดสิน | Stay or go? It's your call. | อยู่หรือไป แล้วแต่คุณ
+suit yourself | ตามใจ | You don't want to come? Suit yourself. | ไม่อยากมาเหรอ ตามใจ
+---
+whatever you say | แล้วแต่คุณว่า | Okay, whatever you say. | โอเค แล้วแต่คุณว่า
+I guess so | คงงั้นมั้ง | Are you ready? — I guess so. | พร้อมไหม — คงงั้นมั้ง
+take it or leave it | เอาหรือไม่เอา | 500 baht. Take it or leave it. | 500 บาท จะเอาหรือไม่เอา
+count me out | ไม่เอาด้วย | A horror movie? Count me out. | หนังผีเหรอ ไม่เอาด้วย
+it's none of your business | ไม่ใช่เรื่องของคุณ | It's none of your business. | ไม่ใช่เรื่องของคุณ
+I have no idea | ไม่รู้เลย | I have no idea where he went. | ไม่รู้เลยว่าเขาไปไหน
+`);
+U('talk', 3, 'ประโยคชวนคุยและตอบสั้นๆ', `
+give it a shot | ลองดู | Just give it a shot. | ลองดูสิ
+it's not a big deal | ไม่ใช่เรื่องใหญ่ | Relax, it's not a big deal. | ใจเย็น ไม่ใช่เรื่องใหญ่
+just kidding | ล้อเล่น | Just kidding! I'm fine. | ล้อเล่น! ฉันสบายดี
+long story short | สรุปสั้นๆ ก็คือ | Long story short, we missed the bus. | สรุปสั้นๆ คือเราตกรถ
+look who's here | ดูสิว่าใครมา | Well, look who's here! | ดูสิว่าใครมา!
+took you long enough | นานเชียวนะ | Took you long enough! | ช้าจังเลยนะ!
+---
+you never know | ไม่แน่หรอก | Buy a ticket. You never know! | ซื้อลอตเตอรี่สิ ไม่แน่หรอก!
+that makes sense | ฟังดูมีเหตุผล | Oh, that makes sense. | อ๋อ มีเหตุผล
+it doesn't matter | ไม่เป็นไร/ไม่สำคัญ | It doesn't matter who wins. | ใครชนะก็ไม่สำคัญ
+good point | ประเด็นดี | Good point. Let's ask him. | ประเด็นดี ไปถามเขากัน
+same to you | คุณก็เช่นกัน | Have a nice day! — Same to you! | ขอให้วันนี้ดี! — คุณเช่นกัน!
+see you around | แล้วเจอกันใหม่ | Bye, see you around. | บาย แล้วเจอกัน
+`);
+U('talk', 4, 'สำนวนบอกเวลาและวิธีการ', `
+for good | ตลอดไป/ถาวร | He left Thailand for good. | เขาออกจากไทยไปตลอดกาล
+from scratch | จากศูนย์ | I learned English from scratch. | ฉันเรียนภาษาอังกฤษจากศูนย์
+in no time | ในเวลาไม่นาน | You'll learn it in no time. | คุณจะเรียนได้ในเวลาไม่นาน
+on purpose | โดยเจตนา | He did it on purpose. | เขาจงใจทำ
+out of the blue | อยู่ดีๆ ก็/ไม่ทันตั้งตัว | She called me out of the blue. | อยู่ดีๆ เธอก็โทรมา
+over and over | ซ้ำแล้วซ้ำเล่า | He said it over and over. | เขาพูดซ้ำแล้วซ้ำเล่า
+---
+sooner or later | ไม่ช้าก็เร็ว | Sooner or later, he'll be caught. | ไม่ช้าก็เร็วเขาจะถูกจับ
+the sooner the better | ยิ่งเร็วยิ่งดี | Call him. The sooner the better. | โทรหาเขา ยิ่งเร็วยิ่งดี
+at all costs | ไม่ว่าจะต้องแลกด้วยอะไร | Protect the witness at all costs. | ปกป้องพยานไม่ว่าจะต้องแลกด้วยอะไร
+in the long run | ในระยะยาว | It saves money in the long run. | ประหยัดเงินในระยะยาว
+once and for all | ให้จบไปเลย | Let's solve this once and for all. | มาแก้ปัญหานี้ให้จบไปเลย
+last minute | นาทีสุดท้าย | He changed plans at the last minute. | เขาเปลี่ยนแผนนาทีสุดท้าย
+`);
+U('talk', 4, 'สำนวนบอกสถานะและท่าที', `
+under control | อยู่ในความควบคุม | The fire is under control. | ไฟอยู่ในความควบคุมแล้ว
+up to date | ทันสมัย/เป็นปัจจุบัน | Keep your records up to date. | อัปเดตข้อมูลให้เป็นปัจจุบัน
+out of date | ล้าสมัย/หมดอายุ | This map is out of date. | แผนที่นี้ล้าสมัยแล้ว
+on the go | ยุ่งตลอด/ระหว่างเดินทาง | I eat on the go. | ฉันกินระหว่างเดินทาง
+off the hook | รอดตัว | You're off the hook this time. | คราวนี้คุณรอดตัวไป
+big time | อย่างมาก | He messed up big time. | เขาพลาดครั้งใหญ่
+---
+by all means | ได้เลย/เชิญเลย | Can I sit here? — By all means. | นั่งตรงนี้ได้ไหม — เชิญเลย
+easy does it | ค่อยๆ นะ | Easy does it. Lift it slowly. | ค่อยๆ นะ ยกช้าๆ
+no hard feelings | ไม่ติดใจกันนะ | No hard feelings, okay? | ไม่ติดใจกันนะ โอเค?
+on second thought | คิดอีกที | On second thought, I'll stay. | คิดอีกที ฉันอยู่ดีกว่า
+to be fair | ถ้าจะพูดให้ยุติธรรม | To be fair, he tried his best. | พูดให้ยุติธรรม เขาก็พยายามเต็มที่
+first things first | เริ่มจากเรื่องสำคัญก่อน | First things first, are you hurt? | เรื่องแรกก่อนเลย คุณบาดเจ็บไหม
+`);
+U('talk', 2, 'ประโยคมารยาทในชีวิตประจำวัน', `
+my pleasure | ด้วยความยินดี | Thank you! — My pleasure. | ขอบคุณ! — ด้วยความยินดี
+thanks a lot | ขอบคุณมาก | Thanks a lot for your help. | ขอบคุณมากที่ช่วย
+you made it | คุณมาจนได้/ทำสำเร็จ | You made it! Welcome! | มาจนได้! ยินดีต้อนรับ!
+congrats | ยินดีด้วย | Congrats on your new job! | ยินดีด้วยกับงานใหม่!
+bless you | ขอให้หาย (ตอนจาม) | Achoo! — Bless you. | ฮัดชิ่ว! — ขอให้หายนะ
+pardon me | ขอโทษนะ/ว่าอะไรนะ | Pardon me, can you repeat that? | ขอโทษ พูดอีกทีได้ไหม
+---
+help yourself | เชิญตามสบาย | Help yourself to some food. | เชิญทานอาหารตามสบาย
+make yourself at home | ทำตัวตามสบายเหมือนอยู่บ้าน | Come in, make yourself at home. | เข้ามาสิ ทำตัวตามสบาย
+keep the change | ไม่ต้องทอน | Here's 100 baht. Keep the change. | นี่ 100 บาท ไม่ต้องทอน
+it's on me | ฉันเลี้ยง | Dinner is on me tonight. | คืนนี้ฉันเลี้ยงข้าวเอง
+stay safe | ระวังตัวนะ/ปลอดภัยนะ | Stay safe on the road. | ขับรถปลอดภัยนะ
+have fun | ขอให้สนุก | Have fun at the party! | ขอให้สนุกกับงานปาร์ตี้!
+`);
+U('talk', 2, 'คำอวยพรและการบอกลา', `
+sleep tight | หลับฝันดี | Good night, sleep tight. | ราตรีสวัสดิ์ หลับฝันดี
+enjoy your meal | ขอให้อร่อยกับมื้ออาหาร | Here's your food. Enjoy your meal! | อาหารมาแล้ว ทานให้อร่อยนะ!
+bon appétit | ทานให้อร่อย | Bon appetit, everyone! | ทานให้อร่อยนะทุกคน!
+safe trip | เดินทางปลอดภัย | Have a safe trip home. | เดินทางกลับบ้านปลอดภัยนะ
+so far so good | จนถึงตอนนี้ก็ดี | How's the new job? — So far so good. | งานใหม่เป็นไง — จนถึงตอนนี้ก็ดี
+that's the spirit | ใช่แล้ว ต้องอย่างนั้น | I won't give up! — That's the spirit! | ฉันจะไม่ยอมแพ้! — ต้องอย่างนั้น!
+---
+trust your gut | เชื่อสัญชาตญาณตัวเอง | Trust your gut and choose. | เชื่อสัญชาตญาณแล้วเลือก
+right now | เดี๋ยวนี้/ตอนนี้ | I need help right now! | ฉันต้องการความช่วยเหลือเดี๋ยวนี้!
+you name it | อะไรก็ได้ ว่ามาเลย | Pizza, sushi, you name it. | พิซซ่า ซูชิ อะไรก็มี
+my treat | ฉันเลี้ยงเอง | Coffee? My treat. | กาแฟไหม ฉันเลี้ยงเอง
+good to see you | ดีใจที่ได้เจอ | Good to see you again! | ดีใจที่ได้เจออีก!
+nice talking to you | ยินดีที่ได้คุยด้วย | Nice talking to you. Bye! | ยินดีที่ได้คุยด้วย บาย!
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
