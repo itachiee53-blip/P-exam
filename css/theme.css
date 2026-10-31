@@ -964,10 +964,10 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .ls-bub{display:flex;align-items:flex-end;gap:8px;max-width:88%;animation:lsUp .35s both}
 .ls-bub:nth-child(2){animation-delay:.15s}.ls-bub:nth-child(3){animation-delay:.3s}
 .ls-bub em{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px;color:#fff;background:#0ea5e9}
-.ls-bub span{padding:12px 15px;border-radius:18px 18px 18px 4px;background:var(--surface);border:1px solid var(--line);font-size:16px;font-weight:600;line-height:1.45}
+.ls-bub > span{padding:12px 15px;border-radius:18px 18px 18px 4px;background:var(--surface);border:1px solid var(--line);font-size:16px;font-weight:600;line-height:1.45}
 .ls-bub.me{align-self:flex-end;flex-direction:row-reverse}
 .ls-bub.me em{background:#f97316}
-.ls-bub.me span{border-radius:18px 18px 4px 18px;background:color-mix(in srgb,#f97316 12%,var(--surface));border-color:color-mix(in srgb,#f97316 30%,var(--line))}
+.ls-bub.me > span{border-radius:18px 18px 4px 18px;background:color-mix(in srgb,#f97316 12%,var(--surface));border-color:color-mix(in srgb,#f97316 30%,var(--line))}
 .ls-dots{display:inline-flex;gap:4px;padding:4px 2px}
 .ls-dots b{width:8px;height:8px;border-radius:50%;background:#f97316;animation:lsDot 1s infinite}
 .ls-dots b:nth-child(2){animation-delay:.15s}.ls-dots b:nth-child(3){animation-delay:.3s}

@@ -1,7 +1,7 @@
 // P-exam service worker: ใช้งานได้แม้ไม่มีเน็ต
 // - หน้าแอปและ css/js: ดึงจากเน็ตก่อน (ได้เวอร์ชันใหม่เสมอ) ถ้าออฟไลน์ใช้ของที่เก็บไว้
 // - ไฟล์อื่น (เสียง ไอคอน ฟอนต์ ไลบรารี): ใช้ของที่เก็บไว้ทันที แล้วอัปเดตเบื้องหลัง
-const CACHE = 'pexam-v21';
+const CACHE = 'pexam-v22';
 const CODE = ['css/base.css', 'css/theme.css', ...['core', 'media', 'ui', 'books', 'home', 'quiz', 'lessons', 'english', 'cards', 'exam', 'settings', 'system', 'fx', 'boot'].map(n => `js/${n}.js`)];
 const CORE = ['./', 'index.html', 'manifest.json', 'vendor/lucide.min.js', ...CODE, 'icons/icon-192.png', 'icons/icon-512.png',
   'sounds/tap.mp3', 'sounds/pick.mp3', 'sounds/correct.mp3', 'sounds/wrong.mp3', 'sounds/done.mp3'];

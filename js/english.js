@@ -176,7 +176,7 @@ function engClock(){
 
 // ---------- บทเรียน ----------
 // ตัวคำของประโยค (ตัดจุด/ตัวพิมพ์ใหญ่คำแรก ไม่ให้เดาลำดับจากรูปคำ)
-const engToks = ex => ex.replace(/[.!?,]/g, '').split(/\s+/).filter(Boolean).map((s, k) => k || s === 'I' ? s : s[0].toLowerCase() + s.slice(1));
+const engToks = ex => ex.replace(/[.!?,…]/g, '').split(/\s+/).filter(Boolean).map((s, k) => k || s === 'I' ? s : s[0].toLowerCase() + s.slice(1));
 // โครงสร้างประโยคสำหรับคำใบ้ข้อเรียงประโยค (เดาจากชนิดคำ ถ้าไม่มั่นใจคืน null)
 const ENG_W = (o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, new Set(v.split(' '))])))({
   wh: 'what where when who whom whose why how which', be: 'am is are was were', aux: 'do does did can could will would shall should may might must',
@@ -322,7 +322,7 @@ const ENG_KIND = { intro: ['คำใหม่', '#0f9d76', 'sparkles'], mean: [
   type: ['พิมพ์เป็นภาษาอังกฤษ', '#db2777', 'keyboard'] };
 const ENG_OC = ['#2f6fb5', '#0f9d76', '#e8590c', '#8b5cf6'];
 function renderLesson(){
-  const L = LS;
+  const L = LS; $$('.tw-tip').forEach(x => x.remove());
   if(L.k >= L.items.length) return lessonEnd();
   const it = L.items[L.k], w = it.w, col = L.col || COURSES[L.c].color;
   const say = `<button class="ls-say" data-say><i data-lucide="volume-2"></i></button><button class="ls-say slow" data-slow title="ฟังช้า"><i data-lucide="snail"></i></button>`;
@@ -493,32 +493,52 @@ function engConfetti(n, x, y){
 }
 
 // ---------- แตะคำในประโยคเพื่อดูความหมาย ----------
-let ENG_DICT = null;
+let ENG_DICT = null, ENG_PHR = null;
 const engTw = t => String(t || '').split(/(\s+)/).map(x => /[A-Za-z]/.test(x) ? `<span class="tw">${esc(x)}</span>` : esc(x)).join('');
+const engStem = w => [w, w.replace(/ies$/, 'y'), w.replace(/ied$/, 'y'), w.replace(/es$/, ''), w.replace(/s$/, ''), w.replace(/ed$/, ''), w.replace(/d$/, ''), w.replace(/ing$/, ''), w.replace(/ing$/, 'e'), w.replace(/(.)\1ed$/, '$1'), w.replace(/(.)\1ing$/, '$1')];
+// คำเดี่ยว: คำศัพท์ในบทเรียน > คำพื้นฐาน · วลี (get up, Chiang Mai) แยกไว้ ใช้เมื่อแตะคำที่อยู่ติดกันในประโยค
 function engLookup(w){
   if(!ENG_DICT){
-    ENG_DICT = new Map();
-    Object.values(COURSES).filter(C => !C.gram).forEach(C => C.units.forEach(u => u.ls.flat().forEach(x => ENG_DICT.set(x.en.toLowerCase(), x.th))));
-    S.cards.forEach(c => { const k = vcText(c.f).toLowerCase(); if(k && !ENG_DICT.has(k)) ENG_DICT.set(k, vcText(c.b)); });
-    // วลีหลายคำ: ค้นจากคำแรกได้ด้วย (wake up → wake)
-    [...ENG_DICT].forEach(([k, v]) => { const f = k.split(' ')[0]; if(f !== k && !ENG_DICT.has(f)) ENG_DICT.set(f, v + ` (${k})`); });
-    ENG_COMMON.split(',').forEach(x => { const [k, v] = x.split(':'); if(!ENG_DICT.has(k)) ENG_DICT.set(k, v); });
+    ENG_DICT = new Map(); ENG_PHR = new Map();
+    const add = (k, v) => { k = k.toLowerCase().trim(); if(!k || !v) return; const m = /\s/.test(k) ? ENG_PHR : ENG_DICT; if(!m.has(k)) m.set(k, v); };
+    Object.values(COURSES).filter(C => !C.gram).forEach(C => C.units.forEach(u => u.ls.flat().forEach(x => add(x.en, x.th))));
+    S.cards.forEach(c => add(vcText(c.f), vcText(c.b)));
+    (ENG_COMMON + ',' + ENG_MORE).split(',').forEach(x => { const [k, v] = x.split(':'); add(k, v); });
   }
-  const tries = [w, w.replace(/ies$/, 'y'), w.replace(/ied$/, 'y'), w.replace(/es$/, ''), w.replace(/s$/, ''), w.replace(/ed$/, ''), w.replace(/d$/, ''), w.replace(/ing$/, ''), w.replace(/ing$/, 'e'), w.replace(/(.)\1ed$/, '$1'), w.replace(/(.)\1ing$/, '$1')];
-  for(const k of tries) if(ENG_DICT.has(k)) return ENG_DICT.get(k);
+  if(w === "let's") return 'มา…กันเถอะ (let us)';
+  const c = w.match(/^([a-z]+)('s|'re|'m|'ll|'ve|'d|n't)$/);
+  if(c && c[2] === "'s" && !/^(it|he|she|that|what|where|who|how|there|here)$/.test(c[1])){ const a = engLookup(c[1]); return a ? `${a} (ของ…)` : ''; }
+  if(c && c[2] === "n't"){ const base = c[1] === 'wo' ? 'will' : c[1] === 'ca' ? 'can' : c[1], a = engLookup(base); return a ? `${base} not · ไม่${/^do/.test(base) && base !== 'done' ? '' : ' + ' + a.split('/')[0]}` : ''; }
+  if(c){ const base = c[1] === 'wo' ? 'will' : c[1] === 'ca' ? 'can' : c[1], full = { "'s": 'is', "'re": 'are', "'m": 'am', "'ll": 'will', "'ve": 'have', "'d": 'would', "n't": 'not' }[c[2]];
+    const a = engLookup(base), b = engLookup(full); return a ? `${base} ${full} · ${a} + ${b}` : ''; }
+  for(const k of engStem(w)) if(ENG_DICT.has(k)) return ENG_DICT.get(k);
+  if(/ly$/.test(w)){ const a = engLookup(w.replace(/ily$/, 'y').replace(/ly$/, '')) || engLookup(w.replace(/ly$/, 'le')); if(a) return 'อย่าง' + a.split(/[,/]/)[0]; }
+  if(/-/.test(w)){ const ps = w.split('-').filter(Boolean).map(engLookup); if(ps.every(Boolean)) return ps.map(x => x.split(/[,/]/)[0]).join(' + '); }
   return '';
+}
+function engPhrase(ws){ // ws: คำที่แตะ + คำถัดไป/ก่อนหน้า (ตัวพิมพ์เล็ก) → [วลี, แปล]
+  engLookup('a');
+  for(const n of [3, 2]) for(let s = 0; s + n <= ws.length; s++){ if(!ws.slice(s, s + n).includes(ws.i)) continue;
+    const p = ws.slice(s, s + n); for(const f of engStem(p[0])){ const k = [f, ...p.slice(1)].join(' '); if(ENG_PHR.has(k)) return [p.join(' '), ENG_PHR.get(k)]; } }
+  return null;
 }
 document.addEventListener('click', e => {
   const t = e.target.closest && e.target.closest('.tw'); if(!t) return;
   e.stopPropagation();
-  const w = t.textContent.toLowerCase().replace(/[^a-z']/g, ''), th = engLookup(w), r = t.getBoundingClientRect();
+  const raw = t.textContent, w = raw.toLowerCase().replace(/[’]/g, "'").replace(/[^a-z'-]/g, '').replace(/^'+|'+$/g, ''), r = t.getBoundingClientRect();
+  // คำข้างเคียงในประโยคเดียวกัน (ไม่ข้ามเครื่องหมายวรรคตอน)
+  const sib = (el, d) => { const out = []; let x = el, prev = el; for(let k = 0; k < 2; k++){ x = d > 0 ? x.nextElementSibling : x.previousElementSibling;
+    if(!x || !x.classList.contains('tw') || /[.,!?;:]$/.test((d > 0 ? prev : x).textContent)) break; out.push(x.textContent.toLowerCase().replace(/[’]/g, "'").replace(/[^a-z'-]/g, '')); prev = x; } return out; };
+  const L = sib(t, -1).reverse(), ws = [...L, w, ...sib(t, 1)]; ws.i = w;
+  const ph = engPhrase(ws), th = ph ? ph[1] : engLookup(w);
+  const pv = t.previousElementSibling, name = !th && /^[A-Z]/.test(raw) && pv && pv.classList.contains('tw') && !/[.!?]$/.test(pv.textContent);
   $$('.tw-tip').forEach(x => x.remove()); $$('.tw.on').forEach(x => x.classList.remove('on')); t.classList.add('on');
   const tip = document.createElement('div'); tip.className = 'tw-tip';
-  tip.innerHTML = `<b>${esc(w)}</b><span>${th ? esc(th) : 'ยังไม่มีในคลังคำ'}</span>`;
+  tip.innerHTML = `<b>${esc(ph ? ph[0] : w)}</b><span>${th ? esc(th) : name ? 'ชื่อเฉพาะ (ชื่อคน/สถานที่)' : 'ยังไม่มีในคลังคำ'}</span>`;
   document.body.appendChild(tip);
   tip.style.left = Math.max(8, Math.min(innerWidth - tip.offsetWidth - 8, r.left + r.width / 2 - tip.offsetWidth / 2)) + 'px';
   tip.style.top = (r.top - tip.offsetHeight - 8 < 8 ? r.bottom + 8 : r.top - tip.offsetHeight - 8) + 'px';
-  speakWord(w);
+  speakWord(ph ? ph[0] : w);
   setTimeout(() => { tip.remove(); t.classList.remove('on'); }, 2600);
 }, true);
 // คำพื้นฐานที่ใช้บ่อย (ให้แตะดูความหมายได้แม้ไม่อยู่ในบทเรียน)
@@ -533,6 +553,82 @@ const ENG_COMMON = 'a:หนึ่ง (คำนำหน้านาม),an:ห
   'child:เด็ก,children:เด็กๆ,car:รถยนต์,road:ถนน,city:เมือง,home:บ้าน,park:สวนสาธารณะ/จอด,eat:กิน,eats:กิน,ate:กิน (อดีต),run:วิ่ง,runs:วิ่ง,ran:วิ่ง (อดีต),wake:ตื่น,walk:เดิน,drive:ขับ,' +
   'big:ใหญ่,small:เล็ก,good:ดี,bad:ไม่ดี,new:ใหม่,long:ยาว,sad:เศร้า,there:ที่นั่น/มี,here:ที่นี่,now:ตอนนี้,again:อีกครั้ง,also:ด้วย/ยัง,only:เท่านั้น,even:แม้แต่,never:ไม่เคย,often:บ่อย,who:ใคร/ผู้ซึ่ง,' +
   'what:อะไร,where:ที่ไหน,why:ทำไม,how:อย่างไร,which:อันไหน/ซึ่ง,minutes:นาที,o:—,clock:นาฬิกา (o\'clock = นาฬิกา),please:กรุณา,thank:ขอบคุณ,thanks:ขอบคุณ,sorry:ขอโทษ,well:ดี/เก่ง,back:กลับ,next:ถัดไป,last:ล่าสุด/ที่แล้ว,motorbike:รถมอเตอร์ไซค์,dog:สุนัข,photo:รูปภาพ,village:หมู่บ้าน,internet:อินเทอร์เน็ต,tourist:นักท่องเที่ยว,tourists:นักท่องเที่ยว,phones:โทรศัพท์';
+// คำที่พบในบทอ่าน/บทสนทนา/ตัวอย่าง (เติมให้แตะดูความหมายได้ครบ)
+const ENG_MORE = 'chiang mai:เชียงใหม่,khon kaen:ขอนแก่น,bang rak:บางรัก,khao san:ข้าวสาร,hat yai:หาดใหญ่,loy krathong:ลอยกระทง,muay thai:มวยไทย,som tam:ส้มตำ,rama iv:ถนนพระรามสี่,air conditioner:แอร์,traffic jam:รถติด,jet lag:อาการเพลียจากเวลาต่างกัน,civil servant:ข้าราชการ,prime minister:นายกรัฐมนตรี,according to:ตามที่,in spite of:แม้ว่า,a lot:มาก,wavelength:ความยาวคลื่น (on the same wavelength = เข้าใจตรงกัน),' + 'stay:อยู่/พัก,information:ข้อมูล,keep:เก็บ/รักษา/ทำต่อไป,turn:เลี้ยว/หมุน/ถึงตา,way:ทาง/วิธี,off:ปิด/ออก,everyone:ทุกคน,talk:พูดคุย,clear:ชัดเจน/ใส,high:สูง,pass:ผ่าน/ส่งให้,pm:เวลาหลังเที่ยง,made:ทำ/สร้าง (อดีต),' +
+  'exam:การสอบ,course:หลักสูตร/คอร์ส,after:หลังจาก,main:หลัก,safety:ความปลอดภัย,strong:แข็งแรง,alcohol:แอลกอฮอล์,stolen:ถูกขโมย (V3),away:ห่างออกไป,social:สังคม,such:เช่นนั้น/มาก,kind:ใจดี/ชนิด,let:ปล่อยให้/ให้,' +
+  'best:ดีที่สุด,media:สื่อ,cause:สาเหตุ/ทำให้เกิด,wore:สวม (อดีต),dangerous:อันตราย,together:ด้วยกัน,both:ทั้งสอง,enough:พอ,experts:ผู้เชี่ยวชาญ,offenders:ผู้กระทำผิด,move:ย้าย/เคลื่อน,set:ตั้ง/ชุด,language:ภาษา,reduce:ลด,' +
+  'power:พลัง/อำนาจ,health:สุขภาพ,during:ระหว่าง,nice:ดี/น่ารัก,someone:ใครบางคน,street:ถนน,fair:ยุติธรรม,caught:จับได้ (อดีต),start:เริ่ม,foreign:ต่างชาติ,same:เหมือนกัน,point:จุด/ประเด็น/ชี้,fewer:น้อยกว่า (นับได้),' +
+  'visit:เยี่ยม/ไปเที่ยว,serious:ร้ายแรง/จริงจัง,fill:เติม/กรอก,mental:ทางจิตใจ,another:อีกอันหนึ่ง,spoke:พูด (อดีต),add:เพิ่ม,just:เพิ่ง/แค่,won:ชนะ (อดีต),tonight:คืนนี้,missed:พลาด/คิดถึง (อดีต),baht:บาท,' +
+  'stole:ขโมย (อดีต),anyone:ใครก็ได้,other:อื่น,through:ผ่าน/ทะลุ,share:แบ่งปัน,personal:ส่วนตัว,care:ดูแล/ใส่ใจ,special:พิเศษ,decision:การตัดสินใจ,fitness:สมรรถภาพร่างกาย,notice:สังเกต/ประกาศ,area:พื้นที่,others:คนอื่น,' +
+  'yourself:ตัวคุณเอง,become:กลายเป็น,judgment:การตัดสิน,website:เว็บไซต์,critics:นักวิจารณ์,system:ระบบ,step:ขั้น/ก้าว,straight:ตรง,worry:กังวล,human:มนุษย์,build:สร้าง,air:อากาศ,before:ก่อน,great:ยอดเยี่ยม,country:ประเทศ,' +
+  'countries:ประเทศ (หลายประเทศ),across:ข้าม,hope:หวัง,society:สังคม,focus:เน้น/จดจ่อ,forces:กองกำลัง/บังคับ,members:สมาชิก,several:หลาย,video:วิดีโอ,therefore:ดังนั้น,limit:ขีดจำกัด,lot:มาก (a lot),side:ด้าน/ข้าง,' +
+  'email:อีเมล,end:จบ/ปลาย,travel:เดินทาง,serve:รับใช้/เสิร์ฟ,ongoing:ที่ดำเนินอยู่,against:ต่อต้าน/กับ,little:เล็ก/น้อย,thailand:ประเทศไทย,truth:ความจริง,panic:ตื่นตระหนก,thai:ไทย,front:ด้านหน้า,enjoy:สนุก/เพลิดเพลิน,' +
+  'touch:สัมผัส,post:โพสต์/ด่าน,protection:การคุ้มครอง,manage:จัดการ,investigation:การสืบสวน,written:เขียน (V3),limited:จำกัด,feel:รู้สึก,bottle:ขวด,program:โปรแกรม,track:ติดตาม/ราง,digital:ดิจิทัล,idea:ความคิด,reach:ไปถึง,' +
+  'oh:โอ้,useful:มีประโยชน์,ahead:ข้างหน้า,fail:ล้มเหลว/สอบตก,moment:ช่วงเวลา/สักครู่,languages:ภาษา (หลายภาษา),taken:เอา (V3),cybercrime:อาชญากรรมไซเบอร์,spell:สะกด,low:ต่ำ,past:อดีต/ผ่าน,own:ของตัวเอง,along:ไปตาม,' +
+  'trip:การเดินทาง,recent:ล่าสุด,scene:ที่เกิดเหตุ,committed:กระทำ (ผิด),action:การกระทำ,disease:โรค,violence:ความรุนแรง,believe:เชื่อ,built:สร้าง (อดีต),force:กำลัง/บังคับ,smoke:ควัน/สูบ,soup:ซุป,heat:ความร้อน,' +
+  'alone:คนเดียว,credit:เครดิต,holiday:วันหยุด,heart:หัวใจ,growing:กำลังเติบโต,matter:เรื่อง/สำคัญ,instructions:คำแนะนำ,act:กระทำ/พระราชบัญญัติ,artificial:ประดิษฐ์,rather:ค่อนข้าง/แทนที่จะ,sound:เสียง/ฟังดู,poor:จน/แย่,' +
+  'world:โลก,until:จนกระทั่ง,once:ครั้งหนึ่ง/เมื่อ,simple:ง่าย,lower:ต่ำกว่า/ลด,without:โดยไม่มี,cannot:ไม่สามารถ,contrast:ความแตกต่าง,role:บทบาท,rich:รวย,tom:ทอม (ชื่อคน),wish:ปรารถนา/อวยพร,might:อาจจะ,though:แม้ว่า,' +
+  'rarely:แทบจะไม่,still:ยังคง,mobile:มือถือ,react:ตอบสนอง,per:ต่อ,visitor:ผู้มาเยือน,helpful:ช่วยได้มาก,least:น้อยที่สุด,throughout:ตลอด,part:ส่วน,according:ตามที่ (according to),image:ภาพ,situation:สถานการณ์,' +
+  'department:แผนก/กรม,create:สร้าง,click:คลิก,aim:เป้าหมาย/มุ่ง,shocking:น่าตกใจ,critical:วิกฤต/วิจารณ์,deceive:หลอกลวง,ordinary:ธรรมดา,investigator:ผู้สืบสวน,material:วัสดุ/เนื้อหา,edit:แก้ไข,context:บริบท,' +
+  'resources:ทรัพยากร,unfair:ไม่ยุติธรรม,bilingual:สองภาษา,necessity:ความจำเป็น,barriers:อุปสรรค,traditional:ดั้งเดิม,punish:ลงโทษ,harm:อันตราย/ทำร้าย,amends:การชดใช้ (make amends),reoffend:กระทำผิดซ้ำ,english:ภาษาอังกฤษ,' +
+  'box:กล่อง,boxes:กล่อง (หลายใบ),ground:พื้น,drove:ขับ (อดีต),pickup:รถกระบะ,held:ถือ/จัด (อดีต),cross:ข้าม,aid:ความช่วยเหลือ,seat:ที่นั่ง,fell:ล้ม (อดีต),medical:ทางการแพทย์,list:รายการ,seen:เห็น (V3),person:บุคคล,' +
+  'everything:ทุกอย่าง,company:บริษัท,bought:ซื้อ (อดีต),kilometers:กิโลเมตร,expect:คาดหวัง,affect:ส่งผลต่อ,felt:รู้สึก (อดีต),leader:ผู้นำ,third:ที่สาม,afraid:กลัว,pleasure:ความยินดี,amazing:น่าทึ่ง,bother:รบกวน,' +
+  'terrible:แย่มาก,honest:ซื่อสัตย์,consider:พิจารณา,although:แม้ว่า,somchai:สมชาย (ชื่อคน),mali:มะลิ (ชื่อคน),route:เส้นทาง,inconvenience:ความไม่สะดวก,card:บัตร,application:แอป/ใบสมัคร,direct:ตรง,' +
+  'motorcyclist:คนขี่มอเตอร์ไซค์,death:การเสียชีวิต,milligrams:มิลลิกรัม,milliliters:มิลลิลิตร,safe:ปลอดภัย,safest:ปลอดภัยที่สุด,choice:ทางเลือก,handle:จัดการ,million:ล้าน,recruitment:การรับสมัคร,communication:การสื่อสาร,' +
+  'level:ระดับ,regular:สม่ำเสมอ,spread:แพร่กระจาย,fast:เร็ว,faster:เร็วกว่า,false:เท็จ,influence:อิทธิพล,reader:ผู้อ่าน,rely:พึ่งพา,identify:ระบุ,movement:การเคลื่อนไหว,especially:โดยเฉพาะ,predict:ทำนาย,occur:เกิดขึ้น,' +
+  'deploy:ส่งกำลัง/นำไปใช้,reinforce:เสริม,exist:มีอยู่,existing:ที่มีอยู่,target:เป้าหมาย,certain:แน่นอน/บางอย่าง,complex:ซับซ้อน,insist:ยืนกราน,replace:แทนที่,globalized:โลกาภิวัตน์,longer:นานกว่า/ยาวกว่า,' +
+  'luxury:ความหรูหรา,response:การตอบสนอง,misunderstanding:ความเข้าใจผิด,wrongful:โดยมิชอบ,communicate:สื่อสาร,migrant:ผู้อพยพ,primarily:เป็นหลัก,encourage:สนับสนุน,acknowledge:ยอมรับ,approach:วิธีการ/เข้าใกล้,' +
+  'suitable:เหมาะสม,particularly:โดยเฉพาะ,involve:เกี่ยวข้อง,imbalance:ความไม่สมดุล,ball:ลูกบอล,sir:ท่าน (ชาย),gone:ไป/หายไป (V3),center:ศูนย์กลาง,color:สี,zone:เขต,rise:เพิ่มขึ้น,theft:การลักขโมย,paid:จ่าย (อดีต),' +
+  'lying:โกหก/นอน,app:แอป,item:สิ่งของ,anything:อะไรก็ได้,illness:ความเจ็บป่วย,issue:ประเด็น/ออก (เอกสาร),press:กด/สื่อมวลชน,control:ควบคุม,chain:โซ่/ห่วงโซ่,due:ถึงกำหนด/เนื่องจาก,process:กระบวนการ,global:ทั่วโลก,' +
+  'forgot:ลืม (อดีต),bangkok:กรุงเทพฯ,conditioner:เครื่องปรับ (air conditioner = แอร์),rate:อัตรา,less:น้อยกว่า,chief:หัวหน้า,life:ชีวิต,solar:แสงอาทิตย์,hold:ถือ/จัด,rose:เพิ่มขึ้น (อดีต)/กุหลาบ,fight:ต่อสู้,' +
+  'men:ผู้ชาย (หลายคน),neither:ไม่ทั้งสอง,doubt:สงสัย,ever:เคย,feeling:ความรู้สึก,feet:เท้า/ฟุต,conclusion:ข้อสรุป,early:เช้า/ก่อนเวลา,earlier:ก่อนหน้านี้,borrow:ยืม,already:แล้ว,meters:เมตร,certificate:ใบรับรอง,' +
+  'immediately:ทันที,jam:ติดขัด (traffic jam = รถติด),different:แตกต่าง,fact:ข้อเท็จจริง,sort:ชนิด/จัดเรียง,concerned:กังวล,criminal:อาชญากร,mention:กล่าวถึง,writer:นักเขียน,songkran:สงกรานต์,ride:ขี่/นั่ง (รถ),' +
+  'blew:พัด/เป่า (อดีต),immigration:ตรวจคนเข้าเมือง,excuse:ขอโทษ/ข้ออ้าง,smoking:การสูบบุหรี่,property:ทรัพย์สิน,flash:แสงวาบ,blow:เป่า/พัด,spot:จุด/สังเกตเห็น,count:นับ,sold:ขาย (อดีต),sent:ส่ง (อดีต),unknown:ไม่ทราบ,' +
+  'bail:ประกันตัว,sharp:คม/แหลม,thief:ขโมย,thieves:ขโมย (หลายคน),comment:ความเห็น,joint:ร่วม,distance:ระยะทาง,excellent:ยอดเยี่ยม,reopen:เปิดอีกครั้ง,led:นำ (อดีต),deserve:สมควรได้รับ,abroad:ต่างประเทศ,command:คำสั่ง,' +
+  'code:รหัส,piece:ชิ้น,cute:น่ารัก,bite:กัด,hate:เกลียด,sleeve:แขนเสื้อ,kid:เด็ก,sticky:เหนียว,khao:ข้าว (ชื่อ),national:แห่งชาติ,mom:แม่,match:การแข่งขัน/เข้ากัน,phuket:ภูเก็ต,delivery:การส่ง,trash:ขยะ,song:เพลง,' +
+  'position:ตำแหน่ง,grew:เติบโต (อดีต),beware:ระวัง,prepare:เตรียม,log:บันทึก (log in = เข้าสู่ระบบ),queue:คิว,luck:โชค,depend:ขึ้นอยู่กับ,panel:แผง,leaders:ผู้นำ,peer:เพื่อนรุ่นเดียวกัน,true:จริง,stable:มั่นคง,score:คะแนน,' +
+  'effect:ผลกระทบ,professional:มืออาชีพ,injury:การบาดเจ็บ,art:ศิลปะ,group:กลุ่ม,suffer:ทุกข์ทรมาน,whole:ทั้งหมด,became:กลายเป็น (อดีต),stronger:แข็งแรงกว่า,education:การศึกษา,pizza:พิซซ่า,hey:เฮ้,advance:ล่วงหน้า/ก้าวหน้า,' +
+  'kidding:ล้อเล่น,surprise:แปลกใจ/เซอร์ไพรส์,ago:ที่แล้ว,nothing:ไม่มีอะไร,regards:ด้วยความนับถือ,worth:คุ้มค่า,rural:ชนบท,stage:เวที/ขั้น,speech:สุนทรพจน์,mine:ของฉัน,few:น้อย (นับได้),tall:สูง,taller:สูงกว่า,' +
+  'tallest:สูงที่สุด,hot:ร้อน,hotter:ร้อนกว่า,kept:เก็บ (อดีต),rang:ดัง (อดีต),spoken:พูด (V3),melt:ละลาย,hard:ยาก/หนัก,harder:ยากกว่า/หนักขึ้น,driven:ขับ (V3),either:อย่างใดอย่างหนึ่ง,whom:ผู้ซึ่ง (กรรม),eaten:กิน (V3),' +
+  'realize:ตระหนัก,introduction:การแนะนำ,absence:การไม่อยู่,else:อื่น,large:ใหญ่,larger:ใหญ่กว่า,nearest:ใกล้ที่สุด,meal:มื้ออาหาร,highway:ทางหลวง,halfway:ครึ่งทาง,ridiculous:ไร้สาระ,supervisor:หัวหน้างาน,close:ใกล้/ปิด,' +
+  'closer:ใกล้กว่า,closest:ใกล้ที่สุด,advice:คำแนะนำ,phrase:วลี,restorative:ฟื้นฟู,bark:เห่า,library:ห้องสมุด,bit:นิดหน่อย,spent:ใช้ (เงิน/เวลา) (อดีต),birth:การเกิด,male:ชาย,female:หญิง,marital:การสมรส,status:สถานะ,' +
+  'hall:ห้องโถง,district:เขต/อำเภอ,military:ทหาร,camp:ค่าย,academy:โรงเรียน (นายร้อย),booth:ตู้/บูธ,flat:แบน (ยาง),quarter:หนึ่งในสี่/15 นาที,pack:ซอง/แพ็ค,prisoner:นักโทษ,highest:สูงที่สุด,entry:การเข้า,woke:ตื่น (อดีต),' +
+  'fasten:รัด,kill:ฆ่า,offense:ความผิด,ownership:ความเป็นเจ้าของ,curly:หยิก,medium:กลาง,northern:ภาคเหนือ,pat:ตบเบาๆ,deep:ลึก,breath:ลมหายใจ,value:มูลค่า,serial:หมายเลข (serial number),pawn:จำนำ,immigrant:ผู้อพยพ,mall:ห้าง,' +
+  'kilos:กิโล,bend:ก้ม/งอ,stuck:ติด,sheet:แผ่น,bond:ประกัน/พันธบัตร,bomb:ระเบิด,squad:หน่วย,object:วัตถุ,registered:จดทะเบียน,impaired:บกพร่อง,voice:เสียง,tight:แน่น,dawn:รุ่งเช้า,flag:ธง,attention:ความสนใจ,' +
+  'responsibility:ความรับผิดชอบ,gain:ได้รับ,en:(en route = ระหว่างทาง),flee:หลบหนี,died:เสียชีวิต (อดีต),urine:ปัสสาวะ,crystal:คริสตัล (ยาไอซ์),meth:ยาบ้า/ไอซ์,sniffer:ดมกลิ่น (สุนัขดมกลิ่น),forced:บังคับ,' +
+  'domestic:ในบ้าน/ในประเทศ,succeed:สำเร็จ,behavior:พฤติกรรม,fully:อย่างเต็มที่,junction:ทางแยก,skid:ลื่นไถล,mark:รอย,tow:ลาก,metal:โลหะ,detector:เครื่องตรวจ,restricted:จำกัด/หวงห้าม,access:การเข้าถึง,flow:การไหล,' +
+  'evacuation:การอพยพ,nightlife:สถานบันเทิงยามค่ำคืน,spiked:ถูกใส่ยา,sober:ไม่เมา,letter:จดหมาย,certified:รับรอง,channel:ช่องทาง,coast:ชายฝั่ง,state:รัฐ/ระบุ,laundering:ฟอก (เงิน),international:ระหว่างประเทศ,remove:เอาออก,' +
+  'sting:ล่อซื้อ,obstacle:อุปสรรค,physical:ทางกาย,graduation:การจบการศึกษา,standard:มาตรฐาน,demerit:ตัดคะแนน,suspension:การพักใช้,modified:ดัดแปลง,exhaust:ท่อไอเสีย,racing:แข่งรถ,rage:ความโกรธ,incident:เหตุการณ์,' +
+  'poisoning:การวางยาพิษ,presumption:การสันนิษฐาน,innocence:ความบริสุทธิ์,insider:คนใน,scheme:แผนการ,jail:จำคุก,evasion:การหลีกเลี่ยง,shell:เปลือก (shell company = บริษัทบังหน้า),freeze:อายัด/แช่แข็ง,rent:เช่า,' +
+  'mule:บัญชีม้า (money mule),exposed:ถูกเปิดโปง,funds:เงินทุน,contingency:แผนสำรอง,medics:หน่วยแพทย์,began:เริ่ม (อดีต),situational:ตามสถานการณ์,extradition:การส่งผู้ร้ายข้ามแดน,liaison:ประสานงาน,assistance:ความช่วยเหลือ,' +
+  'independent:อิสระ,conduct:ความประพฤติ/ดำเนินการ,disciplinary:ทางวินัย,internal:ภายใน,affairs:กิจการ,annual:ประจำปี,gas:แก๊ส/น้ำมัน,lime:มะนาว,math:คณิตศาสตร์,motorcycle:มอเตอร์ไซค์,' +
+  'rush:เร่งรีบ (rush hour = ชั่วโมงเร่งด่วน),stall:แผงลอย,sore:เจ็บ,throat:คอ,runny:ไหล (น้ำมูก),cream:ครีม,fun:สนุก,floating:ลอยน้ำ,town:เมือง,spring:ฤดูใบไม้ผลิ,rainy:ฝนตก,sport:กีฬา,boxing:มวย,climb:ปีน,machine:เครื่อง,' +
+  'noisy:เสียงดัง,bulb:หลอดไฟ,twisted:บิด,tracking:ติดตาม,stock:สต็อก/หุ้น,sing:ร้องเพลง,bath:อาบน้ำ,dish:จาน,scan:สแกน,aisle:ทางเดิน,baggage:กระเป๋าเดินทาง,jet:เครื่องบินเจ็ต (jet lag = อาการเพลียเวลาเปลี่ยน),lag:ล่าช้า,' +
+  'shelf:ชั้นวาง,shelves:ชั้นวาง (หลายชั้น),tidy:เรียบร้อย,plant:ต้นไม้/ปลูก,suit:ชุดสูท/เหมาะ,terminal:อาคารผู้โดยสาร,sleeper:ตู้นอน,rental:ให้เช่า,tank:ถัง,noodle:ก๋วยเตี๋ยว,papaya:มะละกอ,salad:สลัด,plane:เครื่องบิน,' +
+  'funny:ตลก,singer:นักร้อง,pick:เลือก/รับ,attend:เข้าร่วม,forty:สี่สิบ,steak:สเต็ก,peanut:ถั่วลิสง,loy:ลอย (Loy Krathong),field:ทุ่ง/สาขา,everywhere:ทุกที่,native:เจ้าของภาษา/พื้นเมือง,outage:ไฟดับ/ระบบล่ม,kit:ชุดอุปกรณ์,' +
+  'tide:กระแสน้ำ,reset:รีเซ็ต,enter:เข้า/ป้อน,earn:ได้รับ/หาเงิน,loyal:ภักดี,method:วิธี,climate:ภูมิอากาศ,pollute:ก่อมลพิษ,conference:การประชุม,submit:ส่ง,spirit:จิตวิญญาณ,generation:รุ่น,gap:ช่องว่าง,period:ช่วงเวลา,' +
+  'path:เส้นทาง,romance:ความรัก,premium:พรีเมียม,fund:กองทุน,shark:ฉลาม,financial:การเงิน,prime:นายก (prime minister),maker:ผู้ทำ,civil:พลเรือน,servant:ผู้รับใช้ (civil servant = ข้าราชการ),flu:ไข้หวัด,raise:ยก/เลี้ยงดู,' +
+  'grandmother:ยาย/ย่า,parent:พ่อแม่,reunion:การรวมญาติ,economic:เศรษฐกิจ,heated:ดุเดือด,pointed:ชี้ (อดีต),approved:อนุมัติ,disrupt:ขัดขวาง,tech:เทคโนโลยี,froze:ค้าง/แข็ง (อดีต),terms:เงื่อนไข,binding:ผูกมัด,print:พิมพ์,' +
+  'seem:ดูเหมือน,turbine:กังหัน,carbon:คาร์บอน,electric:ไฟฟ้า,fossil:ฟอสซิล,shrink:หดตัว,greenhouse:เรือนกระจก,gases:ก๊าซ,quality:คุณภาพ,percent:เปอร์เซ็นต์,tourism:การท่องเที่ยว,industry:อุตสาหกรรม,minimum:ขั้นต่ำ,' +
+  'wage:ค่าจ้าง,stone:หิน,confusing:สับสน,award:รางวัล,seek:แสวงหา,topic:หัวข้อ,risky:เสี่ยง,strange:แปลก,natural:ธรรมชาติ,things:สิ่งของ,impose:กำหนด/บังคับใช้,honesty:ความซื่อสัตย์,reality:ความเป็นจริง,oppose:คัดค้าน,' +
+  'echo:เสียงสะท้อน,chamber:ห้อง,lack:ขาด,divided:แตกแยก,promote:ส่งเสริม,cultural:ทางวัฒนธรรม,peace:สันติภาพ,equality:ความเท่าเทียม,civic:พลเมือง,accordance:ตาม (in accordance with),insofar:เท่าที่ (insofar as),' +
+  'inasmuch:เนื่องจาก (inasmuch as),vis:(vis-à-vis = เมื่อเทียบกับ),de:(de facto = โดยพฤตินัย),facto:(de facto = โดยพฤตินัย),transaction:ธุรกรรม,facial:ใบหน้า,recognition:การจดจำ,myself:ตัวฉันเอง,som:ส้ม (ส้มตำ),' +
+  'tam:ตำ (ส้มตำ),mate:เพื่อน,guess:เดา,owe:ติดหนี้,pretty:สวย/ค่อนข้าง,catch:จับ,fond:ชอบ,crazy:บ้า,dance:เต้นรำ,choose:เลือก,whatever:อะไรก็ตาม,reference:อ้างอิง,business:ธุรกิจ,drop:ทำตก/ลดลง,almost:เกือบ,' +
+  'nerves:ประสาท/ความกังวล,something:บางสิ่ง,instance:ตัวอย่าง (for instance),wai:ไหว้,chat:คุย,shall:จะ/ควร,acceptable:ยอมรับได้,contrary:ตรงกันข้าม,lucky:โชคดี,snow:หิมะ,impressed:ประทับใจ,talented:มีพรสวรรค์,' +
+  'future:อนาคต,payday:วันเงินเดือนออก,freak:ตกใจ (freak out),wonder:สงสัย,convenience:ความสะดวก,upon:เมื่อ/บน,king:กษัตริย์,sudden:ทันที,nobody:ไม่มีใคร,fault:ความผิด,cheer:เชียร์ (cheer up = ร่าเริงหน่อย),' +
+  'condolences:แสดงความเสียใจ,shame:น่าเสียดาย/ความอาย,miss:พลาด/คิดถึง,dear:ที่รัก,subject:วิชา/หัวข้อ,project:โครงการ,wrap:ห่อ (wrap up = สรุป),bush:พุ่มไม้,devil:ปีศาจ,addition:การเพิ่ม,sum:ผลรวม,view:มุมมอง,tough:ยาก,' +
+  'base:ฐาน,ballpark:ประมาณคร่าวๆ,roll:กลิ้ง,loop:วง (in the loop = รับรู้),shots:การตัดสินใจ (call the shots),curve:โค้ง,common:ทั่วไป/ร่วมกัน,middle:กลาง,highly:อย่างมาก,resolve:แก้ไข,compare:เปรียบเทียบ,positive:บวก/ดี,' +
+  'imagine:จินตนาการ,urge:เรียกร้อง,reconsider:พิจารณาใหม่,caf:คาเฟ่,guy:ผู้ชาย,presentation:การนำเสนอ,blessing:พร,disguise:ปลอมตัว (blessing in disguise = เรื่องร้ายกลายเป็นดี),iceberg:ภูเขาน้ำแข็ง,mile:ไมล์,jump:กระโดด,' +
+  'chew:เคี้ยว,behalf:ในนามของ,regard:เกี่ยวกับ,regret:เสียใจ,engagement:การหมั้น/การมีส่วนร่วม,rhetorical:เชิงวาทศิลป์,clarify:ชี้แจง,visual:ภาพ,fright:ความกลัว (stage fright = ประหม่าบนเวที),logical:มีเหตุผล,' +
+  'valid:ถูกต้อง/ใช้ได้,extent:ขอบเขต,logic:ตรรกะ,pros:ข้อดี,cons:ข้อเสีย,underlying:เบื้องหลัง,hindsight:มองย้อนหลัง,double:สองเท่า,edged:มีคม,sword:ดาบ,insult:ดูถูก,blind:ตาบอด,shot:การยิง/ความพยายาม,' +
+  'nutshell:สรุปสั้นๆ (in a nutshell),drain:ท่อ (down the drain = สูญเปล่า),essay:เรียงความ,illustrate:แสดงให้เห็น,factor:ปัจจัย,further:มากขึ้น/ต่อไป,fly:บิน,nida:นิดา (ชื่อคน),tunnel:อุโมงค์,pool:สระว่ายน้ำ,each:แต่ละ,' +
+  'place:สถานที่,cinema:โรงภาพยนตร์,assistant:ผู้ช่วย,smart:ฉลาด,nor:และไม่,capital:เมืองหลวง,met:พบ (อดีต),spite:แม้ว่า (in spite of),circumstances:สถานการณ์,thought:คิด (อดีต),brought:นำมา (อดีต),plenty:มากมาย,' +
+  'forgotten:ลืม (V3),certainly:แน่นอน,okay:โอเค,max:แม็กซ์ (ชื่อ),england:ประเทศอังกฤษ,joy:จอย (ชื่อคน)/ความสุข,sathorn:สาทร,mg:มิลลิกรัม,ml:มิลลิลิตร,punishment:การลงโทษ,booking:การจอง,surrounding:รอบๆ,' +
+  'supporter:ผู้สนับสนุน,proponent:ผู้สนับสนุน,ai:เอไอ (ปัญญาประดิษฐ์),higher:สูงกว่า,unwilling:ไม่เต็มใจ,invest:ลงทุน,mainly:ส่วนใหญ่,ben:เบน (ชื่อคน),nut:นัท (ชื่อคน),fah:ฟ้า (ชื่อคน),ann:แอน (ชื่อคน),' +
+  'jerry:เจอร์รี่ (ชื่อคน),japan:ญี่ปุ่น,laos:ลาว,ayutthaya:อยุธยา,korat:โคราช,chinese:จีน,september:กันยายน,march:มีนาคม/เดินขบวน,silom:สีลม,madam:คุณผู้หญิง,cv:ประวัติย่อ,congrats:ยินดีด้วย,goodbye:ลาก่อน,alpha:อัลฟ่า,' +
+  'ponzi:แชร์ลูกโซ่ (Ponzi),qr:คิวอาร์,wifi:ไวไฟ,wi-fi:ไวไฟ,muay:มวย (มวยไทย),royal:หลวง,grand:ยิ่งใหญ่,rama:พระราม,iv:สี่,mai:ใหม่ (เชียงใหม่),chiang:เชียง (เชียงใหม่),yai:ใหญ่ (หาดใหญ่),kaen:แก่น (ขอนแก่น),' +
+  'khon:ขอน (ขอนแก่น),bang:บาง (บางรัก),rak:รัก (บางรัก),san:สาร (ข้าวสาร),krathong:กระทง,xray:เอกซเรย์,x-ray:เอกซเรย์,t-shirt:เสื้อยืด,tshirt:เสื้อยืด,u-turn:กลับรถ,uturn:กลับรถ,self-care:ดูแลตัวเอง,crossborder:ข้ามพรมแดน,' +
+  'walk-ins:ลูกค้า walk-in,english-speaking:พูดอังกฤษได้,long-term:ระยะยาว,open-ended:ปลายเปิด,two-factor:สองขั้นตอน,double-edged:ดาบสองคม,year-old:อายุ…ปี,yearold:อายุ…ปี';
 // ระยะแก้คำ (สะกดผิด 1 ตัวยังนับว่าถูก)
 function engLev(a, b){
   const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
