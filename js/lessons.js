@@ -7522,6 +7522,232 @@ soggy | แฉะ/เปียกแฉะ | The bread is soggy. | ขนมป�
 moist | ชุ่มชื้น | The cake is moist. | เค้กนุ่มชุ่มชื่น
 `);
 
+U('daily', 3, 'คุณศัพท์เพิ่มเติม ชุด 1', `
+acute | เฉียบพลัน/รุนแรง | He has acute pain. | เขาปวดเฉียบพลัน
+anonymous | ไม่ระบุชื่อ | An anonymous caller gave a tip. | ผู้โทรไม่ระบุชื่อให้เบาะแส
+appealing | น่าดึงดูด | The offer is appealing. | ข้อเสนอน่าสนใจ
+astonishing | น่าประหลาดใจมาก | The result was astonishing. | ผลลัพธ์น่าทึ่งมาก
+bumpy | ขรุขระ/กระแทก | It was a bumpy ride. | การเดินทางกระแทกตลอด
+brittle | เปราะ | Old bones are brittle. | กระดูกคนแก่เปราะ
+---
+crisp | กรอบ/สดชื่น | The air is crisp. | อากาศสดชื่น
+dainty | บอบบางน่ารัก | She has dainty hands. | เธอมีมือเล็กบอบบาง
+dazzling | แสบตา/สวยตระการ | The lights were dazzling. | แสงไฟแสบตา
+delightful | น่ายินดี/น่ารื่นรมย์ | We had a delightful evening. | เรามีค่ำคืนที่น่ารื่นรมย์
+enthusiastic | กระตือรือร้น | The students are enthusiastic. | นักเรียนกระตือรือร้น
+fragrant | หอม | Jasmine is fragrant. | มะลิหอม
+`);
+U('daily', 3, 'คุณศัพท์เพิ่มเติม ชุด 2', `
+fuzzy | ฟู/พร่ามัว | The photo is fuzzy. | รูปพร่ามัว
+worthy | สมควร/มีค่าควร | He is worthy of trust. | เขาควรค่าแก่การไว้วางใจ
+gracious | เมตตา/สุภาพอ่อนโยน | She is a gracious host. | เธอเป็นเจ้าภาพที่สุภาพอ่อนโยน
+heavenly | ราวสวรรค์ | This cake tastes heavenly. | เค้กนี้อร่อยราวสวรรค์
+hesitant | ลังเล | She was hesitant to speak. | เธอลังเลที่จะพูด
+jolly | ร่าเริง | Santa is jolly. | ซานตาร่าเริง
+---
+prickly | มีหนาม/ขี้รำคาญ | The cactus is prickly. | กระบองเพชรมีหนาม
+rusty | ขึ้นสนิม/ฝีมือตก | My English is a bit rusty. | ภาษาอังกฤษของฉันฝืดไปหน่อย
+sleek | เพรียว/เงางาม | It's a sleek new phone. | เป็นโทรศัพท์ใหม่ที่ดูเพรียวงาม
+sloppy | สะเพร่า/เลอะเทอะ | That was sloppy work. | งานนั้นทำแบบลวกๆ
+sparkling | ระยิบระยับ/อัดลม | I'll have sparkling water. | ฉันขอน้ำแร่อัดลม
+upbeat | ร่าเริง/มองโลกในแง่ดี | The song is upbeat. | เพลงนี้สนุกสดใส
+`);
+U('daily', 1, 'คำบอกสถานที่และเวลา', `
+abroad | ต่างประเทศ | She studied abroad. | เธอเรียนต่อต่างประเทศ
+ahead | ข้างหน้า | Go straight ahead. | ตรงไปข้างหน้า
+anywhere | ที่ไหนก็ได้ | Sit anywhere you like. | นั่งที่ไหนก็ได้ที่ชอบ
+elsewhere | ที่อื่น | Let's eat elsewhere. | ไปกินที่อื่นกัน
+indoors | ในร่ม/ในบ้าน | Stay indoors during the storm. | อยู่ในบ้านช่วงพายุ
+outdoors | กลางแจ้ง | Kids love playing outdoors. | เด็กๆ ชอบเล่นกลางแจ้ง
+---
+overseas | ต่างประเทศ | He works overseas. | เขาทำงานต่างประเทศ
+together | ด้วยกัน | Let's go together. | ไปด้วยกันเถอะ
+tonight | คืนนี้ | What are you doing tonight? | คืนนี้คุณทำอะไร
+once | หนึ่งครั้ง/ครั้งหนึ่ง | I've been there once. | ฉันเคยไปที่นั่นครั้งหนึ่ง
+lately | ช่วงนี้ | I've been busy lately. | ช่วงนี้ฉันยุ่ง
+shortly | ในไม่ช้า | The doctor will see you shortly. | หมอจะตรวจคุณในไม่ช้า
+`);
+U('daily', 2, 'คำบอกความถี่', `
+rarely | นานๆ ครั้ง | I rarely eat fast food. | ฉันกินฟาสต์ฟู้ดนานๆ ครั้ง
+seldom | แทบไม่ | He seldom goes out. | เขาแทบไม่ออกไปไหน
+occasionally | บางครั้งบางคราว | We occasionally meet for lunch. | บางครั้งเราก็นัดกินข้าวเที่ยง
+frequently | บ่อยๆ | Accidents happen frequently here. | อุบัติเหตุเกิดบ่อยที่นี่
+regularly | เป็นประจำ | Exercise regularly. | ออกกำลังกายเป็นประจำ
+constantly | ตลอดเวลา | He is constantly late. | เขามาสายตลอด
+---
+repeatedly | ซ้ำๆ | He called repeatedly. | เขาโทรมาซ้ำๆ
+hourly | ทุกชั่วโมง | Buses leave hourly. | รถออกทุกชั่วโมง
+yearly | ทุกปี | We have a yearly check-up. | เราตรวจสุขภาพทุกปี
+normally | ตามปกติ | I normally wake up at six. | ปกติฉันตื่นหกโมง
+typically | โดยทั่วไป | It typically takes an hour. | โดยทั่วไปใช้เวลาหนึ่งชั่วโมง
+generally | โดยทั่วไป/ส่วนใหญ่ | People are generally kind. | คนส่วนใหญ่ใจดี
+`);
+U('daily', 2, 'คำบอกระดับมากน้อย', `
+almost | เกือบ | I'm almost ready. | ฉันเกือบพร้อมแล้ว
+nearly | เกือบ | It's nearly midnight. | เกือบเที่ยงคืนแล้ว
+barely | แทบจะไม่ | I can barely see. | ฉันแทบมองไม่เห็น
+scarcely | แทบจะไม่ | There was scarcely any food. | แทบไม่มีอาหารเลย
+fairly | ค่อนข้าง | The test was fairly easy. | ข้อสอบค่อนข้างง่าย
+somewhat | ค่อนข้าง/บ้าง | I'm somewhat tired. | ฉันค่อนข้างเหนื่อย
+---
+slightly | เล็กน้อย | The price rose slightly. | ราคาขึ้นเล็กน้อย
+extremely | อย่างมาก | It's extremely hot. | ร้อนมาก
+highly | อย่างยิ่ง | I highly recommend it. | ฉันแนะนำอย่างยิ่ง
+greatly | อย่างมาก | Your help is greatly appreciated. | ขอบคุณสำหรับความช่วยเหลืออย่างมาก
+utterly | อย่างสิ้นเชิง | I was utterly exhausted. | ฉันเหนื่อยสุดๆ
+relatively | ค่อนข้าง (เมื่อเทียบ) | It's relatively cheap. | ค่อนข้างถูกเมื่อเทียบกัน
+`);
+U('daily', 2, 'คำบอกลักษณะการกระทำ 1', `
+carefully | อย่างระมัดระวัง | Drive carefully. | ขับรถอย่างระมัดระวัง
+quietly | อย่างเงียบๆ | Please speak quietly. | กรุณาพูดเบาๆ
+softly | อย่างนุ่มนวล/เบาๆ | She spoke softly. | เธอพูดเบาๆ
+gently | อย่างอ่อนโยน | Hold the baby gently. | อุ้มทารกเบาๆ
+rudely | อย่างหยาบคาย | He spoke rudely to me. | เขาพูดกับฉันอย่างหยาบคาย
+sadly | อย่างเศร้า/น่าเสียดาย | Sadly, he died. | น่าเศร้าที่เขาเสียชีวิต
+---
+gladly | ด้วยความยินดี | I'll gladly help. | ฉันยินดีช่วย
+eagerly | อย่างกระตือรือร้น | We waited eagerly. | เรารออย่างใจจดใจจ่อ
+patiently | อย่างอดทน | Wait patiently. | รออย่างอดทน
+warmly | อย่างอบอุ่น | They welcomed us warmly. | พวกเขาต้อนรับเราอย่างอบอุ่น
+wisely | อย่างฉลาด | Spend your money wisely. | ใช้เงินอย่างฉลาด
+wildly | อย่างบ้าคลั่ง | The crowd cheered wildly. | ฝูงชนโห่ร้องอย่างบ้าคลั่ง
+`);
+U('daily', 3, 'คำบอกลักษณะการกระทำ 2', `
+easily | อย่างง่ายดาย | He passed easily. | เขาสอบผ่านอย่างง่ายดาย
+firmly | อย่างมั่นคง/หนักแน่น | Hold it firmly. | จับให้แน่น
+tightly | แน่น | Close the lid tightly. | ปิดฝาให้แน่น
+smoothly | อย่างราบรื่น | Everything went smoothly. | ทุกอย่างเป็นไปอย่างราบรื่น
+steadily | อย่างสม่ำเสมอ | Prices rose steadily. | ราคาสูงขึ้นอย่างต่อเนื่อง
+swiftly | อย่างรวดเร็ว | Police acted swiftly. | ตำรวจลงมืออย่างรวดเร็ว
+---
+rapidly | อย่างรวดเร็ว | The fire spread rapidly. | ไฟลามอย่างรวดเร็ว
+promptly | ทันที/ตรงเวลา | Reply promptly. | ตอบกลับทันที
+instantly | ทันที | He died instantly. | เขาเสียชีวิตทันที
+immediately | ทันที | Call the police immediately. | โทรแจ้งตำรวจทันที
+urgently | อย่างเร่งด่วน | We urgently need blood. | เราต้องการเลือดด่วน
+silently | อย่างเงียบเชียบ | He left silently. | เขาจากไปอย่างเงียบๆ
+`);
+U('daily', 3, 'คำบอกลักษณะการกระทำ 3', `
+neatly | อย่างเรียบร้อย | Fold your clothes neatly. | พับเสื้อผ้าให้เรียบร้อย
+properly | อย่างถูกต้อง | Wear your uniform properly. | สวมเครื่องแบบให้ถูกต้อง
+perfectly | อย่างสมบูรณ์แบบ | It fits perfectly. | พอดีเป๊ะ
+precisely | อย่างแม่นยำ | That's precisely what I mean. | นั่นแหละที่ฉันหมายถึง
+thoroughly | อย่างละเอียดถี่ถ้วน | Search the room thoroughly. | ค้นห้องอย่างละเอียด
+strictly | อย่างเคร่งครัด | Smoking is strictly prohibited. | ห้ามสูบบุหรี่โดยเด็ดขาด
+---
+sharply | อย่างแหลมคม/ฮวบ | Prices fell sharply. | ราคาลดลงฮวบ
+strongly | อย่างแข็งขัน | I strongly disagree. | ฉันไม่เห็นด้วยอย่างยิ่ง
+heavily | อย่างหนัก | It rained heavily. | ฝนตกหนัก
+deeply | อย่างลึกซึ้ง | I'm deeply sorry. | ฉันเสียใจอย่างสุดซึ้ง
+freely | อย่างอิสระ | Speak freely. | พูดได้อย่างอิสระ
+openly | อย่างเปิดเผย | He talked openly about it. | เขาพูดเรื่องนั้นอย่างเปิดเผย
+`);
+U('daily', 3, 'คำบอกความแน่นอนและความเป็นไปได้', `
+certainly | แน่นอน | I will certainly come. | ฉันจะมาแน่นอน
+surely | แน่นอน/คงจะ | Surely you know him? | คุณรู้จักเขาแน่ๆ ใช่ไหม
+truly | อย่างแท้จริง | I'm truly sorry. | ฉันขอโทษจริงๆ
+clearly | อย่างชัดเจน | Speak clearly. | พูดให้ชัดเจน
+apparently | ดูเหมือนว่า | Apparently, he left early. | ดูเหมือนว่าเขาออกไปก่อน
+evidently | เห็นได้ชัดว่า | He was evidently drunk. | เห็นได้ชัดว่าเขาเมา
+---
+possibly | อาจจะ | It will possibly rain. | ฝนอาจจะตก
+potentially | อาจเป็นไปได้ | It's potentially dangerous. | อาจเป็นอันตรายได้
+supposedly | ว่ากันว่า | He is supposedly rich. | ว่ากันว่าเขารวย
+seemingly | ดูเหมือน | It was a seemingly easy task. | เป็นงานที่ดูเหมือนง่าย
+hopefully | หวังว่า | Hopefully, it won't rain. | หวังว่าฝนจะไม่ตก
+fortunately | โชคดีที่ | Fortunately, nobody was hurt. | โชคดีที่ไม่มีใครบาดเจ็บ
+`);
+U('daily', 3, 'คำบอกเวลาและลำดับเหตุการณ์', `
+afterwards | หลังจากนั้น | We ate and afterwards went home. | เรากินข้าวแล้วหลังจากนั้นก็กลับบ้าน
+beforehand | ล่วงหน้า | Call me beforehand. | โทรบอกฉันล่วงหน้า
+currently | ปัจจุบันนี้ | He is currently in custody. | ปัจจุบันเขาถูกควบคุมตัว
+formerly | แต่ก่อน | The building was formerly a school. | อาคารนี้แต่ก่อนเป็นโรงเรียน
+previously | ก่อนหน้านี้ | I previously worked in a bank. | ก่อนหน้านี้ฉันทำงานธนาคาร
+presently | ตอนนี้/ในไม่ช้า | He is presently on leave. | ตอนนี้เขาลาพัก
+---
+initially | ในตอนแรก | Initially, he denied it. | ตอนแรกเขาปฏิเสธ
+originally | แต่เดิม | I'm originally from Korat. | เดิมฉันเป็นคนโคราช
+ultimately | ท้ายที่สุด | Ultimately, it's your choice. | ท้ายที่สุดก็เป็นทางเลือกของคุณ
+newly | ใหม่ๆ/เพิ่ง | They are newly married. | พวกเขาเพิ่งแต่งงาน
+temporarily | ชั่วคราว | The road is temporarily closed. | ถนนปิดชั่วคราว
+permanently | อย่างถาวร | He moved permanently. | เขาย้ายไปอย่างถาวร
+`);
+U('daily', 4, 'คำบอกขอบเขตและความสำคัญ', `
+especially | โดยเฉพาะ | I love fruit, especially mango. | ฉันชอบผลไม้ โดยเฉพาะมะม่วง
+mainly | ส่วนใหญ่/หลักๆ | The victims were mainly tourists. | ผู้เสียหายส่วนใหญ่เป็นนักท่องเที่ยว
+mostly | ส่วนมาก | The sky is mostly clear. | ท้องฟ้าส่วนใหญ่แจ่มใส
+primarily | เป็นหลัก | The course is primarily for beginners. | คอร์สนี้สำหรับผู้เริ่มต้นเป็นหลัก
+solely | เพียงอย่างเดียว | You are solely responsible. | คุณต้องรับผิดชอบแต่เพียงผู้เดียว
+merely | เพียงแค่ | It was merely a joke. | มันเป็นแค่เรื่องตลก
+---
+purely | ล้วนๆ | It was purely an accident. | มันเป็นอุบัติเหตุล้วนๆ
+partly | บางส่วน | It's partly my fault. | ส่วนหนึ่งเป็นความผิดของฉัน
+fully | อย่างเต็มที่ | I fully agree. | ฉันเห็นด้วยเต็มที่
+entirely | ทั้งหมด | It's entirely up to you. | ขึ้นอยู่กับคุณทั้งหมด
+completely | อย่างสมบูรณ์/โดยสิ้นเชิง | I completely forgot. | ฉันลืมสนิท
+virtually | เกือบจะ | It's virtually impossible. | แทบเป็นไปไม่ได้
+`);
+U('daily', 4, 'คำบอกท่าทีของผู้พูด', `
+frankly | พูดตรงๆ | Frankly, I don't care. | พูดตรงๆ ฉันไม่สน
+personally | โดยส่วนตัว | Personally, I prefer tea. | โดยส่วนตัวฉันชอบชามากกว่า
+genuinely | อย่างจริงใจ | She was genuinely happy. | เธอดีใจจริงๆ
+sincerely | ด้วยความจริงใจ | Yours sincerely, | ด้วยความนับถือ
+willingly | ด้วยความเต็มใจ | He willingly helped us. | เขาเต็มใจช่วยเรา
+reluctantly | อย่างไม่เต็มใจ | He reluctantly agreed. | เขาตกลงอย่างไม่เต็มใจ
+---
+deliberately | โดยเจตนา | He deliberately broke it. | เขาจงใจทำแตก
+intentionally | โดยตั้งใจ | Did you do it intentionally? | คุณตั้งใจทำหรือเปล่า
+secretly | อย่างลับๆ | They met secretly. | พวกเขาแอบพบกัน
+officially | อย่างเป็นทางการ | The road is officially open. | ถนนเปิดอย่างเป็นทางการ
+plainly | อย่างชัดแจ้ง/เรียบง่าย | He was plainly lying. | เห็นชัดว่าเขาโกหก
+naturally | โดยธรรมชาติ/แน่นอน | Naturally, she was upset. | แน่นอนว่าเธอเสียใจ
+`);
+U('daily', 4, 'คำเชื่อมและคำวิเศษณ์บอกทิศทาง', `
+accordingly | ตามนั้น/ดังนั้น | Act accordingly. | ปฏิบัติตามนั้น
+likewise | เช่นเดียวกัน | Nice to meet you. — Likewise. | ยินดีที่ได้รู้จัก — เช่นกัน
+similarly | ในทำนองเดียวกัน | Similarly, prices rose last year. | ในทำนองเดียวกัน ปีที่แล้วราคาก็สูงขึ้น
+nonetheless | อย่างไรก็ตาม | It was hard; nonetheless, we finished. | มันยาก อย่างไรก็ตามเราทำเสร็จ
+indeed | จริงๆ/แท้จริง | It was indeed a great day. | มันเป็นวันที่ยอดเยี่ยมจริงๆ
+somehow | อย่างไรก็ตาม/ด้วยวิธีใดก็ตาม | Somehow, we got home. | ไม่รู้ยังไงแต่เรากลับถึงบ้านได้
+---
+aside | ไว้ข้างๆ | Put your phone aside. | วางโทรศัพท์ไว้ข้างๆ
+anymore | อีกต่อไป | I don't smoke anymore. | ฉันไม่สูบบุหรี่แล้ว
+awhile | สักพัก | Stay awhile. | อยู่สักพักสิ
+alongside | ข้างๆ/ควบคู่ | Officers worked alongside soldiers. | เจ้าหน้าที่ทำงานควบคู่กับทหาร
+backwards | ถอยหลัง/กลับหลัง | Count backwards from ten. | นับถอยหลังจากสิบ
+increasingly | มากขึ้นเรื่อยๆ | It's increasingly difficult. | ยากขึ้นเรื่อยๆ
+`);
+U('daily', 5, 'คำวิเศษณ์ขั้นสูง ชุด 1', `
+simultaneously | พร้อมกัน | They spoke simultaneously. | พวกเขาพูดพร้อมกัน
+significantly | อย่างมีนัยสำคัญ | Crime fell significantly. | อาชญากรรมลดลงอย่างมาก
+specifically | โดยเฉพาะ/อย่างเจาะจง | I specifically asked for tea. | ฉันขอชาโดยเฉพาะ
+essentially | โดยพื้นฐาน | It's essentially the same. | โดยพื้นฐานแล้วเหมือนกัน
+consistently | อย่างสม่ำเสมอ | She consistently scores high. | เธอได้คะแนนสูงอย่างสม่ำเสมอ
+doubtless | อย่างไม่ต้องสงสัย | He will doubtless win. | เขาจะชนะอย่างไม่ต้องสงสัย
+---
+vaguely | อย่างคลุมเครือ/ลางๆ | I vaguely remember him. | ฉันจำเขาได้ลางๆ
+commonly | โดยทั่วไป | It's commonly used. | ใช้กันทั่วไป
+closely | อย่างใกล้ชิด | Watch him closely. | จับตาดูเขาใกล้ชิด
+directly | โดยตรง | Contact your bank directly. | ติดต่อธนาคารโดยตรง
+equally | อย่างเท่าเทียม | Treat everyone equally. | ปฏิบัติต่อทุกคนอย่างเท่าเทียม
+separately | แยกกัน | Interview them separately. | สอบปากคำแยกกัน
+`);
+U('daily', 5, 'คำวิเศษณ์ขั้นสูง ชุด 2', `
+readily | อย่างง่ายดาย/เต็มใจ | Help is readily available. | มีความช่วยเหลือพร้อมเสมอ
+necessarily | จำเป็น (เสมอไป) | Expensive isn't necessarily better. | แพงไม่จำเป็นต้องดีกว่า
+worldwide | ทั่วโลก | The song is famous worldwide. | เพลงนี้ดังทั่วโลก
+casually | อย่างสบายๆ | He dressed casually. | เขาแต่งตัวสบายๆ
+briefly | สั้นๆ | Explain briefly. | อธิบายสั้นๆ
+gradually | ทีละน้อย | He gradually got better. | เขาค่อยๆ ดีขึ้น
+---
+unexpectedly | อย่างไม่คาดคิด | He arrived unexpectedly. | เขามาถึงอย่างไม่คาดคิด
+safely | อย่างปลอดภัย | We arrived safely. | เรามาถึงอย่างปลอดภัย
+widely | อย่างกว้างขวาง | English is widely spoken. | ภาษาอังกฤษใช้กันอย่างกว้างขวาง
+simply | เพียงแค่/อย่างง่าย | Simply press this button. | แค่กดปุ่มนี้
+loosely | อย่างหลวมๆ | Tie it loosely. | ผูกหลวมๆ
+fiercely | อย่างดุเดือด | They fought fiercely. | พวกเขาต่อสู้อย่างดุเดือด
+`);
+
 // เรียงหน่วยตามระดับ (ความคืบหน้าบันทึกด้วยชื่อหน่วย จึงแทรกหน่วยใหม่ได้)
 Object.values(COURSES).forEach(C => C.units.sort((a, b) => a.lv - b.lv));
 
