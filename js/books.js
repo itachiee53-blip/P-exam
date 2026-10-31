@@ -240,9 +240,6 @@ function renderShelfTop(){
   const ord = S.shelf || [];
   items.sort((x, y) => { const a = ord.indexOf(x.key), b = ord.indexOf(y.key); return (a < 0 ? 999 : a) - (b < 0 ? 999 : b); });
   $('#view').innerHTML = `
-    <div class="row" style="gap:8px;flex-wrap:wrap">
-      <button class="btn ghost sm" id="btnBulk"><i data-lucide="clipboard-list"></i>นำเข้าชุด</button>
-    </div>
     <div class="sec"><i data-lucide="library"></i>ชั้นหนังสือ<span class="more" style="text-decoration:none;color:var(--muted)">แตะเพื่อเปิด · กดค้างเพื่อย้าย</span></div>
     <div class="shelf">${items.map(it => {
       const qs = bookQs(it.b.id), done = qs.filter(q => (S.qstat[q.id]?.seen || 0) > 0).length, pct = qs.length ? Math.round(done / qs.length * 100) : 0;
@@ -258,7 +255,6 @@ function renderShelfTop(){
       </div>`;
     }).join('')}
     </div>`;
-  $('#btnBulk').onclick = () => bulkForm();
   $$('[data-book]').forEach(b => b.onclick = () => openBookAnim(b, () => { QF.book = b.dataset.book; QF.cat = 'ทั้งหมด'; QF.term = ''; QF.limit = 25; QF.off = 0; renderQuiz(); $('.main').scrollTo(0, 0); }));
   $$('[data-editbook]').forEach(b => b.onclick = () => editBook(b.dataset.editbook));
   initShelfDrag();
