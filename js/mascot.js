@@ -1,24 +1,33 @@
-// ตัวละครไฟ "น้องไฟ" — SVG วาดเอง ท่า: watch friendly joy gusto confused upset sly walk
-const MASC_C = '#ff5a36';
+// น้องไฟ — SVG ท่า: watch friendly joy gusto confused upset sly walk · สีเลือกได้ (S.settings.mascCol)
+const MASC_PAL = [['#a66bff', '#6a7dff', '#36a3ff'], ['#ff9a3c', '#ff5a36', '#ff3d6e'], ['#ff8ad8', '#ff5fa8', '#ff4f7b'], ['#5ef0c0', '#22d3a6', '#14a8e0'], ['#ffd84a', '#ffb020', '#ff7a1f']];
 const MASC_TALK = ['อีกนิดเดียว!', 'เก่งมาก ไปต่อ!', 'ค่อยๆ ทำนะ', 'สู้ๆ!', 'วันนี้ฝึกแล้วเก่งขึ้นแน่'];
-function mascFace(m){
-  const eye = (x, s = 1) => `<circle cx="${x}" cy="62" r="${9 * s}" fill="#fff"/><g class="m-pup"><circle cx="${x}" cy="${m === 'upset' ? 65 : 62}" r="${5 * s}" fill="#1e1b2e"/><circle cx="${x + 1.6}" cy="${m === 'upset' ? 63.4 : 60.4}" r="1.5" fill="#fff"/></g>`;
-  const st = 'fill="none" stroke="#1e1b2e" stroke-width="3.6" stroke-linecap="round"';
-  const open = `<path d="M41 71h18q0 13-9 13t-9-13z" fill="#1e1b2e"/><path d="M45 80q5-4 10 0q-2 3-5 3t-5-3z" fill="#ff8fa3"/>`;
-  if(m === 'joy') return `<path d="M28 64q8-9 16 0M56 64q8-9 16 0" ${st}/>${open}`;
-  if(m === 'gusto') return `<g class="m-eyes">${eye(36)}${eye(64)}</g>${open}<path d="M10 40l-6-4M8 54H1M90 40l6-4M92 54h7" ${st} stroke="#ffb020"/>`;
-  if(m === 'confused') return `<g class="m-eyes">${eye(36)}${eye(64, .8)}</g><path d="M42 77q4-4 8 0t8 0" ${st}/>`;
-  if(m === 'upset') return `<g class="m-eyes">${eye(36)}${eye(64)}</g><path d="M27 50l12 4M73 50l-12 4" ${st}/><path d="M44 79q6-6 12 0" ${st}/>`;
-  if(m === 'sly') return `<g class="m-eyes">${eye(36)}${eye(64)}<path d="M25 52h22v9H25zM53 52h22v9H53z" fill="${MASC_C}"/><path d="M26 61h20M54 61h20" ${st}/></g><path d="M44 75q7 4 13-2" ${st}/>`;
-  const mouth = m === 'watch' ? '<circle cx="50" cy="75" r="2.4" fill="#1e1b2e"/>' : `<path d="M44 73q6 6 12 0" ${st}/>`;
-  return `<g class="m-eyes">${eye(36)}${eye(64)}</g>${mouth}`;
+const MASC_K = '#111';
+const MASC_BODY = 'M14 112C10 90 10 64 16 46C18 38 22 32 26 26C26 36 28 42 32 46C34 30 40 14 54 2C52 16 56 28 62 36C66 28 70 22 78 16C76 26 78 34 84 40C86 36 88 32 90 28C96 46 98 74 96 112Q90 122 82 114Q74 122 66 114Q58 122 50 114Q42 122 34 114Q26 122 18 116Z';
+const MASC_GHOST = 'M14 112C12 84 22 58 55 58C88 58 98 84 96 112Q90 122 82 114Q74 122 66 114Q58 122 50 114Q42 122 34 114Q26 122 18 116Z';
+function mascCol(){ return (typeof S !== 'undefined' && S.settings && S.settings.mascCol) || 0; }
+function mascFace(m, g){
+  const K = MASC_K, eye = (x, r = 10.5, dx = 0, dy = 0) => `<circle cx="${x}" cy="86" r="${r}" fill="#fff"/><g class="m-pup"><circle cx="${x + dx}" cy="${86 + dy}" r="${r * .57}" fill="${K}"/></g>`;
+  const lid = (y = 86, a = 34, b = 76, r = 11.2) => { const w = Math.sqrt(r * r - (86 - y) ** 2).toFixed(2); return `<path d="${[a, b].map(x => `M${x - w} ${y}A${r} ${r} 0 0 1 ${x + +w} ${y}Z`).join('')}" fill="url(#${g})"/>`; };
+  const st = `fill="none" stroke="${K}" stroke-width="2.6" stroke-linecap="round"`;
+  if(m === 'joy') return `<g class="m-eyes">${eye(32, 10.5, -1)}${eye(78, 10.5, 1)}</g><path d="M50 84c6-6 15-1 13 7c-2 8-12 9-15 3c-2-4 0-8 2-10z" fill="${K}"/><path d="M53 89q3-3 5 0" ${st} stroke="url(#${g})" stroke-width="2"/>`;
+  if(m === 'sly') return `<g class="m-eyes">${eye(34, 10.5, 2, 2)}${eye(76, 10.5, -2, 2)}${lid(83)}</g><path d="M50 93q5 4 10 0" ${st}/>`;
+  if(m === 'gusto') return `<g class="m-eyes">${eye(34, 10.5, 3, 3)}${eye(76, 10.5, 3, 3)}${lid(85)}</g><path d="M52 92q3 2 5 0q-1 3 2 4" ${st}/>`;
+  if(m === 'confused') return `<g class="m-eyes">${eye(32, 11)}${eye(78, 9.5, 0, 2)}</g><path d="M47 86l15 4" ${st}/>`;
+  if(m === 'upset') return `<g class="m-eyes">${eye(34, 10.5, 0, 3)}${eye(76, 10.5, 0, 3)}${lid(84)}</g><path d="M50 94q5-5 10 0" ${st}/>`;
+  if(m === 'walk') return `<g class="m-eyes">${eye(36, 10.5, 3)}${eye(78, 10.5, 3)}</g><path d="M53 92q5 4.5 10 0" ${st}/>`;
+  if(m === 'watch') return `<g class="m-eyes">${eye(34)}${eye(76)}</g><circle cx="55" cy="91" r="2" fill="${K}"/>`;
+  return `<g class="m-eyes">${eye(34, 10.5, 1.5, 1)}${eye(76, 10.5, -1.5, 1)}</g><path d="M50 92q5 4.5 10 0" ${st}/>`; // friendly
 }
 function mascSvg(m){
-  return `<svg viewBox="0 0 100 112" aria-hidden="true"><ellipse class="m-sh" cx="50" cy="106" rx="30" ry="4.5" fill="#1e1b2e" opacity=".12"/>
-    <g class="m-body"><path d="M16 94C12 74 14 52 22 28c4 10 8 14 14 16C36 28 42 14 52 4c4 14 10 22 14 30c4-4 8-8 14-12c8 18 10 42 6 72q-7 10-14 2q-7 10-14 2q-7 10-14 2q-7 10-14 2q-7 10-14 0z" fill="${MASC_C}"/>
-    <path d="M30 88c-4-14-2-26 4-36c4 6 8 8 12 8c0-10 4-18 8-24c4 10 10 16 12 24c4 10 4 20 2 28z" fill="#ff7a4f" opacity=".55"/>${mascFace(m)}</g></svg>`;
+  const c = MASC_PAL[mascCol()] || MASC_PAL[0], g = 'mg' + mascCol();
+  const arms = m === 'joy' ? `<path d="M15 60C6 54 2 44 4 34C10 42 14 44 20 46ZM95 60C104 54 108 44 106 34C100 42 96 44 90 46Z" fill="url(#${g})"/>`
+    : m === 'walk' ? `<path d="M88 104q14-2 16 4q-2 6-14 6z" fill="url(#${g})"/>` : '';
+  return `<svg viewBox="0 0 110 126" aria-hidden="true"><defs><linearGradient id="${g}" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="70" y2="126"><stop offset="0" stop-color="${c[0]}"/><stop offset=".5" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[2]}"/></linearGradient></defs>
+    <ellipse class="m-sh" cx="55" cy="121" rx="36" ry="4" fill="${c[1]}" opacity=".18"/>
+    <g class="m-body">${arms}<path class="m-fl" d="${m === 'upset' ? MASC_GHOST : MASC_BODY}" fill="url(#${g})"/>${mascFace(m, g)}</g></svg>`;
 }
-function mascot(m = 'watch', id = '', cls = ''){ return `<button class="masc m-${m} ${cls}" ${id ? `id="${id}"` : ''} onclick="mascTap(this)" aria-label="น้องไฟ">${mascSvg(m)}</button>`; }
+function mascot(m = 'watch', id = '', cls = ''){ return `<button class="masc m-${m} ${cls}" ${id ? `id="${id}"` : ''} onclick="mascTap(this, event)" aria-label="น้องไฟ">${mascSvg(m)}</button>`; }
+function mascMood(el){ const r = /\bm-(\w+)/.exec(el.className); return r ? r[1] : 'watch'; }
 function mascSet(el, m){
   if(!el) return;
   el.className = el.className.replace(/\bm-\w+/, 'm-' + m).replace(/\s*\bbump\b/, '');
@@ -29,9 +38,16 @@ function mascLook(el, e){ // ลูกตามองตามจุดที่
   const r = el.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), d = Math.hypot(dx, dy) || 1;
   el.style.setProperty('--px', (dx / d * 3).toFixed(1) + 'px'); el.style.setProperty('--py', (dy / d * 2.5).toFixed(1) + 'px');
 }
-function mascTap(el){
-  playTone('tap'); mascSet(el, el.classList.contains('m-upset') ? 'upset' : 'friendly');
+function mascTap(el, e){
+  if(e && e.target.closest('[data-mc]')){ // เปลี่ยนสี
+    e.stopPropagation(); S.settings.mascCol = +e.target.closest('[data-mc]').dataset.mc; save();
+    playTone('tap'); document.querySelectorAll('.masc').forEach(x => mascSet(x, mascMood(x) === 'upset' ? 'upset' : x === el ? 'joy' : mascMood(x)));
+    return;
+  }
+  playTone('tap'); const keep = mascMood(el) === 'upset';
+  mascSet(el, keep ? 'upset' : 'friendly');
   document.querySelectorAll('.masc-say').forEach(x => x.remove());
-  const t = document.createElement('span'); t.className = 'masc-say'; t.textContent = MASC_TALK[Math.floor(Math.random() * MASC_TALK.length)];
-  el.appendChild(t); setTimeout(() => t.remove(), 1800);
+  const t = document.createElement('span'); t.className = 'masc-say';
+  t.innerHTML = `<b>${MASC_TALK[Math.floor(Math.random() * MASC_TALK.length)]}</b><span>${MASC_PAL.map((c, k) => `<i data-mc="${k}" class="${k === mascCol() ? 'on' : ''}" style="background:linear-gradient(135deg,${c[0]},${c[2]})"></i>`).join('')}</span>`;
+  el.appendChild(t); clearTimeout(el._st); el._st = setTimeout(() => t.remove(), 3500);
 }
