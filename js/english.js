@@ -330,7 +330,7 @@ function renderLesson(){
   let body = '';
   if(it.t === 'intro') body = `<div class="ls-intro" style="--c:${col}"><span class="ls-new">คำใหม่</span><h2>${esc(w.en)}</h2>${say}
       <p class="th">${esc(w.th)}</p>${w.ex ? `<p class="ex">${engTw(w.ex)}</p>` : ''}${w.tr ? `<small class="tr">${esc(w.tr)}</small>` : ''}</div>`;
-  if(it.t === 'rule') body = `<div class="ls-rule"><b>${esc(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${esc(r.trim())}</span>`).join('')}</div>`;
+  if(it.t === 'rule') body = `<div class="ls-rule"><b>${engTw(it.u.t)}</b>${it.u.rule.split('·').map(r => `<span>${engTw(r.trim())}</span>`).join('')}</div>`;
   if(it.t === 'dlg') body = `<div class="ls-chat">${w.lines.map(l => { const m = l.match(/^([AB]):\s*(.*)$/) || [0, 'A', l], me = m[1] === 'B';
       return `<div class="ls-bub ${me ? 'me' : ''}"><em>${m[1]}</em><span>${m[2] === '___' ? '<i class="ls-dots"><b></b><b></b><b></b></i>' : engTw(m[2])}</span></div>`; }).join('')}</div><div class="ls-opts">${opts}</div>`;
   if(it.t === 'passage' || it.t === 'read') body = `<div class="ls-pass ${it.t === 'read' ? 'mini' : ''}"><b>${esc(w.title)}</b>
