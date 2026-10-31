@@ -1253,3 +1253,9 @@ html,body{height:100%;overflow:hidden;overscroll-behavior:none}
 .voc-w.y:active{transform:scale(.96)}
 .voc-w.n{background:transparent;border:1.5px dashed var(--line);color:var(--muted);cursor:default}
 .voc-w[hidden],.voc-l section[hidden]{display:none}
+/* หน้าทำบทเรียน: เนื้อหาอยู่กลางจอ (ระดับสายตา) ไม่ลอยชิดบน */
+.ls-wrap{display:flex;flex-direction:column;min-height:calc(100dvh - 190px)}
+.ls-wrap>.ls-top{width:100%}
+.ls-wrap>.ls-body{margin-top:auto;width:100%}
+.ls-wrap>#lsFb{width:100%;min-height:86px;margin-bottom:auto;padding-bottom:4vh}
+@media (orientation:portrait) and (max-width:600px){.ls-wrap{min-height:calc(100dvh - 26px)}}
