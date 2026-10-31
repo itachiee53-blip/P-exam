@@ -22,9 +22,11 @@ function mascSvg(m){
   const c = MASC_PAL[mascCol()] || MASC_PAL[0], g = 'mg' + mascCol();
   const arms = m === 'joy' ? `<path d="M15 60C6 54 2 44 4 34C10 42 14 44 20 46ZM95 60C104 54 108 44 106 34C100 42 96 44 90 46Z" fill="url(#${g})"/>`
     : m === 'walk' ? `<path d="M88 104q14-2 16 4q-2 6-14 6z" fill="url(#${g})"/>` : '';
+  const up = m === 'upset', fl = up ? MASC_GHOST : MASC_BODY;
+  const em = up ? '' : [[30, 34, 0], [82, 26, .8], [56, 10, 1.6]].map(([x, y, d]) => `<circle class="m-em" cx="${x}" cy="${y}" r="2.6" fill="${c[0]}" style="animation-delay:${d}s"/>`).join('');
   return `<svg viewBox="0 0 110 126" aria-hidden="true"><defs><linearGradient id="${g}" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="70" y2="126"><stop offset="0" stop-color="${c[0]}"/><stop offset=".5" stop-color="${c[1]}"/><stop offset="1" stop-color="${c[2]}"/></linearGradient></defs>
-    <ellipse class="m-sh" cx="55" cy="121" rx="36" ry="4" fill="${c[1]}" opacity=".18"/>
-    <g class="m-body">${arms}<path class="m-fl" d="${m === 'upset' ? MASC_GHOST : MASC_BODY}" fill="url(#${g})"/>${mascFace(m, g)}</g></svg>`;
+    <ellipse class="m-sh" cx="55" cy="121" rx="36" ry="4" fill="${c[1]}" opacity=".18"/>${em}
+    <g class="m-body">${arms}<path class="m-fl" d="${fl}" fill="url(#${g})"/><path class="m-fl2" d="${fl}" fill="#fff" opacity=".16" transform="translate(55 114) scale(.6) translate(-55 -114)"/><ellipse cx="28" cy="70" rx="3.6" ry="7" fill="#fff" opacity=".45" transform="rotate(-20 28 70)"/><g class="m-ck"><ellipse cx="22" cy="101" rx="6" ry="3.4"/><ellipse cx="88" cy="101" rx="6" ry="3.4"/></g>${mascFace(m, g)}</g></svg>`;
 }
 function mascot(m = 'watch', id = '', cls = ''){ return `<button class="masc m-${m} ${cls}" ${id ? `id="${id}"` : ''} onclick="mascTap(this, event)" aria-label="น้องไฟ">${mascSvg(m)}</button>`; }
 function mascMood(el){ const r = /\bm-(\w+)/.exec(el.className); return r ? r[1] : 'watch'; }
@@ -51,3 +53,12 @@ function mascTap(el, e){
   t.innerHTML = `<b>${MASC_TALK[Math.floor(Math.random() * MASC_TALK.length)]}</b><span>${MASC_PAL.map((c, k) => `<i data-mc="${k}" class="${k === mascCol() ? 'on' : ''}" style="background:linear-gradient(135deg,${c[0]},${c[2]})"></i>`).join('')}</span>`;
   el.appendChild(t); clearTimeout(el._st); el._st = setTimeout(() => t.remove(), 3500);
 }
+// ลูกตามองตามนิ้ว/เมาส์ + ท่าเล่นเองตอนว่าง
+let mascRaf = 0;
+document.addEventListener('pointermove', e => { if(mascRaf) return; mascRaf = requestAnimationFrame(() => { mascRaf = 0; document.querySelectorAll('.masc').forEach(x => mascLook(x, e)); }); }, { passive: true });
+setInterval(() => {
+  if(document.hidden) return;
+  const all = [...document.querySelectorAll('.masc.m-watch,.masc.m-friendly,.masc.m-walk')]; if(!all.length) return;
+  const el = all[Math.floor(Math.random() * all.length)], a = ['i-hop', 'i-look', 'i-wig'][Math.floor(Math.random() * 3)];
+  el.classList.add(a); setTimeout(() => el.classList.remove(a), 1200);
+}, 5000);
