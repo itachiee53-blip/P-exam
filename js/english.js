@@ -398,7 +398,7 @@ function lessonFb(ok, ans, noRedo){
   // ตอบถูกเท่านั้นถึงอ่านออกเสียง (ประโยคเต็ม หรือคำศัพท์)
   if(ok) setTimeout(() => full ? speakWord(full) : it.w && it.w.en && engSay(it.w.en), 350);
   icons($('#lsFb'));
-  requestAnimationFrame(() => $('#lsNext') && $('#lsNext').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+  requestAnimationFrame(() => { const f = $('#lsFb'); f && f.lastElementChild && f.lastElementChild.scrollIntoView({ block: 'end', behavior: 'smooth' }); });
   if(ok){ const r = $('#lsFb').getBoundingClientRect(); engConfetti(L.combo >= 3 ? 22 : 12, r.left + 40, r.top + 20); }
   $('#lsNext').onclick = () => { L.k++; L.st = null; renderLesson(); };
 }
